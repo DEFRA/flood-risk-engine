@@ -1,0 +1,21 @@
+<%= form_for(@not_in_engine) do |f| %>
+  <% if @not_in_engine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@not_in_engine.errors.count, "error") %> prohibited this not_in_engine from being saved:</h2>
+
+      <ul>
+      <% @not_in_engine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Not In Engines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @not_in_engines.each do |not_in_engine| %>
+      <tr>
+        <td><%= not_in_engine.name %></td>
+        <td><%= link_to 'Show', not_in_engine %></td>
+        <td><%= link_to 'Edit', edit_not_in_engine_path(not_in_engine) %></td>
+        <td><%= link_to 'Destroy', not_in_engine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Not in engine', new_not_in_engine_path %>

@@ -1,0 +1,9 @@
+// Use @import to import Sass files.
+// Do not use *= require in Sass or your other stylesheets will not be able to
+// access the Bootstrap mixins or variables. See:
+//
+//   https://github.com/twbs/bootstrap-sass
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
