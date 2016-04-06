@@ -18,4 +18,5 @@ group :test do
   gem "factory_girl_rails", "~> 4.6"
   gem "simplecov", "~> 0.11", require: false
   gem "faker"
+  gem "shoulda-matchers", "~> 3.1", require: false
 end
