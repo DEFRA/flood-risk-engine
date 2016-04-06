@@ -26,6 +26,13 @@ require "rspec/rails"
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# Set faker so it uses British formats for postcodes, telephone numbers etc.
+Faker::Config.locale = "en-GB"
+
+# FactoryGirl willl not find the factories without the line below
+FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), "factories")
+FactoryGirl.find_definitions
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -54,4 +61,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Allows you to use Factory Girl methods without specifying FactoryGirl.
+  # So you can now: `build(:address)` rather than FactoryGirl.build(:address)
+  config.include FactoryGirl::Syntax::Methods
 end

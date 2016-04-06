@@ -17,4 +17,5 @@ group :test do
   gem "rspec-rails", "~> 3.4"
   gem "factory_girl_rails", "~> 4.6"
   gem "simplecov", "~> 0.11", require: false
+  gem "faker"
 end

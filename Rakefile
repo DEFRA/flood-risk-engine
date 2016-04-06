@@ -32,7 +32,7 @@ end
 task test: :spec
 
 task :rubocop do
-  sh "rubocop"
+  sh "rubocop -D"
 end
 
 task default: [:rubocop, :test]
