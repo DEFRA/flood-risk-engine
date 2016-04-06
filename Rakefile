@@ -23,4 +23,18 @@ require "before_commit"
 spec = Gem::Specification.find_by_name "before_commit"
 load "#{spec.gem_dir}/lib/tasks/before_commit.rake"
 
+begin
+  require "rspec/core/rake_task"
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
+task test: :spec
+
+task :rubocop do
+  sh "rubocop"
+end
+
+task default: [:rubocop, :test]
+
 Bundler::GemHelper.install_tasks

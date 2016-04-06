@@ -14,7 +14,7 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 group :test do
-  gem "rspec-rails"
-  gem "factory_girl_rails"
-  gem "simplecov", require: false
+  gem "rspec-rails", "~> 3.4"
+  gem "factory_girl_rails", "~> 4.6"
+  gem "simplecov", "~> 0.11", require: false
 end
