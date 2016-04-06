@@ -12,3 +12,6 @@ spec/dummy/.sass-cache
 .git-hooks/
 rubocop/
 .rubocop.yml
+
+# simplecov output
+coverage
