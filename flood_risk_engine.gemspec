@@ -7,14 +7,15 @@ require "flood_risk_engine/version"
 Gem::Specification.new do |s|
   s.name        = "flood_risk_engine"
   s.version     = FloodRiskEngine::VERSION
-  s.authors     = ["Rob Nichols"]
-  s.email       = ["robnichols.ea@gmail.com"]
-  s.homepage    = "TODO"
+  s.authors     = ["Digital Services Team, EnvironmentAgency"]
+  s.email       = ["dst@environment-agency.gov.uk"]
+  s.homepage    = "https://github.com/EnvironmentAgency"
   s.summary     = "TODO: Summary of FloodRiskEngine."
   s.description = "TODO: Description of FloodRiskEngine."
-  s.license     = "LICENSE"
+  s.license     = "The Open Government Licence (OGL) Version 3"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.6"
 
