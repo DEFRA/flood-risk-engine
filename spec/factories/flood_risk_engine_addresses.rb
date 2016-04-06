@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :flood_risk_engine_address, class: "FloodRiskEngine::Address" do
+  factory :address, class: "FloodRiskEngine::Address" do
     premises "MyString"
     street_address "MyString"
     locality "MyString"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406124356) do
+ActiveRecord::Schema.define(version: 20160406132213) do
 
   create_table "flood_risk_engine_addresses", force: :cascade do |t|
     t.string   "premises",            limit: 200
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20160406124356) do
     t.string   "logical_status_code"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+  end
+
+  create_table "flood_risk_engine_organisations", force: :cascade do |t|
+    t.string   "type"
+    t.string   "name"
+    t.integer  "contact_id"
+    t.string   "company_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "not_in_engines", force: :cascade do |t|
