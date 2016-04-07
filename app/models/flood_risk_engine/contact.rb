@@ -14,9 +14,9 @@ module FloodRiskEngine
     }
 
     # Derived from RCDP customer data model
-    enum title: %w{
-       na Mr Mrs Miss Ms Dr Rev Sir Lady Lord
-       Captain Major Professor Dame Colonel
-    }
+    enum title: %w(
+      na Mr Mrs Miss Ms Dr Rev Sir Lady Lord
+      Captain Major Professor Dame Colonel
+    )
   end
 end
