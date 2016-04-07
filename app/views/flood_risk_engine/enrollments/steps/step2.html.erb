@@ -1,0 +1,20 @@
+<%= content_for(:heading) { "What's your Name?" } %>
+
+<%= render(layout: 'step', locals: { form: form }) do %>
+  <%= form_for form,
+                as: 'step2',
+               url: update_step_enrollment_path(id: form.id, step: step),
+               class: 'form' do |f| %>
+
+    <fieldset>
+      <div class="form-group">
+        <%- f.label :dummy_string1 %>
+        <%= f.text_field :dummy_string1 %>
+      </div>
+    </fieldset>
+
+    <div class="form-group">
+      <%= f.submit 'Continue' %>
+    </div>
+  <% end %>
+<% end %>

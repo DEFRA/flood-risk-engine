@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 # Declare your gem's dependencies in flood_risk_engine.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -10,13 +10,12 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# To use a debugger
-# gem 'byebug', group: [:development, :test]
-
 group :test do
   gem "rspec-rails", "~> 3.4"
   gem "factory_girl_rails", "~> 4.6"
   gem "simplecov", "~> 0.11", require: false
   gem "faker"
   gem "shoulda-matchers", "~> 3.1", require: false
+  gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
+  gem "capybara", "~> 2.6"
 end

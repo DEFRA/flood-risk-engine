@@ -1,0 +1,18 @@
+<!-- layout for steps -->
+<h1 class="heading-large">
+  <%= yield :heading %>
+</h1>
+
+<%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
+
+<%= yield %>
+
+<!-- temp debug stuff -->
+<br/>
+<br/>
+<br/>
+<small>
+<pre>
+  <%= @form.inspect %>
+</pre>
+</small>
