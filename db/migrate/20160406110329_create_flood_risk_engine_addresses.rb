@@ -10,11 +10,14 @@ class CreateFloodRiskEngineAddresses < ActiveRecord::Migration
       t.string :country_iso,        limit: 3
       t.integer :address_type,      default: 0, null: false
       t.string :organisation,       limit: 255, null: false, default: ""
+      t.references :contact
       t.date :state_date
       t.string :blpu_state_code
       t.string :postal_address_code
       t.string :logical_status_code
       t.timestamps null: false
     end
+
+    add_foreign_key :flood_risk_engine_addresses, :flood_risk_engine_contacts
   end
 end

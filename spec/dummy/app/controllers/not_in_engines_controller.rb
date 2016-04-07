@@ -48,6 +48,7 @@ class NotInEnginesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_not_in_engine
     @not_in_engine = NotInEngine.find(params[:id])
