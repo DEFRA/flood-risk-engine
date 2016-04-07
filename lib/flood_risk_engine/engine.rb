@@ -1,3 +1,4 @@
+require "flood_risk_engine/configuration"
 
 module FloodRiskEngine
   class Engine < ::Rails::Engine
