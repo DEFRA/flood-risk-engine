@@ -3,7 +3,7 @@ describe FloodRiskEngine::Enrollments::StepsController, type: :controller do
   routes { FloodRiskEngine::Engine.routes }
   render_views
 
-  let(:enrollment) { FloodRiskEngine::Enrollment.create }
+  let(:enrollment) { FactoryGirl.create(:enrollment) }
 
   context "step 1" do
     let(:step) { "step1" }
