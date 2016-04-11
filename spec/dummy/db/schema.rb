@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20160408091218) do
     t.boolean  "dummy_boolean"
     t.string   "dummy_string1"
     t.string   "dummy_string2"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "applicant_contact_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "flood_risk_engine_organisations", force: :cascade do |t|
