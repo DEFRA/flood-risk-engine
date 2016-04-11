@@ -47,7 +47,7 @@ module FloodRiskEngine
       def next_step
         case step.to_sym
         when :step1 then :step2
-        when :step2 then :step3
+        when :step2 then :organisation_type
         else fail "End of the line"
         end
       end
@@ -71,9 +71,9 @@ module FloodRiskEngine
       # e.g. FloodRiskEngine.const_get("Steps::#{}Form".classify)
       def form_object_klass
         case step.to_sym
-        when :step1 then FloodRiskEngine::Steps::Step1Form
-        when :step2 then FloodRiskEngine::Steps::Step2Form
-        when :step3 then FloodRiskEngine::Steps::Step3Form
+        when :step1 then              FloodRiskEngine::Steps::Step1Form
+        when :step2 then              FloodRiskEngine::Steps::Step2Form
+        when :organisation_type then  FloodRiskEngine::Steps::OrganisationTypeForm
         else fail "No form object defined for step #{step}"
         end
       end

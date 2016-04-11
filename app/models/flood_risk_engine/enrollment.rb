@@ -12,6 +12,7 @@ module FloodRiskEngine
     # We don't define the inverse relationship of applicant_contact as, in WEX at least,
     # we query never from contact to its enrollment
     belongs_to :applicant_contact, class_name: "Contact"
+    belongs_to :organisation
 
     serialize :step_history, Array
 
@@ -78,5 +79,6 @@ module FloodRiskEngine
       return true if state_machine_class.defined_states.include? step.to_s
       errors.add(:step, "#{step} is not defined in #{state_machine_class}")
     end
+
   end
 end

@@ -13,14 +13,8 @@ module FloodRiskEngine
         new(enrollment)
       end
 
-      # Moved knowledge of parent key in params (defined in the html form using as: ..
-      # otherwise we get very longs form field names etc - see step1.html.erb)
-      # since knowing how to extract the form data, and what the expectation of the
-      # params sctructure is, is best here.
-      def validate(params)
-        # There may be no step1 key in params if no form fields had
-        # a value - hence defaulting to an empty hash
-        super params.fetch(:step1) { Hash.new }
+      def params_key
+        :step1
       end
     end
   end

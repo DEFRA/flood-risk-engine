@@ -31,12 +31,12 @@ describe FloodRiskEngine::Enrollments::StepsController, type: :controller do
     end
   end
 
-  context "step 3" do
-    let(:step) { "step3" }
+  context "organisation_type" do
+    let(:step) { "organisation_type" }
 
-    it "uses Step3Form" do
+    it "uses OrganisationTypeForm" do
       get :edit, step: step, id: enrollment
-      expect(controller.send(:form)).to be_a(FloodRiskEngine::Steps::Step3Form)
+      expect(controller.send(:form)).to be_a(FloodRiskEngine::Steps::OrganisationTypeForm)
     end
   end
 

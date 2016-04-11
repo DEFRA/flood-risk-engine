@@ -2,6 +2,7 @@
 
 <%# Using a step partial layout to DRY up the html %>
 <%= render layout: 'step', locals: { form: form, step: step } do |f| %>
+
   <div class="form-group">
     <label for="building-1" class="block-label">
       <%= f.radio_button :dummy_boolean, "yes" %>Yes
@@ -10,4 +11,5 @@
       <%= f.radio_button :dummy_boolean, "no" %>No
     </label>
   </div>
+
 <% end %>

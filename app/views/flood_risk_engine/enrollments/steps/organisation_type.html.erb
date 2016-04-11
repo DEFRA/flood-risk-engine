@@ -1,0 +1,30 @@
+<%= content_for(:heading) { t(".heading") } %>
+
+<%# I don't like doing assignment in views like this - time for a helper/presenter?
+Using an I18n scope because we are yielded to from the step layout partial
+and the scope resolves to xx.steps.step (step is the name of the partial).
+Not pretty though.
+%>
+<% scope = 'flood_risk_engine.enrollments.steps.organisation_type' %>
+
+<%= render layout: 'step',
+           locals: {
+             form: form,
+             step: step
+           } do |f| %>
+
+  <% FloodRiskEngine::Organisation::TYPES.each do |organsation_sti_class| %>
+    <% organisation_type_name = organsation_sti_class.name.demodulize.underscore %>
+
+    <%# TODO: Try this with simple form %>
+    <%= f.label :type,
+                class: 'block-label' do %>
+
+      <%= f.radio_button :type,
+                         organsation_sti_class.to_s,
+                         checked: false,
+                         id: organisation_type_name %>
+      <%= t "options.#{organisation_type_name}", scope: scope %>
+    <% end %>
+  <% end %>
+<% end %>

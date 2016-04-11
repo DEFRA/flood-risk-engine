@@ -10,8 +10,8 @@ module FloodRiskEngine
         new(contact, enrollment)
       end
 
-      def validate(params)
-        super params[:step2]
+      def params_key
+        :step2
       end
 
       # Overriding #save here so we can wire up the enrollment.applicant_contact
