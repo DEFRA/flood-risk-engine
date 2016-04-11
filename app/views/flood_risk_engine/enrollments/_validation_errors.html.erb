@@ -11,7 +11,7 @@
       <% errors.each do |attr, msg| %>
         <li>
           <%= link_to msg.html_safe,
-                      "##{'!!made this a string as method not defined yet error_link_id(attr)'}",
+                      "##{error_link_id(attr)}",
                       class: "error-text" %>
         </li>
       <% end %>

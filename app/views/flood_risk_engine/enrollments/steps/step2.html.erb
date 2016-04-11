@@ -1,10 +1,5 @@
 <%= content_for(:heading) { t(".heading") } %>
 
 <%= render layout: 'step', locals: { form: form, step: step } do |f| %>
-
-  <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
-
+  <%= f.input :first_name %>
 <% end %>
