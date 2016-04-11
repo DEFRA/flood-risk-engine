@@ -1,4 +1,4 @@
-<%= content_for(:heading) { "Question 1" } %>
+<%= content_for(:heading) { t(".heading") } %>
 
 <%# Using a step partial layout to DRY up the html %>
 <%= render(layout: 'step', locals: { form: form }) do %>

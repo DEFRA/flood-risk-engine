@@ -3,6 +3,10 @@
   <%= yield :heading %>
 </h1>
 
+<!-- There is some potentially quick complex logic around the back link -
+see the DigitalServicesCore::BackLink class -->
+<a class="link-back" href="">Back</a>
+
 <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 
 <%= yield %>

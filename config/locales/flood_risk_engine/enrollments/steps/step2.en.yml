@@ -1,0 +1,7 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        step2:
+          heading: Question 2

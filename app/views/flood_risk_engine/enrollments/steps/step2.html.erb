@@ -1,8 +1,8 @@
-<%= content_for(:heading) { "What's your Name?" } %>
+<%= content_for(:heading) { t(".heading") } %>
 
 <%= render(layout: 'step', locals: { form: form }) do %>
   <%= form_for form,
-                as: 'step2',
+               as: 'step2',
                url: update_step_enrollment_path(id: form.id, step: step),
                class: 'form' do |f| %>
 
