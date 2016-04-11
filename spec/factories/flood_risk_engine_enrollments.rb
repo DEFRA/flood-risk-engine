@@ -1,8 +1,7 @@
 FactoryGirl.define do
-  factory :flood_risk_engine_enrollment, class: "FloodRiskEngine::Enrollment" do
-    one "MyString"
-    two "MyString"
-    three "MyString"
-    state "MyString"
+  factory :enrollment, class: "FloodRiskEngine::Enrollment" do
+    dummy_boolean true
+    dummy_string1 Faker::Lorem.sentence(3)
+    dummy_string2 Faker::Lorem.sentence(3)
   end
 end
