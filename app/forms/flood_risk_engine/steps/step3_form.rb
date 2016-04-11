@@ -5,7 +5,7 @@ module FloodRiskEngine
       validates :dummy_string2, presence: true
 
       def self.factory(enrollment)
-        new(enrollment) # for now
+        new(enrollment)
       end
 
       def validate(params)

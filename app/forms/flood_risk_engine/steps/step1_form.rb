@@ -8,13 +8,9 @@ module FloodRiskEngine
       # It alone knows what model the form object will be passed.
       # For example if this form object deals with updating an address it might
       # be initialised like so
-      #   Step1Form.new(enrollment.address)
-      # There is the possibility that all form objects will in fact be initialised
-      # with the top level enrollment as the underlying 'model' for the form.
-      # That would mean using nested property declarations in the formobject and
-      # fields_for in the form and would get messy pretty quickly
+      #   Step1Form.new(enrollment.address, enrollment)
       def self.factory(enrollment)
-        new(enrollment) # for now
+        new(enrollment)
       end
 
       # Moved knowledge of parent key in params (defined in the html form using as: ..

@@ -1,15 +1,25 @@
 module FloodRiskEngine
   module Steps
     class Step2Form < BaseForm
-      property :dummy_string1
-      validates :dummy_string1, presence: true
+      property :first_name
+
+      validates :first_name, presence: true
 
       def self.factory(enrollment)
-        new(enrollment) # for now
+        contact = enrollment.applicant_contact || Contact.new
+        new(contact, enrollment)
       end
 
       def validate(params)
         super params[:step2]
+      end
+
+      # Overriding #save here so we can wire up the enrollment.applicant_contact
+      # Could use a transation here?
+      def save
+        super
+        enrollment.applicant_contact = model
+        enrollment.save
       end
     end
   end

@@ -1,35 +1,13 @@
 <%= content_for(:heading) { t(".heading") } %>
 
 <%# Using a step partial layout to DRY up the html %>
-<%= render(layout: 'step', locals: { form: form }) do %>
-
-  <% # Using 'as:' changes the name of the fields in the form from eg
-     # name="flood_risk_engine_steps_step1[field1]"
-     # to
-     # name="step1[dummy_boolean]"
-     # which is much clearer
-     #
-     # Note the form_for and submit button could be moved to the step layout
-     # and we could yield just the form content?
-  %>
-  <%= form_for form,
-               as: :step1,
-               url: update_step_enrollment_path(id: form.id, step: step),
-               class: 'form' do |f| %>
-    <fieldset>
-
-      <div class="form-group">
-        <label for="building-1" class="block-label">
-          <%= f.radio_button :dummy_boolean, "yes" %>Yes
-        </label>
-        <label for="building-1" class="block-label">
-          <%= f.radio_button :dummy_boolean, "no" %>No
-        </label>
-      </div>
-    </fieldset>
-
-    <div class="form-group">
-      <%= f.submit 'Continue' %>
-    </div>
-  <% end %>
+<%= render layout: 'step', locals: { form: form, step: step } do |f| %>
+  <div class="form-group">
+    <label for="building-1" class="block-label">
+      <%= f.radio_button :dummy_boolean, "yes" %>Yes
+    </label>
+    <label for="building-1" class="block-label">
+      <%= f.radio_button :dummy_boolean, "no" %>No
+    </label>
+  </div>
 <% end %>
