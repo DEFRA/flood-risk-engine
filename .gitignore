@@ -1,3 +1,4 @@
+/.byebug_history
 .bundle/
 log/*.log
 pkg/
@@ -15,3 +16,6 @@ rubocop/
 
 # simplecov output
 coverage
+.DS_Store
+.env
+spec/dummy/.byebug_history

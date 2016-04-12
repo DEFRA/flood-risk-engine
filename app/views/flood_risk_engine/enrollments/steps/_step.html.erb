@@ -1,0 +1,37 @@
+<%# layout for step templates %>
+
+<h1 class="heading-large">
+  <%= yield :heading %>
+</h1>
+
+<!-- There is some potentially quick complex logic around the back link -
+see the DigitalServicesCore::BackLink class -->
+<a class="link-back" href="">Back</a>
+
+<%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
+
+<% # Using 'as:' changes the name of the fields in the form from eg
+   #   name="flood_risk_engine_steps_step1[field1]"
+   # to
+   #   name="step1[dummy_boolean]"
+   # which is much clearer
+%>
+<%= form_for form,
+             as: step,
+             url: update_step_enrollment_path(id: form.enrollment_id, step: step),
+             method: :patch,
+             class: 'form' do |f| %>
+  <fieldset>
+    <%= yield f %>
+  </fieldset>
+
+  <div class="form-group">
+    <%= f.submit 'Continue' %>
+  </div>
+<% end %>
+
+
+<!-- temp debug stuff -->
+<div style='margin-top: 150px'>
+  <pre><%= @form.inspect.gsub(", ", "\n") %></pre>
+</div>

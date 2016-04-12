@@ -6,7 +6,11 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+
+# Need to require these gems in order for the dummy app to resolve
+# the js and css in e.g. assets/stylesheets/application.scss
+require "jquery-rails"
+require "bootstrap-sass"
 
 Bundler.require(*Rails.groups)
 require "flood_risk_engine"

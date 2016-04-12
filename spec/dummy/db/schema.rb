@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406135108) do
+ActiveRecord::Schema.define(version: 20160412112456) do
 
   create_table "flood_risk_engine_addresses", force: :cascade do |t|
     t.string   "premises",            limit: 200
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20160406135108) do
   end
 
   add_index "flood_risk_engine_contacts", ["email_address"], name: "index_flood_risk_engine_contacts_on_email_address"
+
+  create_table "flood_risk_engine_enrollments", force: :cascade do |t|
+    t.boolean  "dummy_boolean"
+    t.string   "dummy_string1"
+    t.string   "dummy_string2"
+    t.integer  "applicant_contact_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "step",                 limit: 50
+    t.text     "step_history"
+  end
 
   create_table "flood_risk_engine_organisations", force: :cascade do |t|
     t.string   "type"
