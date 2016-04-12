@@ -6,7 +6,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "spec_helper"
 require "rspec/rails"
 require "capybara/rails"
+require "shoulda/matchers"
 require_relative "support/state_machines/test_state_machine"
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -36,6 +38,10 @@ FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), "factorie
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
+  # Allows us to include should matchers like validate_presence_of if the spec type
+  # is :form (already works out of the box but only for type :model)
+  config.include(Shoulda::Matchers::ActiveModel, type: :form)
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

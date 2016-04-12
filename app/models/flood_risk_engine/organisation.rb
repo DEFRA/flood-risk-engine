@@ -11,5 +11,9 @@ module FloodRiskEngine
       OrganisationTypes::Other,
       OrganisationTypes::Unknown
     ].freeze
+
+    def type_name
+      type.split("::").last
+    end
   end
 end
