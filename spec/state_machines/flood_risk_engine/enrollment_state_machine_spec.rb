@@ -3,7 +3,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe Enrollment, type: :model do
     let(:enrollment_state_machine) do
-      state_machine = EnrollmentStateMachine.new
+      state_machine = TestStateMachine.new
       state_machine.target enrollment
       state_machine
     end
