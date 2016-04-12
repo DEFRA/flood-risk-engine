@@ -6,27 +6,24 @@ module FloodRiskEngine
 
     before_validation :preserve_current_step
 
-    def current_step
-      state_machine_state.to_s
+    def business_type
+      :foo
     end
 
-    def next_step
-      state_machine_next_step
-      save
+    def current_step
+      state.to_s
     end
 
     def set_step_as(step)
-      state_machine_restore!(step)
-      save!
+      restore!(step)
     end
 
     def state_machine
       @state_machine ||= initiate_state_machine
     end
     delegate(
-      :next_step, :state, :restore!, :states,
-      to: :state_machine,
-      prefix: true
+      :next_step, :state, :restore!,
+      to: :state_machine
     )
 
     validates(
