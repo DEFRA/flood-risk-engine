@@ -1,7 +1,6 @@
 class CreateFloodRiskEngineEnrollments < ActiveRecord::Migration
   def change
     create_table :flood_risk_engine_enrollments do |t|
-
       # These columns are test only
       t.boolean :dummy_boolean
       t.string :dummy_string1
