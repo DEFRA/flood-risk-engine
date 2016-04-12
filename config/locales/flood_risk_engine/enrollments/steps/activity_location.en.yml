@@ -1,0 +1,7 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        activity_location:
+          heading: Where will the activity be located?

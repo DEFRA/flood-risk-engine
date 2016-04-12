@@ -11,4 +11,9 @@ RSpec.shared_examples_for "a form object" do
       expect(subject.enrollment_id).to eq(enrollment.id)
     end
   end
+  describe "#model" do
+    it "is the correct type" do
+      expect(subject.model).to be_a(model_class)
+    end
+  end
 end

@@ -1,5 +1,5 @@
 <%= content_for(:heading) { t(".heading") } %>
 
 <%= render layout: 'step', locals: { form: form, step: step } do |f| %>
-  <%= f.input :dummy_boolean, as: :radio_buttons %>
+  <%= f.input :grid_reference %>
 <% end %>

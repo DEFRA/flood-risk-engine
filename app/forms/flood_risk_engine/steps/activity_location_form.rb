@@ -1,8 +1,8 @@
 module FloodRiskEngine
   module Steps
-    class Step1Form < BaseForm
-      property :dummy_boolean
-      validates :dummy_boolean, presence: true
+    class ActivityLocationForm < BaseForm
+      property :grid_reference
+      validates :grid_reference, presence: true
 
       # This method is responsible for constructing an instance if its class.
       # It alone knows what model the form object will be passed.
@@ -10,11 +10,15 @@ module FloodRiskEngine
       # be initialised like so
       #   Step1Form.new(enrollment.address, enrollment)
       def self.factory(enrollment)
-        new(enrollment)
+        new(Location.new, enrollment)
       end
 
       def params_key
-        :step1
+        :activity_location
+      end
+
+      def save
+        super
       end
     end
   end

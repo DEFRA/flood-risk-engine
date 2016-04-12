@@ -5,8 +5,8 @@ module FloodRiskEngine
     def new
       enrollment = Enrollment.create
       # could put this in a helper
-      url = url_for([:build_step, enrollment, step: "step1"])
-      # or url = build_step_enrollment_path(id: enrollment.id, step: 'step1')
+      url = url_for([:build_step, enrollment, step: "activity_location"])
+      # or url = build_step_enrollment_path(id: enrollment.id, step: 'activity_location')
       redirect_to url
     end
   end

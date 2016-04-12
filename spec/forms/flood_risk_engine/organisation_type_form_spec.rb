@@ -5,13 +5,15 @@ module FloodRiskEngine
   RSpec.describe Steps::OrganisationTypeForm, type: :form do
     let(:params_key) { :organisation_type }
     let(:enrollment) { Enrollment.new }
+    let(:model_class) { Organisation }
+
     subject { described_class.factory(enrollment) }
 
     it_behaves_like "a form object"
 
     it { is_expected.to be_a(described_class) }
     it { is_expected.to respond_to(:type) }
-    it { is_expected.to validate_length_of(:type) }
+    it { is_expected.to validate_presence_of(:type) }
 
     describe "#save" do
       it "saves the enrollment.organisation with the correct STI type" do
