@@ -24,7 +24,9 @@ module FloodRiskEngine
       end
 
       def update
-        if form.validate(params) && form.save
+        enrollment.next_step
+        raise "!! #{step} != #{enrollment.current_step}" unless step.to_s == enrollment.current_step.to_s
+        if form.validate(params) && enrollment.set_step_as(step) && enrollment.save && form.save
           # here we want to redirect to the next step - how to get it?
           # time for a state machine..?
           redirect_to step_url
@@ -45,11 +47,7 @@ module FloodRiskEngine
       end
 
       def next_step
-        case step.to_sym
-        when :activity_location then :step2
-        when :step2 then :organisation_type
-        else fail "End of the line"
-        end
+        enrollment.current_step
       end
 
       # Trying the approach that all vars are passed explicitly to the template

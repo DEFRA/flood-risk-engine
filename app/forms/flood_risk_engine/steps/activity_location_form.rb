@@ -19,6 +19,7 @@ module FloodRiskEngine
 
       def save
         super
+        enrollment.save
       end
     end
   end

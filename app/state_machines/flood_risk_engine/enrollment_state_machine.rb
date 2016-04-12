@@ -3,15 +3,12 @@
 # rubocop:disable Style/HashSyntax
 module FloodRiskEngine
   class EnrollmentStateMachine < StateMachine
-    initial :Step1
+    initial :activity_location
 
     events do
-      event :next_step, if: -> { target.business_type == :foo },
-        :Step1 => :Step2,
-        :Step2 => :Step3
-
-      event :next_step, if: -> { target.business_type == :bar },
-        :Step1 => :Step3
+      event :next_step,
+        :activity_location => :step2,
+        :step2 => :organisation_type
     end
   end
 end
