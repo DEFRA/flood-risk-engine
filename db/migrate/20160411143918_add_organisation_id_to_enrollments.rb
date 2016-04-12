@@ -1,0 +1,6 @@
+class AddOrganisationIdToEnrollments < ActiveRecord::Migration
+  def change
+    add_column :flood_risk_engine_enrollments, :organisation_id, :integer, index: true
+    add_foreign_key :flood_risk_engine_enrollments, :flood_risk_engine_organisations
+  end
+end

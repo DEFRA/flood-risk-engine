@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Digital Services Team, EnvironmentAgency"]
   s.email       = ["dst@environment-agency.gov.uk"]
   s.homepage    = "https://github.com/EnvironmentAgency/flood-risk-engine"
-  s.summary     = "TODO: Summary of FloodRiskEngine."
-  s.description = "TODO: Description of FloodRiskEngine."
+  s.summary     = "FloodRiskEngine."
+  s.description = "FloodRiskEngine."
   s.license     = "The Open Government Licence (OGL) Version 3"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "reform-rails", "~> 0.1"
   s.add_dependency "dotenv-rails", "~> 2.1"
   s.add_dependency "finite_machine", "~> 0.10"
+  s.add_dependency "simple_form", "~> 3.2"
 
   s.add_development_dependency "sqlite3", "~> 1.3"
   s.add_development_dependency "before_commit", "~> 0.2"

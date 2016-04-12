@@ -24,7 +24,9 @@ module FloodRiskEngine
       end
 
       def update
-        if form.validate(params) && form.save
+        enrollment.next_step
+        raise "!! #{step} != #{enrollment.current_step}" unless step.to_s == enrollment.current_step.to_s
+        if form.validate(params) && enrollment.set_step_as(step) && enrollment.save && form.save
           # here we want to redirect to the next step - how to get it?
           # time for a state machine..?
           redirect_to step_url
@@ -45,11 +47,7 @@ module FloodRiskEngine
       end
 
       def next_step
-        case step.to_sym
-        when :step1 then :step2
-        when :step2 then :step3
-        else fail "End of the line"
-        end
+        enrollment.current_step
       end
 
       # Trying the approach that all vars are passed explicitly to the template
@@ -71,9 +69,9 @@ module FloodRiskEngine
       # e.g. FloodRiskEngine.const_get("Steps::#{}Form".classify)
       def form_object_klass
         case step.to_sym
-        when :step1 then FloodRiskEngine::Steps::Step1Form
-        when :step2 then FloodRiskEngine::Steps::Step2Form
-        when :step3 then FloodRiskEngine::Steps::Step3Form
+        when :activity_location then  FloodRiskEngine::Steps::ActivityLocationForm
+        when :step2 then              FloodRiskEngine::Steps::Step2Form
+        when :organisation_type then  FloodRiskEngine::Steps::OrganisationTypeForm
         else fail "No form object defined for step #{step}"
         end
       end

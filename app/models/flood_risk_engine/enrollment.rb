@@ -12,6 +12,8 @@ module FloodRiskEngine
     # We don't define the inverse relationship of applicant_contact as, in WEX at least,
     # we query never from contact to its enrollment
     belongs_to :applicant_contact, class_name: "Contact"
+    belongs_to :organisation
+    belongs_to :site_address, class_name: "Address"
 
     serialize :step_history, Array
 
@@ -33,6 +35,7 @@ module FloodRiskEngine
 
     def set_step_as(step)
       restore!(step)
+      step_history << step
     end
 
     def rollback_to(step)
