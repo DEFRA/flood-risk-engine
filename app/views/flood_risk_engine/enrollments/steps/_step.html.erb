@@ -1,4 +1,4 @@
-<%# layout for step templates %>
+<%# Layout for step templates %>
 
 <h1 class="heading-large">
   <%= yield :heading %>
@@ -16,12 +16,6 @@ see the DigitalServicesCore::BackLink class -->
    #   name="step1[dummy_boolean]"
    # which is much clearer
 %>
-<%#= form_for form,
-             as: step,
-             url: update_step_enrollment_path(id: form.enrollment_id, step: step),
-             method: :patch,
-             class: 'form' do |f| %>
-
 <%= front_end_form_for form,
              as: step,
              url: update_step_enrollment_path(id: form.enrollment_id, step: step),
