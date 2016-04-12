@@ -52,7 +52,7 @@ module FloodRiskEngine
           enrollment.save
           expect(enrollment.step).to eq(new_step)
         end
-        it "the change should not be preserved" do
+        it "should not preserve the change" do
           enrollment.reload
           expect(enrollment.step).to eq(initial_step)
         end
@@ -64,6 +64,30 @@ module FloodRiskEngine
           expect(enrollment.invalid?).to eq(true)
           expect(enrollment.errors.include?(:step)).to eq(true)
         end
+      end
+    end
+
+    describe "#step_history" do
+      it "should persist step history on save" do
+        enrollment.next_step
+        enrollment.save
+        enrollment.reload
+        expect(enrollment.step_history).to eq(steps[0, 1].collect(&:to_sym))
+      end
+    end
+
+    describe "#previous_step?" do
+      before do
+        enrollment.next_step
+        enrollment.save
+      end
+
+      it "should be true if match" do
+        expect(enrollment.previous_step?(initial_step)).to be(true)
+      end
+
+      it "should be false if not a match" do
+        expect(enrollment.previous_step?(steps.last)).to be(false)
       end
     end
   end

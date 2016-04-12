@@ -8,27 +8,45 @@ module FloodRiskEngine
       state_machine
     end
 
-    context "enrollment is a foo" do
-      let(:enrollment) { OpenStruct.new(business_type: :foo) }
-      let(:steps) { [:step1, :step2, :step3] }
-
-      it "should progess through foo journey" do
-        expect(enrollment_state_machine.state).to eq(steps[0])
-        enrollment_state_machine.next_step
-        expect(enrollment_state_machine.state).to eq(steps[1])
-        enrollment_state_machine.next_step
-        expect(enrollment_state_machine.state).to eq(steps[2])
+    let(:builder) do
+      Struct.new(:business_type) do
+        def step_history
+          @step_history ||= []
+        end
       end
     end
 
-    context "enrollment is a bar" do
-      let(:enrollment) { OpenStruct.new(business_type: :bar) }
-      let(:steps) { [:step1, :step3] }
+    describe ".next_step" do
+      context "when enrollment is a foo" do
+        let(:enrollment) { builder.new(:foo) }
+        let(:steps) { [:step1, :step2, :step3] }
 
-      it "should progess through foo journey" do
-        expect(enrollment_state_machine.state).to eq(steps[0])
-        enrollment_state_machine.next_step
-        expect(enrollment_state_machine.state).to eq(steps[1])
+        it "should progess through foo journey" do
+          expect(enrollment_state_machine.state).to eq(steps[0])
+          enrollment_state_machine.next_step
+          expect(enrollment_state_machine.state).to eq(steps[1])
+          enrollment_state_machine.next_step
+          expect(enrollment_state_machine.state).to eq(steps[2])
+        end
+
+        it "should preserve step history" do
+          expect(enrollment.step_history).to eq([])
+          enrollment_state_machine.next_step
+          expect(enrollment.step_history).to eq(steps[0, 1])
+          enrollment_state_machine.next_step
+          expect(enrollment.step_history).to eq(steps[0, 2])
+        end
+      end
+
+      context "when enrollment is a bar" do
+        let(:enrollment) { builder.new(:bar) }
+        let(:steps) { [:step1, :step3] }
+
+        it "should progess through foo journey" do
+          expect(enrollment_state_machine.state).to eq(steps[0])
+          enrollment_state_machine.next_step
+          expect(enrollment_state_machine.state).to eq(steps[1])
+        end
       end
     end
   end
