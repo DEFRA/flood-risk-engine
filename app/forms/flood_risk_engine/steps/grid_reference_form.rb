@@ -10,7 +10,10 @@ module FloodRiskEngine
       # be initialised like so
       #   Step1Form.new(enrollment.address, enrollment)
       def self.factory(enrollment)
-        new(Location.new, enrollment)
+
+        # TODO: what happens if they click back ? get the site address ?
+        location = Location.new  # enrollment.site_address || Location.new
+        new(location, enrollment)
       end
 
       def params_key

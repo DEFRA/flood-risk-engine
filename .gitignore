@@ -19,3 +19,5 @@ coverage
 .DS_Store
 .env
 spec/dummy/.byebug_history
+
+.idea
