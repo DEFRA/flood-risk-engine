@@ -5,10 +5,19 @@ module FloodRiskEngine
   class EnrollmentStateMachine < StateMachine
     initial :grid_reference
 
+    module WorkFlow
+      extend self
+
+      def start
+        {
+          :activity_location => :step2,
+          :step2 => :organisation_type
+        }
+      end
+    end
+
     events do
-      event :next_step,
-        :grid_reference => :applicant_contact_name,
-        :applicant_contact_name => :organisation_type
+      event :next_step, WorkFlow.start
     end
   end
 end
