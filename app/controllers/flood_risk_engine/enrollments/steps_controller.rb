@@ -1,38 +1,25 @@
-# The idea here is that a separate step controller is responsible for
-# the progressive 'building' of the enrollment. This has a couple of
-# advantages over using custom get and patch routes to target
-# enrollments_controller#edit and #update:
+# This controller is responsible for the progressive 'building' of an
+# enrollment. This has a couple of advantages over using custom get
+# and patch routes to target enrollments_controller#edit and #update:
 # - clearer separation of concerns
 # - leaves EnrollmentsController free for more conventional use
-# - steps maps to views in the way we wanted e.g. views/enrollments/steps
-# - using a REST approach eg enrollments/123/steps/step1
-#
-# Ideally there should be only one variable passed to the view - @form -
-# but if there are read-only items also required, I think creating a
-# @presenter and passing it to the view would also be a good idea.
-# Read-only data should not be shoe-horned into the form object as
-# thats not its responsibility, and I'm not a fan of helpers.
-# The presenter could be loaded in the same way
-# as the form below but default to nil if no matching presenter class
-# found (or its not defined in the presenter method case statement).
+# - 'steps' map to 'views' naturally e.g. app/views/enrollments/steps
+# - more RESTful e.g. enrollments/123/steps/step1
 #
 module FloodRiskEngine
   module Enrollments
     class StepsController < ApplicationController
       def edit
-        render step, locals: locals
+        render :edit, locals: locals
       end
 
       def update
         enrollment.next_step
-        raise "!! #{step} != #{enrollment.current_step}" unless step.to_s == enrollment.current_step.to_s
-        if form.validate(params) && enrollment.set_step_as(step) && enrollment.save && form.save
-          # here we want to redirect to the next step - how to get it?
-          # time for a state machine..?
+        #check_step_is_valid
+        if save_form!
           redirect_to step_url
         else
-          # see #locals for comment
-          render step, locals: locals
+          render :edit, locals: locals
         end
       end
 
@@ -47,11 +34,24 @@ module FloodRiskEngine
       end
 
       def next_step
+        enrollment.next_step
         enrollment.current_step
       end
 
+      def check_step_is_valid
+        unless step.to_s == enrollment.current_step.to_s
+          raise "!! #{step} != #{enrollment.current_step}"
+        end
+      end
+
+      def save_form!
+        form.validate(params) &&
+          enrollment.set_step_as(step) &&
+          enrollment.save && form.save
+      end
+
       # Trying the approach that all vars are passed explicitly to the template
-      # rather than relying on exposing @vars which, lets face it, is not great ;-)
+      # rather than relying on exposing @vars which, lets face it, is not great.
       def locals
         {
           form: form,
@@ -59,20 +59,9 @@ module FloodRiskEngine
         }
       end
 
-      # Delegate instantiation of the form object to a factory method
-      # on the class itself, as there may be context-specific setup.
+      # Delegate instantiation of the form object to an abstract factory
       def form
-        @form ||= form_object_klass.factory(enrollment)
-      end
-
-      # I think dynamic resolution of the form object is going to be required
-      # e.g. FloodRiskEngine.const_get("Steps::#{}Form".classify)
-      def form_object_klass
-        case step.to_sym
-        when :grid_reference then     FloodRiskEngine::Steps::GridReferenceForm
-        when :organisation_type then  FloodRiskEngine::Steps::OrganisationTypeForm
-        else fail "No form object defined for step #{step}"
-        end
+        @form ||= Steps::FormObjectFactory.form_object_for(step, enrollment)
       end
 
       def enrollment

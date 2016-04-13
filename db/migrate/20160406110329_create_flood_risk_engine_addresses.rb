@@ -17,7 +17,5 @@ class CreateFloodRiskEngineAddresses < ActiveRecord::Migration
       t.string :logical_status_code
       t.timestamps null: false
     end
-
-
   end
 end

@@ -24,6 +24,26 @@ module FloodRiskEngine
         enrollment.save
       end
 
+      # Readonly array of array of organisation types which can be used in radio button
+      # groups. Example output:
+      # [
+      #   [
+      #     FloodRiskEngine::OrganisationTypes::Individual,
+      #     'Individual'
+      #   ],
+      #   [...]
+      # ]
+      #
+      def organisation_types
+        Organisation::TYPES.map do |organsation_sti_class|
+          i18n_key = organsation_sti_class.name.demodulize.underscore
+          [
+            organsation_sti_class.to_s,
+            I18n.translate(i18n_key, scope: "organisation_types")
+          ]
+        end
+      end
+
       private
 
       def organisation_cast_to_the_chosen_sti_type
