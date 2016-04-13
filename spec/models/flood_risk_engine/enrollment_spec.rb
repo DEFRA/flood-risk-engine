@@ -32,7 +32,7 @@ module FloodRiskEngine
       end
     end
 
-    describe "#next_step" do
+    describe ".next_step" do
       it "should change current step to next step" do
         expect(enrollment.current_step).to eq(steps[0])
         enrollment.next_step
@@ -48,7 +48,7 @@ module FloodRiskEngine
       end
     end
 
-    describe "#set_step_as" do
+    describe ".set_step_as" do
       context "with valid step" do
         let(:new_step) { steps[2] }
         before do
@@ -76,7 +76,7 @@ module FloodRiskEngine
       end
     end
 
-    describe "#step_history" do
+    describe ".step_history" do
       it "should persist step history on save" do
         enrollment.next_step
         enrollment.save
@@ -85,7 +85,7 @@ module FloodRiskEngine
       end
     end
 
-    describe "#previous_step?" do
+    describe ".previous_step?" do
       before do
         enrollment.next_step
         enrollment.save

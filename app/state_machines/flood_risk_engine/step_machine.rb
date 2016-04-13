@@ -30,6 +30,31 @@ module FloodRiskEngine
       step_history.last == step.to_sym
     end
 
+    def next_step?(step)
+      around_step do
+        next_step
+        current_step == step.to_s
+      end
+    end
+
+    # Allows a process to be called that will temporarily change state
+    # After around_step, the state will be return to the starting state.
+    # `around_step` returns the result of the inner process.
+    # Usage:
+    #   current_state == :foo
+    #   around_step do
+    #     change_state_to_bar
+    #     current_state == :bar
+    #   end
+    #   current_state == :foo
+    #
+    def around_step
+      current = current_step
+      result = yield
+      restore! current
+      result
+    end
+
     def defined_steps
       states.collect(&:to_s)
     end
