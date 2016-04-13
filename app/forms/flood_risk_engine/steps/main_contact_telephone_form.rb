@@ -5,7 +5,7 @@ module FloodRiskEngine
       # Define the attributes on the inbound model, that you want included in your form/validation with
       # property :name
       # For full API see  - https://github.com/apotonick/reform
-        property :phone_numbers
+        property :phone_number
 
       def self.factory(enrollment)
         contact = enrollment.correspondence_contact || Contact.new
