@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class ActivityLocationForm < BaseForm
+    class GridReferenceForm < BaseForm
       property :grid_reference
       validates :grid_reference, presence: true
 
