@@ -1,13 +1,7 @@
 module FloodRiskEngine
   class Enrollment < ActiveRecord::Base
-    DEFAULT_STATE_MACHINE = EnrollmentStateMachine
-
-    class << self
-      attr_writer :state_machine_class
-      def state_machine_class
-        @state_machine_class ||= DEFAULT_STATE_MACHINE
-      end
-    end
+    extend Concerns::StateMachineSwitcher
+    self.default_state_machine = EnrollmentStateMachine
 
     # We don't define the inverse relationship of applicant_contact as, in WEX at least,
     # we query never from contact to its enrollment
@@ -29,56 +23,25 @@ module FloodRiskEngine
       :foo
     end
 
-    def current_step
-      state.to_s
-    end
-
-    def set_step_as(step)
-      restore!(step)
-      step_history << step
-    end
-
-    def rollback_to(step)
-      rollback_valid_with? step
-      set_step_as step
-      self.step_history = step_history.take_while {|s| s != step.to_sym}
-    end
-
-    def previous_step?(step)
-      step_history.last == step.to_sym
-    end
-
     def state_machine
-      @state_machine ||= initiate_state_machine
+      @state_machine ||= StepMachine.new(
+        host: self,
+        state_machine_class: self.class.state_machine_class
+      )
     end
     delegate(
-      :next_step, :state, :restore!,
+      :next_step, :current_step, :set_step_as, :rollback_to, :previous_step?,
+      :next_step?, :state_machine_class, :defined_steps,
       to: :state_machine
     )
 
     private
-    def initiate_state_machine
-      state_machine = state_machine_class.new
-      state_machine.target(self)
-      state_machine.restore!(step) if step?
-      state_machine
-    end
-
     def preserve_current_step
       self.step = current_step
     end
 
-    def rollback_valid_with?(step)
-      return if step_history.include?(step.to_sym)
-      raise StateMachineError, "Cannot rollback to step unless in history"
-    end
-
-    def state_machine_class
-      self.class.state_machine_class
-    end
-
     def step_defined_in_state_machines
-      return true if state_machine_class.defined_states.include? step.to_s
+      return true if defined_steps.include? step.to_s
       errors.add(:step, "#{step} is not defined in #{state_machine_class}")
     end
   end

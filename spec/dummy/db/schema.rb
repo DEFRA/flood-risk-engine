@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20160412150742) do
     t.integer  "applicant_contact_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.integer  "organisation_id"
-    t.integer  "site_address_id"
     t.string   "step",                 limit: 50
     t.text     "step_history"
+    t.integer  "organisation_id"
+    t.integer  "site_address_id"
   end
 
   create_table "flood_risk_engine_locations", force: :cascade do |t|

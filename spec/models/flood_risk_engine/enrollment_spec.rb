@@ -32,23 +32,15 @@ module FloodRiskEngine
       end
     end
 
-    describe "#next_step" do
-      it "should change current step to next step" do
-        expect(enrollment.current_step).to eq(steps[0])
-        enrollment.next_step
-        expect(enrollment.current_step).to eq(steps[1])
-        enrollment.next_step
-        expect(enrollment.current_step).to eq(steps[2])
-      end
-
-      it "should not preserve the current step after save" do
+    describe ".next_step" do
+      it "should not preserve the current step without save" do
         enrollment.next_step
         enrollment.reload
         expect(enrollment.step).to eq(initial_step)
       end
     end
 
-    describe "#set_step_as" do
+    describe ".set_step_as" do
       context "with valid step" do
         let(:new_step) { steps[2] }
         before do
@@ -57,13 +49,13 @@ module FloodRiskEngine
         it "should change the current step to the new step" do
           expect(enrollment.current_step).to eq(new_step)
         end
-        it "should change the step to the new step if saved" do
-          enrollment.save
-          expect(enrollment.step).to eq(new_step)
-        end
         it "should not preserve the change" do
           enrollment.reload
           expect(enrollment.step).to eq(initial_step)
+        end
+        it "should preserve the change if saved" do
+          enrollment.save
+          expect(enrollment.step).to eq(new_step)
         end
       end
       context "with unknown step" do
@@ -76,27 +68,12 @@ module FloodRiskEngine
       end
     end
 
-    describe "#step_history" do
+    describe ".step_history" do
       it "should persist step history on save" do
         enrollment.next_step
         enrollment.save
         enrollment.reload
         expect(enrollment.step_history).to eq(steps[0, 1].collect(&:to_sym))
-      end
-    end
-
-    describe "#previous_step?" do
-      before do
-        enrollment.next_step
-        enrollment.save
-      end
-
-      it "should be true if match" do
-        expect(enrollment.previous_step?(initial_step)).to be(true)
-      end
-
-      it "should be false if not a match" do
-        expect(enrollment.previous_step?(steps.last)).to be(false)
       end
     end
   end

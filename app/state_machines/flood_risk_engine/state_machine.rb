@@ -5,12 +5,8 @@ module FloodRiskEngine
   class StateMachine < FiniteMachine::Definition
     callbacks do
       on_enter do |event|
-        target.step_history << event.from
+        target.step_history << event.from if target.respond_to?(:step_history)
       end
-    end
-
-    def self.defined_states
-      new.states.collect(&:to_s)
     end
   end
 end
