@@ -32,5 +32,15 @@ module FloodRiskEngine
       end
     end
 
+    # Make Engine Factories available to Apps
+    unless(Rails.env.production?)
+      initializer "flood_risk_engine.factories", after: "factory_girl.set_factory_paths" do
+        require "factory_girl"
+
+        path = File.expand_path("../../../spec/factories", __FILE__)
+        FactoryGirl.definition_file_paths << path
+      end
+    end
+
   end
 end

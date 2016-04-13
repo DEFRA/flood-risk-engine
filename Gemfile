@@ -20,4 +20,5 @@ group :test do
   gem "capybara", "~> 2.6"
   gem 'guard-rspec', require: false
   gem 'rspec-html-matchers'
+  gem "database_cleaner", "~> 1.5"
 end

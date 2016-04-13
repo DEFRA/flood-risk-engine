@@ -23,6 +23,9 @@ require "before_commit"
 spec = Gem::Specification.find_by_name "before_commit"
 load "#{spec.gem_dir}/lib/tasks/before_commit.rake"
 
+
+load "lib/tasks/factorygirl.rake"
+
 begin
   require "rspec/core/rake_task"
   RSpec::Core::RakeTask.new(:spec)

@@ -15,7 +15,7 @@ module FloodRiskEngine
 
     has_many :exemptions, through: :enrollment_exemptions, dependent: :restrict_with_exception
     accepts_nested_attributes_for :exemptions
-    
+
     serialize :step_history, Array
 
     before_validation :preserve_current_step
