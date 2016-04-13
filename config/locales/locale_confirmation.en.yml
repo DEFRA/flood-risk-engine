@@ -1,0 +1,17 @@
+---
+en:
+  enrollments:
+    states: 
+      confirmation: 
+        heading: Registration complete
+        list_item: Environment Agency may check the activity you're doing to see if
+          it matches the conditions of your exemption.
+        list_item1: Your details will appear on the public register within 5 days
+        para_text: "Your reference is:\n            \n            HDJ2123F"
+        para_text1: We've sent a confirmation email to tom.riddle@email.com
+        para_text2: You can check the conditions of your exemption
+        para_text3: "."
+        para_text4: 'If you need assistance, call the Environment Agency helpline:
+          03708 506506.'
+        para_text5: It's open Monday to Friday, between 8am and 6pm.
+        para_text6: "(takes 30 seconds)"

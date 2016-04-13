@@ -1,0 +1,9 @@
+---
+en:
+  enrollments:
+    states: 
+      applicant_contact_telephone: 
+        heading: What is your telephone number?
+        label: Telephone number
+        legend: Applicant contact telephone number
+        para_text: This can be a landline or mobile

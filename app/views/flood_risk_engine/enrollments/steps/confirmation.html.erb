@@ -1,0 +1,37 @@
+<%= content_for(:heading) { t(".heading") } %>
+
+<%= render layout: 'step', locals: { form: form, step: step } do |f| %>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <div class="govuk-box-highlight">
+        <p><%= t('.para_text') %></p>
+      </div>
+
+      <p><%= t('.para_text1') %></p>
+
+      <h2 class="heading-medium">What happens next</h2>
+
+      <ul class="list-bullet">
+        <li><%= t('.list_item') %></li>
+        <li><%= t('.list_item1') %></li>
+      </ul>
+
+      <br>
+
+      <p><%= t('.para_text2') %> <%#TODO= link_to 'here', declaration_conditions_page_url(@enrollment) %> <%= t('.para_text3') %></p>
+
+      <p><%= t('.para_text4') %></p>
+
+      <p><%= t('.para_text5') %></p>
+
+      <p class="heading-with-border"> <%#TODO= link_to 'What do you think of this service?', whatdoyouthinkofthisservice?_url(@enrollment), class: 'link' %> <%= t('.para_text6') %></p>
+
+      <%#TODO= link_to 'Continue to email', email_url(@enrollment), class: 'button' %>
+
+    </div>
+  </div>
+<% end %>
+
+

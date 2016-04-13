@@ -1,0 +1,17 @@
+---
+en:
+  enrollments:
+    states:
+      grid_reference:
+        heading: Where will the activity be located?
+        label: Provide a national grid reference
+        legend: Where will the activity be located?
+        text: What is a grid reference?
+        text1: Help finding grid reference
+        para_text: For example, ST 58132 72695
+        para_text1: A grid reference is 8-12 numbers long and states where something
+          in on a map.
+        para_text2: We only ask for a grid reference, when postcode cannot provide
+          a accurate enough location.
+        para_text3: There are different ways to find a grid reference for a location.
+        para_text4: Use this guide to

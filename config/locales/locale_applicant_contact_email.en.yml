@@ -1,0 +1,10 @@
+---
+en:
+  enrollments:
+    states: 
+      applicant_contact_email: 
+        heading: What is your email address?
+        label: Email address
+        label1: Confirm email address
+        legend: Applicant contact email
+        para_text: We'll use this to confirm the registration

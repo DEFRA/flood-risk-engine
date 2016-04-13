@@ -1,0 +1,9 @@
+---
+en:
+  enrollments:
+    states: 
+      applicant_contact_name: 
+        heading: What is your name?
+        label: Full name
+        legend: Applicant contact name
+        para_text: For example, John Smith

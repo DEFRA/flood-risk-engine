@@ -1,0 +1,23 @@
+<%= content_for(:heading) { t(".heading") } %>
+
+<%= render layout: 'step',  locals: { form: form, step: step } do |f| %>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <fieldset>
+        <legend class="visuallyhidden"><%= t('.legend') %></legend>
+
+        <!-- Full name -->
+        <div class="form-group">
+          <label class="form-label" for="full-name"><%= t('.label') %></label>
+          <p class="form-hint"><%= t('.para_text') %></p>
+          <%= f.text_field 'full_name', class:  'form-control' %>
+
+        </div>
+
+      </fieldset>
+    </div>
+  </div>
+<% end %>
+
