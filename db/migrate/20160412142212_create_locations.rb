@@ -9,6 +9,6 @@ class CreateLocations < ActiveRecord::Migration
     end
 
     add_foreign_key :flood_risk_engine_locations,
-                    :flood_risk_engine_addresses
+                    :flood_risk_engine_addresses, column: :address_id
   end
 end

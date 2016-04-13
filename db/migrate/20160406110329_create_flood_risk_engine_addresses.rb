@@ -18,6 +18,6 @@ class CreateFloodRiskEngineAddresses < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_foreign_key :flood_risk_engine_addresses, :flood_risk_engine_contacts
+
   end
 end

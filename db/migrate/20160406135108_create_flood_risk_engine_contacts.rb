@@ -17,5 +17,10 @@ class CreateFloodRiskEngineContacts < ActiveRecord::Migration
     add_foreign_key :flood_risk_engine_contacts,
                     :flood_risk_engine_organisations,
                     column: :partnership_organisation_id
+
+    # This fails in POSTGRES
+    add_foreign_key :flood_risk_engine_addresses, :flood_risk_engine_contacts, column: :contact_id
+
+    add_foreign_key :flood_risk_engine_organisations, :flood_risk_engine_contacts, column: :contact_id
   end
 end
