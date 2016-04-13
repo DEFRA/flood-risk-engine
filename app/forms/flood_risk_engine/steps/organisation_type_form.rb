@@ -20,15 +20,31 @@ module FloodRiskEngine
       # organisation to the correct type; organisation.type is saved implicitly
       # when we save the enrollment
       def save
-        enrollment.organisation = organisation_cast_to_the_chosen_sti_type
-        enrollment.save
+
+        begin
+          enrollment.organisation = organisation_cast_to_the_chosen_sti_type
+          Rails.logger.debug("Save Enrollment with Organisation set to [#{model.inspect}]")
+          enrollment.save
+        rescue => x
+          Rails.logger.error(x.inspect)
+          Rails.logger.error("Failed to save Enrollment with Organisation set to [#{model.inspect}]")
+        end
+
       end
 
       private
 
       def organisation_cast_to_the_chosen_sti_type
+        # TOFIX - type from params properly
+        type ||= "OrganisationTypes::Individual"
+
         organisation_sti_class = FloodRiskEngine.const_get(type)
-        model.becomes(organisation_sti_class)
+        Rails.logger.debug("Setting Org Type to [#{organisation_sti_class}]")
+
+        # TODO : this beceoms call does not seem to set the type ?? ...  so added explicit call for now
+        # model.becomes(organisation_sti_class)
+        model.type = organisation_sti_class
+        model
       end
     end
   end
