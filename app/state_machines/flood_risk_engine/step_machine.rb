@@ -17,7 +17,7 @@ module FloodRiskEngine
 
     def set_step_as(step)
       restore!(step)
-      step_history << step
+      step_history << step.to_sym
     end
 
     def rollback_to(step)
