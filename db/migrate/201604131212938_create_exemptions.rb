@@ -6,11 +6,6 @@ class CreateExemptions < ActiveRecord::Migration
       t.string  :code
       t.string  :summary
       t.text    :description
-      t.string  :url
-      t.integer :category
-
-      t.date		:valid_from
-      t.date		:valid_to
 
       t.timestamps null: false
     end
