@@ -27,6 +27,17 @@ module FloodRiskEngine
       end
     end
 
+    describe ".go_back" do
+      before {step_machine.restore! steps.last.to_sym}
+      it "should change current step to previous step" do
+        expect(step_machine.current_step).to eq(steps[2])
+        step_machine.go_back!
+        expect(step_machine.current_step).to eq(steps[1])
+        step_machine.go_back
+        expect(step_machine.current_step).to eq(steps[0])
+      end
+    end
+
     describe ".set_step_as" do
       let(:new_step) { steps[2] }
       it "should change the current step to the new step" do
