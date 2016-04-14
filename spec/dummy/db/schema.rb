@@ -74,10 +74,6 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.string   "code"
     t.string   "summary"
     t.text     "description"
-    t.string   "url"
-    t.integer  "category"
-    t.date     "valid_from"
-    t.date     "valid_to"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
