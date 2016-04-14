@@ -36,7 +36,7 @@ module FloodRiskEngine
 
     def next_step?(step)
       around_step do
-        next_step
+        go_forward
         current_step == step.to_s
       end
     end
@@ -67,7 +67,7 @@ module FloodRiskEngine
       @state_machine ||= initiate_state_machine
     end
     delegate(
-      :next_step, :state, :restore!, :states, :go_back, :go_back!,
+      :go_forward, :state, :restore!, :states, :go_back, :go_back!,
       to: :state_machine
     )
 

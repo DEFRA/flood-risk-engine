@@ -14,7 +14,7 @@ module FloodRiskEngine
       end
 
       def update
-        enrollment.next_step
+        enrollment.go_forward
         #check_step_is_valid
         if save_form!
           redirect_to step_url

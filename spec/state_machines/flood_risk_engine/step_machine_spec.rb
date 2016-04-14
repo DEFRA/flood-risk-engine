@@ -18,12 +18,12 @@ module FloodRiskEngine
       )
     end
 
-    describe ".next_step" do
+    describe ".go_forward" do
       it "should change current step to next step" do
         expect(step_machine.current_step).to eq(steps[0])
-        step_machine.next_step
+        step_machine.go_forward
         expect(step_machine.current_step).to eq(steps[1])
-        step_machine.next_step
+        step_machine.go_forward
         expect(step_machine.current_step).to eq(steps[2])
       end
     end
@@ -49,8 +49,8 @@ module FloodRiskEngine
 
     describe ".rollback_to" do
       before do
-        step_machine.next_step
-        step_machine.next_step
+        step_machine.go_forward
+        step_machine.go_forward
       end
       context "before test" do
         it "should be at final step" do
@@ -66,7 +66,7 @@ module FloodRiskEngine
 
     describe ".previous_step?" do
       before do
-        step_machine.next_step
+        step_machine.go_forward
       end
 
       it "should be true if match" do

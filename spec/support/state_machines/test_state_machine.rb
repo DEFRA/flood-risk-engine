@@ -24,12 +24,12 @@ module FloodRiskEngine
     end
 
     events do
-      event :next_step,
+      event :go_forward,
         WorkFlow.foo.merge(
           if: -> { target.business_type == :foo }
         )
 
-      event :next_step,
+      event :go_forward,
         WorkFlow.bar.merge(
           if: -> { target.business_type == :bar }
         )

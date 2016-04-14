@@ -14,8 +14,8 @@ module FloodRiskEngine
 
     describe "#rollback_to" do
       before do
-        enrollment.next_step
-        enrollment.next_step
+        enrollment.go_forward
+        enrollment.go_forward
         enrollment.save
       end
 

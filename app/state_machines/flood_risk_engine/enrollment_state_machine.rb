@@ -20,7 +20,7 @@ module FloodRiskEngine
     end
 
     events do
-      event :next_step, WorkFlow.start
+      event :go_forward, WorkFlow.start
       event :go_back, WorkFlow.start.invert
     end
   end

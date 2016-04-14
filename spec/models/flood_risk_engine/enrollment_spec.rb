@@ -32,9 +32,9 @@ module FloodRiskEngine
       end
     end
 
-    describe ".next_step" do
+    describe ".go_forward" do
       it "should not preserve the current step without save" do
-        enrollment.next_step
+        enrollment.go_forward
         enrollment.reload
         expect(enrollment.step).to eq(initial_step)
       end
