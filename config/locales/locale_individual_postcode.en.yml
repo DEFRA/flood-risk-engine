@@ -1,0 +1,16 @@
+---
+en:
+  enrollments:
+    states: 
+      individual_postcode: 
+        heading: What's the address of the person carrying out the activity?
+        div_text9: For example, a business premises name or house number
+        label: Enter a UK postcode
+        label1: Building name or number
+        label2: Street line 1
+        label3: Street line 2 (optional)
+        label4: Town
+        label5: Postcode
+        legend: Address
+        text: For example, BS1 5AH
+        text1: Enter address manually

@@ -1,0 +1,7 @@
+---
+en:
+  enrollments:
+    states: 
+      reviewing:
+        heading: Check your answers before completing this registration
+        para_text: We’ll send a copy of this summary in the confirmation email

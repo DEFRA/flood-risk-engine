@@ -1,0 +1,67 @@
+
+<%= content_for(:heading) { t(".heading") } %>
+
+<%= render layout: 'step', locals: { form: form, step: step } do |f| %>
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <fieldset>
+        <legend class="visuallyhidden"><%= t('.legend') %></legend>
+
+        <!-- Postcode look-up -->
+        <div class="form-group">
+          <label class="form-label" for="postcode"><%= t('.label') %></label>
+          <span class="form-hint"><%= t('.text') %></span>
+          <%= f.text_field 'postcode', class:  'form-control' %>
+        </div>
+
+      </fieldset>
+
+      <!-- Show and hide address-->
+      <details>
+        <summary id="show-hide-details-summary-0" aria controls="details-content-0" tabindex="0" aria-controls="details-content-0" role="button">
+          <span class="summary"><%= t('.text1') %></span>
+        </summary>
+        <span style="display:block" class="panel-indent" id="details-content-0"></span>
+        <br>
+
+        <!-- Manual entered address -->
+        <div class="form-group">
+          <label class="form-label" for="premises"><%= t('.label1') %></label>
+          <div class="form-hint"><%= t('.div_text9') %></div>
+          <%= f.text_field 'premises', class:  'form-control' %>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="street_address"><%= t('.label2') %></label>
+          <%= f.text_field 'street_address', class:  'form-control' %>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="locality"><%= t('.label3') %></label>
+          <%= f.text_field 'locality', class:  'form-control' %>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="city"><%= t('.label4') %></label>
+          <%= f.text_field 'city', class:  'form-control' %>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="manual-postcode"><%= t('.label5') %></label>
+          <%= f.text_field 'postcode', class:  'form-control' %>
+
+        </div>
+
+      </details>
+
+    </div>
+  </div>
+
+<% end %>

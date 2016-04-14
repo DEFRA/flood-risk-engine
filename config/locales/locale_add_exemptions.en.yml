@@ -1,0 +1,80 @@
+---
+en:
+  enrollments:
+    states:
+      add_exemptions:
+        td:
+          span:
+            span0: FRA2
+            span1: FRA3
+            span2: FRA4
+            span3: FRA5
+            span4: FRA6
+            span5: FRA7
+            span6: FRA8
+            span7: FRA9
+            span8: FRA10
+            span9: FRA11
+            span10: FRA12
+            span11: FRA13
+            span12: FRA14
+            span13: FRA15
+            span14: FRA16
+            span15: FRA17
+            span16: FRA18
+            span17: FRA19
+            span18: FRA20
+            span19: FRA21
+            span20: FRA22
+            span21: FRA23
+            span22: FRA24
+            span23: FRA25
+            span24: FRA26
+            span25: FRA27
+            span26: FRA28
+          p:
+            para0: The erection of an electrical cable service crossing over a main
+              river
+            para1: The erection of a service crossing below the bed of a main river
+              by directional drilling not involving an open cut technique.
+            para2: Service crossings attached to the outside of existing structures
+              over a main river
+            para3: The construction of footbridges
+            para4: The erection and use of temporary scaffolding in or over a main
+              river in England
+            para5: The temporary dewatering of a work area in England
+            para6: Using effluent to clean a highway gravel bed
+            para7: The maintenance of structures within the channel of a main river
+              other than raised river or sea defences
+            para8: The construction of a drinking bay on the bank of a main river
+            para9: The construction of access platforms on the bank of a main river
+              or that project into or over a main river
+            para10: The construction of small outfall pipes and headwalls to main
+              rivers
+            para11: The repair and protection of main river banks using natural materials
+            para12: Repair of bank slips and erosion
+            para13: The installation of channel habitat structures made of natural
+              materials excluding weirs and berms
+            para14: The installation of rafts for surveys
+            para15: Gravel-cleaning for fish-spawning beds
+            para16: Placement of stones or logs in the channel of a main river in
+              England for habitat enhancement
+            para17: Construction of eel pass devices on existing structures
+            para18: Construction of fish passage notches on an existing impoundment
+            para19: The removal of silt and sand from within bridge arches in England
+              and any material from within culverts in England
+            para20: The removal of silt and sand adjacent to in-river structures in
+              England
+            para21: Dredging of no more than 1.5 kilometres of man-made ditches, land
+              drains, agricultural drains and previously straightened watercourses
+              classified as main rivers in England
+            para22: Dredging of no more than 20 metres of any main river in England
+            para23: The excavation of scrapes and shallow wetland features in a floodplain
+            para24: The construction of raised flood defences around one to six adjoining
+              properties in England
+            para25: Construction of bankside wildlife refuge structures
+            para26: Improvement works for tracks and paths
+        heading: Add all exemptions that apply to the activity
+        text: Exemption
+        text1: Description
+        text2: Select exemptions

@@ -1,0 +1,9 @@
+---
+en:
+  enrollments:
+    states: 
+      applicant_contact: 
+        heading: Are you the person responsible for the activity?
+        label: 'Yes'
+        label1: 'No'
+        legend: Main contact confirmation

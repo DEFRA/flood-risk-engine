@@ -1,0 +1,8 @@
+---
+en:
+  enrollments:
+    states:
+      user_type: 
+        heading: Who is registering?
+        para_text: Choose the option that most closely describes the business, organisation
+          or individual registering the exemption
