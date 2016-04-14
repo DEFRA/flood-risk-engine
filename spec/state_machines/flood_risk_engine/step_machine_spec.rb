@@ -2,20 +2,21 @@ require "rails_helper"
 
 module FloodRiskEngine
   describe StepMachine do
-    let(:host) do
+    let(:target) do
       OpenStruct.new(
         step: nil,
         business_type: :foo
       )
     end
+    let(:steps) { %w[step1 step2 step3] }
+    let(:initial_step) { steps.first }
     let(:step_machine) do
       StepMachine.new(
-        host: host,
+        target: target,
+        step: initial_step,
         state_machine_class: TestStateMachine
       )
     end
-    let(:steps) { %w[step1 step2 step3] }
-    let(:initial_step) { steps.first }
 
     describe ".next_step" do
       it "should change current step to next step" do

@@ -32,8 +32,9 @@ module FloodRiskEngine
 
     def state_machine
       @state_machine ||= StepMachine.new(
-        host: self,
-        state_machine_class: self.class.state_machine_class
+        target: self,
+        state_machine_class: self.class.state_machine_class,
+        step: (step? && step)
       )
     end
     delegate(

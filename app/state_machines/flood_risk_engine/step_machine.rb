@@ -1,12 +1,12 @@
 module FloodRiskEngine
   class StepMachine
-    attr_reader :host, :state_machine_class, :step_method
-    def initialize  host:,
+    attr_reader :target, :state_machine_class, :initiating_step
+    def initialize  target:,
                     state_machine_class:,
-                    step_method: :step
-      @host = host
+                    step: nil
+      @target = target
       @state_machine_class = state_machine_class
-      @step_method = step_method
+      @initiating_step = step
     end
 
     def current_step
@@ -74,17 +74,9 @@ module FloodRiskEngine
     private
     def initiate_state_machine
       state_machine = state_machine_class.new
-      state_machine.target(host)
-      state_machine.restore!(host_step) if host_step?
+      state_machine.target(target)
+      state_machine.restore!(initiating_step.to_sym) if initiating_step.present?
       state_machine
-    end
-
-    def host_step
-      host.send step_method
-    end
-
-    def host_step?
-      host_step.present?
     end
   end
 end
