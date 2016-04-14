@@ -13,9 +13,6 @@ module FloodRiskEngine
     end
 
     # Automatically add our migrations into the main apps migrations
-    # As the services provided by core grows we may want to stop this
-    # and add generators that copy specific migrations over
-
     initializer :append_migrations, before: :load_config_initializers do |app|
       unless app.root.to_s.match root.to_s
         config.paths["db/migrate"].expanded.each do |expanded_path|
