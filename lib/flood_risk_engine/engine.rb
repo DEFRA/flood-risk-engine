@@ -11,5 +11,13 @@ module FloodRiskEngine
     initializer :add_i18n_load_paths do |app|
       app.config.i18n.load_path += Dir[config.root.join("config/locales/**/**/", "*.{rb,yml}").to_s]
     end
+
+    # Export our form objects to the APPS
+    config.to_prepare do
+      Dir.glob(File.join(Engine.root, "app/forms", "**/*.rb")).each do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+    end
+
   end
 end
