@@ -1,14 +1,12 @@
 module FloodRiskEngine
   class StepMachine
-    attr_reader :host, :state_machine_class, :step_method, :history_method
+    attr_reader :host, :state_machine_class, :step_method
     def initialize  host:,
                     state_machine_class:,
-                    step_method: :step,
-                    history_method: :step_history
+                    step_method: :step
       @host = host
       @state_machine_class = state_machine_class
       @step_method = step_method
-      @history_method = history_method
     end
 
     def current_step
@@ -17,17 +15,23 @@ module FloodRiskEngine
 
     def set_step_as(step)
       restore!(step)
-      step_history << step.to_sym
     end
 
     def rollback_to(step)
-      rollback_valid_with? step
-      set_step_as step
-      self.step_history = step_history.take_while {|s| s != step.to_sym}
+      current = current_step
+      while current_step != step do
+        go_back! step
+      end
+    rescue FiniteMachine::InvalidStateError
+      restore! current
+      raise StateMachineError, "Unable to rollback to #{step}"
     end
 
     def previous_step?(step)
-      step_history.last == step.to_sym
+      around_step do
+        go_back
+        current_step == step.to_s
+      end
     end
 
     def next_step?(step)
@@ -63,7 +67,7 @@ module FloodRiskEngine
       @state_machine ||= initiate_state_machine
     end
     delegate(
-      :next_step, :state, :restore!, :states,
+      :next_step, :state, :restore!, :states, :go_back, :go_back!,
       to: :state_machine
     )
 
@@ -81,19 +85,6 @@ module FloodRiskEngine
 
     def host_step?
       host_step.present?
-    end
-
-    def step_history
-      host.send history_method
-    end
-
-    def step_history=(steps)
-      host.send "#{history_method}=", steps
-    end
-
-    def rollback_valid_with?(step)
-      return if step_history.include?(step.to_sym)
-      raise StateMachineError, "Cannot rollback to step unless in history"
     end
   end
 end

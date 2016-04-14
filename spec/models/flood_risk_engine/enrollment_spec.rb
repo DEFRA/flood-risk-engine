@@ -67,14 +67,5 @@ module FloodRiskEngine
         end
       end
     end
-
-    describe ".step_history" do
-      it "should persist step history on save" do
-        enrollment.next_step
-        enrollment.save
-        enrollment.reload
-        expect(enrollment.step_history).to eq(steps[0, 1].collect(&:to_sym))
-      end
-    end
   end
 end

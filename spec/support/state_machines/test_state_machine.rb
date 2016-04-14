@@ -1,6 +1,9 @@
+# State machine using FiniteMachine
+# https://github.com/piotrmurach/finite_machine
+require "finite_machine"
 # rubocop:disable Style/HashSyntax
 module FloodRiskEngine
-  class TestStateMachine < StateMachine
+  class TestStateMachine < FiniteMachine::Definition
     initial :step1
 
     module WorkFlow
@@ -28,6 +31,16 @@ module FloodRiskEngine
 
       event :next_step,
         WorkFlow.bar.merge(
+          if: -> { target.business_type == :bar }
+        )
+
+      event :go_back,
+        WorkFlow.foo.invert.merge(
+          if: -> { target.business_type == :foo }
+        )
+
+      event :go_back,
+        WorkFlow.bar.invert.merge(
           if: -> { target.business_type == :bar }
         )
     end
