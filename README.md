@@ -1,7 +1,7 @@
 FloodRiskEngine
 ===============
 
-
+[![Build Status](https://travis-ci.org/EnvironmentAgency/flood-risk-engine.svg?branch=develop)](https://travis-ci.org/EnvironmentAgency/flood-risk-engine)
 
 Development
 -----------
