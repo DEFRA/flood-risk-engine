@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Digital Services Team, EnvironmentAgency"]
   s.email       = ["dst@environment-agency.gov.uk"]
   s.homepage    = "https://github.com/EnvironmentAgency/flood-risk-engine"
-  s.summary     = "FloodRiskEngine."
-  s.description = "FloodRiskEngine."
+  s.summary     = "FloodRiskEngine package containing core elements and functionality"
+  s.description = "FloodRiskEngine package containing core elements and functionality"
   s.license     = "The Open Government Licence (OGL) Version 3"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
