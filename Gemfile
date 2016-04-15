@@ -10,6 +10,10 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
+# Github hosted gems cannot live in the .gemspec - so we need to include
+# then in upstream apps also
+gem "ea-address_lookup", git: "https://github.com/EnvironmentAgency/ea-address_lookup.git"
+
 group :test do
   gem "rspec-rails", "~> 3.4"
   gem "factory_girl_rails", "~> 4.6"
