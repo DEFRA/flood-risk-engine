@@ -6,8 +6,5 @@ FactoryGirl.define do
 
     summary "The construction of footbridges"
     description "This exemption is only for testing"
-    valid_from Time.zone.now
-    valid_to nil
-    url "https://www.gov.uk/guidance/rspec_test_only"
   end
 end
