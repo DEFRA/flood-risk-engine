@@ -1,0 +1,41 @@
+language: ruby
+cache: bundler
+
+rvm:
+  - 2.2.3
+
+addons:
+  postgresql: "9.4"
+
+
+# We need nodejs version >= 4 to be compatible with htmlhint >= 0.9.13
+# This overwrites the system node  0.10.x
+before_install:
+  - nvm install node
+
+env:
+  - DB=pg
+
+bundler_args: --binstubs=./bundler_stubs
+
+before_script:
+  - npm install -g jshint coffeelint htmlhint csslint # overcommit packages
+
+script:
+  - bundle exec rake --trace before_commit:run_without_checks
+  - htmlhint -c ./.htmlhintrc ./app/**/*.html.erb
+  - git config --global user.email test@example.com # overcommit Author
+  - git config --global user.name "Test Example" # overcommit Author
+  - BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --run
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rspec
+
+# Have this option to stop travis-ci building twice. Currently we have travis set to build both
+# PR's and pushes. However this means when we push to a PR we have to wait for Travis to finish
+# 2 builds. If we unticked 'pushes' when the PR was finally merged that would not be built. The
+# brute force approach would be to untick build PR's and just build all pushes. We instead have
+# gone with the approach outlined here http://stackoverflow.com/a/31882307
+branches:
+  only:
+    - master
+    - develop

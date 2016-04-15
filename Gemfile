@@ -16,4 +16,5 @@ group :test do
   gem "guard-rspec", require: false
   gem "rspec-html-matchers"
   gem "database_cleaner", "~> 1.5"
+  gem "codeclimate-test-reporter", require: false
 end

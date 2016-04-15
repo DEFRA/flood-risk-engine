@@ -3,7 +3,7 @@ en:
   flood_risk_engine:
     enrollments:
       steps:
-        local_authority: 
+        local_authority:
           heading: What's the name of the local authority or public body?
           label: Local authority or public body name
           legend: Local authority or public body name
