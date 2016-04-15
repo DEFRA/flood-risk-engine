@@ -63,11 +63,16 @@ module FloodRiskEngine
       states.collect(&:to_s)
     end
 
+    def initial_step
+      initial_state
+    end
+
     def state_machine
       @state_machine ||= initiate_state_machine
     end
     delegate(
       :go_forward, :state, :restore!, :states, :go_back, :go_back!,
+      :initial_state,
       to: :state_machine
     )
 

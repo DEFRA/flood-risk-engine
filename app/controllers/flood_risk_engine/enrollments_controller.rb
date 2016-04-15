@@ -5,7 +5,7 @@ module FloodRiskEngine
     def new
       enrollment = Enrollment.create
       # TODO: make first step come from state_machine
-      url = url_for([:build_step, enrollment, step: "check_location"])
+      url = url_for([:build_step, enrollment, step: enrollment.initial_step])
       # or url = build_step_enrollment_path(id: enrollment.id, step: 'activity_location')
       redirect_to url
     end
