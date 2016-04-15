@@ -7,7 +7,7 @@ module FloodRiskEngine
     # Define each work flow within Definitions
     module Definitions
       extend self
-      
+
       def local_authority
         start + local_authority_branch + finish
       end
@@ -43,20 +43,22 @@ module FloodRiskEngine
         ]
       end
     end
-    
+
+    # Enter the name of one of the Definitions defined above,
+    # and WorkFlow#for will return the matching hash
     def self.for(definition)
       new(definition).to_hash
     end
-    
+
     attr_reader :work_flow
     def initialize(method)
       @work_flow = Definitions.send method
     end
-    
+
     def to_hash
       make_hash work_flow
     end
-    
+
     # Converts [:a, :b, :c] into
     # {:a => :b, :b => :c}
     def make_hash(array)

@@ -1,9 +1,9 @@
 module FloodRiskEngine
   class StepMachine
     attr_reader :target, :state_machine_class, :initiating_step
-    def initialize  target:,
+    def initialize(target:,
                     state_machine_class:,
-                    step: nil
+                    step: nil)
       @target = target
       @state_machine_class = state_machine_class
       @initiating_step = step
