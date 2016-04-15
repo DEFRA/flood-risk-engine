@@ -14,7 +14,7 @@ see the DigitalServicesCore::BackLink class -->
    #   name="step1[dummy_boolean]"
    # which is much clearer
 %>
-<%= front_end_form_for form,
+<%= form_for form,
              as: step,
              url: update_step_enrollment_path(id: form.enrollment_id, step: step),
              method: :patch,
