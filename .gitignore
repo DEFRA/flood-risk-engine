@@ -21,3 +21,5 @@ coverage
 spec/dummy/.byebug_history
 
 .idea
+flood_risk_engine.sublime-project
+flood_risk_engine.sublime-workspace

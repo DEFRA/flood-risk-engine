@@ -1,9 +1,9 @@
 <%= content_for(:heading) { t(".heading") } %>
 
-<%= render layout: 'step',  locals: { form: form, step: step } do |f| %>
+<%= render layout: 'step', locals: { form: form, step: step } do |f| %>
 
-  <div class="grid-row">
-    <div class="column-two-thirds">
+<div class="grid-row">
+  <div class="column-two-thirds">
 
       <fieldset>
         <legend class="visuallyhidden"><%= t('.legend') %></legend>
@@ -17,7 +17,8 @@
         </div>
 
       </fieldset>
-    </div>
-  </div>
-<% end %>
 
+    <% end %>
+
+  </div>
+</div>

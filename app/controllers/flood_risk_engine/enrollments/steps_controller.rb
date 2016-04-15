@@ -69,8 +69,7 @@ module FloodRiskEngine
       # e.g. FloodRiskEngine.const_get("Steps::#{}Form".classify)
       def form_object_klass
         case step.to_sym
-        when :activity_location then  FloodRiskEngine::Steps::ActivityLocationForm
-        when :step2 then              FloodRiskEngine::Steps::Step2Form
+        when :grid_reference then     FloodRiskEngine::Steps::GridReferenceForm
         when :organisation_type then  FloodRiskEngine::Steps::OrganisationTypeForm
         else fail "No form object defined for step #{step}"
         end

@@ -1,9 +1,0 @@
----
-en:
-  enrollments:
-    states: 
-      main_contact_telephone: 
-        heading: What's the telephone number of the person responsible?
-        label: Telephone number
-        legend: Contact telephone
-        para_text: This can be a landline or mobile

@@ -1,9 +1,0 @@
----
-en:
-  enrollments:
-    states:
-      add_exemptions:
-        heading: Add all exemptions that apply to the activity
-        text: Exemption
-        text1: Description
-        text2: Select exemptions

@@ -1,7 +1,5 @@
 module FloodRiskEngine
-
   class Exemption < ActiveRecord::Base
-
     has_many :enrollment_exemptions, dependent: :restrict_with_exception
     accepts_nested_attributes_for :enrollment_exemptions
 
@@ -15,6 +13,4 @@ module FloodRiskEngine
       "#{code}: #{summary}"
     end
   end
-
 end
-

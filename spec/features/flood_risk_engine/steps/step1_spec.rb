@@ -5,7 +5,7 @@ RSpec.describe "Step 1" do
   it "renders correctly" do
     enrollment = FloodRiskEngine::Enrollment.create
     url = flood_risk_engine.build_step_enrollment_path(id: enrollment.id,
-                                                       step: :activity_location)
+                                                       step: :grid_reference)
 
     # Not using page objects yet but see readme in spec/support/page_objects dir
     # page_object = FloodRisk::PageObjects::Steps::NewStructurePage.new
