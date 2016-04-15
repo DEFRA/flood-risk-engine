@@ -1,7 +1,5 @@
-<%# Layout for step templates %>
-
 <h1 class="heading-large">
-  <%= yield :heading %>
+  <%#= t(".#{step}.heading") %>
 </h1>
 
 <!-- There is some potentially quick complex logic around the back link -
@@ -21,9 +19,8 @@ see the DigitalServicesCore::BackLink class -->
              url: update_step_enrollment_path(id: form.enrollment_id, step: step),
              method: :patch,
              class: 'form' do |f| %>
-  <fieldset>
-    <%= yield f %>
-  </fieldset>
+
+  <%= render step.to_s, form: form, step: step, f: f %>
 
   <div class="form-group">
     <%= f.submit 'Continue' %>

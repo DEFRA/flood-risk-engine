@@ -1,7 +1,5 @@
 class CreateExemptions < ActiveRecord::Migration
-
   def change
-
     create_table :flood_risk_engine_exemptions do |t|
       t.string  :code
       t.string  :summary
@@ -23,7 +21,5 @@ class CreateExemptions < ActiveRecord::Migration
 
     add_foreign_key :flood_risk_engine_enrollments_exemptions,
                     :flood_risk_engine_exemptions, column: :exemption_id
-
   end
-
 end
