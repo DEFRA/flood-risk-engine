@@ -34,7 +34,7 @@ module FloodRiskEngine
       end
 
       def next_step
-        enrollment.next_step
+        enrollment.go_forward
         enrollment.current_step
       end
 
