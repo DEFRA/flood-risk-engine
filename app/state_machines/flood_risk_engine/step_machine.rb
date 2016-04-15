@@ -1,14 +1,12 @@
 module FloodRiskEngine
   class StepMachine
-    attr_reader :host, :state_machine_class, :step_method, :history_method
-    def initialize  host:,
+    attr_reader :target, :state_machine_class, :initiating_step
+    def initialize  target:,
                     state_machine_class:,
-                    step_method: :step,
-                    history_method: :step_history
-      @host = host
+                    step: nil
+      @target = target
       @state_machine_class = state_machine_class
-      @step_method = step_method
-      @history_method = history_method
+      @initiating_step = step
     end
 
     def current_step
@@ -17,22 +15,28 @@ module FloodRiskEngine
 
     def set_step_as(step)
       restore!(step)
-      step_history << step.to_sym
     end
 
     def rollback_to(step)
-      rollback_valid_with? step
-      set_step_as step
-      self.step_history = step_history.take_while {|s| s != step.to_sym}
+      current = current_step
+      while current_step != step do
+        go_back! step
+      end
+    rescue FiniteMachine::InvalidStateError
+      restore! current
+      raise StateMachineError, "Unable to rollback to #{step}"
     end
 
     def previous_step?(step)
-      step_history.last == step.to_sym
+      around_step do
+        go_back
+        current_step == step.to_s
+      end
     end
 
     def next_step?(step)
       around_step do
-        next_step
+        go_forward
         current_step == step.to_s
       end
     end
@@ -63,37 +67,16 @@ module FloodRiskEngine
       @state_machine ||= initiate_state_machine
     end
     delegate(
-      :next_step, :state, :restore!, :states,
+      :go_forward, :state, :restore!, :states, :go_back, :go_back!,
       to: :state_machine
     )
 
     private
     def initiate_state_machine
       state_machine = state_machine_class.new
-      state_machine.target(host)
-      state_machine.restore!(host_step) if host_step?
+      state_machine.target(target)
+      state_machine.restore!(initiating_step.to_sym) if initiating_step.present?
       state_machine
-    end
-
-    def host_step
-      host.send step_method
-    end
-
-    def host_step?
-      host_step.present?
-    end
-
-    def step_history
-      host.send history_method
-    end
-
-    def step_history=(steps)
-      host.send "#{history_method}=", steps
-    end
-
-    def rollback_valid_with?(step)
-      return if step_history.include?(step.to_sym)
-      raise StateMachineError, "Cannot rollback to step unless in history"
     end
   end
 end

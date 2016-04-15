@@ -2,29 +2,40 @@ require "rails_helper"
 
 module FloodRiskEngine
   describe StepMachine do
-    let(:host) do
+    let(:target) do
       OpenStruct.new(
         step: nil,
-        step_history: [],
         business_type: :foo
-      )
-    end
-    let(:step_machine) do
-      StepMachine.new(
-        host: host,
-        state_machine_class: TestStateMachine
       )
     end
     let(:steps) { %w[step1 step2 step3] }
     let(:initial_step) { steps.first }
+    let(:step_machine) do
+      StepMachine.new(
+        target: target,
+        step: initial_step,
+        state_machine_class: TestStateMachine
+      )
+    end
 
-    describe ".next_step" do
+    describe ".go_forward" do
       it "should change current step to next step" do
         expect(step_machine.current_step).to eq(steps[0])
-        step_machine.next_step
+        step_machine.go_forward
         expect(step_machine.current_step).to eq(steps[1])
-        step_machine.next_step
+        step_machine.go_forward
         expect(step_machine.current_step).to eq(steps[2])
+      end
+    end
+
+    describe ".go_back" do
+      before {step_machine.restore! steps.last.to_sym}
+      it "should change current step to previous step" do
+        expect(step_machine.current_step).to eq(steps[2])
+        step_machine.go_back!
+        expect(step_machine.current_step).to eq(steps[1])
+        step_machine.go_back
+        expect(step_machine.current_step).to eq(steps[0])
       end
     end
 
@@ -38,13 +49,10 @@ module FloodRiskEngine
 
     describe ".rollback_to" do
       before do
-        step_machine.next_step
-        step_machine.next_step
+        step_machine.go_forward
+        step_machine.go_forward
       end
       context "before test" do
-        it "should have previous steps in history" do
-          expect(host.step_history).to eq(steps[0, 2].collect(&:to_sym))
-        end
         it "should be at final step" do
           expect(step_machine.current_step).to eq(steps.last)
         end
@@ -54,23 +62,11 @@ module FloodRiskEngine
         step_machine.rollback_to initial_step
         expect(step_machine.current_step).to eq(initial_step)
       end
-
-      it "should not change step to a step not in history" do
-        host.step_history.delete initial_step.to_sym
-        expect do
-          step_machine.rollback_to initial_step
-        end.to raise_error(StateMachineError)
-      end
-
-      it "should roll back history to match step" do
-        step_machine.rollback_to steps[1]
-        expect(host.step_history).to eq(steps[0, 1].collect(&:to_sym))
-      end
     end
 
     describe ".previous_step?" do
       before do
-        step_machine.next_step
+        step_machine.go_forward
       end
 
       it "should be true if match" do

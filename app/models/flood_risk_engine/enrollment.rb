@@ -32,13 +32,14 @@ module FloodRiskEngine
 
     def state_machine
       @state_machine ||= StepMachine.new(
-        host: self,
-        state_machine_class: self.class.state_machine_class
+        target: self,
+        state_machine_class: self.class.state_machine_class,
+        step: (step? && step)
       )
     end
     delegate(
-      :next_step, :current_step, :set_step_as, :rollback_to, :previous_step?,
-      :next_step?, :state_machine_class, :defined_steps,
+      :go_forward, :current_step, :set_step_as, :rollback_to, :previous_step?,
+      :next_step?, :state_machine_class, :defined_steps, :go_back, :go_back!,
       to: :state_machine
     )
 

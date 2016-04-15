@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.datetime "updated_at",                      null: false
     t.integer  "organisation_id"
     t.string   "step", limit: 50
-    t.text     "step_history"
     t.integer  "site_address_id"
   end
 

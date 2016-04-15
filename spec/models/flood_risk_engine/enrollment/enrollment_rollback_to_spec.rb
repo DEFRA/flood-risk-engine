@@ -14,8 +14,8 @@ module FloodRiskEngine
 
     describe "#rollback_to" do
       before do
-        enrollment.next_step
-        enrollment.next_step
+        enrollment.go_forward
+        enrollment.go_forward
         enrollment.save
       end
 
@@ -26,10 +26,6 @@ module FloodRiskEngine
         it "should set current step to rolled back step" do
           expect(enrollment.current_step).to eq(steps[target_step])
         end
-
-        it "should reset history back to match change" do
-          expect(enrollment.step_history).to eq(steps[0, target_step].collect(&:to_sym))
-        end
       end
 
       context "return to start" do
@@ -38,10 +34,6 @@ module FloodRiskEngine
 
         it "should set current step to rolled back step" do
           expect(enrollment.current_step).to eq(steps[target_step])
-        end
-
-        it "should reset history back to match change" do
-          expect(enrollment.step_history).to eq(steps[0, target_step].collect(&:to_sym))
         end
       end
 

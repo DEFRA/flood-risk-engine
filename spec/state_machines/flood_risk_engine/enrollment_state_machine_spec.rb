@@ -8,33 +8,19 @@ module FloodRiskEngine
       state_machine
     end
 
-    let(:builder) do
-      Struct.new(:business_type) do
-        def step_history
-          @step_history ||= []
-        end
-      end
-    end
+    let(:builder) { Struct.new(:business_type) }
 
-    describe ".next_step" do
+    describe ".go_forward" do
       context "when enrollment is a foo" do
         let(:enrollment) { builder.new(:foo) }
         let(:steps) { [:step1, :step2, :step3] }
 
         it "should progess through foo journey" do
           expect(enrollment_state_machine.state).to eq(steps[0])
-          enrollment_state_machine.next_step
+          enrollment_state_machine.go_forward
           expect(enrollment_state_machine.state).to eq(steps[1])
-          enrollment_state_machine.next_step
+          enrollment_state_machine.go_forward
           expect(enrollment_state_machine.state).to eq(steps[2])
-        end
-
-        it "should preserve step history" do
-          expect(enrollment.step_history).to eq([])
-          enrollment_state_machine.next_step
-          expect(enrollment.step_history).to eq(steps[0, 1])
-          enrollment_state_machine.next_step
-          expect(enrollment.step_history).to eq(steps[0, 2])
         end
       end
 
@@ -44,7 +30,7 @@ module FloodRiskEngine
 
         it "should progess through foo journey" do
           expect(enrollment_state_machine.state).to eq(steps[0])
-          enrollment_state_machine.next_step
+          enrollment_state_machine.go_forward
           expect(enrollment_state_machine.state).to eq(steps[1])
         end
       end
