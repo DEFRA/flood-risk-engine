@@ -6,22 +6,11 @@ require "finite_machine"
 # rubocop:disable Style/HashSyntax
 module FloodRiskEngine
   class EnrollmentStateMachine < FiniteMachine::Definition
-    initial :grid_reference
-
-    module WorkFlow
-      extend self
-
-      def start
-        {
-          :grid_reference => :applicant_contact_name,
-          :applicant_contact_name => :organisation_type
-        }
-      end
-    end
-
+    initial :check_location
+      
     events do
-      event :go_forward, WorkFlow.start
-      event :go_back, WorkFlow.start.invert
+      event :go_forward, WorkFlow.for(:local_authority)
+      event :go_back, WorkFlow.for(:local_authority).invert
     end
   end
 end
