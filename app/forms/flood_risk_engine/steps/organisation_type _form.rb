@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class UserTypeForm < BaseForm
+    class OrganisationTypeForm  < BaseForm
 
       property :type
       validates :type, presence: true

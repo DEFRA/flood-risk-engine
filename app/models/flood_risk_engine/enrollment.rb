@@ -9,6 +9,13 @@ module FloodRiskEngine
     belongs_to :organisation
     belongs_to :site_address, class_name: "Address"
 
+    has_many :enrollment_exemptions, foreign_key: :enrollment_id,
+             dependent: :restrict_with_exception
+    accepts_nested_attributes_for :enrollment_exemptions
+
+    has_many :exemptions, through: :enrollment_exemptions, dependent: :restrict_with_exception
+    accepts_nested_attributes_for :exemptions
+
     serialize :step_history, Array
 
     before_validation :preserve_current_step

@@ -68,6 +68,7 @@ GEM
     cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.1)
+    database_cleaner (1.5.1)
     declarative (0.0.7)
       uber (>= 0.0.15)
     diff-lcs (1.2.5)
@@ -268,6 +269,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   byebug (~> 8.2)
   capybara (~> 2.6)
+  database_cleaner (~> 1.5)
   factory_girl_rails (~> 4.6)
   faker
   flood_risk_engine!

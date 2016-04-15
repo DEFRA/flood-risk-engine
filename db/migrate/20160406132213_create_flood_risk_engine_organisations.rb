@@ -8,6 +8,6 @@ class CreateFloodRiskEngineOrganisations < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :flood_risk_engine_organisations, :flood_risk_engine_contacts
+
   end
 end

@@ -2,7 +2,7 @@ require "rails_helper"
 require_relative "../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
-  RSpec.describe Steps::ActivityLocationForm, type: :form do
+  RSpec.describe Steps::GridReferenceForm, type: :form do
     let(:params_key) { :activity_location }
     let(:enrollment) { Enrollment.new }
     let(:model_class) { Location }
