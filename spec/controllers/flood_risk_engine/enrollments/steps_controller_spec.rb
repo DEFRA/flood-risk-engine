@@ -5,15 +5,15 @@ describe FloodRiskEngine::Enrollments::StepsController, type: :controller do
 
   let(:enrollment) { FactoryGirl.create(:enrollment) }
 
-  context "activity_location" do
-    let(:step) { "activity_location" }
+  context "grid_reference" do
+    let(:step) { "grid_reference" }
 
     before do
       get :edit, step: step, id: enrollment
     end
 
-    it "uses ActivityLocationForm" do
-      expect(controller.send(:form)).to be_a(FloodRiskEngine::Steps::ActivityLocationForm)
+    it "uses GridReferenceForm" do
+      expect(controller.send(:form)).to be_a(FloodRiskEngine::Steps::GridReferenceForm)
     end
 
     it "diplays header" do
@@ -22,12 +22,12 @@ describe FloodRiskEngine::Enrollments::StepsController, type: :controller do
     end
   end
 
-  context "step 2" do
-    let(:step) { "step2" }
+  context "applicant contact name" do
+    let(:step) { "applicant_contact_name" }
 
-    it "uses Step2Form" do
+    it "uses ApplicantContactNameForm" do
       get :edit, step: step, id: enrollment
-      expect(controller.send(:form)).to be_a(FloodRiskEngine::Steps::Step2Form)
+      expect(controller.send(:form)).to be_a(FloodRiskEngine::Steps::ApplicantContactNameForm)
     end
   end
 
@@ -43,7 +43,7 @@ describe FloodRiskEngine::Enrollments::StepsController, type: :controller do
   context "step unknown" do
     let(:step) { "unknown" }
 
-    it "uses ActivityLocationForm" do
+    it "uses GridReferenceForm" do
       expect do
         get :edit, step: step, id: enrollment
       end.to raise_error(StandardError)

@@ -3,5 +3,5 @@ en:
   flood_risk_engine:
     enrollments:
       steps:
-        step2:
+        applicant_contact_name:
           heading: Question 2

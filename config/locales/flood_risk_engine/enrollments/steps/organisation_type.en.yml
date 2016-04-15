@@ -6,11 +6,4 @@ en:
         organisation_type:
           heading: Who is registering?
           para_text: Choose the option that most closely describes the business, organisation
-                     or individual registering the exemption
-          options:
-            local_authority: Local Authority
-            individual: Individual
-            limited_company: Limited Company
-            limited_liability_partnership: Limited Liability Partnership
-            other: Other
-            unknown: Unknown
+            or individual registering the exemption

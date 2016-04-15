@@ -3,7 +3,7 @@ require_relative "../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
   RSpec.describe Steps::GridReferenceForm, type: :form do
-    let(:params_key) { :activity_location }
+    let(:params_key) { :grid_reference }
     let(:enrollment) { Enrollment.new }
     let(:model_class) { Location }
 

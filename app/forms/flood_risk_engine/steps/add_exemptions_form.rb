@@ -1,13 +1,12 @@
 module FloodRiskEngine
   module Steps
-
     class AddExemptionForm < FloodRiskEngine::Steps::BaseForm
       def self.factory(enrollment)
         new(enrollment)
       end
 
       def initialize(enrollment)
-        super  enrollment
+        super enrollment
         @exemptions = Exemption.all
       end
 
@@ -24,7 +23,6 @@ module FloodRiskEngine
       collection :exemptions do
         property :code
       end
-
     end
   end
 end

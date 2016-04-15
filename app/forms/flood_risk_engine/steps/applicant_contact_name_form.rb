@@ -1,11 +1,9 @@
 module FloodRiskEngine
   module Steps
     class ApplicantContactNameForm < BaseForm
+      property :first_name # at some point make full_name
 
-      # Define the attributes on the inbound model, that you want included in your form/validation with
-      # property :name
-      # For full API see  - https://github.com/apotonick/reform
-        property :full_name
+      validates :first_name, presence: true
 
       def self.factory(enrollment)
         contact = enrollment.applicant_contact || Contact.new
@@ -16,8 +14,12 @@ module FloodRiskEngine
         :applicant_contact_name
       end
 
+      # Overriding #save here so we can wire up the enrollment.applicant_contact
+      # Could use a transation here?
       def save
         super
+        enrollment.applicant_contact = model
+        enrollment.save
       end
     end
   end

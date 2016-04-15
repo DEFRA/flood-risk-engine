@@ -1,7 +1,6 @@
 require "rails_helper"
 
 module FloodRiskEngine
-
   RSpec.describe EnrollmentExemption, type: :model do
     it { is_expected.to be_valid }
     it { is_expected.to respond_to(:expires_at) }

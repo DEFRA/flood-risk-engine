@@ -21,7 +21,6 @@ module FloodRiskEngine
       end
     end
 
-
     # Export our form objects to the APPS
     config.to_prepare do
       Dir.glob(File.join(Engine.root, "app/forms", "**/*.rb")).each do |c|
@@ -38,6 +37,5 @@ module FloodRiskEngine
         FactoryGirl.definition_file_paths << path
       end
     end
-
   end
 end
