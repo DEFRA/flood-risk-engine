@@ -47,11 +47,9 @@ ActiveRecord::Schema.define(version: 201604131212938) do
   end
 
   add_index "flood_risk_engine_contacts", ["email_address"], name: "index_flood_risk_engine_contacts_on_email_address"
+  add_index "flood_risk_engine_contacts", ["partnership_organisation_id"], name: "fre_contacts_partnership_organisation_id"
 
   create_table "flood_risk_engine_enrollments", force: :cascade do |t|
-    t.boolean  "dummy_boolean"
-    t.string   "dummy_string1"
-    t.string   "dummy_string2"
     t.integer  "applicant_contact_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -60,6 +58,10 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.integer  "site_address_id"
   end
 
+  add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id"
+  add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id"
+  add_index "flood_risk_engine_enrollments", ["site_address_id"], name: "index_flood_risk_engine_enrollments_on_site_address_id"
+
   create_table "flood_risk_engine_enrollments_exemptions", force: :cascade do |t|
     t.integer  "enrollment_id",             null: false
     t.integer  "exemption_id",              null: false
@@ -67,6 +69,8 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.datetime "expires_at"
     t.datetime "valid_from"
   end
+
+  add_index "flood_risk_engine_enrollments_exemptions", %w(enrollment_id exemption_id), name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
 
   create_table "flood_risk_engine_exemptions", force: :cascade do |t|
     t.string   "code"
@@ -95,6 +99,9 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id"
+  add_index "flood_risk_engine_organisations", ["type"], name: "index_flood_risk_engine_organisations_on_type"
 
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
