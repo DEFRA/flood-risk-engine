@@ -1,7 +1,6 @@
 # State machine using FiniteMachine
 # https://github.com/piotrmurach/finite_machine
 require "finite_machine"
-# rubocop:disable Style/HashSyntax
 module FloodRiskEngine
   class TestStateMachine < FiniteMachine::Definition
     initial :step1
@@ -9,16 +8,20 @@ module FloodRiskEngine
     module WorkFlow
       extend self
 
+      def steps
+        [:step1, :step2, :step3]
+      end
+
       def foo
         {
-          :step1 => :step2,
-          :step2 => :step3
+          steps[0] => steps[1],
+          steps[1] => steps[2]
         }
       end
 
       def bar
         {
-          :step1 => :step3
+          steps[0] => steps[2]
         }
       end
     end
@@ -46,4 +49,3 @@ module FloodRiskEngine
     end
   end
 end
-# rubocop:enable Style/HashSyntax
