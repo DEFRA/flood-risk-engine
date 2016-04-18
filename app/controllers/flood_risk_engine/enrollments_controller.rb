@@ -5,7 +5,7 @@ module FloodRiskEngine
     def new
       enrollment = Enrollment.create
       # TODO: make first step come from state_machine
-      url = stepped_enrollment_path(enrollment, step: enrollment.initial_step)
+      url = enrollment_step_path(enrollment, enrollment.initial_step)
       redirect_to url
     end
   end

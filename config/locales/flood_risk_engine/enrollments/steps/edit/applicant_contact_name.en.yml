@@ -3,7 +3,7 @@ en:
   flood_risk_engine:
     enrollments:
       steps:
-        edit:
+        show:
           applicant_contact_name:
             heading: Question 2
             some_para: 'asas'

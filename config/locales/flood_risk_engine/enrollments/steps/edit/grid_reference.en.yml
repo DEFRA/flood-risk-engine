@@ -3,7 +3,7 @@ en:
   flood_risk_engine:
     enrollments:
       steps:
-        edit:
+        show:
           grid_reference:
             heading: Where will the activity be located?
             label: Provide a national grid reference

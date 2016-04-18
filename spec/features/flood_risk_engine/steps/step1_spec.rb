@@ -4,9 +4,7 @@ require "rails_helper"
 RSpec.describe "Step 1" do
   it "renders correctly" do
     enrollment = FloodRiskEngine::Enrollment.create(step: :grid_reference)
-    url = flood_risk_engine.stepped_enrollment_path(enrollment,
-                                                     step: :grid_reference
-                                                   )
+    url = flood_risk_engine.enrollment_step_path(enrollment, :grid_reference)
 
     # Not using page objects yet but see readme in spec/support/page_objects dir
     # page_object = FloodRisk::PageObjects::Steps::NewStructurePage.new

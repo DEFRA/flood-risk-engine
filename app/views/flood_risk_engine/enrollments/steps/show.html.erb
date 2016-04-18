@@ -6,7 +6,7 @@
 see the DigitalServicesCore::BackLink class -->
 <%= link_to(
       "Back",
-      stepped_enrollment_path(form.enrollment, step: form.enrollment.previous_step),
+      enrollment_step_path(form.enrollment, form.enrollment.previous_step),
     ) if form.enrollment.can?(:go_back)
 %>
 
@@ -20,7 +20,7 @@ see the DigitalServicesCore::BackLink class -->
 %>
 <%= form_for form,
              as: step,
-             url: update_step_enrollment_path(id: form.enrollment_id, step: step),
+             url: enrollment_step_path(form.enrollment, step),
              method: :patch,
              class: 'form' do |f| %>
 

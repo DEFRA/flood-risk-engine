@@ -11,32 +11,30 @@ module FloodRiskEngine
     class StepsController < ApplicationController
       class StepError < StandardError; end
       rescue_from StepError, with: :step_not_found
+      before_action :check_step_is_valid
+      before_action :back_button_cache_buster
 
-      before_action :back_button_cache_buster, only: [:edit, :update]
-
-      def edit
-        check_step_is_valid
-        render :edit, locals: locals
+      def show
+        render :show, locals: locals
       end
 
       def update
-        check_step_is_valid
         enrollment.go_forward
         if save_form!
           redirect_to step_url
         else
-          render :edit, locals: locals
+          render :show, locals: locals
         end
       end
 
       private
 
       def step
-        params.fetch(:step).to_sym
+        params.fetch(:id).to_sym
       end
 
       def step_url
-        stepped_enrollment_path(enrollment, step: enrollment.current_step)
+        enrollment_step_path(enrollment, enrollment.current_step)
       end
 
       def check_step_is_valid
@@ -79,7 +77,7 @@ module FloodRiskEngine
       end
 
       def enrollment
-        @enrollment ||= Enrollment.find(params[:id])
+        @enrollment ||= Enrollment.find(params[:enrollment_id])
       end
 
       def step_not_found

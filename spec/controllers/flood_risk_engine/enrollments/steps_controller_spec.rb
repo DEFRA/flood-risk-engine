@@ -17,7 +17,7 @@ module FloodRiskEngine
 
       context "edit action" do
         before do
-          get :edit, step: step, id: enrollment
+          get :show, id: step, enrollment_id: enrollment
         end
 
         describe "current step (step == enrollment.step)" do
@@ -66,7 +66,7 @@ module FloodRiskEngine
       let(:step) { "grid_reference" }
 
       before do
-        get :edit, step: step, id: enrollment
+        get :show, id: step, enrollment_id: enrollment
       end
 
       it "uses GridReferenceForm" do
@@ -83,7 +83,7 @@ module FloodRiskEngine
       let(:step) { "main_contact_name" }
 
       it "uses MainContactNameForm" do
-        get :edit, step: step, id: enrollment
+        get :show, id: step, enrollment_id: enrollment
         expect(controller.send(:form)).to be_a(Steps::MainContactNameForm)
       end
     end
@@ -92,7 +92,7 @@ module FloodRiskEngine
       let(:step) { "user_type" }
 
       it "uses UserTypeForm" do
-        get :edit, step: step, id: enrollment
+        get :show, id: step, enrollment_id: enrollment
         expect(controller.send(:form)).to be_a(Steps::UserTypeForm)
       end
     end
@@ -102,7 +102,7 @@ module FloodRiskEngine
 
       it "uses GridReferenceForm" do
         expect do
-          get :edit, step: step, id: enrollment
+          get :show, step: step, id: enrollment
         end.to raise_error(StandardError)
       end
     end
