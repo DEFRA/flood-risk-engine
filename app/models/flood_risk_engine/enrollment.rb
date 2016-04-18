@@ -20,6 +20,10 @@ module FloodRiskEngine
 
     before_validation :preserve_current_step
 
+    # Virtual column - this answer not currently required in DB
+    attr_accessor :location_check
+
+
     # Have to use `validate` as `validates` is called on page load, before
     # the state machine class can be switched, and therefore is always run on the
     # default state machine. 'validate' calls the method on the instance so

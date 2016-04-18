@@ -10,7 +10,16 @@ see the DigitalServicesCore::BackLink class -->
     ) if form.enrollment.can?(:go_back)
 %>
 
-<%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <header class="text">
+      <h1 class="form-title heading-large" id="groupLabel">
+        <%= set_page_title(t("flood_risk_engine.enrollments.steps.#{step}.heading")) %>
+      </h1>
+    </header>
+
+    <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 
 <% # Using 'as:' changes the name of the fields in the form from eg
    #   name="flood_risk_engine_steps_step1[field1]"
@@ -24,14 +33,18 @@ see the DigitalServicesCore::BackLink class -->
              method: :patch,
              class: 'form' do |f| %>
 
-  <%= render step.to_s, form: form, step: step, f: f %>
+      <%= render step.to_s, form: form, step: step, f: f %>
 
-  <div class="form-group">
-    <%= f.submit 'Continue' %>
+      <div class="form-group">
+        <%= f.submit 'Continue' %>
+      </div>
+    <% end %>
+
   </div>
-<% end %>
+</div>
 
 <!-- temporary debug info -->
 <div style='margin-top: 150px'>
+  Developer Debug :
   <pre><%= @form.inspect.gsub(", ", "\n") %></pre>
 </div>

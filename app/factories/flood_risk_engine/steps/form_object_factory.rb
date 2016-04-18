@@ -3,8 +3,10 @@ module FloodRiskEngine
     class FormObjectFactory
       class << self
         def form_object_for(step, enrollment)
-          klass = form_object_class_map.fetch(step.to_sym) do
-            raise "No form object defined for step #{step}"
+          klass = setup_form_object(enrollment)
+
+          klass ||= form_object_class_map.fetch(step.to_sym) do
+            fail "No form object defined for step #{step}"
           end
           klass.factory(enrollment)
         end
@@ -32,7 +34,17 @@ module FloodRiskEngine
             confirmation:            Steps::NullForm
           }
         end
-        # rubocop:enable Metrics/MethodLength
+
+        private
+
+        def setup_form_object(enrollment)
+          begin
+            "FloodRiskEngine::Steps::#{enrollment.step.classify}Form".constantize
+          rescue
+            Rails.logger.error("Unexpected step #{enrollment.step} - No Form Object defined for this step")
+            nil
+          end
+        end
       end
     end
   end

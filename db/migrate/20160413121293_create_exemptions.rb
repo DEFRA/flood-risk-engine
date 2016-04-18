@@ -21,5 +21,10 @@ class CreateExemptions < ActiveRecord::Migration
 
     add_foreign_key :flood_risk_engine_enrollments_exemptions,
                     :flood_risk_engine_exemptions, column: :exemption_id
+
+    add_index :flood_risk_engine_enrollments_exemptions,
+              [:enrollment_id, :exemption_id],
+              unique: true,
+              name: "fre_enrollments_exemptions_enrollment_id_exemption_id"
   end
 end

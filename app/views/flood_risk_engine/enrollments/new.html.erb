@@ -1,0 +1,30 @@
+<!-- There is some potentially quick complex logic around the back link -
+see the DigitalServicesCore::BackLink class -->
+<a class="link-back" href="">Back</a>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <header class="text">
+      <h1 class="form-title heading-large" id="groupLabel">
+        <%= set_page_title(t("flood_risk_engine.enrollments.steps.check_location.heading")) %>
+      </h1>
+    </header>
+
+    <% # Using 'as:' changes the name of the fields in the form from eg
+       #   name="flood_risk_engine_steps_step1[field1]"
+       # to
+       #   name="step1[dummy_boolean]"
+       # which is much clearer
+    %>
+
+    <%= form_for @enrollment do |f| %>
+
+      <%= render 'flood_risk_engine/enrollments/steps/check_location', f: f %>
+
+      <div class="form-group">
+        <%= f.submit 'Continue' %>
+      </div>
+    <% end %>
+  </div>
+</div>
