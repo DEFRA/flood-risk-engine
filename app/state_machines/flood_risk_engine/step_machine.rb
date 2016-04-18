@@ -22,7 +22,7 @@ module FloodRiskEngine
     end
 
     def set_step_as(step)
-      restore!(step)
+      restore!(step.to_sym)
     end
 
     def rollback_to(step)
@@ -31,7 +31,7 @@ module FloodRiskEngine
         go_back! step
       end
     rescue FiniteMachine::InvalidStateError
-      restore! current
+      set_step_as current
       raise StateMachineError, "Unable to rollback to #{step}"
     end
 
@@ -63,7 +63,7 @@ module FloodRiskEngine
     def around_step
       current = current_step
       result = yield
-      restore! current
+      set_step_as current
       result
     end
 
