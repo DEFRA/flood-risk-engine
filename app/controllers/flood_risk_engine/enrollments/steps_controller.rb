@@ -23,7 +23,7 @@ module FloodRiskEngine
         check_step_is_valid
         enrollment.go_forward
         if save_form!
-          redirect_to next_step_url
+          redirect_to step_url
         else
           render :edit, locals: locals
         end
@@ -35,8 +35,8 @@ module FloodRiskEngine
         params.fetch(:step).to_sym
       end
 
-      def next_step_url
-        url_for([:build_step, enrollment, step: enrollment.current_step])
+      def step_url
+        stepped_enrollment_path(enrollment, step: enrollment.current_step)
       end
 
       def check_step_is_valid
@@ -84,7 +84,7 @@ module FloodRiskEngine
 
       def step_not_found
         Rails.logger.info "Step Mismatch: :#{step} requested when enrollment at :#{enrollment.step}"
-        redirect_to next_step_url
+        redirect_to step_url
       end
     end
   end

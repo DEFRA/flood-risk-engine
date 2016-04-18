@@ -6,7 +6,7 @@
 see the DigitalServicesCore::BackLink class -->
 <%= link_to(
       "Back",
-      url_for([:build_step, form.enrollment, step: form.enrollment.previous_step]),
+      stepped_enrollment_path(form.enrollment, step: form.enrollment.previous_step),
     ) if form.enrollment.can?(:go_back)
 %>
 

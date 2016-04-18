@@ -5,7 +5,7 @@ FloodRiskEngine::Engine.routes.draw do
     member do
       get "steps/:step",
           to: 'enrollments/steps#edit',
-          as: "build_step"
+          as: "stepped"
 
       patch "steps/:step",
             to: 'enrollments/steps#update',
