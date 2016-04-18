@@ -78,9 +78,25 @@ module FloodRiskEngine
       end
     end
 
+    describe ".previous_step" do
+      before do
+        step_machine.go_forward
+      end
+
+      it "should return name of previous step" do
+        expect(step_machine.previous_step).to eq(initial_step)
+      end
+    end
+
     describe ".next_step?" do
       it "should return next step" do
         expect(step_machine.next_step?(steps[1])).to eq(true)
+      end
+    end
+
+    describe ".next_step" do
+      it "should return next step" do
+        expect(step_machine.next_step).to eq(steps[1])
       end
     end
   end

@@ -35,18 +35,26 @@ module FloodRiskEngine
       raise StateMachineError, "Unable to rollback to #{step}"
     end
 
-    def previous_step?(step)
+    def previous_step
       around_step do
         go_back
-        current_step == step.to_s
+        current_step
+      end
+    end
+
+    def previous_step?(step)
+      previous_step == step.to_s
+    end
+
+    def next_step
+      around_step do
+        go_forward
+        current_step
       end
     end
 
     def next_step?(step)
-      around_step do
-        go_forward
-        current_step == step.to_s
-      end
+      next_step == step.to_s
     end
 
     # Allows a process to be called that will temporarily change state
