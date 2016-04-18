@@ -1,3 +1,11 @@
+#  StepMachine makes it easier to integrate the state machine into the app.
+#  Methods are added here which cannot be easily added directly to the state
+#  machine.
+#
+#  This class also adds a generic initialization method, which allows a state
+#  machine to be attached or called from any object that requires its
+#  functionality.
+#
 module FloodRiskEngine
   class StepMachine
     attr_reader :target, :state_machine_class, :initiating_step
