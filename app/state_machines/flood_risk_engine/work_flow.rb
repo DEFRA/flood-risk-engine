@@ -15,8 +15,8 @@ module FloodRiskEngine
       def start
         [
           :check_location,
-          :check_exceptions,
-          :add_exceptions,
+          :add_exemptions,
+          :check_exemptions,
           :grid_reference,
           :user_type
         ]
