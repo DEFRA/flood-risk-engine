@@ -23,21 +23,21 @@ module FloodRiskEngine
       end
     end
 
-    context "applicant contact name" do
-      let(:step) { "applicant_contact_name" }
+    context "main contact name" do
+      let(:step) { "main_contact_name" }
 
-      it "uses ApplicantContactNameForm" do
+      it "uses MainContactNameForm" do
         get :edit, step: step, id: enrollment
-        expect(controller.send(:form)).to be_a(Steps::ApplicantContactNameForm)
+        expect(controller.send(:form)).to be_a(Steps::MainContactNameForm)
       end
     end
 
-    context "organisation_type" do
-      let(:step) { "organisation_type" }
+    context "user_type" do
+      let(:step) { "user_type" }
 
-      it "uses OrganisationTypeForm" do
+      it "uses UserTypeForm" do
         get :edit, step: step, id: enrollment
-        expect(controller.send(:form)).to be_a(Steps::OrganisationTypeForm)
+        expect(controller.send(:form)).to be_a(Steps::UserTypeForm)
       end
     end
 

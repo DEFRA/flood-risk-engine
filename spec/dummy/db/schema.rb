@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.datetime "valid_from"
   end
 
-  add_index "flood_risk_engine_enrollments_exemptions", %w(enrollment_id exemption_id), name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
+  add_index "flood_risk_engine_enrollments_exemptions", ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
 
   create_table "flood_risk_engine_exemptions", force: :cascade do |t|
     t.string   "code"

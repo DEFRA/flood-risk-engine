@@ -2,8 +2,8 @@ require "rails_helper"
 require_relative "../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
-  RSpec.describe Steps::OrganisationTypeForm, type: :form do
-    let(:params_key) { :organisation_type }
+  RSpec.describe Steps::UserTypeForm, type: :form do
+    let(:params_key) { :user_type }
     let(:enrollment) { Enrollment.new }
     let(:model_class) { Organisation }
 

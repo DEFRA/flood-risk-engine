@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class OrganisationTypeForm < BaseForm
+    class UserTypeForm < BaseForm
       property :type
       validates :type, presence: true
 
@@ -10,7 +10,7 @@ module FloodRiskEngine
       end
 
       def params_key
-        :organisation_type
+        :user_type
       end
 
       # Note we don't need to call super in this form object to save the properties (type).

@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class ApplicantContactNameForm < BaseForm
+    class MainContactNameForm < BaseForm
       property :first_name # at some point make full_name
 
       validates :first_name, presence: true
@@ -11,7 +11,7 @@ module FloodRiskEngine
       end
 
       def params_key
-        :applicant_contact_name
+        :main_contact_name
       end
 
       # Overriding #save here so we can wire up the enrollment.applicant_contact
