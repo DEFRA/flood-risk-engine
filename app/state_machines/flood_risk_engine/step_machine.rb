@@ -88,7 +88,7 @@ module FloodRiskEngine
     end
     delegate(
       :go_forward, :state, :restore!, :states, :go_back, :go_back!,
-      :initial_state,
+      :initial_state, :can?,
       to: :state_machine
     )
 

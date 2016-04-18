@@ -4,7 +4,11 @@
 
 <!-- There is some potentially quick complex logic around the back link -
 see the DigitalServicesCore::BackLink class -->
-<a class="link-back" href="">Back</a>
+<%= link_to(
+      "Back",
+      url_for([:build_step, form.enrollment, step: form.enrollment.previous_step]),
+    ) if form.enrollment.can?(:go_back)
+%>
 
 <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 

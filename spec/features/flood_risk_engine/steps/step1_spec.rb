@@ -3,7 +3,7 @@ require "rails_helper"
 # Example feature spec
 RSpec.describe "Step 1" do
   it "renders correctly" do
-    enrollment = FloodRiskEngine::Enrollment.create
+    enrollment = FloodRiskEngine::Enrollment.create(step: :grid_reference)
     url = flood_risk_engine.build_step_enrollment_path(id: enrollment.id,
                                                        step: :grid_reference)
 

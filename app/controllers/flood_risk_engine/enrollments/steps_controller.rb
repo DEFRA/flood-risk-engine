@@ -12,14 +12,16 @@ module FloodRiskEngine
       class StepError < StandardError; end
       rescue_from StepError, with: :step_not_found
 
+      before_action :back_button_cache_buster, only: [:edit, :update]
+
       def edit
         check_step_is_valid
         render :edit, locals: locals
       end
 
       def update
+        check_step_is_valid
         enrollment.go_forward
-        #check_step_is_valid
         if save_form!
           redirect_to next_step_url
         else
@@ -34,13 +36,7 @@ module FloodRiskEngine
       end
 
       def next_step_url
-        url_for([:build_step, enrollment, step: next_step])
-      end
-
-      def next_step
-        enrollment.go_forward
-        enrollment.save
-        enrollment.current_step
+        url_for([:build_step, enrollment, step: enrollment.current_step])
       end
 
       def check_step_is_valid
@@ -65,9 +61,7 @@ module FloodRiskEngine
       end
 
       def save_form!
-        form.validate(params) &&
-          enrollment.set_step_as(step) &&
-          enrollment.save && form.save
+        form.validate(params) && enrollment.save && form.save
       end
 
       # Trying the approach that all vars are passed explicitly to the template
@@ -89,7 +83,8 @@ module FloodRiskEngine
       end
 
       def step_not_found
-        render plain: "404 Step Not Found", status: 404
+        Rails.logger.info "Step Mismatch: :#{step} requested when enrollment at :#{enrollment.step}"
+        redirect_to next_step_url
       end
     end
   end

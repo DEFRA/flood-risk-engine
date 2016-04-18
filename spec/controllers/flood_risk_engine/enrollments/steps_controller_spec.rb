@@ -38,19 +38,25 @@ module FloodRiskEngine
           end
         end
 
-        describe "mismatch (step many steps from enrollment.step)" do
-          let(:step) {steps.first}
-          let(:enrollment) { FactoryGirl.create(:enrollment, step: steps.last) }
-          it "should render error" do
-            expect(response).to have_http_status(404)
+        context "mismatches" do
+          describe "large (step many steps from enrollment.step)" do
+            let(:step) {steps.first}
+            let(:enrollment) { FactoryGirl.create(:enrollment, step: steps.last) }
+            it "should redirect to enrollment.step" do
+              expect(response).to redirect_to(
+                "/fre/enrollments/#{enrollment.id}/steps/#{steps.last}"
+              )
+            end
           end
-        end
 
-        describe "step too soon (step one after enrollment.step)" do
-          let(:step) {steps[2]}
-          let(:enrollment) { FactoryGirl.create(:enrollment, step: steps[1]) }
-          it "should render error" do
-            expect(response).to have_http_status(404)
+          describe "step too soon (step one after enrollment.step)" do
+            let(:step) {steps[2]}
+            let(:enrollment) { FactoryGirl.create(:enrollment, step: steps[1]) }
+            it "should redirect to enrollment.step" do
+              expect(response).to redirect_to(
+                "/fre/enrollments/#{enrollment.id}/steps/#{steps[1]}"
+              )
+            end
           end
         end
       end

@@ -23,7 +23,6 @@ module FloodRiskEngine
         super params.fetch(params_key) { {} }
       end
 
-      protected
       attr_reader :enrollment
     end
   end

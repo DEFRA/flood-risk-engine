@@ -37,8 +37,8 @@ module FloodRiskEngine
     end
     delegate(
       :go_forward, :current_step, :set_step_as, :rollback_to, :previous_step?,
-      :next_step?, :state_machine_class, :defined_steps, :initial_step,
-      :go_back, :go_back!,
+      :previous_step, :next_step, :next_step?, :state_machine_class,
+      :defined_steps, :initial_step, :go_back, :go_back!, :can?,
       to: :state_machine
     )
 
