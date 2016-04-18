@@ -8,9 +8,8 @@ module FloodRiskEngine
     after(:all) do
       Enrollment.state_machine_class = nil
     end
-
+    let(:steps) { TestStateMachine::WorkFlow.steps.collect!(&:to_s) }
     let(:enrollment) { create(:enrollment) }
-    let(:steps) { %w[step1 step2 step3] }
     let(:initial_step) { steps[0] }
 
     it { is_expected.to belong_to(:applicant_contact) }

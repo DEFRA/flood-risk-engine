@@ -8,7 +8,7 @@ module FloodRiskEngine
         business_type: :foo
       )
     end
-    let(:steps) { %w[step1 step2 step3] }
+    let(:steps) { TestStateMachine::WorkFlow.steps.collect(&:to_s) }
     let(:initial_step) { steps.first }
     let(:step_machine) do
       StepMachine.new(
