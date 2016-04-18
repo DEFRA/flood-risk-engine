@@ -22,13 +22,6 @@ module FloodRiskEngine
       end
     end
 
-    # Export our form objects to the APPS
-    config.to_prepare do
-      Dir.glob(File.join(Engine.root, "app/forms", "**/*.rb")).each do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
-    end
-
     # Make Engine Factories available to Apps
     unless(Rails.env.production?)
       initializer "flood_risk_engine.factories", after: "factory_girl.set_factory_paths" do

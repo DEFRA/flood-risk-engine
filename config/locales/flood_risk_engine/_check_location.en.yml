@@ -1,0 +1,14 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps: 
+        check_location: 
+          heading: Have you called us to check the location of your activity?
+          panel: You must contact us before you start this registration to check the location of your activity.
+          label: Yes, the location has been checked
+          label1: 'No'
+          legend: Have you checked the location with us?
+          text: Warning
+          para_text: Call us on 03708 506 506 to check if your activities are on a
+            main river and if they are near any sensitive areas such as a nature reserve.
