@@ -18,7 +18,7 @@ module FloodRiskEngine
           respond_to do |format|
             if @enrollment.save
               format.html do
-                # TODO - how to redirect to step controller ?
+                enrollment_step_path(enrollment, enrollment.initial_step)
               end
             else
               format.html { render :new }
