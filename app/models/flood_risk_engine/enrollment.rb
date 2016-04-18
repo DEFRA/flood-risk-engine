@@ -11,10 +11,8 @@ module FloodRiskEngine
 
     has_many :enrollment_exemptions, foreign_key: :enrollment_id,
              dependent: :restrict_with_exception
-    accepts_nested_attributes_for :enrollment_exemptions
-
-    has_many :exemptions, through: :enrollment_exemptions, dependent: :restrict_with_exception
-    accepts_nested_attributes_for :exemptions
+    has_many :exemptions, through: :enrollment_exemptions,
+             dependent: :restrict_with_exception
 
     serialize :step_history, Array
 
