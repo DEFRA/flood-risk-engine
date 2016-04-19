@@ -3,7 +3,7 @@ en:
   flood_risk_engine:
     enrollments:
       steps:
-        edit:
+        show:
           organisation_type:
             heading: Who is registering?
             para_text: Choose the option that most closely describes the business, organisation

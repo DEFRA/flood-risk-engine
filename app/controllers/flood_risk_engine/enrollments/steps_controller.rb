@@ -9,45 +9,57 @@
 module FloodRiskEngine
   module Enrollments
     class StepsController < ApplicationController
-      def edit
-        render :edit, locals: locals
+      class StepError < StandardError; end
+      rescue_from StepError, with: :step_not_found
+      before_action :check_step_is_valid
+      before_action :back_button_cache_buster
+
+      def show
+        render :show, locals: locals
       end
 
       def update
         enrollment.go_forward
-        #check_step_is_valid
         if save_form!
           redirect_to step_url
         else
-          render :edit, locals: locals
+          render :show, locals: locals
         end
       end
 
       private
 
       def step
-        params.fetch(:step).to_sym
+        params.fetch(:id).to_sym
       end
 
       def step_url
-        url_for([:build_step, enrollment, step: next_step])
-      end
-
-      def next_step
-        enrollment.go_forward
-        enrollment.current_step
+        enrollment_step_path(enrollment, enrollment.current_step)
       end
 
       def check_step_is_valid
-        unless step.to_s == enrollment.current_step.to_s
-          raise "!! #{step} != #{enrollment.current_step}"
-        end
+        return true if step_is_current?
+        return step_back if step_back_is_possible?
+        raise StepError, "Requested #{step}, is not permitted when enrollment.step is #{enrollment.current_step}"
+      end
+
+      def step_back_is_possible?
+        enrollment.previous_step? step
+      rescue StateMachineError
+        false
+      end
+
+      def step_back
+        enrollment.go_back
+        enrollment.save
+      end
+
+      def step_is_current?
+        step.to_s == enrollment.current_step.to_s
       end
 
       def save_form!
-        form.validate(params) &&
-          enrollment.set_step_as(step) &&
-          enrollment.save && form.save
+        form.validate(params) && enrollment.save && form.save
       end
 
       # Trying the approach that all vars are passed explicitly to the template
@@ -65,7 +77,12 @@ module FloodRiskEngine
       end
 
       def enrollment
-        @enrollment ||= Enrollment.find(params[:id])
+        @enrollment ||= Enrollment.find(params[:enrollment_id])
+      end
+
+      def step_not_found
+        Rails.logger.info "Step Mismatch: :#{step} requested when enrollment at :#{enrollment.step}"
+        redirect_to step_url
       end
     end
   end

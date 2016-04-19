@@ -3,7 +3,7 @@ en:
   flood_risk_engine:
     enrollments:
       steps:
-        edit:
+        show:
           grid_reference:
             heading: Grid Reference
           applicant_contact_name:

@@ -22,7 +22,7 @@ module FloodRiskEngine
     end
 
     def set_step_as(step)
-      restore!(step)
+      restore!(step.to_sym)
     end
 
     def rollback_to(step)
@@ -31,22 +31,30 @@ module FloodRiskEngine
         go_back! step
       end
     rescue FiniteMachine::InvalidStateError
-      restore! current
+      set_step_as current
       raise StateMachineError, "Unable to rollback to #{step}"
     end
 
-    def previous_step?(step)
+    def previous_step
       around_step do
         go_back
-        current_step == step.to_s
+        current_step
+      end
+    end
+
+    def previous_step?(step)
+      previous_step == step.to_s
+    end
+
+    def next_step
+      around_step do
+        go_forward
+        current_step
       end
     end
 
     def next_step?(step)
-      around_step do
-        go_forward
-        current_step == step.to_s
-      end
+      next_step == step.to_s
     end
 
     # Allows a process to be called that will temporarily change state
@@ -63,7 +71,7 @@ module FloodRiskEngine
     def around_step
       current = current_step
       result = yield
-      restore! current
+      set_step_as current
       result
     end
 
@@ -80,7 +88,7 @@ module FloodRiskEngine
     end
     delegate(
       :go_forward, :state, :restore!, :states, :go_back, :go_back!,
-      :initial_state,
+      :initial_state, :can?,
       to: :state_machine
     )
 
