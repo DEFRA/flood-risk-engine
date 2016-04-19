@@ -20,7 +20,7 @@ module FloodRiskEngine
           respond_to do |format|
             if @enrollment.save
               format.html do
-                redirect_t o  enrollment_step_path(enrollment, enrollment.initial_step)
+                redirect_to  enrollment_step_path(@enrollment, @enrollment.initial_step)
               end
             else
               format.html { render :new }
