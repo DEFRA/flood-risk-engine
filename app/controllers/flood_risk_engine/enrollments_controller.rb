@@ -12,13 +12,15 @@ module FloodRiskEngine
       # "enrollment"=>{"location_check"=>"yes"}
       if(enrollment_params["location_check"])
 
+        # This is essentially the start of the journey, create new Enrollment in init state
+        # and send to the Step Controller to take over
         if(enrollment_params["location_check"] == "yes")
-          @enrollment = Enrollment.create
+          @enrollment = Enrollment.new
 
           respond_to do |format|
             if @enrollment.save
               format.html do
-                enrollment_step_path(enrollment, enrollment.initial_step)
+                redirect_t o  enrollment_step_path(enrollment, enrollment.initial_step)
               end
             else
               format.html { render :new }
