@@ -8,7 +8,7 @@ class CreateExemptions < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :flood_risk_engine_enrollments_exemptions, force: :cascade do |t|
+    create_table :flood_risk_engine_enrollments_exemptions do |t|
       t.references  :enrollment,      null: false
       t.references  :exemption,       null: false
       t.integer  :status,             default: 0
