@@ -44,10 +44,6 @@ module FloodRiskEngine
       to: :state_machine
     )
 
-    def state
-      self.step
-    end
-
     private
 
     def preserve_current_step
