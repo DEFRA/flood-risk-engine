@@ -11,19 +11,17 @@ see the DigitalServicesCore::BackLink class -->
       </h1>
     </header>
 
-    <% # Using 'as:' changes the name of the fields in the form from eg
-       #   name="flood_risk_engine_steps_step1[field1]"
-       # to
-       #   name="step1[dummy_boolean]"
-       # which is much clearer
-    %>
+    <%= form_for @form,
+                 as: @form.enrollment.current_step,
+                 url: url_for(:controller => 'enrollments', :action => 'create'),
+                 method: :post, class: 'form' do |f| %>
 
-    <%= form_for @enrollment do |f| %>
+      <%= render 'flood_risk_engine/enrollments/validation_errors', form: @form %>
 
-      <%= render 'flood_risk_engine/enrollments/steps/check_location', f: f %>
+      <%= render 'flood_risk_engine/enrollments/steps/check_location', form: @form, f: f %>
 
       <div class="form-group">
-        <%= f.submit 'Continue' %>
+        <%= f.submit submit_button_text(@form.enrollment), class: "button"  %>
       </div>
     <% end %>
   </div>

@@ -9,16 +9,19 @@ module FloodRiskEngine
         new(enrollment)
       end
 
-      def errors
-          []
-      end
-
       def save
-          true
+        true
       end
 
       def validate(params)
-          true
+
+        # Parameters: "check_location"=>{"location_check"=>"yes"}, "commit"=>"Continue"}
+        unless params.has_key? :check_location
+           errors.add(:base, t("errors.you_must_make_selection"))
+           return false
+        end
+
+        true
       end
     end
   end
