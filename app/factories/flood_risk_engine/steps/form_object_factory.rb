@@ -41,7 +41,7 @@ module FloodRiskEngine
           begin
             "FloodRiskEngine::Steps::#{enrollment.current_step.classify}Form".constantize
           rescue
-            Rails.logger.debug(" No Form Object found for step [#{enrollment.step}] - falling back to object_class map")
+            Rails.logger.debug(" No Form Object found for step [#{enrollment.current_step}] - falling back to object_class map")
             nil
           end
         end

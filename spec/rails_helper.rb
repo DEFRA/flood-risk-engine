@@ -73,6 +73,9 @@ RSpec.configure do |config|
   # Allows you to use Factory Girl methods without specifying FactoryGirl.
   # So you can now: `build(:address)` rather than FactoryGirl.build(:address)
   config.include FactoryGirl::Syntax::Methods
+
+  # Enables shortcut, t() instead of I18n.t() in tests
+  config.include AbstractController::Translation
 end
 
 Shoulda::Matchers.configure do |config|
