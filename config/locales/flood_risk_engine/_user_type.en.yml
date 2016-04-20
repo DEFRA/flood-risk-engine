@@ -1,0 +1,18 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps: 
+        user_type: 
+          heading: Who is legally responsible for the activity?
+          list_item: have day-to-day control of the activity
+          list_item1: make sure the activity complies with the exemption rules
+          list_item2: decide who holds important staff positions and stop
+          list_item3: incompetent staff working, if needed
+          list_item4: make financial decisions that affect the activity
+          list_item5: take action to control the activity in an emergency
+          text: How to decide who is legally responsible
+          para_text: |-
+            The company, body or individual who has control over the way the activity (work) is done is legally responsible. They are called the ‘operator’. If you use contractors, you need to decide if it is you or the contractors who has control. Whoever
+                          has control should register the exemption.
+          para_text1: 'Whoever has control will usually:'

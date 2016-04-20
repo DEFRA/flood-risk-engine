@@ -1,0 +1,16 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps: 
+        main_contact_name: 
+          heading: Who should we contact about this activity?
+          label: Full name
+          label1: Job title, if applicable (optional)
+          legend: Who should we contact about this activity?
+          para_text: |-
+            We may need to contact you to check details of the activities or arrange a site visit.
+                      We’ll send a confirmation of your registration to this person.
+                      You can add an another contact later to get a copy of the confirmation.
+          para_text1: For example, John Smith
+          para_text2: For example, Project Manager

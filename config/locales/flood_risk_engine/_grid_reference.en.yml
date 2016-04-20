@@ -1,0 +1,16 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps: 
+        grid_reference: 
+          heading: Where will the exemption activity take place?
+          label: National grid reference
+          legend: Where will the exemption activity take place?
+          text: Help finding a grid reference
+          para_text: For example, ST 58132 72695
+          para_text1: Use the free
+          para_text2: to find a grid reference.
+          para_text3: Zoom in and centre the map on the activity location and select
+            the ‘Grid Ref' tool. You should be able to copy and paste the grid reference
+            back into this page.
