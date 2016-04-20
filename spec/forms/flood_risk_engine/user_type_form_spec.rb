@@ -12,20 +12,31 @@ module FloodRiskEngine
     it_behaves_like "a form object"
 
     it { is_expected.to be_a(described_class) }
-    it { is_expected.to respond_to(:type) }
-    it { is_expected.to validate_presence_of(:type) }
+    it { is_expected.to respond_to(:org_type) }
+    it { is_expected.to validate_presence_of(:org_type) }
 
-    describe "#save" do
-      it "saves the enrollment.organisation with the correct STI type" do
-        sti_type = FloodRiskEngine::OrganisationTypes::Individual
-        params = { params_key => { type: sti_type.to_s } }
+    describe ".save" do
+      let(:params) { { params_key => { org_type: org_type } } }
+      let(:org_type) { Organisation.org_types.keys.first }
 
-        expect(enrollment).to receive(:save).and_return(true) # stub save
+      def validate_and_save
+        expect(subject.validate(params)).to be(true)
+        expect(subject.save).to be(true)
+      end
 
-        subject.validate(params)
-        subject.save
+      it "saves the enrollment" do
+        expect(enrollment).to receive(:save).and_return(true)
+        validate_and_save
+      end
 
-        expect(enrollment.organisation).to be_a(sti_type)
+      it "saves the organisation" do
+        expect(subject.model).to receive(:save).and_return(true)
+        validate_and_save
+      end
+
+      it "sets the enrollment.organisation to the correct org_type" do
+        expect(subject.validate(params)).to be(true)
+        validate_and_save
       end
     end
   end

@@ -3,17 +3,13 @@ module FloodRiskEngine
     belongs_to :contact
     has_one :enrollment, dependent: :restrict_with_exception
 
-    TYPES = [
-      OrganisationTypes::LocalAuthority,
-      OrganisationTypes::LimitedCompany,
-      OrganisationTypes::LimitedLiabilityPartnership,
-      OrganisationTypes::Individual,
-      OrganisationTypes::Other,
-      OrganisationTypes::Unknown
-    ].freeze
-
-    def type_name
-      type.split("::").last
-    end
+    enum org_type: {
+      local_authority: 0,
+      limited_company: 1,
+      limited_liability_partnership: 2,
+      individual: 3,
+      other: 4,
+      unknown: 5
+    }
   end
 end

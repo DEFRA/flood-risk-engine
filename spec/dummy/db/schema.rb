@@ -93,16 +93,16 @@ ActiveRecord::Schema.define(version: 201604131212938) do
   add_index "flood_risk_engine_locations", ["address_id"], name: "index_flood_risk_engine_locations_on_address_id"
 
   create_table "flood_risk_engine_organisations", force: :cascade do |t|
-    t.string   "type"
     t.string   "name"
     t.integer  "contact_id"
     t.string   "company_number"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "org_type"
   end
 
   add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id"
-  add_index "flood_risk_engine_organisations", ["type"], name: "index_flood_risk_engine_organisations_on_type"
+  add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type"
 
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
