@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 201604131212938) do
+ActiveRecord::Schema.define(version: 20160415202953) do
 
   create_table "flood_risk_engine_addresses", force: :cascade do |t|
     t.string   "premises",            limit: 200
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 201604131212938) do
     t.integer  "applicant_contact_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.string   "step",                 limit: 50
     t.integer  "organisation_id"
+    t.string   "step",                 limit: 50
     t.integer  "site_address_id"
   end
 

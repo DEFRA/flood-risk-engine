@@ -40,8 +40,7 @@ module FloodRiskEngine
           begin
             "FloodRiskEngine::Steps::#{enrollment.step.classify}Form".constantize
           rescue
-            puts "Unexpected step [#{enrollment.step}] - No Form Object defined for this step"
-            Rails.logger.error("Unexpected step [#{enrollment.step}] - No Form Object defined for this step")
+            Rails.logger.debug(" No Form Object found for step [#{enrollment.step}] - falling back to object_class map")
             nil
           end
         end
