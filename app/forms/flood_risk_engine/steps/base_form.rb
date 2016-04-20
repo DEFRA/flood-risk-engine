@@ -4,6 +4,9 @@ require_dependency "reform"
 module FloodRiskEngine
   module Steps
     class BaseForm < Reform::Form
+
+      include ActionView::Helpers::TranslationHelper
+
       # So we can always build an enrollment step url
       def enrollment_id
         @enrollment.id
@@ -17,7 +20,7 @@ module FloodRiskEngine
       # Moved knowledge of parent key in params (defined in the html form using as: ..
       # otherwise we get very longs form field names etc - see step1.html.erb)
       # since knowing how to extract the form data, and what the expectation of the
-      # params sctructure is, is best here.
+      # params structure is, is best here.
       # params_key is a symbol defined by the subclass
       def validate(params)
         super params.fetch(params_key) { {} }

@@ -7,19 +7,25 @@
   </div>
 
   <br>
-  <p class="panel panel-border-wide"><%= t('.para_text') %> <%= link_to 'Flood risk activities guidance', "TBD" %> </p>
-  <br>
+  <p class="panel panel-border-wide">
+    <%= t('.para_text') %>
+    <br>
+    <%= link_to 'Flood risk activities guidance', "TBD" %>
+  </p>
 
-  <div class="form-group">
-    <label class="block-label" for="location_check_yes">
-      <%= f.radio_button :location_check, :yes, { checked: false, :class => "radio", id: "yes_option" } %>
-      <%= t('.label') %>
-    </label>
 
-    <label class="block-label" for="location_check_no">
-      <%= f.radio_button :location_check, :no, { checked: false, :class => "radio", id: "no_option" } %>
-      <%= t '.label1' %>
-    </label>
+  <%= form_group_and_validation(form, :base) do %>
+    <div class="form-group">
+      <label class="block-label" for="location_check_yes">
+        <%= f.radio_button :location_check, :yes, { checked: false, :class => "radio", id: "yes_option" } %>
+        <%= t('.label') %>
+      </label>
+
+      <label class="block-label" for="location_check_no">
+        <%= f.radio_button :location_check, :no, { checked: false, :class => "radio", id: "no_option" } %>
+        <%= t '.label1' %>
+      </label>
+  <% end %>
   </div>
 
 </fieldset>
