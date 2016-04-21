@@ -3,7 +3,7 @@ module FloodRiskEngine
     class FormObjectFactory
       class << self
         def form_object_for(step, enrollment)
-          klass = setup_form_object(enrollment)
+          klass = setup_form_object(step)
 
           klass ||= form_object_class_map.fetch(step.to_sym) do
             raise "No form object defined for step #{step}"
@@ -16,7 +16,7 @@ module FloodRiskEngine
           {
             grid_reference:          Steps::GridReferenceForm,
             review:                  Steps::NullForm,
-            check_location:          Steps::NullForm,
+            check_location:          Steps::CheckLocationForm,
             add_exemptions:          Steps::NullForm,
             check_exemptions:        Steps::NullForm,
             user_type:               Steps::UserTypeForm,
@@ -36,10 +36,10 @@ module FloodRiskEngine
 
         private
 
-        def setup_form_object(enrollment)
-          "FloodRiskEngine::Steps::#{enrollment.current_step.classify}Form".constantize
+        def setup_form_object(step)
+          "FloodRiskEngine::Steps::#{step.to_s.classify}Form".constantize
         rescue
-          Rails.logger.debug(" No Form Object found for step [#{enrollment.current_step}] - falling back to object_class map")
+          Rails.logger.debug(" No Form Object found for step [#{step}] - falling back to object_class map")
           nil
         end
       end
