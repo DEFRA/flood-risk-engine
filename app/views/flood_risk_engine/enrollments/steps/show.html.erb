@@ -32,7 +32,7 @@ see the DigitalServicesCore::BackLink class -->
       <%= render step.to_s, form: form, step: step, f: f %>
 
       <div class="form-group">
-        <%= f.submit 'Continue' %>
+        <%= f.submit submit_button_text(@form.enrollment), class: "button"  %>
       </div>
     <% end %>
 
