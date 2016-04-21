@@ -74,7 +74,7 @@ module FloodRiskEngine
       end
 
       it "diplays header" do
-        header_text = t('flood_risk_engine.enrollments.steps.grid_reference.heading')
+        header_text = t("flood_risk_engine.enrollments.steps.grid_reference.heading")
         expect(response.body).to have_tag :h1, text: /#{header_text}/
       end
     end

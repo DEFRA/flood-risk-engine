@@ -4,7 +4,6 @@
 module FloodRiskEngine
   module Steps
     class CheckLocationForm < FloodRiskEngine::Steps::BaseForm
-
       def self.factory(enrollment)
         new(enrollment)
       end
@@ -14,11 +13,10 @@ module FloodRiskEngine
       end
 
       def validate(params)
-
         # Parameters: "check_location"=>{"location_check"=>"yes"}, "commit"=>"Continue"}
-        unless params.has_key? :check_location
-           errors.add(:base, t("errors.you_must_make_selection"))
-           return false
+        unless params.key? :check_location
+          errors.add(:base, t("errors.you_must_make_selection"))
+          return false
         end
 
         true

@@ -4,7 +4,6 @@ require_dependency "reform"
 module FloodRiskEngine
   module Steps
     class BaseForm < Reform::Form
-
       include ActionView::Helpers::TranslationHelper
 
       # So we can always build an enrollment step url

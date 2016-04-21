@@ -1,6 +1,5 @@
 module FloodRiskEngine
   module ApplicationHelper
-
     # This helper  adds a form-group DIV around form elements,
     # and takes the actual form fields as a content block.
     #
@@ -22,7 +21,7 @@ module FloodRiskEngine
                   'aria-labelledby': "groupLabel"
       }
 
-      if(form && form.errors[attribute].any?)
+      if form && form.errors[attribute].any?
 
         content = content_tag(:span, form.errors[attribute].first.to_s.html_safe,
                               class: "error-message") + content
@@ -44,7 +43,7 @@ module FloodRiskEngine
     def set_page_title(title)
       return unless title.present?
 
-      stripped_title = title.gsub(/’/, %{'})
+      stripped_title = title.gsub(/’/, %('))
 
       if content_for? :page_title
         content_for :page_title, " | #{stripped_title}"
@@ -55,9 +54,8 @@ module FloodRiskEngine
       title
     end
 
-    def submit_button_text(enrollment)
+    def submit_button_text(_enrollment)
       t("global.continue")
     end
-
   end
 end
