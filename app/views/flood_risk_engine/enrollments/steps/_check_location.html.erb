@@ -1,18 +1,21 @@
 <fieldset>
+
   <legend class="visuallyhidden"><%= t('.legend') %></legend>
 
-  <div class="notice">
-    <i class="icon icon-important"><span class="visuallyhidden"><%= t('.text') %></span></i>
-    <strong class="bold-small"><%= t('.panel') %></strong>
+  <div class="panel panel-border-wide">
+    <p class="text"><%= t('.para_text') %></p>
+
+    <ul class="list list-bullet">
+      <li><%= t('.list_item') %></li>
+      <li><%= t('.list_item1') %></li>
+      <li><%= t('.list_item2') %></li>
+    </ul>
+
+    <p class="text"><%= t('.para_text1') %></p>
+
   </div>
 
   <br>
-  <p class="panel panel-border-wide">
-    <%= t('.para_text') %>
-    <br>
-    <%= link_to 'Flood risk activities guidance', "TBD" %>
-  </p>
-
 
   <%= form_group_and_validation(form, :base) do %>
     <div class="form-group">
@@ -26,6 +29,6 @@
         <%= t '.label1' %>
       </label>
   <% end %>
-  </div>
+</div>
 
 </fieldset>

@@ -4,11 +4,15 @@ en:
     enrollments:
       steps: 
         check_location: 
-          heading: Have you called us to check the location of your activity?
-          panel: You must contact us before you start this registration to check the location of your activity.
+          heading: Have you called us to check if your activity is in an environmentally
+            sensitive area?
           label: Yes, the location has been checked
           label1: 'No'
-          legend: Have you checked the location with us?
-          text: Warning
-          para_text: Call us on 03708 506 506 to check if your activities are on a
-            main river and if they are near any sensitive areas such as a nature reserve.
+          legend: Have you called us to check if your activity is in an environmentally
+            sensitive area?
+          list_item: on a main river
+          list_item1: near any environmentally sensitive areas such as a nature reserve
+          list_item2: too close to a flood defence structure
+          para_text: 'You must call us to check if your activities are:'
+          para_text1: You need to do this to make sure you meet the exemption conditions
+            about location.
