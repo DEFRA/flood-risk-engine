@@ -10,8 +10,8 @@ module FloodRiskEngine
   class StepMachine
     attr_reader :target, :state_machine_class, :initiating_step
     def initialize(target:,
-                    state_machine_class:,
-                    step: nil)
+                   state_machine_class:,
+                   step: nil)
       @target = target
       @state_machine_class = state_machine_class
       @initiating_step = step
@@ -27,9 +27,7 @@ module FloodRiskEngine
 
     def rollback_to(step)
       current = current_step
-      while current_step != step do
-        go_back! step
-      end
+      go_back! step while current_step != step
     rescue FiniteMachine::InvalidStateError
       set_step_as current
       raise StateMachineError, "Unable to rollback to #{step}"
@@ -93,6 +91,7 @@ module FloodRiskEngine
     )
 
     private
+
     def initiate_state_machine
       state_machine = state_machine_class.new
       state_machine.target(target)

@@ -10,9 +10,9 @@ module FloodRiskEngine
     belongs_to :site_address, class_name: "Address"
 
     has_many :enrollment_exemptions, foreign_key: :enrollment_id,
-             dependent: :restrict_with_exception
+                                     dependent: :restrict_with_exception
     has_many :exemptions, through: :enrollment_exemptions,
-             dependent: :restrict_with_exception
+                          dependent: :restrict_with_exception
 
     serialize :step_history, Array
 
@@ -43,6 +43,7 @@ module FloodRiskEngine
     )
 
     private
+
     def preserve_current_step
       self.step = current_step
     end

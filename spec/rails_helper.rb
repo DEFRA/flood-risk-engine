@@ -34,8 +34,8 @@ ActiveRecord::Migration.maintain_test_schema!
 Faker::Config.locale = "en-GB"
 
 # FactoryGirl willl not find the factories without the line below
-#FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), "factories")
-#FactoryGirl.find_definitions
+# FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), "factories")
+# FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   # Allows us to include should matchers like validate_presence_of if the spec type

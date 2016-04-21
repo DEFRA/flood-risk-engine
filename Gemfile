@@ -13,7 +13,7 @@ group :test do
   gem "shoulda-matchers", "~> 3.1", require: false
   gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
   gem "capybara", "~> 2.6"
-  gem 'guard-rspec', require: false
-  gem 'rspec-html-matchers'
+  gem "guard-rspec", require: false
+  gem "rspec-html-matchers"
   gem "database_cleaner", "~> 1.5"
 end

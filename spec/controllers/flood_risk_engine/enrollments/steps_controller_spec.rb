@@ -28,7 +28,7 @@ module FloodRiskEngine
         end
 
         describe "back step (step == (enrollment.step - 1)" do
-          let(:step) {steps[0]}
+          let(:step) { steps[0] }
           let(:enrollment) { FactoryGirl.create(:enrollment, step: steps[1]) }
           it "should render page successfully" do
             expect(response).to have_http_status(:success)
@@ -40,7 +40,7 @@ module FloodRiskEngine
 
         context "mismatches" do
           describe "large (step many steps from enrollment.step)" do
-            let(:step) {steps.first}
+            let(:step) { steps.first }
             let(:enrollment) { FactoryGirl.create(:enrollment, step: steps.last) }
             it "should redirect to enrollment.step" do
               expect(response).to redirect_to(
@@ -50,7 +50,7 @@ module FloodRiskEngine
           end
 
           describe "step too soon (step one after enrollment.step)" do
-            let(:step) {steps[2]}
+            let(:step) { steps[2] }
             let(:enrollment) { FactoryGirl.create(:enrollment, step: steps[1]) }
             it "should redirect to enrollment.step" do
               expect(response).to redirect_to(
@@ -74,7 +74,7 @@ module FloodRiskEngine
       end
 
       it "diplays header" do
-        header_text = t('flood_risk_engine.enrollments.steps.grid_reference.heading')
+        header_text = t("flood_risk_engine.enrollments.steps.grid_reference.heading")
         expect(response.body).to have_tag :h1, text: /#{header_text}/
       end
     end

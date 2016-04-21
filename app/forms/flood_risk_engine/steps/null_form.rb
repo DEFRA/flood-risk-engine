@@ -16,7 +16,7 @@ module FloodRiskEngine
           true
         end
 
-        def validate(params)
+        def validate(_params)
           true
         end
 
