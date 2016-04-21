@@ -20,7 +20,7 @@ module FloodRiskEngine
           true
         end
 
-        delegate :id, to: enrollment, prefix: true
+        delegate :id, to: :enrollment, prefix: true
       end
 
       def self.factory(enrollment)
