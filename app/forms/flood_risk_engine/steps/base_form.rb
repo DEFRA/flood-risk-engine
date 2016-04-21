@@ -8,7 +8,11 @@ module FloodRiskEngine
 
       # So we can always build an enrollment step url
       def enrollment_id
-        @enrollment.id
+        enrollment.id
+      end
+
+      def redirect?
+        false
       end
 
       def initialize(model, enrollment = nil)

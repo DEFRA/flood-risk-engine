@@ -4,22 +4,30 @@
 module FloodRiskEngine
   module Steps
     class CheckLocationForm < FloodRiskEngine::Steps::BaseForm
+      attr_accessor :redirection_url
+      attr_accessor :redirect
+      alias_method :redirect?, :redirect
+
+      property :location_check, virtual: true
+
+      validates :location_check,
+                presence: {
+                  message: I18n.t("errors.you_must_make_selection")
+                }
+
       def self.factory(enrollment)
-        new(enrollment)
+        new(enrollment).tap do |form|
+          form.redirection_url = "http://gov.uk"
+        end
       end
 
       def save
-        true
+        self.redirect = location_check == "no"
+        enrollment.save
       end
 
-      def validate(params)
-        # Parameters: "check_location"=>{"location_check"=>"yes"}, "commit"=>"Continue"}
-        unless params.key? :check_location
-          errors.add(:base, t("errors.you_must_make_selection"))
-          return false
-        end
-
-        true
+      def params_key
+        :check_location
       end
     end
   end

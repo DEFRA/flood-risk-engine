@@ -13,6 +13,8 @@ module FloodRiskEngine
     #   <%= form.radio_button "blah", "renew", checked: false, class: "radio" %>
     # <% end %>
     #
+    # TODO: refactor and remove this rubocop disable
+    # rubocop:disable Metrics/AbcSize
     def form_group_and_validation(form, attribute, &block)
       content = block_given? ? capture(&block) : ""
 
