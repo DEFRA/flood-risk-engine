@@ -18,10 +18,9 @@ module FloodRisk
         end
 
         def submit
-          fail "Not impl yet"
+          raise "Not impl yet"
         end
 
-        private
       end
     end
   end

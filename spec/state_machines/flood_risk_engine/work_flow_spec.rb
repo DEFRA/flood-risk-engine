@@ -3,9 +3,9 @@ require "rails_helper"
 module FloodRiskEngine
   describe WorkFlow do
     let(:work_flow) { WorkFlow.new(:start) }
-    let(:start_hash) { work_flow.make_hash(work_flow.work_flow)}
+    let(:start_hash) { work_flow.make_hash(work_flow.work_flow) }
     let(:array) { [:a, :b, :c, :d] }
-    let(:hash) { {a: :b, b: :c, c: :d } }
+    let(:hash) { { a: :b, b: :c, c: :d } }
 
     describe ".make_hash" do
       it "should convert an array into a hash" do

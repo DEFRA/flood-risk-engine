@@ -16,13 +16,11 @@ module FloodRiskEngine
           true
         end
 
-        def validate(params)
+        def validate(*)
           true
         end
 
-        def enrollment_id
-          enrollment.id
-        end
+        delegate :id, to: enrollment, prefix: true
       end
 
       def self.factory(enrollment)

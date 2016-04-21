@@ -2,7 +2,8 @@ module FloodRiskEngine
   class Exemption < ActiveRecord::Base
     has_many :enrollment_exemptions,
              dependent: :restrict_with_exception
-    has_many :enrollments, through: :enrollment_exemptions,
+    has_many :enrollments,
+             through: :enrollment_exemptions,
              dependent: :restrict_with_exception
 
     enum category: {

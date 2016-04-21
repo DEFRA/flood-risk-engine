@@ -29,7 +29,7 @@ module FloodRiskEngine
     end
 
     describe ".go_back" do
-      before {step_machine.restore! steps.last.to_sym}
+      before { step_machine.restore! steps.last.to_sym }
       it "should change current step to previous step" do
         expect(step_machine.current_step).to eq(steps[2])
         step_machine.go_back!
