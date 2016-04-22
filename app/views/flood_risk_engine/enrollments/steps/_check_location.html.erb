@@ -1,1 +1,34 @@
-check_location
+<fieldset>
+
+  <legend class="visuallyhidden"><%= t('.legend') %></legend>
+
+  <div class="panel panel-border-wide">
+    <p class="text"><%= t('.para_text') %></p>
+
+    <ul class="list list-bullet">
+      <li><%= t('.list_item') %></li>
+      <li><%= t('.list_item1') %></li>
+      <li><%= t('.list_item2') %></li>
+    </ul>
+
+    <p class="text"><%= t('.para_text1') %></p>
+
+  </div>
+
+  <br>
+
+  <%= form_group_and_validation(form, :base) do %>
+    <div class="form-group">
+      <label class="block-label" for="location_check_yes">
+        <%= f.radio_button :location_check, :yes, { checked: false, :class => "radio", id: "yes_option" } %>
+        <%= t('.label') %>
+      </label>
+
+      <label class="block-label" for="location_check_no">
+        <%= f.radio_button :location_check, :no, { checked: false, :class => "radio", id: "no_option" } %>
+        <%= t '.label1' %>
+      </label>
+  <% end %>
+</div>
+
+</fieldset>

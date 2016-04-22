@@ -8,9 +8,5 @@ class AddMissingIndexes < ActiveRecord::Migration
               name: "fre_contacts_partnership_organisation_id"
     add_index :flood_risk_engine_organisations, :contact_id
     add_index :flood_risk_engine_organisations, :type
-    add_index :flood_risk_engine_enrollments_exemptions,
-              [:enrollment_id, :exemption_id],
-              unique: true,
-              name: "fre_enrollments_exemptions_enrollment_id_exemption_id"
   end
 end

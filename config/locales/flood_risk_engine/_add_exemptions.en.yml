@@ -1,0 +1,13 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps: 
+        add_exemptions: 
+          heading: "{{ title }}"
+          legend: "{{ title }}"
+          para_text: |-
+            You can register more than one exemption but they must all be at the same location.
+                    You should check you can meet the conditions for each exemption.
+          para_text1: "."
+          para_text2: No radio buttons

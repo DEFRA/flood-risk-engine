@@ -8,3 +8,5 @@ en:
         limited_liability_partnership: Limited Liability Partnership
         other: Other
         unknown: Unknown
+  global:
+    continue: Continue

@@ -20,7 +20,10 @@ module FloodRiskEngine
 
       def update
         enrollment.go_forward
-        if save_form!
+        success = save_form!
+        if form.redirect?
+          redirect_to(form.redirection_url)
+        elsif success
           redirect_to step_url
         else
           render :show, locals: locals
@@ -62,7 +65,7 @@ module FloodRiskEngine
         form.validate(params) && enrollment.save && form.save
       end
 
-      # Trying the approach that all vars are passed explicitly to the template
+      # Using the approach that all vars are passed explicitly to the template
       # rather than relying on exposing @vars which, lets face it, is not great.
       def locals
         {

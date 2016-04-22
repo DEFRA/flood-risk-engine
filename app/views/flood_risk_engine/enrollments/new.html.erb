@@ -1,0 +1,28 @@
+<!-- There is some potentially quick complex logic around the back link -
+see the DigitalServicesCore::BackLink class -->
+<a class="link-back" href="">Back</a>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <header class="text">
+      <h1 class="form-title heading-large" id="groupLabel">
+        <%= page_title(t("flood_risk_engine.enrollments.steps.check_location.heading")) %>
+      </h1>
+    </header>
+
+    <%= form_for @form,
+                 as: @form.enrollment.current_step,
+                 url: url_for(:controller => 'enrollments', :action => 'create'),
+                 method: :post, class: 'form' do |f| %>
+
+      <%= render 'flood_risk_engine/enrollments/validation_errors', form: @form %>
+
+      <%= render 'flood_risk_engine/enrollments/steps/check_location', form: @form, f: f %>
+
+      <div class="form-group">
+        <%= f.submit submit_button_text(@form.enrollment), class: "button"  %>
+      </div>
+    <% end %>
+  </div>
+</div>

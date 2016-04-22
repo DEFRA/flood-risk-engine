@@ -1,0 +1,18 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps: 
+        check_location: 
+          heading: Have you called us to check if your activity is in an environmentally
+            sensitive area?
+          label: Yes, the location has been checked
+          label1: 'No'
+          legend: Have you called us to check if your activity is in an environmentally
+            sensitive area?
+          list_item: on a main river
+          list_item1: near any environmentally sensitive areas such as a nature reserve
+          list_item2: too close to a flood defence structure
+          para_text: 'You must call us to check if your activities are:'
+          para_text1: You need to do this to make sure you meet the exemption conditions
+            about location.
