@@ -1,5 +1,16 @@
 <%= f.label :organisation_type %>
-<%#= f.collection_radio_buttons :type,
-                               form.organisation_types,
-                               :first,
-                               :last %>
+<ul>
+<%= f.collection_radio_buttons(
+      :org_type,
+      form.organisation_types,
+      :first,
+      :last
+    ) do |b|
+      content_tag(
+        'li',
+        b.label{ b.radio_button + b.text },
+        class: "list-unstyled"
+      )
+    end
+%>
+</ul>

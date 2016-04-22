@@ -1,8 +1,8 @@
 module FloodRiskEngine
   module Steps
     class UserTypeForm < BaseForm
-      property :type
-      validates :type, presence: true
+      property :org_type
+      validates :org_type, presence: true
 
       def self.factory(enrollment)
         organisation = enrollment.organisation || Organisation.new
@@ -20,35 +20,18 @@ module FloodRiskEngine
       # organisation to the correct type; organisation.type is saved implicitly
       # when we save the enrollment
       def save
-        enrollment.organisation = organisation_cast_to_the_chosen_sti_type
+        model.org_type = org_type.to_sym
+        enrollment.organisation = model
         enrollment.save
       end
 
-      # Readonly array of array of organisation types which can be used in radio button
-      # groups. Example output:
-      # [
-      #   [
-      #     FloodRiskEngine::OrganisationTypes::Individual,
-      #     'Individual'
-      #   ],
-      #   [...]
-      # ]
-      #
       def organisation_types
-        Organisation::TYPES.map do |organsation_sti_class|
-          i18n_key = organsation_sti_class.name.demodulize.underscore
+        Organisation.org_types.keys.collect do |org_type|
           [
-            organsation_sti_class.to_s,
-            I18n.translate(i18n_key, scope: "organisation_types")
+            org_type,
+            Organisation.human_attribute_name(org_type)
           ]
         end
-      end
-
-      private
-
-      def organisation_cast_to_the_chosen_sti_type
-        organisation_sti_class = FloodRiskEngine.const_get(type)
-        model.becomes(organisation_sti_class)
       end
     end
   end
