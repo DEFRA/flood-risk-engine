@@ -20,7 +20,6 @@ module FloodRisk
         def submit
           raise "Not impl yet"
         end
-
       end
     end
   end

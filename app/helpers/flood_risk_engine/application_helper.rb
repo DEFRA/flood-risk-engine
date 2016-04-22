@@ -14,7 +14,6 @@ module FloodRiskEngine
     # <% end %>
     #
     # TODO: refactor and remove this rubocop disable
-    # rubocop:disable Metrics/AbcSize
     def form_group_and_validation(form, attribute, &block)
       content = block_given? ? capture(&block) : ""
 
@@ -42,7 +41,7 @@ module FloodRiskEngine
       "form_group_#{field}"
     end
 
-    def set_page_title(title)
+    def page_title(title)
       return unless title.present?
 
       stripped_title = title.gsub(/’/, %('))

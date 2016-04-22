@@ -6,7 +6,7 @@ module FloodRiskEngine
     class CheckLocationForm < FloodRiskEngine::Steps::BaseForm
       attr_accessor :redirection_url
       attr_accessor :redirect
-      alias_method :redirect?, :redirect
+      alias redirect? redirect
 
       property :location_check, virtual: true
 
