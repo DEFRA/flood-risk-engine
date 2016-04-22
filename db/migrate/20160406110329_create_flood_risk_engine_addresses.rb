@@ -9,7 +9,7 @@ class CreateFloodRiskEngineAddresses < ActiveRecord::Migration
       t.integer :county_province_id
       t.string :country_iso,        limit: 3
       t.integer :address_type,      default: 0, null: false
-      t.string :organisation,       limit: 255, null: false, default: ""
+      t.string :organisation,       limit: 255, null: false, default: ''
       t.references :contact
       t.date :state_date
       t.string :blpu_state_code

@@ -15,7 +15,7 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:grid_reference) }
     it { is_expected.to validate_length_of(:grid_reference) }
 
-    describe "#save" do
+    describe '#save' do
     end
   end
 end

@@ -5,7 +5,7 @@ class AddMissingIndexes < ActiveRecord::Migration
     add_index :flood_risk_engine_enrollments, :site_address_id
     add_index :flood_risk_engine_contacts,
               :partnership_organisation_id,
-              name: "fre_contacts_partnership_organisation_id"
+              name: 'fre_contacts_partnership_organisation_id'
     add_index :flood_risk_engine_organisations, :contact_id
     add_index :flood_risk_engine_organisations, :type
   end

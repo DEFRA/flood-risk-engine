@@ -3,7 +3,7 @@ require "rails_helper"
 module FloodRiskEngine
   describe Configuration do
     subject { FloodRiskEngine.config }
-    it "adds #config to the engine module" do
+    it 'adds #config to the engine module' do
       expect(FloodRiskEngine).to respond_to(:config)
     end
 
