@@ -22,7 +22,7 @@ module FloodRiskEngine
       end
 
       def save
-        self.redirect = location_check == "no"
+        self.redirect = (location_check == "no")
         enrollment.save
       end
 
