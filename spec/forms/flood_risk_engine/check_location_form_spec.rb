@@ -17,7 +17,7 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:redirection_url) }
     it do
       is_expected.to validate_presence_of(:location_check)
-        .with_message(t("errors.you_must_make_selection"))
+        .with_message(t("errors.select_yes_or_no"))
     end
 
     describe '#save' do
