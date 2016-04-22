@@ -18,6 +18,7 @@ module FloodRiskEngine
     # config_accessor(:some_key)
     # or with an optional default
     # config_accessor(:some_key) { "a default value" }
+    config_accessor(:redirection_url_on_location_unchecked)
   end
 
   def self.config

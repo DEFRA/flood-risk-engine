@@ -17,7 +17,7 @@ module FloodRiskEngine
 
       def self.factory(enrollment)
         new(enrollment).tap do |form|
-          form.redirection_url = "http://gov.uk"
+          form.redirection_url = FloodRiskEngine.config.redirection_url_on_location_unchecked
         end
       end
 

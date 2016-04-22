@@ -23,17 +23,22 @@ module FloodRiskEngine
     describe "#save" do
       it "sets 'redirect' to true if they answered 'no'" do
         expect(enrollment).to receive(:save).and_return(true)
+        FloodRiskEngine.config.redirection_url_on_location_unchecked = "http://gov.uk"
         params = { check_location: { location_check: "no" } }
+
         subject.validate(params)
         subject.save
+
         expect(subject.redirect?).to eq(true)
         expect(subject.redirection_url).to_not be_nil
       end
       it "sets does not set 'redirect' to true if they answered 'yes'" do
         expect(enrollment).to receive(:save).and_return(true)
         params = { check_location: { location_check: "yes" } }
+
         subject.validate(params)
         subject.save
+
         expect(subject.redirect?).to eq(false)
       end
     end
