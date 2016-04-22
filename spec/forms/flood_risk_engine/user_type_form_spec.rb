@@ -18,7 +18,7 @@ module FloodRiskEngine
     describe "#save" do
       it "saves the enrollment.organisation with the correct STI type" do
         sti_type = FloodRiskEngine::OrganisationTypes::Individual
-        params = { params_key => { type: sti_type.to_s }}
+        params = { params_key => { type: sti_type.to_s } }
 
         expect(enrollment).to receive(:save).and_return(true) # stub save
 

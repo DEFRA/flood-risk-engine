@@ -6,7 +6,7 @@ module FloodRiskEngine
   class WorkFlow
     # Define each work flow within Definitions
     module Definitions
-      extend self
+      module_function
 
       def local_authority
         start + local_authority_branch + finish

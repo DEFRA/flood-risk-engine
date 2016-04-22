@@ -4,11 +4,12 @@ module FloodRiskEngine
       class << self
         def form_object_for(step, enrollment)
           klass = form_object_class_map.fetch(step.to_sym) do
-            fail "No form object defined for step #{step}"
+            raise "No form object defined for step #{step}"
           end
           klass.factory(enrollment)
         end
 
+        # rubocop:disable Metrics/MethodLength
         # NB: use NullForm for steps with no html form.
         def form_object_class_map
           {
@@ -28,9 +29,10 @@ module FloodRiskEngine
             email_someone_else:      Steps::NullForm,
             check_your_answers:      Steps::NullForm,
             declaration:             Steps::NullForm,
-            confirmation:            Steps::NullForm,
+            confirmation:            Steps::NullForm
           }
         end
+        # rubocop:enable Metrics/MethodLength
       end
     end
   end

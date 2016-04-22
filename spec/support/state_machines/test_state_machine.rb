@@ -6,7 +6,7 @@ module FloodRiskEngine
     initial :step1
 
     module WorkFlow
-      extend self
+      module_function
 
       def steps
         [:step1, :step2, :step3]
@@ -28,24 +28,24 @@ module FloodRiskEngine
 
     events do
       event :go_forward,
-        WorkFlow.foo.merge(
-          if: -> { target.business_type == :foo }
-        )
+            WorkFlow.foo.merge(
+              if: -> { target.business_type == :foo }
+            )
 
       event :go_forward,
-        WorkFlow.bar.merge(
-          if: -> { target.business_type == :bar }
-        )
+            WorkFlow.bar.merge(
+              if: -> { target.business_type == :bar }
+            )
 
       event :go_back,
-        WorkFlow.foo.invert.merge(
-          if: -> { target.business_type == :foo }
-        )
+            WorkFlow.foo.invert.merge(
+              if: -> { target.business_type == :foo }
+            )
 
       event :go_back,
-        WorkFlow.bar.invert.merge(
-          if: -> { target.business_type == :bar }
-        )
+            WorkFlow.bar.invert.merge(
+              if: -> { target.business_type == :bar }
+            )
     end
   end
 end
