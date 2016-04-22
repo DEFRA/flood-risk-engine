@@ -6,7 +6,9 @@ module FloodRiskEngine
         new(enrollment)
       end
 
-        delegate :id, to: :enrollment, prefix: true
+      def save
+        true
+      end
 
       def validate(_params)
         true
