@@ -1,1 +1,14 @@
-add_exemption
+
+<label for="id_FRA2" class="block-label exemption">
+  <input id="id_FRA2" type="checkbox" name="exemption-FRA2" value="FRA2">
+  Electrical cable crossing a river <span class="exmpt">FRA2</span>
+</label>
+
+<%= f.collection_check_boxes( :exemptions, form.exemptions, :id, :code ) do |b|
+      b.label(class: "block-label exemption") do
+        b.check_box + ' ' +
+        b.object.summary + ' ' +
+        content_tag('span', b.text, class: "exmpt")
+      end
+    end
+%>
