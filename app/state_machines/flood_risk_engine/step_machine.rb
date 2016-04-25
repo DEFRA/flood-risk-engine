@@ -27,7 +27,7 @@ module FloodRiskEngine
     def set_step_as(step)
       restore!(step.to_sym)
     end
-    # r.ubocop:enable Style/AccessorMethodName
+    # rubocop:enable Style/AccessorMethodName
 
     def rollback_to(step)
       current = current_step
