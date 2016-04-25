@@ -1,0 +1,10 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      states: 
+        local_authority: 
+          heading: What's the name of the local authority or public body?
+          label: Local authority or public body name
+          legend: Local authority or public body name
+          para_text: For example, Bristol City Council

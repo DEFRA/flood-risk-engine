@@ -1,1 +1,12 @@
-local_authority
+<fieldset>
+  <legend class="visuallyhidden"><%= t('.legend') %></legend>
+
+  <!-- Local authority name -->
+  <div class="form-group">
+    <label class="form-label" for="authority-name"><%= t('.label') %></label>
+    <p class="form-hint"><%= t('.para_text') %></p>
+    <%= f.text_field :name', class:  'form-control' %>
+
+  </div>
+</fieldset>
+
