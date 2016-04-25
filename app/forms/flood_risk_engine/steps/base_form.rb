@@ -7,9 +7,7 @@ module FloodRiskEngine
       include ActionView::Helpers::TranslationHelper
 
       # So we can always build an enrollment step url
-      def enrollment_id
-        enrollment.id
-      end
+      delegate :id, to: :enrollment, prefix: true
 
       def redirect?
         false

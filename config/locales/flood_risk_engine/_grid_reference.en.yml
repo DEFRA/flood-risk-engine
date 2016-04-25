@@ -2,8 +2,8 @@
 en:
   flood_risk_engine:
     enrollments:
-      steps: 
-        grid_reference: 
+      steps:
+        grid_reference:
           heading: Where will the exemption activity take place?
           label: National grid reference
           legend: Where will the exemption activity take place?

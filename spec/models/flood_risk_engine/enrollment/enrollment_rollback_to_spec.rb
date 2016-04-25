@@ -12,7 +12,7 @@ module FloodRiskEngine
     let(:enrollment) { create(:enrollment) }
     let(:steps) { TestStateMachine::WorkFlow.steps.collect!(&:to_s) }
 
-    describe "#rollback_to" do
+    describe '#rollback_to' do
       before do
         enrollment.go_forward
         enrollment.go_forward

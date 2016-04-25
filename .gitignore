@@ -1,3 +1,4 @@
+/.htmlhintrc
 /.byebug_history
 .bundle/
 log/*.log

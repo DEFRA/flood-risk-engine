@@ -29,7 +29,7 @@ module FloodRiskEngine
       end
     end
 
-    describe "#for" do
+    describe '#for' do
       it "should hash for Definition start array" do
         expect(WorkFlow.for(:start)).to eq(start_hash)
       end

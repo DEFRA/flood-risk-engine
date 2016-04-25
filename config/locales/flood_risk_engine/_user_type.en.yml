@@ -2,8 +2,8 @@
 en:
   flood_risk_engine:
     enrollments:
-      steps: 
-        user_type: 
+      steps:
+        user_type:
           heading: Who is legally responsible for the activity?
           list_item: have day-to-day control of the activity
           list_item1: make sure the activity complies with the exemption rules

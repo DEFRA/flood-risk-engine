@@ -10,9 +10,10 @@ module FloodRiskEngine
 
       property :location_check, virtual: true
 
+      # Errors stored under :location_check
       validates :location_check,
                 presence: {
-                  message: I18n.t("errors.you_must_make_selection")
+                  message: I18n.t("errors.select_yes_or_no")
                 }
 
       def self.factory(enrollment)

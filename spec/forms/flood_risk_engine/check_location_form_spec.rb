@@ -15,12 +15,12 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:location_check) }
     it { is_expected.to respond_to(:redirect?) }
     it { is_expected.to respond_to(:redirection_url) }
-    it {
+    it do
       is_expected.to validate_presence_of(:location_check)
-        .with_message(t("errors.you_must_make_selection"))
-    }
+        .with_message(t("errors.select_yes_or_no"))
+    end
 
-    describe "#save" do
+    describe '#save' do
       it "sets 'redirect' to true if they answered 'no'" do
         expect(enrollment).to receive(:save).and_return(true)
         FloodRiskEngine.config.redirection_url_on_location_unchecked = "http://gov.uk"

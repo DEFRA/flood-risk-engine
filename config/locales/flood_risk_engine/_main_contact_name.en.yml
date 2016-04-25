@@ -2,8 +2,8 @@
 en:
   flood_risk_engine:
     enrollments:
-      steps: 
-        main_contact_name: 
+      steps:
+        main_contact_name:
           heading: Who should we contact about this activity?
           label: Full name
           label1: Job title, if applicable (optional)

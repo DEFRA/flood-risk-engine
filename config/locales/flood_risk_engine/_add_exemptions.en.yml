@@ -2,8 +2,8 @@
 en:
   flood_risk_engine:
     enrollments:
-      steps: 
-        add_exemptions: 
+      steps:
+        add_exemptions:
           heading: "{{ title }}"
           legend: "{{ title }}"
           para_text: |-
