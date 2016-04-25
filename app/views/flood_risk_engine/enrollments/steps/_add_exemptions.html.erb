@@ -4,7 +4,7 @@
   Electrical cable crossing a river <span class="exmpt">FRA2</span>
 </label>
 
-<%= f.collection_check_boxes( :exemptions, form.exemptions, :id, :code ) do |b|
+<%= f.collection_check_boxes( :exemption_ids, form.all_exemptions, :id, :code ) do |b|
       b.label(class: "block-label exemption") do
         b.check_box + ' ' +
         b.object.summary + ' ' +

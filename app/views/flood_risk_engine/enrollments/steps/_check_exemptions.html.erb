@@ -1,1 +1,5 @@
-check_exemptions
+<ul>
+<% form.enrollment.exemptions.each do |exemption| %>
+  <li><%= exemption.summary %></li>
+<% end %>
+</ul>

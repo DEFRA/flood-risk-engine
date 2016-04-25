@@ -7,14 +7,14 @@ module FloodRiskEngine
     let(:enrollment) { FactoryGirl.create(:enrollment) }
     let(:model_class) { Enrollment }
     let(:exemptions) { FactoryGirl.create_list(:exemption, 3) }
-    let(:params) { { params_key => { exemptions: exemptions.collect(&:id) } } }
+    let(:params) { { params_key => { exemption_ids: exemptions.collect(&:id) } } }
 
     subject { described_class.factory(enrollment) }
 
     it_behaves_like "a form object"
 
     it { is_expected.to be_a(described_class) }
-    it { is_expected.to respond_to(:exemptions) }
+    it { is_expected.to respond_to(:all_exemptions) }
 
     describe ".save" do
       it "adds exemptions to enrollment" do
@@ -29,7 +29,7 @@ module FloodRiskEngine
 
     describe ".validate" do
       context "with empty exemptions params" do
-        let(:params) { { params_key => { exemptions: [] } } }
+        let(:params) { { params_key => { exemption_ids: [] } } }
         it "should fail" do
           expect(subject.validate(params)).to be(false)
         end
