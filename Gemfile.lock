@@ -51,7 +51,7 @@ GEM
     ast (2.2.0)
     autoprefixer-rails (6.3.6)
       execjs
-    before_commit (0.6.1)
+    before_commit (0.7.0)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)

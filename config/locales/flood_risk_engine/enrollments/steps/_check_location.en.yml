@@ -2,8 +2,8 @@
 en:
   flood_risk_engine:
     enrollments:
-      steps: 
-        check_location: 
+      steps:
+        check_location:
           heading: Have you called us to check if your activity is in an environmentally
             sensitive area?
           label: Yes, the location has been checked
