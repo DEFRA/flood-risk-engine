@@ -1,16 +1,25 @@
 module FloodRiskEngine
-  module State
-    class LocalAuthorityForm < BaseForm
+  module Steps
+    class LocalAuthorityForm < FloodRiskEngine::Steps::BaseForm
 
       def self.factory(enrollment)
-        new(enrollment)
+        organisation = enrollment.organisation || Organisation.new
+        new(organisation, enrollment)
       end
 
-      # Define the attributes on the inbound model, that you want included in your form/validation with
-      # property :name
-      # For full API see  - https://github.com/apotonick/reform
-        property :authority_name
+      def self.locale_key
+        "flood_risk_engine.enrollments.steps"
+      end
 
+      validates :name, presence: {
+        message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")
+      }
+
+      validates :name, length: {
+        maximum: 255, message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")
+      }
+
+      property :name
 
       def params_key
         :local_authority
@@ -18,6 +27,8 @@ module FloodRiskEngine
 
       def save
         super
+        enrollment.organisation ||= model
+        enrollment.save
       end
     end
   end
