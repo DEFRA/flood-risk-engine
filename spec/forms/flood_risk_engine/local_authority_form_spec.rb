@@ -17,12 +17,12 @@ module FloodRiskEngine
 
       it { is_expected.to be_a(LocalAuthorityForm) }
 
-      it { is_expected.to validate_presence_of(:name)
-                            .with_message(t("#{LocalAuthorityForm.locale_key}.errors.name.blank"))
+      it {
+        is_expected.to validate_presence_of(:name)
+          .with_message(t("#{LocalAuthorityForm.locale_key}.errors.name.blank"))
       }
 
       describe "#save" do
-
         it "saves the name of the local authority when name supplied" do
           expect(enrollment).to receive(:save).and_return(true)
           params = { "#{form.params_key}": { name: "Bodge It and Scarper Ltd" } }
