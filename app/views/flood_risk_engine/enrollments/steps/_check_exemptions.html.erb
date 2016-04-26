@@ -22,7 +22,9 @@
                 class: "visuallyhidden"
               )
             ).html_safe,
-           "exemptions/add_exemptions"
+           remove_exemption_enrollment_path(
+             form.model, exemption_id: exemption.id
+           )
          )
         %>
       </td>

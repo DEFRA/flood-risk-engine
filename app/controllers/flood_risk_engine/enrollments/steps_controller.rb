@@ -11,7 +11,7 @@ module FloodRiskEngine
     class StepsController < ApplicationController
       class StepError < StandardError; end
       rescue_from StepError, with: :step_not_found
-      before_action :check_step_is_valid
+      before_action :check_step_is_valid, except: [:remove_exemption]
       before_action :back_button_cache_buster
 
       def show
@@ -30,10 +30,18 @@ module FloodRiskEngine
         end
       end
 
+      def remove_exemption
+        @enrollment = Enrollment.find(params[:id])
+        @exemption = Exemption.find(params[:exemption_id])
+        enrollment.exemptions.destroy(@exemption)
+        step_back if enrollment.exemptions.empty?
+        redirect_to step_url
+      end
+
       private
 
       def step
-        params.fetch(:id).to_sym
+        @step ||= params.fetch(:id).to_sym
       end
 
       def step_url

@@ -42,8 +42,7 @@ module FloodRiskEngine
             let(:enrollment) { FactoryGirl.create(:enrollment, step: steps.last) }
             it "should redirect to enrollment.step" do
               expect(response).to redirect_to(
-                "/fre/enrollments/#{enrollment.id}/steps/#{steps.last}"
-
+                enrollment_step_path(enrollment, steps.last)
               )
             end
           end
