@@ -1,9 +1,12 @@
-
-<%= f.collection_check_boxes( :exemption_ids, form.all_exemptions, :id, :code ) do |b|
-      b.label(class: "block-label exemption") do
-        b.check_box + ' ' +
-        b.object.summary + ' ' +
-        content_tag('span', b.text, class: "exmpt")
-      end
-    end
-%>
+<%= form_group_and_validation(form, :base) do %>
+  <div class="form-group">
+    <%= f.collection_check_boxes( :exemption_ids, form.all_exemptions, :id, :code ) do |b|
+          b.label(class: "block-label exemption") do
+            b.check_box + ' ' +
+            b.object.summary + ' ' +
+            content_tag('span', b.text, class: "exmpt")
+          end
+        end
+    %>
+  </div>
+<% end %>

@@ -30,6 +30,17 @@ module FloodRiskEngine
     describe ".validate" do
       context "with empty exemptions params" do
         let(:params) { { params_key => { exemption_ids: [] } } }
+        let(:error_message) do
+          I18n.t "activemodel.errors.messages.select_at_lease_one_exemptions"
+        end
+        it "should fail" do
+          expect(subject.validate(params)).to be(false)
+          expect(subject.errors.messages[:exemption_ids]).to eq([error_message])
+        end
+      end
+
+      context "with blank exemptions params" do
+        let(:params) { { params_key => { exemption_ids: [""] } } }
         it "should fail" do
           expect(subject.validate(params)).to be(false)
         end
