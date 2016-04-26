@@ -1,13 +1,9 @@
-<h1 class="heading-large">
-  <%= t("flood_risk_engine.enrollments.steps.show.add_exemptions.heading") %>
-</h1>
-
 <p class="panel panel-border-wide">
   <%=
     t(
-      "flood_risk_engine.enrollments.steps.show.add_exemptions.lead_paragraph.text",
+      "flood_risk_engine.enrollments.steps.add_exemptions.lead_paragraph.text",
       link: link_to(
-        t("flood_risk_engine.enrollments.steps.show.add_exemptions.lead_paragraph.link"),
+        t("flood_risk_engine.enrollments.steps.add_exemptions.lead_paragraph.link"),
         "https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities",
         target: "blank"
       )
@@ -19,7 +15,7 @@
   <div class="form-group">
     <fieldset>
       <legend class="visuallyhidden">
-        <%= t("flood_risk_engine.enrollments.steps.show.add_exemptions.heading") %>
+        <%= t("flood_risk_engine.enrollments.steps.add_exemptions.heading") %>
       </legend>
     <%= f.collection_check_boxes( :exemption_ids, form.all_exemptions, :id, :code ) do |b|
           b.label(class: "block-label exemption") do
@@ -35,7 +31,7 @@
 
 <p>
   <span class="bold-small">
-    <%= t("flood_risk_engine.enrollments.steps.show.add_exemptions.foot_note.heading") %>
+    <%= t("flood_risk_engine.enrollments.steps.add_exemptions.foot_note.heading") %>
   </span><br />
-  <%= t("flood_risk_engine.enrollments.steps.show.add_exemptions.foot_note.text") %>
+  <%= t("flood_risk_engine.enrollments.steps.add_exemptions.foot_note.text") %>
 </p>
