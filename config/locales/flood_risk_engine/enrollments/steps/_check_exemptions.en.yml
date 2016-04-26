@@ -1,0 +1,12 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        check_exemptions:
+          heading: Check your exemptions
+          add_link: Add another exemption
+          remove_link:
+            text: Remove %{hidden}
+            hidden: exemption %{code}
+          table_summary: Exemptions that you selected with title, exemption code and a link to remove any you don't need

@@ -1,5 +1,43 @@
-<ul>
-<% form.enrollment.exemptions.each do |exemption| %>
-  <li><%= exemption.summary %></li>
-<% end %>
-</ul>
+<table class="check-your-answers" summary="<%= t("flood_risk_engine.enrollments.steps.check_exemptions.table_summary") %>">
+  <tbody>
+    <% form.enrollment.exemptions.each do |exemption| %>
+    <tr>
+      <th>
+        <p class="font-small"><%= exemption.summary %></p>
+      </th>
+      <td>
+        <span class="bold-small"><%= exemption.code %></span>
+      </td>
+      <td class="change-answer">
+        <%=
+          link_to(
+            t(
+              "flood_risk_engine.enrollments.steps.check_exemptions.remove_link.text",
+              hidden: content_tag(
+                'span',
+                t(
+                  "flood_risk_engine.enrollments.steps.check_exemptions.remove_link.hidden",
+                  code: exemption.code
+                ),
+                class: "visuallyhidden"
+              )
+            ).html_safe,
+           "exemptions/add_exemptions"
+         )
+        %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<p>
+  <%=
+    link_to(
+      t("flood_risk_engine.enrollments.steps.check_exemptions.add_link"),
+      enrollment_step_path(form.model, form.model.previous_step)
+    )
+  %>
+</p>
