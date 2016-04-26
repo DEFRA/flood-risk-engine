@@ -1,27 +1,33 @@
 module FloodRiskEngine
   module Steps
-    class AddExemptionForm < FloodRiskEngine::Steps::BaseForm
+    class AddExemptionsForm < BaseForm
+      property :exemption_ids
+
+      attr_reader :all_exemptions
+
       def self.factory(enrollment)
         new(enrollment)
       end
 
+      validates(
+        :exemption_ids,
+        length: {
+          minimum: 1,
+          message: :select_at_lease_one_exemptions
+        }
+      )
+
       def initialize(enrollment)
         super enrollment
-        @exemptions = Exemption.all
+        @all_exemptions = Exemption.all
       end
 
-      attr_reader :exemptions
+      def exemption_ids=(ids)
+        super ids.reject(&:blank?)
+      end
 
       def params_key
-        :add_exemptions_id
-      end
-
-      def save
-        super
-      end
-
-      collection :exemptions do
-        property :code
+        :add_exemptions
       end
     end
   end

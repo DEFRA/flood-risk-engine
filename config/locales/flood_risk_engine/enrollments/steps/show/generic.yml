@@ -1,0 +1,43 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        grid_reference:
+          heading: Grid Reference
+        applicant_contact_name:
+          heading: Applicant Contact Name
+        organisation_type:
+          heading: Organisation Type
+        review:
+          heading: Review
+        check_location:
+          heading: Check Location
+        check_exemptions:
+          heading: Check Exemptions
+        add_exemptions:
+          heading: Add Exemptions
+        user_type:
+          heading: User Type
+        local_authority:
+          heading: Local Authority
+        local_authority_address:
+          heading: Local Authority Address
+        main_contact_name:
+          heading: Main Contact Name
+        main_contact_telephone:
+          heading: Main Contact Telephone
+        main_contact_email:
+          heading: Main Contact Email
+        main_contact_address:
+          heading: Main Contact Address
+        main_contact_postcode:
+          heading: Main Contact Postcode
+        email_someone_else:
+          heading: Email Someone Else
+        check_your_answers:
+          heading: check your answers
+        declaration:
+          heading: Declaration
+        confirmation:
+          heading: Confirmation

@@ -18,7 +18,7 @@ module FloodRiskEngine
             grid_reference:          Steps::GridReferenceForm,
             review:                  Steps::NullForm,
             check_location:          Steps::CheckLocationForm,
-            add_exemptions:          Steps::NullForm,
+            add_exemptions:          Steps::AddExemptionsForm,
             check_exemptions:        Steps::NullForm,
             user_type:               Steps::UserTypeForm,
             local_authority:         Steps::NullForm,

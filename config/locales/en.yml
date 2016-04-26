@@ -8,5 +8,10 @@ en:
         limited_liability_partnership: Limited Liability Partnership
         other: Other
         unknown: Unknown
+  activemodel:
+    errors:
+      messages:
+        select_at_lease_one_exemptions: Select at least one exemption
+
   global:
     continue: Continue

@@ -62,7 +62,9 @@ module FloodRiskEngine
       end
 
       def save_form!
-        form.validate(params) && enrollment.save && form.save
+        return false unless form.validate(params)
+        return false unless enrollment.save
+        form.save
       end
 
       # Using the approach that all vars are passed explicitly to the template
