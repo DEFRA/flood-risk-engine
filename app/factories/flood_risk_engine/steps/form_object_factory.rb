@@ -38,11 +38,16 @@ module FloodRiskEngine
         private
 
         def setup_form_object(step)
-          "FloodRiskEngine::Steps::#{step.to_s.classify}Form".constantize
-        rescue
-          Rails.logger.debug(" No Form Object found for step [#{step}] - falling back to object_class map")
-          nil
+          form_name = "FloodRiskEngine::Steps::#{step.to_s.classify}Form"
+          begin
+            form_name.constantize
+          rescue => x
+            Rails.logger.error(x.inspect)
+            Rails.logger.debug("Error loading Form class #{form_name} - trying object_class map")
+            nil
+          end
         end
+
       end
     end
   end

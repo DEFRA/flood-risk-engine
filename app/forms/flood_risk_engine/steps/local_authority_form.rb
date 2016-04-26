@@ -8,15 +8,23 @@ module FloodRiskEngine
       end
 
       def self.locale_key
-        "flood_risk_engine.enrollments.steps"
+        "flood_risk_engine.enrollments.steps.local_authority"
       end
+
+      def self.name_max_length
+        255
+      end
+
+      include ActiveModel::Validations
+      validates :name, 'flood_risk_engine/name_format': true
 
       validates :name, presence: {
         message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")
       }
 
       validates :name, length: {
-        maximum: 255, message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")
+        maximum: LocalAuthorityForm.name_max_length,
+        message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")
       }
 
       property :name

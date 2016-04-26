@@ -2,7 +2,7 @@
 
   <legend class="visuallyhidden"><%= t('.legend') %></legend>
 
-  <%= form_group_and_validation(form, form.params_key) do %>
+  <%= form_group_and_validation(form, :name) do %>
       <div class="form-group">
         <label class="form-label" for="authority-name"><%= t('.label') %></label>
         <p class="form-hint"><%= t('.para_text') %></p>
