@@ -12,7 +12,7 @@ module FloodRiskEngine
       end
 
       def self.name_max_length
-        255
+        200
       end
 
       validation :name_present? do
