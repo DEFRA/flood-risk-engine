@@ -6,8 +6,8 @@ en:
         check_location:
           heading: Have you called us to check if your activity is in an environmentally
             sensitive area?
-          label: Yes, the location has been checked
-          label1: 'No'
+          label_yes: Yes, the location has been checked
+          label_no: 'No'
           legend: Have you called us to check if your activity is in an environmentally
             sensitive area?
           list_item: on a main river

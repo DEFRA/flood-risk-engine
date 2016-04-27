@@ -18,15 +18,19 @@
 
   <%= form_group_and_validation(form, :location_check) do %>
     <div class="form-group">
-      <label class="block-label" for="location_check_yes">
-        <%= f.radio_button :location_check, :yes, { checked: false, :class => "radio", id: "yes_option" } %>
-        <%= t('.label') %>
-      </label>
 
-      <label class="block-label" for="location_check_no">
-        <%= f.radio_button :location_check, :no, { checked: false, :class => "radio", id: "no_option" } %>
-        <%= t '.label1' %>
-      </label>
+      <%= f.label :location_check_yes, class: 'block-label form-label' do %>
+        <%= f.radio_button :location_check, :yes,
+                           { checked: false, :class => "radio", id: "check_location_location_check_yes" } %>
+        <%= t('.label_yes') %>
+      <% end %>
+
+      <%= f.label :location_check_no,class: 'block-label form-label' do %>
+        <%= f.radio_button :location_check, :no,
+                           { checked: false, :class => "radio", id: "check_location_location_check_no" } %>
+        <%= t('.label_no') %>
+      <% end %>
+
     </div>
   <% end %>
 
