@@ -18,7 +18,7 @@ module FloodRiskEngine
 
       def self.factory(enrollment)
         new(enrollment).tap do |form|
-          form.redirection_url = FloodRiskEngine.config.redirection_url_on_location_unchecked
+          form.redirection_url = Rails.application.routes.url_helpers.page_path(:contact_ea_location)
         end
       end
 
