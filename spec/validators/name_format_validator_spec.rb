@@ -20,6 +20,17 @@ module FloodRiskEngine
         expect(validatable.valid?).to be true
         expect(validatable.errors[:name].size).to eq(0)
       end
+
+      # Different name Formats
+      # http://www.w3.org/International/questions/qa-personal-names
+      it do
+        ["Björk Guðmundsdóttir", "Isa bin Osman", "Mao Ze Dong", "María-Jose Carreño Quiñones"].each do |n|
+          validatable.name = n
+
+          expect(validatable.valid?).to be true
+          expect(validatable.errors[:name].size).to eq(0)
+        end
+      end
     end
 
     describe "Invalid" do
