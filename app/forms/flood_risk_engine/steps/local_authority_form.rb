@@ -22,7 +22,7 @@ module FloodRiskEngine
       end
 
       include ActiveModel::Validations
-      validation :email_format, if: :name_present? do
+      validation :validate_name_format, if: :name_present? do
         validates :name, 'flood_risk_engine/name_format': true
       end
 
