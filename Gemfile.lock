@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     flood_risk_engine (0.0.1)
+      dibber (~> 0.4)
       dotenv-rails (~> 2.1)
       finite_machine (~> 0.10)
       rails (~> 4.2)
@@ -70,6 +71,7 @@ GEM
     database_cleaner (1.5.3)
     declarative (0.0.7)
       uber (>= 0.0.15)
+    dibber (0.4.0)
     diff-lcs (1.2.5)
     disposable (0.2.6)
       declarative (~> 0.0.6)
