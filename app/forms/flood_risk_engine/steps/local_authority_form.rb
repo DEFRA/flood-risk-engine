@@ -15,12 +15,16 @@ module FloodRiskEngine
         255
       end
 
-      include ActiveModel::Validations
-      validates :name, 'flood_risk_engine/name_format': true
+      validation :name_present? do
+        validates :name, presence: {
+          message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")
+        }
+      end
 
-      validates :name, presence: {
-        message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")
-      }
+      include ActiveModel::Validations
+      validation :email_format, if: :name_present? do
+        validates :name, 'flood_risk_engine/name_format': true
+      end
 
       validates :name, length: {
         maximum: LocalAuthorityForm.name_max_length,

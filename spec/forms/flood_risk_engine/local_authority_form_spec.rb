@@ -34,6 +34,14 @@ module FloodRiskEngine
 
           expect(form.enrollment.organisation.name).to eq params[form.params_key][:name]
         end
+
+        it "does not validate when no name supplied" do
+          params = { "#{form.params_key}": { name: "" } }
+
+          expect(form.validate(params)).to eq false
+        end
+
+
       end
     end
   end

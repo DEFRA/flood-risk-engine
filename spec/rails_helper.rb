@@ -28,7 +28,7 @@ require_relative "support/state_machines/test_state_machine"
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+#ActiveRecord::Migration.maintain_test_schema!
 
 # Set faker so it uses British formats for postcodes, telephone numbers etc.
 Faker::Config.locale = "en-GB"
