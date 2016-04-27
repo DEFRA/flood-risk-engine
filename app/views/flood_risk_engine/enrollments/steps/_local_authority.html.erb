@@ -4,7 +4,7 @@
 
   <%= form_group_and_validation(form, :name) do %>
       <div class="form-group">
-        <label class="form-label" for="authority-name"><%= t('.label') %></label>
+        <%= f.label :name, t('.label'), class: 'form-label' %>
         <p class="form-hint"><%= t('.para_text') %></p>
         <%= f.text_field :name, class:  'form-control' %>
       </div>
