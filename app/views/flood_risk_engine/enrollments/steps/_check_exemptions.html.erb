@@ -22,9 +22,11 @@
                 class: "visuallyhidden"
               )
             ).html_safe,
-           remove_exemption_enrollment_path(
-             form.model, exemption_id: exemption.id
-           )
+           enrollment_exemption_path(
+             exemption,
+             enrollment_id: form.model
+           ),
+           method: :delete
          )
         %>
       </td>

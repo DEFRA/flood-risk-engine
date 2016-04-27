@@ -1,6 +1,7 @@
 require "rails_helper"
+
 module FloodRiskEngine
-  describe Enrollments::StepsController, type: :controller do
+  RSpec.describe Enrollments::ExemptionsController, type: :controller do
     routes { Engine.routes }
     render_views
     let(:exemption) { FactoryGirl.create(:exemption) }
@@ -13,12 +14,12 @@ module FloodRiskEngine
       )
     end
 
-    describe ".remove_exemption" do
+    describe ".destroy" do
       context "when more than one exemptions" do
         let(:exemptions) { [exemption, other_exemption] }
 
         before do
-          get :remove_exemption, id: enrollment, exemption_id: exemption
+          delete :destroy, id: exemption, enrollment_id: enrollment
         end
 
         describe "removing an exemption" do
@@ -38,7 +39,7 @@ module FloodRiskEngine
         let(:exemptions) { [exemption] }
 
         before do
-          get :remove_exemption, id: enrollment, exemption_id: exemption
+          delete :destroy, id: exemption, enrollment_id: enrollment
         end
 
         describe "removing an exemption" do
@@ -51,6 +52,26 @@ module FloodRiskEngine
           it "should remove the exemption" do
             expect(enrollment.reload.exemptions).to eq([])
           end
+        end
+      end
+    end
+
+    describe ".show" do
+      let(:exemptions) { [exemption, other_exemption] }
+
+      before do
+        get :show, id: exemption, enrollment_id: enrollment
+      end
+
+      describe "removing an exemption" do
+        it "should redirect to current step" do
+          expect(response).to redirect_to(
+            enrollment_step_path(enrollment, enrollment.step)
+          )
+        end
+
+        it "should remove the exemption" do
+          expect(enrollment.reload.exemptions).to eq([other_exemption])
         end
       end
     end

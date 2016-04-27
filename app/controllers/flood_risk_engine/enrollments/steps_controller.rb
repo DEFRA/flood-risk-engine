@@ -30,14 +30,6 @@ module FloodRiskEngine
         end
       end
 
-      def remove_exemption
-        @enrollment = Enrollment.find(params[:id])
-        @exemption = Exemption.find(params[:exemption_id])
-        enrollment.exemptions.destroy(@exemption)
-        step_back if enrollment.exemptions.empty?
-        redirect_to step_url
-      end
-
       private
 
       def step
