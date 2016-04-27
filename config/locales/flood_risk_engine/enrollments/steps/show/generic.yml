@@ -13,10 +13,6 @@ en:
           heading: Review
         check_location:
           heading: Check Location
-        check_exemptions:
-          heading: Check Exemptions
-        add_exemptions:
-          heading: Add Exemptions
         user_type:
           heading: User Type
         local_authority:

@@ -5,6 +5,7 @@ PATH
       dibber (~> 0.4)
       dotenv-rails (~> 2.1)
       finite_machine (~> 0.10)
+      jquery-rails (~> 4.1)
       rails (~> 4.2)
       reform (~> 2.1)
       reform-rails (~> 0.1)
@@ -272,7 +273,6 @@ DEPENDENCIES
   faker
   flood_risk_engine!
   guard-rspec
-  jquery-rails (~> 4.1)
   poltergeist (~> 1.9)
   quiet_assets (~> 1.1)
   rspec-html-matchers
