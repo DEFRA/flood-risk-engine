@@ -1,0 +1,7 @@
+# In travis-ci this file is copied over the database.yml before the tests are run.
+# As per https://docs.travis-ci.com/user/database-setup/#SQLite3 if you use activerecord they recommend adding the
+# following configuration for your test database.
+test:
+  adapter: sqlite3
+  database: ":memory:"
+  timeout: 500
