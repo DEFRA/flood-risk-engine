@@ -11,8 +11,6 @@ en:
           heading: Organisation Type
         review:
           heading: Review
-        check_location:
-          heading: Check Location
         user_type:
           heading: User Type
         local_authority:
