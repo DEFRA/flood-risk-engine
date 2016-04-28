@@ -34,8 +34,10 @@ module FloodRiskEngine
       context "failure" do
         let(:validation_result) { false }
 
-        it "should stay on the current step" do
-          expect(response).to have_http_status(:success)
+        it "should redirect back to current step with check for errors" do
+          expect(response).to redirect_to(
+            enrollment_step_path(enrollment, step, check_for_error: true)
+          )
         end
       end
     end

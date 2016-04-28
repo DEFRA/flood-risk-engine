@@ -15,6 +15,7 @@ module FloodRiskEngine
       before_action :back_button_cache_buster
 
       def show
+        form.valid? if params[:check_for_error]
         render :show, locals: locals
       end
 
@@ -26,7 +27,8 @@ module FloodRiskEngine
         elsif success
           redirect_to step_url
         else
-          render :show, locals: locals
+          enrollment.go_back
+          redirect_to failure_url
         end
       end
 
@@ -36,8 +38,15 @@ module FloodRiskEngine
         @step ||= params.fetch(:id).to_sym
       end
 
-      def step_url
-        enrollment_step_path(enrollment, enrollment.current_step)
+      def step_url(extra = {})
+        enrollment_step_path(enrollment, enrollment.current_step, extra)
+      end
+
+      def failure_url
+        step_url(
+          form.params_key => params[form.params_key],
+          check_for_error: true
+        )
       end
 
       def check_step_is_valid
