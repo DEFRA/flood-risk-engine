@@ -23,6 +23,13 @@ module FloodRiskEngine
       end
     end
 
+    # For example; We need to add back button cache busting to some external Controllers
+    config.to_prepare do
+      Dir.glob(File.join(Engine.root, "app/decorators", "**/*_decorator*.rb")).each do |c|
+        require_dependency(c)
+      end
+    end
+
     # Make Engine Factories available to Apps
     unless Rails.env.production?
       initializer "flood_risk_engine.factories", after: "factory_girl.set_factory_paths" do
