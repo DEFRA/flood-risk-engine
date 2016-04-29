@@ -1,0 +1,14 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        local_authority: 
+          heading: What's the name of the local authority or public body?
+          label: Local authority or public body name
+          legend: Local authority or public body name
+          para_text: For example, Bristol City Council
+          errors:
+            name:
+             blank: Enter the name of the local authority or public body
+             too_long: Check the name - it should have no more than than 200 characters

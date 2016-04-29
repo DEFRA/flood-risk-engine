@@ -4,3 +4,6 @@ en:
     enrollments:
       validation_errors:
         you_have: You have
+    validation_errors:
+      name:
+        invalid: Make sure the name contains only letters, spaces, commas, full stops, hyphens and apostrophes
