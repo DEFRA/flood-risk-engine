@@ -15,7 +15,7 @@ module FloodRiskEngine
       before_action :back_button_cache_buster
 
       def show
-        form.valid? if params[:check_for_error]
+        form.validate(params) if params[:check_for_error]
         render :show, locals: locals
       end
 

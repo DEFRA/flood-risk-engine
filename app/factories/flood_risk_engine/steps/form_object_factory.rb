@@ -3,7 +3,6 @@ module FloodRiskEngine
     class FormObjectFactory
       class << self
         def form_object_for(step, enrollment)
-
           klass = form_object_class_map[step.to_sym] || setup_form_object(step)
 
           raise(FormObjectError, "No form object defined for step #{step}") unless klass

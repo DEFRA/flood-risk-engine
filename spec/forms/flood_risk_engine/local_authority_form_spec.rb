@@ -40,8 +40,6 @@ module FloodRiskEngine
 
           expect(form.validate(params)).to eq false
         end
-
-
       end
     end
   end

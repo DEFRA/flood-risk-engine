@@ -22,6 +22,5 @@ module FloodRiskEngine
         expect(response.body).to have_tag :h1, text: /#{header_text}/
       end
     end
-
   end
 end
