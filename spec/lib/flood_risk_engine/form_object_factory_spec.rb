@@ -2,12 +2,11 @@ require "rails_helper"
 
 module FloodRiskEngine
   describe Steps::FormObjectFactory do
-
     let!(:factory) { Steps::FormObjectFactory }
 
     let!(:enrollment) { Enrollment.new }
 
-    it 'anables us to find the FormObject for a defined Step' do
+    it "anables us to find the FormObject for a defined Step" do
       expect(factory).to respond_to(:form_object_for)
     end
 
@@ -16,11 +15,11 @@ module FloodRiskEngine
     end
 
     it "returns a form Object for a valid step", duff: true do
-      expect( factory.form_object_for(Enrollment.new.current_step.to_sym, enrollment) ).to be_a Steps::BaseForm
+      expect(factory.form_object_for(Enrollment.new.current_step.to_sym, enrollment)).to be_a Steps::BaseForm
     end
 
     it "returns a form Object for a valid step" do
-      expect( factory.form_object_for(Enrollment.new.current_step.to_s, enrollment) ).to be_a Steps::BaseForm
+      expect(factory.form_object_for(Enrollment.new.current_step.to_s, enrollment)).to be_a Steps::BaseForm
     end
   end
 end

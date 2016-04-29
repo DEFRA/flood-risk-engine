@@ -5,8 +5,8 @@ module FloodRiskEngine
   class NameFormatValidator < ActiveModel::EachValidator
 
     def validate_each(record, attribute, value)
-      if(value !~ NameFormatValidator.valid_name_regex)
-        record.errors.add attribute,  I18n.t("flood_risk_engine.validation_errors.name.invalid")
+      if value !~ NameFormatValidator.valid_name_regex
+        record.errors.add attribute, I18n.t("flood_risk_engine.validation_errors.name.invalid")
       end
     end
 
