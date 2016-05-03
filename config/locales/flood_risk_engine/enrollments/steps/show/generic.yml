@@ -11,8 +11,6 @@ en:
           heading: Organisation Type
         review:
           heading: Review
-        user_type:
-          heading: User Type
         local_authority_address:
           heading: Local Authority Address
         main_contact_telephone:
