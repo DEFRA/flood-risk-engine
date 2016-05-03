@@ -16,6 +16,9 @@ module FloodRiskEngine
              through: :enrollment_exemptions,
              dependent: :restrict_with_exception
 
+    # The Correspondence Contact Details related to this Application a.k.a Main Contact
+    belongs_to :correspondence_contact, class_name: "Contact"
+
     serialize :step_history, Array
 
     before_validation :preserve_current_step

@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.integer  "contact_type",                default: 0, null: false
     t.integer  "title",                       default: 0, null: false
     t.string   "suffix"
-    t.string   "first_name"
-    t.string   "last_name"
     t.date     "date_of_birth"
     t.string   "position"
     t.string   "email_address"
@@ -45,21 +43,25 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.integer  "partnership_organisation_id"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.string   "full_name"
   end
 
   add_index "flood_risk_engine_contacts", ["email_address"], name: "index_flood_risk_engine_contacts_on_email_address"
+  add_index "flood_risk_engine_contacts", ["full_name"], name: "index_flood_risk_engine_contacts_on_full_name"
   add_index "flood_risk_engine_contacts", ["partnership_organisation_id"], name: "fre_contacts_partnership_organisation_id"
 
   create_table "flood_risk_engine_enrollments", force: :cascade do |t|
     t.integer  "applicant_contact_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "organisation_id"
-    t.string   "step",                 limit: 50
+    t.string   "step",                      limit: 50
     t.integer  "site_address_id"
+    t.integer  "correspondence_contact_id"
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id"
+  add_index "flood_risk_engine_enrollments", ["correspondence_contact_id"], name: "fre_enrollments_correspondence_contact_id"
   add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id"
   add_index "flood_risk_engine_enrollments", ["site_address_id"], name: "index_flood_risk_engine_enrollments_on_site_address_id"
 

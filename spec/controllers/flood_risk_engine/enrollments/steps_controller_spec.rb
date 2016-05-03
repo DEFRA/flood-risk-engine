@@ -78,12 +78,12 @@ module FloodRiskEngine
       end
     end
 
-    context "main contact name" do
-      let(:step) { "main_contact_name" }
+    context "correspondence contact name" do
+      let(:step) { "correspondence_contact_name" }
 
       it "uses MainContactNameForm" do
         get :show, id: step, enrollment_id: enrollment
-        expect(controller.send(:form)).to be_a(Steps::MainContactNameForm)
+        expect(controller.send(:form)).to be_a(Steps::CorrespondenceContactNameForm)
       end
     end
 
