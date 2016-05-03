@@ -33,17 +33,17 @@ ActiveRecord::Schema.define(version: 20160503152619) do
   end
 
   create_table "flood_risk_engine_contacts", force: :cascade do |t|
-    t.integer  "contact_type",                default: 0, null: false
-    t.integer  "title",                       default: 0, null: false
+    t.integer  "contact_type",                            default: 0,  null: false
+    t.integer  "title",                                   default: 0,  null: false
     t.string   "suffix"
     t.date     "date_of_birth"
-    t.string   "position"
+    t.string   "position",                    limit: 255
     t.string   "email_address"
     t.string   "telephone_number"
     t.integer  "partnership_organisation_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "full_name"
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "full_name",                   limit: 255, default: "", null: false
   end
 
   add_index "flood_risk_engine_contacts", ["email_address"], name: "index_flood_risk_engine_contacts_on_email_address"

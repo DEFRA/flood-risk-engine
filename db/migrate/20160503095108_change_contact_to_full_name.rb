@@ -7,6 +7,8 @@ class ChangeContactToFullName < ActiveRecord::Migration
     add_column :flood_risk_engine_contacts, :full_name, :string, limit: 255, null: false, default: ''
     add_index :flood_risk_engine_contacts, :full_name
 
+    change_column :flood_risk_engine_contacts, :position, :string, limit: 255
+
     add_reference :flood_risk_engine_enrollments, :correspondence_contact
 
     add_index :flood_risk_engine_enrollments,
@@ -20,6 +22,8 @@ class ChangeContactToFullName < ActiveRecord::Migration
 
     remove_column :flood_risk_engine_contacts, :full_name, :string
     remove_index :flood_risk_engine_contacts, :full_name
+
+    change_column :flood_risk_engine_contacts, :position, :string
 
     remove_reference :flood_risk_engine_enrollments, :correspondence_contact
 

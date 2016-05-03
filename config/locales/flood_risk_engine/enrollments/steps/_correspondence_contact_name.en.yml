@@ -16,5 +16,5 @@ en:
           errors:
             full_name:
              blank: Enter a name
-             too_few_words: Enter a full name
+             too_few: Enter a full name
              too_long: Check the name you entered - it should have no more than %{max_length} characters

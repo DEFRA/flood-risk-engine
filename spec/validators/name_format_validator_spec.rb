@@ -2,7 +2,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe NameFormatValidator, type: :model do
-    class Validatable
+    class NameValidatable
       include ActiveModel::Validations
 
       validates :name, "flood_risk_engine/name_format": true
@@ -10,11 +10,11 @@ module FloodRiskEngine
       attr_accessor :name
     end
 
-    let(:validatable) { Validatable.new }
+    let(:validatable) { NameValidatable.new }
 
     context "with valid name" do
       it "is valid" do
-        validatable.name = Faker::Company.name
+        validatable.name = "Joe Smith"
 
         expect(validatable.valid?).to be true
         expect(validatable.errors[:name].size).to eq(0)
@@ -33,21 +33,30 @@ module FloodRiskEngine
     end
 
     describe "Invalid" do
-      context "without name" do
-        it "is invalid" do
-          expect(validatable.valid?).to be_falsey
-          expect(validatable.errors[:name].size).to eq(1)
-        end
+      it "with blank name is invalid" do
+        expect(validatable.valid?).to be_falsey
+        expect(validatable.errors[:name].size).to eq(1)
       end
 
-      context "with invalid charcters" do
-        it "is invalid" do
-          validatable.name = Faker::Company.name + " 12 * &"
+      it " without 2 or more words  is invalid", duff: true do
 
-          expect(validatable.valid?).to be_falsey
-          expect(validatable.errors[:name].size).to eq(1)
-        end
+        validatable.name ="    "
+        expect(validatable.valid?).to be_falsey
+        expect(validatable.errors[:name].size).to eq(1)
+
+        validatable.name ="Mr "
+        expect(validatable.valid?).to be_falsey
+        expect(validatable.errors[:name].size).to eq(1)
+
+        validatable.name =" Mr"
+        expect(validatable.valid?).to be_falsey
+        expect(validatable.errors[:name].size).to eq(1)
+
+        validatable.name =" Mr "
+        expect(validatable.valid?).to be_falsey
+        expect(validatable.errors[:name].size).to eq(1)
       end
+
     end
   end
 end

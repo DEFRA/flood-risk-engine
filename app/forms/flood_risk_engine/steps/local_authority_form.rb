@@ -19,7 +19,7 @@ module FloodRiskEngine
 
       include ActiveModel::Validations
 
-      validates :name, 'flood_risk_engine/name_format': true, allow_blank: true
+      validates :name, 'flood_risk_engine/text_field_content': true, allow_blank: true
 
       validates :name, length: {
         maximum: LocalAuthorityForm.name_max_length,
