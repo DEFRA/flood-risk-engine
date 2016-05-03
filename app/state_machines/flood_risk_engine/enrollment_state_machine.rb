@@ -14,8 +14,54 @@ module FloodRiskEngine
     initial :check_location
 
     events do
-      event :go_forward, WorkFlow.for(:local_authority)
-      event :go_back, WorkFlow.for(:local_authority).invert
+      event :go_forward, WorkFlow.for(:start).merge(
+        if: -> { target.org_type.nil? }
+      )
+      event :go_back, WorkFlow.for(:start).invert.merge(
+        if: -> { target.org_type.nil? }
+      )
+
+      event :go_forward, WorkFlow.for(:local_authority).merge(
+        if: -> { target.org_type == "local_authority" }
+      )
+      event :go_back, WorkFlow.for(:local_authority).invert.merge(
+        if: -> { target.org_type == "local_authority" }
+      )
+
+      event :go_forward, WorkFlow.for(:limited_company).merge(
+        if: -> { target.org_type == "limited_company" }
+      )
+      event :go_back, WorkFlow.for(:limited_company).invert.merge(
+        if: -> { target.org_type == "limited_company" }
+      )
+
+      event :go_forward, WorkFlow.for(:limited_liability_partnership).merge(
+        if: -> { target.org_type == "limited_liability_partnership" }
+      )
+      event :go_back, WorkFlow.for(:limited_liability_partnership).invert.merge(
+        if: -> { target.org_type == "limited_liability_partnership" }
+      )
+
+      event :go_forward, WorkFlow.for(:individual).merge(
+        if: -> { target.org_type == "individual" }
+      )
+      event :go_back, WorkFlow.for(:individual).invert.merge(
+        if: -> { target.org_type == "individual" }
+      )
+
+      event :go_forward, WorkFlow.for(:partnership).merge(
+        if: -> { target.org_type == "partnership" }
+      )
+      event :go_back, WorkFlow.for(:partnership).invert.merge(
+        if: -> { target.org_type == "partnership" }
+      )
+
+      event :go_forward, WorkFlow.for(:other).merge(
+        if: -> { target.org_type == "other" }
+      )
+      event :go_back, WorkFlow.for(:other).invert.merge(
+        if: -> { target.org_type == "other" }
+      )
     end
   end
 end

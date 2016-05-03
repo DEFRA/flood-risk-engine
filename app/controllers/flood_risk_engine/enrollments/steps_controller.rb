@@ -20,14 +20,13 @@ module FloodRiskEngine
       end
 
       def update
-        enrollment.go_forward
         success = save_form!
         if form.redirect?
           redirect_to(form.redirection_url)
         elsif success
+          step_forward
           redirect_to step_url
         else
-          enrollment.go_back
           redirect_to failure_url
         end
       end
@@ -59,6 +58,11 @@ module FloodRiskEngine
         enrollment.previous_step? step
       rescue StateMachineError
         false
+      end
+
+      def step_forward
+        enrollment.go_forward
+        enrollment.save
       end
 
       def step_back

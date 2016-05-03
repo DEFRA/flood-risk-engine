@@ -12,6 +12,26 @@ module FloodRiskEngine
         start + local_authority_branch + finish
       end
 
+      def limited_company
+        start + limited_company_branch + finish
+      end
+
+      def limited_liability_partnership
+        start + limited_liability_partnership_branch + finish
+      end
+
+      def individual
+        start + individual_branch + finish
+      end
+
+      def partnership
+        start + partnership_branch + finish
+      end
+
+      def other
+        start + other_branch + finish
+      end
+
       def start
         [
           :check_location,
@@ -31,6 +51,36 @@ module FloodRiskEngine
           :correspondence_contact_email,
           :correspondence_contact_address,
           :correspondence_contact_postcode
+        ]
+      end
+
+      def limited_company_branch
+        [
+          :limited_company_number
+        ]
+      end
+
+      def limited_liability_partnership_branch
+        [
+          :limited_liability_number
+        ]
+      end
+
+      def individual_branch
+        [
+          :individual_name
+        ]
+      end
+
+      def partnership_branch
+        [
+          :partnership
+        ]
+      end
+
+      def other_branch
+        [
+          :other
         ]
       end
 

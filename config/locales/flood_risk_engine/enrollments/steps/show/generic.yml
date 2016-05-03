@@ -31,3 +31,13 @@ en:
           heading: Declaration
         confirmation:
           heading: Confirmation
+        individual_name:
+          heading: Individual Nane
+        limited_company_number:
+          heading: Limited Company Number
+        limited_liability_number:
+          heading: Limited Liability Number
+        other:
+          heading: Other
+        partnership:
+          heading: Partnership

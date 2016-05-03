@@ -21,7 +21,13 @@ module FloodRiskEngine
       # when we save the enrollment
       def save
         model.org_type = org_type.to_sym
+        super
+        # Need to go back and then forward as organisation change will effect
+        # onward journey. Without the back and forth a user cannot go back
+        # through the user type selection.
+        enrollment.go_back
         enrollment.organisation = model
+        enrollment.go_forward
         enrollment.save
       end
 
