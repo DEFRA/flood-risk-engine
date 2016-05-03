@@ -7,7 +7,8 @@ Seeder.seeds_path = File.expand_path('seeds', File.dirname(__FILE__))
 Seeder.seed(
   FloodRiskEngine::Exemption,
   name_method: :code,
-  attributes_method: :summary
+  attributes_method: :summary,
+  overwrite: true
 )
 
 puts Seeder.report
