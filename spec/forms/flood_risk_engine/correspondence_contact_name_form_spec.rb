@@ -18,16 +18,15 @@ module FloodRiskEngine
       it { is_expected.to be_a(CorrespondenceContactNameForm) }
 
       it "supplied details of name max length" do
-        expect( CorrespondenceContactNameForm.respond_to?(:name_max_length)).to eq true
-        expect( CorrespondenceContactNameForm.name_max_length).to be_a Fixnum
+        expect(CorrespondenceContactNameForm.respond_to?(:name_max_length)).to eq true
+        expect(CorrespondenceContactNameForm.name_max_length).to be_a Fixnum
       end
 
-      let!(:full_name)    { Faker::Name.name  }
+      let!(:full_name)    { Faker::Name.name }
       let!(:position)     { Faker::Company.profession }
-      let!(:valid_params) { {full_name: full_name} }
+      let!(:valid_params) { { full_name: full_name } }
 
       describe "Save" do
-
         it "saves the name of the contact when name supplied" do
           params = { "#{form.params_key}": valid_params }
 
@@ -57,11 +56,10 @@ module FloodRiskEngine
       end
 
       describe "Validation" do
-
         let(:full_name_errors)    { subject.errors.messages[:full_name] }
         let(:position_errors)     { subject.errors.messages[:position] }
 
-        let(:locale_errors_key)    { "#{CorrespondenceContactNameForm.locale_key}.errors" }
+        let(:locale_errors_key) { "#{CorrespondenceContactNameForm.locale_key}.errors" }
 
         let(:name_max_length)     { CorrespondenceContactNameForm.name_max_length }
         let(:position_max_length) { CorrespondenceContactNameForm.position_max_length }
@@ -74,13 +72,13 @@ module FloodRiskEngine
         end
 
         it "does not validate when name supplied is too long" do
-          name = "Mr This Will Blow" + "a" *name_max_length
+          name = "Mr This Will Blow" + "a" * name_max_length
           params = { "#{form.params_key}": { full_name: name } }
 
           expect(form.validate(params)).to eq false
           expect(full_name_errors).to eq(
-                                        [I18n.t("#{locale_errors_key}.full_name.too_long", max_length: name_max_length)]
-                                      )
+            [I18n.t("#{locale_errors_key}.full_name.too_long", max_length: name_max_length)]
+          )
         end
 
         it "does not validate when name with unacceptable chars" do
@@ -91,7 +89,7 @@ module FloodRiskEngine
         end
 
         it "does not validate if name is less than one word" do
-          [" Joe",  "Joe",  "Joe  "].each do |bad|
+          [" Joe", "Joe", "Joe  "].each do |bad|
             form.errors.clear
             params = { "#{form.params_key}": { full_name: bad } }
             expect(form.validate(params)).to eq false
@@ -115,13 +113,11 @@ module FloodRiskEngine
 
           expect(full_name_errors).to be_nil
           expect(position_errors).to eq(
-                                       [I18n.t("#{locale_errors_key}.position.too_long",
-                                               max_length: position_max_length)]
-                                     )
+            [I18n.t("#{locale_errors_key}.position.too_long",
+                    max_length: position_max_length)]
+          )
         end
-
       end
-
     end
   end
 end

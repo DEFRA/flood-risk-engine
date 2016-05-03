@@ -39,24 +39,22 @@ module FloodRiskEngine
       end
 
       it " without 2 or more words  is invalid", duff: true do
-
-        validatable.name ="    "
+        validatable.name = "    "
         expect(validatable.valid?).to be_falsey
         expect(validatable.errors[:name].size).to eq(1)
 
-        validatable.name ="Mr "
+        validatable.name = "Mr "
         expect(validatable.valid?).to be_falsey
         expect(validatable.errors[:name].size).to eq(1)
 
-        validatable.name =" Mr"
+        validatable.name = " Mr"
         expect(validatable.valid?).to be_falsey
         expect(validatable.errors[:name].size).to eq(1)
 
-        validatable.name =" Mr "
+        validatable.name = " Mr "
         expect(validatable.valid?).to be_falsey
         expect(validatable.errors[:name].size).to eq(1)
       end
-
     end
   end
 end

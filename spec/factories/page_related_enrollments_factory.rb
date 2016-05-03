@@ -11,5 +11,4 @@ FactoryGirl.define do
   factory :page_correspondence_contact_name, parent: :enrollment, traits: [:with_exemption] do
     step :correspondence_contact_name
   end
-
 end

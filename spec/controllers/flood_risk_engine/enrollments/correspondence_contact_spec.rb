@@ -1,7 +1,6 @@
 require "rails_helper"
 module FloodRiskEngine
   describe Enrollments::StepsController, type: :controller do
-
     routes { Engine.routes }
     render_views
 
@@ -26,7 +25,6 @@ module FloodRiskEngine
       end
 
       context "with invalid params" do
-
         let(:invalid_attributes) {
           { full_name: "12345 not a valid name **" }
         }
@@ -51,7 +49,6 @@ module FloodRiskEngine
           pending "response just says you are being redirected - feature tests would be better than these tests"
           expect(response.body).to have_tag :a, text: expected_error
         end
-
       end
     end
   end

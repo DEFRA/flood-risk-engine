@@ -11,7 +11,6 @@ module FloodRiskEngine
         :correspondence_contact_name
       end
 
-
       def self.factory(enrollment)
         contact = enrollment.correspondence_contact
 
@@ -27,11 +26,15 @@ module FloodRiskEngine
       end
 
       def self.name_max_length
-        @name_max_length ||= TextFieldContentValidator.find_max_column_length(FloodRiskEngine::Contact, "full_name", 255)
+        @name_max_length ||= TextFieldContentValidator.find_max_column_length(
+          FloodRiskEngine::Contact, "full_name", 255
+        )
       end
 
       def self.position_max_length
-        @position_max_length ||= TextFieldContentValidator.find_max_column_length(FloodRiskEngine::Contact, "position", 255)
+        @position_max_length ||= TextFieldContentValidator.find_max_column_length(
+          FloodRiskEngine::Contact, "position", 255
+        )
       end
 
       property :full_name
@@ -52,7 +55,6 @@ module FloodRiskEngine
 
       validates :full_name, 'flood_risk_engine/name_format': true, allow_blank: true
 
-
       # The Job Title Field
 
       property :position
@@ -65,7 +67,6 @@ module FloodRiskEngine
           message: I18n.t("#{CorrespondenceContactNameForm.locale_key}.errors.position.too_long",
                           max_length: CorrespondenceContactNameForm.position_max_length)
         }
-
 
       def save
         super
