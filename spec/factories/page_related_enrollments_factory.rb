@@ -4,12 +4,12 @@ FactoryGirl.define do
   factory :page_check_location, class: FloodRiskEngine::Enrollment do
   end
 
-  factory :page_local_authority, parent: :enrollment, traits: [:with_exemption] do
+  factory :page_local_authority, parent: :enrollment,
+                                 traits: [:with_exemption, :with_locale_authority] do
     step :local_authority
   end
 
-  factory :page_correspondence_contact_name, parent: :enrollment,
-                                             traits: [:with_exemption, :with_locale_authority] do
+  factory :page_correspondence_contact_name, parent: :page_local_authority do
     step :correspondence_contact_name
   end
 

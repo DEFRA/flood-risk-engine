@@ -1,0 +1,17 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        correspondence_contact_email:
+          heading: "What’s the email address of the person we should contact?"
+          label:  Email address
+          hint:  "We’ll send the registration confirmation to this address"
+          label1: Confirm email address
+          errors:
+            email_address:
+              blank: Enter an email address
+              format: "Enter a valid email address - there’s a mistake in that one"
+            email_address_confirmation:
+              blank: Enter your email address again to confirm it
+              format: "The email addresses you’ve entered don’t match"
