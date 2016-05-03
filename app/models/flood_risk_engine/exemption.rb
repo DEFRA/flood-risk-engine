@@ -1,5 +1,7 @@
 module FloodRiskEngine
   class Exemption < ActiveRecord::Base
+    default_scope { order("CAST(#{table_name}.code AS int)") }
+
     has_many :enrollment_exemptions,
              dependent: :restrict_with_exception
     has_many :enrollments,
