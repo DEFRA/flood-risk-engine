@@ -20,15 +20,11 @@ module FloodRiskEngine
             check_exemptions:        Steps::NullForm,
             user_type:               Steps::UserTypeForm,
             local_authority_address: Steps::NullForm,
+
             correspondence_contact_telephone:  Steps::NullForm,
-            correspondence_contact_email:      Steps::NullForm,
             correspondence_contact_address:    Steps::NullForm,
             correspondence_contact_postcode:   Steps::NullForm,
-            main_contact_name:       Steps::NullForm,
-            main_contact_telephone:  Steps::NullForm,
-            main_contact_email:      Steps::NullForm,
-            main_contact_address:    Steps::NullForm,
-            main_contact_postcode:   Steps::NullForm,
+
             individual_name:         Steps::NullForm,
             limited_company_number:  Steps::NullForm,
             limited_liability_number: Steps::NullForm,
@@ -47,7 +43,8 @@ module FloodRiskEngine
           form_name = "FloodRiskEngine::Steps::#{step.to_s.classify}Form"
           begin
             form_name.constantize
-          rescue NameError
+          rescue NameError => x
+            Rails.logger.debug(x.inspect)
             Rails.logger.debug("Error loading Form class #{form_name} ")
             nil
           end

@@ -72,6 +72,18 @@ module FloodRiskEngine
         ]
       end
 
+      def local_authority_branch
+        [
+          :local_authority,
+          :local_authority_address,
+          :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
+          :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
+          :correspondence_contact_email,
+          :correspondence_contact_address,
+          :correspondence_contact_postcode
+        ]
+      end
+
       def finish
         [
           :email_someone_else,

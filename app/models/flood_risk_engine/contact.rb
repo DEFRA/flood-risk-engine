@@ -1,3 +1,5 @@
+require "validates_email_format_of"
+
 module FloodRiskEngine
   class Contact < ActiveRecord::Base
     has_one :organisation, dependent: :restrict_with_exception
