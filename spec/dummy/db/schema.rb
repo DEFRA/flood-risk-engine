@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419132958) do
+ActiveRecord::Schema.define(version: 20160503133237) do
 
   create_table "flood_risk_engine_addresses", force: :cascade do |t|
     t.string   "premises",            limit: 200
@@ -79,7 +79,10 @@ ActiveRecord::Schema.define(version: 20160419132958) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "code_number"
   end
+
+  add_index "flood_risk_engine_exemptions", ["code_number"], name: "index_flood_risk_engine_exemptions_on_code_number", unique: true
 
   create_table "flood_risk_engine_locations", force: :cascade do |t|
     t.integer  "address_id"
