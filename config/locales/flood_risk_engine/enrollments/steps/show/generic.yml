@@ -13,8 +13,6 @@ en:
           heading: Review
         user_type:
           heading: User Type
-        local_authority:
-          heading: Local Authority
         local_authority_address:
           heading: Local Authority Address
         main_contact_name:
