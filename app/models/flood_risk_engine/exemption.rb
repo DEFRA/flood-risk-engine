@@ -1,6 +1,6 @@
 module FloodRiskEngine
   class Exemption < ActiveRecord::Base
-    default_scope { order("CAST(#{table_name}.code AS int)") }
+    default_scope { order(:code_number) }
 
     has_many :enrollment_exemptions,
              dependent: :restrict_with_exception
@@ -11,9 +11,17 @@ module FloodRiskEngine
     enum category: {
     }
 
+    before_save :update_code_number
+
     # An exemption's friendly name, used for example when listing exemptions in an email.
     def to_s
       "#{code}: #{summary}"
+    end
+
+    private
+
+    def update_code_number
+      self.code_number = code.gsub(/\D/, "").to_i
     end
   end
 end
