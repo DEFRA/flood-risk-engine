@@ -26,7 +26,7 @@
       form.organisation_types,
       :first,
       :last
-    ) {|b| b.label { b.radio_button + b.text } }
+    ) {|b| b.label(class: "block-label") { b.radio_button + b.text } }
 %>
   </fieldset>
 </div>
