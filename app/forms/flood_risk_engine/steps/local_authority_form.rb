@@ -26,7 +26,6 @@ module FloodRiskEngine
         message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")
       }
 
-
       def save
         super
         enrollment.organisation ||= model

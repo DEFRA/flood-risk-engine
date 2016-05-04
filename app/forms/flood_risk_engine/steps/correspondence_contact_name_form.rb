@@ -67,6 +67,7 @@ module FloodRiskEngine
       # Force use of the factory to create instances of this class
       class << self
         private
+
         def new(model, enrollment = nil)
           super(model, enrollment)
         end

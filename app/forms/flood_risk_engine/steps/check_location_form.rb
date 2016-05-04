@@ -18,7 +18,6 @@ module FloodRiskEngine
         :check_location
       end
 
-      
       property :location_check, virtual: true
 
       # Errors stored under :location_check
@@ -26,7 +25,6 @@ module FloodRiskEngine
                 presence: {
                   message: I18n.t("errors.select_yes_or_no")
                 }
-
 
       def save
         self.redirect = (location_check == "no")

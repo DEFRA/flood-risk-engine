@@ -56,8 +56,9 @@ module FloodRiskEngine
           params = { "#{form.params_key}": { name: name } }
 
           expect(form.validate(params)).to eq false
-          expect(subject.errors.messages[:name])
-            .to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")])
+          expect(
+            subject.errors.messages[:name]
+          ).to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")])
         end
       end
     end
