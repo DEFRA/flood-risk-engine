@@ -9,7 +9,57 @@ module FloodRiskEngine
       module_function
 
       def local_authority
-        start + local_authority_branch + finish
+        between_start_and_finish do
+          [
+            :local_authority,
+            :local_authority_address,
+            :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
+            :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
+            :correspondence_contact_email,
+            :correspondence_contact_address,
+            :correspondence_contact_postcode
+          ]
+        end
+      end
+
+      def limited_company
+        between_start_and_finish do
+          [
+            :limited_company_number
+          ]
+        end
+      end
+
+      def limited_liability_partnership
+        between_start_and_finish do
+          [
+            :limited_liability_number
+          ]
+        end
+      end
+
+      def individual
+        between_start_and_finish do
+          [
+            :individual_name
+          ]
+        end
+      end
+
+      def partnership
+        between_start_and_finish do
+          [
+            :partnership
+          ]
+        end
+      end
+
+      def other
+        between_start_and_finish do
+          [
+            :other
+          ]
+        end
       end
 
       def start
@@ -22,18 +72,6 @@ module FloodRiskEngine
         ]
       end
 
-      def local_authority_branch
-        [
-          :local_authority,
-          :local_authority_address,
-          :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
-          :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
-          :correspondence_contact_email,
-          :correspondence_contact_address,
-          :correspondence_contact_postcode
-        ]
-      end
-
       def finish
         [
           :email_someone_else,
@@ -42,6 +80,11 @@ module FloodRiskEngine
           :confirmation
         ]
       end
+
+      def between_start_and_finish
+        start + yield + finish
+      end
+
     end
 
     # Enter the name of one of the Definitions defined above,

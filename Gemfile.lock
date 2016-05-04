@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     flood_risk_engine (0.0.1)
-      dibber (~> 0.4)
+      dibber (~> 0.5)
       dotenv-rails (~> 2.1)
       finite_machine (~> 0.10)
       jquery-rails (~> 4.1)

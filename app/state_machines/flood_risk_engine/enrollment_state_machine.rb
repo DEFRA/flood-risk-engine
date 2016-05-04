@@ -1,3 +1,4 @@
+require "finite_machine"
 module FloodRiskEngine
   # State machine using FiniteMachine
   #
@@ -9,13 +10,32 @@ module FloodRiskEngine
   #
   # See finite_machine README for usage information:
   #   https://github.com/piotrmurach/finite_machine
-  require "finite_machine"
+
   class EnrollmentStateMachine < FiniteMachine::Definition
     initial :check_location
 
     events do
-      event :go_forward, WorkFlow.for(:local_authority)
-      event :go_back, WorkFlow.for(:local_authority).invert
+      event :go_forward, WorkFlow.for(:start).merge(
+        if: -> { target.org_type.nil? }
+      )
+      event :go_back, WorkFlow.for(:start).invert.merge(
+        if: -> { target.org_type.nil? }
+      )
+
+      [
+        :local_authority,
+        :limited_company,
+        :limited_liability_partnership,
+        :individual,
+        :partnership,
+        :other
+      ].each do |org_type|
+        steps = WorkFlow.for(org_type)
+        criteria = -> { target.org_type == org_type.to_s }
+
+        event :go_forward, steps.merge(if: criteria)
+        event :go_back, steps.invert.merge(if: criteria)
+      end
     end
   end
 end

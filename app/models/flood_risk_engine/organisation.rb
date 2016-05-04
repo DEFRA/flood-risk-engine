@@ -8,8 +8,9 @@ module FloodRiskEngine
       limited_company: 1,
       limited_liability_partnership: 2,
       individual: 3,
-      other: 4,
-      unknown: 5
+      partnership: 4,
+      other: 5,
+      unknown: 6
     }
   end
 end

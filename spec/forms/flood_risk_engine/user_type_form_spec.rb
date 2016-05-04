@@ -30,7 +30,7 @@ module FloodRiskEngine
       end
 
       it "saves the organisation" do
-        expect(subject.model).to receive(:save).and_return(true)
+        expect(subject.model).to receive(:save).twice.and_return(true)
         validate_and_save
       end
 

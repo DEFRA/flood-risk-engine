@@ -6,7 +6,7 @@ module FloodRiskEngine
 
     let!(:enrollment) { Enrollment.new }
 
-    it "anables us to find the FormObject for a defined Step" do
+    it "enables us to find the FormObject for a defined Step" do
       expect(factory).to respond_to(:form_object_for)
     end
 

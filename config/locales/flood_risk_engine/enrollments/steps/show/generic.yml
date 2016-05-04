@@ -11,17 +11,15 @@ en:
           heading: Organisation Type
         review:
           heading: Review
-        user_type:
-          heading: User Type
         local_authority_address:
           heading: Local Authority Address
-        main_contact_telephone:
+        correspondence_contact_telephone:
           heading: Main Contact Telephone
-        main_contact_email:
+        correspondence_contact_email:
           heading: Main Contact Email
-        main_contact_address:
+        correspondence_contact_address:
           heading: Main Contact Address
-        main_contact_postcode:
+        correspondence_contact_postcode:
           heading: Main Contact Postcode
         email_someone_else:
           heading: Email Someone Else
@@ -31,3 +29,13 @@ en:
           heading: Declaration
         confirmation:
           heading: Confirmation
+        individual_name:
+          heading: Individual Nane
+        limited_company_number:
+          heading: Limited Company Number
+        limited_liability_number:
+          heading: Limited Liability Number
+        other:
+          heading: Other
+        partnership:
+          heading: Partnership

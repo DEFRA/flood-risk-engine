@@ -1,16 +1,32 @@
-<%= f.label :organisation_type %>
-<ul>
+<div class="panel panel-border-narrow form-group" id="responsible_hint">
+  <h2 class="heading-small">
+    <%= t(".sub_heading") %>
+  </h2>
+  <p class="text">
+    <%= t(".sub_section_one") %>
+  </p>
+  <p><%= t(".list_heading") %></p>
+
+  <ul class="list-bullet">
+    <% (1..5).each do |number| %>
+    <li><%= t(".list_item_#{number}") %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="form-group">
+  <fieldset>
+
+    <legend class="visuallyhidden" aria-describedby="responsible_hint">
+      <%= t(".heading") %>
+    </legend>
+
 <%= f.collection_radio_buttons(
       :org_type,
       form.organisation_types,
       :first,
       :last
-    ) do |b|
-      content_tag(
-        'li',
-        b.label{ b.radio_button + b.text },
-        class: "list-unstyled"
-      )
-    end
+    ) {|b| b.label(class: "block-label") { b.radio_button + b.text } }
 %>
-</ul>
+  </fieldset>
+</div>
