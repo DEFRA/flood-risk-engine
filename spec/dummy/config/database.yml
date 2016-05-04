@@ -2,29 +2,25 @@
 #   gem install sqlite3
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+#   gem "sqlite3"
 #
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: localhost
+  host: <%= ENV["PG_HOST"] || "localhost" %>
   port: 5432
   user: <%= ENV["PG_USERNAME"] %>
   password: <%= ENV["PG_PASSWORD"] %>
 
 development:
   <<: *default
-  database: flood_risk_dummy_dev
+  database: <%= ENV["PG_DEV_DATABASE"] || "flood_risk_dummy_dev" %>
 
 test:
   <<: *default
-  database: flood_risk_dummy_test
+  database: <%= ENV["PG_TEST_DATABASE"] || "flood_risk_dummy_test" %>
 
 local_production:
   <<: *default
-  database: flood_risk_dummy_prod
-
-production:
-  <<: *default
-  database: flood_risk_dummy
+  database: <%= ENV["PG_PROD_DATABASE"] || "flood_risk_dummy_prod" %>
