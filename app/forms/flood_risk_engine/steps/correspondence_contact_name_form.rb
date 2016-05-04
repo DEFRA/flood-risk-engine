@@ -5,24 +5,16 @@
 #
 module FloodRiskEngine
   module Steps
-    class CorrespondenceContactNameForm < BaseForm
-
-      def params_key
-        :correspondence_contact_name
-      end
+    class CorrespondenceContactNameForm < FloodRiskEngine::Steps::BaseForm
 
       def self.factory(enrollment)
-        contact = enrollment.correspondence_contact
+        enrollment.correspondence_contact ||= FloodRiskEngine::Contact.new(contact_type: :correspondence)
 
-        unless contact
-          contact = enrollment.correspondence_contact = FloodRiskEngine::Contact.new(contact_type: :correspondence)
-        end
-
-        new(contact, enrollment)
+        new(enrollment.correspondence_contact, enrollment)
       end
 
-      def self.locale_key
-        "flood_risk_engine.enrollments.steps.correspondence_contact_name"
+      def self.params_key
+        :correspondence_contact_name
       end
 
       def self.name_max_length
@@ -38,6 +30,7 @@ module FloodRiskEngine
       end
 
       property :full_name
+      property :position
 
       validates :full_name, presence:
         {
@@ -56,9 +49,6 @@ module FloodRiskEngine
       validates :full_name, 'flood_risk_engine/name_format': true, allow_blank: true
 
       # The Job Title Field
-
-      property :position
-
       validates :position, 'flood_risk_engine/text_field_content': true, allow_blank: true
 
       validates :position, length:
@@ -73,6 +63,15 @@ module FloodRiskEngine
         enrollment.correspondence_contact ||= model
         enrollment.save
       end
+
+      # Force use of the factory to create instances of this class
+      class << self
+        private
+        def new(model, enrollment = nil)
+          super(model, enrollment)
+        end
+      end
+
     end
   end
 end

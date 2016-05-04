@@ -7,6 +7,9 @@ module FloodRiskEngine
       include ActionView::Helpers::TranslationHelper
       include ActiveModel::Validations
 
+      include BaseFormCommon
+      extend BaseFormCommon
+
       # So we can always build an enrollment step url
       delegate :id, to: :enrollment, prefix: true
 

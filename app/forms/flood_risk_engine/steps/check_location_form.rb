@@ -8,6 +8,17 @@ module FloodRiskEngine
       attr_accessor :redirect
       alias redirect? redirect
 
+      def self.factory(enrollment)
+        new(enrollment).tap do |form|
+          form.redirection_url = FloodRiskEngine.config.redirection_url_on_location_unchecked
+        end
+      end
+
+      def self.params_key
+        :check_location
+      end
+
+      
       property :location_check, virtual: true
 
       # Errors stored under :location_check
@@ -16,20 +27,12 @@ module FloodRiskEngine
                   message: I18n.t("errors.select_yes_or_no")
                 }
 
-      def self.factory(enrollment)
-        new(enrollment).tap do |form|
-          form.redirection_url = FloodRiskEngine.config.redirection_url_on_location_unchecked
-        end
-      end
 
       def save
         self.redirect = (location_check == "no")
         enrollment.save
       end
 
-      def params_key
-        :check_location
-      end
     end
   end
 end
