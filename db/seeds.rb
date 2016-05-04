@@ -1,7 +1,7 @@
-require 'dibber'
+require "dibber"
 # https://github.com/reggieb/Dibber
 Seeder = Dibber::Seeder
-Seeder.seeds_path = File.expand_path('seeds', File.dirname(__FILE__))
+Seeder.seeds_path = File.expand_path("seeds", File.dirname(__FILE__))
 
 # Note that if an Exemptions exists seeding will just update the summary
 Seeder.seed(
@@ -11,6 +11,4 @@ Seeder.seed(
   overwrite: true
 )
 
-puts Seeder.report
-
-
+Rails.logger.info Seeder.report

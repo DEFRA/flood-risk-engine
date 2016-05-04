@@ -25,7 +25,6 @@ module FloodRiskEngine
       end
 
       context "with invalid params" do
-
         let(:invalid_attributes) {
           { name: "12345 not a valid name **" }
         }
@@ -50,9 +49,7 @@ module FloodRiskEngine
           pending "response says you are being redirected - not sure how to test validations in these tests"
           expect(response.body).to have_tag :a, text: expected_error
         end
-
       end
-
     end
   end
 end

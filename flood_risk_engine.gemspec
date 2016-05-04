@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails", "~> 4.1"
 
   s.add_development_dependency "sqlite3", "~> 1.3"
-  s.add_development_dependency "before_commit", "~> 0.2"
+  s.add_development_dependency "before_commit", "~> 0.6"
   s.add_development_dependency "rubocop"
   s.add_development_dependency "bootstrap-sass", "~> 3.3"
   s.add_development_dependency "sass-rails", ">= 3.2"

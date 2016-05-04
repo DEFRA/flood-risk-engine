@@ -39,14 +39,16 @@ module FloodRiskEngine
           params = { "#{form.params_key}": { name: "" } }
 
           expect(form.validate(params)).to eq false
-          expect(subject.errors.messages[:name]).to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")])
+          expect(subject.errors.messages[:name])
+            .to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")])
         end
 
         it "does not validate when name with unacceptable chars" do
           params = { "#{form.params_key}": { name: "bristol *& " } }
 
           expect(form.validate(params)).to eq false
-          expect(subject.errors.messages[:name]).to eq([I18n.t("flood_risk_engine.validation_errors.name.invalid")])
+          expect(subject.errors.messages[:name])
+            .to eq([I18n.t("flood_risk_engine.validation_errors.name.invalid")])
         end
 
         it "does not validate when name supplied is too long" do
@@ -54,9 +56,9 @@ module FloodRiskEngine
           params = { "#{form.params_key}": { name: name } }
 
           expect(form.validate(params)).to eq false
-          expect(subject.errors.messages[:name]).to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")])
+          expect(subject.errors.messages[:name])
+            .to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")])
         end
-
       end
     end
   end
