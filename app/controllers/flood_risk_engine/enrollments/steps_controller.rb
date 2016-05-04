@@ -11,7 +11,7 @@ module FloodRiskEngine
     class StepsController < ApplicationController
       class StepError < StandardError; end
       rescue_from StepError, with: :step_not_found
-      before_action :check_step_is_valid, except: [:remove_exemption]
+      before_action :check_step_is_valid
       before_action :back_button_cache_buster
 
       def show
