@@ -13,13 +13,13 @@ en:
           heading: Review
         local_authority_address:
           heading: Local Authority Address
-        main_contact_telephone:
+        correspondence_contact_telephone:
           heading: Main Contact Telephone
-        main_contact_email:
+        correspondence_contact_email:
           heading: Main Contact Email
-        main_contact_address:
+        correspondence_contact_address:
           heading: Main Contact Address
-        main_contact_postcode:
+        correspondence_contact_postcode:
           heading: Main Contact Postcode
         email_someone_else:
           heading: Email Someone Else
