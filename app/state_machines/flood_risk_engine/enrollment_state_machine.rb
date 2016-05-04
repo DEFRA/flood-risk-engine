@@ -1,3 +1,4 @@
+require "finite_machine"
 module FloodRiskEngine
   # State machine using FiniteMachine
   #
@@ -9,7 +10,7 @@ module FloodRiskEngine
   #
   # See finite_machine README for usage information:
   #   https://github.com/piotrmurach/finite_machine
-  require "finite_machine"
+
   class EnrollmentStateMachine < FiniteMachine::Definition
     initial :check_location
 
@@ -21,47 +22,20 @@ module FloodRiskEngine
         if: -> { target.org_type.nil? }
       )
 
-      event :go_forward, WorkFlow.for(:local_authority).merge(
-        if: -> { target.org_type == "local_authority" }
-      )
-      event :go_back, WorkFlow.for(:local_authority).invert.merge(
-        if: -> { target.org_type == "local_authority" }
-      )
+      [
+        :local_authority,
+        :limited_company,
+        :limited_liability_partnership,
+        :individual,
+        :partnership,
+        :other
+      ].each do |org_type|
+        steps = WorkFlow.for(org_type)
+        criteria = -> { target.org_type == org_type.to_s }
 
-      event :go_forward, WorkFlow.for(:limited_company).merge(
-        if: -> { target.org_type == "limited_company" }
-      )
-      event :go_back, WorkFlow.for(:limited_company).invert.merge(
-        if: -> { target.org_type == "limited_company" }
-      )
-
-      event :go_forward, WorkFlow.for(:limited_liability_partnership).merge(
-        if: -> { target.org_type == "limited_liability_partnership" }
-      )
-      event :go_back, WorkFlow.for(:limited_liability_partnership).invert.merge(
-        if: -> { target.org_type == "limited_liability_partnership" }
-      )
-
-      event :go_forward, WorkFlow.for(:individual).merge(
-        if: -> { target.org_type == "individual" }
-      )
-      event :go_back, WorkFlow.for(:individual).invert.merge(
-        if: -> { target.org_type == "individual" }
-      )
-
-      event :go_forward, WorkFlow.for(:partnership).merge(
-        if: -> { target.org_type == "partnership" }
-      )
-      event :go_back, WorkFlow.for(:partnership).invert.merge(
-        if: -> { target.org_type == "partnership" }
-      )
-
-      event :go_forward, WorkFlow.for(:other).merge(
-        if: -> { target.org_type == "other" }
-      )
-      event :go_back, WorkFlow.for(:other).invert.merge(
-        if: -> { target.org_type == "other" }
-      )
+        event :go_forward, steps.merge(if: criteria)
+        event :go_back, steps.invert.merge(if: criteria)
+      end
     end
   end
 end
