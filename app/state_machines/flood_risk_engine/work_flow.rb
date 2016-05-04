@@ -26,11 +26,11 @@ module FloodRiskEngine
         [
           :local_authority,
           :local_authority_address,
-          :main_contact_name,
-          :main_contact_telephone,
-          :main_contact_email,
-          :main_contact_address,
-          :main_contact_postcode
+          :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
+          :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
+          :correspondence_contact_email,
+          :correspondence_contact_address,
+          :correspondence_contact_postcode
         ]
       end
 

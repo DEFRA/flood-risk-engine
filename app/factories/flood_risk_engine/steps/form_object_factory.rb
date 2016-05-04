@@ -20,11 +20,12 @@ module FloodRiskEngine
             check_exemptions:        Steps::NullForm,
             user_type:               Steps::UserTypeForm,
             local_authority_address: Steps::NullForm,
-            main_contact_name:       Steps::MainContactNameForm,
-            main_contact_telephone:  Steps::NullForm,
-            main_contact_email:      Steps::NullForm,
-            main_contact_address:    Steps::NullForm,
-            main_contact_postcode:   Steps::NullForm,
+
+            correspondence_contact_telephone:  Steps::NullForm,
+            correspondence_contact_email:      Steps::NullForm,
+            correspondence_contact_address:    Steps::NullForm,
+            correspondence_contact_postcode:   Steps::NullForm,
+
             email_someone_else:      Steps::NullForm,
             check_your_answers:      Steps::NullForm,
             declaration:             Steps::NullForm,

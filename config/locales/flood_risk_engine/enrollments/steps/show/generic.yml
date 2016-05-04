@@ -15,8 +15,6 @@ en:
           heading: User Type
         local_authority_address:
           heading: Local Authority Address
-        main_contact_name:
-          heading: Main Contact Name
         main_contact_telephone:
           heading: Main Contact Telephone
         main_contact_email:
