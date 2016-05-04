@@ -15,6 +15,10 @@ require "bootstrap-sass"
 Bundler.require(*Rails.groups)
 require "flood_risk_engine"
 
+# `dotenv-rails` needs to be defined here to load `.env` in the test environment.
+require "dotenv-rails"
+Dotenv::Railtie.load
+
 module Dummy
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

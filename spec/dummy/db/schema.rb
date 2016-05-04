@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160503152619) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "flood_risk_engine_addresses", force: :cascade do |t|
     t.string   "premises",            limit: 200
     t.string   "street_address",      limit: 160
@@ -46,9 +49,9 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.string   "full_name",                   limit: 255, default: "", null: false
   end
 
-  add_index "flood_risk_engine_contacts", ["email_address"], name: "index_flood_risk_engine_contacts_on_email_address"
-  add_index "flood_risk_engine_contacts", ["full_name"], name: "index_flood_risk_engine_contacts_on_full_name"
-  add_index "flood_risk_engine_contacts", ["partnership_organisation_id"], name: "fre_contacts_partnership_organisation_id"
+  add_index "flood_risk_engine_contacts", ["email_address"], name: "index_flood_risk_engine_contacts_on_email_address", using: :btree
+  add_index "flood_risk_engine_contacts", ["full_name"], name: "index_flood_risk_engine_contacts_on_full_name", using: :btree
+  add_index "flood_risk_engine_contacts", ["partnership_organisation_id"], name: "fre_contacts_partnership_organisation_id", using: :btree
 
   create_table "flood_risk_engine_enrollments", force: :cascade do |t|
     t.integer  "applicant_contact_id"
@@ -60,10 +63,10 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.integer  "correspondence_contact_id"
   end
 
-  add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id"
-  add_index "flood_risk_engine_enrollments", ["correspondence_contact_id"], name: "fre_enrollments_correspondence_contact_id"
-  add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id"
-  add_index "flood_risk_engine_enrollments", ["site_address_id"], name: "index_flood_risk_engine_enrollments_on_site_address_id"
+  add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
+  add_index "flood_risk_engine_enrollments", ["correspondence_contact_id"], name: "fre_enrollments_correspondence_contact_id", using: :btree
+  add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id", using: :btree
+  add_index "flood_risk_engine_enrollments", ["site_address_id"], name: "index_flood_risk_engine_enrollments_on_site_address_id", using: :btree
 
   create_table "flood_risk_engine_enrollments_exemptions", force: :cascade do |t|
     t.integer  "enrollment_id",             null: false
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.datetime "valid_from"
   end
 
-  add_index "flood_risk_engine_enrollments_exemptions", ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
+  add_index "flood_risk_engine_enrollments_exemptions", ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true, using: :btree
 
   create_table "flood_risk_engine_exemptions", force: :cascade do |t|
     t.string   "code"
@@ -84,7 +87,7 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.integer  "code_number"
   end
 
-  add_index "flood_risk_engine_exemptions", ["code_number"], name: "index_flood_risk_engine_exemptions_on_code_number"
+  add_index "flood_risk_engine_exemptions", ["code_number"], name: "index_flood_risk_engine_exemptions_on_code_number", using: :btree
 
   create_table "flood_risk_engine_locations", force: :cascade do |t|
     t.integer  "address_id"
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "flood_risk_engine_locations", ["address_id"], name: "index_flood_risk_engine_locations_on_address_id"
+  add_index "flood_risk_engine_locations", ["address_id"], name: "index_flood_risk_engine_locations_on_address_id", using: :btree
 
   create_table "flood_risk_engine_organisations", force: :cascade do |t|
     t.string   "name"
@@ -106,8 +109,8 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.integer  "org_type"
   end
 
-  add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id"
-  add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type"
+  add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id", using: :btree
+  add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type", using: :btree
 
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
@@ -115,4 +118,13 @@ ActiveRecord::Schema.define(version: 20160503152619) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "flood_risk_engine_addresses", "flood_risk_engine_contacts", column: "contact_id"
+  add_foreign_key "flood_risk_engine_contacts", "flood_risk_engine_organisations", column: "partnership_organisation_id"
+  add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_addresses", column: "site_address_id"
+  add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "applicant_contact_id"
+  add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_organisations", column: "organisation_id"
+  add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_enrollments", column: "enrollment_id"
+  add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_exemptions", column: "exemption_id"
+  add_foreign_key "flood_risk_engine_locations", "flood_risk_engine_addresses", column: "address_id"
+  add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"
 end
