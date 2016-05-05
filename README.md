@@ -12,6 +12,12 @@ rake app:before_commit:run
 
 And use before_commit to keep the overcommit configuration up to date.
 
+### Database connection
+
+As this is an engine, there is a test application set up at spec/dummy. Before
+using dummy, you will need to create `spec/dummy/.env` containing the Postgres
+database username and password you wish to use. See `spec/dummy/.env.example`
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
