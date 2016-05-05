@@ -39,14 +39,19 @@ module FloodRiskEngine
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
 
-        it "does not update enrollment with contact name" do
+        it "redirects back to show with check for errors" do
           put(:update, id: step, enrollment_id: enrollment, step => invalid_attributes)
+          expect(response).to redirect_to(
+            enrollment_step_path(enrollment, step, check_for_error: true)
+          )
+        end
 
-          # HTML will contain something like
-          # <a class="error-text" href="#form_group_name">Enter the name of the local authority or public body</a>
+        it "displays error on rendering show" do
+          params = { id: step, enrollment_id: enrollment, check_for_error: true }
+          session = { error_params: { step => invalid_attributes } }
           expected_error = I18n.t("flood_risk_engine.validation_errors.full_name.invalid")
 
-          pending "response just says you are being redirected - feature tests would be better than these tests"
+          get(:show, params, session)
           expect(response.body).to have_tag :a, text: expected_error
         end
       end

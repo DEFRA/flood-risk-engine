@@ -13,9 +13,10 @@ module FloodRiskEngine
       rescue_from StepError, with: :step_not_found
       before_action :check_step_is_valid
       before_action :back_button_cache_buster
+      before_action :clear_error_params, only: [:update]
 
       def show
-        form.validate(params) if params[:check_for_error]
+        form.validate(session[:error_params]) if params[:check_for_error]
         render :show, locals: locals
       end
 
@@ -27,7 +28,8 @@ module FloodRiskEngine
           step_forward
           redirect_to step_url
         else
-          redirect_to failure_url
+          session[:error_params] = { form.params_key => params[form.params_key] }
+          redirect_to step_url(check_for_error: true)
         end
       end
 
@@ -39,13 +41,6 @@ module FloodRiskEngine
 
       def step_url(extra = {})
         enrollment_step_path(enrollment, enrollment.current_step, extra)
-      end
-
-      def failure_url
-        step_url(
-          form.params_key => params[form.params_key],
-          check_for_error: true
-        )
       end
 
       def check_step_is_valid
@@ -101,6 +96,11 @@ module FloodRiskEngine
       def step_not_found
         Rails.logger.info "Step Mismatch: :#{step} requested when enrollment at :#{enrollment.step}"
         redirect_to step_url
+      end
+
+      def clear_error_params
+        session.delete(:error_params)
+        true
       end
     end
   end

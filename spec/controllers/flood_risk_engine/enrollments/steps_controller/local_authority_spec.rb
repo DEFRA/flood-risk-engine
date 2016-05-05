@@ -25,9 +25,9 @@ module FloodRiskEngine
       end
 
       context "with invalid params" do
-        let(:invalid_attributes) {
+        let(:invalid_attributes) do
           { name: "12345 not a valid name **" }
-        }
+        end
 
         it "assigns the enrollment as @enrollment" do
           put(:update, id: step, enrollment_id: enrollment)
@@ -39,15 +39,38 @@ module FloodRiskEngine
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
 
-        it "does not update enrollment with local_authority Name" do
+        it "redirects back to show with check for errors" do
           put(:update, id: step, enrollment_id: enrollment, step => invalid_attributes)
+          expect(response).to redirect_to(
+            enrollment_step_path(enrollment, step, check_for_error: true)
+          )
+        end
 
-          # HTML will contain something like
-          # <a class="error-text" href="#form_group_name">Enter the name of the local authority or public body</a>
+        it "displays error on rendering show" do
+          params = { id: step, enrollment_id: enrollment, check_for_error: true }
+          session = { error_params: { step => invalid_attributes } }
           expected_error = I18n.t("flood_risk_engine.validation_errors.name.invalid")
 
-          pending "response says you are being redirected - not sure how to test validations in these tests"
+          get(:show, params, session)
           expect(response.body).to have_tag :a, text: expected_error
+        end
+      end
+
+      context "with large data in parameters" do
+        let(:large_attributes) { { "name" => "foobar" * 500 } }
+
+        before do
+          put(:update, id: step, enrollment_id: enrollment, step => large_attributes)
+        end
+
+        it "should redirect back to current step with putting data into url" do
+          expect(response).to redirect_to(
+            enrollment_step_path(enrollment, step, check_for_error: true)
+          )
+        end
+
+        it "should put the large data into session" do
+          expect(session[:error_params]).to eq(step => large_attributes)
         end
       end
     end
