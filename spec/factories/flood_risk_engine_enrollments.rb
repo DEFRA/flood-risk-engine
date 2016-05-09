@@ -3,7 +3,6 @@ FactoryGirl.define do
     trait :with_locale_authority do
       after(:create) do |object|
         object.organisation = create :organisation, :as_local_authority
-        puts object.organisation.inspect
         object.save!
       end
     end
