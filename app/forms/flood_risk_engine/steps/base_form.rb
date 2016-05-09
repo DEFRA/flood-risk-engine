@@ -7,6 +7,8 @@ module FloodRiskEngine
       include ActionView::Helpers::TranslationHelper
       include ActiveModel::Validations
 
+      feature Reform::Form::ActiveModel::Validations
+
       include BaseFormCommon
       extend BaseFormCommon
 

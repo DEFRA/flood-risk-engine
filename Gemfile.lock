@@ -10,6 +10,7 @@ PATH
       rails (~> 4.2)
       reform (~> 2.1)
       reform-rails (~> 0.1)
+      validates_email_format_of (~> 1.6)
 
 GEM
   remote: https://rubygems.org/
@@ -258,6 +259,8 @@ GEM
       thread_safe (~> 0.1)
     uber (0.0.15)
     unicode-display_width (1.0.3)
+    validates_email_format_of (1.6.3)
+      i18n
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)

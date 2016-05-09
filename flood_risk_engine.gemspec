@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "finite_machine", "~> 0.10"
   s.add_dependency "dibber", "~> 0.5" # Manages data seeding
   s.add_dependency "jquery-rails", "~> 4.1"
+  s.add_dependency "validates_email_format_of", "~> 1.6" # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "phonelib", "~> 0.6" # Add telephone number validation
 
   s.add_development_dependency "pg", "~> 0.18"

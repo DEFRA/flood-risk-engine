@@ -15,8 +15,6 @@ en:
           heading: Local Authority Address
         correspondence_contact_telephone:
           heading: Main Contact Telephone
-        correspondence_contact_email:
-          heading: Main Contact Email
         correspondence_contact_address:
           heading: Main Contact Address
         correspondence_contact_postcode:
