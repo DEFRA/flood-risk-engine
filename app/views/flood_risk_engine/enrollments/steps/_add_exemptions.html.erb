@@ -11,12 +11,12 @@
   %>
 </p>
 
+<fieldset>
+  <legend class="visuallyhidden">
+    <%= t("flood_risk_engine.enrollments.steps.add_exemptions.heading") %>
+  </legend>
 <%= form_group_and_validation(form, :base) do %>
   <div class="form-group">
-    <fieldset>
-      <legend class="visuallyhidden">
-        <%= t("flood_risk_engine.enrollments.steps.add_exemptions.heading") %>
-      </legend>
     <%= f.collection_check_boxes( :exemption_ids, form.all_exemptions, :id, :code ) do |b|
           b.label(class: "block-label exemption") do
             b.check_box + ' ' +
@@ -25,9 +25,9 @@
           end
         end
     %>
-    </fieldset>
   </div>
 <% end %>
+</fieldset>
 
 <p>
   <span class="bold-small">
