@@ -18,7 +18,6 @@ module FloodRiskEngine
       property :email_address
       property :email_address_confirmation, virtual: true
 
-
       # This group manages the main email_address field, confirmation is dependent on results of this group
       validation :email_address_valid? do
         validates :email_address, presence: {
@@ -30,7 +29,6 @@ module FloodRiskEngine
           message: I18n.t("#{CorrespondenceContactEmailForm.locale_key}.errors.email_address.format")
         }
       end
-
 
       # If you want to reach the form to check for errors use unless/if you can via
       #     unless: ->(form) { form.changed?(:email_address) }
@@ -53,19 +51,17 @@ module FloodRiskEngine
           message: I18n.t("#{CorrespondenceContactEmailForm.locale_key}.errors.email_address_confirmation.format")
         }
       end
-=begin
-      validates :email_address_confirmation,
-                presence: {
-                  message: validation_message_when("email_address_confirmation.blank"),
-                  unless: ->(form) { form.errors.any? }
-                }
-
-      validates :email_address,
-                confirmation: {
-                  message: validation_message_when("email_address_confirmation.format"),
-                  unless: ->(form) { form.errors.any? }
-                }
-=end
+      #       validates :email_address_confirmation,
+      #                 presence: {
+      #                   message: validation_message_when("email_address_confirmation.blank"),
+      #                   unless: ->(form) { form.errors.any? }
+      #                 }
+      #
+      #       validates :email_address,
+      #                 confirmation: {
+      #                   message: validation_message_when("email_address_confirmation.format"),
+      #                   unless: ->(form) { form.errors.any? }
+      #                 }
       def save
         super
         enrollment.correspondence_contact ||= model
@@ -75,6 +71,7 @@ module FloodRiskEngine
       # Force use of the factory to create instances of this class
       class << self
         private
+
         def new(model, enrollment = nil)
           super(model, enrollment)
         end

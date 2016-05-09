@@ -36,7 +36,6 @@ module FloodRiskEngine
 
           expect(form.enrollment.correspondence_contact.email_address).to eq email_address
         end
-
       end
 
       describe "Correspondence Contact Email" do
@@ -56,7 +55,7 @@ module FloodRiskEngine
           params = { "#{form.params_key}": { email_address: email_address } }
 
           expect(form.validate(params)).to eq false
-          
+
           expect(email_confirmation_errors).to eq([I18n.t("#{locale_errors_key}.email_address_confirmation.blank")])
         end
 
@@ -72,11 +71,8 @@ module FloodRiskEngine
           expect(email_confirmation_errors).to eq([I18n.t("#{locale_errors_key}.email_address_confirmation.format")])
         end
 
-
         it "is invalid  when badly formatted email supplied" do
-
           ["junk", "stilljunk@", "nope_stilljunk@.com"].each do |email|
-
             form.errors.clear
 
             params = { "#{form.params_key}": { email_address: email } }
@@ -85,9 +81,7 @@ module FloodRiskEngine
 
             expect(email_address_errors).to eq([I18n.t("#{locale_errors_key}.email_address.format")])
           end
-
         end
-
       end
     end
   end
