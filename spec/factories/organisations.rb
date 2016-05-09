@@ -14,6 +14,5 @@ FactoryGirl.define do
         org_type ot.to_s
       end
     end
-
   end
 end
