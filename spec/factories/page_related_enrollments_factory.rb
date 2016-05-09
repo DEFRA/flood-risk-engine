@@ -8,7 +8,8 @@ FactoryGirl.define do
     step :local_authority
   end
 
-  factory :page_correspondence_contact_name, parent: :enrollment, traits: [:with_exemption] do
+  factory :page_correspondence_contact_name, parent: :enrollment,
+          traits: [:with_exemption, :with_locale_authority] do
     step :correspondence_contact_name
   end
 
