@@ -19,6 +19,7 @@ coverage
 .DS_Store
 .env
 spec/dummy/.byebug_history
+spec/dummy/.env
 
 .idea
 flood_risk_engine.sublime-project
