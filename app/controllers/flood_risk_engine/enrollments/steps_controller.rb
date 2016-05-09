@@ -20,7 +20,6 @@ module FloodRiskEngine
       end
 
       def update
-        logger.debug("In Update - calling Save")
         success = save_form!
         if form.redirect?
           redirect_to(form.redirection_url)
@@ -28,7 +27,6 @@ module FloodRiskEngine
           step_forward
           redirect_to step_url
         else
-          logger.error("Form did not Save #{form.errors.inspect}")
           redirect_to failure_url
         end
       end
@@ -63,10 +61,7 @@ module FloodRiskEngine
       end
 
       def step_forward
-        logger.error("Form Saved - step_forward from Current [#{enrollment.step}] [#{enrollment.current_step}]")
-        byebug
         enrollment.go_forward
-        logger.error("Go Forward called state now [#{enrollment.step}] [#{enrollment.current_step}]")
         enrollment.save
       end
 
