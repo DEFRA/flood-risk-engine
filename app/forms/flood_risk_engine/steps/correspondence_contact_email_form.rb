@@ -81,7 +81,7 @@ module FloodRiskEngine
       private
 
       def any_email_field_changed?
-        (changed["email_address"] != true && changed["email_address_confirmation"] != true)
+        (changed[:email_address] != true && changed[:email_address_confirmation] != true)
       end
 
       def email_present?
