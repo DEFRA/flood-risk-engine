@@ -1,16 +1,21 @@
 module FloodRiskEngine
   module Steps
     class UserTypeForm < BaseForm
+      def self.params_key
+        :user_type
+      end
+
       property :org_type
-      validates :org_type, presence: true
+      validates(
+        :org_type,
+        presence: {
+          message: I18n.t("#{locale_key}.errors.org_type.blank")
+        }
+      )
 
       def self.factory(enrollment)
         organisation = enrollment.organisation || Organisation.new
         new(organisation, enrollment)
-      end
-
-      def params_key
-        :user_type
       end
 
       # Note we don't need to call super in this form object to save the properties (type).
