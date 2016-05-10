@@ -60,11 +60,11 @@ module FloodRiskEngine
         end
 
         it "is invalid when confirmation email does not match supplied" do
-          params = { "#{form.params_key}":
-                       {
-                         email_address: email_address,
-                         email_address_confirmation: email_address.reverse
-                       }
+          params = {
+            "#{form.params_key}": {
+              email_address: email_address,
+              email_address_confirmation: email_address.reverse
+            }
           }
 
           expect(form.validate(params)).to eq false
