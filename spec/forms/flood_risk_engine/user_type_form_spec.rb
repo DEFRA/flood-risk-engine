@@ -13,7 +13,12 @@ module FloodRiskEngine
 
     it { is_expected.to be_a(described_class) }
     it { is_expected.to respond_to(:org_type) }
-    it { is_expected.to validate_presence_of(:org_type) }
+    it do
+      is_expected.to validate_presence_of(:org_type)
+        .with_message(
+          t("flood_risk_engine.enrollments.steps.user_type.errors.org_type.blank")
+        )
+    end
 
     describe ".save" do
       let(:params) { { params_key => { org_type: org_type } } }

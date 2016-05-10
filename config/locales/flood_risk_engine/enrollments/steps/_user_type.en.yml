@@ -13,9 +13,12 @@ en:
             you or the contractors who has control.
           list_heading: 'Whoever has control will usually:'
           list_item_1: have day-to-day control of the activity
-          list_item_2: make sure the activity complies with the exemption rules
+          list_item_2: make sure the activity complies with the exemption
           list_item_3: |-
             decide who holds important staff positions and stop incompetent
             staff working, if needed
           list_item_4: make financial decisions that affect the activity
           list_item_5: take action to control the activity in an emergency
+          errors:
+            org_type:
+              blank: Please select the type of organisation
