@@ -48,7 +48,6 @@ module FloodRiskEngine
       # not the confirmation, so this format prevents both format & blank messages when conf = blank
       #
       validation :confirmation_matches?, if: :confirmation_present? do
-        
         # Although not specified, Rails automatically validates against a field called email_address_confirmation,
         # See
         # http://api.rubyonrails.org/classes/ActiveModel/Validations/HelperMethods.html#method-i-validates_confirmation_of
