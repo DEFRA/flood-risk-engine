@@ -1,1 +1,35 @@
-local_authority_address
+<%= t('.postcode_hint') %>
+<p>
+  <%= form.postcode %>
+  <%= link_to t('.change'),
+              enrollment_step_path(form.enrollment, form.enrollment.previous_step),
+              class: 'change-postcode-button'
+  %>
+</p>
+
+<label class="form-label" for="address_match_selection">
+  <%= t('.select_from_list_label') %>
+</label>
+
+<%# Create prompt manually cos this too flakey to use - e.g disappears on Back
+{ prompt: t('.num_addresses_found', num:  form.address_list.count) } %>
+
+<% form.address_list.unshift({ moniker: t('.num_addresses_found', num:  form.address_list.count) }) %>
+
+<fieldset>
+  <%= form_group_and_validation(form, :uprn) do %>
+    <%= f.select :uprn,  options_for_select( form.address_list.collect { |a| [ a[:moniker], a[:uprn] ] }), {},
+                 { include_blank: false,
+                   class: 'form-control form-control-select',
+                   id: 'address_match_selection'
+                 }
+    %>
+  <% end %>
+</fieldset>
+
+<p>
+  <%= link_to t('.manual_entry'),
+              enrollment_step_path(form.enrollment, form.enrollment.next_step),
+              class: 'change-postcode-button'
+  %>
+</p>

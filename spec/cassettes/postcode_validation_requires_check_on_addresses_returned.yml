@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://addressfacade.cloudapp.net/address-service/v1/addresses/postcode?client-id=example%20team1&key=client1&postcode=BS1%205AH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc2 (linux-gnu x86_64) ruby/2.3.1p112
+      Host:
+      - addressfacade.cloudapp.net
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 May 2016 14:40:06 GMT
+      Content-Type:
+      - application/json
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAL1RXWvbQBD8K+KgfhLSnZxYjsAUuRaxaS0FySmkpYiLdE1E
+        z7rjPkJMyH/vypIbC/rQPrRPd7uzOzPsvCAjDOVbaqpHplEUuEgbqsyxgSLi
+        ItbWQwGYVU1pRKmtlLxhCkXo0RipI9+nsvGEqlvaVkxb9cQOXiU8+8OXnELH
+        fyI+rWvFtIZCCm0qUbP3XC2SdHIqF8uCvAvwZbye7OkzzFpu9IJgPKmpoZqZ
+        xeomRr2L70rsywpMtAZcaGPvARhWUPT1BVmpWhRNLzAhMxcN2jCapJ83eZZu
+        k3TnxNdJ+uHOddZZvvmSpfDeFonrrJI4TfI7J8/iless802xyz7BpyAOeAMd
+        oR5o22hqGtH+lhJmpGL7Rnc3RSN61F1YMWbKN0/ngoBzUVHemAOKWsu5i6rj
+        Hw1GOu7hYF3zl6lnqKaXc7ifh6dQdyskDEI893AIdSUgn6alhpX6oA3bn+gh
+        cOjBiTs+EvgE+wHGV7Byz6Ute7iX6xc6ecpP/kcQFw8NmD8u2TGkhVXVUYeW
+        5iA7sVpS9OqesoKgr0g4w7MLfB7YOs63RZI613l2e+M6u3yTrbLCWcbpx7+P
+        akQ2Tumc+F+HRKbYI28ZzeahN//jjPrOf8nm2+tPfl0PxCEEAAA=
+    http_version: 
+  recorded_at: Wed, 18 May 2016 15:35:24 GMT
+recorded_with: VCR 3.0.1

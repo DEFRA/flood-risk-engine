@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :address, class: "FloodRiskEngine::Address" do
+  factory :address_services, class: "FloodRiskEngine::Address" do
     premises            Faker::Address.building_number
     street_address      Faker::Address.street_address
     locality            Faker::StarWars.planet

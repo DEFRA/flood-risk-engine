@@ -32,6 +32,8 @@ module FloodRiskEngine
       dependent: :restrict_with_exception
     )
 
+    has_one :address_search
+
     serialize :step_history, Array
 
     before_validation :preserve_current_step

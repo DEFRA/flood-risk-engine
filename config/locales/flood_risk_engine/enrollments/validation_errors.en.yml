@@ -4,11 +4,3 @@ en:
     enrollments:
       validation_errors:
         you_have: You have
-    validation_errors:
-      name:
-        invalid: Make sure the name contains only letters, spaces, commas, full stops, hyphens and apostrophes
-      full_name:
-        invalid: Make sure the name contains only letters, spaces, commas, full stops, hyphens and apostrophes
-        too_few: Enter a full name
-      position:
-        invalid: Make sure the job title contains only letters, spaces, commas, full stops, hyphens and apostrophes
