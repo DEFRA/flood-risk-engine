@@ -19,6 +19,8 @@ module FloodRiskEngine
       property :email_address_confirmation, virtual: true
 
       # This group manages the main email_address field, confirmation is dependent on results of this group
+      #     docs on validation groups :  http://trailblazer.to/gems/reform/validation.html
+      #
       validation :email_address_valid? do
         validates :email_address, presence: {
           message: I18n.t("#{CorrespondenceContactEmailForm.locale_key}.errors.email_address.blank")
@@ -45,8 +47,12 @@ module FloodRiskEngine
       # The helpers ; allow_blank: true, allow_nil: true  ; only seem to apply to the email_address field
       # not the confirmation, so this format prevents both format & blank messages when conf = blank
       #
-      validation :passwords_match?, if: :confirmation_present? do
-        # Although not specified, Rails automatically validates against a field called email_address_confirmation
+      validation :confirmation_matches?, if: :confirmation_present? do
+        
+        # Although not specified, Rails automatically validates against a field called email_address_confirmation,
+        # See
+        # http://api.rubyonrails.org/classes/ActiveModel/Validations/HelperMethods.html#method-i-validates_confirmation_of
+
         validates :email_address, confirmation: {
           message: I18n.t("#{CorrespondenceContactEmailForm.locale_key}.errors.email_address_confirmation.format")
         }
@@ -80,7 +86,7 @@ module FloodRiskEngine
       end
 
       def email_present?
-        (enrollment && enrollment.correspondence_contact && !enrollment.correspondence_contact.email_address.blank?)
+        (enrollment && enrollment.correspondence_contact && enrollment.correspondence_contact.email_address.present?)
       end
 
       def no_email_errors?

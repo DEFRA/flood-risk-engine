@@ -4,6 +4,7 @@ en:
     enrollments:
       steps:
         correspondence_contact_email:
+          form_hint: "We’ll send the registration confirmation to this address"
           heading: "What’s the email address of the person we should contact?"
           label:  Email address
           hint:  "We’ll send the registration confirmation to this address"
