@@ -58,20 +58,6 @@ module FloodRiskEngine
           end
         end
       end
-
-      context "show with test_for_errors" do
-        let(:step) { steps[1] }
-        before do
-          expect_any_instance_of(Steps::BaseForm).to(
-            receive(:valid?).and_return(false)
-          )
-          get :show, id: step, enrollment_id: enrollment, check_for_error: true
-        end
-
-        it "should render page successfully" do
-          expect(response).to have_http_status(:success)
-        end
-      end
     end
   end
 end

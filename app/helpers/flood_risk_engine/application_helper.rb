@@ -17,9 +17,10 @@ module FloodRiskEngine
     def form_group_and_validation(form, attribute, &block)
       content = block_given? ? capture(&block) : ""
 
-      options = { id: error_link_id(attribute),
-                  role: "group",
-                  'aria-labelledby': "groupLabel"
+      options = {
+        id: error_link_id(attribute),
+        role: "group",
+        "aria-labelledby": "groupLabel"
       }
 
       if form && form.errors[attribute].any?
