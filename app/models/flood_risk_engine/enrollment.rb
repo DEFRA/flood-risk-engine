@@ -8,7 +8,6 @@ module FloodRiskEngine
     belongs_to :applicant_contact, class_name: "Contact"
     belongs_to :organisation
     delegate :org_type, to: :organisation, allow_nil: true
-    belongs_to :site_address, class_name: "Address"
 
     has_many :enrollment_exemptions,
              foreign_key: :enrollment_id,
@@ -19,6 +18,13 @@ module FloodRiskEngine
 
     # The Correspondence Contact Details related to this Application a.k.a Main Contact
     belongs_to :correspondence_contact, class_name: "Contact"
+
+    has_one(
+      :exemption_location,
+      class_name: :Location,
+      as: :locatable,
+      dependent: :restrict_with_exception
+    )
 
     serialize :step_history, Array
 
