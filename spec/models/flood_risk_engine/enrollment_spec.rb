@@ -14,7 +14,6 @@ module FloodRiskEngine
 
     it { is_expected.to belong_to(:applicant_contact) }
     it { is_expected.to belong_to(:organisation) }
-    it { is_expected.to belong_to(:site_address).class_name("FloodRiskEngine::Address") }
 
     describe "intializing an instance" do
       context "with a new instance" do

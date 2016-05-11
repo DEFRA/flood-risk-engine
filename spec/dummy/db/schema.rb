@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505134721) do
+ActiveRecord::Schema.define(version: 20160510144924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,17 @@ ActiveRecord::Schema.define(version: 20160505134721) do
     t.string   "country_iso",         limit: 3
     t.integer  "address_type",                    default: 0,  null: false
     t.string   "organisation",        limit: 255, default: "", null: false
-    t.integer  "contact_id"
     t.date     "state_date"
     t.string   "blpu_state_code"
     t.string   "postal_address_code"
     t.string   "logical_status_code"
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
   end
+
+  add_index "flood_risk_engine_addresses", ["addressable_id", "addressable_type"], name: "by_addressable", using: :btree
 
   create_table "flood_risk_engine_contacts", force: :cascade do |t|
     t.integer  "contact_type",                            default: 0,  null: false
@@ -59,14 +62,12 @@ ActiveRecord::Schema.define(version: 20160505134721) do
     t.datetime "updated_at",                           null: false
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
-    t.integer  "site_address_id"
     t.integer  "correspondence_contact_id"
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
   add_index "flood_risk_engine_enrollments", ["correspondence_contact_id"], name: "fre_enrollments_correspondence_contact_id", using: :btree
   add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id", using: :btree
-  add_index "flood_risk_engine_enrollments", ["site_address_id"], name: "index_flood_risk_engine_enrollments_on_site_address_id", using: :btree
 
   create_table "flood_risk_engine_enrollments_exemptions", force: :cascade do |t|
     t.integer  "enrollment_id",             null: false
@@ -90,15 +91,12 @@ ActiveRecord::Schema.define(version: 20160505134721) do
   add_index "flood_risk_engine_exemptions", ["code_number"], name: "index_flood_risk_engine_exemptions_on_code_number", using: :btree
 
   create_table "flood_risk_engine_locations", force: :cascade do |t|
-    t.integer  "address_id"
     t.float    "easting"
     t.float    "northing"
     t.string   "grid_reference"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
-
-  add_index "flood_risk_engine_locations", ["address_id"], name: "index_flood_risk_engine_locations_on_address_id", using: :btree
 
   create_table "flood_risk_engine_organisations", force: :cascade do |t|
     t.string   "name"
@@ -128,13 +126,10 @@ ActiveRecord::Schema.define(version: 20160505134721) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
-  add_foreign_key "flood_risk_engine_addresses", "flood_risk_engine_contacts", column: "contact_id"
   add_foreign_key "flood_risk_engine_contacts", "flood_risk_engine_organisations", column: "partnership_organisation_id"
-  add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_addresses", column: "site_address_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "applicant_contact_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_organisations", column: "organisation_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_exemptions", column: "exemption_id"
-  add_foreign_key "flood_risk_engine_locations", "flood_risk_engine_addresses", column: "address_id"
   add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"
 end

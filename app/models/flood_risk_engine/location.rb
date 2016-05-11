@@ -1,5 +1,5 @@
 module FloodRiskEngine
   class Location < ActiveRecord::Base
-    belongs_to :address
+    has_one :address, as: :addressable
   end
 end
