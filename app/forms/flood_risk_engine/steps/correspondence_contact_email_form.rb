@@ -70,7 +70,8 @@ module FloodRiskEngine
       # N.B This reader used by validations as well as view so care needed as to when to populate field
       #
       def email_address_confirmation
-        if any_email_field_changed? && email_present? && no_email_errors?
+        if no_email_field_changed? && email_present? && no_email_errors?
+          Rails.logger.debug("Using existing email for email_address_confirmation")
           enrollment.correspondence_contact.email_address
         else
           # important to use the Reform chain if we dont need the very specific to over ride
@@ -80,8 +81,13 @@ module FloodRiskEngine
 
       private
 
+      def no_email_field_changed?
+       !any_email_field_changed?
+      end
+
       def any_email_field_changed?
-        (changed[:email_address] != true && changed[:email_address_confirmation] != true)
+        # hash is not indifferent access, use strings
+        changed.key?("email_address") || changed.key?("email_address_confirmation")
       end
 
       def email_present?
