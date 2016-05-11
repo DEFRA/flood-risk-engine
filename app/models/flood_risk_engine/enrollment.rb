@@ -19,6 +19,8 @@ module FloodRiskEngine
     # The Correspondence Contact Details related to this Application a.k.a Main Contact
     belongs_to :correspondence_contact, class_name: "Contact"
 
+    has_one :location, as: :locatable
+
     serialize :step_history, Array
 
     before_validation :preserve_current_step

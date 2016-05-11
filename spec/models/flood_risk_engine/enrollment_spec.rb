@@ -14,6 +14,7 @@ module FloodRiskEngine
 
     it { is_expected.to belong_to(:applicant_contact) }
     it { is_expected.to belong_to(:organisation) }
+    it { is_expected.to have_one(:location) }
 
     describe "intializing an instance" do
       context "with a new instance" do
