@@ -44,7 +44,6 @@ module FloodRiskEngine
       let(:locale_errors_key) { "#{CorrespondenceContactEmailForm.locale_key}.errors" }
 
       describe "Correspondence Contact Email" do
-
         it "is invalid when no email supplied" do
           params = { "#{form.params_key}": { email_address: "" } }
 
@@ -85,7 +84,6 @@ module FloodRiskEngine
         end
       end
       describe "Existing Correspondence Contact Email - Going Back" do
-
         before(:each) do
           form.enrollment.correspondence_contact.update! email_address: email_address
 
@@ -93,7 +91,6 @@ module FloodRiskEngine
         end
 
         it "is invalid  when existing email is made blank" do
-
           params = { "#{form.params_key}": { email_address: "" } }
 
           expect(form.validate(params)).to eq false
@@ -114,14 +111,12 @@ module FloodRiskEngine
         end
 
         it "is invalid  when existing email is changed but not confirmed" do
-
           # In Browser email_address_confirmation field is filled with existing
 
           params = { "#{form.params_key}": {
             email_address: "flood_rspec@unique.com",
             email_address_confirmation: form.enrollment.correspondence_contact.email_address
-            }
-          }
+          } }
 
           expect(form.validate(params)).to eq false
 

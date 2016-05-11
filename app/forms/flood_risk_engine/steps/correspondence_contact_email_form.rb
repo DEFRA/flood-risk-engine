@@ -82,7 +82,7 @@ module FloodRiskEngine
       private
 
       def no_email_field_changed?
-       !any_email_field_changed?
+        !any_email_field_changed?
       end
 
       def any_email_field_changed?

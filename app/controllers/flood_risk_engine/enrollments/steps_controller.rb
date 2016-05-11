@@ -19,6 +19,7 @@ module FloodRiskEngine
         render :show, locals: locals
       end
 
+      # rubocop:disable Metrics/AbcSize
       def update
         success = save_form!
         if form.redirect?
@@ -29,7 +30,6 @@ module FloodRiskEngine
         else
           # error_params will be the submitted form data or an empty hash if nothing submitted.
           logger.error("Form save failed : [#{form.errors.messages.inspect}")
-          logger.error("Form errors : [#{form.errors.inspect}")
           session[:error_params] = {
             form.params_key => params.fetch(form.params_key, {})
           }
