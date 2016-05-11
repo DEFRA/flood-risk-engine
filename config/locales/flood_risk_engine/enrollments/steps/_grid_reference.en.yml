@@ -17,7 +17,7 @@ en:
             tool_link: Ordnance Survey online map
             tool_info:  |-
               Zoom in and centre the map on the activity location and select
-              the &#39;Grid Ref&#39; tool. You should be able to copy and paste
+              the 'Grid Ref' tool. You should be able to copy and paste
               the grid reference back into this page.
           errors:
             grid_reference:
