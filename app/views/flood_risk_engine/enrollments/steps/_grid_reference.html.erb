@@ -1,2 +1,39 @@
-<%= f.label :grid_reference %>
-<%= f.text_field :grid_reference %>
+<fieldset>
+  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+
+  <!-- Grid reference -->
+  <div class="form-group">
+    <label class="form-label" for="grid-reference">
+      <%= t(".form_label") %>
+      <span class="form-hint">
+        <%= t(".example_hint") %>
+      </span>
+      <span class="form-hint">
+        <%= t(".clarification_hint") %>
+      </span>
+    </label>
+    <input type="text" class="form-control" id="grid-reference" aria-describedby="ngr_help" />
+  </div>
+
+</fieldset>
+
+<!-- Find grid reference -->
+<details style="padding-bottom: 18px;" id="ngr_help">
+  <summary><span class="summary"><%= t(".details.summary") %></span></summary>
+  <div class="panel panel-border-narrow">
+    <p>
+      <%=
+        t(
+          ".details.tool_text",
+          link: link_to(
+            t(".details.tool_link"),
+            "https://www.ordnancesurvey.co.uk/osmaps/",
+            rel: "external",
+            target: "_blank"
+          )
+        ).html_safe
+      %>
+    </p>
+    <p><%= t(".details.tool_info")  %></p>
+  </div>
+</details>
