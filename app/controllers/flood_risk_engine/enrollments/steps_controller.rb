@@ -19,8 +19,7 @@ module FloodRiskEngine
         render :show, locals: locals
       end
 
-      # rubocop:disable Metrics/AbcSize
-      def update
+      def update # rubocop:disable Metrics/AbcSize
         success = save_form!
         if form.redirect?
           redirect_to(form.redirection_url)
