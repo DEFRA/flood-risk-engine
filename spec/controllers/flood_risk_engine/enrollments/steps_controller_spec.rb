@@ -14,7 +14,7 @@ module FloodRiskEngine
         end
       end
 
-      context "edit action" do
+      context "show action" do
         before do
           get :show, id: step, enrollment_id: enrollment
         end
