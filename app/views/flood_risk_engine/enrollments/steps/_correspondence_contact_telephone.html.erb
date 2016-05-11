@@ -1,11 +1,11 @@
 <fieldset>
   <legend class="visuallyhidden"><%= t(".legend") %></legend>
 
-  <%= form_group_and_validation(form, :full_name) do -%>
+  <%= form_group_and_validation(form, :telephone_number) do -%>
     <div class="form-group">
-      <label class="form-label" for="telephone"><%= t(".form_label") %>
+      <%= f.label(:telephone_number, t(".form_label"), class: "form-label") do %>
         <span class="form-hint"><%= t(".form_hint") %></span>
-      </label>
+      <% end %>
       <%= f.telephone_field :telephone_number, class: "form-control" %>
     </div>
   <% end %>
