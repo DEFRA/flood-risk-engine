@@ -1,26 +1,33 @@
 module FloodRiskEngine
   module Steps
     class GridReferenceForm < BaseForm
-      property :grid_reference
-      validates :grid_reference, presence: true
 
-      # This method is responsible for constructing an instance if its class.
-      # It alone knows what model the form object will be passed.
-      # For example if this form object deals with updating an address it might
-      # be initialised like so
-      #   Step1Form.new(enrollment.address, enrollment)
       def self.factory(enrollment)
-        # TODO: what happens if they click back ? get the site address ?
-        location = Location.new # enrollment.site_address || Location.new
-        new(location, enrollment)
+        enrollment.exemption_location ||= Location.new
+        new(enrollment.exemption_location, enrollment)
       end
 
-      def params_key
+      def self.params_key
         :grid_reference
       end
 
+      property :grid_reference
+
+      validates(
+        :grid_reference,
+        format: {
+          with: /([a-zA-Z]{2})\s*(\d{3,5})\s*(\d{3,6})/,
+          message: I18n.t("#{locale_key}.errors.grid_reference.invalid"),
+          allow_blank: true
+        },
+        presence: {
+          message: I18n.t("#{locale_key}.errors.grid_reference.blank")
+        }
+      )
+
       def save
         super
+        enrollment.exemption_location ||= model
         enrollment.save
       end
     end

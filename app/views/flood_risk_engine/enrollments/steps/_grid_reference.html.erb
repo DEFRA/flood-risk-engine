@@ -1,19 +1,26 @@
 <fieldset>
   <legend class="visuallyhidden"><%= t(".legend") %></legend>
 
-  <!-- Grid reference -->
-  <div class="form-group">
-    <label class="form-label" for="grid-reference">
-      <%= t(".form_label") %>
-      <span class="form-hint">
-        <%= t(".example_hint") %>
-      </span>
-      <span class="form-hint">
-        <%= t(".clarification_hint") %>
-      </span>
-    </label>
-    <input type="text" class="form-control" id="grid-reference" aria-describedby="ngr_help" />
-  </div>
+  <%= form_group_and_validation(form, :grid_reference) do -%>
+    <div class="form-group">
+      <label class="form-label" for="grid-reference">
+        <%= t(".form_label") %>
+        <span class="form-hint">
+          <%= t(".example_hint") %>
+        </span>
+        <span class="form-hint">
+          <%= t(".clarification_hint") %>
+        </span>
+      </label>
+      <%=
+        f.text_field(
+          :grid_reference,
+          class: "form-control",
+          "aria-describedby" => "ngr_help"
+        )
+      %>
+    </div>
+  <% end %>
 
 </fieldset>
 
