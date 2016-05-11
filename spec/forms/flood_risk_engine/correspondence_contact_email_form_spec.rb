@@ -38,12 +38,12 @@ module FloodRiskEngine
         end
       end
 
+      let(:email_address_errors)        { subject.errors.messages[:email_address] }
+      let(:email_confirmation_errors)   { subject.errors.messages[:email_address_confirmation] }
+
+      let(:locale_errors_key) { "#{CorrespondenceContactEmailForm.locale_key}.errors" }
+
       describe "Correspondence Contact Email" do
-        let(:email_address_errors)        { subject.errors.messages[:email_address] }
-        let(:email_confirmation_errors)   { subject.errors.messages[:email_address_confirmation] }
-
-        let(:locale_errors_key) { "#{CorrespondenceContactEmailForm.locale_key}.errors" }
-
         it "is invalid when no email supplied" do
           params = { "#{form.params_key}": { email_address: "" } }
 
@@ -81,6 +81,46 @@ module FloodRiskEngine
 
             expect(email_address_errors).to eq([I18n.t("#{locale_errors_key}.email_address.format")])
           end
+        end
+      end
+      describe "Existing Correspondence Contact Email - Going Back" do
+        before(:each) do
+          form.enrollment.correspondence_contact.update! email_address: email_address
+
+          expect(form.enrollment.correspondence_contact.email_address).to be_present
+        end
+
+        it "is invalid  when existing email is made blank" do
+          params = { "#{form.params_key}": { email_address: "" } }
+
+          expect(form.validate(params)).to eq false
+
+          expect(email_address_errors).to eq([I18n.t("#{locale_errors_key}.email_address.blank")])
+        end
+
+        it "is invalid  when badly formatted email supplied" do
+          ["junk", "stilljunk@", "nope_stilljunk@.com"].each do |email|
+            form.errors.clear
+
+            params = { "#{form.params_key}": { email_address: email } }
+
+            expect(form.validate(params)).to eq false
+
+            expect(email_address_errors).to eq([I18n.t("#{locale_errors_key}.email_address.format")])
+          end
+        end
+
+        it "is invalid  when existing email is changed but not confirmed" do
+          # In Browser email_address_confirmation field is filled with existing
+
+          params = { "#{form.params_key}": {
+            email_address: "flood_rspec@unique.com",
+            email_address_confirmation: form.enrollment.correspondence_contact.email_address
+          } }
+
+          expect(form.validate(params)).to eq false
+
+          expect(email_confirmation_errors).to eq([I18n.t("#{locale_errors_key}.email_address_confirmation.format")])
         end
       end
     end
