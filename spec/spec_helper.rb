@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 # Code coverage hook
 require "simplecov"
 SimpleCov.start "rails" do
