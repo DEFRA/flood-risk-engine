@@ -13,16 +13,16 @@
     <%= form_for [form.enrollment, form.address], class: "form" do |f| %>
 
       <p>
-        <span class="postcode-prefix"><%= t(".post_code.prefix") %></span>
-        <span class="visuallyhidden"><%= t(".post_code.separator") %></span>
-        <span class="postcode">BS1 5AH</span>
+        <span class="postcode-prefix"><%= t(".postcode.prefix") %></span>
+        <span class="visuallyhidden"><%= t(".postcode.separator") %></span>
+        <span class="postcode"><%= form.address.postcode %></span>
         <a href="" class="change-postcode-button">
           <%=
             t(
-              ".post_code.change_button.text",
+              ".postcode.change_button.text",
               hidden: content_tag(
                 'span',
-                t(".post_code.change_button.hidden"),
+                t(".postcode.change_button.hidden"),
                 class: "visuallyhidden"
               )
             ).html_safe
@@ -35,25 +35,26 @@
         <legend class="visuallyhidden"><%= t(".legend") %></legend>
 
         <div class="form-group">
-          <label class="form-label" for="premises"><%= t(".premises.label") %>
+          <%= f.label :premises, class: "form-label" do %>
+            <%= t(".premises.label") %>
             <span class="form-hint"><%= t(".premises.hint") %></span>
-          </label>
-          <input type="text" class="form-control" id="premises" />
+          <% end %>
+          <%= f.text_field :premises, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="street_address"><%= t(".street_address") %></label>
-          <input type="text" class="form-control" id="street_address" />
+          <%= f.label :street_address, t(".street_address"), class: "form-label" %>
+          <%= f.text_field :street_address, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="locality"><%= t(".locality") %></label>
-          <input type="text" class="form-control" id="locality" />
+          <%= f.label :locality, t(".locality"), class: "form-label" %>
+          <%= f.text_field :locality, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="town"><%= t(".town") %></label>
-          <input type="text" class="form-control" id="town" />
+          <%= f.label :city, t(".city"), class: "form-label" %>
+          <%= f.text_field :city, class: "form-control" %>
         </div>
       </fieldset>
 

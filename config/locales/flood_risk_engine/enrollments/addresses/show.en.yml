@@ -5,7 +5,7 @@ en:
       addresses:
         show:
           heading: What’s the registered address of the company?
-          post_code:
+          postcode:
             prefix: Postcode
             separator: ":"
             change_button:
@@ -17,5 +17,5 @@ en:
             hint: For example, a business premises name or house number
           street_address: Street line 1
           locality: Street line 2 (optional)
-          town: Town or city
+          city: Town or city
           submit_button: Continue
