@@ -31,9 +31,6 @@ require_relative "support/state_machines/test_state_machine"
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-# Set faker so it uses British formats for postcodes, telephone numbers etc.
-Faker::Config.locale = "en-GB"
-
 # FactoryGirl willl not find the factories without the line below
 # FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), "factories")
 # FactoryGirl.find_definitions
