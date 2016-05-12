@@ -19,7 +19,8 @@ module FloodRiskEngine
         render :show, locals: locals
       end
 
-      def update # rubocop:disable Metrics/AbcSize
+      def update
+        clear_error_params
         success = save_form!
         if form.redirect?
           redirect_to(form.redirection_url)
@@ -27,23 +28,27 @@ module FloodRiskEngine
           step_forward
           redirect_to step_url
         else
-          # error_params will be the submitted form data or an empty hash if nothing submitted.
-          logger.error("Form save failed : [#{form.errors.messages.inspect}")
-          session[:error_params] = {
-            form.params_key => params.fetch(form.params_key, {})
-          }
-          redirect_to step_url(check_for_error: true)
+          handle_failure_and_redirect_back_to_show
         end
       end
 
       private
 
+      def handle_failure_and_redirect_back_to_show
+        logger.error("Form save failed : [#{form.errors.messages.inspect}")
+        # error_params will be the submitted form data or an empty hash if nothing submitted.
+        session[:error_params] = {
+          form.params_key => params.fetch(form.params_key, {})
+        }
+        redirect_to step_url(check_for_error: true)
+      end
+
       def step
         @step ||= params.fetch(:id).to_sym
       end
 
-      def step_url(extra = {})
-        enrollment_step_path(enrollment, enrollment.current_step, extra)
+      def step_url(options = {})
+        enrollment_step_path(enrollment, enrollment.current_step, options)
       end
 
       def check_step_is_valid
@@ -99,6 +104,10 @@ module FloodRiskEngine
       def step_not_found
         Rails.logger.info "Step Mismatch: :#{step} requested when enrollment at :#{enrollment.step}"
         redirect_to step_url
+      end
+
+      def clear_error_params
+        session[:error_params] = {}
       end
     end
   end
