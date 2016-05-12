@@ -1,48 +1,67 @@
-<h1 class="heading-large">
-  What’s the registered address of the company?
-</h1>
+<%= link_to(
+      "Back",
+      enrollment_step_path(form.enrollment, form.enrollment.previous_step),
+    ) if form.enrollment.can?(:go_back)
+%>
 
-<p>
-  <span class="postcode-prefix"><%= t(".post_code.prefix") %></span>
-  <span class="visuallyhidden"><%= t(".post_code.separator") %></span>
-  <span class="postcode">BS1 5AH</span>
-  <a href="" class="change-postcode-button">
-    <%=
-      t(
-        ".post_code.change_button.text",
-        hidden: content_tag(
-          'span',
-          t(".post_code.change_button.hidden"),
-          class: "visuallyhidden"
-        )
-      ).html_safe
-    %>
-  </a>
-</p>
+<div class="grid-row">
+  <div class="column-two-thirds">
 
-<fieldset>
-  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+    <%= render "flood_risk_engine/enrollments/header", title_text: t(".heading") %>
+    <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 
-  <div class="form-group">
-    <label class="form-label" for="premises"><%= t(".premises.label") %>
-      <span class="form-hint"><%= t(".premises.hint") %></span>
-    </label>
-    <input type="text" class="form-control" id="premises" />
+    <%= form_for [form.enrollment, form.address], class: "form" do |f| %>
+
+      <p>
+        <span class="postcode-prefix"><%= t(".post_code.prefix") %></span>
+        <span class="visuallyhidden"><%= t(".post_code.separator") %></span>
+        <span class="postcode">BS1 5AH</span>
+        <a href="" class="change-postcode-button">
+          <%=
+            t(
+              ".post_code.change_button.text",
+              hidden: content_tag(
+                'span',
+                t(".post_code.change_button.hidden"),
+                class: "visuallyhidden"
+              )
+            ).html_safe
+          %>
+        </a>
+      </p>
+
+      <!-- Manually entered address -->
+      <fieldset>
+        <legend class="visuallyhidden"><%= t(".legend") %></legend>
+
+        <div class="form-group">
+          <label class="form-label" for="premises"><%= t(".premises.label") %>
+            <span class="form-hint"><%= t(".premises.hint") %></span>
+          </label>
+          <input type="text" class="form-control" id="premises" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="street_address"><%= t(".street_address") %></label>
+          <input type="text" class="form-control" id="street_address" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="locality"><%= t(".locality") %></label>
+          <input type="text" class="form-control" id="locality" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="town"><%= t(".town") %></label>
+          <input type="text" class="form-control" id="town" />
+        </div>
+      </fieldset>
+
+      <!-- Primary button -->
+      <div class="form-group">
+        <%= f.submit submit_button_text(form.enrollment), class: "button"  %>
+      </div>
+
+    <% end #form %>
   </div>
-
-  <div class="form-group">
-    <label class="form-label" for="street_address"><%= t(".street_address") %></label>
-    <input type="text" class="form-control" id="street_address" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="locality"><%= t(".locality") %></label>
-    <input type="text" class="form-control" id="locality" />
-  </div>
-
-  <div class="form-group">
-    <label class="form-label" for="town"><%= t(".town") %></label>
-    <input type="text" class="form-control" id="town" />
-  </div>
-
-</fieldset>
+</div>

@@ -18,3 +18,4 @@ en:
           street_address: Street line 1
           locality: Street line 2 (optional)
           town: Town or city
+          submit_button: Continue

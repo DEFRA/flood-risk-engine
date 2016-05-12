@@ -1,5 +1,3 @@
-<!-- There is some potentially quick complex logic around the back link -
-see the DigitalServicesCore::BackLink class -->
 <%= link_to(
         "Back",
         enrollment_step_path(form.enrollment, form.enrollment.previous_step),
@@ -9,28 +7,24 @@ see the DigitalServicesCore::BackLink class -->
 <div class="grid-row">
   <div class="column-two-thirds">
 
-    <header class="text">
-      <h1 class="form-title heading-large" id="groupLabel">
-        <%= page_title(step_t(step, ".heading")) %>
-      </h1>
-    </header>
-
-    <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
-
-    <% # Using 'as:' changes the name of the fields in the form from eg
-       #   name="flood_risk_engine_steps_step1[field1]"
-       # to
-       #   name="step1[dummy_boolean]"
-       # which is much clearer
+    <%= render(
+          "flood_risk_engine/enrollments/header",
+          title_text: t("flood_risk_engine.enrollments.steps.#{step}.heading")
+        )
     %>
+    <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
 
-    <% form_url = form.url || enrollment_step_path(form.enrollment, step) %>
-
-    <%= form_for form,
-                 as: step,
-                 url: form_url,
-                 method: :patch,
-                 class: 'form' do |f| %>
+<% # Using 'as:' changes the name of the fields in the form from eg
+   #   name="flood_risk_engine_steps_step1[field1]"
+   # to
+   #   name="step1[dummy_boolean]"
+   # which is much clearer
+%>
+<%= form_for form,
+             as: step,
+             url: enrollment_step_path(form.enrollment, step),
+             method: :patch,
+             class: "form" do |f| %>
 
       <%= render step.to_s, form: form, step: step, f: f %>
 
