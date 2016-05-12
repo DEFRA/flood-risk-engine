@@ -1,0 +1,20 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      addresses:
+        show:
+          heading: What’s the registered address of the company?
+          post_code:
+            prefix: Postcode
+            separator: ":"
+            change_button:
+              text: Change %{hidden}
+              hidden: postcode
+          legend: Address for manual entry
+          premises:
+            label: Building name or number
+            hint: For example, a business premises name or house number
+          street_address: Street line 1
+          locality: Street line 2 (optional)
+          town: Town or city
