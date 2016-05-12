@@ -1,5 +1,3 @@
-
-
 module FloodRiskEngine
   module Steps
     class CorrespondenceContactTelephoneForm < BaseForm

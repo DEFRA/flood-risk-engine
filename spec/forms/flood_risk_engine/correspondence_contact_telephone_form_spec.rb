@@ -3,7 +3,7 @@ require_relative "../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
   module Steps
-    describe CorrespondenceContactTelephoneForm do
+    describe CorrespondenceContactTelephoneForm, type: :form do
       let(:params_key) { :telephone_number }
       let(:enrollment) { FactoryGirl.create(:enrollment) }
       let(:model_class) { Contact }
