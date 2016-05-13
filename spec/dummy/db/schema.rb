@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 20160524081645) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.integer  "secondary_contact_id"
     t.string   "token"
+    t.integer  "secondary_contact_id"
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
@@ -122,13 +122,15 @@ ActiveRecord::Schema.define(version: 20160524081645) do
     t.string   "name"
     t.integer  "contact_id"
     t.string   "company_number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "org_type"
+    t.integer  "primary_address_id"
   end
 
   add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id", using: :btree
   add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type", using: :btree
+  add_index "flood_risk_engine_organisations", ["primary_address_id"], name: "index_flood_risk_engine_organisations_on_primary_address_id", using: :btree
 
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
@@ -153,5 +155,6 @@ ActiveRecord::Schema.define(version: 20160524081645) do
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_organisations", column: "organisation_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_exemptions", column: "exemption_id"
+  add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_addresses", column: "primary_address_id"
   add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"
 end

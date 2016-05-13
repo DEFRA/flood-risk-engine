@@ -14,22 +14,21 @@ module FloodRiskEngine
         # NB: use NullForm for steps with no html form.
         def form_object_class_map
           @form_object_class_map ||= {
-            grid_reference:          Steps::GridReferenceForm,
-            review:                  Steps::NullForm,
-            add_exemptions:          Steps::AddExemptionsForm,
-            check_exemptions:        Steps::NullForm,
-            user_type:               Steps::UserTypeForm,
-
-            correspondence_contact_address:    Steps::NullForm,
-            correspondence_contact_postcode:   Steps::NullForm,
-
-            individual_name:         Steps::NullForm,
-            limited_company_number:  Steps::NullForm,
-            limited_liability_number: Steps::NullForm,
-            other:                   Steps::NullForm,
-            partnership:             Steps::NullForm,
-            check_your_answers:      Steps::NullForm,
-            confirmation:            Steps::NullForm
+            grid_reference:                   Steps::GridReferenceForm,
+            review:                           Steps::NullForm,
+            add_exemptions:                   Steps::AddExemptionsForm,
+            check_exemptions:                 Steps::NullForm,
+            user_type:                        Steps::UserTypeForm,
+            correspondence_contact_address:   Steps::NullForm,
+            correspondence_contact_postcode:  Steps::NullForm,
+            individual_name:                  Steps::NullForm,
+            limited_company_number:           Steps::NullForm,
+            limited_liability_number:         Steps::NullForm,
+            other:                            Steps::NullForm,
+            partnership:                      Steps::NullForm,
+            check_your_answers:               Steps::CheckYourAnswersForm,
+            declaration:                      Steps::NullForm,
+            confirmation:                     Steps::NullForm
           }
         end
 
