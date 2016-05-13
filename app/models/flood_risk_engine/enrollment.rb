@@ -1,7 +1,11 @@
+require_dependency "has_secure_token"
+
 module FloodRiskEngine
   class Enrollment < ActiveRecord::Base
     extend Concerns::StateMachineSwitcher
     self.default_state_machine = EnrollmentStateMachine
+
+    has_secure_token
 
     # We don't define the inverse relationship of applicant_contact as, in WEX at least,
     # we query never from contact to its enrollment
@@ -35,6 +39,10 @@ module FloodRiskEngine
     # default state machine. 'validate' calls the method on the instance so
     # can be run after the state machine class has been changed
     validate :step_defined_in_state_machines
+
+    def to_param
+      token
+    end
 
     def business_type
       :foo

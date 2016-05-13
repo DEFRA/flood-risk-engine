@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency "phonelib", "~> 0.6" # Add telephone number validation
   s.add_dependency "activerecord-session_store", "~> 0.1"
   s.add_dependency "os_map_ref", "~> 0.4"
+  s.add_dependency "has_secure_token", "~> 1.0.0" # Enables url obfuscation with 24bit base58 token
 
   s.add_development_dependency "pg", "~> 0.18"
   s.add_development_dependency "before_commit", "~> 0.6"
