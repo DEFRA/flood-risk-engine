@@ -113,7 +113,9 @@ module FloodRiskEngine
 
           expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
 
-          allow_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
+          # Stub #search so no external api calls are made
+          expect_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return(nil)
+          expect_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
 
           get(:show, params, session)
 

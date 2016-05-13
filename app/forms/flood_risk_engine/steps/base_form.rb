@@ -34,6 +34,10 @@ module FloodRiskEngine
         super params.fetch(params_key) { {} }
       end
 
+      def view_path
+        :show
+      end
+
       attr_reader :enrollment
 
       protected
