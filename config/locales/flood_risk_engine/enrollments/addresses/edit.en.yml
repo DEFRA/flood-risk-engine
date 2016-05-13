@@ -3,7 +3,7 @@ en:
   flood_risk_engine:
     enrollments:
       addresses:
-        show:
+        edit:
           heading: What’s the registered address of the company?
           postcode:
             prefix: Postcode

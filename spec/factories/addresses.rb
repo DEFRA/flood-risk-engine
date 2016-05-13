@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :address_services, class: "FloodRiskEngine::Address" do
+  factory :address, class: "FloodRiskEngine::Address" do
     premises            Faker::Address.building_number
     street_address      Faker::Address.street_address
     locality            Faker::StarWars.planet
@@ -14,4 +14,6 @@ FactoryGirl.define do
     postal_address_code Faker::Lorem.characters(10)
     logical_status_code Faker::Lorem.characters(10)
   end
+
+  factory :address_services, parent: :address
 end

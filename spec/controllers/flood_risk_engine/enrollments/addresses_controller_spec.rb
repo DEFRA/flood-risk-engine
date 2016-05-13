@@ -13,7 +13,7 @@ module FloodRiskEngine
 
       describe "show action" do
         before do
-          get :show, id: address, enrollment_id: enrollment
+          get :edit, id: address, enrollment_id: enrollment
         end
 
         it "should render page sucessfully" do
@@ -49,7 +49,7 @@ module FloodRiskEngine
 
           it "should redirect back to show with check for errors" do
             expect(response).to redirect_to(
-              enrollment_address_path(enrollment, address, check_for_error: true)
+              edit_enrollment_address_path(enrollment, address, check_for_error: true)
             )
           end
         end

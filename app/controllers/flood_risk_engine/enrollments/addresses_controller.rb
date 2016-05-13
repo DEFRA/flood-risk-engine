@@ -26,7 +26,7 @@ module FloodRiskEngine
           step_forward
           enrollment_step_path(enrollment, enrollment.current_step)
         else
-          enrollment_address_path(enrollment, address, check_for_error: true)
+          edit_enrollment_address_path(enrollment, address, check_for_error: true)
         end
       end
 
@@ -37,7 +37,7 @@ module FloodRiskEngine
       end
 
       def enrollment
-        @enrollment ||= Enrollment.find(params[:enrollment_id])
+        @enrollment ||= Enrollment.find_by_token!(params[:enrollment_id])
       end
 
       def address
