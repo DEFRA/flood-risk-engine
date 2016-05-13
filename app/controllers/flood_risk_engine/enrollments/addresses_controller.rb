@@ -9,6 +9,7 @@ module FloodRiskEngine
       end
 
       def update
+        clear_error_params
         redirect_to target_url
       end
 
@@ -47,6 +48,10 @@ module FloodRiskEngine
       def step_forward
         enrollment.go_forward
         enrollment.save
+      end
+
+      def clear_error_params
+        session[:error_params] = {}
       end
     end
   end
