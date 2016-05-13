@@ -4,10 +4,8 @@ module FloodRiskEngine
   module Enrollments
     class AddressesController < ApplicationController
 
-      def show
-        form
-        @enrollment = Enrollment.find(params[:enrollment_id])
-        @address = Address.find(params[:id])
+      def edit
+        form.validate(session[:error_params]) if params[:check_for_error]
       end
 
       def update
@@ -17,7 +15,7 @@ module FloodRiskEngine
       private
 
       def form
-        @form ||= AddressForm.new(address, enrollment)
+        @form ||= AddressForm.new(enrollment, address)
       end
       helper_method :form
 
@@ -26,13 +24,15 @@ module FloodRiskEngine
           step_forward
           enrollment_step_path(enrollment, enrollment.current_step)
         else
+          session[:error_params] = {
+            address: params[:address]
+          }
           edit_enrollment_address_path(enrollment, address, check_for_error: true)
         end
       end
 
       def save_form!
         return false unless form.validate(params)
-        return false unless enrollment.save
         form.save
       end
 

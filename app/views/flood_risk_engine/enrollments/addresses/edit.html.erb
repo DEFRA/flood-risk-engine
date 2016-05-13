@@ -4,18 +4,25 @@
     ) if form.enrollment.can?(:go_back)
 %>
 
+<%= form.inspect %>
+
 <div class="grid-row">
   <div class="column-two-thirds">
 
     <%= render "flood_risk_engine/enrollments/header", title_text: t(".heading") %>
     <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 
-    <%= form_for [form.enrollment, form.address], class: "form" do |f| %>
+    <%= form_for(
+          form,
+          as: :address,
+          url: enrollment_address_path(form.enrollment, form.model),
+          class: "form"
+        ) do |f| %>
 
       <p>
         <span class="postcode-prefix"><%= t(".postcode.prefix") %></span>
         <span class="visuallyhidden"><%= t(".postcode.separator") %></span>
-        <span class="postcode"><%= form.address.postcode %></span>
+        <span class="postcode"><%= form.model.postcode %></span>
         <a href="" class="change-postcode-button">
           <%=
             t(
