@@ -1,0 +1,51 @@
+<%= render 'back_link', form: form %>
+
+<%= form_for form,
+                 as: step,
+                 url: enrollment_step_path(form.enrollment, step),
+                 method: :patch,
+                 class: 'form' do |f| %>
+
+  <h1 class="heading-large">
+    <%= t(".heading") %>
+  </h1>
+
+  <p class="panel panel-border-wide">
+    <%= t(".subheading") %>
+  </p>
+  <h2 class="heading-medium">
+    <%= t(".table_heading") %>
+  </h2>
+
+  <table class="check-your-answers" summary="<%= t('.table_summary') %>"">
+    <tbody>
+      <% form.rows.each do |row| %>
+        <%
+          #locale_scope = ".rows.#{row.name}"
+          #row_title = t("#{locale_scope}.title")
+          #row_change_link_suffix = t("#{locale_scope}.change_link_suffix")
+        %>
+        <tr data-row="<%= row.key %>">
+          <th>
+            <%= row.title %>
+          </th>
+          <td>
+            <%= row.value %>
+          </td>
+          <td class="change-answer">
+            <% if row.step_url.present? %>
+              <%= link_to(row.step_url) do %>
+                Change <span class="visuallyhidden"> <%#= row_change_link_suffix %></span>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+
+  <div class="form-group">
+    <%= f.submit submit_button_text(form.enrollment), class: "button"  %>
+  </div>
+<% end %>

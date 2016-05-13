@@ -1,10 +1,14 @@
 <!-- There is some potentially quick complex logic around the back link -
 see the DigitalServicesCore::BackLink class -->
+<<<<<<< b87a6c915eefc478c6f3283d2cfe9b30dd44dbfe
 <%= link_to(
         "Back",
         enrollment_step_path(form.enrollment, form.enrollment.previous_step),
     ) if form.enrollment.can?(:go_back)
 %>
+=======
+<%= render 'back_link', form: form %>
+>>>>>>> Create Check Answers page (without Change links)
 
 <div class="grid-row">
   <div class="column-two-thirds">
@@ -23,24 +27,34 @@ see the DigitalServicesCore::BackLink class -->
        #   name="step1[dummy_boolean]"
        # which is much clearer
     %>
+<<<<<<< b87a6c915eefc478c6f3283d2cfe9b30dd44dbfe
 
     <% form_url = form.url || enrollment_step_path(form.enrollment, step) %>
 
     <%= form_for form,
                  as: step,
                  url: form_url,
+=======
+    <%= form_for form,
+                 as: step,
+                 url: enrollment_step_path(form.enrollment, step),
+>>>>>>> Create Check Answers page (without Change links)
                  method: :patch,
                  class: 'form' do |f| %>
 
       <%= render step.to_s, form: form, step: step, f: f %>
 
       <div class="form-group">
+<<<<<<< b87a6c915eefc478c6f3283d2cfe9b30dd44dbfe
         <%=
           f.submit(
             step_t(step, ".continue",  default: t("global.continue")),
             class: "button"
           )
         %>
+=======
+        <%= f.submit submit_button_text(form.enrollment), class: "button"  %>
+>>>>>>> Create Check Answers page (without Change links)
       </div>
     <% end %>
 

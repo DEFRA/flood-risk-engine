@@ -4,9 +4,8 @@ FactoryGirl.define do
     name Faker::Company.name
     company_number Faker::Number.number(8)
 
-    after(:create) do |object|
+    after(:build) do |object|
       object.contact = FloodRiskEngine::Contact.create(contact_type: :establishment_or_undertaking)
-      object.save
     end
 
     # Create a trait for each Type, in format : as_local_authority

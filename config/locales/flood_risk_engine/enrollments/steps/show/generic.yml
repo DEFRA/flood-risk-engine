@@ -1,0 +1,37 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        grid_reference:
+          heading: Grid Reference
+        applicant_contact_name:
+          heading: Applicant Contact Name
+        organisation_type:
+          heading: Organisation Type
+        review:
+          heading: Review
+        local_authority_address:
+          heading: Local Authority Address
+        correspondence_contact_telephone:
+          heading: Main Contact Telephone
+        correspondence_contact_address:
+          heading: Main Contact Address
+        correspondence_contact_postcode:
+          heading: Main Contact Postcode
+        email_someone_else:
+          heading: Email Someone Else
+        declaration:
+          heading: Declaration
+        confirmation:
+          heading: Confirmation
+        individual_name:
+          heading: Individual Nane
+        limited_company_number:
+          heading: Limited Company Number
+        limited_liability_number:
+          heading: Limited Liability Number
+        other:
+          heading: Other
+        partnership:
+          heading: Partnership

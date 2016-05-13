@@ -1,0 +1,20 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        check_your_answers:
+          heading: Check your answers before completing this registration
+          subheading: We’ll send a copy of these details in the confirmation email.
+          table_heading: Registration details
+          table_summary: The information you've given so far with links to change the data
+          rows:
+            organisation_type:
+              title: User type
+              change_link_suffix: user type
+            grid_reference:
+              title: Grid reference
+              change_link_suffix: grid reference
+            exemption:
+              title: Exemption %{code}
+              change_link_suffix: grid reference

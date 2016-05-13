@@ -2,6 +2,7 @@ require "flood_risk_engine/configuration"
 require "flood_risk_engine/exceptions"
 require "activerecord/session_store"
 require "high_voltage"
+require_dependency "virtus"
 
 module FloodRiskEngine
   class Engine < ::Rails::Engine
