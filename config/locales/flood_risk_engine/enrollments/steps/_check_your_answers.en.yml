@@ -1,0 +1,39 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        check_your_answers:
+          heading: Check your answers before completing this registration
+          subheading: We’ll send a copy of these details in the confirmation email.
+          table_heading: Registration details
+          table_summary: The information you've given so far with links to change the data
+          change_link: Change
+          rows:
+            registration_date:
+              title: Registration date
+              accessible_change_link_suffix: registration date
+            organisation_type:
+              title: Customer type
+              accessible_change_link_suffix: customer type
+            grid_reference:
+              title: Grid reference
+              accessible_change_link_suffix: grid reference
+            exemption:
+              title: Exemption %{code}
+              accessible_change_link_suffix: exemption %{code}
+            organisation_name:
+              title: Responsible for activity (‘operator’)
+              accessible_change_link_suffix: operator
+            organisation_address:
+              title: Their address
+              accessible_change_link_suffix: their address
+            correspondence_contact_name:
+              title: Who we will contact
+              accessible_change_link_suffix: who we will contact
+            correspondence_contact_telephone:
+              title: Telephone
+              accessible_change_link_suffix: telephone
+            correspondence_contact_email:
+              title: Email
+              accessible_change_link_suffix: email

@@ -1,0 +1,8 @@
+en:
+  organisation_types:
+    local_authority: Local authority or public body
+    individual: Individual
+    limited_company: Limited company
+    limited_liability_partnership: Limited liability partnership
+    other: Other organisation
+    unknown: I don't know
