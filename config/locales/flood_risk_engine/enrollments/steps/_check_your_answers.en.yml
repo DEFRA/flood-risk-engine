@@ -8,6 +8,7 @@ en:
           subheading: We’ll send a copy of these details in the confirmation email.
           table_heading: Registration details
           table_summary: The information you've given so far with links to change the data
+          change_link: Change
           rows:
             organisation_type:
               title: User type

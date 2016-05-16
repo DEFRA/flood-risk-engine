@@ -5,32 +5,31 @@
 module FloodRiskEngine
   module Reviewing
     class ReviewPresenter
-      attr_reader :options
+      attr_reader :i18n_scope
 
       def initialize(enrollment, i18n_scope)
-        @options = {
-          i18n_scope: i18n_scope,
-          enrollment: enrollment
-        }
+        @i18n_scope = i18n_scope
+        @enrollment = enrollment
       end
 
-      # Add to this function as required. Define new rowbuilders for each row
-      # of review data, and make them do the the work.
       def rows
-        arr = []
-        arr << RowBuilders::OrganisationTypeRowBuilder.new(options).build
-        arr << RowBuilders::GridReferenceRowBuilder.new(options).build
-        enrollment.exemptions.each do |exemption|
-          arr << RowBuilders::ExemptionRowBuilder.new(options).build(exemption)
-        end
-        # ...
-        arr
+        @rows ||= build_rows
       end
 
       private
 
-      def enrollment
-        options[:enrollment]
+      attr_reader :enrollment
+
+      def build_rows
+        arr = []
+        arr << row_builder.organisation_type_row
+        arr << row_builder.grid_reference_row
+        arr.push(*row_builder.exemptions_rows)
+        arr
+      end
+
+      def row_builder
+        @row_builder ||= RowBuilder.new(enrollment, i18n_scope)
       end
     end
   end

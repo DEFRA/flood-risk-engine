@@ -17,14 +17,9 @@
     <%= t(".table_heading") %>
   </h2>
 
-  <table class="check-your-answers" summary="<%= t('.table_summary') %>"">
+  <table class="check-your-answers" summary="<%= t('.table_summary') %>">
     <tbody>
       <% form.rows.each do |row| %>
-        <%
-          #locale_scope = ".rows.#{row.name}"
-          #row_title = t("#{locale_scope}.title")
-          #row_change_link_suffix = t("#{locale_scope}.change_link_suffix")
-        %>
         <tr data-row="<%= row.key %>">
           <th>
             <%= row.title %>
@@ -35,7 +30,7 @@
           <td class="change-answer">
             <% if row.step_url.present? %>
               <%= link_to(row.step_url) do %>
-                Change <span class="visuallyhidden"> <%#= row_change_link_suffix %></span>
+                <%= t(".change_link")%> <span class="visuallyhidden"> <%= row.title %></span>
               <% end %>
             <% end %>
           </td>

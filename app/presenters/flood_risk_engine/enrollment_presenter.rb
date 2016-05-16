@@ -12,7 +12,7 @@ module FloodRiskEngine
     end
 
     def organisation_type
-      enrollment.organisation && enrollment.organisation.org_type.to_sym
+      enrollment.org_type.to_sym if enrollment.org_type
     end
 
     private
