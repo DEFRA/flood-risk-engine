@@ -45,7 +45,7 @@ module FloodRiskEngine
       end
 
       it "should have error from exception" do
-        expect(foo.errors[:grid_reference]).not_to eq(["bar"])
+        expect(foo.errors[:grid_reference]).not_to eq(["Custom"])
         expect(foo.errors[:grid_reference].first).to be_a(String)
       end
 
