@@ -3,7 +3,7 @@
 
   <%= form_group_and_validation(form, :grid_reference) do -%>
     <div class="form-group">
-      <label class="form-label" for="grid-reference">
+      <%= f.label :grid_reference, class: "form-label" do %>
         <%= t(".form_label") %>
         <span class="form-hint">
           <%= t(".example_hint") %>
@@ -11,7 +11,7 @@
         <span class="form-hint">
           <%= t(".clarification_hint") %>
         </span>
-      </label>
+      <% end %>
       <%=
         f.text_field(
           :grid_reference,
