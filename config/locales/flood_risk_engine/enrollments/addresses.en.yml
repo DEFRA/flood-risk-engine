@@ -5,6 +5,9 @@ en:
       addresses:
         edit:
           heading: What’s the registered address of the company?
+        new:
+          heading: What’s the registered address of the company?
+        form:
           postcode:
             prefix: Postcode
             separator: ":"

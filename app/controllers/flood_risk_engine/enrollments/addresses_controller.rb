@@ -4,8 +4,18 @@ module FloodRiskEngine
   module Enrollments
     class AddressesController < ApplicationController
 
+      def new
+        build_address
+        check_for_errors
+      end
+
+      def create
+        build_address
+        update
+      end
+
       def edit
-        form.validate(session[:error_params]) if params[:check_for_error]
+        check_for_errors
       end
 
       def update
@@ -28,7 +38,24 @@ module FloodRiskEngine
           session[:error_params] = {
             address: params[:address]
           }
-          edit_enrollment_address_path(enrollment, address, check_for_error: true)
+          failure_url
+        end
+      end
+
+      def failure_url
+        if params[:action] == "create"
+          new_enrollment_address_path(
+            enrollment,
+            postcode: params[:postcode],
+            association: params[:association],
+            check_for_error: true
+          )
+        else
+          edit_enrollment_address_path(
+            enrollment,
+            address,
+            check_for_error: true
+          )
         end
       end
 
@@ -45,6 +72,12 @@ module FloodRiskEngine
         @address ||= Address.find(params[:id])
       end
 
+      def build_address
+        raise "required attributes not found" unless params[:postcode] && params[:association]
+        @address = Address.new(postcode: params[:postcode])
+        enrollment.send("#{params[:association]}=", @address)
+      end
+
       def step_forward
         enrollment.go_forward
         enrollment.save
@@ -52,6 +85,10 @@ module FloodRiskEngine
 
       def clear_error_params
         session[:error_params] = {}
+      end
+
+      def check_for_errors
+        form.validate(session[:error_params]) if params[:check_for_error]
       end
     end
   end

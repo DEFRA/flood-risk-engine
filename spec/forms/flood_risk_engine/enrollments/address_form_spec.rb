@@ -40,7 +40,7 @@ module FloodRiskEngine
       end
 
       def t(locale, args = {})
-        super "flood_risk_engine.enrollments.addresses.edit#{locale}", args
+        super "flood_risk_engine.enrollments.addresses#{locale}", args
       end
     end
   end

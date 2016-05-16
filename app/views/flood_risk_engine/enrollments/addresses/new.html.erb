@@ -13,11 +13,14 @@
     <%= form_for(
           form,
           as: :address,
-          url: enrollment_address_path(form.enrollment, form.model),
+          url: new_enrollment_address_path(form.enrollment),
           class: "form"
         ) do |f| %>
 
       <%= render "form", f: f %>
+
+      <%= hidden_field_tag :postcode, params[:postcode] %>
+      <%= hidden_field_tag :association, params[:association] %>
 
     <% end %>
   </div>

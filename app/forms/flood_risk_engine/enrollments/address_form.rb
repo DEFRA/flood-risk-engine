@@ -3,7 +3,7 @@ module FloodRiskEngine
     class AddressForm < Reform::Form
 
       def self.t(locale, args = {})
-        I18n.t "flood_risk_engine.enrollments.addresses.edit#{locale}", args
+        I18n.t "flood_risk_engine.enrollments.addresses#{locale}", args
       end
 
       property :premises
