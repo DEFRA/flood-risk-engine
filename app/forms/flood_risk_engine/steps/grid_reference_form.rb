@@ -1,3 +1,4 @@
+require_relative "../../../validators/flood_risk_engine/grid_reference_validator"
 module FloodRiskEngine
   module Steps
     class GridReferenceForm < BaseForm
@@ -15,14 +16,15 @@ module FloodRiskEngine
 
       validates(
         :grid_reference,
-        format: {
-          with: /([a-zA-Z]{2})\s*(\d{3,5})\s*(\d{3,6})/,
-          message: I18n.t("#{locale_key}.errors.grid_reference.invalid"),
-          allow_blank: true
-        },
         presence: {
           message: I18n.t("#{locale_key}.errors.grid_reference.blank")
+        },
+        # using FloodRiskEngine::GridReferenceValidator
+        "flood_risk_engine/grid_reference" => {
+          message: I18n.t("#{locale_key}.errors.grid_reference.invalid"),
+          allow_blank: true
         }
+
       )
 
       def save
