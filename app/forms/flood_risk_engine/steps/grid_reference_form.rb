@@ -24,7 +24,6 @@ module FloodRiskEngine
           message: I18n.t("#{locale_key}.errors.grid_reference.invalid"),
           allow_blank: true
         }
-
       )
 
       def save
