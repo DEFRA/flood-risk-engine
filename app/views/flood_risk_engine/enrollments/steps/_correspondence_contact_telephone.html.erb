@@ -3,7 +3,8 @@
 
   <%= form_group_and_validation(form, :telephone_number) do -%>
     <div class="form-group">
-      <%= f.label(:telephone_number, t(".form_label"), class: "form-label") do %>
+      <%= f.label(:telephone_number, class: "form-label") do %>
+        <%= t(".form_label") %>
         <span class="form-hint"><%= t(".form_hint") %></span>
       <% end %>
       <%= f.telephone_field :telephone_number, class: "form-control" %>
