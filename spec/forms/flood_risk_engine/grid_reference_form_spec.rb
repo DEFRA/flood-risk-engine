@@ -46,6 +46,34 @@ module FloodRiskEngine
           end
         end
 
+        context "with an out of range grid reference" do
+          before { @grid_reference = "AA 58132 72695" }
+
+          it "should return false" do
+            expect(subject.validate(params)).to eq(false)
+          end
+
+          it "should display the locale error message" do
+            subject.validate(params)
+            expect(error_message)
+              .to eq([I18n.t("#{locale_key}.errors.grid_reference.invalid")])
+          end
+        end
+
+        context "with a short grid reference" do
+          before { @grid_reference = "ST 5811 7261" }
+
+          it "should return false" do
+            expect(subject.validate(params)).to eq(false)
+          end
+
+          it "should display the locale error message" do
+            subject.validate(params)
+            expect(error_message)
+              .to eq([I18n.t("#{locale_key}.errors.grid_reference.invalid")])
+          end
+        end
+
         context "with a blank grid reference" do
           before { @grid_reference = "" }
 
