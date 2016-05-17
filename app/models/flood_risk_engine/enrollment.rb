@@ -22,7 +22,6 @@ module FloodRiskEngine
 
     # The Correspondence Contact Details related to this Application a.k.a Main Contact
     belongs_to :correspondence_contact, class_name: "Contact"
-    delegate :address, :address=, to: :correspondence_contact, allow_nil: true, prefix: true
 
     belongs_to :secondary_contact, class_name: "Contact"
 

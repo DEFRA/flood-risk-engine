@@ -45,7 +45,7 @@ module FloodRiskEngine
         }
       )
 
-      #      alias address model
+      alias address model
       attr_reader :enrollment
       delegate :id, to: :enrollment, prefix: true
 
