@@ -1,6 +1,7 @@
 # Validate that a grid reference can be processed.
 module FloodRiskEngine
   class GridReferenceValidator < ActiveModel::EachValidator
+    require "os_map_ref"
 
     attr_reader :message, :allow_blank, :value
     def initialize(options)
@@ -38,7 +39,7 @@ module FloodRiskEngine
     end
 
     def two_letters
-      "[A-Z]{2}"
+      "[A-Za-z]{2}"
     end
 
     def five_digits

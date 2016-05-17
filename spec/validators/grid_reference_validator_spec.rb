@@ -64,5 +64,13 @@ module FloodRiskEngine
         expect(foo.errors.keys.sort).to eq(all_tested - [:with_allow_blank])
       end
     end
+
+    context "lower case grid_reference" do
+      let(:grid_reference) { "st 12345 67890" }
+
+      it "should be valid" do
+        expect(foo.valid?).to be true
+      end
+    end
   end
 end
