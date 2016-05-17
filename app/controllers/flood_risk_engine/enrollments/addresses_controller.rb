@@ -46,9 +46,9 @@ module FloodRiskEngine
         if params[:action] == "create"
           new_enrollment_address_path(
             enrollment,
-            postcode: params[:postcode],
-            association: params[:association],
-            check_for_error: true
+            address_initial_attributes.merge(
+              check_for_error: true
+            )
           )
         else
           edit_enrollment_address_path(
@@ -73,10 +73,21 @@ module FloodRiskEngine
       end
 
       def build_address
-        raise "required attributes not found" unless params[:postcode] && params[:association]
-        @address = Address.new(postcode: params[:postcode])
-        enrollment.send("#{params[:association]}=", @address)
+        unless params[:postcode] && params[:addressable_type] && params[:addressable_id]
+          raise "required attributes not found"
+        end
+        @address = Address.new(address_initial_attributes)
       end
+
+      def address_initial_attributes
+        {
+          postcode: params[:postcode],
+          addressable_type: params[:addressable_type],
+          addressable_id: params[:addressable_id],
+          address_type: params[:address_type]
+        }
+      end
+      helper_method :address_initial_attributes
 
       def step_forward
         enrollment.go_forward

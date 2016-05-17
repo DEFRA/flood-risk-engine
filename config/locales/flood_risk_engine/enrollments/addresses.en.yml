@@ -4,9 +4,15 @@ en:
     enrollments:
       addresses:
         edit:
-          heading: What’s the registered address of the company?
+          heading:
+            default: What is the address?
+            contact: What's the primary contact's address?
+            registered_address: What’s the registered address of the company?
         new:
-          heading: What’s the registered address of the company?
+          heading:
+            default: What is the address?
+            contact: What's the primary contact's address?
+            registered_address: What’s the registered address of the company?
         form:
           postcode:
             prefix: Postcode

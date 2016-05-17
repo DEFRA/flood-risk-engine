@@ -7,7 +7,11 @@
 <div class="grid-row">
   <div class="column-two-thirds">
 
-    <%= render "flood_risk_engine/enrollments/header", title_text: t(".heading") %>
+    <%= render(
+          "flood_risk_engine/enrollments/header",
+          title_text: t(".heading.default")
+        )
+    %>
     <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
 
     <%= form_for(

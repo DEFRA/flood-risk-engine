@@ -7,20 +7,26 @@
 <div class="grid-row">
   <div class="column-two-thirds">
 
-    <%= render "flood_risk_engine/enrollments/header", title_text: t(".heading") %>
+    <%= render(
+          "flood_risk_engine/enrollments/header",
+          title_text: t(".heading.default")
+        )
+    %>
     <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
 
     <%= form_for(
           form,
           as: :address,
-          url: new_enrollment_address_path(form.enrollment),
+          url: enrollment_addresses_path(form.enrollment),
+          method: :post,
           class: "form"
         ) do |f| %>
 
       <%= render "form", f: f %>
 
-      <%= hidden_field_tag :postcode, params[:postcode] %>
-      <%= hidden_field_tag :association, params[:association] %>
+      <% address_initial_attributes.each do |name, value|  %>
+        <%= hidden_field_tag name, value %>
+      <% end %>
 
     <% end %>
   </div>
