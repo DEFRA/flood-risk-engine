@@ -16,7 +16,7 @@ module FloodRiskEngine
       it { is_expected.to be_a(described_class) }
       it { is_expected.to respond_to(:grid_reference) }
 
-      let(:params) { { grid_reference: { grid_reference: @grid_reference } } }
+      let(:params) { { params_key => { grid_reference: @grid_reference } } }
 
       describe "#validate" do
         let(:error_message) { subject.errors.messages[:grid_reference] }

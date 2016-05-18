@@ -1,0 +1,24 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        email_someone_else:
+          heading: |-
+            Would you also like a copy of the registration email sent to
+            someone else?
+          legend: Copy contact
+          clarification: |-
+            We’ll send a copy of the registration to the main contact. We will
+            also send a copy to another address if you want.
+          email_address:
+            label: Email address for registration copy (optional)
+          email_address_confirmation:
+            label: Confirm email address if entered above
+          errors:
+            email_address:
+              blank: Please enter both the email and the confirmation
+              invalid: Enter a valid email address - there’s a mistake in that one
+            email_address_confirmation:
+              blank: Enter the email address again to confirm it
+              invalid: The email addresses you’ve entered don’t match

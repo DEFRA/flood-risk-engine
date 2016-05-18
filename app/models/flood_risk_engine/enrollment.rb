@@ -23,6 +23,8 @@ module FloodRiskEngine
     # The Correspondence Contact Details related to this Application a.k.a Main Contact
     belongs_to :correspondence_contact, class_name: "Contact"
 
+    belongs_to :secondary_contact, class_name: "Contact"
+
     has_one(
       :exemption_location,
       class_name: :Location,
