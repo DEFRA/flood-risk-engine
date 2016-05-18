@@ -19,8 +19,6 @@ module FloodRiskEngine
       end
 
       def validate(params)
-        logger.debug("** Validating Address form #{inspect}")
-
         valid = super(params)
 
         # Use UPRN to find address data and assign to our local address instance

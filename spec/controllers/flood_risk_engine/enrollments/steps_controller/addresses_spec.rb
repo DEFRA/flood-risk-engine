@@ -85,7 +85,7 @@ module FloodRiskEngine
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
-        it "redirects back to show with check for errors when user doesn't select address from dropdown", duff: true do
+        it "redirects back to show with check for errors when user doesn't select address from dropdown" do
           patch_process_address(params)
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step, check_for_error: true)
