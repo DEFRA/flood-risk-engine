@@ -46,10 +46,6 @@ module FloodRiskEngine
       token
     end
 
-    def business_type
-      :foo
-    end
-
     def state_machine
       @state_machine ||= StepMachine.new(
         target: self,

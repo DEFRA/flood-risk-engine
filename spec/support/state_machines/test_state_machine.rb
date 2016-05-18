@@ -2,6 +2,13 @@
 # https://github.com/piotrmurach/finite_machine
 require "finite_machine"
 module FloodRiskEngine
+
+  class Enrollment
+    def business_type
+      :foo
+    end
+  end
+
   class TestStateMachine < FiniteMachine::Definition
     initial :step1
 
