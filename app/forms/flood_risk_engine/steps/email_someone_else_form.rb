@@ -53,6 +53,13 @@ module FloodRiskEngine
         enrollment.save
       end
 
+      # Handle situation if page returned to via back
+      def email_address_confirmation
+        current = super
+        return email_address if current.blank? && !changed.key?("email_address")
+        current
+      end
+
     end
   end
 end
