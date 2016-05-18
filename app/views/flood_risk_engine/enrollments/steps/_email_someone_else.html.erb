@@ -13,14 +13,14 @@
   <% end %>
 
   <%= form_group_and_validation(form, :email_address_confirmation) do -%>
-  <div class="form-group">
-    <%= f.label(
-          :email_address_confirmation,
-          t(".email_address_confirmation.label"),
-          class: "form-label"
-        ) %>
-    <%= f.email_field(:email_address_confirmation, class: "form-control") %>
-  </div>
+    <div class="form-group">
+      <%= f.label(
+            :email_address_confirmation,
+            t(".email_address_confirmation.label"),
+            class: "form-label"
+          ) %>
+      <%= f.email_field(:email_address_confirmation, class: "form-control") %>
+    </div>
   <% end %>
 
 </fieldset>
