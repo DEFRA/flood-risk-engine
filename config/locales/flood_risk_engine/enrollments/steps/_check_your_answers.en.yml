@@ -19,3 +19,5 @@ en:
             exemption:
               title: Exemption %{code}
               change_link_suffix: grid reference
+            organisation_name:
+              title: Responsible for activity (‘operator’)

@@ -32,6 +32,17 @@ module FloodRiskEngine
         end
       end
 
+      def organisation_name_row
+        Row.new(
+          key: :organisation_name,
+          title: row_t(:organisation_name, :title),
+          value: enrollment_presenter.organisation_name,
+          step_url: enrollment_step_path(enrollment, :grid_reference)
+        )
+      end
+
+      private
+
       def exemption_row(exemption)
         Row.new(
           key: :exemption,
@@ -40,8 +51,6 @@ module FloodRiskEngine
           step_url: enrollment_step_path(enrollment, :check_exemptions)
         )
       end
-
-      private
 
       def row_t(step, key, opts = {})
         I18n.t(".rows.#{step}.#{key}", opts.merge(scope: i18n_scope))

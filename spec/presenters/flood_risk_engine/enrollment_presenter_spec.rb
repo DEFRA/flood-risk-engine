@@ -26,5 +26,12 @@ module FloodRiskEngine
           .to eq(:local_authority)
       end
     end
+
+    describe "#organisation_name" do
+      it do
+        expect(subject.organisation_name)
+          .to eq(enrollment.organisation.name)
+      end
+    end
   end
 end

@@ -22,9 +22,10 @@ module FloodRiskEngine
 
       def build_rows
         arr = []
-        arr << row_builder.organisation_type_row
-        arr << row_builder.grid_reference_row
+        arr.push row_builder.organisation_type_row
+        arr.push row_builder.grid_reference_row
         arr.push(*row_builder.exemptions_rows)
+        arr.push row_builder.organisation_name_row
         arr
       end
 
