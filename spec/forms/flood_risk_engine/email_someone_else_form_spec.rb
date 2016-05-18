@@ -34,6 +34,15 @@ module FloodRiskEngine
           expect(subject.validate(params)).to eq(true)
         end
 
+        context "when both email address and confirmation are blank" do
+          let(:email_address) { "" }
+          let(:email_address_confirmation) { "" }
+
+          it "should return true" do
+            expect(subject.validate(params)).to eq(true)
+          end
+        end
+
         context "with an invalid emails addres" do
           let(:email_address) { "foo@bar" }
 
