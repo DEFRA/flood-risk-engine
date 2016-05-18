@@ -5,13 +5,14 @@
 <fieldset>
   <legend class="visuallyhidden"><%= t(".legend") %></legend>
 
-  <!-- Email address -->
-  <div class="form-group">
-    <%= f.label(:email_address, t(".email_address.label"), class: "form-label") %>
-    <%= f.email_field(:email_address, class: "form-control") %>
-  </div>
+  <%= form_group_and_validation(form, :email_address) do -%>
+    <div class="form-group">
+      <%= f.label(:email_address, t(".email_address.label"), class: "form-label") %>
+      <%= f.email_field(:email_address, class: "form-control") %>
+    </div>
+  <% end %>
 
-  <!-- Confirm email address -->
+  <%= form_group_and_validation(form, :email_address_confirmation) do -%>
   <div class="form-group">
     <%= f.label(
           :email_address_confirmation,
@@ -20,5 +21,6 @@
         ) %>
     <%= f.email_field(:email_address_confirmation, class: "form-control") %>
   </div>
+  <% end %>
 
 </fieldset>
