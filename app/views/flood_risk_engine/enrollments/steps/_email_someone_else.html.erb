@@ -1,1 +1,26 @@
-email_someone_else
+<p class="panel panel-border-wide"><%= t(".clarification") %></p>
+
+<br />
+
+<fieldset>
+  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+
+  <%= form_group_and_validation(form, :email_address) do -%>
+    <div class="form-group">
+      <%= f.label(:email_address, t(".email_address.label"), class: "form-label") %>
+      <%= f.email_field(:email_address, class: "form-control") %>
+    </div>
+  <% end %>
+
+  <%= form_group_and_validation(form, :email_address_confirmation) do -%>
+    <div class="form-group">
+      <%= f.label(
+            :email_address_confirmation,
+            t(".email_address_confirmation.label"),
+            class: "form-label"
+          ) %>
+      <%= f.email_field(:email_address_confirmation, class: "form-control") %>
+    </div>
+  <% end %>
+
+</fieldset>

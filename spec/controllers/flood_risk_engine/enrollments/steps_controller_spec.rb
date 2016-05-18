@@ -61,41 +61,6 @@ module FloodRiskEngine
       end
     end
 
-    context "grid_reference" do
-      let(:step) { "grid_reference" }
-
-      before do
-        get :show, id: step, enrollment_id: enrollment
-      end
-
-      it "uses GridReferenceForm" do
-        expect(controller.send(:form)).to be_a(Steps::GridReferenceForm)
-      end
-
-      it "diplays header" do
-        header_text = t("flood_risk_engine.enrollments.steps.grid_reference.heading")
-        expect(response.body).to have_tag :h1, text: /#{header_text}/
-      end
-    end
-
-    context "correspondence contact name" do
-      let(:step) { "correspondence_contact_name" }
-
-      it "uses MainContactNameForm" do
-        get :show, id: step, enrollment_id: enrollment
-        expect(controller.send(:form)).to be_a(Steps::CorrespondenceContactNameForm)
-      end
-    end
-
-    context "user_type" do
-      let(:step) { "user_type" }
-
-      it "uses UserTypeForm" do
-        get :show, id: step, enrollment_id: enrollment
-        expect(controller.send(:form)).to be_a(Steps::UserTypeForm)
-      end
-    end
-
     context "step unknown" do
       let(:step) { "unknown" }
 

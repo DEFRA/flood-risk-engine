@@ -28,7 +28,6 @@ module FloodRiskEngine
             limited_liability_number: Steps::NullForm,
             other:                   Steps::NullForm,
             partnership:             Steps::NullForm,
-            email_someone_else:      Steps::NullForm,
             check_your_answers:      Steps::NullForm,
             declaration:             Steps::NullForm,
             confirmation:            Steps::NullForm
