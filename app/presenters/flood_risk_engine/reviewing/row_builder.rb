@@ -5,20 +5,25 @@ module FloodRiskEngine
       attr_reader :enrollment, :i18n_scope
       delegate :organisation_type, to: :enrollment_presenter
 
-      def initialize(enrollment, i18n_scope)
+      # enrollment:
+      # i18n_scope:  e.g. a locale key under which we expect to find row titles etc
+      # display_change_url: e.g. true for the check your details page, false for confirmation email
+      def initialize(enrollment, i18n_scope, display_change_url)
         @enrollment = enrollment
         @i18n_scope = i18n_scope
+        @display_change_url = display_change_url
       end
 
       def registration_date_row
         build_row name: :registration_date,
-                  value: I18n.l(DateTime.zone.now, format: :short)
+                  value: I18n.l(Time.zone.now, format: :short),
+                  display_change_url: false
       end
 
       def organisation_type_row
         build_row name: :organisation_type,
                   value: organisation_type,
-                  display_step_url: false
+                  display_change_url: false
       end
 
       def grid_reference_row
@@ -68,25 +73,28 @@ module FloodRiskEngine
 
       private
 
-      # name: used as:-
-      #       - the html id of the row in the markup (to aid testing)
-      #       - the locale key under which e.g. the row :title is found
-      #       - the step name if none supplied
-      # value: the value
-      # step: the step name if different form the :name
-      # display_step_url: hide the url if false - for example if this row's value cannot be changed.
-      # t_options: Will be passed to t() calls e.g. for interpolation variables
+      # ==== Arguments
+      # * +name+ -used as:
+      #   * a data-xxx attribute in the markup for the row (to aid testing)
+      #   * the locale key under which e.g. the row :title is found
+      #   * the step name if none supplied
+      # * +value+   - the value
+      # * +step+    - the step name if different form the :name
+      # * +display_change_url+ - hide the url if false - for example if this row's value
+      #            cannot be changed. Defaults to the instance default (see initializer)
+      # * +t_options+ - a hash passed to t() calls e.g. for variable interpolation
       def build_row(name:,
                     value:,
                     step: nil,
-                    display_step_url: true,
+                    display_change_url: @display_change_url,
                     **t_options)
         step ||= name
         Row.new(
-          key: name,
+          name: name,
           title: row_t(name, :title, t_options),
+          x: :x,
           value: value,
-          step_url: (url_for_step(step.to_sym) if display_step_url)
+          step_url: (url_for_step(step) if display_change_url)
         )
       end
 

@@ -36,7 +36,7 @@ module FloodRiskEngine
       end
 
       def row_builder
-        @row_builder ||= RowBuilder.new(enrollment, i18n_scope)
+        @row_builder ||= RowBuilder.new(enrollment, i18n_scope, true)
       end
     end
   end
