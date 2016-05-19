@@ -35,7 +35,7 @@ module FloodRiskEngine
 
       # Derived classes must implement which address instance is being managed
       def assign_to_enrollment(_address)
-        raise NotImplementedError, "Address form cannnot set underlying Enrollment address"
+        raise NotImplementedError, "Address form cannot set underlying Enrollment address"
       end
 
       protected
