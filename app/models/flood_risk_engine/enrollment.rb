@@ -32,6 +32,8 @@ module FloodRiskEngine
       dependent: :restrict_with_exception
     )
 
+    has_one :address_search
+
     serialize :step_history, Array
 
     before_validation :preserve_current_step
@@ -44,6 +46,10 @@ module FloodRiskEngine
 
     def to_param
       token
+    end
+
+    def business_type
+      :foo
     end
 
     def state_machine

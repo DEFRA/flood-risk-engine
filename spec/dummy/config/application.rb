@@ -13,10 +13,12 @@ require "jquery-rails"
 require "bootstrap-sass"
 
 Bundler.require(*Rails.groups)
-require "flood_risk_engine"
 
 # `dotenv-rails` needs to be defined here to load `.env` in the test environment.
 require "dotenv-rails"
+
+require "flood_risk_engine"
+
 Dotenv::Railtie.load
 
 module Dummy

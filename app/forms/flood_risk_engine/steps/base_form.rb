@@ -19,6 +19,12 @@ module FloodRiskEngine
         false
       end
 
+      # Default to the url as defined in the view/partial but provide opportunity for Forms to
+      # wire up the continue button as they see require
+      def url
+        nil
+      end
+
       def initialize(model, enrollment = nil)
         @enrollment = enrollment || model
         super(model)
@@ -29,6 +35,12 @@ module FloodRiskEngine
       end
 
       attr_reader :enrollment
+
+      protected
+
+      def logger
+        Rails.logger
+      end
     end
   end
 end

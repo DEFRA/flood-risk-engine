@@ -82,6 +82,32 @@ module FloodRiskEngine
             expect(email_address_errors).to eq([I18n.t("#{locale_errors_key}.email_address.format")])
           end
         end
+
+        it "is invalid  when existing email is made blank" do
+          form.enrollment.correspondence_contact.update! email_address: email_address
+
+          expect(form.enrollment.correspondence_contact.email_address).to be_present
+
+          params = { "#{form.params_key}": { email_address: "" } }
+
+          expect(form.validate(params)).to eq false
+
+          expect(email_address_errors).to eq([I18n.t("#{locale_errors_key}.email_address.blank")])
+        end
+
+        it "is invalid  when existing email is changed but not confirmed" do
+          form.enrollment.correspondence_contact.update! email_address: email_address
+
+          params = { "#{form.params_key}":
+                       {
+                         email_address: "flood_rspec@unique.com",
+                         email_address_confirmation: "flood_rspec"
+                       } }
+
+          expect(form.validate(params)).to eq false
+
+          expect(email_confirmation_errors).to eq([I18n.t("#{locale_errors_key}.email_address_confirmation.format")])
+        end
       end
       describe "Existing Correspondence Contact Email - Going Back" do
         before(:each) do

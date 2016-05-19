@@ -19,6 +19,9 @@ module FloodRiskEngine
     # or with an optional default
     # config_accessor(:some_key) { "a default value" }
     config_accessor(:redirection_url_on_location_unchecked)
+
+    # The redirect URL for a popstcode lookup
+    config_accessor(:redirection_url_postcode_lookup)
   end
 
   def self.config

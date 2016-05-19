@@ -16,6 +16,15 @@ ActiveRecord::Schema.define(version: 20160518093450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "flood_risk_engine_address_searches", force: :cascade do |t|
+    t.integer  "enrollment_id", null: false
+    t.string   "postcode"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "flood_risk_engine_address_searches", ["enrollment_id"], name: "index_flood_risk_engine_address_searches_on_enrollment_id", using: :btree
+
   create_table "flood_risk_engine_addresses", force: :cascade do |t|
     t.string   "premises",            limit: 200
     t.string   "street_address",      limit: 160
@@ -34,9 +43,11 @@ ActiveRecord::Schema.define(version: 20160518093450) do
     t.datetime "updated_at",                                   null: false
     t.integer  "addressable_id"
     t.string   "addressable_type"
+    t.string   "uprn"
   end
 
   add_index "flood_risk_engine_addresses", ["addressable_id", "addressable_type"], name: "by_addressable", using: :btree
+  add_index "flood_risk_engine_addresses", ["uprn"], name: "index_flood_risk_engine_addresses_on_uprn", using: :btree
 
   create_table "flood_risk_engine_contacts", force: :cascade do |t|
     t.integer  "contact_type",                            default: 0,  null: false
@@ -63,8 +74,8 @@ ActiveRecord::Schema.define(version: 20160518093450) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.integer  "secondary_contact_id"
     t.string   "token"
+    t.integer  "secondary_contact_id"
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
@@ -94,8 +105,8 @@ ActiveRecord::Schema.define(version: 20160518093450) do
   add_index "flood_risk_engine_exemptions", ["code_number"], name: "index_flood_risk_engine_exemptions_on_code_number", using: :btree
 
   create_table "flood_risk_engine_locations", force: :cascade do |t|
-    t.float    "easting"
-    t.float    "northing"
+    t.string   "easting"
+    t.string   "northing"
     t.string   "grid_reference"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -133,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160518093450) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
+  add_foreign_key "flood_risk_engine_address_searches", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_contacts", "flood_risk_engine_organisations", column: "partnership_organisation_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "applicant_contact_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "secondary_contact_id"

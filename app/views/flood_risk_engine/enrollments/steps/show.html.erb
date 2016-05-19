@@ -1,8 +1,8 @@
 <!-- There is some potentially quick complex logic around the back link -
 see the DigitalServicesCore::BackLink class -->
 <%= link_to(
-      "Back",
-      enrollment_step_path(form.enrollment, form.enrollment.previous_step),
+        "Back",
+        enrollment_step_path(form.enrollment, form.enrollment.previous_step),
     ) if form.enrollment.can?(:go_back)
 %>
 
@@ -17,22 +17,25 @@ see the DigitalServicesCore::BackLink class -->
 
     <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 
-<% # Using 'as:' changes the name of the fields in the form from eg
-   #   name="flood_risk_engine_steps_step1[field1]"
-   # to
-   #   name="step1[dummy_boolean]"
-   # which is much clearer
-%>
-<%= form_for form,
-             as: step,
-             url: enrollment_step_path(form.enrollment, step),
-             method: :patch,
-             class: 'form' do |f| %>
+    <% # Using 'as:' changes the name of the fields in the form from eg
+       #   name="flood_risk_engine_steps_step1[field1]"
+       # to
+       #   name="step1[dummy_boolean]"
+       # which is much clearer
+    %>
+
+    <% form_url = form.url || enrollment_step_path(form.enrollment, step) %>
+
+    <%= form_for form,
+                 as: step,
+                 url: form_url,
+                 method: :patch,
+                 class: 'form' do |f| %>
 
       <%= render step.to_s, form: form, step: step, f: f %>
 
       <div class="form-group">
-        <%= f.submit submit_button_text(@form.enrollment), class: "button"  %>
+        <%= f.submit submit_button_text(form.enrollment), class: "button"  %>
       </div>
     <% end %>
 
