@@ -8,3 +8,5 @@ EA::AddressLookup.configure do |config|
   config.address_facade_client_id =  Rails.application.secrets.address_facade_client_id
   config.address_facade_key       =  Rails.application.secrets.address_facade_key
 end
+
+EA::AddressLookup.logger.level = Logger::ERROR
