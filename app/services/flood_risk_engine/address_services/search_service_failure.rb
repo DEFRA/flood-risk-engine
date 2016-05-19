@@ -14,6 +14,8 @@ module FloodRiskEngine
 
         Rails.logger.error "Address lookup service failed: #{ex}"
 
+        Rails.logger.debug("EA::AddressLookup Config was: #{EA::AddressLookup.config.inspect}") if Rails.env.test?
+
         SearchServiceFailure.new(ex)
       end
     end
