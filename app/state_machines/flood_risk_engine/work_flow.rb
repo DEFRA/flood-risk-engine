@@ -77,8 +77,7 @@ module FloodRiskEngine
         [
           :email_someone_else,
           :check_your_answers,
-          :declaration,
-          :confirmation
+          :declaration
         ]
       end
 

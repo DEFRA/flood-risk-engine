@@ -11,15 +11,19 @@ module FloodRiskEngine
   # See finite_machine README for usage information:
   #   https://github.com/piotrmurach/finite_machine
 
+  # Allowing hashes to use :symbol => :symbol syntax as expresses flow direction
+  # rubocop:disable Style/HashSyntax
   class EnrollmentStateMachine < FiniteMachine::Definition
     initial :check_location
 
+    alias_target :enrollment
+
     events do
       event :go_forward, WorkFlow.for(:start).merge(
-        if: -> { target.org_type.nil? }
+        if: -> { enrollment.org_type.nil? }
       )
       event :go_back, WorkFlow.for(:start).invert.merge(
-        if: -> { target.org_type.nil? }
+        if: -> { enrollment.org_type.nil? }
       )
 
       [
@@ -31,11 +35,14 @@ module FloodRiskEngine
         :other
       ].each do |org_type|
         steps = WorkFlow.for(org_type)
-        criteria = -> { target.org_type == org_type.to_s }
+        criteria = -> { enrollment.org_type == org_type.to_s }
 
         event :go_forward, steps.merge(if: criteria)
         event :go_back, steps.invert.merge(if: criteria)
       end
+
+      event :go_forward, :declaration => :confirmation
     end
   end
+  # rubocop:enable Style/HashSyntax
 end

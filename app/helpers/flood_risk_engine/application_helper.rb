@@ -55,9 +55,5 @@ module FloodRiskEngine
 
       title
     end
-
-    def submit_button_text(_enrollment)
-      t("global.continue")
-    end
   end
 end

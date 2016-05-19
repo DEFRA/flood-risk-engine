@@ -35,7 +35,15 @@ see the DigitalServicesCore::BackLink class -->
       <%= render step.to_s, form: form, step: step, f: f %>
 
       <div class="form-group">
-        <%= f.submit submit_button_text(form.enrollment), class: "button"  %>
+        <%=
+          f.submit(
+            t(
+              "flood_risk_engine.enrollments.steps.#{step}.continue",
+              default: t("global.continue")
+            ),
+            class: "button"
+          )
+        %>
       </div>
     <% end %>
 
