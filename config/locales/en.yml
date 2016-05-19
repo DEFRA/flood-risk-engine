@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      short: "%d %b %Y"
   activerecord:
     attributes:
       flood_risk_engine/organisation:

@@ -10,8 +10,10 @@ en:
           table_summary: The information you've given so far with links to change the data
           change_link: Change
           rows:
+            registration_date:
+              title: Registration date
             organisation_type:
-              title: User type
+              title: Customer type
               change_link_suffix: user type
             grid_reference:
               title: Grid reference
@@ -21,3 +23,11 @@ en:
               change_link_suffix: grid reference
             organisation_name:
               title: Responsible for activity (‘operator’)
+            organisation_address:
+              title: Their address
+            applicant_contact_name:
+              title: Who we will contact
+            applicant_contact_telephone:
+              title: Telephone
+            applicant_contact_email:
+              title: Email

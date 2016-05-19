@@ -22,15 +22,19 @@ module FloodRiskEngine
 
     describe "#organisation_type" do
       it do
-        expect(subject.organisation_type)
-          .to eq(:local_authority)
+        expect(subject.organisation_type).to eq(:local_authority)
       end
     end
 
     describe "#organisation_name" do
       it do
-        expect(subject.organisation_name)
-          .to eq(enrollment.organisation.name)
+        expect(subject.organisation_name).to eq(enrollment.organisation.name)
+      end
+    end
+
+    describe "#organisation_address" do
+      it do
+        expect(subject.organisation_address).to_not be_nil # TODO
       end
     end
   end

@@ -20,12 +20,18 @@ module FloodRiskEngine
 
       attr_reader :enrollment
 
+      # rubocop:disable Metrics/AbcSize
       def build_rows
         arr = []
-        arr.push row_builder.organisation_type_row
-        arr.push row_builder.grid_reference_row
+        arr.push row_builder.registration_date_row
         arr.push(*row_builder.exemptions_rows)
+        arr.push row_builder.grid_reference_row
+        arr.push row_builder.organisation_type_row
         arr.push row_builder.organisation_name_row
+        arr.push row_builder.organisation_address_row
+        arr.push row_builder.applicant_contact_name_row
+        arr.push row_builder.applicant_contact_telephone_row
+        arr.push row_builder.applicant_contact_email_row
         arr
       end
 
