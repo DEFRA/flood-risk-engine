@@ -12,6 +12,7 @@ module FloodRiskEngine
         between_start_and_finish do
           [
             :local_authority,
+            :local_authority_postcode,
             :local_authority_address,
             :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
             :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"

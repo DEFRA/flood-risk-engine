@@ -4,4 +4,5 @@ FloodRiskEngine::Engine.routes.draw do
 
     resources :exemptions, only: [:destroy, :show], controller: "enrollments/exemptions"
   end
+
 end

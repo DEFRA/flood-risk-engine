@@ -111,6 +111,7 @@ module FloodRiskEngine
       def clear_error_params
         session[:error_params] = {}
       end
+
     end
   end
 end

@@ -1,0 +1,21 @@
+---
+en:
+  flood_risk_engine:
+    validation_errors:
+      name:
+        invalid: Make sure the name contains only letters, spaces, commas, full stops, hyphens and apostrophes
+      full_name:
+        invalid: Make sure the name contains only letters, spaces, commas, full stops, hyphens and apostrophes
+        too_few: Enter a full name
+      position:
+        invalid: Make sure the job title contains only letters, spaces, commas, full stops, hyphens and apostrophes
+      postcode:
+        blank: Enter a postcode
+        enter_a_valid_postcode: Enter a valid UK postcode
+        no_addresses_found: We can’t find any addresses for that postcode.
+          Please check the postcode or enter the address manually
+        service_unavailable: Our address finder is not working. Please enter the address below.
+      uprn:
+        blank: Please select an address
+        format: UPRN must be a number
+
