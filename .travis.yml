@@ -35,6 +35,7 @@ script:
   - BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --run
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rspec
+  - cat /home/travis/build/EnvironmentAgency/flood-risk-engine/spec/dummy/test.log
 
 # Have this option to stop travis-ci building twice. Currently we have travis set to build both
 # PR's and pushes. However this means when we push to a PR we have to wait for Travis to finish
