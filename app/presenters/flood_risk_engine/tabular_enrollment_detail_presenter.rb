@@ -5,12 +5,11 @@
 module FloodRiskEngine
   class TabularEnrollmentDetailPresenter
 
-    attr_reader :options
-
-    # ==== Options
-    # i18n_scope
-    # enrollment
-    # display_change_url
+    # Options
+    # * i18n_scope
+    # * enrollment
+    # * display_change_url
+    # We currently just pass them through to the RowBuilder.
     def initialize(options = {})
       @options = options
     end
@@ -37,7 +36,7 @@ module FloodRiskEngine
     end
 
     def row_builder
-      @row_builder ||= TabularEnrollmentDetail::RowBuilder.new(options)
+      @row_builder ||= TabularEnrollmentDetail::RowBuilder.new(@options)
     end
   end
 end
