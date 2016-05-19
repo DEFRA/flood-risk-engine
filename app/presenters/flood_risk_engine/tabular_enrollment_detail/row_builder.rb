@@ -1,8 +1,9 @@
 module FloodRiskEngine
-  module EnrollmentDetail
+  module TabularEnrollmentDetail
     class RowBuilder
       include Engine.routes.url_helpers
       attr_reader :enrollment, :i18n_scope, :display_change_url
+      delegate :organisation_type, to: :enrollment_presenter
 
       # enrollment:         the enrollment
       # i18n_scope:         e.g. a locale key under which we expect to find row titles etc
@@ -21,7 +22,7 @@ module FloodRiskEngine
 
       def organisation_type_row
         build_row name: :organisation_type,
-                  value: enrollment_presenter.organisation_type,
+                  value: organisation_type,
                   display_change_url: false
       end
 
@@ -91,9 +92,9 @@ module FloodRiskEngine
         Row.new(
           name: name,
           title: row_t(name, :title, t_options),
-          x: :x,
           value: value,
-          step_url: (url_for_step(step) if display_change_url)
+          change_url: (url_for_step(step) if display_change_url),
+          change_link_suffix: row_t(name, :accessible_change_link_suffix, t_options)
         )
       end
 
@@ -102,7 +103,7 @@ module FloodRiskEngine
       end
 
       def row_t(step, key, opts = {})
-        I18n.t(".rows.#{step}.#{key}", opts.merge(scope: i18n_scope))
+        I18n.t!(".rows.#{step}.#{key}", opts.merge(scope: i18n_scope))
       end
 
       def enrollment_presenter

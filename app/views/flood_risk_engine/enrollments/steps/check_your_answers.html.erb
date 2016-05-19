@@ -1,10 +1,10 @@
 <%= render 'back_link', form: form %>
 
 <%= form_for form,
-                 as: step,
-                 url: enrollment_step_path(form.enrollment, step),
-                 method: :patch,
-                 class: 'form' do |f| %>
+             as: step,
+             url: enrollment_step_path(form.enrollment, step),
+             method: :patch,
+             class: 'form' do |f| %>
 
   <h1 class="heading-large">
     <%= t(".heading") %>
@@ -13,6 +13,7 @@
   <p class="panel panel-border-wide">
     <%= t(".subheading") %>
   </p>
+
   <h2 class="heading-medium">
     <%= t(".table_heading") %>
   </h2>
@@ -28,9 +29,12 @@
             <%= row.value %>
           </td>
           <td class="change-answer">
-            <% if row.step_url.present? %>
-              <%= link_to(row.step_url) do %>
-                <%= t(".change_link")%> <span class="visuallyhidden"> <%= row.title %></span>
+            <% if row.change_url.present? %>
+              <%= link_to(row.change_url) do %>
+                <%= t(".change_link")%>
+                <span class="visuallyhidden">
+                  <%= row.change_link_suffix %>
+                </span>
               <% end %>
             <% end %>
           </td>

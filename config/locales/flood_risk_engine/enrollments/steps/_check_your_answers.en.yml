@@ -12,22 +12,28 @@ en:
           rows:
             registration_date:
               title: Registration date
+              accessible_change_link_suffix: registration date
             organisation_type:
               title: Customer type
-              change_link_suffix: user type
+              accessible_change_link_suffix: customer type
             grid_reference:
               title: Grid reference
-              change_link_suffix: grid reference
+              accessible_change_link_suffix: grid reference
             exemption:
               title: Exemption %{code}
-              change_link_suffix: grid reference
+              accessible_change_link_suffix: exemption %{code}
             organisation_name:
               title: Responsible for activity (‘operator’)
+              accessible_change_link_suffix: operator
             organisation_address:
               title: Their address
+              accessible_change_link_suffix: their address
             applicant_contact_name:
               title: Who we will contact
+              accessible_change_link_suffix: who we will contact
             applicant_contact_telephone:
               title: Telephone
+              accessible_change_link_suffix: telephone
             applicant_contact_email:
               title: Email
+              accessible_change_link_suffix: email
