@@ -14,4 +14,5 @@ en:
         select_at_lease_one_exemptions: Select at least one exemption
 
   global:
+    back: Back
     continue: Continue

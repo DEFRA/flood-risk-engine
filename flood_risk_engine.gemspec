@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "~> 0.4"
   s.add_dependency "has_secure_token", "~> 1.0.0" # Enables url obfuscation with 24bit base58 token
   s.add_dependency "uk_postcode", "~> 2.1" # Postcode format validation
+  s.add_dependency "high_voltage", "~> 3.0" # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
 
   s.add_development_dependency "pg", "~> 0.18"
   s.add_development_dependency "before_commit", "~> 0.6"
