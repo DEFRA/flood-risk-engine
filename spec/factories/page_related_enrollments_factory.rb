@@ -27,4 +27,8 @@ FactoryGirl.define do
   factory :page_correspondence_contact_email, parent: :page_correspondence_contact_name do
     step :correspondence_contact_email
   end
+
+  factory :page_declaration, parent: :page_correspondence_contact_name do
+    step :declaration
+  end
 end
