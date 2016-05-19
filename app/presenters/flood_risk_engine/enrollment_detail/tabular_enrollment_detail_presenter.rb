@@ -3,13 +3,17 @@
 # the 'check your answers' page or the confirmation email.
 #
 module FloodRiskEngine
-  module Reviewing
-    class ReviewPresenter
-      attr_reader :i18n_scope
+  module EnrollmentDetail
+    class TabularEnrollmentDetailPresenter
 
-      def initialize(enrollment, i18n_scope)
-        @i18n_scope = i18n_scope
-        @enrollment = enrollment
+      attr_reader :options
+
+      # ==== Options
+      # i18n_scope
+      # enrollment
+      # display_change_url
+      def initialize(options = {})
+        @options = options
       end
 
       def rows
@@ -17,8 +21,6 @@ module FloodRiskEngine
       end
 
       private
-
-      attr_reader :enrollment
 
       # rubocop:disable Metrics/AbcSize
       def build_rows
@@ -36,7 +38,7 @@ module FloodRiskEngine
       end
 
       def row_builder
-        @row_builder ||= RowBuilder.new(enrollment, i18n_scope, true)
+        @row_builder ||= RowBuilder.new(options)
       end
     end
   end

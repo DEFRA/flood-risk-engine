@@ -16,7 +16,11 @@ module FloodRiskEngine
       end
 
       def review_presenter
-        @review_presenter ||= Reviewing::ReviewPresenter.new(model, locale_key)
+        @review_presenter ||= begin
+          EnrollmentDetail::TabularEnrollmentDetailPresenter.new(enrollment: model,
+                                                                 i18n_scope: locale_key,
+                                                                 display_change_url: true)
+        end
       end
 
       def view_path

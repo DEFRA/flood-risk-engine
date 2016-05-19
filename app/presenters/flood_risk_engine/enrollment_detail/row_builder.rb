@@ -1,14 +1,13 @@
 module FloodRiskEngine
-  module Reviewing
+  module EnrollmentDetail
     class RowBuilder
       include Engine.routes.url_helpers
-      attr_reader :enrollment, :i18n_scope
-      delegate :organisation_type, to: :enrollment_presenter
+      attr_reader :enrollment, :i18n_scope, :display_change_url
 
-      # enrollment:
-      # i18n_scope:  e.g. a locale key under which we expect to find row titles etc
+      # enrollment:         the enrollment
+      # i18n_scope:         e.g. a locale key under which we expect to find row titles etc
       # display_change_url: e.g. true for the check your details page, false for confirmation email
-      def initialize(enrollment, i18n_scope, display_change_url)
+      def initialize(enrollment:, i18n_scope:, display_change_url:)
         @enrollment = enrollment
         @i18n_scope = i18n_scope
         @display_change_url = display_change_url
@@ -22,7 +21,7 @@ module FloodRiskEngine
 
       def organisation_type_row
         build_row name: :organisation_type,
-                  value: organisation_type,
+                  value: enrollment_presenter.organisation_type,
                   display_change_url: false
       end
 

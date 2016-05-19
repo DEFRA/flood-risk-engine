@@ -3,7 +3,7 @@
 # 'Check your answers' page or the confirmation email.
 #
 module FloodRiskEngine
-  module Reviewing
+  module EnrollmentDetail
     class Row
       include Virtus.model
       attribute :name, Symbol # eg :grid_reference
