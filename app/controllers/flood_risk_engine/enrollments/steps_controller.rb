@@ -9,18 +9,20 @@
 module FloodRiskEngine
   module Enrollments
     class StepsController < ApplicationController
-      class StepError < StandardError; end
+
       rescue_from StepError, with: :step_not_found
+
       before_action :check_step_is_valid
       before_action :back_button_cache_buster
+      before_action :clear_error_params, only: [:update]
 
       def show
         form.validate(session[:error_params]) if params[:check_for_error]
+
         render :show, locals: locals
       end
 
       def update
-        clear_error_params
         success = save_form!
         if form.redirect?
           redirect_to(form.redirection_url)

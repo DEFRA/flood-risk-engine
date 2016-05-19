@@ -12,5 +12,11 @@ module FloodRiskEngine
       other: 5,
       unknown: 6
     }
+
+    has_one :primary_address, -> { where(address_type: Address.address_types["primary"]) },
+            class_name: "FloodRiskEngine::Address",
+            as: :addressable,
+            dependent: :restrict_with_exception
+
   end
 end
