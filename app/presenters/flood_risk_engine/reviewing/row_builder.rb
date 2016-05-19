@@ -68,6 +68,14 @@ module FloodRiskEngine
 
       private
 
+      # name: used as:-
+      #       - the html id of the row in the markup (to aid testing)
+      #       - the locale key under which e.g. the row :title is found
+      #       - the step name if none supplied
+      # value: the value
+      # step: the step name if different form the :name
+      # display_step_url: hide the url if false - for example if this row's value cannot be changed.
+      # t_options: Will be passed to t() calls e.g. for interpolation variables
       def build_row(name:,
                     value:,
                     step: nil,
@@ -93,7 +101,6 @@ module FloodRiskEngine
       def enrollment_presenter
         @enrollment_presenter ||= EnrollmentPresenter.new(enrollment)
       end
-
     end
   end
 end
