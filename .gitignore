@@ -24,6 +24,3 @@ spec/dummy/.env
 .idea
 flood_risk_engine.sublime-project
 flood_risk_engine.sublime-workspace
-
-# VCR Cassettes
-spec/cassettes

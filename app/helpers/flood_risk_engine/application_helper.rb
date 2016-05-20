@@ -16,7 +16,7 @@ module FloodRiskEngine
     # TODO: refactor and remove this rubocop disable
     def form_group_and_validation(form, attribute, &block)
       content = block_given? ? capture(&block) : ""
-
+      classes = ["form-group"]
       options = {
         id: error_link_id(attribute),
         role: "group",
@@ -24,15 +24,12 @@ module FloodRiskEngine
       }
 
       if form && form.errors[attribute].any?
-
-        content = content_tag(:span, form.errors[attribute].first.to_s.html_safe,
+        classes << "error"
+        content = content_tag(:span,
+                              form.errors[attribute].first.to_s.html_safe,
                               class: "error-message") + content
-
-        content_tag(:div, content, options.merge(class: "form-group error"))
-
-      else
-        content_tag(:div, content, options.merge(class: "form-group"))
       end
+      content_tag(:div, content, options.merge(class: classes.join(" ")))
     end
 
     def error_link_id(attribute)
@@ -55,5 +52,11 @@ module FloodRiskEngine
 
       title
     end
+
+    def step_t(step, *args)
+      args[0] = "flood_risk_engine.enrollments.steps.#{step}#{args.first}"
+      t(*args)
+    end
+
   end
 end

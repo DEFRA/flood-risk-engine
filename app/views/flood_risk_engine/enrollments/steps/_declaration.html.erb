@@ -22,7 +22,7 @@
       ".privacy.text",
       link: link_to(
         t(".privacy.link"),
-        "/version_2/end_registration/privacy_policy"
+        enrollment_page_path(form.enrollment, id: "privacy_policy")
       )
     ).html_safe
   %>
