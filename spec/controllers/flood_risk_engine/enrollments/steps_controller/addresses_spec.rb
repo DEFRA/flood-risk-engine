@@ -31,7 +31,7 @@ module FloodRiskEngine
 
       let(:match_initial_url_step) { /You are being <a href=\"\S+local_authority_address/ }
 
-      def put_process_address(params)
+      def put_update_address_vcr(params)
         VCR.use_cassette("process_address_action_spec_postcode_#{valid_post_code}_search") do
           put(:update, params, session)
         end
@@ -81,12 +81,12 @@ module FloodRiskEngine
         let(:params) { { id: step, enrollment_id: enrollment }.merge(invalid_attributes) }
 
         it "assigns the enrollment as @enrollment" do
-          put_process_address(params)
+          put_update_address_vcr(params)
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
         it "redirects back to show with check for errors when user doesn't select address from dropdown" do
-          put_process_address(params)
+          put_update_address_vcr(params)
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step, check_for_error: true)
           )
@@ -103,7 +103,7 @@ module FloodRiskEngine
         end
 
         it "does not change the state" do
-          put_process_address(params)
+          put_update_address_vcr(params)
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
       end
