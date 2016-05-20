@@ -29,7 +29,6 @@ module FloodRiskEngine
             other:                   Steps::NullForm,
             partnership:             Steps::NullForm,
             check_your_answers:      Steps::NullForm,
-            declaration:             Steps::NullForm,
             confirmation:            Steps::NullForm
           }
         end

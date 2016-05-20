@@ -1,0 +1,19 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        declaration:
+          heading: Declaration
+          warning:
+            heading: Warning
+            text: You can be prosecuted and fined if you give false or misleading information.
+          confirmation:
+            heading: I confirm that
+            list:
+              one: the information I have given is true
+              two: I am authorised to register the exemption(s) by the the organisation or individual responsible
+          privacy:
+            text: Read the Environment Agency's %{link} to find out how it uses personal information
+            link: privacy policy
+          continue: Accept and complete this registration

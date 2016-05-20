@@ -11,7 +11,7 @@ see the DigitalServicesCore::BackLink class -->
 
     <header class="text">
       <h1 class="form-title heading-large" id="groupLabel">
-        <%= page_title(t("flood_risk_engine.enrollments.steps.#{step}.heading")) %>
+        <%= page_title(step_t(step, ".heading")) %>
       </h1>
     </header>
 
@@ -35,7 +35,12 @@ see the DigitalServicesCore::BackLink class -->
       <%= render step.to_s, form: form, step: step, f: f %>
 
       <div class="form-group">
-        <%= f.submit submit_button_text(form.enrollment), class: "button"  %>
+        <%=
+          f.submit(
+            step_t(step, ".continue",  default: t("global.continue")),
+            class: "button"
+          )
+        %>
       </div>
     <% end %>
 
