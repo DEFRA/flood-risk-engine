@@ -29,12 +29,9 @@ Gem::Specification.new do |s|
   s.add_dependency "activerecord-session_store", "~> 0.1"
   s.add_dependency "os_map_ref", "~> 0.4"
   s.add_dependency "has_secure_token", "~> 1.0.0" # Enables url obfuscation with 24bit base58 token
-<<<<<<< b87a6c915eefc478c6f3283d2cfe9b30dd44dbfe
   s.add_dependency "uk_postcode", "~> 2.1" # Postcode format validation
   s.add_dependency "high_voltage", "~> 3.0" # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
-=======
   s.add_dependency "virtus", "~> 1.0"
->>>>>>> Create Check Answers page (without Change links)
 
   s.add_development_dependency "pg", "~> 0.18"
   s.add_development_dependency "before_commit", "~> 0.6"

@@ -312,19 +312,16 @@ GEM
     unicode-display_width (1.0.5)
     validates_email_format_of (1.6.3)
       i18n
-<<<<<<< b87a6c915eefc478c6f3283d2cfe9b30dd44dbfe
     vcr (3.0.1)
     webmock (1.24.6)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-=======
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
->>>>>>> Create Check Answers page (without Change links)
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
