@@ -5,9 +5,16 @@
 module FloodRiskEngine
   class EnrollmentPresenter
     delegate :exemption_location, to: :enrollment
+    delegate :correspondence_contact, to: :enrollment
     delegate :organisation, to: :enrollment
     delegate :grid_reference, to: :exemption_location, allow_nil: true
-    delegate :name, to: :organisation, allow_nil: true, prefix: true
+    delegate :name,
+             :primary_address,
+             to: :organisation, allow_nil: true, prefix: true
+    delegate :full_name,
+             :email_address,
+             :telephone_number,
+             to: :correspondence_contact, prefix: true, allow_nil: true
 
     def initialize(enrollment)
       @enrollment = enrollment
@@ -18,7 +25,8 @@ module FloodRiskEngine
     end
 
     def organisation_address
-      "yay" # TODO: AddressPresenter.new(organisation.primary_address)
+      "yay" # organisation_primary_address &&
+      # organisation_primary_address
     end
 
     private

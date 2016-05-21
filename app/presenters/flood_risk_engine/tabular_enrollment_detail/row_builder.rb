@@ -6,8 +6,8 @@ module FloodRiskEngine
       delegate :organisation_type, to: :enrollment_presenter
 
       # enrollment:         the enrollment
-      # i18n_scope:         e.g. a locale key under which we expect to find row titles etc
-      # display_change_url: e.g. true for the check your details page, false for confirmation email
+      # i18n_scope:         a locale key under which we expect to find row titles etc
+      # display_change_url: true for the check your details page, false for confirmation email
       def initialize(enrollment:, i18n_scope:, display_change_url:)
         @enrollment = enrollment
         @i18n_scope = i18n_scope
@@ -56,19 +56,19 @@ module FloodRiskEngine
                   step: "#{organisation_type}_address"
       end
 
-      def applicant_contact_name_row
-        build_row name: :applicant_contact_email,
-                  value: "123213"
+      def correspondence_contact_name_row
+        build_row name: :correspondence_contact_name,
+                  value: enrollment_presenter.correspondence_contact_full_name
       end
 
-      def applicant_contact_email_row
-        build_row name: :applicant_contact_email,
-                  value: "1212"
+      def correspondence_contact_email_row
+        build_row name: :correspondence_contact_email,
+                  value: enrollment_presenter.correspondence_contact_email_address
       end
 
-      def applicant_contact_telephone_row
-        build_row name: :applicant_contact_telephone,
-                  value: "1212"
+      def correspondence_contact_telephone_row
+        build_row name: :correspondence_contact_telephone,
+                  value: enrollment_presenter.correspondence_contact_telephone_number
       end
 
       private

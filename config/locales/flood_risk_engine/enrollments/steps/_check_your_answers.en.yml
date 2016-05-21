@@ -28,12 +28,12 @@ en:
             organisation_address:
               title: Their address
               accessible_change_link_suffix: their address
-            applicant_contact_name:
+            correspondence_contact_name:
               title: Who we will contact
               accessible_change_link_suffix: who we will contact
-            applicant_contact_telephone:
+            correspondence_contact_telephone:
               title: Telephone
               accessible_change_link_suffix: telephone
-            applicant_contact_email:
+            correspondence_contact_email:
               title: Email
               accessible_change_link_suffix: email

@@ -29,9 +29,9 @@ module FloodRiskEngine
       arr.push row_builder.organisation_type_row
       arr.push row_builder.organisation_name_row
       arr.push row_builder.organisation_address_row
-      arr.push row_builder.applicant_contact_name_row
-      arr.push row_builder.applicant_contact_telephone_row
-      arr.push row_builder.applicant_contact_email_row
+      arr.push row_builder.correspondence_contact_name_row
+      arr.push row_builder.correspondence_contact_telephone_row
+      arr.push row_builder.correspondence_contact_email_row
       arr
     end
 
