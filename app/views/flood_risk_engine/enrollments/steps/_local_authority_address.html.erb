@@ -28,8 +28,16 @@
 </fieldset>
 
 <p>
-  <%= link_to t('.manual_entry'),
-              enrollment_step_path(form.enrollment, form.enrollment.next_step),
-              class: 'change-postcode-button'
+  <%=
+    link_to(
+      t('.manual_entry'),
+      new_address_path(
+        enrollment: form.enrollment,
+        addressable: form.enrollment.organisation,
+        postcode: form.postcode,
+        address_type: :primary
+      ),
+      class: 'change-postcode-button'
+    )
   %>
 </p>
