@@ -1,6 +1,7 @@
 <%= link_to(
       "Back",
       enrollment_step_path(form.enrollment, form.enrollment.previous_step),
+      class: "back-link"
     ) if form.enrollment.can?(:go_back)
 %>
 
