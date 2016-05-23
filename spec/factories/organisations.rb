@@ -14,5 +14,11 @@ FactoryGirl.define do
         org_type ot.to_s
       end
     end
+
+    # trait :with_address do
+    #   after(:build) do |object|
+    #     object.address = build :address_services
+    #   end
+    # end
   end
 end

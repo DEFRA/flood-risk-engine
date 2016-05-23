@@ -25,8 +25,7 @@ module FloodRiskEngine
     end
 
     def organisation_address
-      "yay" # organisation_primary_address &&
-      # organisation_primary_address
+      AddressPresenter.new(organisation_primary_address).to_s
     end
 
     private

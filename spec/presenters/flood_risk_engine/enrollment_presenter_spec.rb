@@ -34,7 +34,7 @@ module FloodRiskEngine
 
     describe "#organisation_address" do
       it do
-        expect(subject.organisation_address).to_not be_nil # TODO
+        expect(subject.organisation_address).to be_a(String)
       end
     end
   end
