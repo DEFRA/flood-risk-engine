@@ -18,5 +18,11 @@ FactoryGirl.define do
         object.exemption_location = build(:location)
       end
     end
+
+    trait :with_organisation_address do
+      after(:build) do |object|
+        object.organisation.primary_address = build :address_services
+      end
+    end
   end
 end

@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency "uk_postcode", "~> 2.1" # Postcode format validation
   s.add_dependency "high_voltage", "~> 3.0" # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "virtus", "~> 1.0"
+  s.add_dependency "puma", "~> 3.4"
 
   s.add_development_dependency "pg", "~> 0.18"
   s.add_development_dependency "before_commit", "~> 0.6"

@@ -58,7 +58,7 @@ module FloodRiskEngine
 
       def correspondence_contact_name_row
         build_row name: :correspondence_contact_name,
-                  value: enrollment_presenter.correspondence_contact_full_name
+                  value: enrollment_presenter.correspondence_contact_name
       end
 
       def correspondence_contact_email_row

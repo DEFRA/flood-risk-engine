@@ -4,10 +4,12 @@
 #
 module FloodRiskEngine
   class EnrollmentPresenter
-    delegate :exemption_location, to: :enrollment
-    delegate :correspondence_contact, to: :enrollment
-    delegate :organisation, to: :enrollment
-    delegate :grid_reference, to: :exemption_location, allow_nil: true
+    delegate :exemption_location,
+             :correspondence_contact,
+             :organisation,
+             to: :enrollment
+    delegate :grid_reference,
+             to: :exemption_location, allow_nil: true
     delegate :name,
              :primary_address,
              to: :organisation, allow_nil: true, prefix: true
@@ -26,6 +28,10 @@ module FloodRiskEngine
 
     def organisation_address
       AddressPresenter.new(organisation_primary_address).to_s
+    end
+
+    def correspondence_contact_name
+      ContactPresenter.new(correspondence_contact).to_s
     end
 
     private
