@@ -3,7 +3,7 @@
   <span class="visuallyhidden"><%= t(".postcode.separator") %></span>
   <span class="postcode"><%= form.address.postcode %></span>
   <a href="" class="change-postcode-button">
-    <%=
+  <%= link_to(
       t(
         ".postcode.change_button.text",
         hidden: content_tag(
@@ -11,9 +11,13 @@
           t(".postcode.change_button.hidden"),
           class: "visuallyhidden"
         )
-      ).html_safe
-    %>
-  </a>
+      ).html_safe,
+      change_postcode_path(
+        form.enrollment,
+        step_back_to_postcode: params[:step_back_to_postcode]
+      )
+    )
+  %>
 </p>
 
 <!-- Manually entered address -->
@@ -43,6 +47,8 @@
     <%= f.text_field :city, class: "form-control" %>
   </div>
 </fieldset>
+
+<%= hidden_field_tag :step_back_to_postcode, params.fetch(:step_back_to_postcode, false) %>
 
 <!-- Primary button -->
 <div class="form-group">

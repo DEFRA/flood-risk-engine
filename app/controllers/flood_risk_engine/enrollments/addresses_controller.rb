@@ -47,7 +47,8 @@ module FloodRiskEngine
           new_enrollment_address_path(
             enrollment,
             address_initial_attributes.merge(
-              check_for_error: true
+              check_for_error: true,
+              step_back_to_postcode: params[:step_back_to_postcode]
             )
           )
         else
