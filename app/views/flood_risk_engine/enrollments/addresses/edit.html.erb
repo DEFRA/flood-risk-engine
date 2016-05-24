@@ -1,9 +1,4 @@
-<%= link_to(
-      "Back",
-      enrollment_step_path(form.enrollment, form.enrollment.previous_step),
-      class: "back-link"
-    ) if form.enrollment.can?(:go_back)
-%>
+<%= render "flood_risk_engine/enrollments/back_link", form: form %>
 
 <div class="grid-row">
   <div class="column-two-thirds">
