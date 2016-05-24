@@ -44,6 +44,8 @@ module FloodRiskEngine
     # can be run after the state machine class has been changed
     validate :step_defined_in_state_machines
 
+    after_create :generate_and_save_reference_number
+
     def to_param
       token
     end
@@ -67,6 +69,13 @@ module FloodRiskEngine
     )
 
     private
+
+    # The reference_number in the agreed format "<id with up to 6 zero padded digits>"
+    # e.g. T.B.D
+    def generate_and_save_reference_number
+      return if reference_number?
+      update_column(:reference_number, sprintf("%06d", id))
+    end
 
     def preserve_current_step
       self.step = current_step

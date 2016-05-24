@@ -66,5 +66,15 @@ module FloodRiskEngine
         end
       end
     end
+
+    describe "#reference_number" do
+      it "is generated and saved on creation and is in the format 000001" do
+        enrollment = described_class.new
+        expect(enrollment.reference_number).to be_nil
+        enrollment.save!
+        expected_reference_number = sprintf("%06d", enrollment.id)
+        expect(enrollment.reference_number).to eq expected_reference_number
+      end
+    end
   end
 end

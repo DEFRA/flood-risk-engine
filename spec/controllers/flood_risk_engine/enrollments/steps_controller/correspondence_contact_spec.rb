@@ -4,7 +4,7 @@ module FloodRiskEngine
     routes { Engine.routes }
     render_views
 
-    let(:enrollment) { FactoryGirl.create(:page_correspondence_contact_name) }
+    let(:enrollment) { FactoryGirl.create(:page_correspondence_contact) }
 
     let(:reform_class) { Steps::CorrespondenceContactNameForm }
 
@@ -24,18 +24,24 @@ module FloodRiskEngine
         expect(response.body).to have_tag :h1, text: /#{header_text}/
       end
 
+      it "diplays Continue button" do
+        expect(response.body).to have_selector("input[type=submit][value='Continue']")
+      end
+
       context "with invalid params" do
         let(:invalid_attributes) {
           { full_name: "12345 not a valid name **" }
         }
 
         it "assigns the enrollment as @enrollment" do
-          put(:update, id: step, enrollment_id: enrollment)
+          params = { id: step, enrollment_id: enrollment }.merge(invalid_attributes)
+          put(:update, params)
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
         it "does not change the state" do
-          put(:update, id: step, enrollment_id: enrollment)
+          params = { id: step, enrollment_id: enrollment }.merge(invalid_attributes)
+          put(:update, params)
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
 
