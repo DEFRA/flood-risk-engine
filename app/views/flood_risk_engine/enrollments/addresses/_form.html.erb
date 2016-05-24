@@ -24,28 +24,28 @@
 <fieldset>
   <legend class="visuallyhidden"><%= t(".legend") %></legend>
 
-  <div class="form-group">
+  <%= form_group_and_validation(form, :premises) do %>
     <%= f.label :premises, class: "form-label" do %>
       <%= t(".premises.label") %>
       <span class="form-hint"><%= t(".premises.hint") %></span>
     <% end %>
     <%= f.text_field :premises, class: "form-control" %>
-  </div>
+  <% end %>
 
-  <div class="form-group">
+  <%= form_group_and_validation(form, :street_address) do %>
     <%= f.label :street_address, t(".street_address"), class: "form-label" %>
     <%= f.text_field :street_address, class: "form-control" %>
-  </div>
+  <% end %>
 
-  <div class="form-group">
+  <%= form_group_and_validation(form, :locality) do %>
     <%= f.label :locality, t(".locality"), class: "form-label" %>
     <%= f.text_field :locality, class: "form-control" %>
-  </div>
+  <% end %>
 
-  <div class="form-group">
+  <%= form_group_and_validation(form, :city) do %>
     <%= f.label :city, t(".city"), class: "form-label" %>
     <%= f.text_field :city, class: "form-control" %>
-  </div>
+  <% end %>
 </fieldset>
 
 <%= hidden_field_tag :step_back_to_postcode, params.fetch(:step_back_to_postcode, false) %>
