@@ -17,8 +17,8 @@ rubocop/
 # simplecov output
 coverage
 .DS_Store
-.env
-.env.test
+#.env
+#.env.test
 .env.local
 spec/dummy/.byebug_history
 spec/dummy/.env
