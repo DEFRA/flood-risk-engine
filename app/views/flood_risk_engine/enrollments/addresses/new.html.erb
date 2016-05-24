@@ -1,0 +1,29 @@
+<%= render "flood_risk_engine/enrollments/back_link", form: form %>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <%= render(
+          "flood_risk_engine/enrollments/header",
+          title_text: t(".heading.default")
+        )
+    %>
+    <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
+
+    <%= form_for(
+          form,
+          as: :address,
+          url: enrollment_addresses_path(form.enrollment),
+          method: :post,
+          class: "form"
+        ) do |f| %>
+
+      <%= render "form", f: f %>
+
+      <% address_initial_attributes.each do |name, value|  %>
+        <%= hidden_field_tag name, value %>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>

@@ -11,25 +11,35 @@
   <%= t('.select_from_list_label') %>
 </label>
 
-<%# Create prompt manually cos this too flakey to use - e.g disappears on Back
-{ prompt: t('.num_addresses_found', num:  form.address_list.count) } %>
-
-<% form.address_list.unshift({ moniker: t('.num_addresses_found', num:  form.address_list.count) }) %>
-
 <fieldset>
   <%= form_group_and_validation(form, :uprn) do %>
-    <%= f.select :uprn,  options_for_select( form.address_list.collect { |a| [ a[:moniker], a[:uprn] ] }), {},
-                 { include_blank: false,
-                   class: 'form-control form-control-select',
-                   id: 'address_match_selection'
-                 }
+    <%= f.select(
+          :uprn,
+          options_for_select( form.address_list.collect { |a| [ a[:moniker], a[:uprn] ] }),
+          {
+            include_blank: t('.num_addresses_found', num:  form.address_list.count)
+          },
+          {
+            class: 'form-control form-control-select',
+            id: 'address_match_selection'
+          }
+        )
     %>
   <% end %>
 </fieldset>
 
 <p>
-  <%= link_to t('.manual_entry'),
-              enrollment_step_path(form.enrollment, form.enrollment.next_step),
-              class: 'change-postcode-button'
+  <%=
+    link_to(
+      t('.manual_entry'),
+      new_address_path(
+        enrollment: form.enrollment,
+        addressable: form.enrollment.organisation,
+        postcode: form.postcode,
+        address_type: :primary,
+        step_back_to_postcode: true
+      ),
+      class: 'change-postcode-button'
+    )
   %>
 </p>

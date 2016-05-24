@@ -1,0 +1,24 @@
+<%= render "flood_risk_engine/enrollments/back_link", form: form %>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <%= render(
+          "flood_risk_engine/enrollments/header",
+          title_text: t(".heading.default")
+        )
+    %>
+    <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
+
+    <%= form_for(
+          form,
+          as: :address,
+          url: enrollment_address_path(form.enrollment, form.address),
+          class: "form"
+        ) do |f| %>
+
+      <%= render "form", f: f %>
+
+    <% end %>
+  </div>
+</div>

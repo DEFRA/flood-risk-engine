@@ -31,7 +31,7 @@ module FloodRiskEngine
       end
 
       def validate(params)
-        super params.fetch(params_key) { {} }
+        super params.fetch(params_key, {})
       end
 
       attr_reader :enrollment
