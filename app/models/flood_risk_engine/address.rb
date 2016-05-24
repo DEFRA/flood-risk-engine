@@ -1,5 +1,10 @@
+require_dependency "has_secure_token"
+
 module FloodRiskEngine
   class Address < ActiveRecord::Base
+
+    has_secure_token
+
     belongs_to :addressable, polymorphic: true
     has_one :location, as: :locatable, dependent: :restrict_with_exception
 
@@ -15,5 +20,9 @@ module FloodRiskEngine
       principal_business: 6,
       registered_office: 7
     }
+
+    def to_param
+      token
+    end
   end
 end

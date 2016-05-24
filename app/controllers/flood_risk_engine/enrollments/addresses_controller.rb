@@ -70,7 +70,7 @@ module FloodRiskEngine
       end
 
       def address
-        @address ||= Address.find(params[:id])
+        @address ||= Address.find_by_token!(params[:id])
       end
 
       def build_address
