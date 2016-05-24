@@ -41,4 +41,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sass-rails", ">= 3.2"
   s.add_development_dependency "quiet_assets", "~> 1.1"
   s.add_development_dependency "byebug", "~> 8.2"
+  s.add_development_dependency "puma", "~> 3.4"
 end

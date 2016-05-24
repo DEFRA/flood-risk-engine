@@ -347,6 +347,7 @@ DEPENDENCIES
   guard-rspec
   pg (~> 0.18)
   poltergeist (~> 1.9)
+  puma (~> 3.4)
   quiet_assets (~> 1.1)
   rspec-html-matchers
   rspec-rails (~> 3.4)

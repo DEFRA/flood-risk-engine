@@ -7,7 +7,8 @@ module FloodRiskEngine
             :with_locale_authority,
             :with_organisation_address,
             :with_exemption,
-            :with_exemption_location)
+            :with_exemption_location,
+            :with_correspondence_contact)
     end
     subject do
       described_class.new(enrollment)
@@ -36,6 +37,14 @@ module FloodRiskEngine
     describe "#organisation_address" do
       it do
         expect(subject.organisation_address).to be_a(String)
+      end
+    end
+
+    describe "#correspondence_contact_name" do
+      it do
+        contact = enrollment.correspondence_contact
+        expected = "#{contact.full_name} (#{contact.position})"
+        expect(subject.correspondence_contact_name).to eq(expected)
       end
     end
   end

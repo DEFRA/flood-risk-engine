@@ -24,5 +24,11 @@ FactoryGirl.define do
         object.organisation.primary_address = build :address_services
       end
     end
+
+    trait :with_correspondence_contact do
+      after(:build) do |object|
+        object.correspondence_contact = build :contact
+      end
+    end
   end
 end

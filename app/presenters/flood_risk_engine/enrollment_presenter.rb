@@ -13,8 +13,7 @@ module FloodRiskEngine
     delegate :name,
              :primary_address,
              to: :organisation, allow_nil: true, prefix: true
-    delegate :full_name,
-             :email_address,
+    delegate :email_address,
              :telephone_number,
              to: :correspondence_contact, prefix: true, allow_nil: true
 
@@ -31,7 +30,10 @@ module FloodRiskEngine
     end
 
     def correspondence_contact_name
-      ContactPresenter.new(correspondence_contact).to_s
+      return unless correspondence_contact
+      title = correspondence_contact.full_name
+      title += " (#{correspondence_contact.position})" unless correspondence_contact.position.blank?
+      title
     end
 
     private
