@@ -1,10 +1,4 @@
-<!-- There is some potentially quick complex logic around the back link -
-see the DigitalServicesCore::BackLink class -->
-<%= link_to(
-        "Back",
-        enrollment_step_path(form.enrollment, form.enrollment.previous_step),
-    ) if form.enrollment.can?(:go_back)
-%>
+<%= render 'back_link', form: form %>
 
 <div class="grid-row">
   <div class="column-two-thirds">
@@ -43,6 +37,5 @@ see the DigitalServicesCore::BackLink class -->
         %>
       </div>
     <% end %>
-
   </div>
 </div>

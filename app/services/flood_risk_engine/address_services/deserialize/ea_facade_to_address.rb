@@ -7,7 +7,7 @@ module FloodRiskEngine
       class EaFacadeToAddress
 
         def self.contains_addresses?(inbound)
-          return true if inbound && inbound.is_a?(Hash) && !inbound["results"].empty?
+          return true if inbound && inbound.is_a?(Hash) && !inbound["results"].blank?
 
           false
         end
