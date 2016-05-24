@@ -43,6 +43,11 @@ module FloodRiskEngine
 
       event :go_forward, :declaration => :confirmation
     end
+
+    callbacks do
+      on_enter(:confirmation) { |_event| FinalizeEnrollmentService.new(target).finalize! }
+    end
+
   end
   # rubocop:enable Style/HashSyntax
 end

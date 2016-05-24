@@ -20,15 +20,31 @@ FactoryGirl.define do
     step :local_authority_address
   end
 
-  factory :page_correspondence_contact_name, parent: :page_local_authority_address do
+  factory :page_correspondence_contact, parent: :page_local_authority_address do
+    trait :with_contact do
+      after(:create) do |object|
+        object.correspondence_contact = create(:flood_risk_engine_contact)
+        object.save!
+      end
+    end
     step :correspondence_contact_name
   end
 
+  factory :page_correspondence_contact_name, parent: :page_correspondence_contact, traits: [:with_contact]
+
   factory :page_correspondence_contact_email, parent: :page_correspondence_contact_name do
+    after(:create) do |object|
+      object.correspondence_contact.update_attribute(:email_address, Faker::Internet.email)
+    end
+
     step :correspondence_contact_email
   end
 
-  factory :page_declaration, parent: :page_correspondence_contact_name do
+  factory :page_declaration, parent: :page_correspondence_contact_email do
     step :declaration
+  end
+
+  factory :page_confirmation, parent: :page_declaration do
+    step :confirmation
   end
 end

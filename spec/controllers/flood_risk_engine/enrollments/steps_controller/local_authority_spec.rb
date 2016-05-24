@@ -24,6 +24,10 @@ module FloodRiskEngine
         expect(response.body).to have_tag :h1, text: /#{header_text}/
       end
 
+      it "diplays Continue button" do
+        expect(response.body).to have_selector("input[type=submit][value='Continue']")
+      end
+
       context "with invalid params" do
         let(:invalid_attributes) do
           { name: "12345 not a valid name **" }

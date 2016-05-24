@@ -1,0 +1,30 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        confirmation:
+          heading: Registration complete
+          heading_h2: What happens next
+          heading_h2_1: If your activity changes
+          para_text: "Your reference is:"
+          email_sent: "We've sent a confirmation email to %{email}"
+          para_text2: You can begin work on the activity covered by your exemptions.
+          para_text3: Exemptions don’t expire, except for those for dredging which have time limits.
+                      If want to do the same activity again you must register a new exemption.
+          para_text4: We may check to see if your activity matches the conditions and
+            description of your exemption.
+          para_text7: If the location changes, you will need to register a new exemption.
+          para_text8: If the activity or the way you are doing the work changes, you
+            will need to check if it is still exempt.
+          para_text9: 'If you need advice, call the Environment Agency helpline: 03708
+            506506. It''s open Monday to Friday, between 8am and 6pm.'
+          feedback_text: What do you think of this service?
+          feedback_url: '/pages/feedback'
+          feedback_helper: (takes 30 seconds)
+          activities_intro_html: You can check the conditions and description of your exemption in the %{link}.
+          activities_url_text: flood risk activities guidance
+          activities_url:
+            https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities
+          continue: Continue to email
+

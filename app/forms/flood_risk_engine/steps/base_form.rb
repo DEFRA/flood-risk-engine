@@ -36,6 +36,10 @@ module FloodRiskEngine
 
       attr_reader :enrollment
 
+      # The default header CSS in show is consistent for most pages but now and then a form/partial needs
+      # to over ride the header box and define its own styling
+      attr_reader :no_header_in_show
+
       protected
 
       def logger
