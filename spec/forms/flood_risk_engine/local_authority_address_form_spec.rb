@@ -19,7 +19,26 @@ module FloodRiskEngine
 
       it { is_expected.to be_a(LocalAuthorityAddressForm) }
 
-      let!(:valid_params) { {} }
+      let!(:valid_post_code) { "HX3 0TD" }
+
+      context "with valid params" do
+        let(:valid_attributes) {
+          {
+            "#{params_key}":
+              {
+                post_code: valid_post_code,
+                uprn: "10010175140"
+              }
+          }
+        }
+
+        it "is valid when valid UK UPRN supplied via drop down rendering process_address", duff: true do
+          VCR.use_cassette("forms_address_form_valid_uprn_from_dropdown") do
+            expect(form.validate(valid_attributes)).to eq false
+            expect(form.errors.size).to eq 1
+          end
+        end
+      end
     end
   end
 end

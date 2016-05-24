@@ -19,6 +19,6 @@ group :test do
   gem "rspec-html-matchers"
   gem "database_cleaner", "~> 1.5"
   gem "codeclimate-test-reporter", require: false
-  gem "vcr", "~> 3.0"
+  gem "vcr", "~> 3.0.1"
   gem "webmock", "~> 1.24"
 end

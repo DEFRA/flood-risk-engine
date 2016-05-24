@@ -49,11 +49,16 @@ module FloodRiskEngine
         if address_attributes
           validator = AddressValidator.new(address_attributes)
 
-          @address_to_assign = Address.new(address_attributes) if validator.validate
+          if validator.validate
+            @address_to_assign = Address.new(address_attributes)
+            logger.debug("LocalAuthority address now #{@address_to_assign.inspect}")
+          else
+            # not too sure how to merge this validation into Form automatically so for now
+            # manually clone error messages
+            logger.debug("Address Valid #{validator.valid?} Errors [#{validator.errors.inspect}]")
 
-          logger.debug("AddressValidator returned [#{validator.valid?}]")
-
-          logger.debug("LocalAuthority address now #{@address_to_assign.inspect}")
+            validator.errors.each { |_e, m| errors.add :address, m }
+          end
 
           validator.valid?
         else
