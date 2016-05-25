@@ -11,4 +11,4 @@ Seeder.seed(
   overwrite: true
 )
 
-Rails.logger.info Seeder.report
+["Seeding complete", Seeder.report].flatten.each { |m| Rails.logger.info m }
