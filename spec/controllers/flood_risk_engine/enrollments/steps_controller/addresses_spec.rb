@@ -16,9 +16,8 @@ module FloodRiskEngine
       let(:step) { :local_authority_address }
 
       before do
-        VCR.use_cassette("process_find_address_data_from_valid_postcode_in_search") do
-          get :show, id: step, enrollment_id: enrollment
-        end
+        mock_find_by_postcode
+        get :show, id: step, enrollment_id: enrollment
       end
 
       it "uses LocalAuthorityAddressForm" do
@@ -30,12 +29,6 @@ module FloodRiskEngine
       end
 
       let(:match_initial_url_step) { /You are being <a href=\"\S+local_authority_address/ }
-
-      def put_update_address_vcr(params)
-        VCR.use_cassette("process_address_action_spec_postcode_#{valid_post_code}_search") do
-          put(:update, params, session)
-        end
-      end
 
       context "with valid params" do
         let(:valid_attributes) {
@@ -49,22 +42,21 @@ module FloodRiskEngine
         }
 
         it "creates the address when valid UK UPRN supplied via drop down rendering process_address" do
+          mock_find_by_uprn
           params = { id: step, enrollment_id: enrollment }.merge(valid_attributes)
 
-          VCR.use_cassette("process_find_address_from_valid_uprn_from_dropdown") do
-            expect(enrollment.reload.organisation.primary_address).to_not be
+          expect(enrollment.reload.organisation.primary_address).to_not be
 
-            put(:update, params, session)
+          put(:update, params, session)
 
-            expect(enrollment.reload.organisation.primary_address).to be
+          expect(enrollment.reload.organisation.primary_address).to be
 
-            expect(enrollment.organisation.primary_address.address_type).to eq "primary"
-            expect(enrollment.organisation.primary_address.addressable_id).to eq enrollment.organisation.id
-            expect(enrollment.organisation.primary_address.postcode).to eq valid_attributes[step][:post_code]
-            expect(enrollment.organisation.primary_address.uprn.to_s).to eq valid_attributes[step][:uprn]
+          expect(enrollment.organisation.primary_address.address_type).to eq "primary"
+          expect(enrollment.organisation.primary_address.addressable_id).to eq enrollment.organisation.id
+          expect(enrollment.organisation.primary_address.postcode).to eq valid_attributes[step][:post_code]
+          expect(enrollment.organisation.primary_address.uprn.to_s).to eq valid_attributes[step][:uprn]
 
-            expect(response).to redirect_to(enrollment_step_path(enrollment, enrollment.next_step))
-          end
+          expect(response).to redirect_to(enrollment_step_path(enrollment, enrollment.next_step))
         end
       end
 
@@ -81,12 +73,12 @@ module FloodRiskEngine
         let(:params) { { id: step, enrollment_id: enrollment }.merge(invalid_attributes) }
 
         it "assigns the enrollment as @enrollment" do
-          put_update_address_vcr(params)
+          put(:update, params, session)
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
         it "redirects back to show with check for errors when user doesn't select address from dropdown" do
-          put_update_address_vcr(params)
+          put(:update, params, session)
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step, check_for_error: true)
           )
@@ -103,7 +95,7 @@ module FloodRiskEngine
         end
 
         it "does not change the state" do
-          put_update_address_vcr(params)
+          put(:update, params, session)
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
       end

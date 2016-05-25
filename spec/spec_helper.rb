@@ -103,4 +103,8 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
   require "rspec-html-matchers"
   config.include RSpecHtmlMatchers
+
+  # Allow lookups to EA::AddressLookup to be mocked
+  require_relative "support/flood_risk_engine/mock_data/mock_helper"
+  config.include FloodRiskEngine::MockHelper::AddressLookup
 end
