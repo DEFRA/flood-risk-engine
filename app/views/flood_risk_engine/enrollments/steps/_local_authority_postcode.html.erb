@@ -6,4 +6,21 @@
     <span class="form-hint"><%= t('.hint') %></span>
     <%= f.text_field 'postcode', class:  'form-control form-postcode' %>
   <% end %>
+
+  <% if(form.manual_entry_enabled?) %>
+    <p>
+      <%= link_to( t('flood_risk_engine.enrollments.addresses.manual_entry'),
+                   new_address_path( enrollment: form.enrollment,
+                                     addressable: form.enrollment.organisation,
+                                     postcode: form.postcode,
+                                     address_type: :primary,
+                                     step_back_to_postcode: false,
+                                     target_step: form.target_step
+                   ),
+                   class: 'change-postcode-button'
+          )
+      %>
+    </p>
+  <% end  %>
+
 </fieldset>

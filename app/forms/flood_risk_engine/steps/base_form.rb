@@ -19,12 +19,6 @@ module FloodRiskEngine
         false
       end
 
-      # Default to the url as defined in the view/partial but provide opportunity for Forms to
-      # wire up the continue button as they see require
-      def url
-        nil
-      end
-
       def initialize(model, enrollment = nil)
         @enrollment = enrollment || model
         super(model)
@@ -43,6 +37,15 @@ module FloodRiskEngine
       # The default header CSS in show is consistent for most pages but now and then a form/partial needs
       # to over ride the header box and define its own styling
       attr_reader :no_header_in_show
+
+      # Default is to render a view/partial whose name == step, but for some reason step
+      # is a separate local and not part of the Form, so we cannot return it as a default here.
+      # Leave it to the show view to determine whether to render default or a diff partial
+      attr_reader :partial_to_render
+
+      def partial_to_render?
+        !partial_to_render.nil?
+      end
 
       protected
 

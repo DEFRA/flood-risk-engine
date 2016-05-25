@@ -1,5 +1,5 @@
 require "rails_helper"
-require_relative "../../support/shared_examples/form_objects"
+require_relative "../../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
   module Steps
@@ -26,8 +26,6 @@ module FloodRiskEngine
       end
 
       describe "Save" do
-        include FloodRiskEngine::Engine.routes.url_helpers
-
         it "is not redirectable" do
           expect(form.redirect?).to_not be_truthy
         end

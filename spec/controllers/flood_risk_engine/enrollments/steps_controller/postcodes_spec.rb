@@ -46,7 +46,7 @@ module FloodRiskEngine
           expect(response).to redirect_to(enrollment_step_path(enrollment, enrollment.next_step))
         end
 
-        it "redirects when when Postcode lookup service is NOT available", duff: true do
+        it "redirects when Postcode lookup service is NOT available" do
           params = { id: step, enrollment_id: enrollment }.merge valid_attributes
 
           allow_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
@@ -66,7 +66,7 @@ module FloodRiskEngine
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
-        it "redirects when invalid postcode supplied on update" do
+        it "redirects with check_for_error when invalid postcode supplied on update" do
           params = { id: step, enrollment_id: enrollment, local_authority_postcode: invalid_attributes }
 
           put_update(params)
@@ -88,41 +88,61 @@ module FloodRiskEngine
           )
         end
 
-        it "displays blank error when no postcode supplied on rendering show" do
-          params = { id: step, enrollment_id: enrollment, check_for_error: true }
-          session = { error_params: { step => { postcode: "" } } }
-          expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.blank")
+        context("check for errors") do
+          let(:params) { { id: step, enrollment_id: enrollment, check_for_error: true } }
 
-          get(:show, params, session)
-          expect(response.body).to have_tag :a, text: expected_error
-        end
+          it "displays blank error when no postcode supplied on rendering show" do
+            session = { error_params: { step => { postcode: "" } } }
+            expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.blank")
 
-        it "displays enter valid postcode error when non full UK postcode supplied" do
-          params = { id: step, enrollment_id: enrollment, check_for_error: true }
-          session = { error_params: { step => { postcode: "BS6 " } } }
-          expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.enter_a_valid_postcode")
+            get(:show, params, session)
+            expect(response.body).to have_tag :a, text: expected_error
+          end
 
-          get(:show, params, session)
-          expect(response.body).to have_tag :a, text: expected_error
-        end
+          it "displays enter valid postcode error when non full UK postcode supplied" do
+            session = { error_params: { step => { postcode: "BS6 " } } }
+            expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.enter_a_valid_postcode")
 
-        it "displays enter service not working error when Postcode lookup service is NOT available" do
-          params = { id: step, enrollment_id: enrollment, check_for_error: true }
-          session = {
-            error_params: {
-              step => { postcode: "BS1 5AH" } # Postcode must be valid to trigger the lookup error
+            get(:show, params, session)
+            expect(response.body).to have_tag :a, text: expected_error
+          end
+
+          let(:postcode_valid_but_no_addresses) { "BS9 9XX" }
+
+          it "displays no addresses found AND manual entry link when lookup service reutrn no addresses" do
+            session = { error_params: { step => { postcode: postcode_valid_but_no_addresses } } }
+
+            allow_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return([])
+
+            get(:show, params, session)
+
+            expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
+            expect(response.body).to have_tag :a, text: expected_error
+
+            expect_manual_entry = I18n.t("flood_risk_engine.enrollments.addresses.manual_entry")
+            expect(response.body).to have_tag :a, text: expect_manual_entry
+          end
+
+          it "displays enter service not working error when Postcode lookup service is NOT available" do
+            session = {
+              error_params: {
+                step => { postcode: "BS1 5AH" } # Postcode must be valid to trigger the lookup error
+              }
             }
-          }
 
-          expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
+            stub_data = { "totalMatches" => 1, "results" => [{ "uprn" => "340116" }] }
 
-          # Stub #search so no external api calls are made
-          expect_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return(nil)
-          expect_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
+            allow_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return(stub_data)
+            allow_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
 
-          get(:show, params, session)
+            get(:show, params, session)
 
-          expect(response.body).to have_tag :a, text: expected_error
+            expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
+            expect(response.body).to have_tag :a, text: expected_error
+
+            expect_manual_entry = I18n.t("flood_risk_engine.enrollments.addresses.manual_entry")
+            expect(response.body).to have_tag :a, text: expect_manual_entry
+          end
         end
       end
     end

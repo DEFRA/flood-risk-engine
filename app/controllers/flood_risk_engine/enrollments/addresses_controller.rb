@@ -48,15 +48,12 @@ module FloodRiskEngine
             enrollment,
             address_initial_attributes.merge(
               check_for_error: true,
-              step_back_to_postcode: params[:step_back_to_postcode]
+              step_back_to_postcode: params[:step_back_to_postcode],
+              target_fwd_state: params[:target_fwd_state]
             )
           )
         else
-          edit_enrollment_address_path(
-            enrollment,
-            address,
-            check_for_error: true
-          )
+          edit_enrollment_address_path(enrollment, address, check_for_error: true)
         end
       end
 
@@ -91,7 +88,7 @@ module FloodRiskEngine
       helper_method :address_initial_attributes
 
       def step_forward
-        enrollment.go_forward
+        enrollment.set_step_as params[:target_step] || enrollment.next_step
         enrollment.save
       end
 

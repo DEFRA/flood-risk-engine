@@ -14,6 +14,12 @@ module FloodRiskEngine
         :local_authority_postcode
       end
 
+      def validate(params)
+        result = super(params)
+        @target_step = :correspondence_contact_name if !result && manual_entry_enabled?
+        result
+      end
+
       private
 
       def initialize(model, enrollment)

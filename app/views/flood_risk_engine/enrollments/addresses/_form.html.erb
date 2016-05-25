@@ -48,6 +48,7 @@
 </fieldset>
 
 <%= hidden_field_tag :step_back_to_postcode, params.fetch(:step_back_to_postcode, false) %>
+<%= hidden_field_tag :target_step,  params.fetch(:target_step, nil) %>
 
 <!-- Primary button -->
 <div class="form-group">
