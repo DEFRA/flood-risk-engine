@@ -18,8 +18,7 @@ module FloodRiskEngine
 
       def show
         form.validate(session[:error_params]) if params[:check_for_error]
-
-        render :show, locals: locals
+        render form.view_path, locals: locals
       end
 
       def update

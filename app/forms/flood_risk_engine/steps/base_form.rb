@@ -34,6 +34,10 @@ module FloodRiskEngine
         super params.fetch(params_key, {})
       end
 
+      def view_path
+        :show
+      end
+
       attr_reader :enrollment
 
       # The default header CSS in show is consistent for most pages but now and then a form/partial needs

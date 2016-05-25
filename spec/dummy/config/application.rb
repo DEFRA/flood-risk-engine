@@ -1,3 +1,10 @@
+# Load environment variables from the project root to save having to add a .env file
+# to dummy in order to run it with rails console.
+# The order of precedence for .env* files in #load is left to right - i.e. the first file
+# will always override the others; the last file has the least precendence.
+# require "dotenv"
+# Dotenv.load("../../.env.local", "../../.env.test", "../../.env")
+
 require File.expand_path("../boot", __FILE__)
 
 # Pick the frameworks you want:
