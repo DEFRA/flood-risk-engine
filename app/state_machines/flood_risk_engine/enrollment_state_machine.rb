@@ -14,7 +14,7 @@ module FloodRiskEngine
   # Allowing hashes to use :symbol => :symbol syntax as expresses flow direction
   # rubocop:disable Style/HashSyntax
   class EnrollmentStateMachine < FiniteMachine::Definition
-    initial :check_location
+    initial :add_exemptions
 
     alias_target :enrollment
 
