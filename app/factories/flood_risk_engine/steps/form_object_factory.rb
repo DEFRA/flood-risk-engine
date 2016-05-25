@@ -10,7 +10,6 @@ module FloodRiskEngine
           klass.factory(enrollment)
         end
 
-        ## rubocop:disable Metrics/MethodLength
         # NB: use NullForm for steps with no html form.
         def form_object_class_map
           @form_object_class_map ||= {
@@ -19,10 +18,6 @@ module FloodRiskEngine
             add_exemptions:          Steps::AddExemptionsForm,
             check_exemptions:        Steps::NullForm,
             user_type:               Steps::UserTypeForm,
-
-            correspondence_contact_address:    Steps::NullForm,
-            correspondence_contact_postcode:   Steps::NullForm,
-
             individual_name:         Steps::NullForm,
             limited_company_number:  Steps::NullForm,
             limited_liability_number: Steps::NullForm,
