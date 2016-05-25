@@ -16,9 +16,7 @@ module FloodRiskEngine
             :local_authority_address,
             :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
             :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
-            :correspondence_contact_email,
-            :correspondence_contact_address,
-            :correspondence_contact_postcode
+            :correspondence_contact_email
           ]
         end
       end
@@ -65,7 +63,6 @@ module FloodRiskEngine
 
       def start
         [
-          :check_location,
           :add_exemptions,
           :check_exemptions,
           :grid_reference,

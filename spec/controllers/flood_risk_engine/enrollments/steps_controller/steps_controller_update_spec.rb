@@ -7,8 +7,8 @@ module FloodRiskEngine
     let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
 
     describe "update action" do
-      let(:step) { steps[1] }
-      let(:next_step) { steps[2] }
+      let(:step) { steps[0] }
+      let(:next_step) { steps[1] }
 
       before do
         expect_any_instance_of(Steps::BaseForm).to(
