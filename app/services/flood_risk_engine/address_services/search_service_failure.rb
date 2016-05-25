@@ -8,7 +8,7 @@ module FloodRiskEngine
       end
 
       def self.build(ex)
-        trap_vcr_errors_due_to_missing_env_vars
+        trap_vcr_errors_due_to_missing_env_vars(ex)
 
         Airbrake.notify(ex) if defined? Airbrake
 
@@ -18,7 +18,7 @@ module FloodRiskEngine
         SearchServiceFailure.new(ex)
       end
 
-      def self.trap_vcr_errors_due_to_missing_env_vars
+      def self.trap_vcr_errors_due_to_missing_env_vars(ex)
         raise ex if Rails.env.test? && ex.message =~ /VCR/
       end
     end
