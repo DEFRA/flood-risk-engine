@@ -22,7 +22,6 @@ module FloodRiskEngine
 
     def build_rows
       [
-        row_builder.registration_date_row,
         row_builder.exemptions_rows,
         row_builder.grid_reference_row,
         row_builder.organisation_type_row,
