@@ -8,6 +8,10 @@ module FloodRiskEngine
         new(enrollment.exemption_location, enrollment)
       end
 
+      def self.t(locale, args = {})
+        I18n.t [locale_key, locale].join, args
+      end
+
       def self.params_key
         :grid_reference
       end
@@ -17,14 +21,25 @@ module FloodRiskEngine
       validates(
         :grid_reference,
         presence: {
-          message: I18n.t("#{locale_key}.errors.grid_reference.blank")
+          message: t(".errors.grid_reference.blank")
         },
         # using FloodRiskEngine::GridReferenceValidator
         "flood_risk_engine/grid_reference" => {
-          message: I18n.t("#{locale_key}.errors.grid_reference.invalid"),
+          message: t(".errors.grid_reference.invalid"),
           allow_blank: true
         }
       )
+
+      property :description
+      validates(
+        :description,
+        length: {
+          maximum: 500,
+          message: t(".errors.description.too_long", max: 500)
+        }
+      )
+
+      property :dredging_length
 
       def save
         super

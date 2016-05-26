@@ -8,6 +8,7 @@ module FloodRiskEngine
       let(:enrollment) { FactoryGirl.create(:enrollment) }
       let(:model_class) { Location }
       let(:grid_reference) { "ST 58132 72695" }
+      let(:description) { Faker::Lorem.sentence(3) }
 
       subject { described_class.factory(enrollment) }
 
@@ -16,7 +17,14 @@ module FloodRiskEngine
       it { is_expected.to be_a(described_class) }
       it { is_expected.to respond_to(:grid_reference) }
 
-      let(:params) { { params_key => { grid_reference: @grid_reference } } }
+      let(:params) do
+        {
+          params_key => {
+            grid_reference: @grid_reference,
+            description: description
+          }
+        }
+      end
 
       describe "#validate" do
         let(:error_message) { subject.errors.messages[:grid_reference] }
@@ -85,6 +93,24 @@ module FloodRiskEngine
             subject.validate(params)
             expect(error_message)
               .to eq([I18n.t("#{locale_key}.errors.grid_reference.blank")])
+          end
+        end
+
+        context "with a long description" do
+          let(:description) { Faker::Lorem.characters(501) }
+          let(:error_message) { subject.errors.messages[:description] }
+          before do
+            @grid_reference = grid_reference
+          end
+
+          it "should return false" do
+            expect(subject.validate(params)).to eq(false)
+          end
+
+          it "should display the locale error message" do
+            subject.validate(params)
+            expect(error_message)
+              .to eq([I18n.t("#{locale_key}.errors.description.too_long", max: 500)])
           end
         end
       end

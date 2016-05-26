@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524081645) do
+ActiveRecord::Schema.define(version: 20160526153044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,10 +112,12 @@ ActiveRecord::Schema.define(version: 20160524081645) do
     t.string   "easting"
     t.string   "northing"
     t.string   "grid_reference"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "locatable_id"
     t.string   "locatable_type"
+    t.text     "description"
+    t.string   "dredging_length"
   end
 
   add_index "flood_risk_engine_locations", ["locatable_id", "locatable_type"], name: "by_locatable", using: :btree
