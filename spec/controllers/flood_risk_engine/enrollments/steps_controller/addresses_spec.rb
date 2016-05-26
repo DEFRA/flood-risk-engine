@@ -16,7 +16,7 @@ module FloodRiskEngine
       let(:step) { :local_authority_address }
 
       before do
-        mock_find_by_postcode
+        mock_ea_address_lookup_find_by_postcode
         get :show, id: step, enrollment_id: enrollment
       end
 
@@ -42,7 +42,7 @@ module FloodRiskEngine
         }
 
         it "creates the address when valid UK UPRN supplied via drop down rendering process_address" do
-          mock_find_by_uprn
+          mock_ea_address_lookup_find_by_uprn
           params = { id: step, enrollment_id: enrollment }.merge(valid_attributes)
 
           expect(enrollment.reload.organisation.primary_address).to_not be

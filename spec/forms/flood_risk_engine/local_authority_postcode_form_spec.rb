@@ -22,7 +22,7 @@ module FloodRiskEngine
       let(:valid_params) { { postcode: "BS1 5AH" } }
 
       before do
-        mock_find_by_postcode
+        mock_ea_address_lookup_find_by_postcode
       end
 
       describe "Save" do

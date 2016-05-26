@@ -9,7 +9,7 @@ module FloodRiskEngine
     let(:reform_class) { Steps::LocalAuthorityPostcodeForm }
 
     def put_update(params)
-      mock_find_by_postcode
+      mock_ea_address_lookup_find_by_postcode
       put(:update, params, session)
     end
 
