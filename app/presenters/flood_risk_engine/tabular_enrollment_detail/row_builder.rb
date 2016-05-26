@@ -14,12 +14,6 @@ module FloodRiskEngine
         @display_change_url = display_change_url
       end
 
-      def registration_date_row
-        build_row name: :registration_date,
-                  value: I18n.l(Time.zone.now, format: :short),
-                  display_change_url: false
-      end
-
       def organisation_type_row
         build_row name: :organisation_type,
                   value: organisation_type,
