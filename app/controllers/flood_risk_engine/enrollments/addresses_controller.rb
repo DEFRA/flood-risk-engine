@@ -36,7 +36,8 @@ module FloodRiskEngine
           enrollment_step_path(enrollment, enrollment.current_step)
         else
           session[:error_params] = {
-            address: params[:address]
+            address: params[:address],
+            target_step: params[:target_step]
           }
           failure_url
         end
@@ -49,7 +50,7 @@ module FloodRiskEngine
             address_initial_attributes.merge(
               check_for_error: true,
               step_back_to_postcode: params[:step_back_to_postcode],
-              target_fwd_state: params[:target_fwd_state]
+              target_step: params[:target_step]
             )
           )
         else
