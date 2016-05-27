@@ -312,7 +312,6 @@ GEM
     unicode-display_width (1.0.5)
     validates_email_format_of (1.6.3)
       i18n
-    vcr (3.0.1)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -352,7 +351,6 @@ DEPENDENCIES
   sass-rails (>= 3.2)
   shoulda-matchers (~> 3.1)
   simplecov (~> 0.11)
-  vcr (~> 3.0)
   webmock (~> 1.24)
 
 BUNDLED WITH
