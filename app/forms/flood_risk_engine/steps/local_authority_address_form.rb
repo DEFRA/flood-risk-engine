@@ -6,7 +6,9 @@ module FloodRiskEngine
       def self.factory(enrollment)
         raise(FormObjectError, "No Organisation set for step #{enrollment.current_step}") unless enrollment.organisation
 
-        new(FloodRiskEngine::Address.new(address_type: :primary), enrollment)
+        address = enrollment.organisation.primary_address || FloodRiskEngine::Address.new(address_type: :primary)
+
+        new(address, enrollment)
       end
 
       def self.params_key
@@ -33,14 +35,24 @@ module FloodRiskEngine
 
         result = enrollment.organisation.save
 
-        # TOFIX:
-        # PENDING - RIp-74 does not specify exact behaviour of back button/link
-        # If we clear address_search now, when they go back the drop down
-        # is cleared and shows zero results. But not sure what the designers want displayed once an address
-        # has been saved. Maybe the dropdown should disappear and the address fields be displayed
+        # TBD - Consensus seems to be that the drop down list should be displayed on Back so even
+        # if address saved do not clear out search
         # enrollment.address_search.delete if(result)
 
         result
+      end
+
+      private
+
+      def initialize(model, enrollment)
+        super(model, enrollment)
+
+        # Consensus is that the original drop down list should be displayed when a user clicks Back,
+        # If address fields required local_authority_address_back can include partials 'shared/address_fields'
+        # or 'shared/display_address'
+        partial = "flood_risk_engine/enrollments/steps/local_authority_address_back"
+
+        @partial_to_render = partial if enrollment.organisation.primary_address.present?
       end
 
     end

@@ -2,14 +2,18 @@ module FloodRiskEngine
   module Enrollments
     module AddressesHelper
 
-      def new_address_path(enrollment:, addressable:, postcode:, address_type:, step_back_to_postcode: false)
+      # disbale for now as not sure best way to stop this warning..make step back etc options in {}
+      # rubocop:disable Metrics/ParameterLists
+      def new_address_path(enrollment:, addressable:, postcode:, address_type:,
+                           step_back_to_postcode: false, target_step: nil)
         new_enrollment_address_path(
           enrollment,
           addressable_id: addressable.id,
           addressable_type: addressable.class.to_s,
           postcode: postcode,
           address_type: address_type,
-          step_back_to_postcode: step_back_to_postcode
+          step_back_to_postcode: step_back_to_postcode,
+          target_step: target_step
         )
       end
 

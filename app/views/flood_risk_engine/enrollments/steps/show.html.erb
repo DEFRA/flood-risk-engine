@@ -19,7 +19,9 @@
                  method: :patch,
                  class: "form" do |f| %>
 
-      <%= render step.to_s, form: form, step: step, f: f %>
+      <% partial = form.partial_to_render? ? form.partial_to_render : step.to_s %>
+
+      <%= render partial, form: form, step: step, f: f %>
 
       <% # No devise yet so no Pundit based policies - so this can easily be re-engineered into Pundit format later %>
       <% if FloodRiskEngine::EnrollmentPolicy.show_continue_button?(form.enrollment) %>

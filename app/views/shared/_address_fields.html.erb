@@ -1,0 +1,44 @@
+<span class="postcode"><%= f.address.postcode %></span>
+<%= link_to(
+        t(
+            ".postcode.change_button.text",
+            hidden: content_tag(
+                'span',
+                t(".postcode.change_button.hidden"),
+                class: "visuallyhidden"
+            )
+        ).html_safe,
+        change_postcode_path(
+            form.enrollment,
+            step_back_to_postcode: form.address.postcode
+        )
+    )
+%>
+
+<%= form_group_and_validation(form.address, :premises) do %>
+  <label class="form-label" for="premises"><%= t '.premises' %></label>
+  <div class="form-hint"><%= t '.premises_form_hint' %></div>
+  <%= f.text_field 'premises', class: 'form-control', id: 'premises', maxlength: 200 %>
+<% end %>
+
+<%= form_group_and_validation(form.address, :street_address) do %>
+  <label class="form-label" for="street_address"><%= t '.street_address' %></label>
+  <%= f.text_field 'street_address', class: 'form-control', id: 'street_address', maxlength: 160  %>
+<% end %>
+
+<%= form_group_and_validation(form.obaddressject, :locality) do %>
+  <label class="form-label" for="locality">
+    <%= t '.locality' %> <span class="form-optional"><%= t '.label' %></span>
+  </label>
+  <%= f.text_field 'locality', class: 'form-control', id: 'locality', maxlength: 70 %>
+<% end %>
+
+<%= form_group_and_validation(form.address, :city) do %>
+  <label class="form-label" for="city"><%= t '.city' %></label>
+  <%= f.text_field 'city', class: 'form-control', id: 'city', maxlength: 30 %>
+<% end %>
+
+<%= form_group_and_validation(form.address, :postcode) do %>
+  <label class="form-label" for="postcode"><%= t '.postcode' %></label>
+  <%= f.text_field 'postcode', class: 'form-control form-control-1-8', id: 'postcode', maxlength: 8 %>
+<% end %>

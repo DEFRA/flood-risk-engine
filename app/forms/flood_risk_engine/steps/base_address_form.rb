@@ -22,13 +22,13 @@ module FloodRiskEngine
         valid = super(params)
 
         # Use UPRN to find address data and assign to our local address instance
-        valid = assign_via_uprn if valid
+        valid = find_and_validate_address_via_uprn if valid
 
         valid
       end
 
       def save
-        assign_to_enrollment(address_to_assign) if address_to_assign
+        assign_to_enrollment(assignable_address) if assignable_address
 
         super
       end
@@ -40,30 +40,38 @@ module FloodRiskEngine
 
       protected
 
-      attr_reader :address_to_assign
+      attr_reader :assignable_address
 
-      def assign_via_uprn
+      def find_and_validate_address_via_uprn
         # Use UPRN to find address data
         address_attributes = find_by_uprn
 
         if address_attributes
-          validator = AddressValidator.new(address_attributes)
+          # Given that the address data comes from service we should not validate it here, as these addresses
+          # are already displayed to the user for selection so then raising an error is goign to be very confusing
+          # N.B Addresses from the service may not have Street address but always have UPRN and Postcode
 
-          if validator.validate
-            @address_to_assign = Address.new(address_attributes)
-            logger.debug("LocalAuthority address now #{@address_to_assign.inspect}")
-          else
-            # not too sure how to merge this validation into Form automatically so for now
-            # manually clone error messages
-            logger.debug("Address Valid #{validator.valid?} Errors [#{validator.errors.inspect}]")
+          # Validation code left for reference, TODO: can be deleted next Sprint
+          # validator = AddressValidator.new(address_attributes)
 
-            validator.errors.each { |_e, m| errors.add :address, m }
-          end
+          # if validator.validate
+          build_assignable_address(address_attributes)
+          # else
+          #  validator.clone_errors(self)
+          # end
 
-          validator.valid?
+          # validator.valid?
+          true
         else
           false
         end
+      end
+
+      # Build an assignable address i.e ready to be assigned to any suitable association on enrollment
+
+      def build_assignable_address(address_attributes)
+        @assignable_address = Address.new(address_attributes)
+        logger.debug("LocalAuthority address now #{@assignable_address.inspect}")
       end
 
       def find_by_uprn
@@ -96,7 +104,7 @@ module FloodRiskEngine
       end
 
       def initialize(model, enrollment)
-        @address_to_assign = Address.new
+        @assignable_address = Address.new
         super(model, enrollment)
       end
 

@@ -14,6 +14,11 @@ module FloodRiskEngine
       end
     end
 
+    def clone_errors(form)
+      Rails.logger.debug("Address Errors [#{errors.inspect}]")
+      errors.each { |key, message| form.errors.add key, message }
+    end
+
     validates :premises, presence: { message: I18n.t("flood_risk_engine.validation_errors.address.premises.blank") }
 
     validates :premises,
