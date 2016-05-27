@@ -9,9 +9,8 @@ module FloodRiskEngine
     let(:reform_class) { Steps::LocalAuthorityPostcodeForm }
 
     def put_update(params)
-      VCR.use_cassette("postcode_validation_requires_check_on_addresses_returned") do
-        put(:update, params, session)
-      end
+      mock_ea_address_lookup_find_by_postcode
+      put(:update, params, session)
     end
 
     context "LocalAuthorityPostcodeForm" do

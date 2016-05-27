@@ -8,7 +8,7 @@ require "spec_helper"
 require "rspec/rails"
 require "capybara/rails"
 require "shoulda/matchers"
-require_relative "support/state_machines/test_state_machine"
+require_relative "support/flood_risk_engine/state_machines/test_state_machine"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -74,6 +74,9 @@ RSpec.configure do |config|
 
   # Enables shortcut, t() instead of I18n.t() in tests
   config.include AbstractController::Translation
+
+  # Allow lookups to EA::AddressLookup to be mocked
+  config.include EA::AddressLookup::TestHelper::RspecMocks
 end
 
 Shoulda::Matchers.configure do |config|
@@ -81,14 +84,4 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
-end
-
-VCR.configure do |c|
-  c.cassette_library_dir = "spec/cassettes"
-  c.hook_into :webmock
-
-  # to quickly ignore certain hosts can use following style
-  # c.ignore_hosts 'addressfacade.cloudapp.net'
-  c.ignore_hosts "127.0.0.1"
-  # c.allow_http_connections_when_no_cassette = true
 end

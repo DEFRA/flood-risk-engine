@@ -5,8 +5,6 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "ea-address_lookup", git: "https://github.com/EnvironmentAgency/ea-address_lookup"
-
 group :test do
   gem "rspec-rails", "~> 3.4"
   gem "factory_girl_rails", "~> 4.6"
@@ -19,6 +17,5 @@ group :test do
   gem "rspec-html-matchers"
   gem "database_cleaner", "~> 1.5"
   gem "codeclimate-test-reporter", require: false
-  gem "vcr", "~> 3.0.1"
   gem "webmock", "~> 1.24"
 end

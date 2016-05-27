@@ -1,4 +1,4 @@
-module FloodRisk
+module FloodRiskEngine
   module PageObjects
     module Steps
       class NewStructurePage
