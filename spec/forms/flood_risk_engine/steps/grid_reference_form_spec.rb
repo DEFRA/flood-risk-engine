@@ -9,6 +9,8 @@ module FloodRiskEngine
       let(:model_class) { Location }
       let(:grid_reference) { "ST 58132 72695" }
       let(:description) { Faker::Lorem.sentence(3) }
+      let(:dredging_exemption) { FactoryGirl.create(:exemption, code: "FRA23") }
+      let(:dredging_length) { "" }
 
       subject { described_class.factory(enrollment) }
 
@@ -20,8 +22,9 @@ module FloodRiskEngine
       let(:params) do
         {
           params_key => {
-            grid_reference: @grid_reference,
-            description: description
+            grid_reference: grid_reference,
+            description: description,
+            dredging_length: dredging_length
           }
         }
       end
@@ -31,17 +34,16 @@ module FloodRiskEngine
         let(:locale_key) { described_class.locale_key }
 
         it "should return true with a valid grid reference" do
-          @grid_reference = grid_reference
           expect(subject.validate(params)).to eq(true)
         end
 
         it "should ignore spacing" do
-          @grid_reference = grid_reference.gsub(/\s/, "")
+          grid_reference.gsub!(/\s/, "")
           expect(subject.validate(params)).to eq(true)
         end
 
         context "with an invalid grid reference" do
-          before { @grid_reference = "invalid" }
+          let(:grid_reference) { "invalid" }
 
           it "should return false" do
             expect(subject.validate(params)).to eq(false)
@@ -55,7 +57,7 @@ module FloodRiskEngine
         end
 
         context "with an out of range grid reference" do
-          before { @grid_reference = "AA 58132 72695" }
+          let(:grid_reference) { "AA 58132 72695" }
 
           it "should return false" do
             expect(subject.validate(params)).to eq(false)
@@ -69,7 +71,7 @@ module FloodRiskEngine
         end
 
         context "with a short grid reference" do
-          before { @grid_reference = "ST 5811 7261" }
+          let(:grid_reference) { "ST 5811 7261" }
 
           it "should return false" do
             expect(subject.validate(params)).to eq(false)
@@ -83,7 +85,7 @@ module FloodRiskEngine
         end
 
         context "with a blank grid reference" do
-          before { @grid_reference = "" }
+          let(:grid_reference) { "" }
 
           it "should return false" do
             expect(subject.validate(params)).to eq(false)
@@ -99,9 +101,6 @@ module FloodRiskEngine
         context "with a long description" do
           let(:description) { Faker::Lorem.characters(501) }
           let(:error_message) { subject.errors.messages[:description] }
-          before do
-            @grid_reference = grid_reference
-          end
 
           it "should return false" do
             expect(subject.validate(params)).to eq(false)
@@ -111,6 +110,46 @@ module FloodRiskEngine
             subject.validate(params)
             expect(error_message)
               .to eq([I18n.t("#{locale_key}.errors.description.too_long", max: 500)])
+          end
+        end
+
+        context "when exemptions include dredging long stretch" do
+          let(:error_message) { subject.errors.messages[:dredging_length] }
+
+          before do
+            enrollment.exemptions << dredging_exemption
+          end
+
+          context "with dredging_length" do
+            let(:dredging_length) { "350m" }
+            it "should should validate" do
+              expect(subject.validate(params)).to eq(true)
+            end
+          end
+
+          context "and no dredging_length entered" do
+            it "should return false" do
+              expect(subject.validate(params)).to eq(false)
+            end
+
+            it "should display the locale error message" do
+              subject.validate(params)
+              expect(error_message)
+                .to eq([I18n.t("#{locale_key}.errors.dredging_length.blank")])
+            end
+          end
+
+          context "with too long a dredging_length" do
+            let(:dredging_length) { Faker::Lorem.characters(26) }
+            it "should return false" do
+              expect(subject.validate(params)).to eq(false)
+            end
+
+            it "should display the locale error message" do
+              subject.validate(params)
+              expect(error_message)
+                .to eq([I18n.t("#{locale_key}.errors.dredging_length.too_long", max: 25)])
+            end
           end
         end
       end
@@ -124,6 +163,22 @@ module FloodRiskEngine
           expect(
             enrollment.exemption_location.grid_reference
           ).to eq(@grid_reference)
+        end
+      end
+
+      describe "#require_dredging_length?" do
+        it "should be false" do
+          expect(subject.require_dredging_length?).to be_falsey
+        end
+
+        context "with too long a dredging_length" do
+          before do
+            enrollment.exemptions << dredging_exemption
+          end
+
+          it "should be true" do
+            expect(subject.require_dredging_length?).to be_truthy
+          end
         end
       end
     end

@@ -6,11 +6,21 @@ en:
         grid_reference:
           heading: Where will the exemption activity take place?
           legend: Where will the exemption activity take place?
-          form_label: National grid reference
-          example_hint: For example, ST 58132 72695.
-          clarification_hint: |-
-            For activities that take place over a stretch of the watercourse
-            choose the middle or centre point.
+          grid_reference:
+            form_label: National grid reference
+            example_hint: For example, ST 58132 72695.
+            clarification_hint: |-
+              For activities that take place over a stretch of the watercourse
+              choose the middle or centre point.
+          dredging_length:
+            form_label: Approximate length of dredging in metres
+            clarification_hint: The maximum length you can dredge is 1,500 metres
+          description:
+            form_label: Site name or description
+            clarification_hint: |-
+              For example, river name, place name, landmarks, or built or natural
+              features
+            length_hint: "%{max} character limit"
           details:
             summary: Help finding a grid reference
             tool_text: Use the free %{link} to find a grid reference.
@@ -25,3 +35,6 @@ en:
               blank: Enter a grid reference
             description:
               too_long: The site name or description must be no longer than %{max} characters
+            dredging_length:
+              blank: Enter the approximate length of dredging
+              too_long: The length of dredging must be no longer than %{max} characters

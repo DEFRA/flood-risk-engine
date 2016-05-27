@@ -14,5 +14,23 @@ module FloodRiskEngine
         expect(exemption.code_number).to eq(number)
       end
     end
+
+    describe ".long_dredging?" do
+      context "with a long dredging exemption" do
+        let(:exemption) { FactoryGirl.create(:exemption, code: "FRA23") }
+
+        it "should be true" do
+          expect(exemption.long_dredging?).to be_truthy
+        end
+      end
+
+      context "with a standard exemption" do
+        let(:exemption) { FactoryGirl.create(:exemption) }
+
+        it "should be false" do
+          expect(exemption.long_dredging?).to be_falsey
+        end
+      end
+    end
   end
 end

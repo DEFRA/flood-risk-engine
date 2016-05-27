@@ -40,11 +40,28 @@ module FloodRiskEngine
       )
 
       property :dredging_length
+      validates(
+        :dredging_length,
+        presence: {
+          message: t(".errors.dredging_length.blank"),
+          if: :require_dredging_length?
+        },
+        length: {
+          maximum: 25,
+          message: t(".errors.dredging_length.too_long", max: 25),
+          allow_blank: true,
+          if: :require_dredging_length?
+        }
+      )
 
       def save
         super
         enrollment.exemption_location ||= model
         enrollment.save
+      end
+
+      def require_dredging_length?
+        enrollment.exemptions.any?(&:long_dredging?)
       end
     end
   end

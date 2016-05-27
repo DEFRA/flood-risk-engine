@@ -2,6 +2,8 @@ module FloodRiskEngine
   class Exemption < ActiveRecord::Base
     default_scope { order(:code_number) }
 
+    LONG_DREDGING_CODES = %w(FRA23).freeze
+
     has_many :enrollment_exemptions,
              dependent: :restrict_with_exception
     has_many :enrollments,
@@ -16,6 +18,10 @@ module FloodRiskEngine
     # An exemption's friendly name, used for example when listing exemptions in an email.
     def to_s
       "#{code}: #{summary}"
+    end
+
+    def long_dredging?
+      LONG_DREDGING_CODES.include? code
     end
 
     private
