@@ -3,12 +3,12 @@
 
   <%= form_group_and_validation(form, :grid_reference) do %>
     <%= f.label :grid_reference, class: "form-label" do %>
-      <%= t(".form_label") %>
+      <%= t(".grid_reference.form_label") %>
       <span class="form-hint">
-        <%= t(".example_hint") %>
+        <%= t(".grid_reference.example_hint") %>
       </span>
       <span class="form-hint">
-        <%= t(".clarification_hint") %>
+        <%= t(".grid_reference.clarification_hint") %>
       </span>
     <% end %>
     <%=
@@ -18,6 +18,43 @@
         "aria-describedby" => "ngr_help"
       )
     %>
+  <% end %>
+
+  <% if form.require_dredging_length? %>
+    <%= form_group_and_validation(form, :dredging_length) do %>
+      <%= f.label :dredging_length, class: "form-label" do %>
+        <%= t(".dredging_length.form_label")  %>
+        <span class="form-hint">
+          <%= t(".dredging_length.clarification_hint") %>
+        </span>
+      <% end %>
+      <%=
+        f.text_field(
+          :dredging_length,
+          class: "form-control",
+          "aria-describedby" => "ngr_help"
+        )
+      %>
+    <% end %>
+  <% end %>
+
+  <%= form_group_and_validation(form, :description) do %>
+    <%= f.label :description, class: "form-label" do %>
+      <%= t(".description.form_label")  %>
+      <span class="form-hint">
+        <%= t(".description.clarification_hint") %>
+      </span>
+    <% end %>
+    <%=
+      f.text_area(
+        :description,
+        class: "form-control",
+        "aria-describedby" => "ngr_help"
+      )
+    %>
+    <p class="text">
+      <%= t(".description.length_hint", max: 500) %>
+    </p>
   <% end %>
 
 </fieldset>
