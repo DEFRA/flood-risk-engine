@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency "virtus", "~> 1.0"
   s.add_dependency "ea-address_lookup", "~> 0.3.0"
   s.add_dependency "ea-area_lookup", "~> 0.1.1"
+  s.add_dependency "airbrake", "~> 5.3.0" # Airbrake catches exceptions, sends them to https://dst-errbit.xxx.co.uk
 
   s.add_development_dependency "pg", "~> 0.18"
   s.add_development_dependency "before_commit", "~> 0.6"

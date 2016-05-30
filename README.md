@@ -18,6 +18,16 @@ As this is an engine, there is a test application set up at spec/dummy. Before
 using dummy, you will need to create `spec/dummy/.env` containing the Postgres
 database username and password you wish to use. See `spec/dummy/.env.example`
 
+## Error reporting
+
+The engine includes the airbrake gem, and will try to post production errors to an errbit server
+which must be configured via the ENV variables
+
+```ruby
+AIRBRAKE_HOST = "https://airbrake_or_errbit_server"
+AIRBRAKE_PROJECT_KEY ="<api key>"
+```
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
