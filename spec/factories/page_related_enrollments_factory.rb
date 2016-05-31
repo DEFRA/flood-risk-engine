@@ -17,10 +17,17 @@ FactoryGirl.define do
       object.create_address_search(postcode: "BS1 5AH")
     end
 
+    trait :with_address do
+      after(:create) do |object|
+        object.organisation.primary_address = create(:simple_address)
+        object.save!
+      end
+    end
+
     step :local_authority_address
   end
 
-  factory :page_correspondence_contact, parent: :page_local_authority_address do
+  factory :page_correspondence_contact, parent: :page_local_authority_address, traits: [:with_address] do
     trait :with_contact do
       after(:create) do |object|
         object.correspondence_contact = create(:flood_risk_engine_contact)

@@ -11,7 +11,7 @@ module FloodRiskEngine
       return unless address
       %i(premises street_address locality city postcode).map do |attribute|
         address[attribute]
-      end.compact.join(", ")
+      end.compact.reject(&:blank?).join(", ")
     end
 
     private
