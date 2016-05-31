@@ -1,0 +1,18 @@
+
+<fieldset>
+  <legend class="visuallyhidden"><%= t('.legend') %></legend>
+
+  <!-- Company name -->
+  <div class="form-group">
+    <label class="form-label" for="company-name"><%= t('.label') %></label>
+    <%= form_group_and_validation(form, :company_name) do %>
+      <%#= f.text_field :company_name, class:  'form-control form-control-char-50' %>
+    <% end %>
+
+  </div>
+
+</fieldset>
+
+
+
+

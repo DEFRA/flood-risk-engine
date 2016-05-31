@@ -1,0 +1,15 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        limited_company_number:
+          errors:
+              blank: Enter the company registration number
+              invalid_html: Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits
+                </br>If your number has only 7 digits, enter it with a zero at the start.
+          heading: What's the registration number of the company?
+          label: Company registration number
+          hint: An 8 digit number, or 2 letters followed by a 6 digit number
+          legend: Registration number of the company
+

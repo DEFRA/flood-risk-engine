@@ -24,7 +24,10 @@ module FloodRiskEngine
       def limited_company
         between_start_and_finish do
           [
-            :limited_company_number
+            :limited_company_number,
+            :limited_company_name,
+            :limited_company_postcode,
+            :limited_company_address
           ]
         end
       end

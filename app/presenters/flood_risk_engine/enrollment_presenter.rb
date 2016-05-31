@@ -38,6 +38,11 @@ module FloodRiskEngine
       title
     end
 
+    def organisation_registration_number
+      return unless enrollment.organisation && enrollment.organisation.registration_number.present?
+      enrollment.organisation.registration_number
+    end
+
     private
 
     attr_reader :enrollment
