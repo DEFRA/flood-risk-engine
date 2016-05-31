@@ -47,6 +47,11 @@ module FloodRiskEngine
         !partial_to_render.nil?
       end
 
+      def show_continue_button?
+        # All states except :confirmation
+        !enrollment.state_machine.state_machine.confirmation?
+      end
+
       protected
 
       def logger

@@ -24,7 +24,7 @@
       <%= render partial, form: form, step: step, f: f %>
 
       <% # No devise yet so no Pundit based policies - so this can easily be re-engineered into Pundit format later %>
-      <% if FloodRiskEngine::EnrollmentPolicy.show_continue_button?(form.enrollment) %>
+      <% if form.show_continue_button? %>
         <div class="form-group">
           <%= f.submit(step_t(step, ".continue",  default: t("global.continue")), class: "button") %>
         </div>
