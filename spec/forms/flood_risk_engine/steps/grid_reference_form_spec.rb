@@ -98,6 +98,21 @@ module FloodRiskEngine
           end
         end
 
+        context "with a blank description" do
+          let(:description) { "" }
+          let(:error_message) { subject.errors.messages[:description] }
+
+          it "should return false" do
+            expect(subject.validate(params)).to eq(false)
+          end
+
+          it "should display the locale error message" do
+            subject.validate(params)
+            expect(error_message)
+              .to eq([I18n.t("#{locale_key}.errors.description.blank")])
+          end
+        end
+
         context "with a long description" do
           let(:description) { Faker::Lorem.characters(501) }
           let(:error_message) { subject.errors.messages[:description] }

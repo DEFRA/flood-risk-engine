@@ -35,6 +35,7 @@ en:
               blank: Enter a grid reference
             description:
               too_long: The site name or description must be no longer than %{max} characters
+              blank: Enter a site name or description
             dredging_length:
               blank: Enter the approximate length of dredging
               too_long: The length of dredging must be no longer than %{max} characters
