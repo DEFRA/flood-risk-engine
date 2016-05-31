@@ -89,7 +89,9 @@ module FloodRiskEngine
       helper_method :address_initial_attributes
 
       def step_forward
-        enrollment.set_step_as params[:target_step] || enrollment.next_step
+        target = params[:target_step].blank? ? enrollment.next_step : params[:target_step]
+
+        enrollment.set_step_as(target)
         enrollment.save
       end
 
