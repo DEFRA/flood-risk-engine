@@ -33,6 +33,9 @@ module FloodRiskEngine
       property :description
       validates(
         :description,
+        presence: {
+          message: t(".errors.description.blank")
+        },
         length: {
           maximum: 500,
           message: t(".errors.description.too_long", max: 500)
