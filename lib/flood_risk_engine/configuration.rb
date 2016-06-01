@@ -23,6 +23,8 @@ module FloodRiskEngine
     # The redirect URL for a popstcode lookup
     config_accessor(:redirection_url_postcode_lookup)
     config_accessor(:layout) { "application" }
+    config_accessor(:minumum_dredging_length_in_metres) { 1 }
+    config_accessor(:maximum_dredging_length_in_metres) { 1500 }
   end
 
   def self.config

@@ -48,11 +48,13 @@
         <span class="form-hint">
           <%= t(".dredging_length.clarification_hint") %>
         </span>
-        <%= f.text_field(
+        <%= f.number_field(
             :dredging_length,
+            min: FloodRiskEngine.config.minumum_dredging_length_in_metres,
+            max: FloodRiskEngine.config.maximum_dredging_length_in_metres,
             class: "form-control form-control-char-10",
             "aria-describedby" => "ngr_help")
-        %> metres
+        %> <%= t(".dredging_length.units") %>
       <% end %>
     <% end %>
   <% end %>

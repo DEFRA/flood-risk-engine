@@ -16,6 +16,10 @@ module FloodRiskEngine
         :grid_reference
       end
 
+      def self.config
+        FloodRiskEngine.config
+      end
+
       property :grid_reference
 
       validates(
@@ -49,10 +53,15 @@ module FloodRiskEngine
           message: t(".errors.dredging_length.blank"),
           if: :require_dredging_length?
         },
-        length: {
-          maximum: 25,
-          message: t(".errors.dredging_length.too_long", max: 25),
+        numericality: {
+          only_integer: true,
+          greater_than_or_equal_to: config.minumum_dredging_length_in_metres,
+          less_than_or_equal_to: config.maximum_dredging_length_in_metres,
           allow_blank: true,
+          message:
+            t(".errors.dredging_length.numeric",
+              min: config.minumum_dredging_length_in_metres,
+              max: config.maximum_dredging_length_in_metres),
           if: :require_dredging_length?
         }
       )
