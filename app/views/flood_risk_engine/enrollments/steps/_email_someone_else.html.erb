@@ -8,7 +8,8 @@
   <%= form_group_and_validation(form, :email_address) do -%>
     <div class="form-group">
       <%= f.label(:email_address, t(".email_address.label"), class: "form-label") %>
-      <%= f.email_field(:email_address, class: "form-control") %>
+      <%= f.email_field(:email_address,
+                        class: "form-control form-control-char-50") %>
     </div>
   <% end %>
 
@@ -19,7 +20,8 @@
             t(".email_address_confirmation.label"),
             class: "form-label"
           ) %>
-      <%= f.email_field(:email_address_confirmation, class: "form-control") %>
+      <%= f.email_field(:email_address_confirmation,
+                        class: "form-control form-control-char-50") %>
     </div>
   <% end %>
 

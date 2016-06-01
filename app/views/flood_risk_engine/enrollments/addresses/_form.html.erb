@@ -28,22 +28,22 @@
       <%= t(".premises.label") %>
       <span class="form-hint"><%= t(".premises.hint") %></span>
     <% end %>
-    <%= f.text_field :premises, class: "form-control" %>
+    <%= f.text_field :premises, class: "form-control form-control-char-50" %>
   <% end %>
 
   <%= form_group_and_validation(form, :street_address) do %>
     <%= f.label :street_address, t(".street_address"), class: "form-label" %>
-    <%= f.text_field :street_address, class: "form-control" %>
+    <%= f.text_field :street_address, class: "form-control form-control-char-50" %>
   <% end %>
 
   <%= form_group_and_validation(form, :locality) do %>
     <%= f.label :locality, t(".locality"), class: "form-label" %>
-    <%= f.text_field :locality, class: "form-control" %>
+    <%= f.text_field :locality, class: "form-control form-control-char-50" %>
   <% end %>
 
   <%= form_group_and_validation(form, :city) do %>
     <%= f.label :city, t(".city"), class: "form-label" %>
-    <%= f.text_field :city, class: "form-control" %>
+    <%= f.text_field :city, class: "form-control form-control-char-35" %>
   <% end %>
 </fieldset>
 

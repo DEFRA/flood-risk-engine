@@ -23,10 +23,10 @@ en:
           blank: Enter a building name or number
           too_long: The building name or number must be no longer than %{max} characters
         street_address:
-          blank: Enter a street line 1
-          too_long: Street line 1 must be no longer than %{max} characters
+          blank: Enter an address line 1
+          too_long: Address line 1 must be no longer than %{max} characters
         locality:
-          too_long: Street line 2 must be no longer than %{max} characters
+          too_long: Address line 2 must be no longer than %{max} characters
         city:
           blank: Enter a town or city
           too_long: The town or city must be no longer than %{max} characters

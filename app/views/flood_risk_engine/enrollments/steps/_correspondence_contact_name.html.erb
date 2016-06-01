@@ -6,13 +6,13 @@
   <%= form_group_and_validation(form, :full_name) do -%>
       <%= f.label :full_name,  t('.label') , class: 'form-label' %>
       <span class="form-hint"><%= t('.form_hint_1') %></span>
-      <%= f.text_field 'full_name', class:  'form-control' %>
+      <%= f.text_field 'full_name', class:  'form-control form-control-char-35' %>
   <% end %>
 
   <%= form_group_and_validation(form, :position) do -%>
       <%= f.label :position,  t('.label1') , class: 'form-label' %>
       <p class="form-hint"><%= t('.form_hint_2') %></p>
-      <%= f.text_field 'position', class:  'form-control' %>
+      <%= f.text_field 'position', class:  'form-control form-control-char-35' %>
   <% end %>
 
 </fieldset>
