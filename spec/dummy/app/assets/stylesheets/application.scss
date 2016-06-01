@@ -10,3 +10,8 @@
 .visuallyhidden {
   display: none;
 }
+
+// By default, block labels stack vertically
+.block-label {
+  display: block;
+}

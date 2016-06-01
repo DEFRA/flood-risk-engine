@@ -22,6 +22,7 @@ module FloodRiskEngine
 
     # The redirect URL for a popstcode lookup
     config_accessor(:redirection_url_postcode_lookup)
+    config_accessor(:layout) { "application" }
   end
 
   def self.config
