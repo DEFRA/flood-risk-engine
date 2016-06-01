@@ -14,11 +14,32 @@
     <%=
       f.text_field(
         :grid_reference,
-        class: "form-control",
+        class: "form-control form-control-char-25",
         "aria-describedby" => "ngr_help"
       )
     %>
   <% end %>
+
+  <!-- Find grid reference -->
+  <details style="padding-bottom: 18px;" id="ngr_help">
+    <summary><span class="summary"><%= t(".details.summary") %></span></summary>
+    <div class="panel panel-border-narrow">
+      <p>
+        <%=
+          t(
+            ".details.tool_text",
+            link: link_to(
+              t(".details.tool_link"),
+              "https://www.ordnancesurvey.co.uk/osmaps/",
+              rel: "external",
+              target: "_blank"
+            )
+          ).html_safe
+        %>
+      </p>
+      <p><%= t(".details.tool_info")  %></p>
+    </div>
+  </details>
 
   <% if form.require_dredging_length? %>
     <%= form_group_and_validation(form, :dredging_length) do %>
@@ -27,14 +48,12 @@
         <span class="form-hint">
           <%= t(".dredging_length.clarification_hint") %>
         </span>
+        <%= f.text_field(
+            :dredging_length,
+            class: "form-control form-control-char-10",
+            "aria-describedby" => "ngr_help")
+        %> metres
       <% end %>
-      <%=
-        f.text_field(
-          :dredging_length,
-          class: "form-control",
-          "aria-describedby" => "ngr_help"
-        )
-      %>
     <% end %>
   <% end %>
 
@@ -48,8 +67,9 @@
     <%=
       f.text_area(
         :description,
-        class: "form-control",
-        "aria-describedby" => "ngr_help"
+        class: "form-control form-control-char-50",
+        "aria-describedby" => "ngr_help",
+        rows: 4
       )
     %>
     <p class="text">
@@ -58,24 +78,3 @@
   <% end %>
 
 </fieldset>
-
-<!-- Find grid reference -->
-<details style="padding-bottom: 18px;" id="ngr_help">
-  <summary><span class="summary"><%= t(".details.summary") %></span></summary>
-  <div class="panel panel-border-narrow">
-    <p>
-      <%=
-        t(
-          ".details.tool_text",
-          link: link_to(
-            t(".details.tool_link"),
-            "https://www.ordnancesurvey.co.uk/osmaps/",
-            rel: "external",
-            target: "_blank"
-          )
-        ).html_safe
-      %>
-    </p>
-    <p><%= t(".details.tool_info")  %></p>
-  </div>
-</details>

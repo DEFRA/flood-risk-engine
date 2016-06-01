@@ -2,11 +2,13 @@
   <%= form_group_and_validation(form, :email_address) do -%>
     <%= f.label :email_address,  t('.label') , class: 'form-label' %>
     <span class="form-hint"><%= t(".form_hint") %></span>
-    <%= f.email_field 'email_address', class:  'form-control' %>
+    <%= f.email_field 'email_address',
+                      class: 'form-control form-control-char-50' %>
   <% end %>
 
   <%= form_group_and_validation(form, :email_address_confirmation) do -%>
     <%= f.label :email_address_confirmation,  t('.label1') , class: 'form-label' %>
-    <%= f.email_field 'email_address_confirmation', class:  'form-control' %>
+    <%= f.email_field 'email_address_confirmation',
+                      class: 'form-control form-control-char-50' %>
   <% end %>
 </fieldset>
