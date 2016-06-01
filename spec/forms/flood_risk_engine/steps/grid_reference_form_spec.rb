@@ -29,6 +29,12 @@ module FloodRiskEngine
         }
       end
 
+      let(:numeric_error_message) do
+        I18n.t("#{locale_key}.errors.dredging_length.numeric",
+               min: FloodRiskEngine.config.minumum_dredging_length_in_metres,
+               max: FloodRiskEngine.config.maximum_dredging_length_in_metres)
+      end
+
       describe "#validate" do
         let(:error_message) { subject.errors.messages[:grid_reference] }
         let(:locale_key) { described_class.locale_key }
@@ -136,8 +142,8 @@ module FloodRiskEngine
           end
 
           context "with dredging_length" do
-            let(:dredging_length) { "350m" }
-            it "should should validate" do
+            let(:dredging_length) { "350" }
+            it "should validate" do
               expect(subject.validate(params)).to eq(true)
             end
           end
@@ -155,15 +161,26 @@ module FloodRiskEngine
           end
 
           context "with too long a dredging_length" do
-            let(:dredging_length) { Faker::Lorem.characters(26) }
+            let(:dredging_length) { "150,000" }
             it "should return false" do
               expect(subject.validate(params)).to eq(false)
             end
 
             it "should display the locale error message" do
               subject.validate(params)
-              expect(error_message)
-                .to eq([I18n.t("#{locale_key}.errors.dredging_length.too_long", max: 25)])
+              expect(error_message).to eq([numeric_error_message])
+            end
+          end
+
+          context "with a dredging_length of zero" do
+            let(:dredging_length) { "0" }
+            it "should return false" do
+              expect(subject.validate(params)).to eq(false)
+            end
+
+            it "should display the locale error message" do
+              subject.validate(params)
+              expect(error_message).to eq([numeric_error_message])
             end
           end
         end

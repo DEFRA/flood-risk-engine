@@ -15,6 +15,7 @@ en:
           dredging_length:
             form_label: Approximate length of dredging in metres
             clarification_hint: The maximum length you can dredge is 1,500 metres
+            units: metres
           description:
             form_label: Site name or description
             clarification_hint: |-
@@ -38,4 +39,4 @@ en:
               blank: Enter a site name or description
             dredging_length:
               blank: Enter the approximate length of dredging
-              too_long: The length of dredging must be no longer than %{max} characters
+              numeric: The length of dredging must be a number between %{min} and %{max}
