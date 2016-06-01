@@ -58,7 +58,7 @@ module FloodRiskEngine
               address_type: "primary",
               premises: "HORIZON HOUSE",
               street_address: "DEANERY ROAD",
-              locality: "SOMEWHERE",
+              locality: "",
               city: "BRISTOL",
               postcode: valid_attributes[params_key][:post_code],
               uprn: valid_attributes[params_key][:uprn]
