@@ -65,6 +65,13 @@ module FloodRiskEngine
                   value: enrollment_presenter.correspondence_contact_telephone_number
       end
 
+      def organisation_registration_number_row
+        return unless enrollment_presenter.organisation_registration_number
+        build_row name: :company_number,
+                  value:  enrollment_presenter.organisation_registration_number,
+                  step: "#{organisation_type}_number"
+      end
+
       private
 
       # ==== Arguments

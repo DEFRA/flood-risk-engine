@@ -33,14 +33,22 @@ module FloodRiskEngine
         super
       end
 
-      # Derived classes must implement which address instance is being managed
-      def assign_to_enrollment(_address)
-        raise NotImplementedError, "Address form cannot set underlying Enrollment address"
-      end
-
       protected
 
       attr_reader :assignable_address
+
+      # Most address pages are almost identical for each OrgType so
+      # use a default of assigning to Organisation Primary_address
+
+      def assign_to_enrollment(address)
+        # addressable does not seem to auto populate via association with organisation, so set manually
+        address.attributes = { addressable:  enrollment.organisation, address_type:  :primary }
+        enrollment.organisation.primary_address = address
+
+        result = enrollment.organisation.save
+
+        result
+      end
 
       def find_and_validate_address_via_uprn
         # Use UPRN to find address data
@@ -51,16 +59,8 @@ module FloodRiskEngine
           # are already displayed to the user for selection so then raising an error is goign to be very confusing
           # N.B Addresses from the service may not have Street address but always have UPRN and Postcode
 
-          # Validation code left for reference, TODO: can be deleted next Sprint
-          # validator = AddressValidator.new(address_attributes)
-
-          # if validator.validate
           build_assignable_address(address_attributes)
-          # else
-          #  validator.clone_errors(self)
-          # end
 
-          # validator.valid?
           true
         else
           false

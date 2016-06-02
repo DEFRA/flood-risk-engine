@@ -1,7 +1,7 @@
 module FloodRiskEngine
   module Steps
 
-    class LocalAuthorityAddressForm < BaseAddressForm
+    class LimitedCompanyAddressForm < BaseAddressForm
 
       def self.factory(enrollment)
         raise(FormObjectError, "No Organisation set for step #{enrollment.current_step}") unless enrollment.organisation
@@ -12,7 +12,7 @@ module FloodRiskEngine
       end
 
       def self.params_key
-        :local_authority_address
+        :limited_company_address
       end
 
       property :postcode, virtual: true
@@ -30,13 +30,6 @@ module FloodRiskEngine
 
       def initialize(model, enrollment)
         super(model, enrollment)
-
-        # Consensus is that the original drop down list should be displayed when a user clicks Back,
-        # If address fields required local_authority_address_back can include partials 'shared/address_fields'
-        # or 'shared/display_address'
-        partial = "flood_risk_engine/enrollments/steps/local_authority_address_back"
-
-        @partial_to_render = partial if enrollment.organisation.primary_address.present?
       end
 
     end

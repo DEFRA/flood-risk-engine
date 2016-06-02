@@ -4,7 +4,7 @@ module FloodRiskEngine
   RSpec.describe EnrollmentPresenter, type: :presenter do
     let(:enrollment) do
       build(:enrollment,
-            :with_locale_authority,
+            :with_local_authority,
             :with_organisation_address,
             :with_exemption,
             :with_exemption_location,

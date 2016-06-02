@@ -1,0 +1,10 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        limited_company_postcode:
+          heading: "What’s the registered address of the Company"
+          label:  UK postcode
+          hint: "For example, BS1 5AH"
+          legend: Postcode

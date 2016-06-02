@@ -1,8 +1,16 @@
 FactoryGirl.define do
   factory :enrollment, class: "FloodRiskEngine::Enrollment" do
-    trait :with_locale_authority do
-      after(:build) do |object|
-        object.organisation = build :organisation, :as_local_authority
+    # Create a trait for each Type, in format : with_local_authority, etc
+    #   local_authority
+    #   limited_company
+    #   limited_liability_partnership
+    #   individual
+    #   partnership
+    #   other
+    #   unknown
+    FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+      trait :"with_#{ot}" do
+        after(:build) { |object| object.organisation = create(:organisation, :"as_#{ot}") }
       end
     end
 

@@ -1,0 +1,9 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        limited_company_name:
+          heading: What's the registered name of the company?
+          label: Registered name of company
+          legend: Registered company name

@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class LocalAuthorityPostcodeForm < BaseAddressSearchForm
+    class LimitedCompanyPostcodeForm < BaseAddressSearchForm
 
       def self.factory(enrollment)
         raise(FormObjectError, "No Organisation set for step #{enrollment.current_step}") unless enrollment.organisation
@@ -11,7 +11,7 @@ module FloodRiskEngine
       end
 
       def self.params_key
-        :local_authority_postcode
+        :limited_company_postcode
       end
 
       def validate(params)
@@ -19,7 +19,6 @@ module FloodRiskEngine
 
         # The target state for this address selection should we exit state machine and use address controller
         @target_step = :correspondence_contact_name if !result && manual_entry_enabled?
-
         result
       end
 

@@ -27,10 +27,11 @@ module FloodRiskEngine
         row_builder.organisation_type_row,
         row_builder.organisation_name_row,
         row_builder.organisation_address_row,
+        row_builder.organisation_registration_number_row,
         row_builder.correspondence_contact_name_row,
         row_builder.correspondence_contact_telephone_row,
         row_builder.correspondence_contact_email_row
-      ].flatten!
+      ].flatten.compact
     end
 
     def row_builder

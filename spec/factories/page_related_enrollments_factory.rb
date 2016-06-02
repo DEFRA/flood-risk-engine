@@ -4,7 +4,15 @@ FactoryGirl.define do
   factory :page_check_location, class: FloodRiskEngine::Enrollment do
   end
 
-  factory :page_local_authority, parent: :enrollment, traits: [:with_exemption, :with_locale_authority] do
+  factory :page_user_type, parent: :enrollment do
+    step :user_type
+  end
+
+  # Paths
+
+  # Local Authority
+
+  factory :page_local_authority, parent: :page_user_type, traits: [:with_exemption, :with_local_authority] do
     step :local_authority
   end
 
@@ -26,6 +34,14 @@ FactoryGirl.define do
 
     step :local_authority_address
   end
+
+  # Ltd Company
+
+  factory :page_limited_company_number, parent: :page_user_type, traits: [:with_exemption, :with_limited_company] do
+    step :limited_company_number
+  end
+
+  # END PATHS
 
   factory :page_correspondence_contact, parent: :page_local_authority_address, traits: [:with_address] do
     trait :with_contact do

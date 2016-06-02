@@ -6,7 +6,7 @@ module FloodRiskEngine
 
     let(:enrollment) do
       create(:enrollment,
-             :with_locale_authority,
+             :with_local_authority,
              :with_exemption,
              :with_exemption_location,
              step: step)
