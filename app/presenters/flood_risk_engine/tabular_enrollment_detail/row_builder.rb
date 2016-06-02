@@ -67,7 +67,7 @@ module FloodRiskEngine
 
       def organisation_registration_number_row
         return unless enrollment_presenter.organisation_registration_number
-        build_row name: :company_number,
+        build_row name: :organisation_registration_number,
                   value:  enrollment_presenter.organisation_registration_number,
                   step: "#{organisation_type}_number"
       end
