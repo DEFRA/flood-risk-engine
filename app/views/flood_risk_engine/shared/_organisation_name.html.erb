@@ -1,0 +1,10 @@
+<fieldset>
+  <legend class="visuallyhidden"><%= t(".#{step}.legend") %></legend>
+
+  <%= form_group_and_validation(form, :name) do %>
+    <%= f.label :name, t(".#{step}.label"), class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control form-control-char-50' %>
+  <% end %>
+
+</fieldset>
+

@@ -9,7 +9,7 @@ module FloodRiskEngine
 
       let(:enrollment) { create(:page_limited_company_number) }
 
-      let(:model_class) { FloodRiskEngine::Organisation } # needed for  it_behaves_like "a form object"
+      let(:model_class) { FloodRiskEngine::Organisation }
 
       let(:form) { LimitedCompanyNumberForm.factory(enrollment) }
 
@@ -65,10 +65,9 @@ module FloodRiskEngine
 
         it "form contains errors" do
           form.validate(invalid_attributes)
-
           expect(
             form.errors.messages[:registration_number]
-          ).to eq [I18n.t("#{LimitedCompanyNumberForm.locale_key}.errors.invalid_html")]
+          ).to eq [I18n.t("ea.validation_errors.companies_house_number.registration_number.invalid_html")]
         end
       end
     end

@@ -1,0 +1,11 @@
+---
+en:
+  ea:
+    validation_errors:
+      companies_house_name:
+        name:
+          invalid: "The company name cannot contain any of these characters: ^ | _ ~ ¬ or `"
+      companies_house_number:
+        registration_number:
+          invalid_html: Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits
+            </br>If your number has only 7 digits, enter it with a zero at the start.

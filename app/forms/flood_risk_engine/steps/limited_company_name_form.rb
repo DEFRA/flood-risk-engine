@@ -11,14 +11,21 @@ module FloodRiskEngine
         :limited_company_name
       end
 
-      # Define the attributes on the inbound model, that you want included in your form/validation with
-      # property :name
-      # For full API see  - https://github.com/apotonick/reform
-      # property :company_name
+      def self.max_length
+        EA::Validators::CompaniesHouseNameValidator.name_max_length
+      end
 
-      # validates :company_name, presence: {
-      #    message:  I18n.t("#{LimitedCompanyNameForm.locale_key}.company_name.errors.blank")
-      # }
+      property :name
+
+      validates :name, presence: { message: I18n.t("#{LimitedCompanyNameForm.locale_key}.errors.name.blank") }
+
+      validates :name, 'ea/validators/companies_house_name': true, allow_blank: true
+
+      validates :name, length: {
+        maximum: LimitedCompanyNameForm.max_length,
+        message: I18n.t("#{LimitedCompanyNameForm.locale_key}.errors.name.too_long",
+                        max_length: LimitedCompanyNameForm.max_length)
+      }
 
     end
   end

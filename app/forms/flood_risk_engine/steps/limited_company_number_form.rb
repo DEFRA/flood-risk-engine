@@ -18,11 +18,7 @@ module FloodRiskEngine
         message:  I18n.t("#{LimitedCompanyNumberForm.locale_key}.errors.blank")
       }
 
-      validates :registration_number, 'ea/validators/companies_house_number':
-        {
-          allow_blank: true,
-          message: I18n.t("#{LimitedCompanyNumberForm.locale_key}.errors.invalid_html")
-        }
+      validates :registration_number, 'ea/validators/companies_house_number': { allow_blank: true }
 
     end
   end
