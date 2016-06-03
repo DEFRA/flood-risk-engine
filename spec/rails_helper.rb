@@ -8,6 +8,8 @@ require "spec_helper"
 require "rspec/rails"
 require "capybara/rails"
 require "shoulda/matchers"
+require "email_spec"
+require "email_spec/rspec"
 require_relative "support/flood_risk_engine/state_machines/test_state_machine"
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -39,6 +41,8 @@ RSpec.configure do |config|
   # Allows us to include should matchers like validate_presence_of if the spec type
   # is :form (already works out of the box but only for type :model)
   config.include(Shoulda::Matchers::ActiveModel, type: :form)
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

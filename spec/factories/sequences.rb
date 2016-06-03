@@ -8,4 +8,6 @@ FactoryGirl.define do
     last = ("A".."Z").to_a.reject { |a| a == "I" }.sample
     [first, last].join
   end
+
+  sequence(:random_email) { Faker::Internet.safe_email }
 end

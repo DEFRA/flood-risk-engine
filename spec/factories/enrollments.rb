@@ -8,6 +8,8 @@ FactoryGirl.define do
     #   partnership
     #   other
     #   unknown
+    status FloodRiskEngine::Enrollment.statuses[:building]
+
     FloodRiskEngine::Organisation.org_types.keys.each do |ot|
       trait :"with_#{ot}" do
         after(:build) { |object| object.organisation = create(:organisation, :"as_#{ot}") }
@@ -34,8 +36,20 @@ FactoryGirl.define do
     end
 
     trait :with_correspondence_contact do
+      after(:stub) do |object|
+        object.correspondence_contact = build_stubbed :contact
+      end
       after(:build) do |object|
         object.correspondence_contact = build :contact
+      end
+    end
+
+    trait :with_secondary_contact do
+      after(:stub) do |object|
+        object.secondary_contact = build_stubbed :contact
+      end
+      after(:build) do |object|
+        object.secondary_contact = build :contact
       end
     end
   end

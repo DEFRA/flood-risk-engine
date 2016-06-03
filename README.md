@@ -28,6 +28,38 @@ AIRBRAKE_HOST = "https://airbrake_or_errbit_server"
 AIRBRAKE_PROJECT_KEY ="<api key>"
 ```
 
+## Email
+
+### Using mailcatcher in development
+
+In `./spec/dummy/.env` add
+
+```
+EMAIL_HOST=localhost
+EMAIL_PORT=1025
+```
+
+Install mailcatcher (if necessary) and run it:
+
+```bash
+$ gem install mailcatcher
+$ mailcatcher
+```
+Navigate to [http://localhost:1080](http://localhost:1080) to see intercepted email.
+
+### Previewing emails
+
+You can view an [ActionMailer::Preview](http://api.rubyonrails.org/v4.1.0/classes/ActionMailer/Base.html#class-ActionMailer::Base-label-Previewing+emails)
+preview by starting the dummy app
+
+```
+bundle exec spec/dummy/bin/rails server
+```
+
+and navigating to [http://localhost:3000/rails/mailers](http://localhost:3000/rails/mailers).
+If you want to test against an enrollment other than the last created one, you will need to
+alter the preview class in `spec/dummy/lib/mailer_previews`.
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.

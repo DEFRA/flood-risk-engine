@@ -1,0 +1,56 @@
+<h1 class="bold-large">
+  <%= t(".heading") %>
+</h1>
+<p>
+  <%= t(".reference_number_heading") %>
+  <br />
+  <strong class="heading-medium">
+    <%= @enrollment.reference_number %>
+  </strong>
+</p>
+
+<div class="panel panel-border-wide">
+  <p class="bold-medium">
+    <%= t(".preamble1") %>
+  </p>
+  <p>
+    <%= t(".preamble2") %>
+  </p>
+  <p>
+    <%= t(".preamble3") %>
+  </p>
+</div>
+
+<h2 class="heading-medium">
+  <%= t(".summary_heading") %>
+</h2>
+
+<table class="check-your-answers" summary="<%= t('.table_summary') %>">
+  <tbody>
+    <% @enrollment.rows.each do |row| %>
+      <tr data-row="<%= row.name %>">
+        <th>
+          <%= row.title %>
+        </th>
+        <td>
+          <%= row.value %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+<br />
+
+<%= t(".guidance.preamble") %>
+<%= link_to t(".guidance.link_title"), FloodRiskEngine.config.govuk_guidance_url %>.
+
+<br/>
+
+<h2 class="heading-medium">
+  <%= t(".your_responsibilities.heading") %>
+</h2>
+<p>
+  <%= t(".your_responsibilities.body") %>
+</p>

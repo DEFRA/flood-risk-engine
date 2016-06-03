@@ -5,7 +5,7 @@ FactoryGirl.define do
     suffix Faker::Name.suffix
     date_of_birth 30.years.ago
     position Faker::Company.profession
-    email_address Faker::Internet.safe_email
+    email_address { generate(:random_email) }
     telephone_number Faker::PhoneNumber.phone_number
   end
 end
