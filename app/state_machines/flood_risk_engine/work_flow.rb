@@ -27,7 +27,10 @@ module FloodRiskEngine
             :limited_company_number,
             :limited_company_name,
             :limited_company_postcode,
-            :limited_company_address
+            :limited_company_address,
+            :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
+            :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
+            :correspondence_contact_email
           ]
         end
       end

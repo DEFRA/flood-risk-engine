@@ -4,28 +4,28 @@ require_relative "../../../support/shared_examples/form_objects"
 module FloodRiskEngine
   module Steps
 
-    RSpec.describe Steps::LocalAuthorityPostcodeForm, type: :form do
-      let(:params_key) { :local_authority_postcode }
+    RSpec.describe Steps::LimitedCompanyPostcodeForm, type: :form do
+      let(:params_key) { :limited_company_postcode }
 
-      let(:enrollment) { create(:page_local_authority_address) }
+      let(:enrollment) { create(:page_limited_company_postcode) }
 
       let(:model_class) { FloodRiskEngine::AddressSearch }
 
-      let(:form) { LocalAuthorityPostcodeForm.factory(enrollment) }
+      let(:form) { LimitedCompanyPostcodeForm.factory(enrollment) }
 
       subject { form }
 
       it_behaves_like "a form object"
 
-      it { is_expected.to be_a(LocalAuthorityPostcodeForm) }
+      it { is_expected.to be_a(LimitedCompanyPostcodeForm) }
 
       let(:valid_params) { { postcode: "BS1 5AH" } }
 
-      before do
-        mock_ea_address_lookup_find_by_postcode
-      end
-
       describe "Save" do
+        before do
+          mock_ea_address_lookup_find_by_postcode
+        end
+
         it "is not redirectable" do
           expect(form.redirect?).to_not be_truthy
         end
@@ -51,6 +51,20 @@ module FloodRiskEngine
       end
 
       context "with invalid params" do
+        let(:valid_but_address_service_400s) {
+          { "#{form.params_key}": { postcode: "HR4G 0LE" } }
+        }
+
+        it "is invalid when valid Postcode supplied but Address Service fails", duff: true do
+          VCR.use_cassette("limited_company_postcode_address_service_400_test") do
+            expect(form.validate(valid_but_address_service_400s)).to eq false
+
+            expect(
+              form.errors.messages[:postcode]
+            ).to eq [I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")]
+          end
+        end
+
         let(:invalid_attributes) {
           { postcode: "BS6 " }
         }
