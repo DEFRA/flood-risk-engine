@@ -7,3 +7,7 @@ en:
           heading: What's the registered name of the company?
           label: Registered name of company
           legend: Registered company name
+          errors:
+            name:
+             blank: Enter the registered name of the company
+             too_long: Check the name - it should have no more than than %{max_length} characters

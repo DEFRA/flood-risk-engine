@@ -1,11 +1,17 @@
 # A suite of Enrollments that enable you to jump straight to a particular page in the journey
 
 FactoryGirl.define do
-  factory :page_check_location, class: FloodRiskEngine::Enrollment do
-  end
+  factory :page_check_location, class: FloodRiskEngine::Enrollment
 
   factory :page_user_type, parent: :enrollment do
     step :user_type
+
+    trait :with_primary_address do
+      after(:create) do |object|
+        object.organisation.primary_address = create(:simple_address)
+        object.save!
+      end
+    end
   end
 
   # Paths
@@ -25,13 +31,6 @@ FactoryGirl.define do
       object.create_address_search(postcode: "BS1 5AH")
     end
 
-    trait :with_address do
-      after(:create) do |object|
-        object.organisation.primary_address = create(:simple_address)
-        object.save!
-      end
-    end
-
     step :local_authority_address
   end
 
@@ -41,9 +40,25 @@ FactoryGirl.define do
     step :limited_company_number
   end
 
+  factory :page_limited_company_name, parent: :page_limited_company_number do
+    step :limited_company_name
+  end
+
+  factory :page_limited_company_postcode, parent: :page_limited_company_name do
+    step :limited_company_postcode
+  end
+
+  factory :page_limited_company_address, parent: :page_limited_company_postcode do
+    after(:create) do |object|
+      object.create_address_search(postcode: "BS1 5AH")
+    end
+
+    step :limited_company_address
+  end
+
   # END PATHS
 
-  factory :page_correspondence_contact, parent: :page_local_authority_address, traits: [:with_address] do
+  factory :page_correspondence_contact, parent: :page_local_authority_address, traits: [:with_primary_address] do
     trait :with_contact do
       after(:create) do |object|
         object.correspondence_contact = create(:flood_risk_engine_contact)

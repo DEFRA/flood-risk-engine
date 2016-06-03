@@ -2,7 +2,7 @@
   <legend class="visuallyhidden"><%= t('.legend') %></legend>
 
   <%= form_group_and_validation(form, :registration_number) do %>
-    <label class="form-label" for="company-registration-number"><%= t('.label') %></label>
+    <%= f.label :registration_number,  t('.label') , class: 'form-label' %>
     <span class="form-hint"><%= t('.hint') %></span>
 
     <%= f.text_field :registration_number, class:  'form-control form-control-char-10' %>

@@ -1,0 +1,8 @@
+---
+en:
+  flood_risk_engine:
+    shared:
+      organisation_name:
+        limited_company_name:
+          label: Registered name of company
+          legend: Registered company name

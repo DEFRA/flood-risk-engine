@@ -14,6 +14,9 @@ module FloodRiskEngine
       /\A[\p{Alpha} ,\.'-]+\z/i
     end
 
+    # Check the DB definition of a column,
+    # Return any limit defined for it
+    #
     def self.find_max_column_length(klass, column, default = 255)
       name_max_length = begin
         klass.columns.find { |col| col.name == column }.limit || default
