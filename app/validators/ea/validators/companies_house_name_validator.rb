@@ -23,7 +23,7 @@ module EA
       end
 
       def self.name_max_length
-        160
+        170
       end
 
       def self.disallowed_chars

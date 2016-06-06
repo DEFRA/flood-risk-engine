@@ -25,6 +25,9 @@ module FloodRiskEngine
     config_accessor(:layout) { "application" }
     config_accessor(:minumum_dredging_length_in_metres) { 1 }
     config_accessor(:maximum_dredging_length_in_metres) { 1500 }
+
+    config_accessor(:maximum_company_name_length) { 170 }
+
   end
 
   def self.config

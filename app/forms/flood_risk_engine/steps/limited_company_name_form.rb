@@ -11,8 +11,12 @@ module FloodRiskEngine
         :limited_company_name
       end
 
+      def self.config
+        FloodRiskEngine.config
+      end
+
       def self.max_length
-        EA::Validators::CompaniesHouseNameValidator.name_max_length
+        config.maximum_company_name_length || EA::Validators::CompaniesHouseNameValidator.name_max_length
       end
 
       property :name

@@ -23,6 +23,22 @@ module FloodRiskEngine
           .with_message(t("#{LimitedCompanyNameForm.locale_key}.errors.name.blank"))
       }
 
+      describe "#config" do
+        it "returns a default max name length " do
+          expect(LimitedCompanyNameForm.max_length).to eq 170
+        end
+
+        it "enables max name length to be configured " do
+          FloodRiskEngine.config.maximum_company_name_length = 5
+
+          expect(LimitedCompanyNameForm.max_length).to eq 5
+        end
+
+        after(:all) do
+          FloodRiskEngine.config.maximum_company_name_length = nil
+        end
+      end
+
       describe "#save" do
         it "saves the name of the limited company when supplied" do
           params = { "#{form.params_key}": { name: "Bodge It and Scarper Ltd" } }
