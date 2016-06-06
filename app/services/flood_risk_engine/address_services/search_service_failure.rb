@@ -8,7 +8,15 @@ module FloodRiskEngine
       end
 
       def self.build(ex)
-        Airbrake.notify(ex) if defined? Airbrake
+        begin
+          # TOFIX - We are still getting errors in Prod in the guts of this Airbrake code
+          # Airbrake::Error (can't parse abstract_response.rb:223
+          # Have tried unsuccesfully updating airbrake gem and also rolling back to WEX version  "airbrake", "~> 5.2.1"
+          #
+          Airbrake.notify(ex) if defined? Airbrake
+        rescue
+          Rails.logger.error "WARNING!!! - Cannot notify Airbrake of issues with Address Service"
+        end
 
         Rails.logger.error "Address lookup service failed: #{ex}"
         Rails.logger.debug("EA::AddressLookup Config was: #{EA::AddressLookup.config.inspect}") if Rails.env.test?
