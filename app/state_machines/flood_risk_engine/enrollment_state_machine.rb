@@ -46,6 +46,7 @@ module FloodRiskEngine
 
     callbacks do
       on_enter(:confirmation) { |_event| FinalizeEnrollmentService.new(target).finalize! }
+      on_enter(:check_your_answers) { |_event| target.in_review = true }
     end
 
   end
