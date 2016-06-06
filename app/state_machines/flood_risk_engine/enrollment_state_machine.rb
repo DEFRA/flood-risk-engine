@@ -34,19 +34,36 @@ module FloodRiskEngine
         :partnership,
         :other
       ].each do |org_type|
+        # go forward from one step to the next and
+        # go back to the previous step
         steps = WorkFlow.for(org_type)
-        criteria = -> { enrollment.org_type == org_type.to_s }
+        criteria = -> { enrollment.org_type == org_type.to_s && !enrollment.in_review? }
 
         event :go_forward, steps.merge(if: criteria)
         event :go_back, steps.invert.merge(if: criteria)
+
+        # go forward to the review step once in review
+        review_steps = ReviewWorkFlow.for(org_type)
+
+        event :go_forward, review_steps.merge(
+          if: -> { enrollment.org_type == org_type.to_s && enrollment.in_review? }
+        )
       end
 
-      event :go_forward, :declaration => :confirmation
+      # From the review step, you can go forward to confirmation
+      event(
+        :go_forward,
+        WorkFlow::REVIEW_STEP => :declaration,
+        :declaration => :confirmation
+      )
+
+      # You can go back from the declaration to the review step
+      event(:go_back, :declaration => WorkFlow::REVIEW_STEP)
     end
 
     callbacks do
-      on_enter(:confirmation) { |_event| FinalizeEnrollmentService.new(target).finalize! }
-      on_enter(:check_your_answers) { |_event| target.in_review = true }
+      on_enter(:confirmation) { |_event| FinalizeEnrollmentService.new(enrollment).finalize! }
+      on_enter(:check_your_answers) { |_event| enrollment.in_review = true }
     end
 
   end

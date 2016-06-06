@@ -4,6 +4,8 @@ module FloodRiskEngine
   # and then be converted into a hash suitable for input into a state
   # engine.
   class WorkFlow
+    REVIEW_STEP = :check_your_answers
+
     # Define each work flow within Definitions
     module Definitions
       module_function
@@ -79,8 +81,7 @@ module FloodRiskEngine
       def finish
         [
           :email_someone_else,
-          :check_your_answers,
-          :declaration
+          REVIEW_STEP
         ]
       end
 
