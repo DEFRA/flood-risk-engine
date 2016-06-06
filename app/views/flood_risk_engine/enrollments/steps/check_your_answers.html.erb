@@ -27,7 +27,7 @@
             <%= row.value %>
           </td>
           <td class="change-answer">
-            <% include_change_link = false # remove this when we do the story about adding change links %>
+            <% include_change_link = true # remove this when we do the story about adding change links %>
             <% if row.change_url.present? && include_change_link  %>
               <%= link_to(row.change_url) do %>
                 <%= t(".change_link")%>

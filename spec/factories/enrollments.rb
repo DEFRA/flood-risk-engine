@@ -9,10 +9,9 @@ FactoryGirl.define do
     #   partnership
     #   other
     #   unknown
-
-    FloodRiskEngine::Organisation.org_types.keys.each do |ot|
-      trait :"with_#{ot}" do
-        after(:build) { |object| object.organisation = create(:organisation, :"as_#{ot}") }
+    FloodRiskEngine::Organisation.org_types.keys.each do |org_type|
+      trait :"with_#{org_type}" do
+        after(:build) { |object| object.organisation = create(:organisation, :"as_#{org_type}") }
       end
     end
 
