@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://addressfacade.cloudapp.net/address-service/v1/addresses/postcode?client-id=example%20team1&key=client1&postcode=HR4G%200LE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc2 (linux-gnu x86_64) ruby/2.3.1p112
+      Host:
+      - addressfacade.cloudapp.net
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 03 Jun 2016 13:55:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"facade_status_code":400,"facade_error_message":"bad request to supplier
+        service","facade_error_code":"address_service_error_1","supplier_was_called":true,"supplier_status_code":400,"supplier_response":{"error":{"statuscode":400,"message":"Requested
+        postcode must contain a minimum of the sector plus 1 digit of the district
+        e.g. SO1. Requested postcode was HR4G0LE"}}}'
+    http_version: 
+  recorded_at: Fri, 03 Jun 2016 13:54:33 GMT
+recorded_with: VCR 3.0.1

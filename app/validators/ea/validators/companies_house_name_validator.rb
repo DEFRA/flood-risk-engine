@@ -11,8 +11,10 @@ module EA
 
     class CompaniesHouseNameValidator < ActiveModel::EachValidator
 
+      VALID_COMPANIES_HOUSE_NAME_REGEX = Regexp.new(/[\^|_~¬`]/).freeze
+
       def validate_each(record, attribute, value)
-        if value !~ CompaniesHouseNameValidator.valid_name_regex
+        if VALID_COMPANIES_HOUSE_NAME_REGEX.match(value)
           record.errors.add(
             attribute,
             (options[:message] || I18n.t("ea.validation_errors.companies_house_name.#{attribute}.invalid"))
@@ -24,8 +26,8 @@ module EA
         160
       end
 
-      def self.valid_name_regex
-        /\A[\p{Alpha}\p{N}][^\^|_~¬`]+\z/i
+      def self.disallowed_chars
+        @disallowed_chars ||= ["^", "|", "_", "~", "¬", "`"]
       end
 
     end
