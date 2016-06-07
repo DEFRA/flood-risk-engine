@@ -39,15 +39,16 @@ module FloodRiskEngine
         :other,
         :unknown
       ].each do |org_type|
-        # go forward from one step to the next and
-        # go back to the previous step
+        # within each work flow:
+        #   go forward from one step to the next and
+        #   go back to the previous step
         steps = WorkFlow.for(org_type)
         criteria = -> { enrollment.org_type == org_type.to_s && !enrollment.in_review? }
 
         event :go_forward, steps.merge(if: criteria)
         event :go_back, steps.invert.merge(if: criteria)
 
-        # go forward to the review step once in review
+        #   go forward to the review step once in review
         review_steps = ReviewWorkFlow.for(org_type)
 
         event :go_forward, review_steps.merge(
@@ -67,8 +68,11 @@ module FloodRiskEngine
     end
 
     callbacks do
-      on_enter(:confirmation) { |_event| SubmitEnrollmentService.new(target).finalize! }
-      on_enter(:check_your_answers) { |_event| enrollment.in_review = true }
+      on_enter(:confirmation) do |_event|
+        enrollment.in_review = false
+        SubmitEnrollmentService.new(target).finalize!
+      end
+      on_enter(WorkFlow::REVIEW_STEP) { |_event| enrollment.in_review = true }
     end
 
   end
