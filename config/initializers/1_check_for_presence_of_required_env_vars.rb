@@ -7,6 +7,9 @@
   ADDRESS_FACADE_PORT
   ADDRESS_FACADE_CLIENT_ID
   ADDRESS_FACADE_KEY
+  DEVISE_MAILER_SENDER
+  EMAIL_HOST
+  EMAIL_PORT
 ).each do |key|
   ENV.fetch(key) { raise "#{key} not found in ENV" }
 end
@@ -16,6 +19,9 @@ if Rails.env.production?
   %w(
     AIRBRAKE_HOST
     AIRBRAKE_PROJECT_KEY
+    EMAIL_USERNAME
+    EMAIL_PASSWORD
+    EMAIL_APP_DOMAIN
   ).each do |key|
     ENV.fetch(key) { raise "#{key} not found in ENV" }
   end

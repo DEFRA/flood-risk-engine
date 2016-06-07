@@ -8,6 +8,7 @@ module FloodRiskEngine
              :correspondence_contact,
              :organisation,
              :org_type,
+             :reference,
              to: :enrollment
     delegate :grid_reference,
              to: :exemption_location, allow_nil: true

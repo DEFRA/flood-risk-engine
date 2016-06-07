@@ -1,0 +1,20 @@
+
+<%= t(".heading") %>
+<%= t(".reference_number_heading") %> <%= @enrollment.reference_number %>
+
+<%= t(".preamble1") %>
+<%= t(".preamble2") %>
+<%= t(".preamble3") %>
+
+<%= t(".summary_heading") %>
+
+<% @enrollment.rows.each do |row| %>
+<%= "#{row.title}: #{row.value}" %>
+<% end %>
+
+<%= t(".guidance.preamble") %> <%= t(".guidance.link_title") %>.
+<%= FloodRiskEngine.config.govuk_guidance_url %>
+
+<%= t(".your_responsibilities.heading") %>
+
+<%= t(".your_responsibilities.body") %>

@@ -1,0 +1,43 @@
+---
+en:
+  flood_risk_engine:
+    enrollment_mailer:
+      submitted:
+        subject: Your application has been submitted (subject TBC)
+        heading: "Application complete: you must now wait for us to check the location"
+        reference_number_heading: Your reference is
+        preamble1: You must not start work until we confirm your registration.
+        preamble2: We will check the location of the activity in our database of environmentally sensitive and flood defence areas.
+        preamble3: We will contact you within 15 working days to confirm or cancel your registration.
+        summary_heading: Application details
+        table_summary: Application details
+        your_responsibilities:
+          heading: Your responsibilities
+          body: The organisation or individual responsible must keep to the
+                description and conditions for the exemption(s).
+                We can prosecute them if they don’t do this.
+        check_conditions: >
+          You can check the conditions of your exemptions in the %{guidance_link}
+          flood risk activities guidance
+        guidance:
+          preamble: You can check the conditions of your exemptions in the
+          link_title: flood risk activities guidance
+        rows:
+          organisation_registration_number:
+            title: Company registration number
+          organisation_type:
+            title: Customer type
+          grid_reference:
+            title: Grid reference
+          exemption:
+            title: Exemption %{code}
+          organisation_name:
+            title: Responsible for activity (‘operator’)
+          organisation_address:
+            title: Their address
+          correspondence_contact_name:
+            title: Who we will contact
+          correspondence_contact_telephone:
+            title: Telephone
+          correspondence_contact_email:
+            title: Email

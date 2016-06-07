@@ -16,6 +16,23 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  # Default URL config
+  host = ENV["DEFAULT_URL_HOST"] || "localhost"
+  port = ENV["SSL_PORT"].try!(:to_i) || ENV["PORT"].try!(:to_i) || 3000
+  protocol = ENV["SSL_PORT"].present? ? "https" : "http"
+
+  config.action_mailer.default_url_options = { host: host, port: port, protocol: protocol }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: ENV["EMAIL_USERNAME"],
+    password: ENV["EMAIL_PASSWORD"],
+    domain: ENV["EMAIL_APP_DOMAIN"],
+    address: ENV["EMAIL_HOST"],
+    port: ENV["EMAIL_PORT"],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -38,4 +55,6 @@ Rails.application.configure do
 
   # Don't raise errors for missing translations
   config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
 end

@@ -32,6 +32,6 @@ http_interactions:
         service","facade_error_code":"address_service_error_1","supplier_was_called":true,"supplier_status_code":400,"supplier_response":{"error":{"statuscode":400,"message":"Requested
         postcode must contain a minimum of the sector plus 1 digit of the district
         e.g. SO1. Requested postcode was HR4G0LE"}}}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 03 Jun 2016 13:54:33 GMT
 recorded_with: VCR 3.0.1

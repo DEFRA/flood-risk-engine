@@ -4,6 +4,7 @@
 #
 module FloodRiskEngine
   class TabularEnrollmentDetailPresenter
+    delegate :reference_number, to: :enrollment
 
     # Options
     # * i18n_scope
@@ -11,7 +12,9 @@ module FloodRiskEngine
     # * display_change_url
     # We currently just pass them through to the RowBuilder.
     def initialize(options = {})
+      @enrollment = options.fetch(:enrollment)
       @options = options
+      @options[:enrollment_presenter] = EnrollmentPresenter.new(@enrollment)
     end
 
     def rows
@@ -19,6 +22,8 @@ module FloodRiskEngine
     end
 
     private
+
+    attr_reader :enrollment
 
     def build_rows
       [
@@ -37,5 +42,6 @@ module FloodRiskEngine
     def row_builder
       @row_builder ||= TabularEnrollmentDetail::RowBuilder.new(@options)
     end
+
   end
 end

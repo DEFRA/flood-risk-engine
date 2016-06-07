@@ -15,19 +15,19 @@ module FloodRiskEngine
     include ActiveSupport::Configurable
 
     # Define accessors here, e.g.
-    # config_accessor(:some_key)
+    #   config_accessor(:some_key)
     # or with an optional default
-    # config_accessor(:some_key) { "a default value" }
+    #   config_accessor(:some_key) { "a default value" }
     config_accessor(:redirection_url_on_location_unchecked)
-
-    # The redirect URL for a popstcode lookup
     config_accessor(:redirection_url_postcode_lookup)
     config_accessor(:layout) { "application" }
     config_accessor(:minumum_dredging_length_in_metres) { 1 }
     config_accessor(:maximum_dredging_length_in_metres) { 1500 }
-
     config_accessor(:maximum_company_name_length) { 170 }
-
+    config_accessor(:govuk_guidance_url) do
+      "https://www.gov.uk/government/publications/"\
+      "environmental-permitting-regulations-exempt-flood-risk-activities"
+    end
   end
 
   def self.config

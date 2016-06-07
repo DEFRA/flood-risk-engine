@@ -19,4 +19,5 @@ group :test do
   gem "codeclimate-test-reporter", require: false
   gem "vcr", "~> 3.0"
   gem "webmock", "~> 1.24"
+  gem "email_spec"
 end
