@@ -13,6 +13,7 @@ module FloodRiskEngine
         :exemption_ids,
         length: {
           minimum: 1,
+          maximum: 1,
           message: :select_at_lease_one_exemptions
         }
       )
@@ -22,8 +23,8 @@ module FloodRiskEngine
         @all_exemptions = Exemption.all
       end
 
-      def exemption_ids=(ids)
-        super ids.reject(&:blank?)
+      def exemption_ids=(id)
+        super [id]
       end
 
       def params_key

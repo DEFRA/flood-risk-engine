@@ -4,9 +4,9 @@ en:
     enrollments:
       steps:
         check_exemptions:
-          heading: Check your exemptions
+          heading: Confirm your exemption
           add_link: Add another exemption
           remove_link:
-            text: Remove %{hidden}
+            text: Change %{hidden}
             hidden: exemption %{code}
           table_summary: Exemptions that you selected with title, exemption code and a link to remove any you don't need

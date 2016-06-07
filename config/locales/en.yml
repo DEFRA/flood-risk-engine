@@ -17,7 +17,7 @@ en:
   activemodel:
     errors:
       messages:
-        select_at_lease_one_exemptions: Select at least one exemption
+        select_at_lease_one_exemptions: Select an exemption
 
   global:
     back: Back
