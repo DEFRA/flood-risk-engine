@@ -3,11 +3,9 @@
   <legend class="visuallyhidden"><%= t('.legend') %></legend>
 
   <%= form_group_and_validation(form, :name) do %>
-      <div class="form-group">
-        <%= f.label :name, t('.label'), class: 'form-label' %>
-        <p class="form-hint"><%= t('.para_text') %></p>
-        <%= f.text_field :name, class: 'form-control form-control-char-35' %>
-      </div>
+    <%= f.label :name, t('.label'), class: 'form-label' %>
+    <p class="form-hint"><%= t('.para_text') %></p>
+    <%= f.text_field :name, class: 'form-control form-control-char-35' %>
   <% end %>
 
 </fieldset>

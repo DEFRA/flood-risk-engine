@@ -1,1 +1,11 @@
-other
+<fieldset>
+  <legend class="visuallyhidden"><%= t('.legend') %></legend>
+
+  <!-- Business or organisation name -->
+  <%= form_group_and_validation(form, :name) do %>
+    <%= f.label :name, t('.label'), class: 'form-label' %>
+    <%= f.text_field :name, class: 'form-control form-control-char-35' %>
+  <% end %>
+
+</fieldset>
+

@@ -4,7 +4,7 @@ require_relative "../../../support/shared_examples/form_objects"
 module FloodRiskEngine
   module Steps
 
-    RSpec.describe Steps::LocalAuthorityForm, type: :form do
+    RSpec.describe LocalAuthorityForm, type: :form do
       let(:params_key) { :local_authority }
       let(:enrollment) { Enrollment.new }
       let(:model_class) { FloodRiskEngine::Organisation }
@@ -58,7 +58,14 @@ module FloodRiskEngine
           expect(form.validate(params)).to eq false
           expect(
             subject.errors.messages[:name]
-          ).to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")])
+          ).to eq(
+            [
+              I18n.t(
+                "#{LocalAuthorityForm.locale_key}.errors.name.too_long",
+                max: LocalAuthorityForm.name_max_length
+              )
+            ]
+          )
         end
       end
     end

@@ -12,6 +12,10 @@ module FloodRiskEngine
       include BaseFormCommon
       extend BaseFormCommon
 
+      def self.t(locale, args = {})
+        I18n.t locale, args.merge(scope: locale_key)
+      end
+
       # So we can always build an enrollment step url
       delegate :id, to: :enrollment, prefix: true
 

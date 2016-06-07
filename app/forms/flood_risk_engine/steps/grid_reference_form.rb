@@ -8,10 +8,6 @@ module FloodRiskEngine
         new(enrollment.exemption_location, enrollment)
       end
 
-      def self.t(locale, args = {})
-        I18n.t [locale_key, locale].join, args
-      end
-
       def self.params_key
         :grid_reference
       end

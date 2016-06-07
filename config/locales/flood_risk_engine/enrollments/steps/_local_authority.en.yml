@@ -11,4 +11,4 @@ en:
           errors:
             name:
              blank: Enter the name of the local authority or public body
-             too_long: Check the name - it should have no more than than 200 characters
+             too_long: Check the name - it should have no more than %{max} characters

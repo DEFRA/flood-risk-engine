@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603150808) do
+ActiveRecord::Schema.define(version: 20160606123643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,9 +76,10 @@ ActiveRecord::Schema.define(version: 20160603150808) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.string   "token"
     t.integer  "secondary_contact_id"
+    t.string   "token"
     t.string   "reference_number",          limit: 12
+    t.boolean  "in_review"
     t.integer  "status",                               default: 0, null: false
   end
 

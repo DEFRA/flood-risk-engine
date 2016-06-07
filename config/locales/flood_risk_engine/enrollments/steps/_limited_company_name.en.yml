@@ -10,4 +10,4 @@ en:
           errors:
             name:
              blank: Enter the registered name of the company
-             too_long: Check the name - it should have no more than than %{max_length} characters
+             too_long: Check the name - it should have no more than %{max_length} characters
