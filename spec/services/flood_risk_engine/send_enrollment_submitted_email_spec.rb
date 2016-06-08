@@ -79,6 +79,30 @@ module FloodRiskEngine
           described_class.new(enrollment).call
         end
       end
+
+      context "when correspondence contact is present but seconday contact has a '' email "\
+              "address, which it does by default if nothing entered the 'email other' form" do
+        it "sends one email to the correspondence contact and does not try "\
+           " to sent the empty ('') secondary email" do
+          enrollment.secondary_contact.email_address = "" # should result in it not being sent
+
+          primary_contact_email   = enrollment.correspondence_contact.email_address
+          secondary_contact_email = enrollment.secondary_contact.email_address
+
+          expect(primary_contact_email).to_not be_blank
+          expect(secondary_contact_email).to eq("")
+
+          message_delivery = instance_double(ActionMailer::MessageDelivery)
+          expect(message_delivery).to receive(:deliver_later).exactly(:once)
+
+          expect(mailer).to receive(:submitted)
+            .exactly(:once)
+            .with(enrollment_id: enrollment.id, recipient_address: primary_contact_email)
+            .and_return(message_delivery)
+
+          described_class.new(enrollment).call
+        end
+      end
     end
   end
 end
