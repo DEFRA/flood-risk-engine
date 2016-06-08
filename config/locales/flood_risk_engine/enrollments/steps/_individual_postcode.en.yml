@@ -1,0 +1,10 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        individual_postcode:
+          heading: What's the address of the individual?
+          label:  UK postcode
+          hint: "For example, BS1 5AH"
+          legend: Postcode

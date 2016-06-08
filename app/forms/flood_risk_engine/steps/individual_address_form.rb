@@ -1,7 +1,7 @@
 module FloodRiskEngine
   module Steps
 
-    class LocalAuthorityAddressForm < BaseAddressForm
+    class IndividualAddressForm < BaseAddressForm
 
       def self.factory(enrollment)
         raise(FormObjectError, "No Organisation set for step #{enrollment.current_step}") unless enrollment.organisation
@@ -12,7 +12,7 @@ module FloodRiskEngine
       end
 
       def self.params_key
-        :local_authority_address
+        :individual_address
       end
 
       private

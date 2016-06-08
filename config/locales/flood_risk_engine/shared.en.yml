@@ -2,6 +2,14 @@
 en:
   flood_risk_engine:
     shared:
+      address:
+        change: Change
+        legend: Address
+        manual_entry: "I can’t find the address in the list"
+        num_addresses_found: "%{num} addresses found"
+        postcode_hint: Postcode
+        select_from_list_label: Address
+        individual_name:
       organisation_name:
         individual_name:
           hint:  For example, Jane Smith
@@ -10,3 +18,9 @@ en:
         limited_company_name:
           label: Registered name of company
           legend: Registered company name
+      postcode:
+          hint: "For example, BS1 5AH"
+          label:  UK postcode
+          legend: Postcode
+          individual_postcode:
+             label: What's the address of the individual?

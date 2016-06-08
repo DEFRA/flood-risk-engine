@@ -46,7 +46,12 @@ module FloodRiskEngine
       def individual
         between_start_and_finish do
           [
-            :individual_name
+            :individual_name,
+            :individual_postcode,
+            :individual_address,
+            :correspondence_contact_name,
+            :correspondence_contact_telephone,
+            :correspondence_contact_email
           ]
         end
       end
