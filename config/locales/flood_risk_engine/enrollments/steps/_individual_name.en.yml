@@ -1,0 +1,14 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        individual_name:
+          heading: What's the individual’s name?
+          label: Full name
+          hint:  For example, Jane Smith
+          legend: Individual’s name?
+          errors:
+            name:
+             blank: Enter a name
+             too_long: Check the name you entered - it should have no more than than %{max_length} characters

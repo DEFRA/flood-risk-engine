@@ -3,6 +3,9 @@ en:
   flood_risk_engine:
     shared:
       organisation_name:
+        individual_name:
+          label: Full name
+          legend: Individual’s name?
         limited_company_name:
           label: Registered name of company
           legend: Registered company name
