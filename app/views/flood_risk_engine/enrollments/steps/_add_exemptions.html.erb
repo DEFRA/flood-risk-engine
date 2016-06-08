@@ -8,14 +8,15 @@
   <legend class="visuallyhidden">
     <%= t("flood_risk_engine.enrollments.steps.add_exemptions.heading") %>
   </legend>
-  <%= form_group_and_validation(form, :base) do %>
-      <div class="form-group">
-        <%= f.collection_radio_buttons(:exemption_ids, form.all_exemptions, :id, :code) do |b|
-          b.label(class: "block-label exemption") do
-            b.radio_button + b.object.summary + ' ' + content_tag('span', b.text, class: "exmpt")
-          end
-        end
-        %>
-      </div>
+  <%= form_group_and_validation(form, :exemption_ids) do %>
+    <%= f.collection_radio_buttons(:exemption_ids, form.all_exemptions, :id, :code) do |b|
+      b.label(class: "block-label exemption") do
+        b.radio_button(data: {code: b.object.code}) +
+            b.object.summary + ' ' + content_tag('span', b.text, class: "exmpt")
+      end
+    end
+    %>
   <% end %>
 </fieldset>
+
+
