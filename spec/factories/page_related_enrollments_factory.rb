@@ -16,6 +16,12 @@ FactoryGirl.define do
 
   # Paths
 
+  # Individual
+
+  factory :page_individual_name, parent: :page_user_type, traits: [:with_exemption, :with_individual] do
+    step :individual_name
+  end
+
   # Local Authority
 
   factory :page_local_authority, parent: :page_user_type, traits: [:with_exemption, :with_local_authority] do

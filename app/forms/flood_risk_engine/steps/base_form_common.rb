@@ -15,8 +15,8 @@ module FloodRiskEngine
         self.class.params_key
       end
 
-      def validation_message_when(error_key)
-        I18n.t("#{locale_key}.errors.#{error_key}")
+      def validation_message_when(error_key, *args)
+        I18n.t("#{locale_key}.errors.#{error_key}", *args)
       end
 
     end

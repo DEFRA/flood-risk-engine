@@ -23,7 +23,10 @@ module FloodRiskEngine
     config_accessor(:layout) { "application" }
     config_accessor(:minumum_dredging_length_in_metres) { 1 }
     config_accessor(:maximum_dredging_length_in_metres) { 1500 }
+
     config_accessor(:maximum_company_name_length) { 170 }
+    config_accessor(:maximum_individual_name_length) { 170 }
+
     config_accessor(:govuk_guidance_url) do
       "https://www.gov.uk/government/publications/"\
       "environmental-permitting-regulations-exempt-flood-risk-activities"
