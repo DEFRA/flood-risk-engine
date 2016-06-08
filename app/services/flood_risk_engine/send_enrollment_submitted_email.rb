@@ -25,7 +25,11 @@ module FloodRiskEngine
     end
 
     def distinct_recipients
-      [primary_contact_email, secondary_contact_email].map(&:strip).map(&:downcase).uniq
+      [primary_contact_email, secondary_contact_email]
+        .select(&:present?)
+        .map(&:strip)
+        .map(&:downcase)
+        .uniq
     end
 
     def primary_contact_email
