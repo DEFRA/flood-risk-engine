@@ -4,6 +4,7 @@ en:
     shared:
       organisation_name:
         individual_name:
+          hint:  For example, Jane Smith
           label: Full name
           legend: Individual’s name?
         limited_company_name:
