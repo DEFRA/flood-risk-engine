@@ -4,8 +4,9 @@ en:
     enrollments:
       steps:
         check_exemptions:
-          heading: Confirm your exemption
           add_link: Add another exemption
+          continue: Save and continue
+          heading: Confirm your exemption
           remove_link:
             text: Change %{hidden}
             hidden: exemption %{code}
