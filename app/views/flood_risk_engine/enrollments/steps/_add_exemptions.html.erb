@@ -1,14 +1,7 @@
 <p class="panel panel-border-wide">
-  <%=
-    t(
-      "flood_risk_engine.enrollments.steps.add_exemptions.lead_paragraph.text",
-      link: link_to(
-        t("flood_risk_engine.enrollments.steps.add_exemptions.lead_paragraph.link"),
-        "https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities",
-        target: "blank"
-      )
-    ).html_safe
-  %>
+  <%= t("flood_risk_engine.enrollments.steps.add_exemptions.lead_paragraph.text_1") %>
+  <br></br>
+  <%= t("flood_risk_engine.enrollments.steps.add_exemptions.lead_paragraph.text_2") %>
 </p>
 
 <fieldset>
@@ -16,15 +9,13 @@
     <%= t("flood_risk_engine.enrollments.steps.add_exemptions.heading") %>
   </legend>
   <%= form_group_and_validation(form, :base) do %>
-    <div class="form-group">
-      <%= f.collection_check_boxes( :exemption_ids, form.all_exemptions, :id, :code ) do |b|
-            b.label(class: "block-label exemption") do
-              b.check_box(data: { code: b.object.code }) + ' ' +
-              b.object.summary + ' ' +
-              content_tag('span', b.text, class: "exmpt")
-            end
+      <div class="form-group">
+        <%= f.collection_radio_buttons(:exemption_ids, form.all_exemptions, :id, :code) do |b|
+          b.label(class: "block-label exemption") do
+            b.radio_button + b.object.summary + ' ' + content_tag('span', b.text, class: "exmpt")
           end
-      %>
-    </div>
+        end
+        %>
+      </div>
   <% end %>
 </fieldset>

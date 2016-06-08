@@ -6,8 +6,8 @@ module FloodRiskEngine
     let(:params_key) { :add_exemptions }
     let(:enrollment) { FactoryGirl.create(:enrollment) }
     let(:model_class) { Enrollment }
-    let(:exemptions) { FactoryGirl.create_list(:exemption, 3) }
-    let(:params) { { params_key => { exemption_ids: exemptions.collect(&:id) } } }
+    let(:exemption) { FactoryGirl.create(:exemption) }
+    let(:params) { { params_key => { exemption_ids: exemption.id } } }
 
     subject { described_class.factory(enrollment) }
 
@@ -23,26 +23,19 @@ module FloodRiskEngine
         subject.validate(params)
         subject.save
 
-        expect(enrollment.exemptions).to eq(exemptions)
+        expect(enrollment.exemptions.first).to eq(exemption)
       end
     end
 
     describe ".validate" do
       context "with empty exemptions params" do
-        let(:params) { { params_key => { exemption_ids: [] } } }
+        let(:params) { { params_key => {} } }
         let(:error_message) do
           I18n.t "activemodel.errors.messages.select_at_lease_one_exemptions"
         end
         it "should fail" do
           expect(subject.validate(params)).to be(false)
           expect(subject.errors.messages[:exemption_ids]).to eq([error_message])
-        end
-      end
-
-      context "with blank exemptions params" do
-        let(:params) { { params_key => { exemption_ids: [""] } } }
-        it "should fail" do
-          expect(subject.validate(params)).to be(false)
         end
       end
 
