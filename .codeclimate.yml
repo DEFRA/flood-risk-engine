@@ -1,0 +1,22 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+  brakeman:
+    enabled: false
+  rubymotion:
+    enabled: true
+ratings:
+  paths:
+  - "**.module"
+  - "**.rb"
+exclude_paths:
+- spec/

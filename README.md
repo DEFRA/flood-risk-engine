@@ -1,6 +1,7 @@
 # FloodRiskEngine
 
 [![Build Status](https://travis-ci.org/EnvironmentAgency/flood-risk-engine.svg?branch=develop)](https://travis-ci.org/EnvironmentAgency/flood-risk-engine)
+[![Code Climate](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/badges/gpa.svg)](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine)
 
 ## Development
 
