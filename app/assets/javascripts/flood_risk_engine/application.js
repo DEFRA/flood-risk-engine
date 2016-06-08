@@ -12,11 +12,3 @@
 //
 //= details.polyfill
 //= require_tree .
-
-
-$(function() {
-
-  // Make back link behave like back button if JavaScript enabled.
-  $("a.back-link").prop("href", "javascript:history.back();");
-
-});

@@ -62,7 +62,9 @@ module FloodRiskEngine
       def other
         between_start_and_finish do
           [
-            :other
+            :other,
+            :other_postcode,
+            :other_address
           ]
         end
       end

@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class LocalAuthorityForm < FloodRiskEngine::Steps::BaseForm
+    class LocalAuthorityForm < BaseForm
 
       def self.factory(enrollment)
         organisation = enrollment.organisation || Organisation.new
@@ -17,13 +17,13 @@ module FloodRiskEngine
 
       property :name
 
-      validates :name, presence: { message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank") }
+      validates :name, presence: { message: t(".errors.name.blank") }
 
       validates :name, 'flood_risk_engine/text_field_content': true, allow_blank: true
 
       validates :name, length: {
         maximum: LocalAuthorityForm.name_max_length,
-        message: I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.too_long")
+        message: t(".errors.name.too_long", max: LocalAuthorityForm.name_max_length)
       }
 
       def save

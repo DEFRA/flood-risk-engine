@@ -20,7 +20,7 @@ module FloodRiskEngine
             user_type:                        Steps::UserTypeForm,
             individual_name:                  Steps::NullForm,
             limited_liability_number:         Steps::NullForm,
-            other:                            Steps::NullForm,
+            other_postcode:                   Steps::NullForm,
             partnership:                      Steps::NullForm,
             check_your_answers:               Steps::CheckYourAnswersForm,
             declaration:                      Steps::NullForm

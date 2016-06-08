@@ -19,4 +19,4 @@ en:
              too_few: Enter a full name
              too_long: Check the name you entered - it should have no more than %{max_length} characters
             position:
-             too_long: Check the position you entered - it should have no more than than %{max_length} characters
+             too_long: Check the position you entered - it should have no more than %{max_length} characters
