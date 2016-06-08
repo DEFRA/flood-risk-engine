@@ -1,1 +1,9 @@
-other_postcode
+<%=
+  render(
+    "postcode",
+    f: f,
+    form: form,
+    addressable: form.enrollment.organisation,
+    address_type: :primary
+  )
+%>

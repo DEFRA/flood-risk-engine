@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class LocalAuthorityPostcodeForm < BaseAddressSearchForm
+    class OtherPostcodeForm < BaseAddressSearchForm
 
       def self.factory(enrollment)
         raise(FormObjectError, "No Organisation set for step #{enrollment.current_step}") unless enrollment.organisation
@@ -11,11 +11,11 @@ module FloodRiskEngine
       end
 
       def self.params_key
-        :local_authority_postcode
+        :other_postcode
       end
 
       def target_step
-        :correspondence_contact_name
+        :email_someone_else
       end
     end
   end

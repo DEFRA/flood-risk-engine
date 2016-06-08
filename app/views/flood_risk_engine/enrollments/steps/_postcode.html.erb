@@ -1,0 +1,26 @@
+<fieldset>
+  <legend class="visuallyhidden"><%= form.t('.legend') %></legend>
+
+  <%= form_group_and_validation(form, :postcode) do -%>
+    <%= f.label :postcode,  form.t('.label') , class: 'form-label' %>
+    <span class="form-hint"><%= form.t('.hint') %></span>
+    <%= f.text_field 'postcode', class: 'form-control form-postcode form-control-char-10' %>
+  <% end %>
+
+  <% if(form.manual_entry_enabled?) %>
+    <p>
+      <%= link_to( t('flood_risk_engine.enrollments.addresses.manual_entry'),
+                   new_address_path( enrollment: form.enrollment,
+                                     addressable: addressable,
+                                     postcode: form.postcode,
+                                     address_type: address_type,
+                                     step_back_to_postcode: false,
+                                     target_step: form.target_step
+                   ),
+                   class: 'change-postcode-button'
+          )
+      %>
+    </p>
+  <% end  %>
+
+</fieldset>

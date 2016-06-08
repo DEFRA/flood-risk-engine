@@ -4,7 +4,7 @@ require_relative "../../../support/shared_examples/form_objects"
 module FloodRiskEngine
   module Steps
 
-    RSpec.describe Steps::LocalAuthorityPostcodeForm, type: :form do
+    RSpec.describe LocalAuthorityPostcodeForm, type: :form do
       let(:params_key) { :local_authority_postcode }
 
       let(:enrollment) { create(:page_local_authority_address) }

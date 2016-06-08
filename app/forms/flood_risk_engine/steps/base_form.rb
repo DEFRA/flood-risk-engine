@@ -16,6 +16,10 @@ module FloodRiskEngine
         I18n.t locale, args.merge(scope: locale_key)
       end
 
+      def t(locale, args = {})
+        self.class.t(locale, args)
+      end
+
       # So we can always build an enrollment step url
       delegate :id, to: :enrollment, prefix: true
 
