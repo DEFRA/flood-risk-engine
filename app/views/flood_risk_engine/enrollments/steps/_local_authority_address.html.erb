@@ -1,45 +1,9 @@
-<%= t('.postcode_hint') %>
-<p>
-  <%= form.postcode %>
-  <%= link_to t('.change'),
-              enrollment_step_path(form.enrollment, form.enrollment.previous_step),
-              class: 'change-postcode-button'
-  %>
-</p>
-
-<label class="form-label" for="address_match_selection">
-  <%= t('.select_from_list_label') %>
-</label>
-
-<fieldset>
-  <%= form_group_and_validation(form, :uprn) do %>
-    <%= f.select(
-          :uprn,
-          options_for_select( form.address_list.collect { |a| [ a[:moniker], a[:uprn] ] }),
-          {
-            include_blank: t('.num_addresses_found', num:  form.address_list.count)
-          },
-          {
-            class: 'form-control form-control-select form-control-char-auto',
-            id: 'address_match_selection'
-          }
-        )
-    %>
-  <% end %>
-</fieldset>
-
-<p>
-  <%=
-    link_to(
-      t('.manual_entry'),
-      new_address_path(
-        enrollment: form.enrollment,
-        addressable: form.enrollment.organisation,
-        postcode: form.postcode,
-        address_type: :primary,
-        step_back_to_postcode: true
-      ),
-      class: 'change-postcode-button'
-    )
-  %>
-</p>
+<%=
+  render(
+    "address",
+    f: f,
+    form: form,
+    addressable: form.enrollment.organisation,
+    address_type: :primary
+  )
+%>

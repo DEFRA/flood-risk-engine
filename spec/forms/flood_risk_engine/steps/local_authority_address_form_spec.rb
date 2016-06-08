@@ -5,7 +5,7 @@ require_relative "../../../support/asserts"
 module FloodRiskEngine
   module Steps
 
-    RSpec.describe Steps::LocalAuthorityAddressForm, type: :form do
+    RSpec.describe LocalAuthorityAddressForm, type: :form do
       let(:params_key) { :local_authority_address }
 
       let(:enrollment) { create(:page_local_authority_address) }
