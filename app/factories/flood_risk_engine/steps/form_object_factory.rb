@@ -19,7 +19,6 @@ module FloodRiskEngine
             check_exemptions:                 Steps::NullForm,
             user_type:                        Steps::UserTypeForm,
             limited_liability_number:         Steps::NullForm,
-            other_postcode:                   Steps::NullForm,
             partnership:                      Steps::NullForm,
             check_your_answers:               Steps::CheckYourAnswersForm,
             declaration:                      Steps::NullForm

@@ -4,4 +4,7 @@ en:
     enrollments:
       steps:
         other_postcode:
-          heading: TODO - Postcode
+          heading: "What’s the main address of the organisation?"
+          label:  UK postcode
+          hint: "For example, BS1 5AH"
+          legend: Postcode
