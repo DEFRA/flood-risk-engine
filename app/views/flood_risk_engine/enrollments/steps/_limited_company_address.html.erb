@@ -1,9 +1,7 @@
-<%=
-  render(
-    "address",
-    f: f,
-    form: form,
-    addressable: form.enrollment.organisation,
-    address_type: :primary
-  )
+<%= render("flood_risk_engine/shared/address",
+           f: f,
+           form: form,
+           addressable: form.enrollment.organisation,
+           address_type: :primary)
 %>
+
