@@ -1,0 +1,7 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        individual_address:
+          heading: What’s the address of the individual?
