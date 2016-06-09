@@ -35,6 +35,11 @@ script:
 # - ls spec/dummy/log
 # - cat spec/dummy/log/*
 
+addons:
+  code_climate:
+    repo_token:
+      secure: y9ZxV8wdk8e0DeNYsADzgEDrZCnUKdQNmmh9hpRqJNy/6rZqGfPhJaQASdATvyy4cePj5uYKOREXkJZxFRKfeJRplG2ApJc5h7y28J92psNhkwLKEA+iaRxGeVkxQg+wAZEeqAb2ZVgup4bfg1ny8dzH4bI2l5fXhptQBk5jeyYdiOHRdW5pYhKtYY9iz/uYcg1Q19VAmkCq9ywti/YVUp4Oqtri6PO5/yFVaNVZqAJTcs1VL9wLFcQYfsekiFTc+2XSHMsiTvC3M/ydqDw11wNpHWTGzrsAwkEscLKnD1g43AuJP/a52HpRHZHOaR2UZBLuKOmPJRpLRcFHZqcWyXUhOAqdNgVIXSUdiKG5PdcNF1IBkqNMF7rizuTTtVdRYI5huvVvkcA+Z28FVP8buQLrMLOFasrGpenptycCQriaD5r5FtCvQtInb3BQyYaAO6bvpwFaz5whT5NoyjzLHFfgc8PKTw0J5reNX3Z7RbjWydODmn7107B94dsTFTNzUsu090it4HD4jBShxGjswDsbGbTSyaVAH5BVcTBDqZ3TGKoDhaU7RCIo7U2Mnn0/XHJgnlTX6IbG1f2HeJFzHqKvTTzRW+6UcNkwF3SecOYNuri/XgHuVxI4Kbh3O0LoDiBCDlZBoe7im4aPC1TkjOgIq1jKYyUo5a3oTKxY1VA=
+
 # Have this option to stop travis-ci building twice. Currently we have travis set to build both
 # PR's and pushes. However this means when we push to a PR we have to wait for Travis to finish
 # 2 builds. If we unticked 'pushes' when the PR was finally merged that would not be built. The
