@@ -93,9 +93,8 @@ end
 VCR.configure do |c|
   c.cassette_library_dir = "spec/cassettes"
   c.hook_into :webmock
-
   # to quickly ignore certain hosts can use following style
   # c.ignore_hosts 'addressfacade.cloudapp.net'
-  c.ignore_hosts "127.0.0.1"
+  c.ignore_hosts "127.0.0.1", "codeclimate.com"
   # c.allow_http_connections_when_no_cassette = true
 end
