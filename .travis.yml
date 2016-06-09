@@ -7,7 +7,6 @@ rvm:
 addons:
   postgresql: "9.4"
 
-
 # We need nodejs version >= 4 to be compatible with htmlhint >= 0.9.13
 # This overwrites the system node  0.10.x
 before_install:
@@ -45,3 +44,12 @@ branches:
   only:
     - master
     - develop
+
+# This section was added as per https://docs.travis-ci.com/user/code-climate/
+# To protect our codeclimate stats rather than adding the Codeclimate API key for this project
+# in the open we used this guide https://docs.travis-ci.com/user/encryption-keys/ to encryt the
+# value. Essentially install travis gem, then run `travis encrypt <my_code_climate_api_key>`
+addons:
+  code_climate:
+    repo_token:
+      secure: "VrC+fBcB+VjIy+874AI1RoYvSHGGNrxR7Is8HTRTTdD647HakGduckaj9/ySMEQdmdXKLK2ZTIwlRb0/kUkMEzWK/cLDppc/R57eMK+3OMitzUiemvWa8tXKzGUD+DoAFltIaOPTmKIV5F1UngSD0rpscWtySXk2MYCaboKrrtUiYQ/FNZJnQj0JbH5C9QDf9V43BUJIfXwlCzsPW/S8Lj+I7VY7xQKrA4RRaohwKe9mImgzLuLYIq3uH6VmNSlGIqjJPAXURZ4qYBSeQcFZhfMgm2QwAquXsxDvuvfFX6NRax1cQ9oR3fQOHSC1qOCTMxqEL5Mm8INcxr3L5opHsGSU/s4qC09eQAhn8hA3SFtLP0kdpPlbTF1+sBz4ROhuZapRRWV2iNgNXmmGQYMaC3PriEpcWvOAzG0Hhdhs86RSOu6vRiVSxVojk5VVRe8ZdzzEC43nOPGLVRYGAKVSRQjP36cnNY8Rf4Fz/syvWXbv1oOSPpB2pqLD713Q0FfUdzX3b1rcUSKbLmaj2eujzXZFI2Glkix37VjpwC06CihDIfDB4Kh3JShYEPvOBEizMUewGsfrQCSgNWI/ka16XQ3cL2UMDabWM118nsmV215GMAehRuh68T8Y2bHGOw9hqZgPlxj9xweWC81nusGkBJm/hPIp1AxnKf5D9QJufhE="
