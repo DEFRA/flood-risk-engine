@@ -45,3 +45,12 @@ branches:
   only:
     - master
     - develop
+
+# This section was added as per https://docs.travis-ci.com/user/code-climate/
+# To protect our codeclimate stats rather than adding the Codeclimate API key for this project
+# in the open we used this guide https://docs.travis-ci.com/user/encryption-keys/ to encryt the
+# value. Essentially install travis gem, then run `travis encrypt <my_code_climate_api_key>`
+addons:
+  code_climate:
+    repo_token:
+      secure: "g4gWCg+d/eN1TG0pfqH4gcPDj4m5I0NLFeutt5nQvfyfKjFzEgYwKtuEnfmAI80tiwzIZOkeUpMczsYPUWCbY1wM9WTqz4905bqpbYXD1Efzx8uMcUXXlctetMyur0lMBzxc8qTVJSEIwtZmjbZQHUFCmTeEVJYeIMHkoctprInQYm0YiU108KXmeIWleDcVODwNGIHO6RkyC7ug1/7Co9OU19D/9QWHXYXbOl8WtSMJKAwA/XAs5rxTebhPP92ROmd4C7wL3EobkFipKPrX5qAKx4TloB7aODD2c5BbOW8m/x20Y4PObBYlv1JVA7XxCMwg2lwGqr8IYvHaw0twP/ynJIKbX9GpisQ+2xAhCIeFaXC5Kt0dgMWcXIe0iHM32lJHnPJeDM4zB0C8+cIZ6z2xD6bNOVP0ItZERQLbay+HffgW2k6qt3U9q7+QCSpLnINl4VwJOQ+K/bMaz3bzolnrWXEEOqRvIH6FvCIUat9bHbzfZgti3hF3BjmC1hvIQGdMlNsTceJkyrk0xZz9k4NlhwseyiDUruZYfH//xgRSqj2dNTLpCEzhT0Zywn25IhHsKhQiXwIVewLoUbpF0bCESv24TcNgsjdoYGuR6d+Z/PVd1Lf7QuKC6QGPl1Bsq5LI9FadCw0gcpMqJwIfE9iE+EBV5LNEfsJaD0POZ1c="
