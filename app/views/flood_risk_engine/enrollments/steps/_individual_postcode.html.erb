@@ -1,1 +1,9 @@
-<%= render 'flood_risk_engine/shared/postcode', form: form, step: step, f: f %>
+<%=
+  render(
+    "postcode",
+    f: f,
+    form: form,
+    addressable: form.enrollment.organisation,
+    address_type: :primary
+  )
+%>

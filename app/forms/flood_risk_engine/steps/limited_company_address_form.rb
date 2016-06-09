@@ -15,12 +15,6 @@ module FloodRiskEngine
         :limited_company_address
       end
 
-      private
-
-      def initialize(model, enrollment)
-        super(model, enrollment)
-      end
-
     end
   end
 end

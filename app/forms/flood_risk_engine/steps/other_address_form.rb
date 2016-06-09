@@ -12,14 +12,6 @@ module FloodRiskEngine
         :other_address
       end
 
-      property :postcode, virtual: true
-
-      # read only param for displaying the Postcode in the view
-      def postcode
-        return enrollment.address_search.postcode if enrollment.address_search.present?
-        return enrollment.organisation.primary_address.postcode if enrollment.organisation.primary_address.present?
-        ""
-      end
     end
   end
 end
