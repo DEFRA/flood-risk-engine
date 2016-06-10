@@ -32,7 +32,10 @@ module FloodRiskEngine
       def limited_liability_partnership
         between_start_and_finish do
           [
-            :limited_liability_number
+            :limited_liability_partnership_number,
+            :limited_liability_partnership_name,
+            :limited_liability_partnership_postcode,
+            :limited_liability_partnership_address
           ]
         end
       end

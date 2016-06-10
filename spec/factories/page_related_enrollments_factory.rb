@@ -62,6 +62,17 @@ FactoryGirl.define do
     step :limited_company_address
   end
 
+  # Ltd Company
+
+  factory :page_limited_liability_partnership,
+          parent: :page_user_type,
+          traits: [
+            :with_exemption,
+            :with_limited_liability_partnership
+          ] do
+    step :limited_liability_partnership_number
+  end
+
   # END PATHS
 
   factory :page_correspondence_contact, parent: :page_local_authority_address, traits: [:with_primary_address] do

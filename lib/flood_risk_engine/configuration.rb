@@ -26,6 +26,7 @@ module FloodRiskEngine
 
     config_accessor(:maximum_company_name_length) { 170 }
     config_accessor(:maximum_individual_name_length) { 170 }
+    config_accessor(:maximum_llp_name_length) { 170 }
 
     config_accessor(:govuk_guidance_url) do
       "https://www.gov.uk/government/publications/"\

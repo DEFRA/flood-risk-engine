@@ -1,0 +1,12 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        limited_liability_partnership_number:
+          errors:
+              blank: Enter the registration number of the partnership
+          heading: What's the registration number of the partnership?
+          hint: An 8 digit number, or 2 letters followed by a 6 digit number
+          label:  Registration number
+          legend: Registration number of the partnership
