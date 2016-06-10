@@ -13,10 +13,7 @@ module FloodRiskEngine
           [
             :local_authority,
             :local_authority_postcode,
-            :local_authority_address,
-            :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
-            :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
-            :correspondence_contact_email
+            :local_authority_address
           ]
         end
       end
@@ -27,10 +24,7 @@ module FloodRiskEngine
             :limited_company_number,
             :limited_company_name,
             :limited_company_postcode,
-            :limited_company_address,
-            :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
-            :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
-            :correspondence_contact_email
+            :limited_company_address
           ]
         end
       end
@@ -48,10 +42,7 @@ module FloodRiskEngine
           [
             :individual_name,
             :individual_postcode,
-            :individual_address,
-            :correspondence_contact_name,
-            :correspondence_contact_telephone,
-            :correspondence_contact_email
+            :individual_address
           ]
         end
       end
@@ -85,6 +76,9 @@ module FloodRiskEngine
 
       def finish
         [
+          :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
+          :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
+          :correspondence_contact_email,
           :email_someone_else,
           :check_your_answers,
           :declaration
