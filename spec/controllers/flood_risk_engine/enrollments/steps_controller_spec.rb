@@ -1,7 +1,7 @@
 require "rails_helper"
 module FloodRiskEngine
   module Enrollments
-    describe StepsController, type: :controller do
+    RSpec.describe StepsController, type: :controller do
       routes { Engine.routes }
       render_views
       let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
