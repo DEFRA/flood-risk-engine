@@ -5,6 +5,10 @@ module FloodRiskEngine
     render_views
     let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
 
+    before do
+      set_journey_token
+    end
+
     context "user_type" do
       let(:step) { "user_type" }
 

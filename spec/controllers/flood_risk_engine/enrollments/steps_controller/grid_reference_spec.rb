@@ -10,6 +10,7 @@ module FloodRiskEngine
       let(:step) { "grid_reference" }
 
       before do
+        set_journey_token
         get :show, id: step, enrollment_id: enrollment
       end
 

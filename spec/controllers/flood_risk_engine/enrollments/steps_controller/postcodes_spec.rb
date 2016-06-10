@@ -13,6 +13,10 @@ module FloodRiskEngine
       put(:update, params, session)
     end
 
+    before do
+      set_journey_token
+    end
+
     context "LocalAuthorityPostcodeForm" do
       let(:step) { :local_authority_postcode }
 

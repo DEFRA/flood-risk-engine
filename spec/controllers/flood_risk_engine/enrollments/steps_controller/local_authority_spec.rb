@@ -12,6 +12,7 @@ module FloodRiskEngine
       let(:step) { :local_authority }
 
       before do
+        set_journey_token
         get :show, id: step, enrollment_id: enrollment
       end
 
@@ -64,6 +65,7 @@ module FloodRiskEngine
         let(:large_attributes) { { "name" => "foobar" * 500 } }
 
         before do
+          set_journey_token
           put(:update, id: step, enrollment_id: enrollment, step => large_attributes)
         end
 

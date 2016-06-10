@@ -1,7 +1,6 @@
 require "rails_helper"
 module FloodRiskEngine
   module Enrollments
-
     RSpec.describe EnrollmentsController, type: :controller do
       routes { Engine.routes }
 

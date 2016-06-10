@@ -5,12 +5,13 @@ module FloodRiskEngine
     render_views
 
     let(:enrollment) { FactoryGirl.create(:page_local_authority_address) }
-
     let(:reform_class) { Steps::LocalAuthorityAddressForm }
-
     let(:valid_post_code) { "BS1 5AH" }
+    let(:header_text) { t("#{reform_class.locale_key}.heading") }
 
-    let(:header_text) {  t("#{reform_class.locale_key}.heading") }
+    before do
+      set_journey_token
+    end
 
     context "LocalAuthorityAddressForm" do
       let(:step) { :local_authority_address }

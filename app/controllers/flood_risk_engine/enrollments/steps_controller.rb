@@ -53,9 +53,15 @@ module FloodRiskEngine
       end
 
       def check_step_is_valid
+        check_journey_valid
         return true if step_is_current?
         return step_back if step_back_is_possible?
         raise StepError, "Requested #{step}, is not permitted when enrollment.step is #{enrollment.current_step}"
+      end
+
+      def check_journey_valid
+        return true if enrollment.token == session[:journey_token]
+        raise(JourneyError, "Journey not started in current browser session")
       end
 
       def step_back_is_possible?

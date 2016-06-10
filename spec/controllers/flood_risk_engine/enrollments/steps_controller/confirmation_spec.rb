@@ -5,13 +5,13 @@ module FloodRiskEngine
     render_views
 
     let(:enrollment) { FactoryGirl.create(:page_confirmation) }
-
     let(:reform_class) { Steps::ConfirmationForm }
 
     context "Confirmation Page " do
       let(:step) { :confirmation }
 
       before do
+        set_journey_token
         get :show, id: step, enrollment_id: enrollment
       end
 

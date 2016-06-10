@@ -17,6 +17,7 @@ module FloodRiskEngine
 
         context "show action" do
           before do
+            set_journey_token
             get :show, id: step, enrollment_id: enrollment
           end
 
@@ -65,8 +66,9 @@ module FloodRiskEngine
       context "step unknown" do
         let(:step) { "unknown" }
 
-        it "uses GridReferenceForm" do
+        it "raises error" do
           expect do
+            set_journey_token
             get :show, step: step, id: enrollment
           end.to raise_error(StandardError)
         end
