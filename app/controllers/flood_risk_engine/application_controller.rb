@@ -2,6 +2,8 @@ module FloodRiskEngine
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
+    include SimpleEncoding
+
     layout ->(_) { FloodRiskEngine.config.layout }
 
     # http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
@@ -10,5 +12,6 @@ module FloodRiskEngine
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
     end
+
   end
 end

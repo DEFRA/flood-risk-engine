@@ -1,7 +1,9 @@
 module SpecControllerHelpers
 
+  include FloodRiskEngine::SimpleEncoding
+
   def set_journey_token
-    session[:journey_token] = enrollment.token
+    cookies[:journey_token] = encode(enrollment.token)
   end
 
 end

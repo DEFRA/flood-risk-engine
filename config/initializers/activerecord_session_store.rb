@@ -1,1 +1,1 @@
-Rails.application.config.session_store :active_record_store, key: "overwrite-in-host-app"
+Rails.application.config.session_store :active_record_store, key: ENV["SECRET_KEY_BASE"]

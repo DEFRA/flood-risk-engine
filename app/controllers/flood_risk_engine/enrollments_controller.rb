@@ -11,7 +11,14 @@ module FloodRiskEngine
 
     # journey token: used to identify if journey started in current browser session
     def store_journey_token_in_current_session
-      session[:journey_token] = enrollment.token
+      cookies[:journey_token] = {
+        value: encrypted_enrollment_token,
+        expires: 24.hours.from_now
+      }
+    end
+
+    def encrypted_enrollment_token
+      encode enrollment.token
     end
 
     def enrollment

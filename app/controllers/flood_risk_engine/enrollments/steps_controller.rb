@@ -60,7 +60,7 @@ module FloodRiskEngine
       end
 
       def check_journey_valid
-        return true if enrollment.token == session[:journey_token]
+        return true if enrollment.token == decode(cookies[:journey_token])
         raise(JourneyError, "Journey not started in current browser session")
       end
 
