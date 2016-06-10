@@ -1,4 +1,7 @@
-# Code coverage hook
+# Code coverage hooks
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require "simplecov"
 SimpleCov.start "rails" do
   add_filter "lib/flood_risk_engine/version"
