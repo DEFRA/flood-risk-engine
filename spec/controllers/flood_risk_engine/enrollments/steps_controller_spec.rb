@@ -15,7 +15,7 @@ module FloodRiskEngine
           end
         end
 
-        context "show action" do
+        describe "show action" do
           before do
             set_journey_token
             get :show, id: step, enrollment_id: enrollment
@@ -63,13 +63,27 @@ module FloodRiskEngine
         end
       end
 
+      describe "show action without journey token in session" do
+        let(:step) { WorkFlow::Definitions.start.first }
+
+        let(:enrollment) do
+          FactoryGirl.create(:enrollment, step: step)
+        end
+
+        it "raises JourneyError" do
+          expect do
+            get :show, id: step, enrollment_id: enrollment
+          end.to raise_error(JourneyError)
+        end
+      end
+
       context "step unknown" do
         let(:step) { "unknown" }
 
         it "raises error" do
           expect do
             set_journey_token
-            get :show, step: step, id: enrollment
+            get :show, id: step, enrollment_id: enrollment
           end.to raise_error(StandardError)
         end
       end
