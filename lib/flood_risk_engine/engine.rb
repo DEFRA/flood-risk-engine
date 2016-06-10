@@ -30,6 +30,12 @@ module FloodRiskEngine
       end
     end
 
+    initializer :application_Helper do |_app|
+      ActiveSupport.on_load :action_controller do
+        helper FloodRiskEngine::ApplicationHelper
+      end
+    end
+
     # Make Engine Factories available to Apps
     unless Rails.env.production?
       initializer "flood_risk_engine.factories", after: "factory_girl.set_factory_paths" do
