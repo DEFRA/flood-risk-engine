@@ -10,4 +10,4 @@ en:
           errors:
             name:
              blank: Enter the name of the organisation
-             too_long: Check the name - it should have no more than %{max} character
+             too_long: Check the name - it should have no more than %{max} characters
