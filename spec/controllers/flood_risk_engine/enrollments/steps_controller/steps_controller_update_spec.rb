@@ -11,6 +11,7 @@ module FloodRiskEngine
       let(:next_step) { steps[1] }
 
       before do
+        set_journey_token
         expect_any_instance_of(Steps::BaseForm).to(
           receive(:validate).and_return(validation_result)
         )

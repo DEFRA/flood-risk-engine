@@ -81,6 +81,9 @@ RSpec.configure do |config|
 
   # Allow lookups to EA::AddressLookup to be mocked
   config.include EA::AddressLookup::TestHelper::RspecMocks
+
+  require_relative "support/spec_controller_helpers"
+  config.include SpecControllerHelpers, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|

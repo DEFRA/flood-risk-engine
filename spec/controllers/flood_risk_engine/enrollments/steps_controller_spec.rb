@@ -1,7 +1,7 @@
 require "rails_helper"
 module FloodRiskEngine
   module Enrollments
-    describe StepsController, type: :controller do
+    RSpec.describe StepsController, type: :controller do
       routes { Engine.routes }
       render_views
       let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
@@ -15,8 +15,9 @@ module FloodRiskEngine
           end
         end
 
-        context "show action" do
+        describe "show action" do
           before do
+            set_journey_token
             get :show, id: step, enrollment_id: enrollment
           end
 
@@ -62,12 +63,27 @@ module FloodRiskEngine
         end
       end
 
+      describe "show action without journey token in session" do
+        let(:step) { WorkFlow::Definitions.start.first }
+
+        let(:enrollment) do
+          FactoryGirl.create(:enrollment, step: step)
+        end
+
+        it "raises JourneyError" do
+          expect do
+            get :show, id: step, enrollment_id: enrollment
+          end.to raise_error(JourneyError)
+        end
+      end
+
       context "step unknown" do
         let(:step) { "unknown" }
 
-        it "uses GridReferenceForm" do
+        it "raises error" do
           expect do
-            get :show, step: step, id: enrollment
+            set_journey_token
+            get :show, id: step, enrollment_id: enrollment
           end.to raise_error(StandardError)
         end
       end

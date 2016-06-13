@@ -25,6 +25,7 @@ module FloodRiskEngine
     end
 
     before do
+      set_journey_token
       get :show, id: step, enrollment_id: enrollment
     end
 

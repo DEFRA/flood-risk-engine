@@ -12,6 +12,7 @@ module FloodRiskEngine
       let(:step) { :correspondence_contact_name }
 
       before do
+        set_journey_token
         get :show, id: step, enrollment_id: enrollment
       end
 
