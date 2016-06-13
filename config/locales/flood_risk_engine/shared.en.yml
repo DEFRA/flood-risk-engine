@@ -18,6 +18,9 @@ en:
         limited_company_name:
           label: Registered name of company
           legend: Registered company name
+        limited_liability_partnership_name:
+          label: Partnership registered name
+          legend: Registered partnership name
       postcode:
           hint: "For example, BS1 5AH"
           label:  UK postcode
