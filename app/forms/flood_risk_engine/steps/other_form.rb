@@ -12,7 +12,7 @@ module FloodRiskEngine
       end
 
       def self.max_length
-        200
+        255
       end
 
       property :name
