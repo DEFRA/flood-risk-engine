@@ -13,16 +13,16 @@ module FloodRiskEngine
     def store_journey_token_in_current_session
       cookies.encrypted[:journey_token] = {
         value: enrollment.token,
-        expires: 24.hours.from_now
+        expires: journey_token_lifespan.from_now
       }
-    end
-
-    def encrypted_enrollment_token
-      encode enrollment.token
     end
 
     def enrollment
       @enrollment ||= Enrollment.create
+    end
+
+    def journey_token_lifespan
+      ENV.fetch("JOURNEY_TOKEN_LIFE_IN_HOURS", 24).to_f.hours
     end
   end
 end
