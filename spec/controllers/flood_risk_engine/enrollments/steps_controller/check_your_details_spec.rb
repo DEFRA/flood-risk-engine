@@ -38,16 +38,12 @@ module FloodRiskEngine
         expect(response.body).to have_tag :h1, text: /#{t(:heading)}/
       end
 
-      it "step subheading" do
-        expect(response.body).to have_tag :p, text: /#{t(:subheading)}/
-      end
-
       it "table heading" do
         expect(response.body).to have_tag :h2, text: /#{t(:table_heading)}/
       end
 
       it "table summary" do
-        expect(response.body).to have_xpath "//table[@summary = \"#{t(:table_summary)}\"]"
+        expect(response.body).to have_tag :caption, text: /#{t(:table_summary)}/
       end
     end
 

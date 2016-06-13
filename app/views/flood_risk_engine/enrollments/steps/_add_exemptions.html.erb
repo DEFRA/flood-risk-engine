@@ -11,12 +11,10 @@
   <%= form_group_and_validation(form, :exemption_ids) do %>
     <%= f.collection_radio_buttons(:exemption_ids, form.all_exemptions, :id, :code) do |b|
       b.label(class: "block-label exemption") do
-        b.radio_button(data: {code: b.object.code}, 'aria-expanded': "false") +
-            b.object.summary + ' ' + content_tag('span', b.text, class: "exmpt")
+        b.radio_button(data: {code: b.object.code}) +
+            b.object.summary + ' ' + content_tag('span', ' code ', class: "visuallyhidden") + content_tag('span', b.text, class: "exmpt")
       end
     end
     %>
   <% end %>
 </fieldset>
-
-

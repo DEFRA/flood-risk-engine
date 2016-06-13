@@ -9,6 +9,7 @@ en:
           label:  Email address
           hint:  "We’ll send the registration confirmation to this address"
           label1: Confirm email address
+          legend: What’s the email address of the person we should contact?
           errors:
             email_address:
               blank: Enter an email address

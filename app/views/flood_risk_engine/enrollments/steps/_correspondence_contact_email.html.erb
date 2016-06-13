@@ -1,4 +1,5 @@
 <fieldset>
+  <legend class="visuallyhidden"><%= t('.legend') %></legend>
   <%= form_group_and_validation(form, :email_address) do -%>
     <%= f.label :email_address,  t('.label') , class: 'form-label' %>
     <span class="form-hint"><%= t(".form_hint") %></span>

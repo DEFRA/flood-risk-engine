@@ -7,7 +7,7 @@ en:
           heading: |-
             Would you also like a copy of the registration email sent to
             someone else?
-          legend: Copy contact
+          legend: Would you also like a copy of the registration email sent to someone else?
           clarification: |-
             We’ll send a copy of the registration to the main contact. We will
             also send a copy to another address if you want.

@@ -9,10 +9,10 @@ module FloodRiskEngine
     context "Given I'm on the Declaration page" do
       let(:enrollment) { FactoryGirl.create(:page_declaration) }
 
-      it "When I click the privacy policy link Then the Privacy Policy page will open in the same tab" do
+      it "When I click the privacy policy link Then the Privacy Policy page will open in new tab" do
         get :show, id: "privacy_policy", enrollment_id: enrollment
 
-        expect(response.body).to have_tag :h1, text: t("pages.privacy_policy.heading")
+        expect(response.body).to have_text t("pages.privacy_policy.heading_h1")
         expect(response.body).to_not include "translation missing:"
       end
 

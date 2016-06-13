@@ -1,34 +1,30 @@
 <%= render "flood_risk_engine/enrollments/back_link", form: form %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+<%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
 
-    <% unless form.no_header_in_show %>
-      <%= render(
-              "flood_risk_engine/enrollments/header",
-              title_text: t("flood_risk_engine.enrollments.steps.#{step}.heading")
-          )
-      %>
-    <% end %>
+<% unless form.no_header_in_show %>
+  <%= render(
+          "flood_risk_engine/enrollments/header",
+          title_text: t("flood_risk_engine.enrollments.steps.#{step}.heading")
+      )
+  %>
+<% end %>
 
-    <%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
+<%= form_for form,
+             as: step, # puts form data in params[step] rather than params[flood_risk_engine_steps_step]
+             url: enrollment_step_path(form.enrollment, step),
+             method: :patch,
+             class: "form" do |f| %>
 
-    <%= form_for form,
-                 as: step, # puts form data in params[step] rather than params[flood_risk_engine_steps_step]
-                 url: enrollment_step_path(form.enrollment, step),
-                 method: :patch,
-                 class: "form" do |f| %>
+  <% partial = form.partial_to_render? ? form.partial_to_render : step.to_s %>
 
-      <% partial = form.partial_to_render? ? form.partial_to_render : step.to_s %>
+  <%= render partial, form: form, step: step, f: f %>
 
-      <%= render partial, form: form, step: step, f: f %>
+  <% # No devise yet so no Pundit based policies - so this can easily be re-engineered into Pundit format later %>
+  <% if form.show_continue_button? %>
+    <div class="form-group">
+      <%= f.submit(step_t(step, ".continue",  default: t("global.continue")), class: "button") %>
+    </div>
+  <% end %>
+<% end %>
 
-      <% # No devise yet so no Pundit based policies - so this can easily be re-engineered into Pundit format later %>
-      <% if form.show_continue_button? %>
-        <div class="form-group">
-          <%= f.submit(step_t(step, ".continue",  default: t("global.continue")), class: "button") %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>

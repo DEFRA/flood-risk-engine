@@ -2,28 +2,26 @@
   <i class="icon icon-important">
     <span class="visuallyhidden"><%= t(".warning.heading") %></span>
   </i>
-  <strong class="bold-small"><%= t(".warning.text") %></strong>
+  <strong class="bold-small text"><%= t(".warning.text") %></strong>
 </div>
 
-<br />
+<h2 class="heading-small"><%= t(".confirmation.heading")  %></h2>
 
-<p class="text bold-small"><%= t(".confirmation.heading")  %>:</p>
-
-<ul class="list list-bullet">
+<ul class="list list-bullet text">
   <li><%= t(".confirmation.list.one") %></li>
   <li><%= t(".confirmation.list.two") %></li>
 </ul>
 
-<br />
+<h2 class="heading-small"><%= t(".use_of_info.header") %></h2>
+
+<p class="text"><%= t(".use_of_info.text") %></p>
 
 <p class="text">
   <%=
     t(
-      ".privacy.text",
-      link: link_to(
-        t(".privacy.link"),
-        enrollment_page_path(form.enrollment, id: "privacy_policy")
-      )
+        ".privacy.text",
+        link:
+            link_to(t(".privacy.link"), enrollment_page_path(form.enrollment, id: "privacy_policy"), target: "_blank")
     ).html_safe
   %>
 </p>

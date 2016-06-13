@@ -6,19 +6,17 @@
              method: :patch,
              class: 'form' do |f| %>
 
-  <h1 class="heading-large">
-    <%= t(".heading") %>
-  </h1>
-
-  <p class="panel panel-border-wide">
-    <%= t(".subheading") %>
-  </p>
+  <%= render(
+          "flood_risk_engine/enrollments/header", title_text: t("flood_risk_engine.enrollments.steps.#{step}.heading")
+      )
+  %>
 
   <h2 class="heading-medium">
     <%= t(".table_heading") %>
   </h2>
 
-  <table class="check-your-answers" summary="<%= t('.table_summary') %>">
+  <table class="check-your-answers">
+    <caption class="visuallyhidden"><%= t('.table_summary') %></caption>
     <tbody>
       <% form.rows.each do |row| %>
         <tr data-row="<%= row.name %>">
@@ -43,7 +41,6 @@
       <% end %>
     </tbody>
   </table>
-  <br/>
 
   <div class="form-group">
     <%=

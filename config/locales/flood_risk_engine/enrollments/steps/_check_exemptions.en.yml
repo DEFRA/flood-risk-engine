@@ -10,4 +10,4 @@ en:
           remove_link:
             text: Change %{hidden}
             hidden: exemption %{code}
-          table_summary: Exemptions that you selected with title, exemption code and a link to remove any you don't need
+          table_summary: Exemption and link to change it

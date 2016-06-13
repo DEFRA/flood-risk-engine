@@ -4,57 +4,59 @@
   <%= form_group_and_validation(form, :grid_reference) do %>
     <%= f.label :grid_reference, class: "form-label" do %>
       <%= t(".grid_reference.form_label") %>
-      <span class="form-hint">
+      <span class="form-hint text">
         <%= t(".grid_reference.example_hint") %>
       </span>
-      <span class="form-hint">
+      <span class="form-hint text">
         <%= t(".grid_reference.clarification_hint") %>
       </span>
     <% end %>
     <%=
       f.text_field(
-        :grid_reference,
-        class: "form-control form-control-char-25",
-        "aria-describedby" => "ngr_help"
+          :grid_reference,
+          class: "form-control form-control-char-25",
+          "aria-describedby" => "ngr_help"
       )
     %>
   <% end %>
 
-  <!-- Find grid reference -->
   <details style="padding-bottom: 18px;" id="ngr_help">
     <summary><span class="summary"><%= t(".details.summary") %></span></summary>
     <div class="panel panel-border-narrow">
       <p>
         <%=
-          t(
-            ".details.tool_text",
-            link: link_to(
-              t(".details.tool_link"),
-              "https://www.ordnancesurvey.co.uk/osmaps/",
-              rel: "external",
-              target: "_blank"
-            )
+          t(".details.tool_text", link: link_to( t(".details.tool_link"),
+                                                 "https://www.ordnancesurvey.co.uk/osmaps/",
+                                                 rel: "external", target: "_blank")
           ).html_safe
         %>
       </p>
-      <p><%= t(".details.tool_info")  %></p>
+      <ul class="list list-number">
+        <li>
+          <%= t(".details.bullet1") %>
+        </li>
+        <li>
+          <%= t(".details.bullet2") %>
+          <br/>
+          <%= t(".details.bullet3") %>
+        </li>
+        <li>
+          <%= t(".details.bullet4") %>
+        </li>
+      </ul>
     </div>
   </details>
+
 
   <% if form.require_dredging_length? %>
     <%= form_group_and_validation(form, :dredging_length) do %>
       <%= f.label :dredging_length, class: "form-label" do %>
         <%= t(".dredging_length.form_label")  %>
-        <span class="form-hint">
+        <span class="form-hint text">
           <%= t(".dredging_length.clarification_hint") %>
         </span>
-        <%= f.number_field(
-            :dredging_length,
-            min: FloodRiskEngine.config.minumum_dredging_length_in_metres,
-            max: FloodRiskEngine.config.maximum_dredging_length_in_metres,
-            class: "form-control form-control-char-10",
-            "aria-describedby" => "ngr_help")
-        %> <%= t(".dredging_length.units") %>
+        <%= f.number_field(:dredging_length, class: "form-control form-control-char-10") %>
+        <%= t(".dredging_length.units") %>
       <% end %>
     <% end %>
   <% end %>
@@ -62,17 +64,12 @@
   <%= form_group_and_validation(form, :description) do %>
     <%= f.label :description, class: "form-label" do %>
       <%= t(".description.form_label")  %>
-      <span class="form-hint">
+      <span class="form-hint text">
         <%= t(".description.clarification_hint") %>
       </span>
     <% end %>
     <%=
-      f.text_area(
-        :description,
-        class: "form-control form-control-char-50",
-        "aria-describedby" => "ngr_help",
-        rows: 4
-      )
+      f.text_area(:description, class: "form-control form-control-char-50", rows: 4)
     %>
     <p class="text">
       <%= t(".description.length_hint", max: 500) %>
