@@ -62,7 +62,7 @@ FactoryGirl.define do
     step :limited_company_address
   end
 
-  # Ltd Company
+  # LLP
 
   factory :page_limited_liability_partnership,
           parent: :page_user_type,
@@ -71,6 +71,10 @@ FactoryGirl.define do
             :with_limited_liability_partnership
           ] do
     step :limited_liability_partnership_number
+  end
+
+  factory :page_limited_liability_partnership_name, parent: :page_limited_liability_partnership do
+    step :limited_liability_partnership_name
   end
 
   # END PATHS
