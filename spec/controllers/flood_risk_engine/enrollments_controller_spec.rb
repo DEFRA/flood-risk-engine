@@ -23,7 +23,7 @@ module FloodRiskEngine
         end
 
         it "should set journey token in session" do
-          expect(cookies[:journey_token]).to eq(encode(enrollment.token))
+          expect(cookies.encrypted[:journey_token]).to eq(enrollment.token)
         end
       end
     end

@@ -2,8 +2,6 @@ module FloodRiskEngine
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    include SimpleEncoding
-
     layout ->(_) { FloodRiskEngine.config.layout }
 
     # http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
