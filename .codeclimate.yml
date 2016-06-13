@@ -4,8 +4,12 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-      - javascript
+        ruby:
+          # Prevent reporting of e.g. validation blocks as duplication warnings;
+          # a certain degree of duplication is acceptable in the name of
+          # readability.
+          mass_threshold: 25
+        javascript:
   fixme:
     enabled: true
   rubocop:
