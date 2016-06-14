@@ -47,8 +47,7 @@ module FloodRiskEngine
       # use a default of assigning to Organisation Primary_address
 
       def assign_to_enrollment(address)
-        # addressable does not seem to auto populate via association with organisation, so set manually
-        address.attributes = { addressable:  enrollment.organisation, address_type:  :primary }
+        address.address_type = :primary
         enrollment.organisation.primary_address = address
         enrollment.organisation.save
       end

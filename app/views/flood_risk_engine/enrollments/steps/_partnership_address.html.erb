@@ -1,3 +1,13 @@
+<%=
+  render(
+      "flood_risk_engine/enrollments/header",
+      title_text: t(
+        "flood_risk_engine.enrollments.steps.#{step}.heading",
+        name: form.partner.contact.full_name
+      )
+  )
+%>
+
 <%= render("flood_risk_engine/shared/address",
            f: f,
            form: form,
