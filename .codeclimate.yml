@@ -14,8 +14,7 @@ engines:
     enabled: true
   rubocop:
     enabled: true
-    checks:
-      Rubocop/AllCops/TargetRubyVersion: 2.3
+    config: '.codeclimate_rubocop.yml'
   brakeman:
     enabled: false
   rubymotion:
