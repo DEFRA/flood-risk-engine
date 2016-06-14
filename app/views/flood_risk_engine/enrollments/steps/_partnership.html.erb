@@ -1,1 +1,22 @@
-partnership
+<div class="panel panel-border-wide">
+  <p><%= t(".information.main") %></p>
+  <p><%= t(".information.postscript") %></p>
+</div>
+
+<h2 class="heading-medium">
+  <%= t(".sub_heading", count: form.partner_count) %>
+</h2>
+
+<fieldset>
+  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+
+  <!-- Full name -->
+  <%= form_group_and_validation(form, :full_name) do %>
+    <%= f.label :full_name, class: "form-label" do %>
+      <%= t(".full_name.label") %>
+      <span class="form-hint"><%= t(".full_name.hint") %></span>
+    <% end %>
+    <%= f.text_field :full_name, class: 'form-control form-control-char-35' %>
+  <% end %>
+
+</fieldset>

@@ -2,6 +2,7 @@ module FloodRiskEngine
   class Organisation < ActiveRecord::Base
     belongs_to :contact
     has_one :enrollment, dependent: :restrict_with_exception
+    has_many :partners # Only needed for Partnerships
 
     enum org_type: {
       local_authority: 0,
