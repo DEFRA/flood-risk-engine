@@ -53,7 +53,10 @@ module FloodRiskEngine
       def partnership
         between_start_and_finish do
           [
-            :partnership
+            :partnership,
+            :partnership_postcode,
+            :partnership_address,
+            :partnership_details
           ]
         end
       end

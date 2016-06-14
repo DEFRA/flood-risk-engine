@@ -18,7 +18,8 @@ module FloodRiskEngine
       billing: 4,
       principal_office: 5,
       principal_business: 6,
-      registered_office: 7
+      registered_office: 7,
+      partner: 8
     }
 
     def to_param

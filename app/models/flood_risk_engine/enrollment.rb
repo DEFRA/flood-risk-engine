@@ -11,7 +11,7 @@ module FloodRiskEngine
     # we query never from contact to its enrollment
     belongs_to :applicant_contact, class_name: "Contact"
     belongs_to :organisation
-    delegate :org_type, to: :organisation, allow_nil: true
+    delegate :org_type, :partners, to: :organisation, allow_nil: true
 
     has_many :enrollment_exemptions,
              foreign_key: :enrollment_id,
