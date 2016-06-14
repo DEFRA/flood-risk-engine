@@ -13,12 +13,9 @@ engines:
   fixme:
     enabled: true
   rubocop:
-    enabled: true
-    config: '.codeclimate_rubocop.yml'
+    enabled: false
   brakeman:
     enabled: false
-  rubymotion:
-    enabled: true
 ratings:
   paths:
   - "**.module"
