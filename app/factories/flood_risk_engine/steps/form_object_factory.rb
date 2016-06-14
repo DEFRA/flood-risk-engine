@@ -19,7 +19,8 @@ module FloodRiskEngine
             check_exemptions:                 Steps::NullForm,
             user_type:                        Steps::UserTypeForm,
             check_your_answers:               Steps::CheckYourAnswersForm,
-            declaration:                      Steps::NullForm
+            declaration:                      Steps::NullForm,
+            partnership_details:              Steps::NullForm
           }
         end
 

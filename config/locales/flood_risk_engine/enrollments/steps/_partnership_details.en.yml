@@ -1,0 +1,7 @@
+---
+en:
+  flood_risk_engine:
+    enrollments:
+      steps:
+        partnership_details:
+          heading: Add another partner or continue

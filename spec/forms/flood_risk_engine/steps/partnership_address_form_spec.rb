@@ -5,9 +5,18 @@ require_relative "../../../support/asserts"
 module FloodRiskEngine
   module Steps
 
-    RSpec.describe OtherAddressForm, type: :from do
-      let(:params_key) { :other_address }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_other) }
+    RSpec.describe PartnershipAddressForm do
+      let(:params_key) { :partnership_address }
+      let(:enrollment) do
+        enrollment = FactoryGirl.create(:enrollment, :with_partnership)
+        contact = FactoryGirl.create(:contact)
+        FactoryGirl.create(
+          :partner,
+          contact: contact,
+          organisation: enrollment.organisation
+        )
+        enrollment
+      end
       let(:model_class) { FloodRiskEngine::Address }
       let(:form) { described_class.factory(enrollment) }
       let(:post_code) { "BS1 5AH" }
@@ -36,7 +45,7 @@ module FloodRiskEngine
       end
 
       describe "#save" do
-        let(:address) { subject.enrollment.reload.organisation.primary_address }
+        let(:address) { subject.partner.reload.contact.address }
 
         before do
           form.validate(params)
@@ -56,13 +65,34 @@ module FloodRiskEngine
 
           assert_record_values address, expected_attributes
         end
+      end
 
-        it "defines the address to organisation relationship correctly" do
-          expect(address.addressable_id).to eq(subject.enrollment.organisation.id)
-          expect(address.addressable_type).to eq("FloodRiskEngine::Organisation")
+      describe "#partner" do
+        it "should match the last partner" do
+          expect(form.partner).to eq(enrollment.partners.last)
+        end
+
+        context "when more than one partner present" do
+          before do
+            contact = FactoryGirl.create(:contact)
+            @partner = FactoryGirl.create(
+              :partner,
+              contact: contact,
+              organisation: enrollment.organisation
+            )
+          end
+
+          it "should match the latest partner" do
+            expect(form.partner).to eq(@partner)
+          end
+        end
+      end
+
+      describe "#no_header_in_show" do
+        it "should be true" do
+          expect(form.no_header_in_show).to eq(true)
         end
       end
     end
-
   end
 end
