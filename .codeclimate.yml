@@ -14,6 +14,9 @@ engines:
     enabled: true
   rubocop:
     enabled: true
+    checks:
+      AllCops:
+        TargetRubyVersion: 2.3
   brakeman:
     enabled: false
   rubymotion:
