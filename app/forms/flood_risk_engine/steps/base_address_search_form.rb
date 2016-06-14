@@ -34,11 +34,13 @@ module FloodRiskEngine
         result
       end
 
-      # If manual entry activated gives opportunity to  skip certain states and move straight to this target state
-      attr_reader :target_step
-
       def manual_entry_enabled?
         @manual_entry_enabled
+      end
+
+      # Currently all OrgType journeys lead from Address to Correspondence Contact Name
+      def target_step
+        :correspondence_contact_name
       end
 
     end
