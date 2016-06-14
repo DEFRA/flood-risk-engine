@@ -1,6 +1,8 @@
-<%= form.t('.postcode_hint') %>
+
 <p>
-  <%= form.postcode %>
+  <span class="postcode-prefix"><%= t(".postcode.prefix") %></span>
+  <span class="visuallyhidden"><%= t(".postcode.separator") %></span>
+  <span class="postcode"><%= form.postcode %></span>
   <%= link_to form.t('.change'),
               enrollment_step_path(form.enrollment, form.enrollment.previous_step),
               class: 'change-postcode-button'

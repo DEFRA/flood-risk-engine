@@ -20,7 +20,7 @@ en:
             change_button:
               text: Change %{hidden}
               hidden: postcode
-          legend: Address for manual entry
+          legend: Enter address
           premises:
             label: Building name or number
             hint: For example, a business premises name or house number

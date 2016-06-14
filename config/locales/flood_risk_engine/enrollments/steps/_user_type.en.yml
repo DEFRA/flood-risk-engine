@@ -6,11 +6,10 @@ en:
         user_type:
           heading: Who is responsible for the activity?
           sub_heading: How to decide who is responsible
-          sub_section_one: |-
-            The company, body or individual who has control over the way the
-            activity (work) is done is responsible. They are called the
-            ‘operator’. If you use contractors, you need to decide if it is
-            you or the contractors who has control.
+          sub_section_one: The company, body or individual who has control over the activity (work) is responsible.
+            They are called the ‘operator’.
+            If you use contractors, you need to decide if it is you or the contractors who has control.
+          summary_heading: How to decide who has control
           list_heading: 'Whoever has control will usually:'
           list_item_1: have day-to-day control of the activity
           list_item_2: make sure the activity complies with the exemption

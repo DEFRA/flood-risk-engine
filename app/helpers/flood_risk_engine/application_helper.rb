@@ -25,14 +25,12 @@ module FloodRiskEngine
     #   <%= form.radio_button "blah", "renew", checked: false, class: "radio" %>
     # <% end %>
     #
-    # TODO: refactor and remove this rubocop disable
     def form_group_and_validation(form, attribute, &block)
       content = block_given? ? capture(&block) : ""
       classes = ["form-group"]
       options = {
         id: error_link_id(attribute),
-        role: "group",
-        "aria-labelledby": "groupLabel"
+        role: "group"
       }
 
       if form && form.errors[attribute].any?
@@ -59,7 +57,7 @@ module FloodRiskEngine
       if content_for? :page_title
         content_for :page_title, " | #{stripped_title}"
       else
-        content_for :page_title, "GOV.UK | #{stripped_title}"
+        content_for :page_title, stripped_title.to_s
       end
 
       title

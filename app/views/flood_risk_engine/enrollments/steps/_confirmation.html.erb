@@ -1,35 +1,46 @@
-<div class="govuk-box-highlight">
-  <h1 class="bold-large"> <%= page_title t('.heading') %></h1>
-  <p>
-    <%= t('.para_text') %>
-    <br />
-    <strong class="heading-medium"><%= form.enrollment.reference_number %></strong>
-  </p>
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    <div class="govuk-box-highlight">
+      <h1 class="bold-large"> <%= page_title t('.heading') %>
+        <br />
+        <span class="bold-medium"><%= t('.sub_heading') %></span>
+      </h1>
+      <p>
+        <%= t('.reference') %><br />
+        <strong class="heading-medium"><%= form.enrollment.reference_number %></strong>
+      </p>
+    </div>
+
+    <p class="text"><%= t ".email_sent", email: form.email %></p>
+
+    <p class="text"> <%= link_to t('.another_exemption_text'), root_url %> </p>
+
+    <h2 class="heading-medium"><%= page_title t('.heading_h2') %></h2>
+
+    <p class="text"><%= t('.para_text2') %></p>
+
+    <div class="panel panel-border-wide">
+      <p class="text"><%= t('.para_text3') %></p>
+    </div>
+
+    <h3 class="heading-small"><%= page_title t('.heading_h3') %></h3>
+
+    <p class="text"><%= t('.para_text4') %></p>
+    <h3 class="heading-small"><%= t('.heading_h3_1') %></h3>
+
+    <p class="text">
+      <%= t('.activities_intro_html', link: link_to(t('.activities_url_text'), t('.activities_url'), target: "_blank")) %>
+    </p>
+
+    <h2 class="heading-medium"><%= t('.heading_h2_1') %></h2>
+
+    <p class="text"><%= t('.para_text7') %></p>
+    <p class="text"><%= t('.para_text8') %></p>
+
+    <p class="text">
+      <%= link_to t('.feedback_text'), page_path('feedback'), class: 'link' %> <%= t('.feedback_helper') %>
+    </p>
+
+  </div>
 </div>
-
-<p class="text"><%= t ".email_sent", email: form.email %></p>
-
-<h2 class="heading-medium">
-  <%= t('.heading_h2') %>
-</h2>
-
-<p class="text"><%= t('.para_text2') %></p>
-<p class="text"><%= t('.para_text3') %></p>
-<p class="text"><%= t('.para_text4') %></p>
-<p class="text">
-  <%= t('.activities_intro_html', link: link_to(t('.activities_url_text'), t('.activities_url'), target: "_blank")) %>
-</p>
-
-<h2 class="heading-medium">
-  <%= t('.heading_h2_1') %>
-</h2>
-
-<p class="text"><%= t('.para_text7') %></p>
-<p class="text"><%= t('.para_text8') %></p>
-<p class="text"><%= t('.para_text9') %></p>
-
-<br/>
-
-<p class="text">
-  <%= link_to t('.feedback_text'), t('.feedback_url'), class: 'link' %> <%= t('.feedback_helper') %>
-</p>

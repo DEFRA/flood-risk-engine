@@ -9,11 +9,14 @@ en:
             heading: Warning
             text: You can be prosecuted and fined if you give false or misleading information.
           confirmation:
-            heading: I confirm that
+            heading: 'I confirm that:'
             list:
               one: the information I have given is true
-              two: I am authorised to register the exemption(s) by the organisation or individual responsible
+              two: I am authorised to register the exemption by the organisation or individual responsible
+          use_of_info:
+            header: Use of your information and privacy
+            text: Some of the information you give will be added to the public register of exemptions.
           privacy:
-            text: Read the Environment Agency's %{link} to find out how it uses personal information
-            link: privacy policy
+            text: Read about %{link}.
+            link: how we use your personal information (opens new window)
           continue: Accept and complete this registration

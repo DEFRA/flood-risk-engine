@@ -4,7 +4,7 @@ en:
     enrollments:
       steps:
         limited_company_postcode:
-          heading: "What’s the registered address of the Company"
+          heading: "What’s the registered address of the company"
           label:  UK postcode
           hint: "For example, BS1 5AH"
           legend: Postcode

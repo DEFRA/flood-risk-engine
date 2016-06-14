@@ -1,48 +1,43 @@
-<!-- This is a static page NOT in state machine flow so back should just return us to CURRENT state -->
-<%= link_to( t("global.back"), enrollment_step_path(@enrollment, @enrollment.step) ) %>
-
 <div class="grid-row">
   <div class="column-two-thirds">
 
     <header class="text">
-      <h1 class="form-title heading-xlarge" id="groupLabel"><%= page_title(t(".heading")) %></h1>
+      <h1 class="form-title heading-large" id="groupLabel">
+        <%= page_title t('.heading_h1') %>
+      </h1>
     </header>
 
-    <p class="lede">
-      The Environment Agency runs the flood risk exemptions service. Their
+    <p class="lede text"><%= t('.para_text') %>
       <%= link_to 'personal information charter', t('.charter_url'), target: "_blank" %>
-      explains how they deal with your information.
+      <%= t('.para_text1') %>
     </p>
 
-    <p class="text">The personal information you give is added to the database for flood activity exemptions.</p>
+    <p class="text"><%= t('.para_text2') %></p>
 
-    <p class="text">This will include:</p>
+    <p class="text"><%= t('.para_text3') %></p>
 
-    <ul class="list-bullet">
-      <li>the name and address of the responsible organisation or person</li>
-      <li>the exemptions you have registered</li>
-      <li>the location of the activity</li>
+    <ul class="list-bullet text">
+      <li><%= t('.list_item') %></li>
+      <li><%= t('.list_item1') %></li>
+      <li><%= t('.list_item2') %></li>
     </ul>
 
-    <br />
+    <br>
 
-    <p class="text">We may also use the personal information you give us to:</p>
+    <p class="text"><%= t('.para_text4') %></p>
 
-    <ul class="list-bullet">
-      <li>contact you about our customer service</li>
-      <li>send you environmental information, or consult you about environmental issues</li>
-      <li>carry out research on environmental issues</li>
-      <li>prevent someone from breaking environmental laws</li>
-      <li>investigate and take action when someone may have broken environmental laws</li>
-      <li>respond to freedom of information requests (if data protection law allows it)</li>
+    <ul class="list-bullet text">
+      <li><%= t('.list_item3') %></li>
+      <li><%= t('.list_item4') %></li>
+      <li><%= t('.list_item5') %></li>
+      <li><%= t('.list_item6') %></li>
+      <li><%= t('.list_item7') %></li>
+      <li><%= t('.list_item8') %></li>
     </ul>
 
-    <br />
+    <br>
 
-    <p class="text">
-      We may give your information to our agents or representatives, so they can do any of these things for us.
-      And we may share your information with other organisations if the law says we must.
-    </p>
+    <p class="text"><%= t('.para_text5') %></p>
 
   </div>
 </div>

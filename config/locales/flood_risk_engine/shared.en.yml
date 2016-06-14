@@ -7,9 +7,15 @@ en:
         legend: Address
         manual_entry: "I can’t find the address in the list"
         num_addresses_found: "%{num} addresses found"
-        postcode_hint: Postcode
+        postcode:
+          prefix: Postcode
+          separator: ":"
         select_from_list_label: Address
         individual_name:
+      footer:
+        support_text: 'Environment Agency helpline:'
+        helpline_telephone_number: 03708 506506
+        helpline_telephone_number_uri: 03708 506506
       organisation_name:
         individual_name:
           hint:  For example, Jane Smith
@@ -24,6 +30,6 @@ en:
       postcode:
           hint: "For example, BS1 5AH"
           label:  UK postcode
-          legend: Postcode
+          legend: UK postcode
           individual_postcode:
              label: What's the address of the individual?
