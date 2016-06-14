@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603150808) do
+ActiveRecord::Schema.define(version: 20160613130542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,9 +76,10 @@ ActiveRecord::Schema.define(version: 20160603150808) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.string   "token"
     t.integer  "secondary_contact_id"
+    t.string   "token"
     t.string   "reference_number",          limit: 12
+    t.boolean  "in_review"
     t.integer  "status",                               default: 0, null: false
   end
 
@@ -136,6 +137,16 @@ ActiveRecord::Schema.define(version: 20160603150808) do
   add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type", using: :btree
   add_index "flood_risk_engine_organisations", ["registration_number"], name: "index_flood_risk_engine_organisations_on_registration_number", using: :btree
 
+  create_table "flood_risk_engine_partners", force: :cascade do |t|
+    t.integer  "organisation_id"
+    t.integer  "contact_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "flood_risk_engine_partners", ["contact_id"], name: "index_flood_risk_engine_partners_on_contact_id", using: :btree
+  add_index "flood_risk_engine_partners", ["organisation_id"], name: "index_flood_risk_engine_partners_on_organisation_id", using: :btree
+
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -160,4 +171,6 @@ ActiveRecord::Schema.define(version: 20160603150808) do
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_exemptions", column: "exemption_id"
   add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"
+  add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_contacts", column: "contact_id"
+  add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_organisations", column: "organisation_id"
 end

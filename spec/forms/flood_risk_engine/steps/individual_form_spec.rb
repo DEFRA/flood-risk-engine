@@ -52,7 +52,7 @@ module FloodRiskEngine
         end
       end
 
-      describe "#invalid" do
+      describe "#validate" do
         it "does not validate when no name supplied" do
           params = { "#{form.params_key}": { name: "" } }
 
