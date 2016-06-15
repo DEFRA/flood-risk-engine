@@ -15,7 +15,7 @@ module FloodRiskEngine
       end
 
       def target_step
-        :email_someone_else
+        :correspondence_contact_name
       end
     end
   end
