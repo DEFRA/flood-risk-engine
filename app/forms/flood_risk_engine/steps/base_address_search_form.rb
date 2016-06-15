@@ -8,6 +8,7 @@ module FloodRiskEngine
 
       validates :postcode, 'flood_risk_engine/postcode': true, allow_blank: true
 
+      # rubocop:disable Metrics/MethodLength
       def validate(params)
         result = super(params)
 
@@ -17,8 +18,16 @@ module FloodRiskEngine
           address_list = finder.search
 
           if finder.success?
-            # Note, we only need to validate the postcode search not the underlying adddress data
+
+            # Note, we only need to validate the postcode search not the underlying address data
             unless FloodRiskEngine::AddressServices::Deserialize::EaFacadeToAddress.contains_addresses?(address_list)
+
+              # This is a Valid UK postcode but it does not currently point to any addresses.
+              # If we don't save this postcode in the search, get inconsistencies when users enters a Manual
+              # address and then goes back
+              sync
+              model.save
+
               errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
             end
           else
@@ -33,6 +42,7 @@ module FloodRiskEngine
 
         result
       end
+      # rubocop:enable Metrics/MethodLength
 
       def manual_entry_enabled?
         @manual_entry_enabled
