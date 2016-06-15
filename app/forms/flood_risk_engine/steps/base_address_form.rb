@@ -32,7 +32,7 @@ module FloodRiskEngine
 
       # read only param for displaying the Postcode in the view
       def postcode
-        return enrollment.address_search.postcode if enrollment.address_search.present?
+        return enrollment.address_search.postcode if enrollment.address_search.postcode.present?
 
         return enrollment.organisation.primary_address.postcode if enrollment.organisation.primary_address.present?
 

@@ -14,14 +14,6 @@ module FloodRiskEngine
         :individual_postcode
       end
 
-      def validate(params)
-        result = super(params)
-
-        # The target state for this address selection should we exit state machine and use address controller
-        @target_step = :correspondence_contact_name if !result && manual_entry_enabled?
-        result
-      end
-
       private
 
       def initialize(model, enrollment)
