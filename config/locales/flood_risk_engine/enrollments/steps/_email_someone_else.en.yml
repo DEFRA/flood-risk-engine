@@ -4,15 +4,12 @@ en:
     enrollments:
       steps:
         email_someone_else:
-          heading: |-
-            Would you also like a copy of the registration email sent to
-            someone else?
-          legend: Would you also like a copy of the registration email sent to someone else?
-          clarification: |-
-            We’ll send a copy of the registration to the main contact. We will
-            also send a copy to another address if you want.
+          heading: Would you also like a copy of the confirmation email sent to someone else?
+          legend: Would you also like a copy of the confirmation email sent to someone else?
+          clarification: We’ll send a confirmation to the main contact.
+            We will also send a copy to another address if you want.
           email_address:
-            label: Email address for registration copy (optional)
+            label: Email address for confirmation copy (optional)
           email_address_confirmation:
             label: Confirm email address if entered above
           errors:
