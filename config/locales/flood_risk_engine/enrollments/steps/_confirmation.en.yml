@@ -25,8 +25,9 @@ en:
           para_text7: If the location changes, you will need to register a new exemption.
           para_text8: If the activity or the way you are doing the work changes, you
             will need to check if it is still exempt.
-          activities_intro_html: You can check the conditions and description of your exemption in the %{link}.
-          activities_url_text: flood risk activities guidance
+          activities_intro_html: You are responsible for checking that you can meet the
+            description and conditions in the %{link}.
+          activities_url_text: exempt flood risk activities guidance
           activities_url:
             https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities
           another_exemption_text:  Register another exemption
