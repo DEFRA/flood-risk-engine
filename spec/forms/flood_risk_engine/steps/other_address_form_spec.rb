@@ -62,6 +62,25 @@ module FloodRiskEngine
           expect(address.addressable_type).to eq("FloodRiskEngine::Organisation")
         end
       end
+
+      describe "#address" do
+        context "when address_search is present but has no postcode" do
+          # This happens if an unrecognised postcode is used, and then
+          # address is entered manually, and the user returns to page from
+          # later in the journey
+          before do
+            enrollment.address_search = AddressSearch.new
+            enrollment.save
+            # ensure a primary address has been entered
+            form.validate(params)
+            expect(form.save).to eq true
+          end
+
+          it "should return the primary address postcode" do
+            expect(form.postcode).to eq(post_code)
+          end
+        end
+      end
     end
 
   end

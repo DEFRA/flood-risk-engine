@@ -32,14 +32,18 @@ module FloodRiskEngine
 
       # read only param for displaying the Postcode in the view
       def postcode
-        return enrollment.address_search.postcode if enrollment.address_search.postcode.present?
-
-        return enrollment.organisation.primary_address.postcode if enrollment.organisation.primary_address.present?
-
-        ""
+        address_search_postcode || primary_address_postcode || ""
       end
 
       protected
+
+      def address_search_postcode
+        enrollment.address_search.try(:postcode)
+      end
+
+      def primary_address_postcode
+        enrollment.organisation.try(:primary_address).try(:postcode)
+      end
 
       attr_reader :assignable_address
 
