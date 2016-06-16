@@ -1,0 +1,16 @@
+<header class="text">
+  <h1 class="form-title heading-large" id="groupLabel">
+    <%= t(".heading") %>
+  </h1>
+</header>
+
+<p><%= t(".sorry") %></p>
+<p><%= t(".clarification") %></p>
+
+<%= link_to(
+      t(".go_to_current_step"),
+      enrollment_step_path(enrollment, enrollment.current_step),
+      class: "btn btn-primary"
+    ) if enrollment %>
+
+<%= link_to t(".restart"), root_path, class: "btn btn-default" %>

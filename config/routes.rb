@@ -10,4 +10,8 @@ FloodRiskEngine::Engine.routes.draw do
     )
   end
 
+  resources :errors, only: [:show]
+
+  # See http://patrickperey.com/railscast-053-handling-exceptions/
+  get "(errors)/:id", to: "errors#show"
 end

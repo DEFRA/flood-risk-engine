@@ -11,6 +11,7 @@ module FloodRiskEngine
     class StepsController < ApplicationController
 
       rescue_from StepError, with: :step_not_found
+      rescue_from JourneyError, ActiveRecord::RecordInvalid, with: :step_not_valid
 
       before_action :check_step_is_valid
       before_action :back_button_cache_buster
@@ -51,16 +52,17 @@ module FloodRiskEngine
       def step_url(options = {})
         enrollment_step_path(enrollment, enrollment.current_step, options)
       end
+      helper_method :step_url
 
       def check_step_is_valid
         check_journey_valid
         return true if step_is_current?
         return step_back if step_back_is_possible?
-        raise StepError, "Requested #{step}, is not permitted when enrollment.step is #{enrollment.current_step}"
+        raise StepError, "Requested :#{step}, is not permitted when enrollment.step is :#{enrollment.current_step}"
       end
 
       def check_journey_valid
-        return true if enrollment.token == cookies.encrypted[:journey_token]
+        return true if journey_tokens.include?(enrollment.token)
         raise(JourneyError, "Journey not started in current browser session")
       end
 
@@ -108,8 +110,13 @@ module FloodRiskEngine
         @enrollment ||= Enrollment.find_by_token!(params[:enrollment_id])
       end
 
-      def step_not_found
-        Rails.logger.info "Step Mismatch: :#{step} requested when enrollment at :#{enrollment.step}"
+      def step_not_valid(exception)
+        Rails.logger.info "STEP NOT VALID: #{exception.message}"
+        redirect_to error_path(:step_not_valid)
+      end
+
+      def step_not_found(exception)
+        Rails.logger.info "STEP NOT FOUND: #{exception.message}"
         redirect_to step_url
       end
 
