@@ -10,4 +10,6 @@ FloodRiskEngine::Engine.routes.draw do
     )
   end
 
+  # See http://patrickperey.com/railscast-053-handling-exceptions/
+  get "(errors)/:id", to: "errors#show", as: "error"
 end
