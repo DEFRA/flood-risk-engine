@@ -12,8 +12,8 @@ module FloodRiskEngine
 
     protected
 
-    def error
-      @error ||= params[:id]
+    def error_code
+      @error_code ||= params[:id]
     end
 
     def template_exists(name)
@@ -28,7 +28,7 @@ module FloodRiskEngine
     end
 
     def template
-      @template ||= template_exists(error) ? error : "generic"
+      @template ||= template_exists(error_code) ? error_code : "generic"
     end
 
     def file_for(name)

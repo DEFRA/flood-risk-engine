@@ -52,7 +52,6 @@ module FloodRiskEngine
       def step_url(options = {})
         enrollment_step_path(enrollment, enrollment.current_step, options)
       end
-      helper_method :step_url
 
       def check_step_is_valid
         check_journey_valid
