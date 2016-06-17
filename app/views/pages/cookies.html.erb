@@ -1,131 +1,124 @@
 <div class="grid-row">
   <div class="column-two-thirds">
-
     <header class="text">
-      <h1 class="form-title heading-large">
+      <h1 class="form-title heading-large" id="groupLabel">
         <%= page_title t('.heading_h1') %>
       </h1>
     </header>
-
     <p class="lede">
-      <%= t(".intro") %>
+      <%= t('.intro') %>
     </p>
 
-     <p>These cookies are used to:</p>
+    <p><%= t('.para_text') %></p>
+    <ul class="list-bullet">
+      <li><%= t('.list_item') %></li>
+      <li><%= t('.list_item1') %></li>
+      <li><%= t('.list_item2') %></li>
+    </ul>
 
-     <ul class="list-bullet">
-       <li>help us understand how you use the service, so we can make improvements</li>
-       <li>remember what notifications you’ve seen so that you’re not shown them more than once</li>
-       <li>temporarily store the information you enter</li>
-     </ul>
+    <p>
+      <%= t('.para_text1') %>
+      <%= link_to 'how to manage cookies on the Information Commissioners website',
+                  "https://ico.org.uk/for-the-public/online/cookies/",
+                  rel: 'external' %>
+      <%= t('.para_text2') %>
+    </p>
+    <h2 class="heading-medium">
+      <%=  t('.heading_h2') %>
+    </h2>
+    <p>
+      <%= t('.para_text3') %>
+    </p>
+    <p>
+      <%= t('.para_text4') %>
+    </p>
+    <ul class="list-bullet">
+      <li><%= t('.list_item3') %></li>
+      <li><%= t('.list_item4') %></li>
+      <li><%= t('.list_item5') %></li>
+    </ul>
+    <table class="cookies-table" role="presentation">
+      <caption class="visually-hidden"><%= t('.caption') %></caption>
+      <thead>
+        <tr>
+          <th><%= t('.table_0.th.th_0') %></th>
+          <th><%= t('.table_0.th.th_1') %></th>
+          <th><%= t('.table_0.th.th_2') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= t('.table_0.td.td_0') %></td>
+          <td><%= t('.table_0.td.td_1') %></td>
+          <td><%= t('.table_0.td.td_2') %></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><%= t('.para_text5') %></p>
 
-     <p>Find out <a rel="external" href="https://ico.org.uk/for-the-public/online/cookies/">how to manage cookies on the Information Commissioners' website</a>.</p>
+    <h2 class="heading-medium">
+      <%= t('.heading_h2_1') %>
+    </h2>
 
-     <h2 class="heading-medium">Google Analytics cookie</h2>
-
-     <p>We use Google Analytics to collect information about how you use the service. This information helps us to improve the service.</p>
-
-     <p>The Google analytics cookie collects and stores information about:</p>
-
-     <ul class="list-bullet">
-       <li>the pages you visit - how long you spend on each page</li>
-       <li>how you got to the service</li>
-       <li>what you click on while you’re using the service</li>
-     </ul>
-
-     <table class="cookies-table" role="presentation">
-       <caption class="visually-hidden">
-          Google analytics cookie details
-       </caption>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Purpose</th>
-           <th>Expires</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>_ga</td>
-           <td>Used to identify unique users and inform referring sites, visitor and session counts</td>
-           <td>2 years</td>
-         </tr>
-       </tbody>
-     </table>
-
-     <p>Google isn't allowed to use or share our analytics data with anyone.</p>
-
-     <h2 class="heading-medium">Session cookie</h2>
-
-     <p>We store session cookies on your computer to help keep your information secure while you use the service.</p>
-
-     <table class="cookies-table" role="presentation">
-       <caption class="visually-hidden">
-          Session cookie details
-       </caption>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Purpose</th>
-           <th>Expires</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>flood-risk-front-office</td>
-           <td>Used for session management and authentication</td>
-           <td>When you close your browser</td>
-         </tr>
-       </tbody>
-     </table>
-
-     <h2 class="heading-medium">Registration cookie</h2>
-
-     <p>We store a cookie on your computer to help keep each registration separate.</p>
-
-     <table class="cookies-table" role="presentation">
-       <caption class="visually-hidden">
-          Registration cookie details
-       </caption>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Purpose</th>
-           <th>Expires</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>journey_token</td>
-           <td>Used for registration management</td>
-           <td>1 day</td>
-         </tr>
-       </tbody>
-     </table>
-
-     <h2 class="heading-medium">Introductory message cookie</h2>
-
-     <p>When you first use the service, you may see a cookie message appear at the top of the screen. Once you’ve seen the message, we store a cookie on your computer so it knows not to show it again.</p>
-
-     <table class="cookies-table" role="presentation">
-       <caption class="visually-hidden">
-          Introductory message cookie details
-       </caption>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Purpose</th>
-           <th>Expires</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>seen_cookie_message</td>
-           <td>Stores a message to let us know that you have seen our cookie message</td>
-           <td>1 month</td>
-         </tr>
-       </tbody>
-     </table>
-
-   </div>
- </div>
+    <p><%= t('.para_text6') %></p>
+    <table class="cookies-table" role="presentation">
+      <caption class="visually-hidden"><%= t('.caption1') %></caption>
+      <thead>
+        <tr>
+          <th><%= t('.table_1.th.th_0') %></th>
+          <th><%= t('.table_1.th.th_1') %></th>
+          <th><%= t('.table_1.th.th_2') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= t('.table_1.td.td_0') %></td>
+          <td><%= t('.table_1.td.td_1') %></td>
+          <td><%= t('.table_1.td.td_2') %></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="heading-medium">
+      <%= t('.heading_h2_2') %>
+    </h2>
+    <p><%= t('.para_text7') %></p>
+    <table class="cookies-table" role="presentation">
+      <caption class="visually-hidden"><%= t('.caption2') %></caption>
+      <thead>
+        <tr>
+          <th><%= t('.table_2.th.th_0') %></th>
+          <th><%= t('.table_2.th.th_1') %></th>
+          <th><%= t('.table_2.th.th_2') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= t('.table_2.td.td_0') %></td>
+          <td><%= t('.table_2.td.td_1') %></td>
+          <td><%= t('.table_2.td.td_2') %></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="heading-medium">
+      <%= t('.heading_h2_3') %>
+    </h2>
+    <p><%= t('.para_text8') %></p>
+    <table class="cookies-table" role="presentation">
+      <caption class="visually-hidden"><%= t('.caption3') %></caption>
+      <thead>
+        <tr>
+          <th><%= t('.table_3.th.th_0') %></th>
+          <th><%= t('.table_3.th.th_1') %></th>
+          <th><%= t('.table_3.th.th_2') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= t('.table_3.td.td_0') %></td>
+          <td><%= t('.table_3.td.td_1') %></td>
+          <td><%= t('.table_3.td.td_2') %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

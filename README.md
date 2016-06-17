@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/EnvironmentAgency/flood-risk-engine.svg?branch=develop)](https://travis-ci.org/EnvironmentAgency/flood-risk-engine)
 [![Code Climate](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/badges/gpa.svg)](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine)
 [![Test Coverage](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/badges/coverage.svg)](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/coverage)
+[![Security](https://hakiri.io/github/EnvironmentAgency/flood-risk-engine/develop.svg)](https://hakiri.io/github/EnvironmentAgency/flood-risk-engine/develop)
 
 ## Development
 
