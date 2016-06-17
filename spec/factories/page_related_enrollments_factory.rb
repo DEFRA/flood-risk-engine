@@ -1,8 +1,6 @@
 # A suite of Enrollments that enable you to jump straight to a particular page in the journey
 
 FactoryGirl.define do
-  factory :page_check_location, class: FloodRiskEngine::Enrollment
-
   factory :page_user_type, parent: :enrollment do
     step :user_type
 

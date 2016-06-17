@@ -18,7 +18,6 @@ module FloodRiskEngine
     #   config_accessor(:some_key)
     # or with an optional default
     #   config_accessor(:some_key) { "a default value" }
-    config_accessor(:redirection_url_on_location_unchecked)
     config_accessor(:redirection_url_postcode_lookup)
     config_accessor(:layout) { "application" }
     config_accessor(:minumum_dredging_length_in_metres) { 1 }
