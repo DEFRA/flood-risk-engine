@@ -7,12 +7,14 @@
   </p>
   <details style="padding-bottom: 18px;" id="control_help">
     <summary><span class="summary"><%= t(".summary_heading") %></span></summary>
-    <p><%= t(".list_heading") %></p>
-    <ul class="list-bullet text">
-      <% (1..5).each do |number| %>
-        <li><%= t(".list_item_#{number}") %></li>
-      <% end %>
-    </ul>
+    <div>
+      <p><%= t(".list_heading") %></p>
+      <ul class="list-bullet text">
+        <% (1..5).each do |number| %>
+          <li><%= t(".list_item_#{number}") %></li>
+        <% end %>
+      </ul>
+    </div>
   </details>
 </div>
 
