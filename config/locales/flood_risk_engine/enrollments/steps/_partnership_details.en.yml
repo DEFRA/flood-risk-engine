@@ -5,3 +5,6 @@ en:
       steps:
         partnership_details:
           heading: Add another partner or continue
+          sub_heading: Business partners you’ve added to this registration
+          remove: Remove
+          add_another: Add another partner

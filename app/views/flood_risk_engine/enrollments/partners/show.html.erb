@@ -1,0 +1,12 @@
+<p>
+  Please confirm that you wish to remove <%= @partner.full_name %>.
+</p>
+<%= form_for(
+      [@enrollment, @partner],
+      url: delete_enrollment_partner_path(@enrollment, @partner),
+      method: :post
+    ) do |f| %>
+  <%= f.submit("Delete") %>
+<% end %>
+
+<%= link_to "Cancel", enrollment_step_path(@enrollment, @enrollment.current_step)  %>

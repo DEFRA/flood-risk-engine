@@ -19,8 +19,7 @@ module FloodRiskEngine
             check_exemptions:                 Steps::NullForm,
             user_type:                        Steps::UserTypeForm,
             check_your_answers:               Steps::CheckYourAnswersForm,
-            declaration:                      Steps::NullForm,
-            partnership_details:              Steps::NullForm
+            declaration:                      Steps::NullForm
           }
         end
 
@@ -28,14 +27,7 @@ module FloodRiskEngine
 
         def setup_form_object(step)
           form_name = "FloodRiskEngine::Steps::#{step.to_s.classify}Form"
-          begin
-            form_name.constantize
-          rescue NameError => x
-            Rails.logger.debug(x.backtrace.first)
-            Rails.logger.debug(x.inspect)
-            Rails.logger.debug("Error loading Form class #{form_name} ")
-            nil
-          end
+          form_name.constantize
         end
 
       end
