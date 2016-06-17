@@ -1,0 +1,74 @@
+---
+en:
+  pages:
+    cookies:
+      intro: >
+        When you use the register a flood risk activity exemption service we put small files known
+        as ‘cookies’ on to your computer.
+      caption: Google analytics cookie details
+      caption1: Session cookie details
+      caption2: Registration cookie details
+      caption3: Introductory message cookie details
+      table_0:
+        th:
+          th_0: Name
+          th_1: Purpose
+          th_2: Expires
+        td:
+          td_0: _ga
+          td_1: Used to identify unique users and inform referring sites, visitor
+            and session counts
+          td_2: 2 years
+      table_1:
+        th:
+          th_0: Name
+          th_1: Purpose
+          th_2: Expires
+        td:
+          td_0: flood-risk-front-office
+          td_1: Used for session management and authentication
+          td_2: When you close your browser
+      table_2:
+        th:
+          th_0: Name
+          th_1: Purpose
+          th_2: Expires
+        td:
+          td_0: journey_token
+          td_1: Used for registration management
+          td_2: 1 day
+      table_3:
+        th:
+          th_0: Name
+          th_1: Purpose
+          th_2: Expires
+        td:
+          td_0: seen_cookie_message
+          td_1: Stores a message to let us know that you have seen our cookie message
+          td_2: 1 month
+      heading_h1: Cookies
+      heading_h2: Google Analytics cookie
+      heading_h2_1: Session cookie
+      heading_h2_2: Registration cookie
+      heading_h2_3: Introductory message cookie
+      list_item: help us understand how you use the service, so we can make improvements
+      list_item1: remember what notifications you’ve seen so that you’re not shown
+        them more than once
+      list_item2: temporarily store the information you enter
+      list_item3: the pages you visit - how long you spend on each page
+      list_item4: how you got to the service
+      list_item5: what you click on while you’re using the service
+      para_text: 'These cookies are used to:'
+      para_text1: Find out
+      para_text2: "."
+      para_text3: We use Google Analytics to collect information about how you use
+        the service. This information helps us to improve the service.
+      para_text4: 'The Google analytics cookie collects and stores information about:'
+      para_text5: Google isn't allowed to use or share our analytics data with anyone.
+      para_text6: We store session cookies on your computer to help keep your information
+        secure while you use the service.
+      para_text7: We store a cookie on your computer to help keep each registration
+        separate.
+      para_text8: When you first use the service, you may see a cookie message appear
+        at the top of the screen. Once you’ve seen the message, we store a cookie
+        on your computer so it knows not to show it again.
