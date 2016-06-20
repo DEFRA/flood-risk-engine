@@ -6,9 +6,7 @@ en:
         partnership:
           heading: Partner names and addresses
           information:
-            main: |-
-              We need to know the name and home address of all business partners
-              responsible for the activity.
+            main: We need to know the name and home address of all business partners.
             postscript: You must give us the details of at least two partners.
           sub_heading:
             one: Add a business partner
