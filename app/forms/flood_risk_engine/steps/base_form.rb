@@ -12,6 +12,8 @@ module FloodRiskEngine
       include BaseFormCommon
       extend BaseFormCommon
 
+      delegate :model_name, to: :model
+
       def self.t(locale, args = {})
         I18n.t locale, args.merge(scope: locale_key)
       end
