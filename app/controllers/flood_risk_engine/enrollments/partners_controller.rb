@@ -4,6 +4,7 @@ module FloodRiskEngine
   module Enrollments
     class PartnersController < ApplicationController
 
+      # Used to handle delete link behaviour when JavaScript disabled.
       def show
         partner
       end

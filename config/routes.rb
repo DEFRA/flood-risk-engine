@@ -7,7 +7,7 @@ FloodRiskEngine::Engine.routes.draw do
     resources(
       :partners, only: [:destroy, :show, :edit], controller: "enrollments/partners"
     ) do
-      post "destroy", as: :delete, on: :member
+      post "destroy", as: :delete, on: :member # require for deletion form on :show
     end
 
     resources(
