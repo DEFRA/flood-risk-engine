@@ -38,6 +38,10 @@ module FloodRiskEngine
           url = t("#{reform_class.locale_key}.activities_url")
           expect(response.body).to have_selector("a[href='#{url}'][target='_blank']")
         end
+
+        it "contains link to feedback page" do
+          expect(response.body).to have_selector("a[href='#{FloodRiskEngine.feedback_page_url}']")
+        end
       end
     end
   end
