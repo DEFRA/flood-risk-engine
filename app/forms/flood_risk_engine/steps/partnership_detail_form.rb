@@ -12,6 +12,10 @@ module FloodRiskEngine
       def validate(_params)
         true
       end
+
+      def show_continue_button?
+        enrollment.partners.count > 1
+      end
     end
   end
 end

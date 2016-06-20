@@ -30,7 +30,6 @@ module FloodRiskEngine
         end
 
         it "should display partner's name" do
-          expect(partner.address.postcode).to eq(address.postcode)
           expect(response.body).to match(contact.full_name)
         end
       end
