@@ -1,1 +1,35 @@
-partnership_details.html
+<h2 class="heading-medium">
+  <%= t(".sub_heading") %>
+</h2>
+
+<table summary="partner-details-summary" class="summary-table check-your-answers" role="presentation">
+  <tbody>
+    <% form.enrollment.partners.each do |partner| %>
+      <tr>
+        <td><%= partner.full_name %></td>
+        <td>
+          <% partner.address.parts.each do |address_part| %>
+            <%= address_part %><br>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to(
+                enrollment_partner_path(form.enrollment, partner),
+                class: "link",
+                method: :delete,
+                data: {:confirm => t(".confirm_delete", name: partner.full_name)}
+              ) do %>
+            <%= t(".remove") %>
+          <span class="visuallyhidden"><%= partner.full_name %></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<p>
+  <%= link_to t(".add_another"), edit_enrollment_partner_path(@enrollment, :partnership) %></a>
+</p>

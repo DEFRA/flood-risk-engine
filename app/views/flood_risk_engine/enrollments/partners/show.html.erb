@@ -1,0 +1,12 @@
+<p>
+  <%= t(".confirm_removal_of_partner", name: @partner.full_name) %>
+</p>
+<%= form_for(
+      [@enrollment, @partner],
+      url: delete_enrollment_partner_path(@enrollment, @partner),
+      method: :post
+    ) do |f| %>
+  <%= f.submit(t(".delete")) %>
+<% end %>
+
+<%= link_to t(".cancel"), enrollment_step_path(@enrollment, @enrollment.current_step)  %>

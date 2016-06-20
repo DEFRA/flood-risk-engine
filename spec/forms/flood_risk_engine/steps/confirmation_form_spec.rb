@@ -1,10 +1,10 @@
 require "rails_helper"
-require_relative "../../support/shared_examples/form_objects"
+require_relative "../../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
   module Steps
 
-    RSpec.describe Steps::ConfirmationForm, type: :form do
+    RSpec.describe ConfirmationForm, type: :form do
       let(:params_key) { :confirmation }
 
       let(:enrollment) { create(:page_confirmation) }

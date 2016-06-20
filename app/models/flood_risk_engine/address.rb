@@ -25,5 +25,13 @@ module FloodRiskEngine
     def to_param
       token
     end
+
+    def parts
+      address_methods.collect { |m| send(m) }.reject(&:blank?)
+    end
+
+    def address_methods
+      [:premises, :street_address, :locality, :city, :postcode]
+    end
   end
 end

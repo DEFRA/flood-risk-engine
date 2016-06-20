@@ -11,7 +11,7 @@ module FloodRiskEngine
     end
 
     it "raises an error if a certain config value is not defined" do
-      expect { factory.form_object_for(:blah_step_nonsense, enrollment) }.to raise_error(FormObjectError)
+      expect { factory.form_object_for(:blah_step_nonsense, enrollment) }.to raise_error(NameError)
     end
 
     it "returns a form Object for a valid step", duff: true do

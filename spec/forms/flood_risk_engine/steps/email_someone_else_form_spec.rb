@@ -1,5 +1,5 @@
 require "rails_helper"
-require_relative "../../support/shared_examples/form_objects"
+require_relative "../../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
   module Steps
