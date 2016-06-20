@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails", ">= 3.1"
   s.add_dependency "validates_email_format_of", "~> 1.6" # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "phonelib", "~> 0.6" # Add telephone number validation
-  s.add_dependency "activerecord-session_store", "~> 0.1"
+  s.add_dependency "activerecord-session_store", "~> 1.0"
   s.add_dependency "os_map_ref", "~> 0.4"
   s.add_dependency "has_secure_token", "~> 1.0.0" # Enables url obfuscation with 24bit base58 token
   s.add_dependency "uk_postcode", "~> 2.1" # Postcode format validation
