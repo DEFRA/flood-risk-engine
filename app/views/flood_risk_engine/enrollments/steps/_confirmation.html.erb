@@ -39,7 +39,8 @@
     <p class="text"><%= t('.para_text8') %></p>
 
     <p class="text">
-      <%= link_to t('.feedback_text'), page_path('feedback'), class: 'link' %> <%= t('.feedback_helper') %>
+      <%= link_to t('.feedback_text'), FloodRiskEngine.feedback_page_url, class: 'link' %>
+      <%= t('.feedback_helper') %>
     </p>
 
   </div>
