@@ -29,13 +29,34 @@ module FloodRiskEngine
         expect(subject.validate({})).to be(true)
       end
 
+      describe ".new" do
+        context "when incomplete partners exist" do
+          let(:incomplete_contact) { FactoryGirl.create(:contact, address: nil) }
+          before do
+            partner
+            FactoryGirl.create(
+              :partner,
+              contact: incomplete_contact,
+              organisation: enrollment.organisation
+            )
+            expect(enrollment.partners.count).to eq(2)
+          end
+
+          it "should remove the incomplete partner" do
+            expect { described_class.new(enrollment) }.to change(Partner, :count).by(-1)
+            expect(enrollment.reload.partners).to eq([partner])
+          end
+        end
+      end
+
       describe "show_continue_button?" do
         it "should start as false" do
           expect(subject.show_continue_button?).to be_falsy
         end
 
         context "there are more than one partners" do
-          let(:contact2) { FactoryGirl.create(:contact, address: address) }
+          let(:address2) { FactoryGirl.create(:address) }
+          let(:contact2) { FactoryGirl.create(:contact, address: address2) }
           before do
             partner
             FactoryGirl.create(
