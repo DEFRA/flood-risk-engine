@@ -2,6 +2,8 @@ module FloodRiskEngine
   module Enrollments
     class AddressForm < Reform::Form
 
+      delegate :model_name, to: :model
+
       def self.t(locale, args = {})
         I18n.t "flood_risk_engine.enrollments.addresses#{locale}", args
       end
