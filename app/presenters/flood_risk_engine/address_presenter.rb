@@ -9,9 +9,7 @@ module FloodRiskEngine
     # Flat 1A, 121 Acacia Avenue, Broadbean, Kent, TU4 8AA
     def to_single_line
       return unless address
-      %i(premises street_address locality city postcode).map do |attribute|
-        address[attribute]
-      end.compact.reject(&:blank?).join(", ")
+      address.parts.join(", ")
     end
 
     private

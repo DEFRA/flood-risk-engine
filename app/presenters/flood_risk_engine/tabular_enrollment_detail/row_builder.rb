@@ -76,6 +76,14 @@ module FloodRiskEngine
                   step: "#{organisation_type}_number"
       end
 
+      def partner_rows
+        enrollment.partners.collect do |partner|
+          partner_presenter = PartnerPresenter.new(partner)
+          build_row name: :responsible_partner,
+                    value: partner_presenter.to_single_line
+        end
+      end
+
       private
 
       # ==== Arguments
