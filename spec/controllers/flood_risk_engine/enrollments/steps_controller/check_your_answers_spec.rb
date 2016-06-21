@@ -15,6 +15,7 @@ module FloodRiskEngine
     let(:reform_class)  { Steps::CheckYourAnswersForm }
     let(:step)          { :check_your_answers }
     let(:locale_scope)  { "flood_risk_engine.enrollments.steps.#{step}" }
+    let(:partner)       { nil }
 
     def t(key)
       I18n.t(key, scope: locale_scope)
@@ -26,6 +27,7 @@ module FloodRiskEngine
 
     before do
       set_journey_token
+      partner # ensure partner is built (if present) before get
       get :show, id: step, enrollment_id: enrollment
     end
 
@@ -56,6 +58,7 @@ module FloodRiskEngine
         value = enrollment.exemption_location.grid_reference
         expect(response.body).to have_tag("#{tr} td", text: /#{value}/)
       end
+
       it "organisation_type" do
         tr = "table tbody tr[@data-row='organisation_type']"
         expect(response.body).to have_selector(tr)
@@ -63,6 +66,47 @@ module FloodRiskEngine
         expect(response.body).to have_tag("#{tr} th", text: /#{title}/)
         value = I18n.t("organisation_types.#{enrollment.organisation.org_type}")
         expect(response.body).to have_tag("#{tr} td", text: /#{value}/)
+      end
+
+      it "organisation_name" do
+        tr = "table tbody tr[@data-row='organisation_name']"
+        expect(response.body).to have_selector(tr)
+      end
+
+      it "should not have responsible_partner" do
+        tr = "table tbody tr[@data-row='responsible_partner']"
+        expect(response.body).not_to have_selector(tr)
+      end
+    end
+
+    context "with partnership" do
+      let(:address) { FactoryGirl.create(:address) }
+      let(:contact) { FactoryGirl.create(:contact, address: address) }
+      let(:enrollment) do
+        FactoryGirl.create(
+          :enrollment,
+          :with_partnership,
+          :with_exemption,
+          :with_exemption_location,
+          step: step
+        )
+      end
+      let(:partner) do
+        FactoryGirl.create(
+          :partner,
+          contact: contact,
+          organisation: enrollment.organisation
+        )
+      end
+
+      it "should not include organisation_name" do
+        tr = "table tbody tr[@data-row='organisation_name']"
+        expect(response.body).not_to have_selector(tr)
+      end
+
+      it "responsible_partner" do
+        tr = "table tbody tr[@data-row='responsible_partner']"
+        expect(response.body).to have_selector(tr)
       end
     end
   end

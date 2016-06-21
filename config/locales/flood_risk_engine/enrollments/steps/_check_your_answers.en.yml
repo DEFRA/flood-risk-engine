@@ -37,3 +37,6 @@ en:
             correspondence_contact_email:
               title: Email
               accessible_change_link_suffix: email
+            responsible_partner:
+              title: Details of responsible partner
+              accessible_change_link_suffix: responsible partner
