@@ -17,8 +17,8 @@ PATH
       os_map_ref (~> 0.4)
       phonelib (~> 0.6)
       rails (~> 4.2)
-      reform (~> 2.1)
-      reform-rails (~> 0.1)
+      reform (= 2.1.0)
+      reform-rails (= 0.1.0)
       uk_postcode (~> 2.1)
       validates_email_format_of (~> 1.6)
       virtus (~> 1.0)
@@ -111,13 +111,13 @@ GEM
       representable (>= 2.4.0, <= 3.1.0)
       uber
     docile (1.1.5)
-    domain_name (0.5.20160310)
+    domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
-    ea-address_lookup (0.3.2)
+    ea-address_lookup (0.3.3)
       activesupport (>= 4.2)
       nesty (~> 1.0)
       rest-client (~> 2.0.0.rc2)
@@ -201,7 +201,7 @@ GEM
     parser (2.3.1.2)
       ast (~> 2.2)
     pg (0.18.4)
-    phonelib (0.6.1)
+    phonelib (0.6.2)
     pkg-config (1.1.7)
     poltergeist (1.9.0)
       capybara (~> 2.1)
@@ -256,7 +256,7 @@ GEM
     representable (3.0.0)
       declarative (~> 0.0.5)
       uber (~> 0.0.15)
-    rest-client (2.0.0.rc3)
+    rest-client (2.0.0.rc4)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -374,4 +374,4 @@ DEPENDENCIES
   webmock (~> 1.24)
 
 BUNDLED WITH
-   1.12.3
+   1.12.5
