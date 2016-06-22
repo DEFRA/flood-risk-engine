@@ -41,3 +41,5 @@ en:
             title: Telephone
           correspondence_contact_email:
             title: Email
+          responsible_partner:
+            title: Details of responsible partner
