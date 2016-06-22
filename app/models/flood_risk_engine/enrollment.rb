@@ -78,6 +78,12 @@ module FloodRiskEngine
       withdrawn: 6        # BO: used to hide anything created in error
     }
 
+    def submit
+      return if submitted_at.present?
+      self.submitted_at = Time.zone.now
+      pending!
+    end
+
     private
 
     # The reference_number in the agreed format "<id with up to 6 zero padded digits>"
