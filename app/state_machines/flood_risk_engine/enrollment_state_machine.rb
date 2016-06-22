@@ -45,7 +45,7 @@ module FloodRiskEngine
     end
 
     callbacks do
-      on_enter(:confirmation) { |_event| FinalizeEnrollmentService.new(target).finalize! }
+      on_enter(:confirmation) { |_event| SubmitEnrollmentService.new(target).finalize! }
     end
 
   end

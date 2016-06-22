@@ -1,9 +1,8 @@
-# Note the term Finalize here may have become misleading.
-# Unlike WEX, we are submitting the application for BO review - so it's final
-# in the sense that the user can no longer edit it (because the status will be moved on)
-# but that's all.
+# Unlike WEX, this registration is not yet Complete, we are only submitting the application for BO review
+# The user can no longer edit it (because the status will be moved on)
+#
 module FloodRiskEngine
-  class FinalizeEnrollmentService
+  class SubmitEnrollmentService
     attr_reader :enrollment
 
     def initialize(enrollment)
@@ -12,7 +11,7 @@ module FloodRiskEngine
 
     def finalize!
       validate_enrollment
-      enrollment.pending!
+      enrollment.submit
       SendEnrollmentSubmittedEmail.new(enrollment).call
     end
 

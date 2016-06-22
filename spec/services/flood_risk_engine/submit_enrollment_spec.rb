@@ -1,9 +1,9 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe FinalizeEnrollmentService, type: :service do
+  RSpec.describe SubmitEnrollmentService, type: :service do
     subject { described_class.new(enrollment) }
-    let(:enrollment) do
+    let!(:enrollment) do
       build_stubbed(:enrollment, status: Enrollment.statuses[:building])
     end
 
@@ -15,6 +15,11 @@ module FloodRiskEngine
         .to change { enrollment.status }
         .from("building")
         .to("pending")
+    end
+
+    it "sets the submitted_at date", duff: true do
+      expect_any_instance_of(SendEnrollmentSubmittedEmail).to receive(:call).exactly(:once)
+      expect { subject.finalize! }.to change { enrollment.submitted_at }.from(nil)
     end
 
     context "with a nil enrollment" do
