@@ -1,12 +1,17 @@
-<p>
+<h1 class="form-title heading-large">
   <%= t(".confirm_removal_of_partner", name: @partner.full_name) %>
-</p>
+</h1>
 <%= form_for(
       [@enrollment, @partner],
       url: delete_enrollment_partner_path(@enrollment, @partner),
       method: :post
     ) do |f| %>
-  <%= f.submit(t(".delete")) %>
+  <%= f.submit(t(".delete"), class: "button") %>
 <% end %>
 
-<%= link_to t(".cancel"), enrollment_step_path(@enrollment, @enrollment.current_step)  %>
+<%= link_to(
+      t(".cancel"),
+      enrollment_step_path(@enrollment, @enrollment.current_step),
+      style: "display:block;padding-top:30px;"
+    )
+%>
