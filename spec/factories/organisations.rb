@@ -17,5 +17,11 @@ FactoryGirl.define do
         registration_number ""
       end
     end
+
+    trait :with_partners do
+      after(:create) do |object|
+        (0..rand(4)).each { |_i| object.partners << create(:partner_with_contact) }
+      end
+    end
   end
 end
