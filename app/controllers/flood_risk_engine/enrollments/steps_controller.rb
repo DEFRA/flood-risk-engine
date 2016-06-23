@@ -61,6 +61,7 @@ module FloodRiskEngine
       end
 
       def check_journey_valid
+        return true unless FloodRiskEngine.config.require_journey_completed_in_same_browser
         return true if journey_tokens.include?(enrollment.token)
         raise(JourneyError, "Journey not started in current browser session")
       end

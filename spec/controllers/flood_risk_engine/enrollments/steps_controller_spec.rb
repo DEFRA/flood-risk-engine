@@ -16,6 +16,22 @@ module FloodRiskEngine
           get :show, id: step, enrollment_id: enrollment
           expect(response).to redirect_to(error_path(:step_not_valid))
         end
+
+        context "when app configured to allow another browser" do
+          let(:config) { FloodRiskEngine.config }
+          before do
+            config.require_journey_completed_in_same_browser = false
+          end
+
+          it "renders step page" do
+            get :show, id: step, enrollment_id: enrollment
+            expect(response).to have_http_status(:success)
+          end
+
+          after do
+            config.require_journey_completed_in_same_browser = true
+          end
+        end
       end
 
       context "step unknown" do
