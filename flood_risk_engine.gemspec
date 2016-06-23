@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/LineLength
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
@@ -18,8 +19,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2"
-  s.add_dependency "reform", "~> 2.1"
-  s.add_dependency "reform-rails", "~> 0.1"
+  s.add_dependency "reform", "2.1.0" # Form object convenience - fixing this version as later versions cause issues
+  s.add_dependency "reform-rails", "0.1.0" # Form object convenience - fixing this version as later versions cause issues
   s.add_dependency "dotenv-rails", "~> 2.1"
   s.add_dependency "finite_machine", "~> 0.10"
   s.add_dependency "dibber", "~> 0.5" # Manages data seeding
