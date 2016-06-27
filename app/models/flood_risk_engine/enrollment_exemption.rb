@@ -4,6 +4,7 @@ module FloodRiskEngine
 
     belongs_to :enrollment, foreign_key: :enrollment_id
     belongs_to :exemption
+    has_many :comments, as: :commentable
 
     enum status: {
       building: 0,        # FO: anywhere before the confirmation step
