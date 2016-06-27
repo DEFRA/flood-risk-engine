@@ -1,0 +1,6 @@
+en:
+  pages:
+    version:
+      app_version: 'Application Version:'
+      commit: 'Commit hash:'
+      render_time: 'Page rendered at:'

@@ -1,0 +1,5 @@
+en:
+  pages:
+    version:
+      heading: Flood Risk Engine Dummy
+      repository_url: 'https://github.com/EnvironmentAgency/flood_risk_engine/commit/%{sha}'

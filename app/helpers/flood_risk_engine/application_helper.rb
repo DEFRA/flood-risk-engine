@@ -67,6 +67,5 @@ module FloodRiskEngine
       args[0] = "flood_risk_engine.enrollments.steps.#{step}#{args.first}"
       t(*args)
     end
-
   end
 end
