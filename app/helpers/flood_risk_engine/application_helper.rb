@@ -36,7 +36,7 @@ module FloodRiskEngine
       if form && form.errors[attribute].any?
         classes << "error"
         content = content_tag(:span,
-                              form.errors[attribute].first.to_s.html_safe,
+                              form.errors[attribute].first,
                               class: "error-message") + content
       end
       content_tag(:div, content, options.merge(class: classes.join(" ")))
