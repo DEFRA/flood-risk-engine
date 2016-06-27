@@ -14,7 +14,8 @@ module FloodRiskEngine
       journey_tokens << enrollment.token
       cookies.encrypted[:journey_token] = {
         value: journey_tokens.join(","),
-        expires: journey_token_lifespan.from_now
+        expires: journey_token_lifespan.from_now,
+        httponly: true
       }
     end
 
