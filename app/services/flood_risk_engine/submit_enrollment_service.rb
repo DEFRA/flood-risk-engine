@@ -4,25 +4,25 @@
 module FloodRiskEngine
   class SubmitEnrollmentService
     attr_reader :enrollment
+    delegate :enrollment_exemptions, to: :enrollment
 
     def initialize(enrollment)
       @enrollment = enrollment
     end
 
     def finalize!
-      validate_enrollment
       enrollment.submit
+      set_enrollment_exemptions_to_pending
       SendEnrollmentSubmittedEmail.new(enrollment).call
     end
 
     private
 
-    def validate_enrollment
-      raise(ArgumentError, "Enrollment missing") if enrollment.nil?
-      unless enrollment.building?
-        raise InvalidEnrollmentStateError,
-              "Expected enrollment to have status 'building' but was '#{enrollment.status}'"
+    def set_enrollment_exemptions_to_pending
+      enrollment_exemptions.each do |enrollment_exemption|
+        enrollment_exemption.pending! if enrollment_exemption.building?
       end
     end
+
   end
 end
