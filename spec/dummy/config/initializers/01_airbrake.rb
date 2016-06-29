@@ -12,15 +12,12 @@ require_dependency "airbrake"
 if Rails.env.production?
 
   Airbrake.configure do |c|
-
-    secrets = Rails.application.secrets
-
     # You must set both project_id & project_key. To find your project_id and
     # project_key navigate to your project's General Settings and copy the values
     # from the right sidebar.
     # https://github.com/airbrake/airbrake-ruby#project_id--project_key
-    c.host = secrets.airbrake_host
-    c.project_key = secrets.airbrake_project_key
+    c.host = Rails.application.secrets.airbrake_host
+    c.project_key = Rails.application.secrets.airbrake_project_key
     c.project_id = true # Errbit doesn't require a specific project_id, so setting to true
 
     # Configures the root directory of your project. Expects a String or a
@@ -49,7 +46,7 @@ if Rails.env.production?
     # environments.
     # NOTE: This option *does not* work if you don't set the 'environment' option.
     # https://github.com/airbrake/airbrake-ruby#ignore_environments
-    c.ignore_environments = %w[development test]
+    c.ignore_environments = %w(development test)
 
     # A list of parameters that should be filtered out of what is sent to
     # Airbrake. By default, all "password" attributes will have their contents
