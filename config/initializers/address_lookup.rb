@@ -1,10 +1,4 @@
 EA::AddressLookup.configure do |config|
-  config.address_facade_server  = Rails.application.secrets.address_facade_server
-  config.address_facade_port    = Rails.application.secrets.address_facade_port
-  config.address_facade_url     = "/address-service/v1/addresses/postcode"
-
-  # 5 was causing many timeouts in development
-  config.timeout_in_seconds       = Rails.application.secrets.address_facade_timeout
-  config.address_facade_client_id = Rails.application.secrets.address_facade_client_id
-  config.address_facade_key       = Rails.application.secrets.address_facade_key
+   # Please configure address lookup url etc by adding a config/initialisers/address_lookup.rb
+   # in the host application
 end

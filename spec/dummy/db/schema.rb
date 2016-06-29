@@ -88,10 +88,9 @@ ActiveRecord::Schema.define(version: 20160629131906) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.integer  "secondary_contact_id"
     t.string   "token"
+    t.integer  "secondary_contact_id"
     t.string   "reference_number",          limit: 12
-    t.boolean  "in_review"
     t.datetime "submitted_at"
   end
 
@@ -144,11 +143,13 @@ ActiveRecord::Schema.define(version: 20160629131906) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "org_type"
+    t.integer  "primary_address_id"
     t.string   "registration_number", limit: 12
   end
 
   add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id", using: :btree
   add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type", using: :btree
+  add_index "flood_risk_engine_organisations", ["primary_address_id"], name: "index_flood_risk_engine_organisations_on_primary_address_id", using: :btree
   add_index "flood_risk_engine_organisations", ["registration_number"], name: "index_flood_risk_engine_organisations_on_registration_number", using: :btree
 
   create_table "flood_risk_engine_partners", force: :cascade do |t|
@@ -184,6 +185,7 @@ ActiveRecord::Schema.define(version: 20160629131906) do
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_organisations", column: "organisation_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_exemptions", column: "exemption_id"
+  add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_addresses", column: "primary_address_id"
   add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"
   add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_contacts", column: "contact_id"
   add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_organisations", column: "organisation_id"
