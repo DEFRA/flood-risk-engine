@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628122827) do
+ActiveRecord::Schema.define(version: 20160629131906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,11 +102,13 @@ ActiveRecord::Schema.define(version: 20160628122827) do
   add_index "flood_risk_engine_enrollments", ["token"], name: "index_flood_risk_engine_enrollments_on_token", unique: true, using: :btree
 
   create_table "flood_risk_engine_enrollments_exemptions", force: :cascade do |t|
-    t.integer  "enrollment_id",             null: false
-    t.integer  "exemption_id",              null: false
-    t.integer  "status",        default: 0
+    t.integer  "enrollment_id",                        null: false
+    t.integer  "exemption_id",                         null: false
+    t.integer  "status",               default: 0
     t.datetime "expires_at"
     t.datetime "valid_from"
+    t.boolean  "asset_found",          default: false
+    t.boolean  "salmonid_river_found", default: false
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true, using: :btree
