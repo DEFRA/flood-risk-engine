@@ -19,8 +19,6 @@ module FloodRiskEngine
     attr_reader :enrollment
 
     def validate_enrollment
-      raise ArgumentError, "Enrollment argument not supplied" unless enrollment.present?
-      raise InvalidEnrollmentStateError, "Enrollment is not pending" unless enrollment.pending?
       raise MissingEmailAddressError, "Missing contact email address" if primary_contact_email.blank?
     end
 
