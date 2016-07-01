@@ -1,6 +1,7 @@
 en:
   pages:
     version:
-      app_version: 'Application Version:'
+      app_version: 'Application version:'
       commit: 'Commit hash:'
+      flood_risk_engine_version: 'FloodRiskEngine version:'
       render_time: 'Page rendered at:'
