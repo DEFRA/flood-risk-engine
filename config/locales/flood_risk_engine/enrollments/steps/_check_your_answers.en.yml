@@ -1,5 +1,9 @@
 ---
 en:
+  distance:
+    unit:
+      one: metre
+      other: metres
   flood_risk_engine:
     enrollments:
       steps:
@@ -22,6 +26,12 @@ en:
             exemption:
               title: Exemption %{code}
               accessible_change_link_suffix: exemption %{code}
+            location_description:
+              title: Site description
+              accessible_change_link_suffix: site description
+            dredging_length:
+              title: Dredging length
+              accessible_change_link_suffix: dredging length
             organisation_name:
               title: Responsible for activity (‘operator’)
               accessible_change_link_suffix: operator

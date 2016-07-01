@@ -59,6 +59,15 @@ module FloodRiskEngine
         expect(response.body).to have_tag("#{tr} td", text: /#{value}/)
       end
 
+      it "location_description" do
+        tr = "table tbody tr[@data-row='location_description']"
+        expect(response.body).to have_selector(tr)
+        title = row_t(:location_description, :title)
+        expect(response.body).to have_tag("#{tr} th", text: /#{title}/)
+        value = enrollment.exemption_location.description
+        expect(response.body).to have_tag("#{tr} td", text: /#{value}/)
+      end
+
       it "organisation_type" do
         tr = "table tbody tr[@data-row='organisation_type']"
         expect(response.body).to have_selector(tr)
@@ -106,6 +115,23 @@ module FloodRiskEngine
 
       it "responsible_partner" do
         tr = "table tbody tr[@data-row='responsible_partner']"
+        expect(response.body).to have_selector(tr)
+      end
+    end
+
+    context "with dredging exemption" do
+      let(:enrollment) do
+        FactoryGirl.create(
+          :enrollment,
+          :with_partnership,
+          :with_dredging_exemption,
+          :with_exemption_location,
+          step: step
+        )
+      end
+
+      it "should include dredging length" do
+        tr = "table tbody tr[@data-row='dredging_length']"
         expect(response.body).to have_selector(tr)
       end
     end
