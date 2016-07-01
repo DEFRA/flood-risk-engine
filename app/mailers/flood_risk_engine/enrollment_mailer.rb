@@ -10,6 +10,7 @@ module FloodRiskEngine
       @enrollment = TabularEnrollmentDetailPresenter.new(enrollment: underlying_enrollment,
                                                          i18n_scope: i18n_scope,
                                                          display_change_url: false)
+      @exemption = underlying_enrollment.exemptions.first
 
       mail to: recipient_address,
            from: ENV["DEVISE_MAILER_SENDER"],
