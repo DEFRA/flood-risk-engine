@@ -20,5 +20,25 @@ module FloodRiskEngine
       includes(:exemption).where(flood_risk_engine_exemptions: { code: Exemption::LONG_DREDGING_CODES }).any?
     end
 
+    def latest_decision
+      comments.order(:created_at).pluck(:created_at, :user_id).last
+    end
+
+    def decision_at_and_user
+      return [nil, nil] if comments.empty?
+      latest = latest_decision
+      [latest.first, User.find(latest.last).try(:email)]
+    end
+
+    def decision_at
+      return if comments.empty?
+      latest_decision.first
+    end
+
+    def decision_user_id
+      return if comments.empty?
+      latest_decision.last
+    end
+
   end
 end
