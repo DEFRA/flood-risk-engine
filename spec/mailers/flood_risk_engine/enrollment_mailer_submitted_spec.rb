@@ -64,19 +64,47 @@ module FloodRiskEngine
     end
 
     context "content" do
-      it "pulls in translated content" do
-        %w(heading
-           reference_number_heading
-           preamble1
-           preamble2
-           preamble3
-           summary_heading
-           guidance.preamble
-           guidance.link_title
-           your_responsibilities.heading
-           your_responsibilities.body).each do |key|
-          expect(email.text_part).to have_body_text(t(key))
-          expect(email.html_part).to have_body_text(t(key))
+      context "in html format" do
+        %w(subject
+           please_wait
+           exemption_heading
+           heading_1
+           preamble_1a
+           preamble_1b
+           heading_2
+           preamble_2
+           heading_3
+           preamble_3_html
+           contact_heading
+           contact_email_html
+           contact_telephone_html
+           contact_minicom_html
+           contact_opening_hours).each do |key|
+          it "pulls in translated content for .#{key}" do
+            expect(email.html_part).to have_body_text(t(key))
+          end
+        end
+      end
+      context "in text format" do
+        %w(subject
+           text_heading
+           exemption_heading
+           heading_1
+           preamble_1a
+           preamble_1b
+           heading_2
+           preamble_2
+           heading_3
+           preamble_3a
+           preamble_3b
+           contact_heading
+           contact_email
+           contact_telephone
+           contact_minicom
+           contact_opening_hours).each do |key|
+          it "pulls in translated content for .#{key}" do
+            expect(email.text_part).to have_body_text(t(key))
+          end
         end
       end
 

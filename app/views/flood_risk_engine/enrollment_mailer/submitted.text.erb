@@ -1,20 +1,26 @@
+<%= t(".text_heading") %>
+--------------------------------------------------------
 
-<%= t(".heading") %>
-<%= t(".reference_number_heading") %> <%= @enrollment.reference_number %>
+<%= t('.text_reference_number', reference_number: @enrollment.reference_number) %>
 
-<%= t(".preamble1") %>
-<%= t(".preamble2") %>
-<%= t(".preamble3") %>
+<%= t(".exemption_heading") %>
+<%= @exemption.summary %> <%= @exemption.code %>.
 
-<%= t(".summary_heading") %>
+<%= t(".heading_1") %>
+<%= t(".preamble_1a") %>
+<%= t(".preamble_1b") %>
 
-<% @enrollment.rows.each do |row| %>
-<%= "#{row.title}: #{row.value}" %>
-<% end %>
+<%= t(".heading_2") %>
+<%= t(".preamble_2") %>
 
-<%= t(".guidance.preamble") %> <%= t(".guidance.link_title") %>.
-<%= FloodRiskEngine.config.govuk_guidance_url %>
+<%= t(".heading_3") %>
+<%= t(".preamble_3a") %>
+<%= t(".preamble_3b") %>
 
-<%= t(".your_responsibilities.heading") %>
-
-<%= t(".your_responsibilities.body") %>
+--------------------------------------------------------
+<%= t(".contact_heading") %>
+<%= t('.contact_email') %>
+<%= t('.contact_telephone') %>
+<%= t('.contact_minicom') %>
+<%= t(".contact_opening_hours") %>
+--------------------------------------------------------

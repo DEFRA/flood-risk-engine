@@ -1,56 +1,48 @@
-<h1 class="bold-large">
-  <%= t(".heading") %>
-</h1>
-<p>
-  <%= t(".reference_number_heading") %>
-  <br />
-  <strong class="heading-medium">
-    <%= @enrollment.reference_number %>
-  </strong>
+<%= content_for :heading, t('.subject') %>
+
+<p class="lead">
+  <%= t('.please_wait') %>
 </p>
 
-<div class="panel panel-border-wide">
-  <p class="bold-medium">
-    <%= t(".preamble1") %>
-  </p>
-  <p>
-    <%= t(".preamble2") %>
-  </p>
-  <p>
-    <%= t(".preamble3") %>
-  </p>
-</div>
+<p class="panel">
+  <%= t('.reference_number_heading', reference_number: @enrollment.reference_number) %>
+</p>
 
-<h2 class="heading-medium">
-  <%= t(".summary_heading") %>
-</h2>
+<h2 class="border-top"><%= t('.exemption_heading') %></h2>
+<p>
+  <%= @exemption.summary %> <%= @exemption.code %>.
+</p>
 
-<table class="check-your-answers" summary="<%= t('.table_summary') %>">
-  <tbody>
-    <% @enrollment.rows.each do |row| %>
-      <tr data-row="<%= row.name %>">
-        <th>
-          <%= row.title %>
-        </th>
-        <td>
-          <%= row.value %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br />
-<br />
-
-<%= t(".guidance.preamble") %>
-<%= link_to t(".guidance.link_title"), FloodRiskEngine.config.govuk_guidance_url %>.
-
-<br/>
-
-<h2 class="heading-medium">
-  <%= t(".your_responsibilities.heading") %>
+<h2 class="border-top">
+  <%= t('.heading_1') %>
 </h2>
 <p>
-  <%= t(".your_responsibilities.body") %>
+  <%= t('.preamble_1a') %>
+</p>
+<p>
+  <%= t('.preamble_1b') %>
+</p>
+
+<h3>
+  <%= t('.heading_2') %>
+</h3>
+<p>
+  <%= t('.preamble_2') %>
+</p>
+
+<h3>
+  <%= t('.heading_3') %>
+</h3>
+<p>
+  <%= t('.preamble_3_html') %>
+</p>
+
+<h2 class="border-top">
+  <%= t('.contact_heading') %>
+</h2>
+<p>
+  <%= t('.contact_email_html') %>
+  <br /> <%= t('.contact_telephone_html') %>
+  <br /> <%= t('.contact_minicom_html') %>
+  <br /> <%= t('.contact_opening_hours') %>
 </p>

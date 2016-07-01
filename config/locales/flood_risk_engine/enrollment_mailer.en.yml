@@ -3,43 +3,26 @@ en:
   flood_risk_engine:
     enrollment_mailer:
       submitted:
-        subject: Your application has been submitted (subject TBC)
-        heading: "Application complete: you must now wait for us to check the location"
-        reference_number_heading: Your reference is
-        preamble1: You must not start work until we confirm your registration.
-        preamble2: We will check the location of the activity in our database of environmentally sensitive and flood defence areas.
-        preamble3: We will contact you within 15 working days to confirm or cancel your registration.
-        summary_heading: Application details
-        table_summary: Application details
-        your_responsibilities:
-          heading: Your responsibilities
-          body: The organisation or individual responsible must keep to the
-                description and conditions for the exemption(s).
-                We can prosecute them if they don’t do this.
-        check_conditions: >
-          You can check the conditions of your exemptions in the %{guidance_link}
-          flood risk activities guidance
-        guidance:
-          preamble: You can check the conditions of your exemptions in the
-          link_title: flood risk activities guidance
-        rows:
-          organisation_registration_number:
-            title: Company registration number
-          organisation_type:
-            title: Customer type
-          grid_reference:
-            title: Grid reference
-          exemption:
-            title: Exemption %{code}
-          organisation_name:
-            title: Responsible for activity (‘operator’)
-          organisation_address:
-            title: Their address
-          correspondence_contact_name:
-            title: Who we will contact
-          correspondence_contact_telephone:
-            title: Telephone
-          correspondence_contact_email:
-            title: Email
-          responsible_partner:
-            title: Details of responsible partner
+        subject: Registration submitted
+        reference_number_heading: Your reference is %{reference_number}
+        please_wait: Please wait for us to confirm it before you start work.
+        exemption_heading: Exemption submitted
+        text_heading: 'Registration submitted: please wait for us to confirm it'
+        text_reference_number: 'Your reference is: %{reference_number}'
+        heading_1: What happens next
+        preamble_1a: We’ll email you within 10 working days to tell you if your registration is valid.
+        preamble_1b: You must not start work until we confirm your registration.
+        heading_2: What we’ll check
+        preamble_2: We’ll check if there are reasons why you can’t register an exemption at the location you gave. For example, a location that is environmentally sensitive or too close to a flood defence structure.
+        heading_3: What you must check
+        preamble_3a: 'You are responsible for checking that you can meet the description and conditions in the exempt flood risk activities guidance:'
+        preamble_3b: 'https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities'
+        preamble_3_html: You are responsible for checking that you can meet the description and conditions in the <a href="https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities">exempt flood risk activities guidance</a>.
+        contact_heading: Contact the Environment Agency
+        contact_email: 'enquiries@environment-agency.gov.uk'
+        contact_email_html: '<a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>'
+        contact_telephone: 'Telephone: 03708 506 506'
+        contact_telephone_html: 'Telephone: <a href="tel:03708506506">03708 506 506</a>'
+        contact_minicom: 'Minicom: 03702 422 549'
+        contact_minicom_html: 'Minicom: <a href="tel:03702422549">03702 422 549</a>'
+        contact_opening_hours: Monday to Friday, 8am to 6pm
