@@ -1,0 +1,25 @@
+<% presenter = FloodRiskEngine::ApplicationVersionPagePresenter.new %>
+
+<header>
+  <h1 class="heading-large"><%= presenter.application_name %></h1>
+</header>
+
+<section>
+  <p>
+    <label><%= t ('.app_version') %></label>
+    <strong><%= presenter.application_version %></strong>
+  </p>
+  <p>
+    <label><%= t('.commit') %></label>
+    <strong>
+      <%= link_to(presenter.git_commit,
+                  presenter.git_commit_url,
+                  target: "_blank",
+                  class: "btn-link") %>
+    </strong>
+  </p>
+  <p>
+    <label><%= t('.render_time') %></label>
+    <strong><%= l Time.zone.now %></strong>
+  </p>
+</section>
