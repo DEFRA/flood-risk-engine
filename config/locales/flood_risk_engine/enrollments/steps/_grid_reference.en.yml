@@ -25,11 +25,10 @@ en:
           details:
             summary: Help finding a grid reference
             tool_text: Use the free %{link}
-            tool_link:  Ordnance Survey online map (opens new window).
-            bullet1:  Search for a place and zoom in.
-            bullet2:  Right-click to drop a pin and see the grid reference.
-            bullet3:  Or select ‘Grid Ref' at the top and drag your location under the centre cross.
-            bullet4:  Select the grid reference then copy using Ctrl-C or Command-C keys.
+            tool_link: UK Grid Reference Finder (opens new window).
+            bullet1:  Search for the location or postcode on the right of the page.
+            bullet2:  Right-click to display the grid reference.
+            bullet3:  Select the grid reference then copy and paste back on this page.
           errors:
             grid_reference:
               invalid: "Enter the grid reference in this format: ST 58132 72695"
