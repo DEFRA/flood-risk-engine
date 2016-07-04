@@ -1,3 +1,4 @@
+# rubocop:disable ClassLength
 module FloodRiskEngine
   module TabularEnrollmentDetail
     class RowBuilder
@@ -40,6 +41,22 @@ module FloodRiskEngine
                   value: exemption.summary,
                   step: :add_exemptions,
                   code: exemption.code
+      end
+
+      def location_description_row
+        return unless enrollment_presenter.exemption_location
+        build_row name: :location_description,
+                  value: enrollment_presenter.exemption_location.description,
+                  step: :grid_reference
+      end
+
+      def location_dredging_length_row
+        return unless enrollment.enrollment_exemptions.include_long_dredging?
+        dredging_length = enrollment_presenter.exemption_location.dredging_length
+        formatted_dredging_length = ActiveSupport::NumberHelper.number_to_human(dredging_length, units: :distance)
+        build_row name: :dredging_length,
+                  value: formatted_dredging_length,
+                  step: :grid_reference
       end
 
       def organisation_name_row

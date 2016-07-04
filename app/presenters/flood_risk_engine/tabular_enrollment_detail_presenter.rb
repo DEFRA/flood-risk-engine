@@ -29,6 +29,8 @@ module FloodRiskEngine
       [
         row_builder.exemptions_rows,
         row_builder.grid_reference_row,
+        row_builder.location_description_row,
+        row_builder.location_dredging_length_row,
         row_builder.organisation_type_row,
         organisation_rows,
         row_builder.correspondence_contact_name_row,

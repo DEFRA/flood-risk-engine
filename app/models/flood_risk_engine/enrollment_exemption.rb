@@ -16,5 +16,9 @@ module FloodRiskEngine
       withdrawn: 6        # BO: used to hide anything created in error
     }
 
+    def self.include_long_dredging?
+      includes(:exemption).where(flood_risk_engine_exemptions: { code: Exemption::LONG_DREDGING_CODES }).any?
+    end
+
   end
 end

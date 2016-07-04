@@ -23,6 +23,14 @@ FactoryGirl.define do
       end
     end
 
+    trait :with_dredging_exemption do
+      after(:build) do |object|
+        dredging_code = FloodRiskEngine::Exemption::LONG_DREDGING_CODES.sample
+        exemption = create(:exemption, code: dredging_code)
+        object.enrollment_exemptions.build(exemption: exemption)
+      end
+    end
+
     trait :with_exemption_location do
       after(:build) do |object|
         object.exemption_location = build(:location)
