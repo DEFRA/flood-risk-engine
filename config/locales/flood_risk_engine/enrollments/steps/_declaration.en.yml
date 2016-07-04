@@ -19,4 +19,4 @@ en:
           privacy:
             text: Read about %{link}.
             link: how we use your personal information (opens new window)
-          continue: Accept and complete this registration
+          continue: Accept and continue
