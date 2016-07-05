@@ -1,12 +1,12 @@
-<%= content_for :heading, t('.subject') %>
-
-<p class="lead">
+<%= content_for :heading do %>
+  <%= t('.registration_submitted') %>
+  <br>
   <%= t('.please_wait') %>
-</p>
+<% end %>
 
-<p class="panel">
+<h2>
   <%= t('.reference_number_heading', reference_number: @enrollment.reference_number) %>
-</p>
+</h2>
 
 <h2 class="border-top"><%= t('.exemption_heading') %></h2>
 <p>

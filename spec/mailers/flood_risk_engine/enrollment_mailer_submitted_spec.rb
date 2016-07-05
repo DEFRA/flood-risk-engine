@@ -66,6 +66,7 @@ module FloodRiskEngine
     context "content" do
       context "in html format" do
         %w(subject
+           registration_submitted
            please_wait
            exemption_heading
            heading_1
@@ -86,8 +87,8 @@ module FloodRiskEngine
         end
       end
       context "in text format" do
-        %w(subject
-           text_heading
+        %w(registration_submitted
+           please_wait
            exemption_heading
            heading_1
            preamble_1a
