@@ -34,17 +34,14 @@ module FloodRiskEngine
 
     has_one :address_search
 
-    serialize :step_history, Array
-
     before_validation :preserve_current_step
+    after_create :generate_and_save_reference_number
 
     # Have to use `validate` as `validates` is called on page load, before
     # the state machine class can be switched, and therefore is always run on the
     # default state machine. 'validate' calls the method on the instance so
     # can be run after the state machine class has been changed
     validate :step_defined_in_state_machines
-
-    after_create :generate_and_save_reference_number
 
     def to_param
       token
@@ -71,6 +68,10 @@ module FloodRiskEngine
     def submit
       return if submitted_at.present?
       self.submitted_at = Time.zone.now
+    end
+
+    def submitted?
+      submitted_at?
     end
 
     private
