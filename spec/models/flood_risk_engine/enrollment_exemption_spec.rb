@@ -30,8 +30,8 @@ module FloodRiskEngine
         ee.comments << comments
         sorted = comments.sort_by(&:created_at)
 
-        expect(ee.latest_decision.first.to_date).to eq sorted.last.created_at.to_date
-        expect(ee.latest_decision.last).to eq sorted.last.user_id
+        expect(ee.latest_comment_at_and_user_id.first.to_date).to eq sorted.last.created_at.to_date
+        expect(ee.latest_comment_at_and_user_id.last).to eq sorted.last.user_id
       end
     end
 

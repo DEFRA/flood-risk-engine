@@ -20,24 +20,28 @@ module FloodRiskEngine
       includes(:exemption).where(flood_risk_engine_exemptions: { code: Exemption::LONG_DREDGING_CODES }).any?
     end
 
-    def latest_decision
+    def accept_reject_decision_user
+      User.find_by_id(accept_reject_decision_user_id).try(:email)
+    end
+
+    def latest_comment_at_and_user_id
       comments.order(:created_at).pluck(:created_at, :user_id).last
     end
 
     def decision_at_and_user
       return [nil, nil] if comments.empty?
-      latest = latest_decision
+      latest = latest_comment_at_and_user_id
       [latest.first, User.find(latest.last).try(:email)]
     end
 
     def decision_at
       return if comments.empty?
-      latest_decision.first
+      latest_comment_at_and_user_id.first
     end
 
     def decision_user_id
       return if comments.empty?
-      latest_decision.last
+      latest_comment_at_and_user_id.last
     end
 
     def status_one_of?(*statuses)
