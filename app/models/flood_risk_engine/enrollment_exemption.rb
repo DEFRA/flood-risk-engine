@@ -40,5 +40,9 @@ module FloodRiskEngine
       latest_decision.last
     end
 
+    def status_one_of?(*statuses)
+      statuses.collect(&:to_s).include? status
+    end
+
   end
 end

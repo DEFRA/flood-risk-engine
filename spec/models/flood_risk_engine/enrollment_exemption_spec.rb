@@ -2,6 +2,9 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe EnrollmentExemption, type: :model do
+    let(:enrollment_exemption) { FactoryGirl.create(:enrollment_exemption) }
+    let(:status) { enrollment_exemption.status }
+
     it { is_expected.to be_valid }
     it { is_expected.to respond_to(:expires_at) }
     it { is_expected.to respond_to(:valid_from) }
@@ -42,6 +45,20 @@ module FloodRiskEngine
       end
       it "returns false if the collection does not include a long dredging exemption" do
         expect(described_class.include_long_dredging?).to be_falsey
+      end
+    end
+
+    describe "#status_one_of?" do
+      it "should return true if state is passed in" do
+        expect(enrollment_exemption.status_one_of?(status)).to eq(true)
+      end
+
+      it "should return true if state is passed in as one of many" do
+        expect(enrollment_exemption.status_one_of?(status, :foo, :bar)).to eq(true)
+      end
+
+      it "should return false if state is not passed in" do
+        expect(enrollment_exemption.status_one_of?(:foo, :bar)).to eq(false)
       end
     end
   end

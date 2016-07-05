@@ -76,5 +76,19 @@ module FloodRiskEngine
         expect(enrollment.reference_number).to eq expected_reference_number
       end
     end
+
+    describe "#submitted?" do
+      it "should return false" do
+        expect(enrollment.submitted?).to eq(false)
+      end
+
+      context "after `submit` called" do
+        before { enrollment.submit }
+
+        it "should return true" do
+          expect(enrollment.submitted?).to eq(true)
+        end
+      end
+    end
   end
 end
