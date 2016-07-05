@@ -1,4 +1,8 @@
-<%= content_for :heading, t('.heading_html') %>
+<%= content_for :heading do %>
+  <%= t('.registration_submitted') %>
+  <br>
+  <%= t('.please_wait') %>
+<% end %>
 
 <h2>
   <%= t('.reference_number_heading', reference_number: @enrollment.reference_number) %>
