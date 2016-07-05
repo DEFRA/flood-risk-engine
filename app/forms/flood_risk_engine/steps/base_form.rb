@@ -58,8 +58,7 @@ module FloodRiskEngine
       end
 
       def show_continue_button?
-        # All states except :confirmation
-        !enrollment.state_machine.state_machine.confirmation?
+        enrollment.can?(:go_forward)
       end
 
       protected

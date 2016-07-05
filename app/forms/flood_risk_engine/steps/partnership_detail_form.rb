@@ -20,7 +20,7 @@ module FloodRiskEngine
       end
 
       def show_continue_button?
-        enrollment.partners.count > 1
+        (enrollment.partners.count > 1) && super
       end
 
       private

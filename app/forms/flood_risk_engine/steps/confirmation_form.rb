@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class ConfirmationForm < Steps::BaseForm
+    class ConfirmationForm < BaseForm
 
       def self.factory(enrollment)
         raise(

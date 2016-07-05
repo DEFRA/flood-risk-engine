@@ -4,7 +4,9 @@ module FloodRiskEngine
     routes { Engine.routes }
     render_views
 
-    let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
+    let(:enrollment) do
+      FactoryGirl.create(:enrollment, :with_local_authority, step: step)
+    end
 
     let(:reform_class) { Steps::LocalAuthorityForm }
 

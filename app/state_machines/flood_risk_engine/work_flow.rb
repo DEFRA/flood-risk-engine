@@ -71,6 +71,10 @@ module FloodRiskEngine
         end
       end
 
+      def unknown
+        start + [:unknown]
+      end
+
       def start
         [
           :add_exemptions,
