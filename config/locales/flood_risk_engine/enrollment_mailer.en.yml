@@ -3,9 +3,9 @@ en:
   flood_risk_engine:
     enrollment_mailer:
       submitted:
-        subject: Registration submitted
+        subject: Flood risk activity exemption submitted
+        heading_html: 'Registration submitted: <br /> please wait for us to confirm it'
         reference_number_heading: Your reference is %{reference_number}
-        please_wait: Please wait for us to confirm it before you start work.
         exemption_heading: Exemption submitted
         text_heading: 'Registration submitted: please wait for us to confirm it'
         text_reference_number: 'Your reference is: %{reference_number}'
