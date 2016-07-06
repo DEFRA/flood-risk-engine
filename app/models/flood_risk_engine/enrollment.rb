@@ -76,11 +76,17 @@ module FloodRiskEngine
 
     private
 
-    # The reference_number in the agreed format "<id with up to 6 zero padded digits>"
-    # e.g. T.B.D
     def generate_and_save_reference_number
       return if reference_number?
-      update_column(:reference_number, sprintf("%06d", id))
+
+      number = ReferenceNumber.with(
+        prefix: "EXFRA",
+        seed: id,
+        offset: 10_000,
+        padding: "0",
+        minimum_length: 11
+      )
+      update_column :reference_number, number
     end
 
     def preserve_current_step
