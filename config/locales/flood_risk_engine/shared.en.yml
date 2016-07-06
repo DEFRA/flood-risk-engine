@@ -15,7 +15,7 @@ en:
       footer:
         support_text: 'Environment Agency helpline:'
         helpline_telephone_number: 03708 506506
-        helpline_telephone_number_uri: 03708 506506
+        helpline_telephone_number_uri: '+443708506506'
       organisation_name:
         individual_name:
           hint:  For example, Jane Smith
