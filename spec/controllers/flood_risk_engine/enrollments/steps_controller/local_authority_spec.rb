@@ -23,12 +23,12 @@ module FloodRiskEngine
           expect(controller.send(:form)).to be_a(Steps::LocalAuthorityForm)
         end
 
-        it "diplays header" do
+        it "displays header" do
           header_text = t("flood_risk_engine.enrollments.steps.local_authority.heading")
           expect(response.body).to have_tag :h1, text: /#{header_text}/
         end
 
-        it "diplays Continue button" do
+        it "displays Continue button" do
           expect(response.body).to have_selector("input[type=submit][value='Continue']")
         end
 
