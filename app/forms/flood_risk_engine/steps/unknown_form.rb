@@ -9,6 +9,8 @@ module FloodRiskEngine
         :unknown
       end
 
+      # Probably over-kill, but making validate and save return false
+      # to ensure POSTing to this form doesn't lead anywhere.
       def validate(_params)
         false
       end
