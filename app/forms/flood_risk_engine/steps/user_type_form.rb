@@ -44,6 +44,12 @@ module FloodRiskEngine
           ]
         end
       end
+
+      # Need to over-ride normal behaviour as go_forward won't be available
+      # until organisation type is chosen via form submission.
+      def show_continue_button?
+        true
+      end
     end
   end
 end

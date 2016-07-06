@@ -32,7 +32,8 @@ module FloodRiskEngine
         :limited_liability_partnership,
         :individual,
         :partnership,
-        :other
+        :other,
+        :unknown
       ].each do |org_type|
         steps = WorkFlow.for(org_type)
         criteria = -> { enrollment.org_type == org_type.to_s }
