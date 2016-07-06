@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require flood_risk_engine/application
+//= require flood_risk_engine
 //= require_tree .
