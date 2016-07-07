@@ -16,7 +16,8 @@ module FloodRiskEngine
     let(:enrollment) do
       FactoryGirl.create(
         :enrollment,
-        enrollment_exemptions: [enrollment_exemption]
+        enrollment_exemptions: [enrollment_exemption],
+        reference_number: ReferenceNumber.create
       )
     end
     let(:recipient_address) { Faker::Internet.safe_email }
