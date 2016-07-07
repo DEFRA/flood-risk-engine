@@ -8,7 +8,7 @@ en:
           legend: Where will the activity take place?
           grid_reference:
             form_label: National Grid reference
-            example_hint: For example, ST 58132 72695.
+            example_hint: Enter 2 letters and 10 digits. For example, ST 58132 72695.
             clarification_hint: |-
               For activities that take place over a stretch of the watercourse
               choose the middle or centre point.
@@ -31,7 +31,7 @@ en:
             bullet3:  Select the grid reference then copy and paste back on this page.
           errors:
             grid_reference:
-              invalid: "Enter the grid reference in this format: ST 58132 72695"
+              invalid: The grid reference should have 2 letters and 10 digits
               blank: Enter a grid reference
             description:
               too_long: The site name or description must be no longer than %{max} characters
