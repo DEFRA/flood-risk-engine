@@ -12,3 +12,4 @@ en:
             name:
              blank: Enter the name of the local authority or public body
              too_long: Check the name - it should have no more than %{max} characters
+             invalid: 'The local authority name cannot contain any of these characters: ^ | _ ~ ¬ or `'

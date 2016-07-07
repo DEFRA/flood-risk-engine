@@ -22,7 +22,8 @@ module FloodRiskEngine
         presence: {
           message: t(".errors.name.blank")
         },
-        "flood_risk_engine/text_field_content" => {
+        'EA::Validators::CompaniesHouseName': {
+          message: t(".errors.name.invalid"),
           allow_blank: true
         },
         length: {

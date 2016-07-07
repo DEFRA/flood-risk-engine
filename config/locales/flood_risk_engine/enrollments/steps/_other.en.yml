@@ -11,3 +11,4 @@ en:
             name:
              blank: Enter the name of the organisation
              too_long: Check the name - it should have no more than %{max} characters
+             invalid: 'The organisation name cannot contain any of these characters: ^ | _ ~ ¬ or `'

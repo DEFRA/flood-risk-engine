@@ -25,7 +25,7 @@ module FloodRiskEngine
       describe "#save" do
         it "saves the name of the local authority when name supplied" do
           expect(enrollment).to receive(:save).and_return(true)
-          params = { "#{form.params_key}": { name: "Bodge It and Scarper Ltd" } }
+          params = { form.params_key => { name: "Bodge It and Scarper Ltd" } }
 
           expect(subject.redirect?).to eq(false)
 
@@ -36,24 +36,30 @@ module FloodRiskEngine
         end
 
         it "does not validate when no name supplied" do
-          params = { "#{form.params_key}": { name: "" } }
+          params = { form.params_key => { name: "" } }
 
           expect(form.validate(params)).to eq false
           expect(subject.errors.messages[:name])
             .to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.blank")])
         end
 
+        it "Validates when name has an ampersand" do
+          params = { form.params_key => { name: "Ruby & White" } }
+
+          expect(form.validate(params)).to eq true
+        end
+
         it "does not validate when name with unacceptable chars" do
-          params = { "#{form.params_key}": { name: "bristol *& " } }
+          params = { form.params_key => { name: "bristol ^" } }
 
           expect(form.validate(params)).to eq false
           expect(subject.errors.messages[:name])
-            .to eq([I18n.t("flood_risk_engine.validation_errors.name.invalid")])
+            .to eq([I18n.t("#{LocalAuthorityForm.locale_key}.errors.name.invalid")])
         end
 
         it "does not validate when name supplied is too long" do
           name = "this will is will blow" + "a" * LocalAuthorityForm.name_max_length
-          params = { "#{form.params_key}": { name: name } }
+          params = { form.params_key => { name: name } }
 
           expect(form.validate(params)).to eq false
           expect(

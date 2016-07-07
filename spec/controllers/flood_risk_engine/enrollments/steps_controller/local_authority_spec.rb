@@ -34,7 +34,7 @@ module FloodRiskEngine
 
         context "with invalid params" do
           let(:invalid_attributes) do
-            { name: "12345 not a valid name **" }
+            { name: "12345 ^ not a valid name **" }
           end
 
           it "assigns the enrollment as @enrollment" do
@@ -57,7 +57,7 @@ module FloodRiskEngine
           it "displays error on rendering show" do
             params = { id: step, enrollment_id: enrollment, check_for_error: true }
             session = { error_params: { step => invalid_attributes } }
-            expected_error = I18n.t("flood_risk_engine.validation_errors.name.invalid")
+            expected_error = I18n.t("flood_risk_engine.enrollments.steps.local_authority.errors.name.invalid")
 
             get(:show, params, session)
             expect(response.body).to have_tag :a, text: expected_error
