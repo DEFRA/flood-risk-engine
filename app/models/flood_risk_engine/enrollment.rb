@@ -72,8 +72,10 @@ module FloodRiskEngine
     def submit
       return if submitted_at.present?
       self.submitted_at = Time.zone.now
-      self.reference_number = ReferenceNumber.create
-      save
+      transaction do
+        self.reference_number = ReferenceNumber.create
+        save
+      end
     end
 
     def submitted?

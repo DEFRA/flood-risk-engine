@@ -2,7 +2,7 @@ module FloodRiskEngine
   class ReferenceNumber < ActiveRecord::Base
     PREFIX = "EXFRA".freeze
     PADDING = "0".freeze
-    OFFSET = 10_000
+    OFFSET = 1_000
     MINIMUM_LENGTH = 11
 
     after_create :generate_number
