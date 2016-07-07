@@ -25,6 +25,11 @@ module FloodRiskEngine
 
     belongs_to :secondary_contact, class_name: "Contact"
 
+    belongs_to :reference_number
+    def reference_number
+      super.try(:number)
+    end
+
     has_one(
       :exemption_location,
       class_name: :Location,
@@ -35,7 +40,6 @@ module FloodRiskEngine
     has_one :address_search
 
     before_validation :preserve_current_step
-    after_create :generate_and_save_reference_number
 
     # Have to use `validate` as `validates` is called on page load, before
     # the state machine class can be switched, and therefore is always run on the
@@ -68,6 +72,10 @@ module FloodRiskEngine
     def submit
       return if submitted_at.present?
       self.submitted_at = Time.zone.now
+      transaction do
+        self.reference_number = ReferenceNumber.create
+        save
+      end
     end
 
     def submitted?
@@ -75,19 +83,6 @@ module FloodRiskEngine
     end
 
     private
-
-    def generate_and_save_reference_number
-      return if reference_number?
-
-      number = ReferenceNumber.with(
-        prefix: "EXFRA",
-        seed: id,
-        offset: 10_000,
-        padding: "0",
-        minimum_length: 11
-      )
-      update_column :reference_number, number
-    end
 
     def preserve_current_step
       self.step = current_step

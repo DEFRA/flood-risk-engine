@@ -17,19 +17,28 @@ module FloodRiskEngine
       )
     end
 
-    it "changes the enrollment status to pending and sends the submitted email" do
-      expect_any_instance_of(SendEnrollmentSubmittedEmail)
-        .to receive(:call)
-        .exactly(:once)
-      expect { subject.finalize! }
-        .to change { enrollment_exemption.reload.status }
-        .from("building")
-        .to("pending")
-    end
+    describe "#finalize!" do
+      before do
+        expect_any_instance_of(SendEnrollmentSubmittedEmail)
+          .to receive(:call)
+          .exactly(:once)
+      end
 
-    it "sets the submitted_at date", duff: true do
-      expect_any_instance_of(SendEnrollmentSubmittedEmail).to receive(:call).exactly(:once)
-      expect { subject.finalize! }.to change { enrollment.submitted_at }.from(nil)
+      it "changes the enrollment status to pending and sends the submitted email" do
+        expect { subject.finalize! }
+          .to change { enrollment_exemption.reload.status }
+          .from("building")
+          .to("pending")
+      end
+
+      it "sets the submitted_at date", duff: true do
+        expect { subject.finalize! }.to change { enrollment.submitted_at }.from(nil)
+      end
+
+      it "should generate a new reference number" do
+        expect { subject.finalize! }.to change { ReferenceNumber.count }.by(1)
+        expect(enrollment.reference_number).to eq(ReferenceNumber.last.number)
+      end
     end
 
     context "with an enrollment with a status other than 'building'" do

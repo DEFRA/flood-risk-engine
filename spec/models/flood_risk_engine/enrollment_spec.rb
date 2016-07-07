@@ -68,35 +68,12 @@ module FloodRiskEngine
     end
 
     describe "#reference_number" do
-      before(:all) { described_class.delete_all }
-      let(:id) { 1 }
-      let(:enrollment) { described_class.new(id: id) }
-      it "is generated and saved on creation" do
-        expect(enrollment.reference_number.present?).to be(false)
-        enrollment.save!
-        expect(enrollment.reference_number.present?).to be(true)
+      before do
+        enrollment.reference_number = ReferenceNumber.create
       end
 
-      context "after the enrollment is saved" do
-        before { enrollment.save! }
-
-        it "is set as 010001" do
-          expect(enrollment.reference_number).to eq("EXFRA010001")
-        end
-
-        context "with an id of 123" do
-          let(:id) { 123 }
-          it "is set as 010123" do
-            expect(enrollment.reference_number).to eq("EXFRA010123")
-          end
-        end
-
-        context "with an id of 1111111" do
-          let(:id) { 1_111_111 }
-          it "is set as 1121111" do
-            expect(enrollment.reference_number).to eq("EXFRA1121111")
-          end
-        end
+      it "it is of the right format" do
+        expect(enrollment.reference_number).to match(/EXFRA\d{6}/)
       end
     end
 
@@ -111,6 +88,13 @@ module FloodRiskEngine
         it "should return true" do
           expect(enrollment.submitted?).to eq(true)
         end
+      end
+    end
+
+    describe "#submit" do
+      it "should generate a reference number" do
+        expect { enrollment.submit }.to change { ReferenceNumber.count }.by(1)
+        expect(enrollment.reference_number).to match(/EXFRA\d{6}/)
       end
     end
   end
