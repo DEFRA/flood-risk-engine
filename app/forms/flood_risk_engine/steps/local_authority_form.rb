@@ -19,7 +19,10 @@ module FloodRiskEngine
 
       validates :name, presence: { message: t(".errors.name.blank") }
 
-      validates :name, 'flood_risk_engine/text_field_content': true, allow_blank: true
+      validates :name, 'EA::Validators::CompaniesHouseName': {
+        message: t(".errors.name.invalid"),
+        allow_blank: true
+      }
 
       validates :name, length: {
         maximum: LocalAuthorityForm.name_max_length,

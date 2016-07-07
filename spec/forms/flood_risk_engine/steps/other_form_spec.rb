@@ -41,12 +41,18 @@ module FloodRiskEngine
             .to eq([I18n.t(".errors.name.blank", scope: i18n_scope)])
         end
 
+        it "validates when name has an ampersand" do
+          params = { form.params_key => { name: "Ruby & White" } }
+
+          expect(form.validate(params)).to eq true
+        end
+
         it "does not validate when name with unacceptable chars" do
-          params = { form.params_key => { name: "bristol *& " } }
+          params = { form.params_key => { name: "bristol ^ " } }
 
           expect(form.validate(params)).to eq(false)
           expect(subject.errors.messages[:name])
-            .to eq([I18n.t("flood_risk_engine.validation_errors.name.invalid")])
+            .to eq([I18n.t("#{OtherForm.locale_key}.errors.name.invalid")])
         end
 
         it "does not validate when name supplied is too long" do
