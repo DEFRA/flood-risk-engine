@@ -5,4 +5,5 @@ module FloodRiskEngine
   class NotImplementedError < StandardError; end
   class InvalidEnrollmentStateError < StandardError; end
   class MissingEmailAddressError < StandardError; end
+  class MissingLocationArgumentError < StandardError; end
 end

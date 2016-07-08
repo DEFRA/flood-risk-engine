@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency "airbrake-ruby", "~> 1.3.2"
   s.add_dependency "airbrake", "~> 5.3.0" # Airbrake catches exceptions, sends them to https://dst-errbit.xxx.co.uk
   s.add_dependency "nokogiri", ">= 1.6.8" # Used by other gems - but need to force version due to CVE-2015-8806
+  s.add_dependency "sucker_punch", "~> 2.0.2" # ActiveJob background processing using another thread
 
   s.add_development_dependency "pg", "~> 0.18"
   s.add_development_dependency "before_commit", "~> 0.6"

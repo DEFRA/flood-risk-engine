@@ -3,6 +3,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe Location, type: :model do
     it { is_expected.to belong_to(:locatable) }
+    it { is_expected.to respond_to(:water_boundary_area) }
 
     let(:palace) do
       OpenStruct.new(
