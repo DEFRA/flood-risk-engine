@@ -189,8 +189,11 @@ module FloodRiskEngine
       describe "#save" do
         it "should save the grid reference to enrollment.exemption_location" do
           @grid_reference = grid_reference
+
+          expect(UpdateWaterBoundaryAreaJob).to receive(:perform_later).and_return({})
+
           subject.validate(params)
-          subject.save
+          expect(subject.save).to eq(true)
           enrollment.reload
           expect(
             enrollment.exemption_location.grid_reference

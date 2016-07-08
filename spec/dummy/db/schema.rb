@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711111533) do
+ActiveRecord::Schema.define(version: 201607111338823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,9 +88,9 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.integer  "secondary_contact_id"
     t.string   "token"
-    t.boolean  "in_review"
+    t.integer  "secondary_contact_id"
+    t.integer  "updated_by_user_id"
     t.datetime "submitted_at"
     t.integer  "reference_number_id"
   end
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160711111533) do
   add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id", using: :btree
   add_index "flood_risk_engine_enrollments", ["reference_number_id"], name: "index_flood_risk_engine_enrollments_on_reference_number_id", unique: true, using: :btree
   add_index "flood_risk_engine_enrollments", ["token"], name: "index_flood_risk_engine_enrollments_on_token", unique: true, using: :btree
+  add_index "flood_risk_engine_enrollments", ["updated_by_user_id"], name: "index_flood_risk_engine_enrollments_on_updated_by_user_id", using: :btree
 
   create_table "flood_risk_engine_enrollments_exemptions", force: :cascade do |t|
     t.integer  "enrollment_id",                        null: false
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.boolean  "asset_found",          default: false
     t.boolean  "salmonid_river_found", default: false
     t.integer  "deregister_reason"
+    t.integer  "assistance_mode",      default: 0
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["deregister_reason"], name: "by_deregister_reason", using: :btree
@@ -130,12 +132,13 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.string   "easting"
     t.string   "northing"
     t.string   "grid_reference"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "locatable_id"
     t.string   "locatable_type"
     t.text     "description"
     t.string   "dredging_length"
+    t.integer  "water_boundary_area_id"
   end
 
   add_index "flood_risk_engine_locations", ["locatable_id", "locatable_type"], name: "by_locatable", using: :btree
@@ -170,6 +173,18 @@ ActiveRecord::Schema.define(version: 20160711111533) do
   end
 
   add_index "flood_risk_engine_reference_numbers", ["number"], name: "index_flood_risk_engine_reference_numbers_on_number", using: :btree
+
+  create_table "flood_risk_engine_water_boundary_areas", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.string   "long_name",  null: false
+    t.string   "short_name"
+    t.integer  "area_id"
+    t.string   "area_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "flood_risk_engine_water_boundary_areas", ["code"], name: "fre_water_boundary_areas_code", unique: true, using: :btree
 
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
