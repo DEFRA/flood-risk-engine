@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707133356) do
+ActiveRecord::Schema.define(version: 20160711103245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,9 @@ ActiveRecord::Schema.define(version: 20160707133356) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.string   "token"
     t.integer  "secondary_contact_id"
+    t.string   "token"
+    t.boolean  "in_review"
     t.datetime "submitted_at"
     t.integer  "reference_number_id"
   end
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160707133356) do
     t.datetime "valid_from"
     t.boolean  "asset_found",          default: false
     t.boolean  "salmonid_river_found", default: false
+    t.string   "deregister_reason"
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true, using: :btree
