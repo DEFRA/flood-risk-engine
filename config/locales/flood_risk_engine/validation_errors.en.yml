@@ -13,8 +13,9 @@ en:
         blank: Enter a postcode
         enter_a_valid_postcode: Enter a valid UK postcode
         no_addresses_found: We can’t find any addresses for that postcode.
-          Please check the postcode or enter the address manually
-        service_unavailable: Our address finder is not working. Please enter the address below.
+          Please check the postcode or select the 'Enter address manually' link.
+        service_unavailable: Our address finder is not working. Please select the
+          'Enter address manually' link and enter the address yourself.
       uprn:
         blank: Please select an address
         format: UPRN must be a number

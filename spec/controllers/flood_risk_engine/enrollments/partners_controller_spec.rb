@@ -30,7 +30,9 @@ module FloodRiskEngine
         end
 
         it "should display partner's name" do
-          expect(response.body).to match(contact.full_name)
+          # Splitting to remove issues with names like "O'Connor" being
+          # escaped in erb to "O&#39;Conner".
+          expect(response.body).to match(contact.full_name.split(/\W/).last)
         end
       end
 

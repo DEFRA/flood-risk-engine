@@ -40,4 +40,4 @@ en:
           city:
             blank: Enter a town or city
             too_long: The town or city must be no longer than %{max} characters
-        manual_entry: "I can’t find the address in the list"
+        manual_entry: Enter address manually
