@@ -38,6 +38,26 @@ module FloodRiskEngine
           expect(form.save).to eq true
         end
       end
+
+      describe "#email" do
+        context "there is no enrollment secondary contact" do
+          it "returns a single email address" do
+            expect(form.email).to eq(enrollment.correspondence_contact.email_address)
+          end
+        end
+        context "there is an enrollment secondary contact" do
+          let(:enrollment) { create(:page_confirmation, :with_secondary_contact) }
+          it "returns two email addresses in a sentence" do
+            expected_sentence = [
+              enrollment.correspondence_contact.email_address,
+              " and ",
+              enrollment.secondary_contact.email_address
+            ].join
+
+            expect(form.email).to eq(expected_sentence)
+          end
+        end
+      end
     end
   end
 end

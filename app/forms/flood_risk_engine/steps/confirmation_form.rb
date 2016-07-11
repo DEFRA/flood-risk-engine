@@ -19,12 +19,11 @@ module FloodRiskEngine
       property :email, virtual: true
 
       def email
-        # If we need to display multiple emails e.g contact and email_someone_else then this works
-        # emails = [enrollment.correspondence_contact.email_address]
-        # emails.map(&:downcase).uniq.to_sentence
-
-        # For now
-        enrollment.correspondence_contact.email_address
+        emails = [
+          enrollment.correspondence_contact.email_address,
+          enrollment.secondary_contact.try(:email_address)
+        ]
+        emails.delete_if(&:blank?).map(&:downcase).uniq.to_sentence
       end
 
       def no_header_in_show
