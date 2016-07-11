@@ -11,7 +11,7 @@ en:
           heading_h3: What we’ll check
           heading_h3_1: What you must check
           reference: "Your reference is:"
-          email_sent: We've sent a confirmation email to %{email}
+          email_sent: We've sent a confirmation email to %{email}.
             This is not approval to start work.
           para_text2: We’ll email you within 10 working days to tell you if your registration
             is valid.
