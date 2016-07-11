@@ -88,9 +88,8 @@ ActiveRecord::Schema.define(version: 20160707133356) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.integer  "secondary_contact_id"
     t.string   "token"
-    t.boolean  "in_review"
+    t.integer  "secondary_contact_id"
     t.datetime "submitted_at"
     t.integer  "reference_number_id"
   end

@@ -26,7 +26,7 @@ en:
             summary: Help finding a grid reference
             tool_text: Use the free %{link}
             tool_link: UK Grid Reference Finder (opens new window).
-            bullet1:  Search for the location or postcode on the right of the page.
+            bullet1:  Search for the location or postcode on the left of the page.
             bullet2:  Right-click to display the grid reference.
             bullet3:  Select the grid reference then copy and paste back on this page.
           errors:
