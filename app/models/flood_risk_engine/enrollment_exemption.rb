@@ -13,7 +13,8 @@ module FloodRiskEngine
       approved: 3,        # BO: all checks pass
       rejected: 4,        # BO: because e.g. grid ref in an SSI
       expired: 5,         # BO: FRA23/24 only - expiry date has passed
-      withdrawn: 6        # BO: used to hide anything created in error
+      withdrawn: 6,       # BO: used to hide anything created in error
+      deregistered: 7     # BO: approved only
     }
 
     enum deregister_reason: {
