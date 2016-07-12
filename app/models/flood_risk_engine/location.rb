@@ -3,6 +3,7 @@ module FloodRiskEngine
   class Location < ActiveRecord::Base
 
     belongs_to :locatable, polymorphic: true
+    belongs_to :water_boundary_area
 
     before_save :process_grid_reference
 
@@ -16,6 +17,5 @@ module FloodRiskEngine
       self.easting = data.easting
       self.northing = data.northing
     end
-
   end
 end

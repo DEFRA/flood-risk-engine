@@ -65,7 +65,9 @@ module FloodRiskEngine
       def save
         super
         enrollment.exemption_location ||= model
-        enrollment.save
+        enrollment.save.tap do
+          UpdateWaterBoundaryAreaJob.perform_later(enrollment.exemption_location)
+        end
       end
 
       def require_dredging_length?

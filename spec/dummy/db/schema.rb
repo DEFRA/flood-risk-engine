@@ -130,12 +130,13 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.string   "easting"
     t.string   "northing"
     t.string   "grid_reference"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "locatable_id"
     t.string   "locatable_type"
     t.text     "description"
     t.string   "dredging_length"
+    t.integer  "water_boundary_area_id"
   end
 
   add_index "flood_risk_engine_locations", ["locatable_id", "locatable_type"], name: "by_locatable", using: :btree
@@ -170,6 +171,18 @@ ActiveRecord::Schema.define(version: 20160711111533) do
   end
 
   add_index "flood_risk_engine_reference_numbers", ["number"], name: "index_flood_risk_engine_reference_numbers_on_number", using: :btree
+
+  create_table "flood_risk_engine_water_boundary_areas", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.string   "long_name",  null: false
+    t.string   "short_name"
+    t.integer  "area_id"
+    t.string   "area_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "flood_risk_engine_water_boundary_areas", ["code"], name: "fre_water_boundary_areas_code", unique: true, using: :btree
 
   create_table "not_in_engines", force: :cascade do |t|
     t.string   "name"
