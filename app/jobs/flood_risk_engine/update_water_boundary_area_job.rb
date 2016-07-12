@@ -34,7 +34,7 @@ module FloodRiskEngine
     end
 
     def inside_england?(api_result)
-      api_result.key?(:long_name)
+      api_result[:long_name].present?
     end
   end
 end

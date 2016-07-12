@@ -45,9 +45,14 @@ module FloodRiskEngine
           location = FactoryGirl.build_stubbed(:location,
                                                easting: "438920",
                                                northing: "1164159")
+          area_hash_from_api = { area_id: "",
+                                 code: "",
+                                 area_name: "",
+                                 short_name: "",
+                                 long_name: "" }
           expect(EA::AreaLookup)
             .to receive(:find_by_coordinates)
-            .and_return({})
+            .and_return(area_hash_from_api)
 
           described_class.perform_now(location)
 
