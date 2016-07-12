@@ -25,6 +25,26 @@ module FloodRiskEngine
 
         expect(enrollment.exemptions.first).to eq(exemption)
       end
+
+      it "leaves AD mode as unassistaed when no uodate user present" do
+        expect(enrollment.updated_by_user_id).to be_nil
+
+        subject.validate(params)
+        subject.save
+
+        expect(enrollment.enrollment_exemptions.first.assistance_mode).to eq("unassisted")
+        expect(enrollment.enrollment_exemptions.first.unassisted?).to eq true
+      end
+
+      it "sets AD mode as fully when update user present" do
+        enrollment.update updated_by_user_id: 1
+
+        subject.validate(params)
+        subject.save
+
+        expect(enrollment.enrollment_exemptions.first.assistance_mode).to eq("fully")
+        expect(enrollment.enrollment_exemptions.first.fully?).to eq true
+      end
     end
 
     describe ".validate" do
