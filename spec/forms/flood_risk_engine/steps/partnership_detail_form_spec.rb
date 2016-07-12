@@ -43,7 +43,7 @@ module FloodRiskEngine
           end
 
           it "should remove the incomplete partner" do
-            expect { described_class.new(enrollment) }.to change(Partner, :count).by(-1)
+            expect { described_class.new(enrollment.reload) }.to change(Partner, :count).by(-1)
             expect(enrollment.reload.partners).to eq([partner])
           end
         end
