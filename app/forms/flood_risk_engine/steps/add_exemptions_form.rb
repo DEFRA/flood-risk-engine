@@ -23,6 +23,21 @@ module FloodRiskEngine
         @all_exemptions = Exemption.all
       end
 
+      def save
+        result = super
+
+        # This is the first point at which we have a confirmed/valid Exemption(s) selected
+        # so we check here, has a BO user been set (before redirecting from BO New)
+        # and if required, assign related mode.
+        # We want this logic as isolated as possible hence not in a model call back or similar
+        if enrollment.updated_by_user_id.present?
+          enrollment.enrollment_exemptions.each(&:fully_assisted!)
+          enrollment.enrollment_exemptions.each(&:fully_assisted!)
+        end
+
+        result
+      end
+
       def exemption_ids=(id)
         super [id]
       end
