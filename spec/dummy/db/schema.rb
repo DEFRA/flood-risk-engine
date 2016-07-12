@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711111533) do
+ActiveRecord::Schema.define(version: 20160712104613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,9 +88,8 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
-    t.integer  "secondary_contact_id"
     t.string   "token"
-    t.boolean  "in_review"
+    t.integer  "secondary_contact_id"
     t.datetime "submitted_at"
     t.integer  "reference_number_id"
   end
@@ -148,11 +147,13 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.datetime "updated_at",                     null: false
     t.integer  "org_type"
     t.string   "registration_number", limit: 12
+    t.text     "searchable_content"
   end
 
   add_index "flood_risk_engine_organisations", ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id", using: :btree
   add_index "flood_risk_engine_organisations", ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type", using: :btree
   add_index "flood_risk_engine_organisations", ["registration_number"], name: "index_flood_risk_engine_organisations_on_registration_number", using: :btree
+  add_index "flood_risk_engine_organisations", ["searchable_content"], name: "index_flood_risk_engine_organisations_on_searchable_content", using: :btree
 
   create_table "flood_risk_engine_partners", force: :cascade do |t|
     t.integer  "organisation_id"

@@ -69,7 +69,7 @@ module FloodRiskEngine
 
       describe "#partner" do
         it "should match the last partner" do
-          expect(form.partner).to eq(enrollment.partners.last)
+          expect(form.partner).to eq(enrollment.reload.partners.last)
         end
 
         context "when more than one partner present" do
