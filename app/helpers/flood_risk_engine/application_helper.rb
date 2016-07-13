@@ -55,7 +55,7 @@ module FloodRiskEngine
       stripped_title = title.gsub(/’/, %('))
 
       if content_for? :page_title
-        content_for :page_title, " | #{stripped_title}"
+        content_for :page_title, " - #{stripped_title} - GOV.UK"
       else
         content_for :page_title, stripped_title.to_s
       end
