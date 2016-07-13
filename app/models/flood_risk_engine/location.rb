@@ -3,7 +3,7 @@ module FloodRiskEngine
   class Location < ActiveRecord::Base
 
     belongs_to :locatable, polymorphic: true
-    belongs_to :water_boundary_area
+    belongs_to :water_management_area
 
     before_save :process_grid_reference
 
