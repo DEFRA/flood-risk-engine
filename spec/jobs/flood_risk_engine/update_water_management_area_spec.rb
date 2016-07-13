@@ -3,7 +3,7 @@ require "rails_helper"
 # This job level spec is more of an integration spec so we let VCR
 # handle the outgoing request.
 module FloodRiskEngine
-  describe UpdateWaterBoundaryAreaJob, type: :job do
+  describe UpdateWaterManagementAreaJob, type: :job do
     it { is_expected.to respond_to :perform }
 
     it "raises an exception if location not supplied" do
@@ -23,14 +23,14 @@ module FloodRiskEngine
                                  short_name: "sn",
                                  long_name: "ln" }
           expect(EA::AreaLookup)
-            .to receive(:find_by_coordinates)
+            .to receive(:find_water_management_area_by_coordinates)
             .and_return(area_hash_from_api)
 
-          expect(location.water_boundary_area).to be_nil
+          expect(location.water_management_area).to be_nil
 
           described_class.perform_now(location)
 
-          area = location.water_boundary_area
+          area = location.water_management_area
           expect(area).to be_present
           expect(area).to be_persisted
           expect(area.area_id).to eq(area_hash_from_api[:area_id].to_i)
@@ -51,12 +51,12 @@ module FloodRiskEngine
                                  short_name: "",
                                  long_name: "" }
           expect(EA::AreaLookup)
-            .to receive(:find_by_coordinates)
+            .to receive(:find_water_management_area_by_coordinates)
             .and_return(area_hash_from_api)
 
           described_class.perform_now(location)
 
-          area = location.water_boundary_area
+          area = location.water_management_area
           expect(area.area_name).to eq("Outside England")
         end
       end

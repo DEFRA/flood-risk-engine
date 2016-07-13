@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency "high_voltage", "~> 3.0" # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "virtus", "~> 1.0"
   s.add_dependency "ea-address_lookup", "~> 0.3.0"
-  s.add_dependency "ea-area_lookup", "~> 0.1.1"
+  s.add_dependency "ea-area_lookup", "~> 0.2.1"
 
   s.add_dependency "airbrake-ruby", "~> 1.3.2"
   s.add_dependency "airbrake", "~> 5.3.0" # Airbrake catches exceptions, sends them to https://dst-errbit.xxx.co.uk

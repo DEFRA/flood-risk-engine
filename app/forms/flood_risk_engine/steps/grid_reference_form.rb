@@ -66,7 +66,7 @@ module FloodRiskEngine
         super
         enrollment.exemption_location ||= model
         enrollment.save.tap do
-          UpdateWaterBoundaryAreaJob.perform_later(enrollment.exemption_location)
+          UpdateWaterManagementAreaJob.perform_later(enrollment.exemption_location)
         end
       end
 
