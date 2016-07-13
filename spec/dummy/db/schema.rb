@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713104213) do
+ActiveRecord::Schema.define(version: 20160713141801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160713104213) do
   add_index "flood_risk_engine_enrollments", ["correspondence_contact_id"], name: "fre_enrollments_correspondence_contact_id", using: :btree
   add_index "flood_risk_engine_enrollments", ["organisation_id"], name: "index_flood_risk_engine_enrollments_on_organisation_id", using: :btree
   add_index "flood_risk_engine_enrollments", ["reference_number_id"], name: "index_flood_risk_engine_enrollments_on_reference_number_id", unique: true, using: :btree
+  add_index "flood_risk_engine_enrollments", ["secondary_contact_id"], name: "index_flood_risk_engine_enrollments_on_secondary_contact_id", using: :btree
   add_index "flood_risk_engine_enrollments", ["token"], name: "index_flood_risk_engine_enrollments_on_token", unique: true, using: :btree
   add_index "flood_risk_engine_enrollments", ["updated_by_user_id"], name: "index_flood_risk_engine_enrollments_on_updated_by_user_id", using: :btree
 
