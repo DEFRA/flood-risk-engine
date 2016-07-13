@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 20160712104613) do
     t.datetime "valid_from"
     t.boolean  "asset_found",          default: false
     t.boolean  "salmonid_river_found", default: false
-    t.integer  "deregister_reason"
     t.integer  "assistance_mode",      default: 0
+    t.integer  "deregister_reason"
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["deregister_reason"], name: "by_deregister_reason", using: :btree
