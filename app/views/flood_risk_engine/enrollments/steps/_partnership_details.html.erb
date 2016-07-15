@@ -1,3 +1,17 @@
+<% if form.enrollment.partners.size <= 1 %>
+    <%= render(
+            "flood_risk_engine/enrollments/header",
+            title_text: t("flood_risk_engine.enrollments.steps.partnership_details.heading_single")
+        )
+    %>
+<%  else %>
+    <%= render(
+            "flood_risk_engine/enrollments/header",
+            title_text: t("flood_risk_engine.enrollments.steps.partnership_details.heading")
+        )
+    %>
+<%  end %>
+
 <h2 class="heading-medium">
   <%= t(".sub_heading") %>
 </h2>
