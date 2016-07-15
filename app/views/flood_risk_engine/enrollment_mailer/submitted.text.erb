@@ -1,22 +1,22 @@
 <%= t('.registration_submitted') %> <%= t('.please_wait') %>
 --------------------------------------------------------
-
+<%= "\r\n" %>
 <%= t('.text_reference_number', reference_number: @enrollment.reference_number) %>
-
+<%= "\r\n" %>
 <%= t(".exemption_heading") %>
 <%= @exemption.summary %> <%= @exemption.code %>.
-
+<%= "\r\n" %>
 <%= t(".heading_1") %>
 <%= t(".preamble_1a") %>
 <%= t(".preamble_1b") %>
-
+<%= "\r\n" %>
 <%= t(".heading_2") %>
 <%= t(".preamble_2") %>
-
+<%= "\r\n" %>
 <%= t(".heading_3") %>
 <%= t(".preamble_3a") %>
 <%= t(".preamble_3b") %>
-
+<%= "\r\n" %>
 --------------------------------------------------------
 <%= t(".contact_heading") %>
 <%= t('.contact_email') %>
@@ -24,3 +24,4 @@
 <%= t('.contact_minicom') %>
 <%= t(".contact_opening_hours") %>
 --------------------------------------------------------
+<%= "\r\n" %>
