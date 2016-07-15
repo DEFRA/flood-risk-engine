@@ -23,6 +23,10 @@ module FloodRiskEngine
         (enrollment.partners.count > 1) && super
       end
 
+      def no_header_in_show
+        true
+      end
+
       private
 
       # If a user starts creating a partner and then goes back to the
