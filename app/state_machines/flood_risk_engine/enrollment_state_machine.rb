@@ -19,6 +19,8 @@ module FloodRiskEngine
     alias_target :enrollment
 
     events do
+      # -------------------------------------------------------------------
+      # Initial steps up to the point where an organisation type is chosen
       event :go_forward, WorkFlow.for(:start).merge(
         if: -> { enrollment.org_type.nil? }
       )
@@ -26,6 +28,8 @@ module FloodRiskEngine
         if: -> { enrollment.org_type.nil? }
       )
 
+      # -------------------------------------------------------------------
+      # Central part of process where work flow depends on organisation type
       [
         :local_authority,
         :limited_company,
@@ -42,6 +46,9 @@ module FloodRiskEngine
         event :go_back, steps.invert.merge(if: criteria)
       end
 
+      # -------------------------------------------------------------------
+      # Final section where work flow can go forward to confirmation, but
+      # there is no path back from that point.
       event :go_forward, :declaration => :confirmation
     end
 
