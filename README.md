@@ -63,6 +63,12 @@ and navigating to [http://localhost:3000/rails/mailers](http://localhost:3000/ra
 If you want to test against an enrollment other than the last created one, you will need to
 alter the preview class in `spec/dummy/lib/mailer_previews`.
 
+## The state machine
+
+A README describing the workings of the state machine used by this engine,
+is provided at: 
+[app/state_machines/flood_risk_engine/STATE_MACHINE_README.md](app/state_machines/flood_risk_engine/STATE_MACHINE_README.md)
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
