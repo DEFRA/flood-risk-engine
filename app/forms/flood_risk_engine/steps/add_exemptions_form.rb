@@ -5,10 +5,6 @@ module FloodRiskEngine
 
       attr_reader :all_exemptions
 
-      def self.factory(enrollment)
-        new(enrollment)
-      end
-
       validates(
         :exemption_ids,
         length: {

@@ -1,10 +1,6 @@
 module FloodRiskEngine
   module Steps
     class PartnershipDetailForm < BaseForm
-      def self.factory(enrollment)
-        new(enrollment)
-      end
-
       def initialize(enrollment)
         @enrollment = enrollment
         remove_incomplete_partners

@@ -2,10 +2,6 @@
 module FloodRiskEngine
   module Steps
     class DeclarationForm < BaseForm
-      def self.factory(enrollment)
-        new(enrollment)
-      end
-
       def save
         true
       end

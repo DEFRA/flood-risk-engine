@@ -12,6 +12,27 @@ module FloodRiskEngine
       include BaseFormCommon
       extend BaseFormCommon
 
+      # rubocop:disable Metrics/MethodLength
+      def self.factory(enrollment, factory_type: :default)
+        case factory_type
+        when :correspondence_contact
+          enrollment.correspondence_contact ||= Contact.new(contact_type: :correspondence)
+          new(enrollment.correspondence_contact, enrollment)
+        when :primary_address
+          address = enrollment.organisation.primary_address ||= Address.new(address_type: :primary)
+          new(address, enrollment)
+        when :address_search
+          enrollment.address_search ||= AddressSearch.new
+          new(enrollment.address_search, enrollment)
+        when :organisation
+          organisation = enrollment.organisation ||= Organisation.new
+          new(organisation, enrollment)
+        else # default
+          new(enrollment)
+        end
+      end
+      # rubocop:enable Metrics/MethodLength
+
       delegate :model_name, to: :model
 
       def self.t(locale, args = {})

@@ -1,10 +1,6 @@
 module FloodRiskEngine
   module Steps
     class UnknownForm < BaseForm
-      def self.factory(enrollment)
-        new(enrollment)
-      end
-
       def self.params_key
         :unknown
       end

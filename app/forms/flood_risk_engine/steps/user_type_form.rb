@@ -5,6 +5,10 @@ module FloodRiskEngine
         :user_type
       end
 
+      def self.factory(enrollment)
+        super enrollment, factory_type: :organisation
+      end
+
       property :org_type
       validates(
         :org_type,
@@ -12,11 +16,6 @@ module FloodRiskEngine
           message: I18n.t("#{locale_key}.errors.org_type.blank")
         }
       )
-
-      def self.factory(enrollment)
-        organisation = enrollment.organisation || Organisation.new
-        new(organisation, enrollment)
-      end
 
       # Note we don't need to call super in this form object to save the properties (type).
       # That's because our end goal is to create a new Organisation
@@ -26,14 +25,13 @@ module FloodRiskEngine
       # when we save the enrollment
       def save
         model.org_type = org_type.to_sym
-        super
         # Need to go back and then forward as organisation change will effect
         # onward journey. Without the back and forth a user cannot go back
         # through the user type selection.
         enrollment.go_back
         enrollment.organisation = model
         enrollment.go_forward
-        enrollment.save
+        super
       end
 
       def organisation_types

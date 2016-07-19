@@ -3,8 +3,7 @@ module FloodRiskEngine
     class PartnershipPostcodeForm < BaseAddressSearchForm
 
       def self.factory(enrollment)
-        enrollment.address_search ||= AddressSearch.new
-        new(enrollment.address_search, enrollment)
+        super enrollment, factory_type: :address_search
       end
 
       def self.params_key
