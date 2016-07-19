@@ -3,9 +3,9 @@ require_relative "../../../support/shared_examples/form_objects"
 
 module FloodRiskEngine
   module Steps
-    RSpec.describe OtherPostcodeForm, type: :from do
-      let(:params_key) { :other_postcode }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_other) }
+    describe IndividualPostcodeForm, type: :form do
+      let(:params_key) { :individual_postcode }
+      let(:enrollment) { FactoryGirl.create(:enrollment, :with_individual) }
       let(:model_class) { FloodRiskEngine::AddressSearch }
       let(:form) { described_class.factory(enrollment) }
       let(:valid_params) { { postcode: "BS1 5AH" } }
