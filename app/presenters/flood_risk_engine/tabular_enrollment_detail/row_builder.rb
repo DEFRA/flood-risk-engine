@@ -97,7 +97,8 @@ module FloodRiskEngine
         enrollment.partners.collect do |partner|
           partner_presenter = PartnerPresenter.new(partner)
           build_row name: :responsible_partner,
-                    value: partner_presenter.to_single_line
+                    value: partner_presenter.to_single_line,
+                    step: :partnership_details
         end
       end
 

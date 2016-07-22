@@ -1,8 +1,7 @@
 module FloodRiskEngine
-  # Modifies the way WorkFlow behaves.
-  # ReviewWorkFlow.for(work_flow) should return a hash to build
-  # state machine rules once a work flow reaches the review step
-
+  # Modifies WorkFlow so that:
+  #   ReviewWorkFlow.for(work_flow) should return a hash to build
+  #   state machine rules once a work flow reaches the review step
   class ReviewWorkFlow < WorkFlow
 
     # This should return a hash with elements building the rules:

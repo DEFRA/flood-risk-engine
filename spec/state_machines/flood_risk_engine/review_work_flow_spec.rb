@@ -2,10 +2,10 @@ require "rails_helper"
 
 module FloodRiskEngine
   describe ReviewWorkFlow do
-    let(:review_work_flow) { ReviewWorkFlow.new(:local_authority) }
+    let(:review_work_flow) { described_class.new(:local_authority) }
     let(:steps) { review_work_flow.work_flow }
 
-    describe ".review_step" do
+    describe "::REVIEW_STEP" do
       it "should be :check_your_answers" do
         expect(described_class::REVIEW_STEP).to eq(:check_your_answers)
       end
