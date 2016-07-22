@@ -62,13 +62,13 @@ module FloodRiskEngine
       def organisation_name_row
         build_row name: :organisation_name,
                   value: enrollment_presenter.organisation_name,
-                  step: organisation_type
+                  step: enrollment.org_type
       end
 
       def organisation_address_row
         build_row name: :organisation_address,
                   value: enrollment_presenter.organisation_address,
-                  step: "#{organisation_type}_address"
+                  step: "#{enrollment.org_type}_address"
       end
 
       def correspondence_contact_name_row
@@ -90,7 +90,7 @@ module FloodRiskEngine
         return unless enrollment_presenter.organisation_registration_number
         build_row name: :organisation_registration_number,
                   value:  enrollment_presenter.organisation_registration_number,
-                  step: "#{organisation_type}_number"
+                  step: "#{enrollment.org_type}_number"
       end
 
       def partner_rows

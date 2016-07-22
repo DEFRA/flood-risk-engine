@@ -29,6 +29,20 @@ module FloodRiskEngine
       )
 
       # -------------------------------------------------------------------
+      # Final steps in the process.
+      #   Note: need to be declared before Review steps or get stuck at review
+      #
+      # from the review step, you can go forward to confirmation
+      event(
+        :go_forward,
+        WorkFlow::REVIEW_STEP => :declaration,
+        :declaration => :confirmation
+      )
+
+      # You can go back from the declaration to the review step
+      event(:go_back, :declaration => WorkFlow::REVIEW_STEP)
+
+      # -------------------------------------------------------------------
       # Central part of process where work flow depends on organisation type
       [
         :local_authority,
@@ -50,31 +64,19 @@ module FloodRiskEngine
 
         #   go forward to the review step once in review
         review_steps = ReviewWorkFlow.for(org_type)
-
         event :go_forward, review_steps.merge(
           if: -> { enrollment.org_type == org_type.to_s && enrollment.in_review? }
         )
       end
-
-      # From the review step, you can go forward to confirmation
-      event(
-        :go_forward,
-        WorkFlow::REVIEW_STEP => :declaration,
-        :declaration => :confirmation
-      )
-
-      # You can go back from the declaration to the review step
-      event(:go_back, :declaration => WorkFlow::REVIEW_STEP)
     end
 
     callbacks do
-      on_enter(:confirmation) do |_event|
+      on_enter(:confirmation) do
         enrollment.in_review = false
         SubmitEnrollmentService.new(target).finalize!
       end
-      on_enter(WorkFlow::REVIEW_STEP) { |_event| enrollment.in_review = true }
+      on_enter(WorkFlow::REVIEW_STEP) { enrollment.in_review = true }
     end
-
   end
   # rubocop:enable Style/HashSyntax
 end

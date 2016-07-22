@@ -56,6 +56,7 @@ module FloodRiskEngine
       def check_step_is_valid
         check_journey_valid
         return true if step_is_current?
+        return make_step_current if coming_from_review?
         return step_back if step_back_is_possible?
         raise StepError, "Requested :#{step}, is not permitted when enrollment.step is :#{enrollment.current_step}"
       end
@@ -70,6 +71,15 @@ module FloodRiskEngine
         enrollment.previous_step? step
       rescue StateMachineError
         false
+      end
+
+      def coming_from_review?
+        enrollment.step == WorkFlow::REVIEW_STEP.to_s && enrollment.in_review?
+      end
+
+      def make_step_current
+        enrollment.set_step_as step
+        enrollment.save
       end
 
       def step_forward
