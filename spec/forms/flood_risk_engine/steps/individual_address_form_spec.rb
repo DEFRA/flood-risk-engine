@@ -4,10 +4,9 @@ require_relative "../../../support/asserts"
 
 module FloodRiskEngine
   module Steps
-
-    RSpec.describe OtherAddressForm, type: :from do
-      let(:params_key) { :other_address }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_other) }
+    RSpec.describe IndividualAddressForm, type: :form do
+      let(:params_key) { :individual_address }
+      let(:enrollment) { FactoryGirl.create(:enrollment, :with_individual) }
       let(:model_class) { FloodRiskEngine::Address }
       let(:form) { described_class.factory(enrollment) }
       let(:post_code) { "BS1 5AH" }

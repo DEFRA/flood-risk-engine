@@ -3,8 +3,7 @@ module FloodRiskEngine
     class LimitedLiabilityPartnershipNumberForm < BaseForm
 
       def self.factory(enrollment)
-        raise(FormObjectError, "No Organisation set for step #{enrollment.current_step}") unless enrollment.organisation
-        new(enrollment.organisation, enrollment)
+        super enrollment, factory_type: :organisation
       end
 
       def self.params_key

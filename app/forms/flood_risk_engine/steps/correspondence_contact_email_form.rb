@@ -6,9 +6,7 @@ module FloodRiskEngine
     class CorrespondenceContactEmailForm < BaseForm
 
       def self.factory(enrollment)
-        enrollment.correspondence_contact ||= FloodRiskEngine::Contact.new(contact_type: :correspondence)
-
-        new(enrollment.correspondence_contact, enrollment)
+        super enrollment, factory_type: :correspondence_contact
       end
 
       def self.params_key

@@ -3,8 +3,7 @@ module FloodRiskEngine
     class OtherForm < BaseForm
 
       def self.factory(enrollment)
-        organisation = enrollment.organisation || Organisation.new
-        new(organisation, enrollment)
+        super enrollment, factory_type: :organisation
       end
 
       def self.params_key
@@ -31,12 +30,6 @@ module FloodRiskEngine
           message: t(".errors.name.too_long", max: max_length)
         }
       )
-
-      def save
-        super
-        enrollment.organisation ||= model
-        enrollment.save
-      end
     end
   end
 end

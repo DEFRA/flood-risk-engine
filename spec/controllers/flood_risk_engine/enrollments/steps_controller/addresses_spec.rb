@@ -32,7 +32,7 @@ module FloodRiskEngine
       let(:match_initial_url_step) { /You are being <a href=\"\S+local_authority_address/ }
 
       context "with valid params" do
-        let(:valid_attributes) {
+        let(:valid_attributes) do
           {
             "#{step}":
               {
@@ -40,17 +40,15 @@ module FloodRiskEngine
                 uprn: "340116"
               }
           }
-        }
+        end
+        let(:params) do
+          { id: step, enrollment_id: enrollment }.merge!(valid_attributes)
+        end
 
         it "creates the address when valid UK UPRN supplied via drop down rendering process_address" do
           mock_ea_address_lookup_find_by_uprn
-          params = { id: step, enrollment_id: enrollment }.merge(valid_attributes)
-
-          expect(enrollment.reload.organisation.primary_address).to_not be
 
           put(:update, params, session)
-
-          expect(enrollment.reload.organisation.primary_address).to be
 
           expect(enrollment.organisation.primary_address.address_type).to eq "primary"
           expect(enrollment.organisation.primary_address.addressable_id).to eq enrollment.organisation.id
