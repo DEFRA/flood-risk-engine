@@ -62,13 +62,13 @@ module FloodRiskEngine
       def organisation_name_row
         build_row name: :organisation_name,
                   value: enrollment_presenter.organisation_name,
-                  step: enrollment.org_type
+                  step: name_step(enrollment.org_type)
       end
 
       def organisation_address_row
         build_row name: :organisation_address,
                   value: enrollment_presenter.organisation_address,
-                  step: "#{enrollment.org_type}_address"
+                  step: "#{enrollment.org_type}_postcode"
       end
 
       def correspondence_contact_name_row
@@ -137,6 +137,20 @@ module FloodRiskEngine
 
       def row_t(step, key, opts = {})
         I18n.t!(".rows.#{step}.#{key}", opts.merge(scope: i18n_scope))
+      end
+
+      # There is an inconsistency to whether the step where a name is applied
+      # has a name subscript. This method is a patch to handle this problem.
+      def name_step(step)
+        return unless step
+        {
+          local_authority:               :local_authority,
+          limited_company:               :limited_company_name,
+          limited_liability_partnership: :limited_liability_partnership_name,
+          individual:                    :individual_name,
+          partnership:                   :partnership,
+          other:                         :other
+        }[step.to_sym]
       end
     end
   end

@@ -41,6 +41,15 @@ module FloodRiskEngine
       def params_key
         :add_exemptions
       end
+
+      def selected_exemption_code?(code)
+        return unless code
+        enrollment_exemption_codes.include? code.to_s
+      end
+
+      def enrollment_exemption_codes
+        @enrollment_exemption_codes ||= enrollment.exemptions.collect(&:code)
+      end
     end
   end
 end
