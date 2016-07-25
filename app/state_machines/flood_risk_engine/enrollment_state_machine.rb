@@ -63,9 +63,8 @@ module FloodRiskEngine
         event :go_back, steps.invert.merge(if: criteria)
 
         #   go forward to the review step once in review
-        #     unless multi-step action required - as identified by customer
-        #     workflow.
-        review_work_flow = (org_type == :partnership) ? PartnershipReviewWorkFlow : ReviewWorkFlow
+        #     unless multi-step action required - as identified by custom workflow.
+        review_work_flow = org_type == :partnership ? PartnershipReviewWorkFlow : ReviewWorkFlow
         review_steps = review_work_flow.for(org_type)
         event :go_forward, review_steps.merge(
           if: -> { enrollment.org_type == org_type.to_s && enrollment.in_review? }

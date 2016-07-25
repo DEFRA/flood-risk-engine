@@ -8,9 +8,11 @@ module FloodRiskEngine
     # app, and that layout calls helper methods (eg in ApplicationHelper) which also defined in the
     # parent app, this will result in undefined method errors. To get around having to duplicate
     # those helper methods here in the engine, forward any methods we not defined here to main_app.
+    # rubocop:disable Style/MethodMissing
     def method_missing(method, *args, &block)
       main_app.respond_to?(method) ? main_app.send(method, *args) : super
     end
+    # rubocop:enable Style/MethodMissing
 
     # This helper  adds a form-group DIV around form elements,
     # and takes the actual form fields as a content block.

@@ -140,7 +140,7 @@ module FloodRiskEngine
       end
 
       # There is an inconsistency to whether the step where a name is applied
-      # has a name subscript. This method is a patch to handle this problem.
+      # has a name postscript. This method is a patch to handle this problem.
       def name_step(step)
         return unless step
         {
