@@ -19,6 +19,7 @@ env:
 bundler_args: --binstubs=./bundler_stubs
 
 before_script:
+  - curl https://raw.githubusercontent.com/EnvironmentAgency/dst-guides/master/style/ruby/.rubocop.yml > .rubocop.yml
   - npm install -g jshint coffeelint htmlhint csslint
   - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
   - RAILS_ENV=test bundle exec rake db:create
