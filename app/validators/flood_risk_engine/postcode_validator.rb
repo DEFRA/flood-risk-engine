@@ -7,9 +7,8 @@ module FloodRiskEngine
   class PostcodeValidator < ActiveModel::EachValidator
 
     def validate_each(record, attribute, value)
-      unless UKPostcode.parse(value).full_valid?
-        record.errors.add attribute, I18n.t("flood_risk_engine.validation_errors.postcode.enter_a_valid_postcode")
-      end
+      return if UKPostcode.parse(value).full_valid?
+      record.errors.add attribute, I18n.t("flood_risk_engine.validation_errors.postcode.enter_a_valid_postcode")
     end
 
   end

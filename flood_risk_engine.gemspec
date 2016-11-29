@@ -5,6 +5,7 @@ $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require "flood_risk_engine/version"
 
 # Describe your gem and declare its dependencies:
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |s|
   s.name        = "flood_risk_engine"
   s.version     = FloodRiskEngine::VERSION
@@ -42,11 +43,11 @@ Gem::Specification.new do |s|
   s.add_dependency "sucker_punch", "~> 2.0.2" # ActiveJob background processing using another thread
 
   s.add_development_dependency "pg", "~> 0.18"
-  s.add_development_dependency "before_commit", "~> 0.6"
-  s.add_development_dependency "rubocop"
+  s.add_development_dependency "rubocop", "~> 0.45.0"
   s.add_development_dependency "bootstrap-sass", "~> 3.3"
   s.add_development_dependency "sass-rails", ">= 3.2"
   s.add_development_dependency "quiet_assets", "~> 1.1"
   s.add_development_dependency "byebug", "~> 8.2"
   s.add_development_dependency "puma", "~> 3.4"
 end
+# rubocop:enable Metrics/BlockLength

@@ -14,12 +14,11 @@ module EA
       VALID_COMPANIES_HOUSE_NAME_REGEX = Regexp.new(/[\^|_~¬`]/).freeze
 
       def validate_each(record, attribute, value)
-        if VALID_COMPANIES_HOUSE_NAME_REGEX.match(value)
-          record.errors.add(
-            attribute,
-            (options[:message] || I18n.t("ea.validation_errors.companies_house_name.#{attribute}.invalid"))
-          )
-        end
+        return unless VALID_COMPANIES_HOUSE_NAME_REGEX.match(value)
+        record.errors.add(
+          attribute,
+          (options[:message] || I18n.t("ea.validation_errors.companies_house_name.#{attribute}.invalid"))
+        )
       end
 
       def self.name_max_length

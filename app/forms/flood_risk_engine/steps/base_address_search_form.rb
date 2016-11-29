@@ -7,8 +7,6 @@ module FloodRiskEngine
       validates :postcode, presence: { message: I18n.t("flood_risk_engine.validation_errors.postcode.blank") }
 
       validates :postcode, 'flood_risk_engine/postcode': true, allow_blank: true
-
-      # rubocop:disable Metrics/MethodLength
       def validate(params)
         result = super(params)
 

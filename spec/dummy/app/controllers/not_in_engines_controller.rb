@@ -9,8 +9,7 @@ class NotInEnginesController < ApplicationController
   end
 
   # GET /not_in_engines/1
-  def show
-  end
+  def show; end
 
   # GET /not_in_engines/new
   def new
@@ -18,8 +17,7 @@ class NotInEnginesController < ApplicationController
   end
 
   # GET /not_in_engines/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /not_in_engines
   def create

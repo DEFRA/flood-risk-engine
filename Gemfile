@@ -6,18 +6,18 @@ source "https://rubygems.org"
 gemspec
 
 group :test do
-  gem "rspec-rails", "~> 3.4"
-  gem "factory_girl_rails", "~> 4.6"
-  gem "simplecov", "~> 0.11", require: false
-  gem "faker"
-  gem "shoulda-matchers", "~> 3.1", require: false
-  gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
   gem "capybara", "~> 2.6"
-  gem "guard-rspec", require: false
-  gem "rspec-html-matchers"
-  gem "database_cleaner", "~> 1.5"
   gem "codeclimate-test-reporter", require: false
+  gem "database_cleaner", "~> 1.5"
+  gem "email_spec"
+  gem "factory_girl_rails", "~> 4.6"
+  gem "faker"
+  gem "guard-rspec", require: false
+  gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
+  gem "rspec-html-matchers"
+  gem "rspec-rails", "~> 3.4"
+  gem "shoulda-matchers", "~> 3.1", require: false
+  gem "simplecov", "~> 0.11", require: false
   gem "vcr", "~> 3.0"
   gem "webmock", "~> 1.24"
-  gem "email_spec"
 end

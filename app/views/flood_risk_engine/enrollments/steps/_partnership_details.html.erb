@@ -23,7 +23,7 @@
         <td><%= partner.full_name %></td>
         <td>
           <% partner.address.parts.each do |address_part| %>
-            <%= address_part %><br>
+            <%= address_part %><br />
           <% end %>
         </td>
         <td>
@@ -45,5 +45,5 @@
 <br />
 
 <p>
-  <%= link_to t(".add_another"), edit_enrollment_partner_path(@enrollment, :partnership) %></a>
+  <%= link_to t(".add_another"), edit_enrollment_partner_path(@enrollment, :partnership) %>
 </p>

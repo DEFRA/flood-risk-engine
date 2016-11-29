@@ -5,6 +5,7 @@
   "attr-value-not-empty": false,
   "attr-no-duplication": true,
   "doctype-first": false,
+  "doctype-html5": false,
   "tag-pair": true,
   "tag-self-close": true,
   "spec-char-escape": false,
