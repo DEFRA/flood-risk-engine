@@ -1,9 +1,9 @@
 # Flood risk engine
 
-[![Build Status](https://travis-ci.org/EnvironmentAgency/flood-risk-engine.svg?branch=develop)](https://travis-ci.org/EnvironmentAgency/flood-risk-engine)
+[![Build Status](https://travis-ci.org/EnvironmentAgency/flood-risk-engine.svg?branch=master)](https://travis-ci.org/EnvironmentAgency/flood-risk-engine)
 [![Code Climate](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/badges/gpa.svg)](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine)
 [![Test Coverage](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/badges/coverage.svg)](https://codeclimate.com/github/EnvironmentAgency/flood-risk-engine/coverage)
-[![Security](https://hakiri.io/github/EnvironmentAgency/flood-risk-engine/develop.svg)](https://hakiri.io/github/EnvironmentAgency/flood-risk-engine/develop)
+[![Security](https://hakiri.io/github/EnvironmentAgency/flood-risk-engine/master.svg)](https://hakiri.io/github/EnvironmentAgency/flood-risk-engine/master)
 [![Dependency Status](https://dependencyci.com/github/EnvironmentAgency/flood-risk-engine/badge)](https://dependencyci.com/github/EnvironmentAgency/flood-risk-engine)
 
 A Ruby on Rails [engine](http://guides.rubyonrails.org/engines.html) delivering the complete public-facing functionality of the [Flood risk activity exemptions service](https://register-flood-risk-exemption.service.gov.uk).
