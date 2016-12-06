@@ -5,9 +5,8 @@ module FloodRiskEngine
   class TextFieldContentValidator < ActiveModel::EachValidator
 
     def validate_each(record, attribute, value)
-      if value !~ TextFieldContentValidator.valid_name_regex
-        record.errors.add attribute, I18n.t("flood_risk_engine.validation_errors.#{attribute}.invalid")
-      end
+      return if value =~ TextFieldContentValidator.valid_name_regex
+      record.errors.add attribute, I18n.t("flood_risk_engine.validation_errors.#{attribute}.invalid")
     end
 
     def self.valid_name_regex

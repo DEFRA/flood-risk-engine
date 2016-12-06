@@ -74,7 +74,7 @@ module FloodRiskEngine
         }
 
         let(:empty_params) {
-          { "#{form.params_key}":  { postcode: "" } }
+          { "#{form.params_key}": { postcode: "" } }
         }
 
         it "validate returns false when a blank postcode supplied" do

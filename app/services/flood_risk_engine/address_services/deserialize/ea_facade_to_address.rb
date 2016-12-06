@@ -30,7 +30,7 @@ module FloodRiskEngine
         # Builds collection of attributes in correct format to simply
         # pass to Address new or create - to build an Address (plus Location)
 
-        def address_data(inbound) # rubocop:disable Metrics/MethodLength:
+        def address_data(inbound)
           addresses = inbound["results"] if inbound
 
           addresses ||= []

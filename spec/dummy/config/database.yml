@@ -9,7 +9,7 @@ default: &default
   encoding: unicode
   pool: 5
   host: <%= ENV["PG_HOST"] || "localhost" %>
-  port: 5432
+  port: <%= ENV["PG_PORT"] || 5432 %>
   user: <%= ENV["PG_USERNAME"] %>
   password: <%= ENV["PG_PASSWORD"] %>
 

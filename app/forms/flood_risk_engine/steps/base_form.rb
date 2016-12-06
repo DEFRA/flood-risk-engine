@@ -11,8 +11,6 @@ module FloodRiskEngine
 
       include BaseFormCommon
       extend BaseFormCommon
-
-      # rubocop:disable Metrics/MethodLength
       def self.factory(enrollment, factory_type: :default)
         case factory_type
         when :correspondence_contact

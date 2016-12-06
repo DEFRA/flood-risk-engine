@@ -19,7 +19,7 @@ module FloodRiskEngine
 
       it "supplied details of name max length" do
         expect(CorrespondenceContactNameForm.respond_to?(:name_max_length)).to eq true
-        expect(CorrespondenceContactNameForm.name_max_length).to be_a Fixnum
+        expect(CorrespondenceContactNameForm.name_max_length).to be_a Integer
       end
 
       let!(:full_name)    { Faker::Name.name }
