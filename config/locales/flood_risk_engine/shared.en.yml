@@ -33,3 +33,9 @@ en:
           legend: UK postcode
           individual_postcode:
              label: What's the address of the individual?
+          os_notice:
+            text: |-
+              © Crown copyright and database rights 2016 %{link1} 100024198. Use of this addressing data is subject to the %{link2}.
+            url1: 'https://www.ordnancesurvey.co.uk/'
+            url1_text: OS (opens new window)
+            url2_text: terms and conditions (opens new window)

@@ -1,0 +1,21 @@
+---
+en:
+  pages:
+    os_places_terms:
+      heading_h1: Ordnance Survey terms and conditions
+      list_item1: You are granted a non-exclusive, royalty free revocable licence solely to view the licensed mapping and addressing data for non-commercial purposes for the period during which we make it available.
+      list_item2: You are not permitted to copy, sub-license, distribute, sell or otherwise make available such data to third parties in any form.
+      list_item3: Third party rights to enforce the terms of this licence shall be reserved to OS.
+      para1_text: |-
+        Addressing information and mapping data from Ordnance Survey is © Crown copyright and database rights 2016 %{link} 100024198.
+      para2_text: |-
+        Use of this data is subject to the following conditions by way of exception to the standard Open Government Licence referred
+        to at the foot of this page.
+      para3_text: Terms and Conditions
+      para4_text: |-
+        22 December 2016: Please note that addressing information and mapping data available from this web service was previously inadvertently
+        released without passing on these terms and conditions.  The previous reference to the OGL without these additional terms was an
+        omission, and you should note that you are only permitted to use such information for viewing for non-commercial purposes; you are
+        not permitted to copy, sub-license, distribute, sell or otherwise make available such data, or use it for any other purpose.
+      url: 'https://www.ordnancesurvey.co.uk/'
+      url_text: OS (opens new window)
