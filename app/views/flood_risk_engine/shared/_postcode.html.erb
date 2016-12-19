@@ -33,12 +33,12 @@
 <p class="text font-xsmall" id="os-notice">
   <%=
     t(
-      ".os_notice.text",
+      ".os_notice.text_html",
       link: link_to(
         t(".os_notice.url_text"),
         enrollment_page_path(form.enrollment, id: "os_places_terms"),
         target: "_blank"
       )
-    ).html_safe
+    )
   %>
 </p>

@@ -9,7 +9,7 @@ en:
         non-commercial purposes for the period during which we make it available.
       list_item2: You are not permitted to copy, sub-license, distribute, sell or otherwise make available such data to third parties in any form.
       list_item3: Third party rights to enforce the terms of this licence shall be reserved to OS.
-      para1_text: |-
+      para1_text_html: |-
         Addressing information and mapping data from Ordnance Survey (OS) is &copy; Crown copyright and database rights 2016 OS 100024198.
       para2_text: |-
         Use of this data is subject to the following conditions by way of exception to the standard Open Government Licence (OGL) referred
