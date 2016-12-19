@@ -24,3 +24,21 @@
   <% end  %>
 
 </fieldset>
+
+<div class="form-group">
+  <%= f.submit(step_t(step, ".continue",  default: t("global.continue")), class: "button") %>
+</div>
+&nbsp;
+<hr />
+<p class="text font-xsmall" id="os-notice">
+  <%=
+    t(
+      ".os_notice.text_html",
+      link: link_to(
+        t(".os_notice.url_text"),
+        enrollment_page_path(form.enrollment, id: "os_places_terms"),
+        target: "_blank"
+      )
+    )
+  %>
+</p>

@@ -23,5 +23,16 @@ module FloodRiskEngine
         expect(response.body).to_not include "translation missing:"
       end
     end
+
+    context "Given I'm on the local authority postcode page" do
+      let(:enrollment) { FactoryGirl.create(:page_local_authority_postcode) }
+
+      it "When I click the t&c's link Then the OS Places T&C's page will open in a new tab" do
+        get :show, id: "os_places_terms", enrollment_id: enrollment
+
+        expect(response.body).to have_text t("pages.os_places_terms.heading_h1")
+        expect(response.body).to_not include "translation missing:"
+      end
+    end
   end
 end

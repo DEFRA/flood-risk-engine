@@ -37,6 +37,10 @@ module FloodRiskEngine
         expect(response.body).to have_selector("input[type=submit][value='Continue']")
       end
 
+      it "displays OS Places notice" do
+        expect(response.body).to have_selector("p#os-notice")
+      end
+
       let(:valid_attributes) { { local_authority_postcode: { postcode: "BS1 5AH" } } }
 
       let(:match_initial_url_step) { /You are being <a href=\"\S+local_authority_postcode/ }

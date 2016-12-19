@@ -9,9 +9,9 @@
 %>
 
 <%= render( "flood_risk_engine/shared/postcode",
-    f: f,
-    form: form,
-    addressable: form.partner.contact,
-    address_type: :partner
-  )
+            f: f,
+            form: form,
+            addressable: form.partner.contact,
+            address_type: :partner,
+            step: step )
 %>
