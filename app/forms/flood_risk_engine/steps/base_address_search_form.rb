@@ -51,6 +51,17 @@ module FloodRiskEngine
         :correspondence_contact_name
       end
 
+      # We are required to display a notice regarding use of OS places data in
+      # postcode lookup pages. However we wish to display this below the
+      # continue button, which means those pages have to take control of where
+      # it is positioned. To do this we override the show_continue_button? and
+      # return false, so that
+      # app/views/flood_risk_engine/enrollments/steps/show.html.erb knows not
+      # to take control for showing the button.
+      def show_continue_button?
+        false
+      end
+
     end
 
   end

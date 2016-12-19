@@ -22,23 +22,23 @@
       %>
     </p>
   <% end  %>
-  <p class="text" id="os-notice">
-    <%=
-      t(
-        ".os_notice.text",
-        link1: link_to(
-          t(".os_notice.url1_text"),
-          t('.os_notice.url1'),
-          rel: "external",
-          target: "_blank"
-        ),
-        link2: link_to(
-          t(".os_notice.url2_text"),
-          enrollment_page_path(form.enrollment, id: "os_places_terms"),
-          rel: "external",
-          target: "_blank"
-        )
-      ).html_safe
-    %>
-  </p>
+
 </fieldset>
+
+<div class="form-group">
+  <%= f.submit(step_t(step, ".continue",  default: t("global.continue")), class: "button") %>
+</div>
+&nbsp;
+<hr />
+<p class="text font-xsmall" id="os-notice">
+  <%=
+    t(
+      ".os_notice.text",
+      link: link_to(
+        t(".os_notice.url_text"),
+        enrollment_page_path(form.enrollment, id: "os_places_terms"),
+        target: "_blank"
+      )
+    ).html_safe
+  %>
+</p>
