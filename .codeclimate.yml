@@ -1,5 +1,11 @@
 ---
 engines:
+  # Bundler-Audit cross references entries in your Gemfile.lock with the Ruby
+  # Advisory DB https://github.com/rubysec/ruby-advisory-db.
+  bundler-audit:
+    enabled: true
+  # Reports issues when it finds similar code blocks over a configurable mass
+  # threshold
   duplication:
     enabled: true
     config:
@@ -9,16 +15,19 @@ engines:
           # a certain degree of duplication is acceptable in the name of
           # readability.
           mass_threshold: 25
-        javascript:
+  # Performs a case-sensitive search for the following strings in your project:
+  # TODO, FIXME, HACK, XXX, and BUG, which are all things you should fix now,
+  # not later
   fixme:
     enabled: true
-  rubocop:
-    enabled: false
-  brakeman:
-    enabled: false
+  # Reek is a Code smell detector for Ruby. https://github.com/troessner/reek
+  reek:
+    enabled: true
 ratings:
   paths:
+  - Gemfile.lock
   - "**.module"
   - "**.rb"
 exclude_paths:
 - spec/
+- vendor/

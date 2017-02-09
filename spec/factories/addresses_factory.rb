@@ -27,7 +27,7 @@ FactoryGirl.define do
 
   factory :address_services, parent: :address
 
-  # Faker.postcode seems to produce invalid postcodes now & then
+  # Faker::Address.postcode seems to produce invalid postcodes now & then
   # so try to bodge our own
   #     https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
   #
