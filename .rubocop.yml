@@ -13,19 +13,14 @@ AllCops:
     - "**/Gemfile"
     - "**/Rakefile"
     - "**/config.ru"
+    - "**/*.thor"
   Exclude:
     - "**/bin/*"
-    - "config/**/*"
-    - "script/**/*"
+    - "**/config/**/*"
+    - "**/script/**/*"
     - "**/db/schema.rb"
     - "**/db/migrate/*"
-    - 'vendor/**/*'
-
-# When using Ruby >= 2.3, Rubocop wants to add a comment to the top of *.rb
-# to aid migration to frozen literals in Ruby 3.0. We are not interested in
-# modifying every file at this point, so this cop is disabled for now.
-Style/FrozenStringLiteralComment:
-  Enabled: false
+    - "**/vendor/**/*"
 
 # TODO: Understand what the issue is and whether this needs to be more formally disabled (i.e. the dev team agree)
 # We don't understand this for now - seems to prevent perfectly reasonable meta-programming
@@ -38,6 +33,20 @@ Lint/NestedMethodDefinition:
 Metrics/AbcSize:
   Max: 40
 
+# We don't feel we can help having a large gemspec, hence we exclude it.
+# We don't feel it makes sense to split specs and factories over multiple files,
+# or when in a context be forced to try and come up with slightly different ones
+# in order to reduce the block length. Hence we exclude specs and factories from
+# this rule.
+# Shared examples are the same as specs, but don't have the _spec.rb extension
+# hence they are listed separately
+Metrics/BlockLength:
+  Exclude:
+    - "**/*.gemspec"
+    - "**/spec/**/*_spec.rb"
+    - "**/spec/**/*_factory.rb"
+    - "**/spec/shared_examples/*.rb"
+
 # We believe the default of 10 lines for a method length is too restrictive and often quickly hit just because we need
 # to specify the namesspace, class and method before then doing something with it.
 Metrics/MethodLength:
@@ -45,22 +54,24 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Max: 400
   Exclude:
-    - spec/**/*_spec.rb
+    - "**/spec/**/*_spec.rb"
 
 # We believe the default 80 characters is too restrictive and that lines can still be readable and maintainable
 # when no more than 120 characters. This also allows us to maximise our scree space.
 Metrics/LineLength:
   Max: 120
   Exclude:
-    - spec/factories/*.rb
-    - spec/features/*_spec.rb
-    - spec/routing/*_spec.rb
+    - "**spec/factories/**/*.rb"
+    - "**spec/features/**/*_spec.rb"
+    - "**spec/models/**/*_spec.rb"
+    - "**spec/policies/**/*_spec.rb"
+    - "**spec/routing/**/*_spec.rb"
 
 # Turn these off as can totally mess with the expect{...}.to syntax
 # Also reports on model validations using Proc.new { style blocks but trying to use do .. end raises invalid syntax
 Style/BlockDelimiters:
   Exclude:
-    - spec/**/*_spec.rb
+    - "**/spec/**/*_spec.rb"
 
 # Rubymine disagrees and not sure how to fix Rubymine indentation right now
 Style/CaseIndentation:
@@ -71,9 +82,11 @@ Style/CaseIndentation:
 # documentation.
 Style/Documentation:
   Enabled: false
+
+# We believe it looks cluttered not having the ability to have empty lines after
+# the module, class, and block declarations
 Style/EmptyLinesAroundBlockBody:
-    Enabled: false
-# Looks cluttered/ugly having your first method directly after the module/class declaration
+  Enabled: false
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
 Style/EmptyLinesAroundClassBody:
@@ -84,9 +97,18 @@ Style/EmptyLinesAroundClassBody:
 Style/FormatString:
   Enabled: false
 
+# When using Ruby >= 2.3, Rubocop wants to add a comment to the top of *.rb
+# to aid migration to frozen literals in Ruby 3.0. We are not interested in
+# modifying every file at this point, so this cop is disabled for now.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# In specs we like to use the pattern of updating within an expect do block and
+# then asserting a given attribute has changed as a result. This requires
+# chaining hence we exclude specs from this rule
 Style/MethodCalledOnDoEndBlock:
   Exclude:
-    - spec/**/*_spec.rb
+    - "**/spec/**/*_spec.rb"
 
 # There are no relative performance improvements using '' over "", therefore we believe there is more
 # value in using "" for all strings irrespective of whether string interpolation is used

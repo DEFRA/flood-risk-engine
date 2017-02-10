@@ -6,8 +6,10 @@
 # However experience has shown this can cause problems in a repo that has
 # multiple people working on it, in different environments. Therefore we use it
 # as a sort of 'test runner', a way of manually running the same tests against
-# the project. To use locally just go with
+# the project. To use locally just go with to install and setup
 # $ gem install overcommit --no-ri --no-rdoc
+# $ overcommit --sign
+# And then just this everytime you want to run it
 # $ overcommit --run
 #
 # For reference this file extends the default configuration defined in:
@@ -26,11 +28,7 @@
 # For a complete list of options that you can use to customize hooks, see:
 # https://github.com/brigade/overcommit#configuration
 
-# Whether to check if a hook plugin has changed since Overcommit last ran it.
-# This is a defense mechanism when working with repositories which can contain
-# untrusted code (e.g. when you fetch a pull request from a third party).
-# See https://github.com/brigade/overcommit#security for more information.
-# This also lets us run the tests without having to install the hooks.
+# This lets us run the tests without having to install the hooks.
 verify_signatures: false
 
 PreCommit:
@@ -40,9 +38,6 @@ PreCommit:
     enabled: false
   AuthorName:
     enabled: false
-
-  CoffeeLint:
-    enabled: true
 
   YamlSyntax:
     enabled: true
@@ -61,3 +56,4 @@ PreCommit:
     exclude:
       - '**/vendor/assets/javascripts/**/*.js'
       - '**/spec/fixtures/attachments/**/*'
+      - '**/db/migrate/*.rb'

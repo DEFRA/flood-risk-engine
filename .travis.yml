@@ -4,18 +4,15 @@ cache: bundler
 rvm:
   - 2.3.1
 
-env:
-  global:
-    - DB=pg
-
 # Travis CI clones repositories to a depth of 50 commits, which is only really
 # useful if you are performing git operations.
 # https://docs.travis-ci.com/user/customizing-the-build/#Git-Clone-Depth
 git:
   depth: 3
 
+# We need nodejs version >= 4 to be compatible with htmlhint >= 0.9.13
+# This overwrites the system node  0.10.x
 before_install:
-  # Needed for htmlhint to run
   - nvm install node
 
 before_script:
@@ -27,29 +24,21 @@ before_script:
   # to check the project against the latest known vulnerabilities.
   - gem install brakeman --no-ri --no-rdoc
   - brakeman
-  # Install and run i18n-tasks.
-  - gem install i18n-tasks -v 0.9.6 --no-ri --no-rdoc
-  # TO FIX: Running this will report approx 275 missing keys. This is because of
-  # the way we have used translations in the project. Initial attempts to use
-  # magic comments (see https://github.com/glebm/i18n-tasks#fine-tuning) has not
-  # brought forth a solution so until this matter is investigated further and
-  # resolved this check needs to be left out of the build.
-  # - i18n-tasks missing
-  - i18n-tasks unused
   # Install and run overcommit.
+  # This will run the following checks
+  #   - YamlSyntax
+  #   - TrailingWhitespace
+  #   - HardTabs
   - gem install overcommit -v 0.37.0 --no-ri --no-rdoc
   - overcommit --sign
   - overcommit --run
   # Install and run htmlhint
   - npm install -g htmlhint
-  # TO FIX: We should just be able to run `htmlhint ./app/**/*.html.erb`.
-  # However we are currently getting error 'Invalid doctype. (doctype-html5)' in
-  # app/views/flood_risk_engine/layouts/mail.html.erb. The problem is we have
-  # disabled this rule in `.htmlhintrc` but its making no difference. So for now
-  # we have to specify each folder in turn.
-  - htmlhint ./app/views/flood_risk_engine/enrollment_mailer/**/*.html.erb
-  - htmlhint ./app/views/flood_risk_engine/enrollments/**/**/*.html.erb
-  - htmlhint ./app/views/flood_risk_engine/errors/**/*.html.erb
+  - htmlhint ./app/**/*.html.erb
+  # Run rubocop. Its installed as a dependency (hence no install step) as this
+  # allows projects to control the version they are using (rather than getting)
+  # surprise build failurs.
+  - bundle exec rubocop
   # Replace database.yml with database.travis.yml (but leave filename as
   # database.yml). database.travis.yml is the config needed for Travis, and it
   # needs to be in place before we run the migrations.
