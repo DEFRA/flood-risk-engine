@@ -140,3 +140,4 @@ module FloodRiskEngine
     end
   end
 end
+# rubocop:enable ClassLength

@@ -10,7 +10,7 @@ FactoryBot.define do
 
     # A trait to create a blank Organisation for each Type
     # One trait per type named in format : as_xxx e.g   as_local_authority, as_limited_liability_partnership etc
-    FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+    FloodRiskEngine::Organisation.org_types.each_key do |ot|
       trait :"as_#{ot}" do
         org_type ot.to_s
         name ""

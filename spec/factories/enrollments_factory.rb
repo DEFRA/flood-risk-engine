@@ -10,7 +10,7 @@ FactoryBot.define do
     #   other
     #   unknown
 
-    FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+    FloodRiskEngine::Organisation.org_types.each_key do |ot|
       trait :"with_#{ot}" do
         after(:build) { |object| object.organisation = create(:organisation, :"as_#{ot}") }
       end

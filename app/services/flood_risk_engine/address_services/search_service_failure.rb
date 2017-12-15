@@ -14,7 +14,7 @@ module FloodRiskEngine
           # Have tried unsuccesfully updating airbrake gem and also rolling back to WEX version  "airbrake", "~> 5.2.1"
           #
           Airbrake.notify(ex) if defined? Airbrake
-        rescue
+        rescue StandardError
           Rails.logger.error "WARNING!!! - Cannot notify Airbrake of issues with Address Service"
         end
 

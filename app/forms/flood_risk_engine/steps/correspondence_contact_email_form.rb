@@ -89,7 +89,7 @@ module FloodRiskEngine
       end
 
       def email_present?
-        (enrollment && enrollment.correspondence_contact && enrollment.correspondence_contact.email_address.present?)
+        (enrollment&.correspondence_contact && enrollment.correspondence_contact.email_address.present?)
       end
 
       def no_email_errors?

@@ -48,7 +48,7 @@ module FloodRiskEngine
               addressable_id: addressable_id,
               address_type: address_type,
               flood_risk_engine_address: address.attributes.select do |attr, _value|
-                [:premises, :street_address, :locality, :city].include? attr
+                %i[premises street_address locality city].include? attr
               end
             )
           end.to change { Address.count }.by(address_count_change)

@@ -16,10 +16,10 @@ module FloodRiskEngine
     }
 
     # Derived from RCDP customer data model
-    enum title: %w(
+    enum title: %w[
       na Mr Mrs Miss Ms Dr Rev Sir Lady Lord
       Captain Major Professor Dame Colonel
-    )
+    ]
 
     after_save do
       organisation.try(:update_searchable_content)

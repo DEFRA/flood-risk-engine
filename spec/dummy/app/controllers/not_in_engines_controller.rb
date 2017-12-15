@@ -1,7 +1,7 @@
 # NotInEngine provides an object within the dummy app, that should not be
 # affected by any code in the engine itself.
 class NotInEnginesController < ApplicationController
-  before_action :set_not_in_engine, only: [:show, :edit, :update, :destroy]
+  before_action :set_not_in_engine, only: %i[show edit update destroy]
 
   # GET /not_in_engines
   def index

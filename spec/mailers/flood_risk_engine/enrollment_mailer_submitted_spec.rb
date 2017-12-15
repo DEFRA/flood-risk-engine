@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require "rails_helper"
 
 module FloodRiskEngine
@@ -66,7 +65,7 @@ module FloodRiskEngine
 
     context "content" do
       context "in html format" do
-        %w(subject
+        %w[subject
            registration_submitted
            please_wait
            exemption_heading
@@ -81,14 +80,14 @@ module FloodRiskEngine
            contact_email_html
            contact_telephone_html
            contact_minicom_html
-           contact_opening_hours).each do |key|
+           contact_opening_hours].each do |key|
           it "pulls in translated content for .#{key}" do
             expect(email.html_part).to have_body_text(t(key))
           end
         end
       end
       context "in text format" do
-        %w(registration_submitted
+        %w[registration_submitted
            please_wait
            exemption_heading
            heading_1
@@ -103,7 +102,7 @@ module FloodRiskEngine
            contact_email
            contact_telephone
            contact_minicom
-           contact_opening_hours).each do |key|
+           contact_opening_hours].each do |key|
           it "pulls in translated content for .#{key}" do
             expect(email.text_part).to have_body_text(t(key))
           end

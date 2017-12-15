@@ -13,7 +13,7 @@ module FloodRiskEngine
     describe ".go_forward" do
       context "when enrollment is a foo" do
         let(:enrollment) { builder.new(:foo) }
-        let(:steps) { [:step1, :step2, :step3] }
+        let(:steps) { %i[step1 step2 step3] }
 
         it "should progess through foo journey" do
           expect(enrollment_state_machine.state).to eq(steps[0])
@@ -26,7 +26,7 @@ module FloodRiskEngine
 
       context "when enrollment is a bar" do
         let(:enrollment) { builder.new(:bar) }
-        let(:steps) { [:step1, :step3] }
+        let(:steps) { %i[step1 step3] }
 
         it "should progess through foo journey" do
           expect(enrollment_state_machine.state).to eq(steps[0])

@@ -16,7 +16,7 @@ module FloodRiskEngine
       module_function
 
       def steps
-        [:step1, :step2, :step3]
+        %i[step1 step2 step3]
       end
 
       def foo

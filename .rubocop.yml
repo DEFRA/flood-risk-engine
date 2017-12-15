@@ -15,12 +15,26 @@ AllCops:
     - "**/config.ru"
     - "**/*.thor"
   Exclude:
+    - "Guardfile"
     - "**/bin/*"
     - "**/config/**/*"
     - "**/script/**/*"
     - "**/db/schema.rb"
     - "**/db/migrate/*"
     - "**/vendor/**/*"
+
+# Rubymine disagrees and not sure how to fix Rubymine indentation right now
+Layout/CaseIndentation:
+  Enabled: false
+
+# We believe it looks cluttered not having the ability to have empty lines after
+# the module, class, and block declarations
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
 
 # TODO: Understand what the issue is and whether this needs to be more formally disabled (i.e. the dev team agree)
 # We don't understand this for now - seems to prevent perfectly reasonable meta-programming
@@ -73,28 +87,22 @@ Style/BlockDelimiters:
   Exclude:
     - "**/spec/**/*_spec.rb"
 
-# Rubymine disagrees and not sure how to fix Rubymine indentation right now
-Style/CaseIndentation:
-  Enabled: false
-
 # As a web app, as long as the team commit to using well named classes for
 # controllers, models etc it should not be necessary to add top-level class
 # documentation.
 Style/Documentation:
   Enabled: false
 
-# We believe it looks cluttered not having the ability to have empty lines after
-# the module, class, and block declarations
-Style/EmptyLinesAroundBlockBody:
-  Enabled: false
-Style/EmptyLinesAroundModuleBody:
-  Enabled: false
-Style/EmptyLinesAroundClassBody:
-  Enabled: false
-
 # We've found the sprintf style for formatting strings can be useful when storing a formatted string as a template,
 # and passing in strings that can vary with context. Therefore we chose to disable this rule.
 Style/FormatString:
+  Enabled: false
+
+# This rule was added in version 0.49.0. We have nothing against the rule
+# however the code we have it doesn't like is anything that uses strftime().
+# We feel the way we are using that is as expected, so have taken the decision
+# to turn off this cop. https://github.com/bbatsov/rubocop/issues/3438
+Style/FormatStringToken:
   Enabled: false
 
 # When using Ruby >= 2.3, Rubocop wants to add a comment to the top of *.rb
@@ -110,12 +118,12 @@ Style/MethodCalledOnDoEndBlock:
   Exclude:
     - "**/spec/**/*_spec.rb"
 
-# There are no relative performance improvements using '' over "", therefore we believe there is more
-# value in using "" for all strings irrespective of whether string interpolation is used
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
 # Rubocop 0.42 introduced this cop - disabling for now until we have time to resolve
 # the issues it raises.
 Style/MethodMissing:
   Enabled: false
+
+# There are no relative performance improvements using '' over "", therefore we believe there is more
+# value in using "" for all strings irrespective of whether string interpolation is used
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

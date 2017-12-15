@@ -16,13 +16,13 @@ FactoryBot.define do
 
   # Individual
 
-  factory :page_individual_name, parent: :page_user_type, traits: [:with_exemption, :with_individual] do
+  factory :page_individual_name, parent: :page_user_type, traits: %i[with_exemption with_individual] do
     step :individual_name
   end
 
   # Local Authority
 
-  factory :page_local_authority, parent: :page_user_type, traits: [:with_exemption, :with_local_authority] do
+  factory :page_local_authority, parent: :page_user_type, traits: %i[with_exemption with_local_authority] do
     step :local_authority
   end
 
@@ -40,7 +40,7 @@ FactoryBot.define do
 
   # Ltd Company
 
-  factory :page_limited_company_number, parent: :page_user_type, traits: [:with_exemption, :with_limited_company] do
+  factory :page_limited_company_number, parent: :page_user_type, traits: %i[with_exemption with_limited_company] do
     step :limited_company_number
   end
 
@@ -64,10 +64,7 @@ FactoryBot.define do
 
   factory :page_limited_liability_partnership,
           parent: :page_user_type,
-          traits: [
-            :with_exemption,
-            :with_limited_liability_partnership
-          ] do
+          traits: %i[with_exemption with_limited_liability_partnership] do
     step :limited_liability_partnership_number
   end
 

@@ -30,14 +30,14 @@ module FloodRiskEngine
 
       # -------------------------------------------------------------------
       # Central part of process where work flow depends on organisation type
-      [
-        :local_authority,
-        :limited_company,
-        :limited_liability_partnership,
-        :individual,
-        :partnership,
-        :other,
-        :unknown
+      %i[
+        local_authority
+        limited_company
+        limited_liability_partnership
+        individual
+        partnership
+        other
+        unknown
       ].each do |org_type|
         steps = WorkFlow.for(org_type)
         criteria = -> { enrollment.org_type == org_type.to_s }
