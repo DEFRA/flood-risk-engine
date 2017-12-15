@@ -6,7 +6,7 @@ module FloodRiskEngine
       render_views
 
       let(:enrollment) do
-        FactoryGirl.create(:enrollment, :with_local_authority, step: step)
+        FactoryBot.create(:enrollment, :with_local_authority, step: step)
       end
 
       let(:reform_class) { Steps::LocalAuthorityForm }

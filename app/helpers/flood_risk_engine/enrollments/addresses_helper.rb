@@ -16,6 +16,7 @@ module FloodRiskEngine
           target_step: target_step
         )
       end
+      # rubocop:enable Metrics/ParameterLists
 
       # The change postcode page should either be the current step or the previous step.
       # set :step_back_to_postcode to true if the postcode step will be the

@@ -1,6 +1,6 @@
 require "uk_postcode"
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :address, class: "FloodRiskEngine::Address" do
     premises            Faker::Address.building_number
     street_address      Faker::Address.street_address
@@ -39,12 +39,11 @@ FactoryGirl.define do
   #  The final two letters do not use the letters CIKMOV, so as not to resemble digits or each other when hand-written.
   #
   # rubocop:disable Lint/Loop
-  #
   sequence(:uk_post_code) do |_n|
-    @valid_sequence_1_for_uk_postcode ||= ("A".."Z").to_a - %w(Q V X)
-    @valid_sequence_2_for_uk_postcode ||= ("A".."Y").to_a - %w(I J)
+    @valid_sequence_1_for_uk_postcode ||= ("A".."Z").to_a - %w[Q V X]
+    @valid_sequence_2_for_uk_postcode ||= ("A".."Y").to_a - %w[I J]
     @valid_sequence_3_for_uk_postcode ||= ("A".."K").to_a
-    @valid_sequence_4_for_uk_postcode ||= ("A".."Z").to_a - %w(C I K M O V J)
+    @valid_sequence_4_for_uk_postcode ||= ("A".."Z").to_a - %w[C I K M O V J]
 
     begin
       shuffled1 = @valid_sequence_1_for_uk_postcode.shuffle
@@ -56,4 +55,5 @@ FactoryGirl.define do
     end until pc.valid?
     pc.to_s
   end
+  # rubocop:enable Lint/Loop
 end

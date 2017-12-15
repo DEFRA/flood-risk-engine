@@ -45,8 +45,6 @@ module FloodRiskEngine
         enrollment.organisation.try(:primary_address).try(:postcode)
       end
 
-      attr_reader :assignable_address
-
       # Most address pages are almost identical for each OrgType so
       # use a default of assigning to Organisation Primary_address
 

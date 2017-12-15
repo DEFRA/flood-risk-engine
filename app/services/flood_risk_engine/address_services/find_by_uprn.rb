@@ -13,7 +13,7 @@ module FloodRiskEngine
       def search
         @address_data = begin
           EA::AddressLookup.find_by_uprn(uprn)
-        rescue => ex
+        rescue StandardError => ex
           # dont want exception to bubble up but need to know if theres been a failure
           @address_service_failure = SearchServiceFailure.build(ex)
           {}

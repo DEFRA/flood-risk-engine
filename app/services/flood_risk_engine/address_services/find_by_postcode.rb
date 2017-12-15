@@ -15,7 +15,7 @@ module FloodRiskEngine
 
         @address_result_set = begin
           EA::AddressLookup.find_by_postcode(post_code)
-        rescue => ex
+        rescue StandardError => ex
           # dont want exception to bubble up but need to know if there's been a failure
           @address_service_failure = SearchServiceFailure.build(ex)
           []

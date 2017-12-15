@@ -10,63 +10,63 @@ module FloodRiskEngine
 
       def local_authority
         between_start_and_finish do
-          [
-            :local_authority,
-            :local_authority_postcode,
-            :local_authority_address
+          %i[
+            local_authority
+            local_authority_postcode
+            local_authority_address
           ]
         end
       end
 
       def limited_company
         between_start_and_finish do
-          [
-            :limited_company_number,
-            :limited_company_name,
-            :limited_company_postcode,
-            :limited_company_address
+          %i[
+            limited_company_number
+            limited_company_name
+            limited_company_postcode
+            limited_company_address
           ]
         end
       end
 
       def limited_liability_partnership
         between_start_and_finish do
-          [
-            :limited_liability_partnership_number,
-            :limited_liability_partnership_name,
-            :limited_liability_partnership_postcode,
-            :limited_liability_partnership_address
+          %i[
+            limited_liability_partnership_number
+            limited_liability_partnership_name
+            limited_liability_partnership_postcode
+            limited_liability_partnership_address
           ]
         end
       end
 
       def individual
         between_start_and_finish do
-          [
-            :individual_name,
-            :individual_postcode,
-            :individual_address
+          %i[
+            individual_name
+            individual_postcode
+            individual_address
           ]
         end
       end
 
       def partnership
         between_start_and_finish do
-          [
-            :partnership,
-            :partnership_postcode,
-            :partnership_address,
-            :partnership_details
+          %i[
+            partnership
+            partnership_postcode
+            partnership_address
+            partnership_details
           ]
         end
       end
 
       def other
         between_start_and_finish do
-          [
-            :other,
-            :other_postcode,
-            :other_address
+          %i[
+            other
+            other_postcode
+            other_address
           ]
         end
       end
@@ -76,22 +76,24 @@ module FloodRiskEngine
       end
 
       def start
-        [
-          :add_exemptions,
-          :check_exemptions,
-          :grid_reference,
-          :user_type
+        %i[
+          add_exemptions
+          check_exemptions
+          grid_reference
+          user_type
         ]
       end
 
       def finish
-        [
-          :correspondence_contact_name,         # prototype urls refers to this as 'main' contact
-          :correspondence_contact_telephone,    # but it is essentially - "Who should we contact about this activity?"
-          :correspondence_contact_email,
-          :email_someone_else,
-          :check_your_answers,
-          :declaration
+        # correspondence_contact_name = prototype urls refers to this as 'main' contact
+        # correspondence_contact_telephone = but it is essentially - "Who should we contact about this activity?"
+        %i[
+          correspondence_contact_name
+          correspondence_contact_telephone
+          correspondence_contact_email
+          email_someone_else
+          check_your_answers
+          declaration
         ]
       end
 

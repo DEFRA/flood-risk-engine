@@ -31,7 +31,7 @@ module FloodRiskEngine
     end
 
     def address_methods
-      [:premises, :street_address, :locality, :city, :postcode]
+      %i[premises street_address locality city postcode]
     end
   end
 end

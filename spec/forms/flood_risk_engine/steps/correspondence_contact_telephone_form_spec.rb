@@ -5,7 +5,7 @@ module FloodRiskEngine
   module Steps
     describe CorrespondenceContactTelephoneForm, type: :form do
       let(:params_key) { :telephone_number }
-      let(:enrollment) { FactoryGirl.create(:enrollment) }
+      let(:enrollment) { FactoryBot.create(:enrollment) }
       let(:model_class) { Contact }
 
       subject { described_class.factory(enrollment) }

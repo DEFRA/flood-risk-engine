@@ -2,7 +2,7 @@ module FloodRiskEngine
   class Exemption < ActiveRecord::Base
     default_scope { order(:code_number) }
 
-    LONG_DREDGING_CODES = %w(FRA23).freeze
+    LONG_DREDGING_CODES = %w[FRA23].freeze
 
     has_many :enrollment_exemptions,
              dependent: :restrict_with_exception

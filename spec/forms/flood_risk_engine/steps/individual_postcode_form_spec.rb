@@ -5,7 +5,7 @@ module FloodRiskEngine
   module Steps
     describe IndividualPostcodeForm, type: :form do
       let(:params_key) { :individual_postcode }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_individual) }
+      let(:enrollment) { FactoryBot.create(:enrollment, :with_individual) }
       let(:model_class) { FloodRiskEngine::AddressSearch }
       let(:form) { described_class.factory(enrollment) }
       let(:valid_params) { { postcode: "BS1 5AH" } }

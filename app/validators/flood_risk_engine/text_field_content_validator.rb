@@ -19,7 +19,7 @@ module FloodRiskEngine
     def self.find_max_column_length(klass, column, default = 255)
       name_max_length = begin
         klass.columns.find { |col| col.name == column }.limit || default
-      rescue
+      rescue StandardError
         default
       end
       name_max_length

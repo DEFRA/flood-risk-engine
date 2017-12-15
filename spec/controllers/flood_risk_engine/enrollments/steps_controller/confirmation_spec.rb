@@ -4,7 +4,7 @@ module FloodRiskEngine
     routes { Engine.routes }
     render_views
 
-    let(:enrollment) { FactoryGirl.create(:page_confirmation) }
+    let(:enrollment) { FactoryBot.create(:page_confirmation) }
     let(:reform_class) { Steps::ConfirmationForm }
 
     context "Confirmation Page " do

@@ -4,7 +4,7 @@ require_relative "../../../support/shared_examples/form_objects"
 module FloodRiskEngine
   module Steps
     RSpec.describe UnknownForm, type: :form do
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_unknown) }
+      let(:enrollment) { FactoryBot.create(:enrollment, :with_unknown) }
       let(:form) { described_class.factory(enrollment) }
       let(:params_key) { :unknown }
       let(:params) { { params_key => { foo: :bar } } }

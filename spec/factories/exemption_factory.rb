@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:exemption_code) { |n| "FRA_RSPEC_#{n}" }
 
   factory :exemption, class: FloodRiskEngine::Exemption do

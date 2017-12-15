@@ -4,7 +4,7 @@ module FloodRiskEngine
     routes { Engine.routes }
     render_views
     let(:steps) { WorkFlow::Definitions.start }
-    let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
+    let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
 
     context "control of steps" do
       describe "test assumption" do
@@ -28,7 +28,7 @@ module FloodRiskEngine
 
         describe "back step (step == (enrollment.step - 1)" do
           let(:step) { steps[0] }
-          let(:enrollment) { FactoryGirl.create(:enrollment, step: steps[1]) }
+          let(:enrollment) { FactoryBot.create(:enrollment, step: steps[1]) }
           it "should render page successfully" do
             expect(response).to have_http_status(:success)
           end
@@ -40,7 +40,7 @@ module FloodRiskEngine
         context "mismatches" do
           describe "large (step many steps from enrollment.step)" do
             let(:step) { steps.first }
-            let(:enrollment) { FactoryGirl.create(:enrollment, step: steps.last) }
+            let(:enrollment) { FactoryBot.create(:enrollment, step: steps.last) }
             it "should redirect to enrollment.step" do
               expect(response).to redirect_to(
                 enrollment_step_path(enrollment, steps.last)
@@ -50,7 +50,7 @@ module FloodRiskEngine
 
           describe "step too soon (step one after enrollment.step)" do
             let(:step) { steps[2] }
-            let(:enrollment) { FactoryGirl.create(:enrollment, step: steps[1]) }
+            let(:enrollment) { FactoryBot.create(:enrollment, step: steps[1]) }
             it "should redirect to enrollment.step" do
               expect(response).to redirect_to(
                 enrollment_step_path(enrollment, steps[1])

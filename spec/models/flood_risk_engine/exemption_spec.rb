@@ -17,7 +17,7 @@ module FloodRiskEngine
 
     describe ".long_dredging?" do
       context "with a long dredging exemption" do
-        let(:exemption) { FactoryGirl.create(:exemption, code: "FRA23") }
+        let(:exemption) { FactoryBot.create(:exemption, code: "FRA23") }
 
         it "should be true" do
           expect(exemption.long_dredging?).to be_truthy
@@ -25,7 +25,7 @@ module FloodRiskEngine
       end
 
       context "with a standard exemption" do
-        let(:exemption) { FactoryGirl.create(:exemption) }
+        let(:exemption) { FactoryBot.create(:exemption) }
 
         it "should be false" do
           expect(exemption.long_dredging?).to be_falsey

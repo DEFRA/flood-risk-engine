@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :flood_risk_engine_contact, class: "FloodRiskEngine::Contact" do
     title 1
     full_name { "#{Faker::Name.first_name} #{Faker::Name.last_name}" }

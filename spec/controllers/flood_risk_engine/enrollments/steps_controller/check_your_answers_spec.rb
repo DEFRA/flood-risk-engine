@@ -89,10 +89,10 @@ module FloodRiskEngine
     end
 
     context "with partnership" do
-      let(:address) { FactoryGirl.create(:address) }
-      let(:contact) { FactoryGirl.create(:contact, address: address) }
+      let(:address) { FactoryBot.create(:address) }
+      let(:contact) { FactoryBot.create(:contact, address: address) }
       let(:enrollment) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :enrollment,
           :with_partnership,
           :with_exemption,
@@ -101,7 +101,7 @@ module FloodRiskEngine
         )
       end
       let(:partner) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :partner,
           contact: contact,
           organisation: enrollment.organisation
@@ -121,7 +121,7 @@ module FloodRiskEngine
 
     context "with dredging exemption" do
       let(:enrollment) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :enrollment,
           :with_partnership,
           :with_dredging_exemption,

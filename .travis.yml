@@ -10,12 +10,30 @@ rvm:
 git:
   depth: 3
 
+# Needed as part of submitting test coverage statistics to CodeClimate as part
+# of the build
+# https://docs.codeclimate.com/v1.0/docs/travis-ci-test-coverage
+env:
+  global:
+    - CC_TEST_REPORTER_ID=96b5a7037c20be6bd42f3fdff57e81d68e9074dfd81d079413cb84a8342ba10e
+
+addons:
+  postgresql: "9.4"
+
 # We need nodejs version >= 4 to be compatible with htmlhint >= 0.9.13
 # This overwrites the system node  0.10.x
 before_install:
   - nvm install node
 
 before_script:
+  # Setup to support the CodeClimate test coverage submission
+  # As per CodeClimate's documentation, they suggest only running
+  # ./cc-test-reporter commands on travis-ci push builds only. Hence we wrap all
+  # the codeclimate test coverage related commands in a check that tests if we
+  # are in a pull request or not.
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build; fi
   # We install and run these checks first prior to the data migrations in order
   # 'fail fast'. There is no point in running the migrations if these checks
   # fail.
@@ -51,12 +69,5 @@ before_script:
   # - ls spec/dummy/log
   # - cat spec/dummy/log/*
 
-# This section was added as per https://docs.travis-ci.com/user/code-climate/
-# To protect our codeclimate stats rather than adding the Codeclimate API key for this project
-# in the open we used this guide https://docs.travis-ci.com/user/encryption-keys/ to encryt the
-# value. Essentially install travis gem, then run `travis encrypt <my_code_climate_api_key>`
-addons:
-  postgresql: "9.4"
-  code_climate:
-    repo_token:
-      secure: "UYT5BQb5AMAcLNL56n3TfbQl3YCZqvSztUZEWYUia/OhKzhIYVnxJCLlZOe1iKPBgUBPxUz7aNPMEF3gBDOl6bo6fycbgIvAj3GqX6hdGNmN70wuhfKlSwTptv2tYsc6zikGQc56IPs4Y/QkKBWW/C98VpR0jT6moWm6P3jKFLkXOHrA7jT+jcmOybWynK0F5C3chK17J3PKltuuOIMpb8iNfRxMLp4aA5JVY8ueGAXm7bZeHN23T60UPrOlRygC48oJuNG5VvaME7ZL0S5Ypr199q/+xVCd6po3CniVovoKOsrq4lUjoP6rYMcnKruBRhnqpAPzPvhcuwQ12AXWfU/BBXTr4RgvDJhnO/cYHpzAr8h/Q8FY5u2M5gyFihYW0V0xHCUUufzUtdIibzeNa0BP56y3zM4W0VEtYpDiSuTyIWODrmhhgHgPEeuqevnKxP5hpZK7EfJD3YW8RK2ze7VjMpXVLaUUQ03KCBct3KnxW/oF9Mg7lYwxqYRjAOUjDResCGlHf61FsAHj3kBCJ+lLnTT+CMdYRttIIYHSi8cq9vJGjFsfmYkoHVsybctVmIQg+etavxontlSmeXOCNwI03pYHCjA7ZI6zZKgr76frRAEmdm0yFO9rBRyIfjJLwEkF1JE3nYD/gHN3+XFeoFpIEB3iTvMscUW2dy563yI="
+after_script:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi

@@ -24,14 +24,14 @@ module EA
     end
 
     context "when the number is not 8 digits" do
-      %w(1234567 123456789).each do |invalid_number|
+      %w[1234567 123456789].each do |invalid_number|
         let(:number) { invalid_number }
         it { is_expected.to_not be_valid }
       end
     end
 
     context "when the number sis not 2 chars + 6 digits" do
-      %w(ZZ12345 AA1234567).each do |invalid_number|
+      %w[ZZ12345 AA1234567].each do |invalid_number|
         let(:number) { invalid_number }
         it { is_expected.to_not be_valid }
       end

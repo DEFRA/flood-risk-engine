@@ -12,10 +12,6 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
-# Code coverage hooks
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 require "simplecov"
 SimpleCov.start "rails" do
   # any custom configs like groups and filters can be here at a central place

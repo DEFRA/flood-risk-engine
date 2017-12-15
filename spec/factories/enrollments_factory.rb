@@ -1,5 +1,5 @@
 # Factory fails unless class has be initiated, hence using :name method (\o/)
-FactoryGirl.define do
+FactoryBot.define do
   factory :enrollment, class: FloodRiskEngine::Enrollment.name do
     # Create a trait for each Type, in format : with_local_authority, etc
     #   local_authority
@@ -10,7 +10,7 @@ FactoryGirl.define do
     #   other
     #   unknown
 
-    FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+    FloodRiskEngine::Organisation.org_types.each_key do |ot|
       trait :"with_#{ot}" do
         after(:build) { |object| object.organisation = create(:organisation, :"as_#{ot}") }
       end

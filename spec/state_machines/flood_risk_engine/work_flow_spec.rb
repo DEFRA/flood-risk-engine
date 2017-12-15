@@ -4,7 +4,7 @@ module FloodRiskEngine
   describe WorkFlow do
     let(:work_flow) { WorkFlow.new(:start) }
     let(:start_hash) { work_flow.make_hash(work_flow.work_flow) }
-    let(:array) { [:a, :b, :c, :d] }
+    let(:array) { %i[a b c d] }
     let(:hash) { { a: :b, b: :c, c: :d } }
 
     describe ".make_hash" do

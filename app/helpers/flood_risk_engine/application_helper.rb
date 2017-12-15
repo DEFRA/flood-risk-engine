@@ -33,12 +33,17 @@ module FloodRiskEngine
         role: "group"
       }
 
+      # Have to disable because rubocop then complains if we change it to
+      # if form&.errors[attribute].any? with Lint/SafeNavigationChain and we can
+      # find no example that deals with an array like here
+      # rubocop:disable Style/SafeNavigation
       if form && form.errors[attribute].any?
         classes << "error"
         content = content_tag(:span,
                               form.errors[attribute].first,
                               class: "error-message") + content
       end
+      # rubocop:enable Style/SafeNavigation
       content_tag(:div, content, options.merge(class: classes.join(" ")))
     end
 

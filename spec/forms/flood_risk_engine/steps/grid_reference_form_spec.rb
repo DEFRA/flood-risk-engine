@@ -5,11 +5,11 @@ module FloodRiskEngine
   module Steps
     RSpec.describe GridReferenceForm, type: :form do
       let(:params_key) { :grid_reference }
-      let(:enrollment) { FactoryGirl.create(:enrollment) }
+      let(:enrollment) { FactoryBot.create(:enrollment) }
       let(:model_class) { Location }
       let(:grid_reference) { "ST 58132 72695" }
       let(:description) { Faker::Lorem.sentence(3) }
-      let(:dredging_exemption) { FactoryGirl.create(:exemption, code: "FRA23") }
+      let(:dredging_exemption) { FactoryBot.create(:exemption, code: "FRA23") }
       let(:dredging_length) { "" }
 
       subject { described_class.factory(enrollment) }

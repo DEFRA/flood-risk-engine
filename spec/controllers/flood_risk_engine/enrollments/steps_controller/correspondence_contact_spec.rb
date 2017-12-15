@@ -4,7 +4,7 @@ module FloodRiskEngine
     routes { Engine.routes }
     render_views
 
-    let(:enrollment) { FactoryGirl.create(:page_correspondence_contact) }
+    let(:enrollment) { FactoryBot.create(:page_correspondence_contact) }
 
     let(:reform_class) { Steps::CorrespondenceContactNameForm }
 

@@ -2,7 +2,7 @@ require "rails_helper"
 module FloodRiskEngine
   module Steps
     RSpec.describe DeclarationForm, type: :form do
-      let(:enrollment) { FactoryGirl.create(:enrollment) }
+      let(:enrollment) { FactoryBot.create(:enrollment) }
       let(:model_class) { Enrollment }
       subject { described_class.factory(enrollment) }
 

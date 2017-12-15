@@ -4,7 +4,7 @@ module FloodRiskEngine
     routes { Engine.routes }
     render_views
     let(:steps) { WorkFlow::Definitions.start }
-    let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
+    let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
 
     describe "update action" do
       let(:step) { steps[0] }
