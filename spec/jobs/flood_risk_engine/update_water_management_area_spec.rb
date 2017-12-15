@@ -14,7 +14,7 @@ module FloodRiskEngine
     describe "searching for an area via api lookup" do
       context "when the area is found" do
         it "saves to the location" do
-          location = FactoryBot.build_stubbed(
+          location = FactoryBot.create(
             :location,
             easting: "356954",
             northing: "210303"
@@ -44,7 +44,7 @@ module FloodRiskEngine
 
       context "when no matching area found" do
         it "saves the 'Outside Engine' area to the location" do
-          location = FactoryBot.build_stubbed(
+          location = FactoryBot.create(
             :location,
             easting: "438920",
             northing: "1164159"
