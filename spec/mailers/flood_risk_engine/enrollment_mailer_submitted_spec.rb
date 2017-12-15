@@ -82,7 +82,8 @@ module FloodRiskEngine
            contact_minicom_html
            contact_opening_hours].each do |key|
           it "pulls in translated content for .#{key}" do
-            expect(email.html_part).to have_body_text(t(key))
+            search_string = t(key).gsub("'", "&#39;")
+            expect(email.html_part.to_s).to include(search_string)
           end
         end
       end
@@ -104,14 +105,14 @@ module FloodRiskEngine
            contact_minicom
            contact_opening_hours].each do |key|
           it "pulls in translated content for .#{key}" do
-            expect(email.text_part).to have_body_text(t(key))
+            expect(email.text_part).to have_content(t(key))
           end
         end
       end
 
       it "reference_number" do
-        expect(email.text_part).to have_body_text(enrollment.reference_number)
-        expect(email.html_part).to have_body_text(enrollment.reference_number)
+        expect(email.text_part).to have_content(enrollment.reference_number)
+        expect(email.html_part).to have_content(enrollment.reference_number)
       end
 
       # TODO: once format of email is confirmed, add tests for enrollment/exemption-specific
