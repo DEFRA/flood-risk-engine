@@ -7,7 +7,7 @@ module FloodRiskEngine
 
       let(:step) { :unknown }
       let(:enrollment) do
-        FactoryGirl.create(:enrollment, :with_local_authority, step: step)
+        FactoryBot.create(:enrollment, :with_local_authority, step: step)
       end
 
       before do

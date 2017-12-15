@@ -8,13 +8,13 @@ module FloodRiskEngine
 
     let(:initial_status) { :building }
     let(:enrollment_exemption) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment_exemption,
         status: EnrollmentExemption.statuses[initial_status]
       )
     end
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         enrollment_exemptions: [enrollment_exemption],
         reference_number: ReferenceNumber.create

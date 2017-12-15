@@ -15,7 +15,7 @@ module FloodRiskEngine
 
     config.generators do |g|
       g.test_framework :rspec
-      g.fixture_replacement :factory_girl, dir: "spec/factories"
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
     initializer :add_i18n_load_paths do |app|
@@ -39,11 +39,11 @@ module FloodRiskEngine
 
     # Make Engine Factories available to Apps
     unless Rails.env.production?
-      initializer "flood_risk_engine.factories", after: "factory_girl.set_factory_paths" do
-        require "factory_girl"
+      initializer "flood_risk_engine.factories", after: "factory_bot.set_factory_paths" do
+        require "factory_bot"
 
         path = File.expand_path("../../../spec/factories", __FILE__)
-        FactoryGirl.definition_file_paths << path
+        FactoryBot.definition_file_paths << path
       end
     end
   end

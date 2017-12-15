@@ -18,7 +18,7 @@ group :test do
   gem "codeclimate-test-reporter", require: false
   gem "database_cleaner", "~> 1.5"
   gem "email_spec"
-  gem "factory_girl_rails", "~> 4.6"
+  gem "factory_bot_rails", "~> 4.7"
   gem "faker", "~> 1.7"
   gem "guard-rspec", require: false
   gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites

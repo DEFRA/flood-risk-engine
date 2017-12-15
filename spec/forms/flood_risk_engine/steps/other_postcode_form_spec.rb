@@ -5,7 +5,7 @@ module FloodRiskEngine
   module Steps
     RSpec.describe OtherPostcodeForm, type: :from do
       let(:params_key) { :other_postcode }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_other) }
+      let(:enrollment) { FactoryBot.create(:enrollment, :with_other) }
       let(:model_class) { FloodRiskEngine::AddressSearch }
       let(:form) { described_class.factory(enrollment) }
       let(:valid_params) { { postcode: "BS1 5AH" } }

@@ -6,7 +6,7 @@ module FloodRiskEngine
 
     RSpec.describe PartnershipForm, type: :form do
       let(:params_key) { :partnership }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_partnership) }
+      let(:enrollment) { FactoryBot.create(:enrollment, :with_partnership) }
       let(:model_class) { FloodRiskEngine::Contact }
       let(:name) { Faker::Name.name }
       let!(:i18n_scope) { described_class.locale_key }

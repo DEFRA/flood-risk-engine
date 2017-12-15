@@ -3,7 +3,7 @@ module FloodRiskEngine
   describe Enrollments::StepsController, type: :controller do
     routes { Engine.routes }
     render_views
-    let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
+    let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
 
     before do
       set_journey_token

@@ -5,7 +5,7 @@ module FloodRiskEngine
     it { is_expected.to belong_to(:addressable) }
     it { is_expected.to have_one(:location).dependent(:restrict_with_exception) }
 
-    let(:address) { FactoryGirl.create(:address) }
+    let(:address) { FactoryBot.create(:address) }
 
     describe "#parts" do
       let(:fields) { [:premises, :street_address, :locality, :city, :postcode] }

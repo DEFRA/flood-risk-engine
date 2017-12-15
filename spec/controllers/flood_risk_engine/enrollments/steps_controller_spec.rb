@@ -4,12 +4,12 @@ module FloodRiskEngine
     RSpec.describe StepsController, type: :controller do
       routes { Engine.routes }
       render_views
-      let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
+      let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
       let(:step) { WorkFlow::Definitions.start.first }
 
       describe "show action without journey token in session" do
         let(:enrollment) do
-          FactoryGirl.create(:enrollment, step: step)
+          FactoryBot.create(:enrollment, step: step)
         end
 
         it "redirects_to error page" do

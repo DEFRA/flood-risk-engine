@@ -5,7 +5,7 @@ module FloodRiskEngine
   module Steps
     RSpec.describe EmailSomeoneElseForm, type: :form do
       let(:params_key) { :email_someone_else }
-      let(:enrollment) { FactoryGirl.create(:enrollment) }
+      let(:enrollment) { FactoryBot.create(:enrollment) }
       let(:model_class) { Contact }
       let(:email_address) { Faker::Internet.safe_email }
       let(:email_address_confirmation) { email_address }

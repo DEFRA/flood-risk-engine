@@ -1,6 +1,6 @@
 require "uk_postcode"
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :address, class: "FloodRiskEngine::Address" do
     premises            Faker::Address.building_number
     street_address      Faker::Address.street_address

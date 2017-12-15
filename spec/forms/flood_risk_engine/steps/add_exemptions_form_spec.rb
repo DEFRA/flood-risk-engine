@@ -4,9 +4,9 @@ require_relative "../../../support/shared_examples/form_objects"
 module FloodRiskEngine
   RSpec.describe Steps::AddExemptionsForm, type: :form do
     let(:params_key) { :add_exemptions }
-    let(:enrollment) { FactoryGirl.create(:enrollment) }
+    let(:enrollment) { FactoryBot.create(:enrollment) }
     let(:model_class) { Enrollment }
-    let(:exemption) { FactoryGirl.create(:exemption) }
+    let(:exemption) { FactoryBot.create(:exemption) }
     let(:params) { { params_key => { exemption_ids: exemption.id } } }
 
     subject { described_class.factory(enrollment) }

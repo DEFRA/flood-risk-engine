@@ -6,7 +6,7 @@ module FloodRiskEngine
 
     RSpec.describe PartnershipPostcodeForm do
       let(:params_key) { :partnership_postcode }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_partnership) }
+      let(:enrollment) { FactoryBot.create(:enrollment, :with_partnership) }
       let(:model_class) { FloodRiskEngine::AddressSearch }
       let(:form) { described_class.factory(enrollment) }
       let(:valid_params) { { postcode: "BS1 5AH" } }
@@ -88,8 +88,8 @@ module FloodRiskEngine
 
         context "when more than one partner present" do
           before do
-            contact = FactoryGirl.create(:contact)
-            @partner = FactoryGirl.create(
+            contact = FactoryBot.create(:contact)
+            @partner = FactoryBot.create(
               :partner,
               contact: contact,
               organisation: enrollment.organisation

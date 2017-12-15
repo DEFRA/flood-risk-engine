@@ -1,6 +1,6 @@
 # A suite of Enrollments that enable you to jump straight to a particular page in the journey
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :page_user_type, parent: :enrollment do
     step :user_type
 

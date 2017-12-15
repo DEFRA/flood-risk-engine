@@ -3,8 +3,8 @@ require "rails_helper"
 module FloodRiskEngine
   module Enrollments
     RSpec.describe AddressForm, type: :form do
-      let(:enrollment) { FactoryGirl.create(:enrollment) }
-      let(:address) { FactoryGirl.create(:address) }
+      let(:enrollment) { FactoryBot.create(:enrollment) }
+      let(:address) { FactoryBot.create(:address) }
 
       subject { described_class.new(enrollment, address) }
 

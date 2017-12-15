@@ -8,10 +8,10 @@ module FloodRiskEngine
       let(:steps) { WorkFlow::Definitions.start }
       let(:step) { steps[1] }
       let(:next_step) { steps[2] }
-      let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
-      let(:address) { FactoryGirl.create(:address) }
+      let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
+      let(:address) { FactoryBot.create(:address) }
       let(:postcode) { "S60 1BY" }
-      let(:contact) { FactoryGirl.create(:contact) }
+      let(:contact) { FactoryBot.create(:contact) }
       let(:addressable_type) { "FloodRiskEngine::Contact" }
       let(:addressable_id) { contact.id }
       let(:address_type) { :contact }

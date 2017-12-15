@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :organisation, class: "FloodRiskEngine::Organisation" do
     org_type 0
     name Faker::Company.name

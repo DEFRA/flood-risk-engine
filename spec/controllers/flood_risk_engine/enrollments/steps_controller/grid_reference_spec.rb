@@ -4,8 +4,8 @@ module FloodRiskEngine
     describe StepsController, type: :controller do
       routes { Engine.routes }
       render_views
-      let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
-      let(:dredging_exemption) { FactoryGirl.create(:exemption, code: "FRA23") }
+      let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
+      let(:dredging_exemption) { FactoryBot.create(:exemption, code: "FRA23") }
 
       context "grid_reference" do
         let(:step) { "grid_reference" }
@@ -34,7 +34,7 @@ module FloodRiskEngine
 
         context "when exemptions include dredging long stretch" do
           let(:enrollment) do
-            enrollment = FactoryGirl.create(:enrollment, step: step)
+            enrollment = FactoryBot.create(:enrollment, step: step)
             enrollment.exemptions << dredging_exemption
             enrollment
           end

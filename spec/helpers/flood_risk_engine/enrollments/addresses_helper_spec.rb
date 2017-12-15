@@ -2,9 +2,9 @@ require "rails_helper"
 module FloodRiskEngine
   module Enrollments
     describe AddressesHelper do
-      let(:enrollment) { FactoryGirl.create(:enrollment) }
+      let(:enrollment) { FactoryBot.create(:enrollment) }
       let(:postcode) { "S60 1BY" }
-      let(:contact) { FactoryGirl.create(:contact) }
+      let(:contact) { FactoryBot.create(:contact) }
       let(:address_type) { :contact }
       let(:label) { "Link to new address" }
 
@@ -46,7 +46,7 @@ module FloodRiskEngine
         let(:steps) { WorkFlow::Definitions.start }
         let(:previous_step) { steps[1] }
         let(:step) { steps[2] }
-        let(:enrollment) { FactoryGirl.create(:enrollment, step: step) }
+        let(:enrollment) { FactoryBot.create(:enrollment, step: step) }
 
         it "should give path to current step" do
           path = change_postcode_path(enrollment)

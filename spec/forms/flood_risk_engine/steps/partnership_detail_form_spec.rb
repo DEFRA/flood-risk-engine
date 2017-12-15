@@ -4,13 +4,13 @@ module FloodRiskEngine
 
     describe PartnershipDetailForm, type: :form do
       let(:step) { :partnership_details }
-      let(:address) { FactoryGirl.create(:address) }
-      let(:contact) { FactoryGirl.create(:contact, address: address) }
+      let(:address) { FactoryBot.create(:address) }
+      let(:contact) { FactoryBot.create(:contact, address: address) }
       let(:enrollment) do
-        FactoryGirl.create(:enrollment, :with_partnership, step: step)
+        FactoryBot.create(:enrollment, :with_partnership, step: step)
       end
       let(:partner) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :partner,
           contact: contact,
           organisation: enrollment.organisation
@@ -31,10 +31,10 @@ module FloodRiskEngine
 
       describe ".new" do
         context "when incomplete partners exist" do
-          let(:incomplete_contact) { FactoryGirl.create(:contact, address: nil) }
+          let(:incomplete_contact) { FactoryBot.create(:contact, address: nil) }
           before do
             partner
-            FactoryGirl.create(
+            FactoryBot.create(
               :partner,
               contact: incomplete_contact,
               organisation: enrollment.organisation
@@ -55,11 +55,11 @@ module FloodRiskEngine
         end
 
         context "there are more than one partners" do
-          let(:address2) { FactoryGirl.create(:address) }
-          let(:contact2) { FactoryGirl.create(:contact, address: address2) }
+          let(:address2) { FactoryBot.create(:address) }
+          let(:contact2) { FactoryBot.create(:contact, address: address2) }
           before do
             partner
-            FactoryGirl.create(
+            FactoryBot.create(
               :partner,
               contact: contact2,
               organisation: enrollment.organisation

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:grid_reference) do |n|
     random_grid_reference + ("%05d" % n) + ("%05d" % n)
   end

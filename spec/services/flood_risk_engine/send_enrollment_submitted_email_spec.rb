@@ -5,13 +5,13 @@ module FloodRiskEngine
     let(:mailer) { EnrollmentMailer }
     let(:initial_status) { :pending }
     let(:enrollment_exemption) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment_exemption,
         status: EnrollmentExemption.statuses[initial_status]
       )
     end
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         :with_correspondence_contact,
         :with_secondary_contact,

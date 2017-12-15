@@ -7,7 +7,7 @@ module FloodRiskEngine
 
     RSpec.describe OtherAddressForm, type: :from do
       let(:params_key) { :other_address }
-      let(:enrollment) { FactoryGirl.create(:enrollment, :with_other) }
+      let(:enrollment) { FactoryBot.create(:enrollment, :with_other) }
       let(:model_class) { FloodRiskEngine::Address }
       let(:form) { described_class.factory(enrollment) }
       let(:post_code) { "BS1 5AH" }

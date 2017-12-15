@@ -7,13 +7,13 @@ module FloodRiskEngine
       render_views
       let(:step) { :partnership_details }
       let(:first_partnership_step) { :partnership }
-      let(:address) { FactoryGirl.create(:address) }
-      let(:contact) { FactoryGirl.create(:contact, address: address) }
+      let(:address) { FactoryBot.create(:address) }
+      let(:contact) { FactoryBot.create(:contact, address: address) }
       let(:enrollment) do
-        FactoryGirl.create(:enrollment, :with_partnership, step: step)
+        FactoryBot.create(:enrollment, :with_partnership, step: step)
       end
       let(:partner) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :partner,
           contact: contact,
           organisation: enrollment.organisation
@@ -94,10 +94,10 @@ module FloodRiskEngine
         end
 
         context "when more than one partner exists" do
-          let(:address2) { FactoryGirl.create(:address) }
-          let(:contact2) { FactoryGirl.create(:contact, address: address2) }
+          let(:address2) { FactoryBot.create(:address) }
+          let(:contact2) { FactoryBot.create(:contact, address: address2) }
           let(:partner2) do
-            FactoryGirl.create(
+            FactoryBot.create(
               :partner,
               contact: contact2,
               organisation: enrollment.organisation

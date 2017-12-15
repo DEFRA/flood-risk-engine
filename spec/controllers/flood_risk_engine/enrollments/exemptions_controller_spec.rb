@@ -4,10 +4,10 @@ module FloodRiskEngine
   RSpec.describe Enrollments::ExemptionsController, type: :controller do
     routes { Engine.routes }
     render_views
-    let(:exemption) { FactoryGirl.create(:exemption) }
-    let(:other_exemption) { FactoryGirl.create(:exemption) }
+    let(:exemption) { FactoryBot.create(:exemption) }
+    let(:other_exemption) { FactoryBot.create(:exemption) }
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         step: :check_exemptions,
         exemptions: exemptions
