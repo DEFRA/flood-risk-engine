@@ -406,7 +406,7 @@ DEPENDENCIES
   quiet_assets (~> 1.1)
   rspec-html-matchers
   rspec-rails (~> 3.4)
-  rubocop (~> 0.52)
+  rubocop (= 0.52)
   sass-rails (>= 3.2)
   shoulda-matchers (~> 3.1)
   simplecov (~> 0.11)

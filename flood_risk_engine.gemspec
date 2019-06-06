@@ -61,6 +61,6 @@ Gem::Specification.new do |s|
   # Mutes assets pipeline log messages
   s.add_development_dependency "quiet_assets", "~> 1.1"
   # Used to ensure the code base matches our agreed styles and conventions
-  s.add_development_dependency "rubocop", "~> 0.52"
+  s.add_development_dependency "rubocop", "0.52"
   s.add_development_dependency "sass-rails", ">= 3.2"
 end
