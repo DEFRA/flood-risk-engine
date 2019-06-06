@@ -38,14 +38,14 @@ before_script:
   # Install and run brakeman. We always go with the latest (unlike rubocop where
   # we include the dependency in the project tied to a version) because we want
   # to check the project against the latest known vulnerabilities.
-  - gem install brakeman --no-ri --no-rdoc
+  - gem install brakeman --no-document
   - brakeman
   # Install and run overcommit.
   # This will run the following checks
   #   - YamlSyntax
   #   - TrailingWhitespace
   #   - HardTabs
-  - gem install overcommit -v 0.37.0 --no-ri --no-rdoc
+  - gem install overcommit -v 0.37.0 --no-document
   - overcommit --sign
   - overcommit --run
   # Install and run htmlhint
