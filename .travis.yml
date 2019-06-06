@@ -1,6 +1,13 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=96b5a7037c20be6bd42f3fdff57e81d68e9074dfd81d079413cb84a8342ba10e
+
 language: ruby
 rvm: 2.3.1
 cache: bundler
+
+addons:
+-  postgresql: "9.4"
 
 # Travis CI clones repositories to a depth of 50 commits, which is only really
 # useful if you are performing git operations.
@@ -8,20 +15,9 @@ cache: bundler
 git:
   depth: 3
 
-# Needed as part of submitting test coverage statistics to CodeClimate as part
-# of the build
-# https://docs.codeclimate.com/v1.0/docs/travis-ci-test-coverage
-env:
-  global:
-    - CC_TEST_REPORTER_ID=96b5a7037c20be6bd42f3fdff57e81d68e9074dfd81d079413cb84a8342ba10e
-
-addons:
-  postgresql: "9.4"
-
-# We need nodejs version >= 4 to be compatible with htmlhint >= 0.9.13
-# This overwrites the system node  0.10.x
 before_install:
-  - nvm install node
+  - export TZ=UTC
+  - gem install -v 1.17.3 bundler --no-document
 
 before_script:
   # Setup to support the CodeClimate test coverage submission
@@ -32,40 +28,16 @@ before_script:
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build; fi
-  # We install and run these checks first prior to the data migrations in order
-  # 'fail fast'. There is no point in running the migrations if these checks
-  # fail.
-  # Install and run brakeman. We always go with the latest (unlike rubocop where
-  # we include the dependency in the project tied to a version) because we want
-  # to check the project against the latest known vulnerabilities.
-  - gem install brakeman --no-document
-  - brakeman
-  # Install and run overcommit.
-  # This will run the following checks
-  #   - YamlSyntax
-  #   - TrailingWhitespace
-  #   - HardTabs
-  - gem install overcommit -v 0.37.0 --no-document
-  - overcommit --sign
-  - overcommit --run
-  # Install and run htmlhint
-  - npm install -g htmlhint
-  - htmlhint ./app/**/*.html.erb
-  # Run rubocop. Its installed as a dependency (hence no install step) as this
+  # Run rubocop. It's installed as a dependency (hence no install step) as this
   # allows projects to control the version they are using (rather than getting)
-  # surprise build failurs.
+  # surprise build failures.
   - bundle exec rubocop
   # Replace database.yml with database.travis.yml (but leave filename as
   # database.yml). database.travis.yml is the config needed for Travis, and it
   # needs to be in place before we run the migrations.
   - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
-  - RAILS_ENV=test bundle exec rake db:create
+  - RAILS_ENV=test bundle exec rake db:create --trace
   - RAILS_ENV=test bundle exec rake db:migrate --trace
-
-# If you need to review the Rails logs on travis you can uncomment the following
-# script:
-  # - ls spec/dummy/log
-  # - cat spec/dummy/log/*
 
 after_script:
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
