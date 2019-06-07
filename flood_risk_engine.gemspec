@@ -26,8 +26,8 @@ Gem::Specification.new do |s|
   # Env Vars drive some config. This loads environment variables from .env
   s.add_dependency "dotenv-rails", "~> 2.1"
   s.add_dependency "ea-address_lookup", "~> 0.3.0"
-  s.add_dependency "ea-area_lookup", "~> 0.2.1"
-  s.add_dependency "finite_machine", "~> 0.10"
+  s.add_dependency "ea-area_lookup", "~> 0.2.2"
+  s.add_dependency "finite_machine", "~> 0.11.3"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
@@ -54,13 +54,10 @@ Gem::Specification.new do |s|
   # Pretty prints objects in console. Usage `$ ap some_object`
   s.add_development_dependency "awesome_print"
   s.add_development_dependency "bootstrap-sass", "~> 3.3"
-  # A toy SMTP server run on port 1025 catching emails, displaying them on
-  # http://localhost:1080.
-  s.add_development_dependency "mailcatcher", "~> 0.6"
   s.add_development_dependency "pg", "~> 0.18"
   # Mutes assets pipeline log messages
   s.add_development_dependency "quiet_assets", "~> 1.1"
   # Used to ensure the code base matches our agreed styles and conventions
-  s.add_development_dependency "rubocop", "~> 0.52"
+  s.add_development_dependency "rubocop", "0.52"
   s.add_development_dependency "sass-rails", ">= 3.2"
 end

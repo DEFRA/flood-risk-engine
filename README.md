@@ -4,7 +4,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/275c0c9e2d722dd20837/maintainability)](https://codeclimate.com/github/DEFRA/flood-risk-engine/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/275c0c9e2d722dd20837/test_coverage)](https://codeclimate.com/github/DEFRA/flood-risk-engine/test_coverage)
 [![security](https://hakiri.io/github/DEFRA/flood-risk-engine/master.svg)](https://hakiri.io/github/DEFRA/flood-risk-engine/master)
-[![Dependency Status](https://dependencyci.com/github/DEFRA/flood-risk-engine/badge)](https://dependencyci.com/github/DEFRA/flood-risk-engine)
 
 A Ruby on Rails [engine](http://guides.rubyonrails.org/engines.html) delivering the complete public-facing functionality of the [Flood risk activity exemptions service](https://register-flood-risk-exemption.service.gov.uk).
 
