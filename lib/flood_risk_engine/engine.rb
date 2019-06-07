@@ -4,6 +4,7 @@ require "activerecord/session_store"
 require "high_voltage"
 require "ea/address_lookup"
 require "ea/area_lookup"
+require "active_support/dependencies"
 require_dependency "virtus"
 
 module FloodRiskEngine
