@@ -54,9 +54,6 @@ Gem::Specification.new do |s|
   # Pretty prints objects in console. Usage `$ ap some_object`
   s.add_development_dependency "awesome_print"
   s.add_development_dependency "bootstrap-sass", "~> 3.3"
-  # A toy SMTP server run on port 1025 catching emails, displaying them on
-  # http://localhost:1080.
-  s.add_development_dependency "mailcatcher", "~> 0.6"
   s.add_development_dependency "pg", "~> 0.18"
   # Mutes assets pipeline log messages
   s.add_development_dependency "quiet_assets", "~> 1.1"
