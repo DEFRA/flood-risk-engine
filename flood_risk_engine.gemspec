@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   # Env Vars drive some config. This loads environment variables from .env
   s.add_dependency "dotenv-rails", "~> 2.1"
   s.add_dependency "ea-address_lookup", "~> 0.3.0"
-  s.add_dependency "ea-area_lookup", "~> 0.2.1"
+  s.add_dependency "ea-area_lookup", "~> 0.2.2"
   s.add_dependency "finite_machine", "~> 0.10"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
