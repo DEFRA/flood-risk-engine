@@ -12,7 +12,7 @@ module FloodRiskEngine
       it "When I click the privacy policy link Then the Privacy Policy page will open in new tab" do
         get :show, id: "privacy_policy", enrollment_id: enrollment
 
-        expect(response.body).to have_text "Privacy policy"
+        expect(response.body).to have_text "Privacy Policy"
       end
 
       it "When I click the cookies link Then the Cookies page will open in new tab" do
