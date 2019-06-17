@@ -85,9 +85,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.3)
-    bullet (5.7.0)
+    bullet (6.0.0)
       activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.10.0)
+      uniform_notifier (~> 1.11)
     byebug (9.1.0)
     capybara (2.16.1)
       addressable
@@ -343,7 +343,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode-display_width (1.3.0)
-    uniform_notifier (1.10.0)
+    uniform_notifier (1.12.1)
     validates_email_format_of (1.6.3)
       i18n
     vcr (3.0.3)
