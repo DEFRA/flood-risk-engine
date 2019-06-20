@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :address, class: "FloodRiskEngine::Address" do
     premises            Faker::Address.building_number
     street_address      Faker::Address.street_address
-    locality            Faker::StarWars.planet
+    locality            Faker::Address.city_prefix
     city                Faker::Address.city
     postcode            Faker::Address.postcode
     county_province_id  1
@@ -20,7 +20,7 @@ FactoryBot.define do
   factory :simple_address, class: "FloodRiskEngine::Address" do
     premises            Faker::Address.building_number
     street_address      Faker::Address.street_address
-    locality            Faker::StarWars.planet
+    locality            Faker::Address.city_prefix
     city                Faker::Address.city
     postcode            { generate :uk_post_code }
   end
