@@ -4,14 +4,28 @@
 
 [Full Changelog](https://github.com/DEFRA/flood-risk-engine/compare/v1.0.2...HEAD)
 
+**Implemented enhancements:**
+
+- Update privacy policy [\#258](https://github.com/DEFRA/flood-risk-engine/pull/258) ([irisfaraway](https://github.com/irisfaraway))
+- Housekeeping and standardisation across projects [\#252](https://github.com/DEFRA/flood-risk-engine/pull/252) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Fixed bugs:**
+
+- Remove duplicate paragraphs from privacy policy [\#279](https://github.com/DEFRA/flood-risk-engine/pull/279) ([irisfaraway](https://github.com/irisfaraway))
+- Fix bulleted list class name [\#262](https://github.com/DEFRA/flood-risk-engine/pull/262) ([irisfaraway](https://github.com/irisfaraway))
+- Rename application.css to .scss [\#261](https://github.com/DEFRA/flood-risk-engine/pull/261) ([irisfaraway](https://github.com/irisfaraway))
+- Fix Travis CI build [\#259](https://github.com/DEFRA/flood-risk-engine/pull/259) ([irisfaraway](https://github.com/irisfaraway))
+- Update codeclimate api key in .travis.yml [\#251](https://github.com/DEFRA/flood-risk-engine/pull/251) ([Cruikshanks](https://github.com/Cruikshanks))
+
 **Closed issues:**
 
 - Application Controller should inherit from host [\#200](https://github.com/DEFRA/flood-risk-engine/issues/200)
 
 **Merged pull requests:**
 
+- Update privacy policy date to release date [\#282](https://github.com/DEFRA/flood-risk-engine/pull/282) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add github changelog generator to the project [\#281](https://github.com/DEFRA/flood-risk-engine/pull/281) ([Cruikshanks](https://github.com/Cruikshanks))
 - Bump bullet from 6.0.0 to 6.0.1 [\#280](https://github.com/DEFRA/flood-risk-engine/pull/280) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Remove duplicate paragraphs from privacy policy [\#279](https://github.com/DEFRA/flood-risk-engine/pull/279) ([irisfaraway](https://github.com/irisfaraway))
 - Bump dotenv-rails from 2.7.2 to 2.7.4 [\#278](https://github.com/DEFRA/flood-risk-engine/pull/278) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump faker from 1.9.3 to 1.9.4 [\#277](https://github.com/DEFRA/flood-risk-engine/pull/277) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump faker from 1.8.5 to 1.9.3 [\#276](https://github.com/DEFRA/flood-risk-engine/pull/276) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
@@ -26,27 +40,33 @@
 - Bump rspec-rails from 3.7.2 to 3.8.2 [\#266](https://github.com/DEFRA/flood-risk-engine/pull/266) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump byebug from 9.1.0 to 11.0.1 [\#265](https://github.com/DEFRA/flood-risk-engine/pull/265) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump jquery-rails from 4.3.3 to 4.3.5 [\#264](https://github.com/DEFRA/flood-risk-engine/pull/264) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Fix bulleted list class name [\#262](https://github.com/DEFRA/flood-risk-engine/pull/262) ([irisfaraway](https://github.com/irisfaraway))
-- Rename application.css to .scss [\#261](https://github.com/DEFRA/flood-risk-engine/pull/261) ([irisfaraway](https://github.com/irisfaraway))
+- Bump bullet from 5.7.0 to 6.0.0 [\#263](https://github.com/DEFRA/flood-risk-engine/pull/263) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Update dependencies [\#260](https://github.com/DEFRA/flood-risk-engine/pull/260) ([irisfaraway](https://github.com/irisfaraway))
-- Fix Travis CI build [\#259](https://github.com/DEFRA/flood-risk-engine/pull/259) ([irisfaraway](https://github.com/irisfaraway))
-- Update privacy policy [\#258](https://github.com/DEFRA/flood-risk-engine/pull/258) ([irisfaraway](https://github.com/irisfaraway))
 - Update rubocop to 0.52 [\#255](https://github.com/DEFRA/flood-risk-engine/pull/255) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update after FactoryGirl renamed FactoryBot [\#253](https://github.com/DEFRA/flood-risk-engine/pull/253) ([Cruikshanks](https://github.com/Cruikshanks))
-- Housekeeping and standardisation across projects [\#252](https://github.com/DEFRA/flood-risk-engine/pull/252) ([Cruikshanks](https://github.com/Cruikshanks))
-- Update codeclimate api key in .travis.yml [\#251](https://github.com/DEFRA/flood-risk-engine/pull/251) ([Cruikshanks](https://github.com/Cruikshanks))
 
 ## [v1.0.2](https://github.com/DEFRA/flood-risk-engine/tree/v1.0.2) (2016-12-20)
 [Full Changelog](https://github.com/DEFRA/flood-risk-engine/compare/v1.0.1...v1.0.2)
 
+**Implemented enhancements:**
+
+- Add OS places notice and T&C's to service [\#249](https://github.com/DEFRA/flood-risk-engine/pull/249) ([Cruikshanks](https://github.com/Cruikshanks))
+
 **Merged pull requests:**
 
 - Update version due to OS place T&C's change [\#250](https://github.com/DEFRA/flood-risk-engine/pull/250) ([Cruikshanks](https://github.com/Cruikshanks))
-- Add OS places notice and T&C's to service [\#249](https://github.com/DEFRA/flood-risk-engine/pull/249) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update ReadMe so badges reference master branch [\#247](https://github.com/DEFRA/flood-risk-engine/pull/247) ([TThurston](https://github.com/TThurston))
 
 ## [v1.0.1](https://github.com/DEFRA/flood-risk-engine/tree/v1.0.1) (2016-12-06)
 [Full Changelog](https://github.com/DEFRA/flood-risk-engine/compare/v1.0.0...v1.0.1)
+
+**Implemented enhancements:**
+
+- Replace before\_commit with individual CI checks [\#245](https://github.com/DEFRA/flood-risk-engine/pull/245) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Fixed bugs:**
+
+- ITSM-1179689 Fix issue with firefox details / summary function [\#243](https://github.com/DEFRA/flood-risk-engine/pull/243) ([lewispb](https://github.com/lewispb))
 
 **Closed issues:**
 
@@ -54,10 +74,7 @@
 
 **Merged pull requests:**
 
-- Bump bullet from 5.7.0 to 6.0.0 [\#263](https://github.com/DEFRA/flood-risk-engine/pull/263) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Update version to 1.0.1 ready for release [\#246](https://github.com/DEFRA/flood-risk-engine/pull/246) ([TThurston](https://github.com/TThurston))
-- Replace before\_commit with individual CI checks [\#245](https://github.com/DEFRA/flood-risk-engine/pull/245) ([Cruikshanks](https://github.com/Cruikshanks))
-- ITSM-1179689 Fix issue with firefox details / summary function [\#243](https://github.com/DEFRA/flood-risk-engine/pull/243) ([lewispb](https://github.com/lewispb))
 - Add missing form specs and refactor factory method [\#240](https://github.com/DEFRA/flood-risk-engine/pull/240) ([reggieb](https://github.com/reggieb))
 - Improved state machine documentation [\#239](https://github.com/DEFRA/flood-risk-engine/pull/239) ([reggieb](https://github.com/reggieb))
 
