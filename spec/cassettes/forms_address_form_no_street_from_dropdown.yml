@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://addressfacade.cloudapp.net/address-service/v1/addresses/10010175140?client-id=example%20team1&key=client1
+    uri: http://localhost:9002/address-service/v1/addresses/10010175140?client-id=0&key=client1
     body:
       encoding: US-ASCII
       string: ''
@@ -12,16 +12,16 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
-      - rest-client/2.0.0.rc2 (linux-gnu x86_64) ruby/2.3.1p112
+      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.1p112
       Host:
-      - addressfacade.cloudapp.net
+      - localhost:9002
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 25 May 2016 10:59:04 GMT
+      - Thu, 08 Aug 2019 09:06:24 GMT
       Content-Type:
       - application/json
       Content-Encoding:
@@ -42,6 +42,6 @@ http_interactions:
         osUH+2RtAwhby0SeynwjGtDRaDzsUoRpY9DrDxlroLB4fWU4yCrsA8jdMRB/
         J3J41eTGrgo6LnqUDnBlq12sWrkNaxdSONfH3heStu8K6zdL8VIKNnrR5PAK
         9i6F1Y6T39ffPxNg3hFjAgAA
-    http_version: 
-  recorded_at: Wed, 25 May 2016 11:57:39 GMT
-recorded_with: VCR 3.0.1
+    http_version:
+  recorded_at: Thu, 08 Aug 2019 09:06:24 GMT
+recorded_with: VCR 3.0.3
