@@ -1,6 +1,14 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=96b5a7037c20be6bd42f3fdff57e81d68e9074dfd81d079413cb84a8342ba10e
+    - ADDRESS_FACADE_CLIENT_ID=0
+    - ADDRESS_FACADE_KEY=client1
+    - ADDRESS_FACADE_PORT=9002
+    - ADDRESS_FACADE_SERVER=localhost
+    - DEVISE_MAILER_SENDER="John Smith <js@example.com>"
+    - EMAIL_HOST=localhost
+    - EMAIL_PORT=2500
+    - SECRET_KEY_BASE=00c33aa9929a0b2fdf6388368469a796fb3d812bee94349d5d9f3a81ecaf35e9195b7ad98bc3a42f27681dd2e6a9b56c589180842ef15630a775f68ccbc2dfc2
 
 language: ruby
 rvm: 2.3.1
