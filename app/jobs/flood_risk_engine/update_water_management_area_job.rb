@@ -12,29 +12,30 @@ module FloodRiskEngine
     private
 
     def get_area_for(location)
-      api_result = lookup_area_using_using_external_api(location)
+      response = DefraRuby::Area::WaterManagementAreaService.run(location.easting, location.northing)
 
-      if inside_england?(api_result)
-        find_or_create_area_from_api_result(api_result)
-      else
-        WaterManagementArea.outside_england_area
+      return process_successful_response(response.area) if response.successful?
+
+      process_unsucessful_response(response)
+    end
+
+    def process_successful_response(result)
+      WaterManagementArea.find_or_create_by(code: result.code) do |area|
+        area.update_attributes(
+          code: result.code,
+          area_id: result.area_id,
+          area_name: result.area_name,
+          short_name: result.short_name,
+          long_name: result.long_name
+        )
       end
     end
 
-    def lookup_area_using_using_external_api(location)
-      coords = EA::AreaLookup::Coordinates.new(easting: location.easting,
-                                               northing: location.northing)
-      EA::AreaLookup.find_water_management_area_by_coordinates(coords)
-    end
+    def process_unsucessful_response(response)
+      return WaterManagementArea.outside_england_area if response.error.instance_of?(DefraRuby::Area::NoMatchError)
 
-    def find_or_create_area_from_api_result(api_result)
-      WaterManagementArea.find_or_create_by(code: api_result[:code]) do |area|
-        area.update_attributes(api_result)
-      end
-    end
-
-    def inside_england?(api_result)
-      api_result[:long_name].present?
+      # Any other error we just return nil
+      nil
     end
   end
 end

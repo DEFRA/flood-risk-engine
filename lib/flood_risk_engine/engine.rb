@@ -3,7 +3,7 @@ require "flood_risk_engine/exceptions"
 require "activerecord/session_store"
 require "high_voltage"
 require "ea/address_lookup"
-require "ea/area_lookup"
+require "defra_ruby/area"
 require "active_support/dependencies"
 require_dependency "virtus"
 
