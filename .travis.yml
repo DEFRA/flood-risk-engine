@@ -1,3 +1,6 @@
+addons:
+  postgresql: 9.4
+
 env:
   global:
     - CC_TEST_REPORTER_ID=96b5a7037c20be6bd42f3fdff57e81d68e9074dfd81d079413cb84a8342ba10e
@@ -13,9 +16,6 @@ env:
 language: ruby
 rvm: 2.3.1
 cache: bundler
-
-addons:
--  postgresql: "9.4"
 
 # Travis CI clones repositories to a depth of 50 commits, which is only really
 # useful if you are performing git operations.
