@@ -1,5 +1,17 @@
 require "rails_helper"
 
+module Test
+  module Area
+    Response = Struct.new(:area, :successful, :error) do
+      def successful?
+        successful
+      end
+    end
+
+    Area = Struct.new(:area_id, :area_name, :code, :long_name, :short_name)
+  end
+end
+
 # This job level spec is more of an integration spec so we let VCR
 # handle the outgoing request.
 module FloodRiskEngine
@@ -13,20 +25,26 @@ module FloodRiskEngine
 
     describe "searching for an area via api lookup" do
       context "when the area is found" do
+        let(:response) do
+          area = Test::Area::Area.new(
+            29,
+            "Central",
+            "STWKWM",
+            "Staffordshire Warwickshire and West Midlands",
+            "Staffs Warks and West Mids"
+          )
+          Test::Area::Response.new(area, true)
+        end
+
         it "saves to the location" do
           location = FactoryBot.create(
             :location,
-            easting: "356954",
-            northing: "210303"
+            easting: "408602",
+            northing: "257535"
           )
-          area_hash_from_api = { area_id: "37.0",
-                                 code: "W1",
-                                 area_name: "an",
-                                 short_name: "sn",
-                                 long_name: "ln" }
-          expect(EA::AreaLookup)
-            .to receive(:find_water_management_area_by_coordinates)
-            .and_return(area_hash_from_api)
+          expect(DefraRuby::Area::WaterManagementAreaService)
+            .to receive(:run)
+            .and_return(response)
 
           expect(location.water_management_area).to be_nil
 
@@ -35,28 +53,26 @@ module FloodRiskEngine
           area = location.water_management_area
           expect(area).to be_present
           expect(area).to be_persisted
-          expect(area.area_id).to eq(area_hash_from_api[:area_id].to_i)
-          expect(area.code).to eq(area_hash_from_api[:code])
-          expect(area.area_name).to eq(area_hash_from_api[:area_name])
-          expect(area.short_name).to eq(area_hash_from_api[:short_name])
+          expect(area.area_id).to eq(response.area.area_id)
+          expect(area.code).to eq(response.area.code)
+          expect(area.area_name).to eq(response.area.area_name)
+          expect(area.short_name).to eq(response.area.short_name)
+          expect(area.long_name).to eq(response.area.long_name)
         end
       end
 
       context "when no matching area found" do
+        let(:response) { Test::Area::Response.new(nil, false, DefraRuby::Area::NoMatchError.new) }
+
         it "saves the 'Outside Engine' area to the location" do
           location = FactoryBot.create(
             :location,
-            easting: "438920",
-            northing: "1164159"
+            easting: "318371",
+            northing: "176329"
           )
-          area_hash_from_api = { area_id: "",
-                                 code: "",
-                                 area_name: "",
-                                 short_name: "",
-                                 long_name: "" }
-          expect(EA::AreaLookup)
-            .to receive(:find_water_management_area_by_coordinates)
-            .and_return(area_hash_from_api)
+          expect(DefraRuby::Area::WaterManagementAreaService)
+            .to receive(:run)
+            .and_return(response)
 
           described_class.perform_now(location)
 
