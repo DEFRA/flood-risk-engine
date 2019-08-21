@@ -1,6 +1,6 @@
 # Flood risk engine
 
-[![Build Status](https://travis-ci.org/DEFRA/flood-risk-engine.svg?branch=master)](https://travis-ci.org/DEFRA/flood-risk-engine)
+[![Build Status](https://travis-ci.com/DEFRA/flood-risk-engine.svg?branch=master)](https://travis-ci.com/DEFRA/flood-risk-engine)
 [![Maintainability](https://api.codeclimate.com/v1/badges/275c0c9e2d722dd20837/maintainability)](https://codeclimate.com/github/DEFRA/flood-risk-engine/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/275c0c9e2d722dd20837/test_coverage)](https://codeclimate.com/github/DEFRA/flood-risk-engine/test_coverage)
 [![security](https://hakiri.io/github/DEFRA/flood-risk-engine/master.svg)](https://hakiri.io/github/DEFRA/flood-risk-engine/master)
