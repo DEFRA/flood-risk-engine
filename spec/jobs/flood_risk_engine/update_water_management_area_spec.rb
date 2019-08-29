@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Test
   module Area
-    Response = Struct.new(:area, :successful, :error) do
+    Response = Struct.new(:areas, :successful, :error) do
       def successful?
         successful
       end
@@ -33,7 +33,7 @@ module FloodRiskEngine
             "Staffordshire Warwickshire and West Midlands",
             "Staffs Warks and West Mids"
           )
-          Test::Area::Response.new(area, true)
+          Test::Area::Response.new([area], true)
         end
 
         it "saves to the location" do
@@ -53,16 +53,17 @@ module FloodRiskEngine
           area = location.water_management_area
           expect(area).to be_present
           expect(area).to be_persisted
-          expect(area.area_id).to eq(response.area.area_id)
-          expect(area.code).to eq(response.area.code)
-          expect(area.area_name).to eq(response.area.area_name)
-          expect(area.short_name).to eq(response.area.short_name)
-          expect(area.long_name).to eq(response.area.long_name)
+          test_area = response.areas.first
+          expect(area.area_id).to eq(test_area.area_id)
+          expect(area.code).to eq(test_area.code)
+          expect(area.area_name).to eq(test_area.area_name)
+          expect(area.short_name).to eq(test_area.short_name)
+          expect(area.long_name).to eq(test_area.long_name)
         end
       end
 
       context "when no matching area found" do
-        let(:response) { Test::Area::Response.new(nil, false, DefraRuby::Area::NoMatchError.new) }
+        let(:response) { Test::Area::Response.new([], false, DefraRuby::Area::NoMatchError.new) }
 
         it "saves the 'Outside Engine' area to the location" do
           location = FactoryBot.create(

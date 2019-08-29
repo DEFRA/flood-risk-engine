@@ -14,7 +14,7 @@ module FloodRiskEngine
     def get_area_for(location)
       response = DefraRuby::Area::WaterManagementAreaService.run(location.easting, location.northing)
 
-      return process_successful_response(response.area) if response.successful?
+      return process_successful_response(response.areas.first) if response.successful?
 
       process_unsucessful_response(response)
     end
