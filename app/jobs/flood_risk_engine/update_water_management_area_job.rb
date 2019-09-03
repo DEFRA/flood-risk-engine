@@ -18,7 +18,7 @@ module FloodRiskEngine
 
       return process_successful_response(response.areas.first) if response.successful?
 
-      process_unsucessful_response(response)
+      process_unsuccessful_response(response)
     end
 
     def process_successful_response(result)
@@ -32,7 +32,7 @@ module FloodRiskEngine
       end
     end
 
-    def process_unsucessful_response(response)
+    def process_unsuccessful_response(response)
       return WaterManagementArea.outside_england_area if response.error.instance_of?(DefraRuby::Area::NoMatchError)
 
       # Any other error we log it and just return nil
