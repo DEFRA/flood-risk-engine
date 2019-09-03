@@ -3,16 +3,18 @@ module FloodRiskEngine
     def perform(location)
       raise MissingLocationArgumentError unless location
 
+      @location = location
+
       Location.transaction do
-        location.water_management_area = get_area_for(location)
-        location.save!
+        @location.water_management_area = identify_area
+        @location.save!
       end
     end
 
     private
 
-    def get_area_for(location)
-      response = DefraRuby::Area::WaterManagementAreaService.run(location.easting, location.northing)
+    def identify_area
+      response = DefraRuby::Area::WaterManagementAreaService.run(@location.easting, @location.northing)
 
       return process_successful_response(response.areas.first) if response.successful?
 
@@ -33,7 +35,10 @@ module FloodRiskEngine
     def process_unsucessful_response(response)
       return WaterManagementArea.outside_england_area if response.error.instance_of?(DefraRuby::Area::NoMatchError)
 
-      # Any other error we just return nil
+      # Any other error we log it and just return nil
+      Airbrake.notify(ex, easting: @location.easting, northing: @location.northing) if defined? Airbrake
+      Rails.logger.error "Update water management area job failed: #{ex}"
+
       nil
     end
   end
