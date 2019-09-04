@@ -36,8 +36,8 @@ module FloodRiskEngine
       return WaterManagementArea.outside_england_area if response.error.instance_of?(DefraRuby::Area::NoMatchError)
 
       # Any other error we log it and just return nil
-      Airbrake.notify(ex, easting: @location.easting, northing: @location.northing) if defined? Airbrake
-      Rails.logger.error "Update water management area job failed: #{ex}"
+      Airbrake.notify(response.error, easting: @location.easting, northing: @location.northing) if defined? Airbrake
+      Rails.logger.error "Update water management area job failed: #{response.error}"
 
       nil
     end

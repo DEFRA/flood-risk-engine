@@ -16,6 +16,8 @@ end
 # handle the outgoing request.
 module FloodRiskEngine
   describe UpdateWaterManagementAreaJob, type: :job do
+    let(:location) { FactoryBot.create(:location) }
+
     it { is_expected.to respond_to :perform }
 
     it "raises an exception if location not supplied" do
@@ -37,12 +39,7 @@ module FloodRiskEngine
         end
 
         it "saves to the location" do
-          location = FactoryBot.create(
-            :location,
-            easting: "408602",
-            northing: "257535"
-          )
-          expect(DefraRuby::Area::WaterManagementAreaService)
+          allow(DefraRuby::Area::WaterManagementAreaService)
             .to receive(:run)
             .and_return(response)
 
@@ -66,12 +63,7 @@ module FloodRiskEngine
         let(:response) { Test::Area::Response.new([], false, DefraRuby::Area::NoMatchError.new) }
 
         it "saves the 'Outside Engine' area to the location" do
-          location = FactoryBot.create(
-            :location,
-            easting: "318371",
-            northing: "176329"
-          )
-          expect(DefraRuby::Area::WaterManagementAreaService)
+          allow(DefraRuby::Area::WaterManagementAreaService)
             .to receive(:run)
             .and_return(response)
 
@@ -79,6 +71,24 @@ module FloodRiskEngine
 
           area = location.water_management_area
           expect(area.area_name).to eq("Outside England")
+        end
+      end
+
+      context "when the lookup encounters an error" do
+        let(:error) { StandardError.new("Lookup go boom!") }
+        let(:response) { Test::Area::Response.new([], false, error) }
+        let(:coordinates) { { easting: location.easting, northing: location.northing } }
+
+        it "sends a notification to Errbit" do
+          allow(Airbrake).to receive(:notify)
+
+          expect(DefraRuby::Area::WaterManagementAreaService)
+            .to receive(:run)
+            .and_return(response)
+
+          described_class.perform_now(location)
+
+          expect(Airbrake).to have_received(:notify).with(error, coordinates)
         end
       end
     end
