@@ -6,12 +6,12 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:water_management_area) }
 
     context "scopes" do
-      describe ".missing_ea_area" do
+      describe ".missing_area" do
         it "only returns records with a missing area" do
-          missing_ea_area_record = create(:location, water_management_area: nil)
+          missing_area_record = create(:location, water_management_area: nil)
           create(:location, water_management_area: create(:water_management_area))
 
-          expect(described_class.missing_ea_area).to match_array([missing_ea_area_record])
+          expect(described_class.missing_area).to match_array([missing_area_record])
         end
       end
 
