@@ -7,7 +7,7 @@ module FloodRiskEngine
 
     before_save :process_grid_reference
 
-    scope :missing_ea_area, -> { where(water_management_area: nil) }
+    scope :missing_area, -> { where(water_management_area: nil) }
     scope :with_easting_and_northing, -> { where.not(easting: [nil, ""], northing: [nil, ""]) }
 
     private
