@@ -15,6 +15,14 @@ FactoryBot.define do
     blpu_state_code     Faker::Lorem.characters(10)
     postal_address_code Faker::Lorem.characters(10)
     logical_status_code Faker::Lorem.characters(10)
+
+    trait :site do
+      address_type 2
+    end
+
+    trait :primary do
+      address_type 0
+    end
   end
 
   factory :simple_address, class: "FloodRiskEngine::Address" do
