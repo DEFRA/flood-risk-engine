@@ -7,7 +7,7 @@ FactoryBot.define do
     street_address      { Faker::Address.street_address }
     locality            { Faker::Address.street_address }
     city                { Faker::Address.city }
-    postcode            { generate :uk_post_code }
+    postcode            "BS1 5AH"
   end
 
   factory :partner_contact, class: "FloodRiskEngine::Contact" do
