@@ -12,6 +12,11 @@ module FloodRiskEngine
 
     # rubocop:disable Style/Lambda
     # This version of ruby does not like lambdas here
+    # TODO: This scope does not work, though there is nothing wrong with it!
+    # We have uncovered the fact that all addresses are getting added with the
+    # type `:primary`. This means there are no addresses with type `:site`.
+    # We've decided to leave the scope here (because there is nothing wrong
+    # with it) whilst we decide what to do about this issue.
     scope :from_site_address, -> do
       joins("JOIN flood_risk_engine_addresses as addresses ON addresses.id = flood_risk_engine_locations.locatable_id")
         .where("addresses.address_type = ?", 2)
