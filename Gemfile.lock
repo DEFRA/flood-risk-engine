@@ -358,7 +358,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.0.15)
-    uk_postcode (2.1.4)
+    uk_postcode (2.1.5)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
