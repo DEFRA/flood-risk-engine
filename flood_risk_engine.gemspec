@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails", ">= 3.1"
   # Used by other gems - but need to force version due to CVE-2015-8806
   s.add_dependency "nokogiri", ">= 1.6.8"
-  s.add_dependency "os_map_ref", "~> 0.4"
+  s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
   s.add_dependency "rails", "~> 4.2"
