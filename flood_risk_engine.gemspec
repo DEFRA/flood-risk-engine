@@ -18,9 +18,9 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "activerecord-session_store", "~> 1.0"
-  # Airbrake catches exceptions, sends them to https://dst-errbit.xxx.co.uk
-  s.add_dependency "airbrake", "~> 5.3.0"
-  s.add_dependency "airbrake-ruby", "~> 1.3.2"
+  # Airbrake catches exceptions and sends them to our instances of Errbit
+  # defra_ruby_alert is a gem we created to manage airbrake across projects
+  s.add_dependency "defra_ruby_alert", "~> 0.1.0"
   # Manages data seeding
   s.add_dependency "dibber", "~> 0.5"
   # Env Vars drive some config. This loads environment variables from .env
