@@ -390,7 +390,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass (~> 3.3)
   bullet
-  byebug
+  byebug (~> 11.0.1)
   capybara (~> 2.6)
   codeclimate-test-reporter
   database_cleaner (~> 1.5)
