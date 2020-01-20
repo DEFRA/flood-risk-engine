@@ -10,7 +10,7 @@ group :development, :test do
   gem "bullet"
   # Call "byebug" anywhere in the code to stop execution and get a debugger
   # console
-  gem "byebug"
+  gem "byebug", "~> 11.0.1" # 11.1 only supports Ruby 2.4 and up
 end
 
 group :test do
