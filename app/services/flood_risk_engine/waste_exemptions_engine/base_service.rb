@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module WasteExemptionsEngine
+module FloodRiskEngine
   class BaseService
     def self.run(attrs = nil)
       if attrs
