@@ -16,6 +16,17 @@ module FloodRiskEngine
       end
     end
 
+    context "scopes" do
+      context ".approved" do
+        it "returns all approved enrollment exemptions" do
+          active_exemption = FactoryBot.create(:enrollment_exemption, status: :approved)
+          FactoryBot.create(:enrollment_exemption, status: :building)
+
+          expect(described_class.approved).to eq([active_exemption])
+        end
+      end
+    end
+
     describe "comments" do
       let(:ee) { FactoryBot.create(:enrollment_exemption) }
 

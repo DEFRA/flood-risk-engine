@@ -29,6 +29,8 @@ module FloodRiskEngine
       admin_intervention: 3
     }
 
+    scope :approved, -> { where(status: statuses[:approved]) }
+
     def self.include_long_dredging?
       includes(:exemption).where(flood_risk_engine_exemptions: { code: Exemption::LONG_DREDGING_CODES }).any?
     end
