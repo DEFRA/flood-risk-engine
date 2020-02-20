@@ -74,6 +74,13 @@ module FloodRiskEngine
       end
     end
 
+    # Last Email caching and retrieval functionality
+    def use_last_email_cache=(value)
+      DefraRubyEmail.configure do |configuration|
+        configuration.enable = change_string_to_boolean_for(value)
+      end
+    end
+
     private
 
     # If the setting's value is "true", then set to a boolean true. Otherwise, set it to false.
