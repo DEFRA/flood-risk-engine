@@ -4,6 +4,7 @@ require "activerecord/session_store"
 require "high_voltage"
 require "ea/address_lookup"
 require "defra_ruby/area"
+require "defra_ruby_email"
 require "active_support/dependencies"
 require_dependency "virtus"
 
