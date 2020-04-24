@@ -39,6 +39,6 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
 
 script:
-  - bundle exec rubocop --format progress --format=json --out=rubocop-result.json
+  - bundle exec rubocop --format progress --format json --out rubocop-result.json
   - bundle exec rspec
   - sonar-scanner
