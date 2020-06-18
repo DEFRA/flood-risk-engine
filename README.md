@@ -1,9 +1,9 @@
 # Flood risk engine
 
-[![Build Status](https://travis-ci.com/DEFRA/flood-risk-engine.svg?branch=master)](https://travis-ci.com/DEFRA/flood-risk-engine)
+[![Build Status](https://travis-ci.com/DEFRA/flood-risk-engine.svg?branch=main)](https://travis-ci.com/DEFRA/flood-risk-engine)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_flood-risk-engine&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_flood-risk-engine)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_flood-risk-engine&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_flood-risk-engine)
-[![security](https://hakiri.io/github/DEFRA/flood-risk-engine/master.svg)](https://hakiri.io/github/DEFRA/flood-risk-engine/master)
+[![security](https://hakiri.io/github/DEFRA/flood-risk-engine/main.svg)](https://hakiri.io/github/DEFRA/flood-risk-engine/main)
 
 A Ruby on Rails [engine](http://guides.rubyonrails.org/engines.html) delivering the complete public-facing functionality of the [Flood risk activity exemptions service](https://register-flood-risk-exemption.service.gov.uk).
 
