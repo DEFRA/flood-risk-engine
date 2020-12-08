@@ -14,6 +14,8 @@ jobs:
       DEVISE_MAILER_SENDER: "John Smith <js@example.com>"
       EMAIL_HOST: localhost
       EMAIL_PORT: 2500
+      PG_USERNAME: postgres
+      PG_PASSWORD: pinafore
       SECRET_KEY_BASE: 00c33aa9929a0b2fdf6388368469a796fb3d812bee94349d5d9f3a81ecaf35e9195b7ad98bc3a42f27681dd2e6a9b56c589180842ef15630a775f68ccbc2dfc2
       TZ: UTC
 
