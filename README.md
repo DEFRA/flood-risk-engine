@@ -1,6 +1,6 @@
 # Flood risk engine
 
-[![Build Status](https://travis-ci.com/DEFRA/flood-risk-engine.svg?branch=main)](https://travis-ci.com/DEFRA/flood-risk-engine)
+![Build Status](https://github.com/DEFRA/flood-risk-engine/workflows/CI/badge.svg?branch=main)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_flood-risk-engine&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_flood-risk-engine)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_flood-risk-engine&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_flood-risk-engine)
 [![security](https://hakiri.io/github/DEFRA/flood-risk-engine/main.svg)](https://hakiri.io/github/DEFRA/flood-risk-engine/main)
