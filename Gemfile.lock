@@ -164,11 +164,11 @@ GEM
     equalizer (0.0.11)
     erubi (1.10.0)
     execjs (2.7.0)
-    factory_bot (4.11.1)
-      activesupport (>= 3.0.0)
-    factory_bot_rails (4.11.1)
-      factory_bot (~> 4.11.1)
-      railties (>= 3.0.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faker (1.9.6)
       i18n (>= 0.7)
     faraday (1.4.1)
@@ -300,6 +300,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.5)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -439,13 +443,14 @@ DEPENDENCIES
   capybara (~> 2.6)
   database_cleaner (~> 1.5)
   email_spec
-  factory_bot_rails (~> 4.7)
+  factory_bot_rails (~> 6.1)
   faker (~> 1.7)
   flood_risk_engine!
   github_changelog_generator
   guard-rspec
   pg (~> 0.18)
   poltergeist (~> 1.9)
+  rails-controller-testing
   rspec-html-matchers
   rspec-rails (~> 3.4)
   rubocop (= 0.52)

@@ -10,7 +10,7 @@ module FloodRiskEngine
 
     def put_update(params)
       mock_ea_address_lookup_find_by_postcode
-      put(:update, params, session)
+      put :update, params: params, session: session
     end
 
     before do
@@ -21,7 +21,7 @@ module FloodRiskEngine
       let(:step) { :local_authority_postcode }
 
       before do
-        get :show, id: step, enrollment_id: enrollment
+        get :show, params: { id: step, enrollment_id: enrollment }
       end
 
       it "uses LocalAuthorityPostcodeForm" do
@@ -90,7 +90,7 @@ module FloodRiskEngine
         end
 
         it "redirects back to show with check for errors" do
-          put(:update, id: step, enrollment_id: enrollment, step => invalid_attributes)
+          put :update, params: { id: step, enrollment_id: enrollment, step => invalid_attributes }
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step, check_for_error: true)
           )
@@ -103,7 +103,7 @@ module FloodRiskEngine
             session = { error_params: { step => { postcode: "" } } }
             expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.blank")
 
-            get(:show, params, session)
+            get :show, params: params, session: session
             expect(response.body).to have_tag :a, text: expected_error
           end
 
@@ -111,7 +111,7 @@ module FloodRiskEngine
             session = { error_params: { step => { postcode: "BS6 " } } }
             expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.enter_a_valid_postcode")
 
-            get(:show, params, session)
+            get :show, params: params, session: session
             expect(response.body).to have_tag :a, text: expected_error
           end
 
@@ -122,7 +122,7 @@ module FloodRiskEngine
 
             allow_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return([])
 
-            get(:show, params, session)
+            get :show, params: params, session: session
 
             expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
             expect(response.body).to have_tag :a, text: expected_error
@@ -143,7 +143,7 @@ module FloodRiskEngine
             allow_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return(stub_data)
             allow_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
 
-            get(:show, params, session)
+            get :show, params: params, session: session
 
             expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
             expect(response.body).to have_tag :a, text: expected_error

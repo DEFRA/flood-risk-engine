@@ -17,10 +17,11 @@ group :test do
   gem "capybara", "~> 2.6"
   gem "database_cleaner", "~> 1.5"
   gem "email_spec"
-  gem "factory_bot_rails", "~> 4.7"
+  gem "factory_bot_rails", "~> 6.1"
   gem "faker", "~> 1.7"
   gem "guard-rspec", require: false
   gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
+  gem "rails-controller-testing"
   gem "rspec-html-matchers"
   gem "rspec-rails", "~> 3.4"
   gem "shoulda-matchers", "~> 3.1", require: false
