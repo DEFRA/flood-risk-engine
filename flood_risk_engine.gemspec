@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 4.2"
+  s.add_dependency "rails", "~> 5.2.5"
   # Form object convenience - fixing this version as later versions cause issues
   s.add_dependency "reform", "2.1.0"
   # Form object convenience - fixing this version as later versions cause issues
@@ -66,8 +66,6 @@ Gem::Specification.new do |s|
   # https://github.com/skywinder/github-changelog-generator#github-token
   s.add_development_dependency "github_changelog_generator"
   s.add_development_dependency "pg", "~> 0.18"
-  # Mutes assets pipeline log messages
-  s.add_development_dependency "quiet_assets", "~> 1.1"
   # Used to ensure the code base matches our agreed styles and conventions
   s.add_development_dependency "rubocop", "0.52"
   s.add_development_dependency "sass-rails", "~> 5.0.4"
