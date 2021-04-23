@@ -17,7 +17,7 @@ FloodRiskEngine::Engine.routes.draw do
     )
   end
 
-  mount DefraRubyEmail::Engine => "/email"
+  # mount DefraRubyEmail::Engine => "/email"
 
   # See http://patrickperey.com/railscast-053-handling-exceptions/
   get "(errors)/:id", to: "errors#show", as: "error"
