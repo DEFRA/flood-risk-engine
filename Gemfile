@@ -5,6 +5,10 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+# The "sync" gem has been removed from ruby 2.17 https://bugs.ruby-lang.org/issues/16170
+# Unfortunately, it is used by finite_machine, so we ensure it is here
+gem "sync"
+
 group :development, :test do
   # ActiveRecord N+1 detection
   gem "bullet"
