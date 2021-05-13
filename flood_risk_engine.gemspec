@@ -43,10 +43,10 @@ Gem::Specification.new do |s|
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
   s.add_dependency "rails", "~> 5.2.5"
-  # Form object convenience - fixing this version as later versions cause issues
-  s.add_dependency "reform", "2.1.0"
-  # Form object convenience - fixing this version as later versions cause issues
-  s.add_dependency "reform-rails", "0.1.0"
+  # Form object convenience
+  s.add_dependency "reform", "2.6"
+  # Form object convenience (requires reform)
+  s.add_dependency "reform-rails", "0.2.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 2.0.2"
   # Postcode format validation
