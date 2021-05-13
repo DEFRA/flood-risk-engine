@@ -25,6 +25,7 @@ group :test do
   gem "faker", "~> 1.7"
   gem "guard-rspec", require: false
   gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
+  gem "rails-controller-testing"
   gem "rspec-html-matchers"
   gem "rspec-rails", "~> 3.4"
   gem "shoulda-matchers", "~> 3.1", require: false
