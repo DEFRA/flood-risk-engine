@@ -1,4 +1,4 @@
-class CreateFloodRiskEngineEnrollments < ActiveRecord::Migration
+class CreateFloodRiskEngineEnrollments < ActiveRecord::Migration[5.2]
   def change
     create_table :flood_risk_engine_enrollments do |t|
       # These columns are test only
