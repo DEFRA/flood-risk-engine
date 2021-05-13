@@ -27,10 +27,10 @@ Gem::Specification.new do |s|
   s.add_dependency "dotenv-rails", "~> 2.1"
   s.add_dependency "ea-address_lookup", "~> 0.3.0"
   # Used to determine the EA area for a registered exemption
-  s.add_dependency "defra_ruby_area"
+  s.add_dependency "defra_ruby_area", "~> 1.1.0"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
-  # s.add_dependency "defra_ruby_email"
+  s.add_dependency "defra_ruby_email"
   s.add_dependency "finite_machine", "~> 0.11.3"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 6.1"
+  s.add_dependency "rails", "~> 6.0.3"
   # Form object convenience
   s.add_dependency "reform", "2.6"
   # Form object convenience (requires reform)
