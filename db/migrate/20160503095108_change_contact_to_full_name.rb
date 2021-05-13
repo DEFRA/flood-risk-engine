@@ -1,4 +1,4 @@
-class ChangeContactToFullName < ActiveRecord::Migration
+class ChangeContactToFullName < ActiveRecord::Migration[5.2]
 
   def up
     remove_column :flood_risk_engine_contacts, :first_name

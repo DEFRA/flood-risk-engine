@@ -1,4 +1,4 @@
-class AddMissingIndexes < ActiveRecord::Migration
+class AddMissingIndexes < ActiveRecord::Migration[5.2]
   def change
     add_index :flood_risk_engine_enrollments, :applicant_contact_id
     add_index :flood_risk_engine_enrollments, :organisation_id
