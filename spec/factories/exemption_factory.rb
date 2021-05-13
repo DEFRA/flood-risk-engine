@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :exemption, class: FloodRiskEngine::Exemption do
     code        { generate(:exemption_code) }
     summary     { Faker::Commerce.product_name }
-    description { Faker::Lorem.paragraph(2) }
+    description { Faker::Lorem.paragraph(sentence_count: 2) }
   end
 end
