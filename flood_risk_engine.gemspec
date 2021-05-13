@@ -49,6 +49,9 @@ Gem::Specification.new do |s|
   s.add_dependency "reform-rails", "0.2.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 2.0.2"
+  # The "sync" gem has been removed from ruby 2.17 https://bugs.ruby-lang.org/issues/16170
+  # Unfortunately, it is used by finite_machine, so we ensure it is here
+  s.add_dependency "sync"
   # Postcode format validation
   s.add_dependency "uk_postcode", "~> 2.1"
   # Validate e-mail addresses against RFC 2822 and RFC 3696

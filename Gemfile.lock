@@ -20,6 +20,7 @@ PATH
       reform (= 2.6)
       reform-rails (= 0.2.2)
       sucker_punch (~> 2.0.2)
+      sync
       uk_postcode (~> 2.1)
       validates_email_format_of (~> 1.6)
       virtus (~> 1.0)
@@ -485,7 +486,6 @@ DEPENDENCIES
   sass-rails (~> 5.0.4)
   shoulda-matchers (~> 3.1)
   simplecov (~> 0.13.0)
-  sync
   vcr (~> 3.0)
   webmock (~> 1.24)
 
