@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 5.2.5"
+  s.add_dependency "rails", "~> 6.1"
   # Form object convenience
   s.add_dependency "reform", "2.6"
   # Form object convenience (requires reform)
