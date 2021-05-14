@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     flood_risk_engine (1.0.2)
-      activerecord-session_store (~> 1.0)
+      activerecord-session_store (~> 2.0)
       defra_ruby_alert (~> 2.1.1)
       defra_ruby_area (~> 1.1.0)
       defra_ruby_email
@@ -72,12 +72,12 @@ GEM
     activerecord (6.0.3.7)
       activemodel (= 6.0.3.7)
       activesupport (= 6.0.3.7)
-    activerecord-session_store (1.1.3)
-      actionpack (>= 4.0)
-      activerecord (>= 4.0)
+    activerecord-session_store (2.0.0)
+      actionpack (>= 5.2.4.1)
+      activerecord (>= 5.2.4.1)
       multi_json (~> 1.11, >= 1.11.2)
-      rack (>= 1.5.2, < 3)
-      railties (>= 4.0)
+      rack (>= 2.0.8, < 3)
+      railties (>= 5.2.4.1)
     activestorage (6.0.3.7)
       actionpack (= 6.0.3.7)
       activejob (= 6.0.3.7)
