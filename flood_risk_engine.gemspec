@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "dotenv-rails", "~> 2.1"
   s.add_dependency "ea-address_lookup", "~> 0.3.3"
   # Used to determine the EA area for a registered exemption
-  s.add_dependency "defra_ruby_area", "~> 1.1.0"
+  s.add_dependency "defra_ruby_area", "~> 2.0"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email"
@@ -37,8 +37,7 @@ Gem::Specification.new do |s|
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3.0"
   s.add_dependency "jquery-rails", ">= 3.1"
-  # Used by other gems - but need to force version due to CVE-2015-8806
-  s.add_dependency "nokogiri", ">= 1.6.8"
+  s.add_dependency "nokogiri", ">= 1.11"
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
