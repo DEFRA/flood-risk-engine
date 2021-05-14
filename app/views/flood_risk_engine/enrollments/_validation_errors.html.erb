@@ -9,9 +9,9 @@
         </h1>
 
         <ul class="error-summary-list">
-          <% errors.each do |attr, msg| %>
+          <% errors.each do |error| %>
             <li>
-              <%= link_to msg.html_safe, "##{error_link_id(attr)}", class: "error-text" %>
+              <%= link_to error.message.html_safe, "##{error_link_id(error.attribute)}", class: "error-text" %>
             </li>
           <% end %>
         </ul>
