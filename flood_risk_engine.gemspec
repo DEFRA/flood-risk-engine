@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency "dibber", "~> 0.5"
   # Env Vars drive some config. This loads environment variables from .env
   s.add_dependency "dotenv-rails", "~> 2.1"
-  s.add_dependency "ea-address_lookup", "~> 0.3.0"
+  s.add_dependency "ea-address_lookup", "~> 0.3.3"
   # Used to determine the EA area for a registered exemption
   s.add_dependency "defra_ruby_area", "~> 1.1.0"
   # Used as part of testing. When enabled adds a /email/last-email route from
