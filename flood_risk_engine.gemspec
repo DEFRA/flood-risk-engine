@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency "defra_ruby_area", "~> 2.0"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
-  s.add_dependency "defra_ruby_email"
+  # s.add_dependency "defra_ruby_email"
   s.add_dependency "finite_machine", "~> 0.11.3"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 6.0.3"
+  s.add_dependency "rails", "~> 6.1"
   # Form object convenience
   s.add_dependency "reform", "2.6"
   # Form object convenience (requires reform)
@@ -67,7 +67,7 @@ Gem::Specification.new do |s|
   # ~/.bash_profile (or equivalent)
   # https://github.com/skywinder/github-changelog-generator#github-token
   s.add_development_dependency "github_changelog_generator"
-  s.add_development_dependency "pg", "~> 0.18"
+  s.add_development_dependency "pg", "~> 1.1"
   # Used to ensure the code base matches our agreed styles and conventions
   s.add_development_dependency "rubocop", "0.52"
   s.add_development_dependency "sass-rails", "~> 5.0.4"
