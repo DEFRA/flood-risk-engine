@@ -16,8 +16,8 @@ PATH
       os_map_ref (= 0.4.2)
       phonelib (~> 0.6)
       rails (~> 6.1)
-      reform (= 2.6)
-      reform-rails (= 0.2.2)
+      reform (~> 2.6)
+      reform-rails (~> 0.2.2)
       sucker_punch (~> 2.0.2)
       sync
       uk_postcode (~> 2.1)

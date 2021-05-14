@@ -43,9 +43,9 @@ Gem::Specification.new do |s|
   s.add_dependency "phonelib", "~> 0.6"
   s.add_dependency "rails", "~> 6.1"
   # Form object convenience
-  s.add_dependency "reform", "2.6"
+  s.add_dependency "reform", "~> 2.6"
   # Form object convenience (requires reform)
-  s.add_dependency "reform-rails", "0.2.2"
+  s.add_dependency "reform-rails", "~> 0.2.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 2.0.2"
   # The "sync" gem has been removed from ruby 2.17 https://bugs.ruby-lang.org/issues/16170
