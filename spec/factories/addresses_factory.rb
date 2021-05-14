@@ -12,9 +12,9 @@ FactoryBot.define do
     address_type        { 1 }
     organisation        { Faker::Company.name }
     state_date          { 1.year.ago }
-    blpu_state_code     { Faker::Lorem.characters(10) }
-    postal_address_code { Faker::Lorem.characters(10) }
-    logical_status_code { Faker::Lorem.characters(10) }
+    blpu_state_code     { Faker::Lorem.characters(number: 10) }
+    postal_address_code { Faker::Lorem.characters(number: 10) }
+    logical_status_code { Faker::Lorem.characters(number: 10) }
 
     trait :site do
       address_type { 2 }
