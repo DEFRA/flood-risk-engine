@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "activerecord-session_store", "~> 1.0"
   # Airbrake catches exceptions and sends them to our instances of Errbit
   # defra_ruby_alert is a gem we created to manage airbrake across projects
-  s.add_dependency "defra_ruby_alert", "~> 0.1.0"
+  s.add_dependency "defra_ruby_alert", "~> 2.1.1"
   # Manages data seeding
   s.add_dependency "dibber", "~> 0.5"
   # Env Vars drive some config. This loads environment variables from .env
