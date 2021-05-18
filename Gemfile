@@ -5,6 +5,9 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+# Update these gems in the gemspec
+gem "defra_ruby_email", path: "/vagrant/defra-ruby-email"
+
 group :development, :test do
   # ActiveRecord N+1 detection
   gem "bullet"

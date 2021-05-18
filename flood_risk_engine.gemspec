@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency "defra_ruby_area", "~> 2.0"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
-  # s.add_dependency "defra_ruby_email"
+  s.add_dependency "defra_ruby_email"
   s.add_dependency "finite_machine", "~> 0.11.3"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
