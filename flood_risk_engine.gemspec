@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = FloodRiskEngine::VERSION
   s.authors     = ["Digital Services Team, EnvironmentAgency"]
   s.email       = ["dst@environment-agency.gov.uk"]
-  s.homepage    = "https://github.com/EnvironmentAgency/flood-risk-engine"
+  s.homepage    = "https://github.com/defra/flood-risk-engine"
   s.summary     = "FloodRiskEngine package containing core elements and functionality"
   s.description = "FloodRiskEngine package containing core elements and functionality"
   s.license     = "The Open Government Licence (OGL) Version 3"
