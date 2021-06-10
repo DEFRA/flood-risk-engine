@@ -9,9 +9,6 @@ jobs:
     env:
       ADDRESS_FACADE_CLIENT_ID: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_ID }}
       ADDRESS_FACADE_CLIENT_KEY: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_KEY }}
-      ADDRESS_FACADE_KEY: client1
-      ADDRESS_FACADE_PORT: 9002
-      ADDRESS_FACADE_SERVER: localhost
       DEVISE_MAILER_SENDER: "John Smith <js@example.com>"
       EMAIL_HOST: localhost
       EMAIL_PORT: 2500

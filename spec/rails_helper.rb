@@ -80,9 +80,6 @@ RSpec.configure do |config|
   # Enables shortcut, t() instead of I18n.t() in tests
   config.include AbstractController::Translation
 
-  # Allow lookups to EA::AddressLookup to be mocked
-  config.include EA::AddressLookup::TestHelper::RspecMocks
-
   require_relative "support/spec_controller_helpers"
   config.include SpecControllerHelpers, type: :controller
 end
