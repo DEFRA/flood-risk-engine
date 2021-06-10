@@ -7,7 +7,8 @@ jobs:
     # You must use a Linux environment when using service containers or container jobs
     runs-on: ubuntu-latest
     env:
-      ADDRESS_FACADE_CLIENT_ID: 0
+      ADDRESS_FACADE_CLIENT_ID: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_ID }}
+      ADDRESS_FACADE_CLIENT_KEY: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_KEY }}
       ADDRESS_FACADE_KEY: client1
       ADDRESS_FACADE_PORT: 9002
       ADDRESS_FACADE_SERVER: localhost
