@@ -9,7 +9,6 @@ module FloodRiskEngine
     let(:reform_class) { Steps::LocalAuthorityPostcodeForm }
 
     def put_update(params)
-      mock_ea_address_lookup_find_by_postcode
       put(:update, params, session)
     end
 
@@ -47,17 +46,19 @@ module FloodRiskEngine
 
       context "with valid params" do
         it "steps to next page when valid UK postcode supplied on rendering show" do
-          params = { id: step, enrollment_id: enrollment }.merge valid_attributes
+          VCR.use_cassette("address_lookup_valid_postcode") do
+            params = { id: step, enrollment_id: enrollment }.merge valid_attributes
 
-          put_update(params)
+            put_update(params)
 
-          expect(response).to redirect_to(enrollment_step_path(enrollment, enrollment.next_step))
+            expect(response).to redirect_to(enrollment_step_path(enrollment, enrollment.next_step))
+          end
         end
 
         it "redirects when Postcode lookup service is NOT available" do
           params = { id: step, enrollment_id: enrollment }.merge valid_attributes
 
-          allow_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
+          allow_any_instance_of(DefraRuby::Address::Response).to receive(:successful?).and_return(false)
 
           put_update(params)
 
@@ -117,10 +118,16 @@ module FloodRiskEngine
 
           let(:postcode_valid_but_no_addresses) { "BS9 9XX" }
 
-          it "displays no addresses found AND manual entry link when lookup service reutrn no addresses" do
+          it "displays no addresses found AND manual entry link when lookup service returns no addresses" do
             session = { error_params: { step => { postcode: postcode_valid_but_no_addresses } } }
 
-            allow_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return([])
+            stub_data = double(
+              results: [],
+              successful?: false,
+              error: DefraRuby::Address::NoMatchError
+            )
+
+            expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(stub_data)
 
             get(:show, params, session)
 
@@ -138,10 +145,13 @@ module FloodRiskEngine
               }
             }
 
-            stub_data = { "totalMatches" => 1, "results" => [{ "uprn" => "340116" }] }
+            stub_data = double(
+              results: [],
+              successful?: false,
+              error: "foo"
+            )
 
-            allow_any_instance_of(AddressServices::FindByPostcode).to receive("search").and_return(stub_data)
-            allow_any_instance_of(AddressServices::FindByPostcode).to receive("success?").and_return(false)
+            expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(stub_data)
 
             get(:show, params, session)
 
