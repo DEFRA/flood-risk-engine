@@ -3,7 +3,21 @@ module FloodRiskEngine
     class BaseAddressForm < BaseForm
 
       property :uprn
-      property :address_list, virtual: true
+      property :temp_addresses, virtual: true
+
+      ADDRESS_DATA_KEYS = %w[uprn
+                             organisation
+                             premises
+                             street_address
+                             locality
+                             city
+                             postcode
+                             state_date
+                             blpu_state_code
+                             postal_address_code
+                             logical_status_code
+                             county_province_id
+                             country_iso].freeze
 
       validates :uprn, presence: { message: I18n.t("flood_risk_engine.validation_errors.uprn.blank") }
 
@@ -14,13 +28,18 @@ module FloodRiskEngine
       }
 
       # This is a form reader - provides view with addresses for drop down selection
-      def address_list
-        @address_list ||= find_by_postcode
+      def temp_addresses
+        @temp_addresses ||= look_up_addresses
+      end
+
+      def initialize(model, enrollment = nil)
+        super(model, enrollment)
+        temp_addresses
       end
 
       def validate(params)
         # Use UPRN to find address data and assign to our local address instance
-        super(params) && find_and_validate_address_via_uprn
+        super(params) && select_and_build_address
       end
 
       def save
@@ -36,6 +55,43 @@ module FloodRiskEngine
       end
 
       protected
+
+      # Look up addresses based on the postcode
+      def look_up_addresses
+        self.temp_addresses = if postcode.present?
+                                request_matching_addresses
+                              else
+                                []
+                              end
+      end
+
+      def request_matching_addresses
+        AddressLookupService.run(postcode).results
+      end
+
+      def select_and_build_address
+        address_attributes = get_address_data
+
+        if address_attributes
+          # Given that the address data comes from service we should not validate it here, as these addresses
+          # are already displayed to the user for selection so then raising an error is going to be very confusing
+          # N.B Addresses from the service may not have Street address but always have UPRN and Postcode
+          build_assignable_address(address_attributes)
+
+          true
+        else
+          false
+        end
+      end
+
+      def get_address_data
+        return {} if uprn.blank?
+
+        data = temp_addresses.detect { |address| address["uprn"] == uprn.to_i }
+        return {} unless data
+
+        data.slice(*ADDRESS_DATA_KEYS)
+      end
 
       def address_search_postcode
         enrollment.address_search.try(:postcode)
@@ -54,43 +110,10 @@ module FloodRiskEngine
         enrollment.organisation.save
       end
 
-      def find_and_validate_address_via_uprn
-        # Use UPRN to find address data
-        address_attributes = find_by_uprn
-
-        if address_attributes
-          # Given that the address data comes from service we should not validate it here, as these addresses
-          # are already displayed to the user for selection so then raising an error is going to be very confusing
-          # N.B Addresses from the service may not have Street address but always have UPRN and Postcode
-          build_assignable_address(address_attributes)
-
-          true
-        else
-          false
-        end
-      end
-
       # Build an assignable address i.e ready to be assigned to any suitable association on enrollment
       def build_assignable_address(address_attributes)
         @assignable_address = Address.new(address_attributes)
         logger.debug("#{self.class} address now #{@assignable_address.inspect}")
-      end
-
-      def find_by_uprn
-        inbound = AddressServices::FindByUprn.new(uprn).search
-        flood_address_data = parser.address_data(inbound)
-
-        logger.info("Parsed address #{flood_address_data.first}")
-
-        # We expect at most one address for a uprn
-        flood_address_data.first
-      end
-
-      def find_by_postcode
-        raise "address_search not found" unless enrollment.address_search.present?
-        post_code = enrollment.address_search.postcode
-        inbound = AddressServices::FindByPostcode.new(post_code).search
-        parser.selectable_address_data(inbound)
       end
 
       def assignable_address
