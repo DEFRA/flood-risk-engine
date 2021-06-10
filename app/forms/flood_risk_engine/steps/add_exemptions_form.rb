@@ -19,6 +19,19 @@ module FloodRiskEngine
         @all_exemptions = Exemption.all
       end
 
+      def validate(params)
+        # The validation doesn't recognise { exemption_ids: "" } as invalid
+        # As a workaround, we remove any empty hashes from the params
+        # before the validation is actioned
+        super(
+          if params.fetch(params_key, {}).reject { |_, v| v.blank? }.empty?
+            {}
+          else
+            params
+          end
+        )
+      end
+
       def save
         result = super
 

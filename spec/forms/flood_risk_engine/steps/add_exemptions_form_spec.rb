@@ -60,7 +60,7 @@ module FloodRiskEngine
       end
 
       context "with no exemptions params" do
-        let(:params) { { params_key => {} } }
+        let(:params) { { params_key => { exemption_ids: {} } } }
         it "should fail" do
           expect(subject.validate(params)).to be(false)
         end
