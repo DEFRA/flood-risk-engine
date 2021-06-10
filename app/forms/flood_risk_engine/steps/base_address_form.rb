@@ -70,7 +70,7 @@ module FloodRiskEngine
       end
 
       def select_and_build_address
-        address_attributes = get_address_data
+        address_attributes = select_address_data
 
         if address_attributes
           # Given that the address data comes from service we should not validate it here, as these addresses
@@ -84,7 +84,7 @@ module FloodRiskEngine
         end
       end
 
-      def get_address_data
+      def select_address_data
         return {} if uprn.blank?
 
         data = temp_addresses.detect { |address| address["uprn"] == uprn.to_i }
