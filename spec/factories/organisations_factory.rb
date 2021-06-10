@@ -14,10 +14,6 @@ FactoryBot.define do
       trait :"as_#{ot}" do
         org_type            { ot.to_s }
         name                { "" }
-        # this errors with `unknown attribute`
-        # rubocop:disable Style/AsciiComments
-        # registration_number { "" }
-        # rubocop:enable Style/AsciiComments
       end
     end
 
