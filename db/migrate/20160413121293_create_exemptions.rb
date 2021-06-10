@@ -1,4 +1,4 @@
-class CreateExemptions < ActiveRecord::Migration[5.2]
+class CreateExemptions < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_exemptions do |t|
       t.string  :code
