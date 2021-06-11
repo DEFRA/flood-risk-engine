@@ -1,44 +1,20 @@
 module FloodRiskEngine
   module Steps
     class BaseAddressSearchForm < BaseRedirectableForm
-
       property :postcode
 
       validates :postcode, presence: { message: I18n.t("flood_risk_engine.validation_errors.postcode.blank") }
 
       validates :postcode, 'flood_risk_engine/postcode': true, allow_blank: true
+
       def validate(params)
-        result = super(params)
+        valid = super(params)
 
-        if result
-          finder = AddressServices::FindByPostcode.new(postcode)
+        return false unless valid
 
-          address_list = finder.search
+        look_up_addresses
 
-          if finder.success?
-
-            # Note, we only need to validate the postcode search not the underlying address data
-            unless FloodRiskEngine::AddressServices::Deserialize::EaFacadeToAddress.contains_addresses?(address_list)
-
-              # This is a Valid UK postcode but it does not currently point to any addresses.
-              # If we don't save this postcode in the search, get inconsistencies when users enters a Manual
-              # address and then goes back
-              sync
-              model.save
-
-              errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
-            end
-          else
-            errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
-          end
-
-          result = errors[:postcode].empty?
-
-          # RIP-74 states when search valid but no postcodes or service type failure, include Manual Address entry link
-          @manual_entry_enabled = !result
-        end
-
-        result
+        check_for_errors_and_toggle_manual_entry
       end
       # rubocop:enable Metrics/MethodLength
 
@@ -62,6 +38,47 @@ module FloodRiskEngine
         false
       end
 
+      private
+
+      # Look up addresses based on the postcode
+      def look_up_addresses
+        response = AddressLookupService.run(postcode)
+
+        return true if response.successful?
+
+        if response.error == DefraRuby::Address::NoMatchError
+          handle_no_matching_addresses
+          false
+        else
+          handle_address_service_error
+          true
+        end
+      end
+
+      def handle_no_matching_addresses
+        # This is a Valid UK postcode but it does not currently point to any addresses.
+        # If we don't save this postcode in the search, get inconsistencies when users enters a Manual
+        # address and then goes back
+        sync
+        model.save
+
+        errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
+      end
+
+      def handle_address_service_error
+        errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
+      end
+
+      # RIP-74 states when search valid but no postcodes or service type failure, include Manual Address entry link
+      def check_for_errors_and_toggle_manual_entry
+        if errors[:postcode].empty?
+          @manual_entry_enabled = false
+          true
+        else
+          @manual_entry_enabled = true
+          false
+        end
+      end
     end
 
   end

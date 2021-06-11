@@ -60,5 +60,14 @@ FactoryBot.define do
         object.secondary_contact = build :contact
       end
     end
+
+    trait :with_address_search do
+      after(:stub) do |object|
+        object.address_search = build_stubbed :address_search
+      end
+      after(:build) do |object|
+        object.address_search = build :address_search
+      end
+    end
   end
 end
