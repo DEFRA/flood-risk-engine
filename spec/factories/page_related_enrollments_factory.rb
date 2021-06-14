@@ -60,6 +60,14 @@ FactoryBot.define do
     step :limited_company_address
   end
 
+  factory :page_limited_company_address_no_org, parent: :page_limited_company_postcode do
+    after(:create) do |object|
+      object.create_address_search(postcode: "BA2 1AA")
+    end
+
+    step :limited_company_address
+  end
+
   # LLP
 
   factory :page_limited_liability_partnership,
