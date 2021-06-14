@@ -51,17 +51,17 @@ module FloodRiskEngine
       end
 
       context "with invalid params" do
-        let(:valid_but_address_service_400s) {
-          { "#{form.params_key}": { postcode: "HR4G 0LE" } }
+        let(:valid_postcode_no_matches) {
+          { "#{form.params_key}": { postcode: "BS1 1ZZ" } }
         }
 
         it "is invalid when valid Postcode supplied but Address Service finds no matches", duff: true do
           VCR.use_cassette("address_lookup_no_matches_postcode") do
-            expect(form.validate(valid_but_address_service_400s)).to eq false
+            expect(form.validate(valid_postcode_no_matches)).to eq false
 
             expect(
               form.errors.messages[:postcode]
-            ).to eq [I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")]
+            ).to eq [I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")]
           end
         end
 
