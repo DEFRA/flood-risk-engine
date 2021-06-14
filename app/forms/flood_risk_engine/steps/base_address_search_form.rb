@@ -46,7 +46,7 @@ module FloodRiskEngine
 
         return true if response.successful?
 
-        if response.error == DefraRuby::Address::NoMatchError
+        if response.error.is_a?(DefraRuby::Address::NoMatchError)
           handle_no_matching_addresses
           false
         else

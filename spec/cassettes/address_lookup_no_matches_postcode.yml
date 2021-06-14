@@ -2,38 +2,36 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:9002/address-service/v1/addresses/postcode?client-id=<CLIENT_ID>&key=<CLIENT_ID>&query-string=HR4G%200LE
+    uri: http://localhost:9002/address-service/v1/addresses/postcode?client-id=<CLIENT_ID>&key=<CLIENT_ID>&query-string=BS1%201ZZ
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Accept:
       - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
       User-Agent:
-      - rest-client/2.0.2 (linux-gnu x86_64) ruby/2.3.1p112
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.3.1p112
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Host:
       - localhost:9002
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Date:
-      - Tue, 08 Jun 2021 15:06:32 GMT
+      - Mon, 14 Jun 2021 09:34:10 GMT
       X-Application-Context:
       - application:9002
       Content-Type:
       - application/json
       Content-Length:
-      - '370'
+      - '293'
     body:
       encoding: UTF-8
-      string: '{"facade_status_code":400,"facade_error_message":"bad request to supplier
-        service","facade_error_code":"address_service_error_1","supplier_was_called":true,"supplier_status_code":400,"supplier_response":{"error":{"statuscode":400,"message":"Requested
-        postcode must contain a minimum of the sector plus 1 digit of the district
-        e.g. SO1. Requested postcode was HR4G0LE"}}}'
+      string: '{"header":{"totalMatches":0,"startMatch":null,"endMatch":null,"query":"postcode=BS1
+        1ZZ","language":"EN","dataset":"DPA","epoch":"84","uriToSupplier":"https://api.os.uk/search/places/v1/postcode?lr=EN&postcode=BS1%201ZZ&fq=logical_status_code%3A1&dataset=DPA","uriFromClient":""},"results":[]}'
     http_version: 
-  recorded_at: Tue, 08 Jun 2021 15:06:33 GMT
+  recorded_at: Mon, 14 Jun 2021 09:34:10 GMT
 recorded_with: VCR 3.0.3
