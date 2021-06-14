@@ -116,26 +116,20 @@ module FloodRiskEngine
             expect(response.body).to have_tag :a, text: expected_error
           end
 
-          let(:postcode_valid_but_no_addresses) { "BS9 9XX" }
+          let(:postcode_valid_but_no_addresses) { "BS1 1ZZ" }
 
           it "displays no addresses found AND manual entry link when lookup service returns no addresses" do
-            session = { error_params: { step => { postcode: postcode_valid_but_no_addresses } } }
+            VCR.use_cassette("address_lookup_no_matches_postcode") do
+              session = { error_params: { step => { postcode: postcode_valid_but_no_addresses } } }
 
-            stub_data = double(
-              results: [],
-              successful?: false,
-              error: DefraRuby::Address::NoMatchError
-            )
+              get(:show, params, session)
 
-            expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(stub_data)
+              expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
+              expect(response.body).to have_tag :a, text: expected_error
 
-            get(:show, params, session)
-
-            expected_error = I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
-            expect(response.body).to have_tag :a, text: expected_error
-
-            expect_manual_entry = I18n.t("flood_risk_engine.enrollments.addresses.manual_entry")
-            expect(response.body).to have_tag :a, text: expect_manual_entry
+              expect_manual_entry = I18n.t("flood_risk_engine.enrollments.addresses.manual_entry")
+              expect(response.body).to have_tag :a, text: expect_manual_entry
+            end
           end
 
           it "displays enter service not working error when Postcode lookup service is NOT available" do
