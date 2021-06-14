@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9002/address-service/v1/addresses/postcode?client-id=<CLIENT_ID>&key=<CLIENT_ID>&query-string=BA2%201AA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.3.1p112
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - localhost:9002
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 14 Jun 2021 09:14:55 GMT
+      X-Application-Context:
+      - application:9002
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"header":{"totalMatches":11,"startMatch":1,"endMatch":11,"query":"postcode=BA2
+        1AA","language":"EN","dataset":"DPA","epoch":"84","uriToSupplier":"https://api.os.uk/search/places/v1/postcode?lr=EN&postcode=BA2%201AA&fq=logical_status_code%3A1&dataset=DPA","uriFromClient":""},"results":[{"uprn":100120003586,"address":"1,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"1","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373472.0,"y":164198.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD03","classification_code_description":"Semi-Detached","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454764","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003587,"address":"2,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"2","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373467.0,"y":164190.0,"coordinate_system":null,"blpu_state_date":"11/02/2020","blpu_state_code":2,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"In
+        use","classification_code":"RD03","classification_code_description":"Semi-Detached","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454765","parent_uprn":null,"last_update_date":"14/02/2020","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003588,"address":"3,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"3","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373460.0,"y":164180.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD03","classification_code_description":"Semi-Detached","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454766","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003589,"address":"4,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"4","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373458.0,"y":164173.0,"coordinate_system":null,"blpu_state_date":"08/03/2018","blpu_state_code":2,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"In
+        use","classification_code":"RD03","classification_code_description":"Semi-Detached","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454767","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003590,"address":"5,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"5","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373480.0,"y":164155.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454774","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003591,"address":"6,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"6","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373482.0,"y":164160.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454773","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003592,"address":"7,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"7","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373485.0,"y":164163.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454772","parent_uprn":null,"last_update_date":"08/05/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003593,"address":"8,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"8","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373488.0,"y":164167.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454771","parent_uprn":null,"last_update_date":"08/05/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003594,"address":"9,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"9","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373491.0,"y":164172.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454770","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003595,"address":"10,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"10","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373494.0,"y":164177.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454769","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"},{"uprn":100120003596,"address":"11,
+        BRIDGE ROAD, BATH, BA2 1AA","organisation":null,"premises":"11","street_address":"BRIDGE
+        ROAD","locality":null,"city":"BATH","postcode":"BA2 1AA","country":"United
+        Kingdom","x":373497.0,"y":164182.0,"coordinate_system":null,"blpu_state_date":null,"blpu_state_code":null,"postal_address_code":"D","logical_status_code":1,"source_data_type":"dpa","blpu_state_code_description":"Unknown/Not
+        applicable","classification_code":"RD04","classification_code_description":"Terraced","lpi_logical_status_code":null,"lpi_logical_status_code_description":null,"match":1.0,"match_description":"EXACT","topography_layer_toid":"osgb1000015454768","parent_uprn":null,"last_update_date":"24/04/2019","status":"APPROVED","entry_date":"28/04/2001","postal_address_code_description":"A
+        record which is linked to PAF","usrn":null,"language":"EN"}]}'
+    http_version: 
+  recorded_at: Mon, 14 Jun 2021 09:14:56 GMT
+recorded_with: VCR 3.0.3

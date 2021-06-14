@@ -113,6 +113,8 @@ module FloodRiskEngine
       # Build an assignable address i.e ready to be assigned to any suitable association on enrollment
       def build_assignable_address(address_attributes)
         @assignable_address = Address.new(address_attributes)
+        # The address is required to have data or be blank, but not nil
+        @assignable_address.organisation ||= ""
         logger.debug("#{self.class} address now #{@assignable_address.inspect}")
       end
 
