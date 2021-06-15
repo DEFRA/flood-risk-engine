@@ -25,5 +25,62 @@ module FloodRiskEngine
         end
       end
     end
+
+    describe "#clean_up_duplicate_addresses" do
+      let(:enrollment) { build(:enrollment, :with_individual) }
+      let(:org_addresses) { FloodRiskEngine::Address.where(addressable: enrollment.organisation) }
+      let(:address) do
+        build(:address,
+              postcode: "BS1 1AA")
+      end
+
+      context "when there are no pre-existing addresses for this enrollment" do
+        before do
+          org_addresses.each(&:delete)
+        end
+
+        it "saves the new address and does not remove any other addresses" do
+          expect(org_addresses).to be_empty
+
+          address.addressable = enrollment.organisation
+          address.save!
+
+          expect(org_addresses.reload).to eq([address])
+        end
+      end
+
+      context "when there is a pre-existing address for this enrollment" do
+        let!(:enrollment) { create(:enrollment, :with_individual, :with_organisation_address) }
+        let(:existing_address) { enrollment.organisation.primary_address }
+
+        context "when the pre-existing address is a primary address" do
+          it "saves the new address and removes the old address" do
+            expect(org_addresses).to eq([existing_address])
+
+            address.addressable = enrollment.organisation
+            address.save!
+
+            expect(org_addresses.reload).to eq([address])
+          end
+        end
+
+        context "when the pre-existing address is not a primary address" do
+          let!(:enrollment) { create(:enrollment, :with_individual, :with_correspondence_contact) }
+          let(:existing_address) { create(:address, addressable: enrollment.correspondence_contact) }
+          let(:contact_addresses) { FloodRiskEngine::Address.where(addressable: enrollment.correspondence_contact) }
+
+          it "saves the new address and does not remove any other addresses" do
+            expect(org_addresses).to eq([])
+            expect(contact_addresses).to eq([existing_address])
+
+            address.addressable = enrollment.organisation
+            address.save!
+
+            expect(org_addresses.reload).to eq([address])
+            expect(contact_addresses.reload).to eq([existing_address])
+          end
+        end
+      end
+    end
   end
 end

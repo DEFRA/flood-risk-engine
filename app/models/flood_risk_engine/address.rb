@@ -8,6 +8,8 @@ module FloodRiskEngine
     belongs_to :addressable, polymorphic: true
     has_one :location, as: :locatable, dependent: :restrict_with_exception
 
+    after_create :clean_up_duplicate_addresses
+
     # Covers the RCDP Types
     #
     enum address_type: {
@@ -32,6 +34,19 @@ module FloodRiskEngine
 
     def address_methods
       %i[premises street_address locality city postcode]
+    end
+
+    private
+
+    def clean_up_duplicate_addresses
+      return unless addressable.is_a?(FloodRiskEngine::Organisation)
+
+      primary_addresses = FloodRiskEngine::Address.where(addressable: addressable)
+
+      primary_addresses.each do |address|
+        next if address == self
+        address.delete
+      end
     end
   end
 end
