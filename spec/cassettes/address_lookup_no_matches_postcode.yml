@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9002/address-service/v1/addresses/postcode?client-id=<CLIENT_ID>&key=<CLIENT_ID>&query-string=BS1%201ZZ
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.3.1p112
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - localhost:9002
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 14 Jun 2021 09:34:10 GMT
+      X-Application-Context:
+      - application:9002
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '293'
+    body:
+      encoding: UTF-8
+      string: '{"header":{"totalMatches":0,"startMatch":null,"endMatch":null,"query":"postcode=BS1
+        1ZZ","language":"EN","dataset":"DPA","epoch":"84","uriToSupplier":"https://api.os.uk/search/places/v1/postcode?lr=EN&postcode=BS1%201ZZ&fq=logical_status_code%3A1&dataset=DPA","uriFromClient":""},"results":[]}'
+    http_version: 
+  recorded_at: Mon, 14 Jun 2021 09:34:10 GMT
+recorded_with: VCR 3.0.3

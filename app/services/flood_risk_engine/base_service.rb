@@ -2,9 +2,11 @@
 
 module FloodRiskEngine
   class BaseService
-    def self.run(attrs = nil)
-      if attrs
-        new.run(attrs)
+    def self.run(options = nil)
+      if options && !options.is_a?(Hash)
+        new.run(options)
+      elsif options
+        new.run(**options)
       else
         new.run
       end

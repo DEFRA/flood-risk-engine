@@ -21,10 +21,6 @@ module FloodRiskEngine
 
       let(:valid_params) { { postcode: "BS1 5AH" } }
 
-      before do
-        mock_ea_address_lookup_find_by_postcode
-      end
-
       describe "Save" do
         it "is not redirectable" do
           expect(form.redirect?).to_not be_truthy
@@ -35,18 +31,22 @@ module FloodRiskEngine
         }
 
         it "validate returns true when a valid UK postcode supplied" do
-          expect(form.validate(params)).to eq true
+          VCR.use_cassette("address_lookup_valid_postcode") do
+            expect(form.validate(params)).to eq true
+          end
         end
 
         it "saves the address search including post code" do
-          form.validate(params)
+          VCR.use_cassette("address_lookup_valid_postcode") do
+            form.validate(params)
 
-          expect(form.save).to eq true
+            expect(form.save).to eq true
 
-          expect(subject.model.postcode).to eq(valid_params[:postcode])
+            expect(subject.model.postcode).to eq(valid_params[:postcode])
 
-          expect(Enrollment.last.address_search).to be_a AddressSearch
-          expect(Enrollment.last.address_search.postcode).to eq(valid_params[:postcode])
+            expect(Enrollment.last.address_search).to be_a AddressSearch
+            expect(Enrollment.last.address_search.postcode).to eq(valid_params[:postcode])
+          end
         end
       end
 

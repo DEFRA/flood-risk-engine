@@ -13,12 +13,11 @@ module FloodRiskEngine
       set_journey_token
     end
 
+    before(:each) { VCR.insert_cassette("address_lookup_valid_postcode", allow_playback_repeats: true) }
+    after(:each) { VCR.eject_cassette }
+
     context "LocalAuthorityAddressForm" do
       let(:step) { :local_authority_address }
-
-      before do
-        mock_ea_address_lookup_find_by_postcode
-      end
 
       it "uses LocalAuthorityAddressForm" do
         get :show, params: { id: step, enrollment_id: enrollment }
@@ -37,7 +36,7 @@ module FloodRiskEngine
           {
             "#{step}":
               {
-                post_code: valid_post_code,
+                postcode: valid_post_code,
                 uprn: "340116"
               }
           }
@@ -47,13 +46,11 @@ module FloodRiskEngine
         end
 
         it "creates the address when valid UK UPRN supplied via drop down rendering process_address" do
-          mock_ea_address_lookup_find_by_uprn
-
           put :update, params: params, session: session
 
           expect(enrollment.organisation.primary_address.address_type).to eq "primary"
           expect(enrollment.organisation.primary_address.addressable_id).to eq enrollment.organisation.id
-          expect(enrollment.organisation.primary_address.postcode).to eq valid_attributes[step][:post_code]
+          expect(enrollment.organisation.primary_address.postcode).to eq valid_attributes[step][:postcode]
           expect(enrollment.organisation.primary_address.uprn.to_s).to eq valid_attributes[step][:uprn]
 
           expect(response).to redirect_to(enrollment_step_path(enrollment, enrollment.next_step))
