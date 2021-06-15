@@ -39,9 +39,10 @@ module FloodRiskEngine
     private
 
     def clean_up_duplicate_addresses
-      return unless addressable.is_a?(FloodRiskEngine::Organisation)
+      return unless addressable.is_a?(FloodRiskEngine::Organisation) && address_type == "primary"
 
-      primary_addresses = FloodRiskEngine::Address.where(addressable: addressable)
+      primary_addresses = FloodRiskEngine::Address.where(addressable: addressable,
+                                                         address_type: "primary")
 
       primary_addresses.each do |address|
         next if address == self

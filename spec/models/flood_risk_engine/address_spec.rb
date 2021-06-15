@@ -31,7 +31,8 @@ module FloodRiskEngine
       let(:org_addresses) { FloodRiskEngine::Address.where(addressable: enrollment.organisation) }
       let(:address) do
         build(:address,
-              postcode: "BS1 1AA")
+              postcode: "BS1 1AA",
+              address_type: :primary)
       end
 
       context "when there are no pre-existing addresses for this enrollment" do
