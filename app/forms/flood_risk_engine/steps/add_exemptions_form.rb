@@ -16,7 +16,10 @@ module FloodRiskEngine
 
       def initialize(enrollment)
         super enrollment
-        @all_exemptions = Exemption.all
+        @all_exemptions =
+          Exemption.all.map do |exemption|
+            ExemptionPresenter.new(exemption)
+          end
       end
 
       def save
