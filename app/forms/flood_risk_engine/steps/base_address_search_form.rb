@@ -50,7 +50,7 @@ module FloodRiskEngine
           handle_no_matching_addresses
           false
         else
-          handle_address_service_error
+          handle_address_service_error(response)
           true
         end
       end
@@ -65,7 +65,10 @@ module FloodRiskEngine
         errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")
       end
 
-      def handle_address_service_error
+      def handle_address_service_error(response)
+        Airbrake.notify(response) if defined? Airbrake
+        Rails.logger.error "Address lookup failed: #{response.to_json}"
+
         errors.add :postcode, I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")
       end
 
