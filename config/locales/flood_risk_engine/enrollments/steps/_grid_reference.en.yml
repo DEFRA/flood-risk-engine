@@ -32,7 +32,7 @@ en:
           errors:
             grid_reference:
               invalid: The grid reference should have 2 letters and 10 digits
-              blank: Enter a grid reference
+              blank: Enter a National Grid reference
             description:
               too_long: The site name or description must be no longer than %{max} characters
               blank: Enter a site name or description
