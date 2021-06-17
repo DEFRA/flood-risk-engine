@@ -14,7 +14,7 @@ module FloodRiskEngine
 
       let(:form) { LimitedCompanyAddressForm.factory(enrollment) }
 
-      let(:valid_post_code) { "BS1 5AH" }
+      let(:valid_postcode) { "BS1 5AH" }
 
       subject { form }
 
@@ -28,20 +28,20 @@ module FloodRiskEngine
 
       context "with valid params" do
         def form_requires_address_no_street_lookup
-          VCR.use_cassette("forms_address_form_no_street_from_dropdown") do
+          VCR.use_cassette("address_lookup_no_matches_postcode") do
             yield
           end
         end
 
         def form_requires_address_lookup
-          VCR.use_cassette("forms_address_form_valid_uprn_from_dropdown") do
+          VCR.use_cassette("address_lookup_valid_postcode") do
             yield
           end
         end
 
         let(:valid_attributes) {
           {
-            "#{form.params_key}": { post_code: valid_post_code, uprn: "340116" }
+            "#{form.params_key}": { postcode: valid_postcode, uprn: "340116" }
           }
         }
 
@@ -53,7 +53,7 @@ module FloodRiskEngine
 
         let(:valid_but_no_street_address) {
           {
-            "#{form.params_key}": { post_code: "HX3 0TD", uprn: "10010175140" }
+            "#{form.params_key}": { postcode: "HX3 0TD", uprn: "10010175140" }
           }
         }
 
@@ -70,7 +70,7 @@ module FloodRiskEngine
               expect(form.save).to eq true
             end
 
-            expect(subject.model.postcode).to eq(valid_attributes[:post_code])
+            expect(subject.model.postcode).to eq(valid_attributes[:postcode])
 
             address = subject.enrollment.reload.organisation.primary_address
 
@@ -80,7 +80,8 @@ module FloodRiskEngine
               street_address: "DEANERY ROAD",
               locality: nil,
               city: "BRISTOL",
-              postcode: valid_attributes[params_key][:post_code],
+              organisation: "ENVIRONMENT AGENCY",
+              postcode: valid_attributes[params_key][:postcode],
               uprn: valid_attributes[params_key][:uprn]
             }
 
@@ -88,6 +89,49 @@ module FloodRiskEngine
 
             expect(address.addressable_id).to eq subject.enrollment.organisation.id
             expect(address.addressable_type).to eq "FloodRiskEngine::Organisation"
+          end
+
+          context "when the address has no organisation" do
+            let(:valid_postcode) { "BA2 1AA" }
+            let(:valid_attributes) {
+              {
+                "#{form.params_key}": { postcode: valid_postcode, uprn: "100120003586" }
+              }
+            }
+            let(:enrollment) { create(:page_limited_company_address_no_org) }
+
+            def form_requires_address_lookup_without_organisation
+              VCR.use_cassette("address_lookup_valid_postcode_no_organisation") do
+                yield
+              end
+            end
+
+            it "substitutes blank for nil as the organisation" do
+              form_requires_address_lookup_without_organisation do
+                form.validate(valid_attributes)
+                expect(form.save).to eq true
+              end
+
+              expect(subject.model.postcode).to eq(valid_attributes[:postcode])
+
+              address = subject.enrollment.reload.organisation.primary_address
+
+              expected_attributes = {
+                address_type: "primary",
+                premises: "1",
+                organisation: "",
+                street_address: "BRIDGE ROAD",
+                locality: nil,
+                city: "BATH",
+                postcode: valid_attributes[params_key][:postcode],
+                uprn: valid_attributes[params_key][:uprn]
+              }
+
+              assert_record_values address, expected_attributes
+
+              expect(address.addressable_id).to eq subject.enrollment.organisation.id
+              expect(address.addressable_type).to eq "FloodRiskEngine::Organisation"
+            end
           end
         end
       end

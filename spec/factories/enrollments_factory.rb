@@ -39,7 +39,7 @@ FactoryBot.define do
 
     trait :with_organisation_address do
       after(:build) do |object|
-        object.organisation.primary_address = build :address_services
+        object.organisation.primary_address = build(:address, :primary)
       end
     end
 
@@ -58,6 +58,15 @@ FactoryBot.define do
       end
       after(:build) do |object|
         object.secondary_contact = build :contact
+      end
+    end
+
+    trait :with_address_search do
+      after(:stub) do |object|
+        object.address_search = build_stubbed :address_search
+      end
+      after(:build) do |object|
+        object.address_search = build :address_search
       end
     end
   end

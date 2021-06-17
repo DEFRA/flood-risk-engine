@@ -8,7 +8,7 @@ module FloodRiskEngine
     RSpec.describe PartnershipAddressForm do
       let(:params_key) { :partnership_address }
       let(:enrollment) do
-        enrollment = FactoryBot.create(:enrollment, :with_partnership)
+        enrollment = FactoryBot.create(:enrollment, :with_partnership, :with_address_search)
         contact = FactoryBot.create(:contact)
         FactoryBot.create(
           :partner,
@@ -19,18 +19,16 @@ module FloodRiskEngine
       end
       let(:model_class) { FloodRiskEngine::Address }
       let(:form) { described_class.factory(enrollment) }
-      let(:post_code) { "BS1 5AH" }
+      let(:postcode) { "BS1 5AH" }
       let(:uprn) { "340116" }
-      let(:params) { { form.params_key => { post_code: post_code, uprn: uprn } } }
+      let(:params) { { form.params_key => { postcode: postcode, uprn: uprn } } }
 
       subject { form }
 
-      it_behaves_like "a form object"
+      before(:each) { VCR.insert_cassette("address_lookup_valid_postcode", allow_playback_repeats: true) }
+      after(:each) { VCR.eject_cassette }
 
-      before do
-        mock_ea_address_lookup_find_by_postcode
-        mock_ea_address_lookup_find_by_uprn
-      end
+      it_behaves_like "a form object"
 
       it "is not redirectable" do
         expect(form.redirect?).to_not(be_truthy)
@@ -57,9 +55,9 @@ module FloodRiskEngine
             address_type: "primary",
             premises: "HORIZON HOUSE",
             street_address: "DEANERY ROAD",
-            locality: "SOMEWHERE",
+            locality: nil,
             city: "BRISTOL",
-            postcode: post_code,
+            postcode: postcode,
             uprn: uprn
           }
 

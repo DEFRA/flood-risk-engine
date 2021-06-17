@@ -22,10 +22,6 @@ module FloodRiskEngine
       let(:valid_params) { { postcode: "BS1 5AH" } }
 
       describe "Save" do
-        before do
-          mock_ea_address_lookup_find_by_postcode
-        end
-
         it "is not redirectable" do
           expect(form.redirect?).to_not be_truthy
         end
@@ -35,33 +31,37 @@ module FloodRiskEngine
         }
 
         it "validate returns true when a valid UK postcode supplied" do
-          expect(form.validate(params)).to eq true
+          VCR.use_cassette("address_lookup_valid_postcode") do
+            expect(form.validate(params)).to eq true
+          end
         end
 
         it "saves the address search including post code" do
-          form.validate(params)
+          VCR.use_cassette("address_lookup_valid_postcode") do
+            form.validate(params)
 
-          expect(form.save).to eq true
+            expect(form.save).to eq true
 
-          expect(subject.model.postcode).to eq(valid_params[:postcode])
+            expect(subject.model.postcode).to eq(valid_params[:postcode])
 
-          expect(Enrollment.last.address_search).to be_a AddressSearch
-          expect(Enrollment.last.address_search.postcode).to eq(valid_params[:postcode])
+            expect(Enrollment.last.address_search).to be_a AddressSearch
+            expect(Enrollment.last.address_search.postcode).to eq(valid_params[:postcode])
+          end
         end
       end
 
       context "with invalid params" do
-        let(:valid_but_address_service_400s) {
-          { "#{form.params_key}": { postcode: "HR4G 0LE" } }
+        let(:valid_postcode_no_matches) {
+          { "#{form.params_key}": { postcode: "BS1 1ZZ" } }
         }
 
-        it "is invalid when valid Postcode supplied but Address Service fails", duff: true do
-          VCR.use_cassette("limited_company_postcode_address_service_400_test") do
-            expect(form.validate(valid_but_address_service_400s)).to eq false
+        it "is invalid when valid Postcode supplied but Address Service finds no matches", duff: true do
+          VCR.use_cassette("address_lookup_no_matches_postcode") do
+            expect(form.validate(valid_postcode_no_matches)).to eq false
 
             expect(
               form.errors.messages[:postcode]
-            ).to eq [I18n.t("flood_risk_engine.validation_errors.postcode.service_unavailable")]
+            ).to eq [I18n.t("flood_risk_engine.validation_errors.postcode.no_addresses_found")]
           end
         end
 
