@@ -144,8 +144,12 @@ module FloodRiskEngine
               successful?: false,
               error: "foo"
             )
+            allow(Airbrake).to receive(:notify)
 
             expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(stub_data)
+
+            expect(Airbrake).to receive(:notify).with(stub_data)
+            expect(Rails.logger).to receive(:error).with("Address lookup failed: #{stub_data.to_json}")
 
             get :show, params: params, session: session
 
