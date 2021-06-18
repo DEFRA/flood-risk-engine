@@ -1,37 +1,51 @@
-<div id="responsible_hint">
-  <h2 class="heading-small">
-    <%= t(".sub_heading") %>
-  </h2>
-  <p class="text">
-    <%= t(".sub_section_one") %>
-  </p>
-  <details style="padding-bottom: 18px;" id="control_help">
-    <summary><span class="summary"><%= t(".summary_heading") %></span></summary>
-    <div>
-      <p><%= t(".list_heading") %></p>
-      <ul class="list-bullet text">
-        <% (1..5).each do |number| %>
-          <li><%= t(".list_item_#{number}") %></li>
-        <% end %>
-      </ul>
-    </div>
-  </details>
-</div>
+<legend class="govuk-visually-hidden">
+  <%= t(".heading") %>
+</legend>
 
-<div class="form-group">
-  <fieldset>
+<h1 class="govuk-heading-l">
+  <%= t(".heading") %>
+</h1>
 
-    <legend class="visuallyhidden" aria-describedby="responsible_hint">
-      <%= t(".heading") %>
-    </legend>
-    <%= form_group_and_validation(form, :org_type) do %>
-      <%= f.collection_radio_buttons(
-          :org_type,
-          form.organisation_types,
-          :first,
-          :last
-      ) {|b| b.label(class: "block-label") { b.radio_button + b.text } }
-      %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  <%=
+    f.govuk_collection_radio_buttons :org_type,
+    form.organisation_types,
+    :first,
+    :last,
+    legend: { text: "" },
+    hint: -> do %>
+      <span  class="govuk-!-font-weight-bold govuk-body-m">
+        <%= t(".sub_heading") %>
+      </span>
+      <br/>
+      <%= t(".sub_section_one") %>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            <%= t(".summary_heading") %>
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>
+            <%= t(".list_heading") %>
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <% (1..5).each do |number| %>
+              <li>
+                <%= t(".list_item_#{number}") %>
+
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </details>
     <% end %>
-  </fieldset>
+  </div>
 </div>
+
+
+
+
+

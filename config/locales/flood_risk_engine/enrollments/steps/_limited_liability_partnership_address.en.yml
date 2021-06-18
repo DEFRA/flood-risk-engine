@@ -5,7 +5,7 @@ en:
       steps:
         limited_liability_partnership_address:
           change: Change
-          heading: What's the registered address of the partnership?
+          heading: Select the registered address of the partnership
           legend: Address
           manual_entry: "I can’t find the address in the list"
           num_addresses_found: "%{num} addresses found"

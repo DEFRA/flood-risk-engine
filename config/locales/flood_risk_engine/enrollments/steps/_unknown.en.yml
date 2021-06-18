@@ -12,3 +12,5 @@ en:
           contact_tel: "Telephone: 03708 506 506"
           contact_minicom: "Minicom: 03702 422 549"
           contact_times: Monday to Friday, 8am to 6pm
+          contact_email: 'enquiries@environment-agency.gov.uk'
+          contact_email_html: '<a href="mailto:enquiries@environment-agency.gov.uk">enquiries@environment-agency.gov.uk</a>'

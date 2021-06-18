@@ -8,14 +8,16 @@
           title_text: t(".heading.default")
         )
     %>
-    <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
 
     <%= form_for(
           form,
           as: :address,
           url: enrollment_address_path(form.enrollment, form.address),
+          builder: GOVUKDesignSystemFormBuilder::FormBuilder,
           class: "form"
         ) do |f| %>
+
+      <%= f.govuk_error_summary %>
 
       <%= render "form", f: f %>
 

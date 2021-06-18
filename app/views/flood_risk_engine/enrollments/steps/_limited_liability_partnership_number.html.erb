@@ -1,9 +1,22 @@
-<fieldset>
-  <legend class="visuallyhidden"><%= t('.legend') %></legend>
-  <%= form_group_and_validation(form, :registration_number) do %>
-      <%= f.label :registration_number,  t('.label') , class: 'form-label' %>
-      <span class="form-hint"><%= t('.hint') %></span>
+<span class="govuk-visually-hidden">
+  <%= t(".legend") %>
+</span>
 
-      <%= f.text_field :registration_number, class:  'form-control form-control-char-10' %>
-  <% end %>
-</fieldset>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= f.govuk_text_field :registration_number,
+      label: {
+        text: t(".heading"),
+        tag: "h1",
+        size: "l"
+      },
+      width: 5,
+      hint: -> do %>
+        <span  class="govuk-body-m">
+          <%= t(".label") %>
+        </span>
+        <br/>
+        <%= t(".hint") %>
+    <% end %>
+  </div>
+</div>

@@ -5,7 +5,7 @@ en:
       steps:
         limited_company_address:
           change: Change
-          heading: "What’s the registered address of the company"
+          heading: "Select the registered address of the company"
           legend: Address
           manual_entry: "I can’t find the address in the list"
           num_addresses_found: "%{num} addresses found"

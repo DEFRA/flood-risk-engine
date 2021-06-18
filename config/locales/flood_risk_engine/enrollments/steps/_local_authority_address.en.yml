@@ -5,7 +5,7 @@ en:
       steps:
         local_authority_address:
           change: Change
-          heading: "What’s the main address of the local authority or public body?"
+          heading: "Select the main address of the local authority or public body"
           legend: Address
           manual_entry: "I can’t find the address in the list"
           num_addresses_found: "%{num} addresses found"

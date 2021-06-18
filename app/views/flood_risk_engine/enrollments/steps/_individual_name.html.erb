@@ -1,1 +1,22 @@
-<%= render 'flood_risk_engine/shared/organisation_name', form: form, step: step, f: f %>
+<span class="govuk-visually-hidden">
+  <%= t(".legend") %>
+</span>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= f.govuk_text_field :name,
+      label: {
+        text: t(".heading"),
+        tag: "h1",
+        size: "l"
+      },
+      width: 20,
+      hint: -> do %>
+        <span  class="govuk-body-m">
+          <%= t(".label") %>
+        </span>
+        <br/>
+        <%= t(".hint") %>
+    <% end %>
+  </div>
+</div>

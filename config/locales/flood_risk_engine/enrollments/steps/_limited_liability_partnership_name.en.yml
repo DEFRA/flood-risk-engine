@@ -6,8 +6,9 @@ en:
         limited_liability_partnership_name:
           errors:
             name:
-             blank: Enter the partnership name
+             blank: Enter the registered name of the partnership
              too_long: Check the name - it should have no more than %{max_length} characters
           heading: What's the registered name of the partnership?
           label: Partnership registered name
           legend: Registered partnership name
+          hint: Enter the registered name of the partnership

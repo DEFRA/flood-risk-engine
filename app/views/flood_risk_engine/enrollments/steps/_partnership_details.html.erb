@@ -1,32 +1,36 @@
+<h1 class="govuk-heading-l">
 <% if form.enrollment.partners.size <= 1 %>
-    <%= render(
-            "flood_risk_engine/enrollments/header",
-            title_text: t("flood_risk_engine.enrollments.steps.partnership_details.heading_single")
-        )
-    %>
-<%  else %>
-    <%= render(
-            "flood_risk_engine/enrollments/header",
-            title_text: t("flood_risk_engine.enrollments.steps.partnership_details.heading")
-        )
-    %>
-<%  end %>
+  <%= t("flood_risk_engine.enrollments.steps.partnership_details.heading_single") %>
+<% else %>
+  <%= t("flood_risk_engine.enrollments.steps.partnership_details.heading") %>
+<% end %>
+</h1>
 
-<h2 class="heading-medium">
-  <%= t(".sub_heading") %>
-</h2>
-
-<table summary="partner-details-summary" class="summary-table check-your-answers" role="presentation">
-  <tbody>
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">
+    <%= t(".sub_heading") %>
+  </caption>
+  <thead>
+    <th scope="col" class="govuk-visually-hidden">
+      Name
+    </th>
+    <th scope="col" class="govuk-visually-hidden">
+      Address
+    </th>
+    <th scope="col" class="govuk-visually-hidden">
+      Remove
+    </th>
+  </thead>
+  <tbody class="govuk-table__body">
     <% form.enrollment.partners.each do |partner| %>
-      <tr>
-        <td><%= partner.full_name %></td>
-        <td>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell"><%= partner.full_name %></td>
+        <td class="govuk-table__cell">
           <% partner.address.parts.each do |address_part| %>
             <%= address_part %><br />
           <% end %>
         </td>
-        <td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">
           <%= link_to(
                 enrollment_partner_path(form.enrollment, partner),
                 class: "link",
@@ -34,7 +38,7 @@
                 data: {:confirm => t(".confirm_delete", name: partner.full_name)}
               ) do %>
             <%= t(".remove") %>
-          <span class="visuallyhidden"><%= partner.full_name %></span>
+          <span class="govuk-visually-hidden"><%= partner.full_name %></span>
           <% end %>
         </td>
       </tr>
@@ -42,8 +46,8 @@
   </tbody>
 </table>
 
-<br />
+<br/>
 
-<p>
+<p class="govuk-body">
   <%= link_to t(".add_another"), edit_enrollment_partner_path(@enrollment, :partnership) %>
 </p>

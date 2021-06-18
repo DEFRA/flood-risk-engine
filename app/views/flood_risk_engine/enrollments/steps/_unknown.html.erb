@@ -1,13 +1,19 @@
-<h2 class="heading-medium">
-  <%= t('.subheading') %>
-</h2>
+<h1 class="govuk-heading-l"><%= page_title t('.heading') %></h1>
 
-<p class="text"><%= t('.call_to_action') %></p>
+<h2 class="govuk-heading-m"><%= t('.subheading') %></h2>
 
-<div class="contact">
-  <h3 class="heading-medium">Contact the Environment Agency</h3>
-  <%= link_to "enquiries@environment-agency.gov.uk", "mailto:enquiries@environment-agency.gov.uk_url" %><br/>
-  <%= t('.contact_tel') %><br/>
-  <%= t('.contact_minicom') %><br/>
-  <%= t('.contact_times') %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body"><%= t('.call_to_action') %></p>
+
+    <div class="govuk-inset-text">
+      <h3 class="govuk-heading-s"><%= t(".heading") %></h3>
+      <p>
+        <%= t(".contact_email_html") %><br/>
+        <%= t('.contact_tel') %><br/>
+        <%= t('.contact_minicom') %><br/>
+        <%= t('.contact_times') %>
+      </p>
+    </div>
+  </div>
 </div>

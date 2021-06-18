@@ -1,4 +1,4 @@
-<h1 class="form-title heading-large">
+<h1 class="govuk-heading-l">
   <%= t(".confirm_removal_of_partner", name: @partner.full_name) %>
 </h1>
 <%= form_for(
@@ -9,9 +9,11 @@
   <%= f.submit(t(".delete"), class: "button") %>
 <% end %>
 
-<%= link_to(
-      t(".cancel"),
-      enrollment_step_path(@enrollment, @enrollment.current_step),
-      style: "display:block;padding-top:30px;"
-    )
-%>
+<p class="govuk-body">
+  <%= link_to(
+        t(".cancel"),
+        enrollment_step_path(@enrollment, @enrollment.current_step),
+        style: "display:block;padding-top:30px;"
+      )
+  %>
+</p>

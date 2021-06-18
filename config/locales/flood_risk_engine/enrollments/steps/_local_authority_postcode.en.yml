@@ -4,7 +4,7 @@ en:
     enrollments:
       steps:
         local_authority_postcode:
-          heading: "What’s the main address of the local authority or public body?"
+          heading: "Find the main address of the local authority or public body"
           label:  UK postcode
           hint: "For example, BS1 5AH"
           legend: Postcode

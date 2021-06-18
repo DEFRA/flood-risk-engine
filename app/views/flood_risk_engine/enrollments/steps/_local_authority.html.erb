@@ -1,12 +1,22 @@
-<fieldset>
+<span class="govuk-visually-hidden">
+  <%= t(".legend") %>
+</span>
 
-  <legend class="visuallyhidden"><%= t('.legend') %></legend>
-
-  <%= form_group_and_validation(form, :name) do %>
-    <%= f.label :name, t('.label'), class: 'form-label' %>
-    <p class="form-hint"><%= t('.para_text') %></p>
-    <%= f.text_field :name, class: 'form-control form-control-char-35' %>
-  <% end %>
-
-</fieldset>
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= f.govuk_text_field :name,
+      label: {
+        text: t(".heading"),
+        tag: "h1",
+        size: "l"
+      },
+      width: 20,
+      hint: -> do %>
+        <span  class="govuk-body-m">
+          <%= t(".label") %>
+        </span>
+        <br/>
+        <%= t(".para_text") %>
+    <% end %>
+  </div>
+</div>
