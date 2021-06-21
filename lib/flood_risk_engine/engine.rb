@@ -1,3 +1,4 @@
+require "aasm"
 require "has_secure_token"
 require "flood_risk_engine/configuration"
 require "flood_risk_engine/exceptions"

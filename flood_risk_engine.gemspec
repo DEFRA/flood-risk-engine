@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
+  # Use AASM to manage states and transitions
+  s.add_dependency "aasm", "~> 4.12"
   s.add_dependency "activerecord-session_store", "~> 2.0"
   # Airbrake catches exceptions and sends them to our instances of Errbit
   # defra_ruby_alert is a gem we created to manage airbrake across projects
