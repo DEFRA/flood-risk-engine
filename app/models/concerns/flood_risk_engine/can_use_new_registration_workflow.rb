@@ -47,6 +47,16 @@ module FloodRiskEngine
         state :check_your_answers_form
         state :declaration_form
         state :registration_complete_form
+
+        # Transitions
+        event :next do
+          # Start
+          transitions from: :start_form,
+                      to: :exemption_form
+        end
+
+        event :back do
+        end
       end
     end
   end
