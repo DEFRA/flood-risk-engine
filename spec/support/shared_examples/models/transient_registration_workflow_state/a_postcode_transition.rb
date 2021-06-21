@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 RSpec.shared_examples "a postcode transition" do |previous_state:, address_type:, factory:|
   describe "#workflow_state" do
     current_state = "#{address_type}_postcode_form".to_sym
@@ -50,4 +49,3 @@ RSpec.shared_examples "a postcode transition" do |previous_state:, address_type:
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

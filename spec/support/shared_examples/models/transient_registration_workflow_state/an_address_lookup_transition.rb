@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 RSpec.shared_examples "an address lookup transition" do |next_state_if_not_skipping_to_manual:, address_type:, factory:|
   describe "#workflow_state" do
     previous_state = "#{address_type}_postcode_form".to_sym
@@ -59,4 +58,3 @@ RSpec.shared_examples "an address lookup transition" do |next_state_if_not_skipp
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
