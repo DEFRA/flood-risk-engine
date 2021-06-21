@@ -114,6 +114,13 @@ module FloodRiskEngine
 
           transitions from: :additional_contact_email_form,
                       to: :check_your_answers_form
+
+          # End pages
+          transitions from: :check_your_answers_form,
+                      to: :declaration_form
+
+          transitions from: :declaration_form,
+                      to: :registration_complete_form
         end
 
         event :back do
@@ -168,6 +175,13 @@ module FloodRiskEngine
 
           transitions from: :additional_contact_email_form,
                       to: :contact_email_form
+
+          # End pages
+          transitions from: :check_your_answers_form,
+                      to: :additional_contact_email_form
+
+          transitions from: :declaration_form,
+                      to: :check_your_answers_form
         end
 
         event :skip_to_manual_address do
