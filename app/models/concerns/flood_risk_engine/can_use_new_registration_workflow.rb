@@ -61,6 +61,10 @@ module FloodRiskEngine
 
           transitions from: :confirm_exemption_form,
                       to: :site_grid_reference_form
+
+          # Location of activity
+          transitions from: :site_grid_reference_form,
+                      to: :business_type_form
         end
 
         event :back do
@@ -70,6 +74,10 @@ module FloodRiskEngine
 
           transitions from: :confirm_exemption_form,
                       to: :exemption_form
+
+          # Location of activity
+          transitions from: :site_grid_reference_form,
+                      to: :confirm_exemption_form
         end
       end
     end
