@@ -15,5 +15,9 @@ module FloodRiskEngine
     def address_finder_error
       false
     end
+
+    def company_address
+      false
+    end
   end
 end

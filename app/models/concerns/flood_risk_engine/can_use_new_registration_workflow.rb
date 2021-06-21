@@ -101,6 +101,19 @@ module FloodRiskEngine
 
           transitions from: :company_address_manual_form,
                       to: :contact_name_form
+
+          # Contact details
+          transitions from: :contact_name_form,
+                      to: :contact_phone_form
+
+          transitions from: :contact_phone_form,
+                      to: :contact_email_form
+
+          transitions from: :contact_email_form,
+                      to: :additional_contact_email_form
+
+          transitions from: :additional_contact_email_form,
+                      to: :check_your_answers_form
         end
 
         event :back do
@@ -138,6 +151,23 @@ module FloodRiskEngine
 
           transitions from: :company_address_manual_form,
                       to: :company_postcode_form
+
+          # Contact details
+          transitions from: :contact_name_form,
+                      to: :company_address_manual_form,
+                      if: :company_address_was_manually_entered?
+
+          transitions from: :contact_name_form,
+                      to: :company_address_lookup_form
+
+          transitions from: :contact_phone_form,
+                      to: :contact_name_form
+
+          transitions from: :contact_email_form,
+                      to: :contact_phone_form
+
+          transitions from: :additional_contact_email_form,
+                      to: :contact_email_form
         end
 
         event :skip_to_manual_address do
@@ -162,6 +192,12 @@ module FloodRiskEngine
 
     def skip_to_manual_address?
       address_finder_error
+    end
+
+    def company_address_was_manually_entered?
+      return unless company_address
+
+      company_address.manual?
     end
   end
 end
