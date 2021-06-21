@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 module FloodRiskEngine
   module CanUseNewRegistrationWorkflow
     extend ActiveSupport::Concern
@@ -53,11 +54,25 @@ module FloodRiskEngine
           # Start
           transitions from: :start_form,
                       to: :exemption_form
+
+          # Exemption
+          transitions from: :exemption_form,
+                      to: :confirm_exemption_form
+
+          transitions from: :confirm_exemption_form,
+                      to: :site_grid_reference_form
         end
 
         event :back do
+          # Exemption
+          transitions from: :exemption_form,
+                      to: :start_form
+
+          transitions from: :confirm_exemption_form,
+                      to: :exemption_form
         end
       end
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
