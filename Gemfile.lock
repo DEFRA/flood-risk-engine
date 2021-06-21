@@ -467,6 +467,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.4)
   shoulda-matchers (~> 4.5.1)
   simplecov (~> 0.21.2)
+  simplecov_json_formatter
   vcr (~> 6.0.0)
   webmock (~> 3.13)
 

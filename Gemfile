@@ -25,6 +25,7 @@ group :test do
   gem "rspec-rails", "~> 5.0.1"
   gem "shoulda-matchers", "~> 4.5.1", require: false
   gem "simplecov", "~> 0.21.2", require: false
+  gem "simplecov_json_formatter", require: false
   gem "vcr", "~> 6.0.0"
   gem "webmock", "~> 3.13"
 end
