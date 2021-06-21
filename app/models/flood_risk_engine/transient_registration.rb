@@ -2,6 +2,8 @@
 
 module FloodRiskEngine
   class TransientRegistration < ApplicationRecord
+    include CanHaveRegistrationAttributes
+
     self.table_name = "transient_registrations"
 
     # HasSecureToken provides an easy way to generate unique random tokens for

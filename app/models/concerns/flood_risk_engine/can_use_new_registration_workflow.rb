@@ -65,6 +65,18 @@ module FloodRiskEngine
           # Location of activity
           transitions from: :site_grid_reference_form,
                       to: :business_type_form
+
+          # Business type
+          transitions from: :business_type_form,
+                      to: :partner_name_form,
+                      if: :should_have_partners?
+
+          transitions from: :business_type_form,
+                      to: :company_number_form,
+                      if: :should_have_company_number?
+
+          transitions from: :business_type_form,
+                      to: :company_name_form
         end
 
         event :back do
@@ -78,8 +90,22 @@ module FloodRiskEngine
           # Location of activity
           transitions from: :site_grid_reference_form,
                       to: :confirm_exemption_form
+
+          # Business type
+          transitions from: :business_type_form,
+                      to: :site_grid_reference_form
         end
       end
+    end
+
+    private
+
+    def should_have_partners?
+      partnership?
+    end
+
+    def should_have_company_number?
+      company_no_required?
     end
   end
 end
