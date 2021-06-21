@@ -81,6 +81,9 @@ module FloodRiskEngine
           # Company details
           transitions from: :company_number_form,
                       to: :company_name_form
+
+          transitions from: :company_name_form,
+                      to: :company_postcode_form
         end
 
         event :back do
@@ -101,6 +104,13 @@ module FloodRiskEngine
 
           # Company details
           transitions from: :company_number_form,
+                      to: :business_type_form
+
+          transitions from: :company_name_form,
+                      to: :company_number_form,
+                      if: :should_have_company_number?
+
+          transitions from: :company_name_form,
                       to: :business_type_form
         end
       end
