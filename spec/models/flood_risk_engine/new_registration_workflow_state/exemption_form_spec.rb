@@ -3,13 +3,19 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe NewRegistration, type: :model do
+  RSpec.describe NewRegistration do
+    subject { build(:new_registration, workflow_state: "exemption_form") }
+
     describe "#workflow_state" do
-      it_behaves_like "a simple bidirectional transition",
-                      previous_state: :start_form,
-                      current_state: :exemption_form,
-                      next_state: :confirm_exemption_form,
-                      factory: :new_registration
+      context ":exemption_form state transitions" do
+        context "on next" do
+          include_examples "has next transition", next_state: "confirm_exemption_form"
+        end
+
+        context "on back" do
+          include_examples "has back transition", previous_state: "start_form"
+        end
+      end
     end
   end
 end
