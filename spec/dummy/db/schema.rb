@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2016_07_15_144402) do
+ActiveRecord::Schema.define(version: 2021_06_21_101800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
 
   create_table "flood_risk_engine_comments", id: :serial, force: :cascade do |t|
     t.integer "user_id"
-    t.integer "commentable_id"
     t.string "commentable_type"
+    t.integer "commentable_id"
     t.text "content"
     t.string "event"
     t.datetime "created_at", null: false
@@ -120,8 +120,11 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
     t.datetime "valid_from"
     t.boolean "asset_found", default: false
     t.boolean "salmonid_river_found", default: false
+    t.integer "accept_reject_decision_user_id"
+    t.datetime "accept_reject_decision_at"
     t.integer "deregister_reason"
     t.integer "assistance_mode", default: 0
+    t.index ["accept_reject_decision_user_id"], name: "by_change_user"
     t.index ["deregister_reason"], name: "by_deregister_reason"
     t.index ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
   end
@@ -158,7 +161,6 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
     t.integer "org_type"
     t.string "registration_number", limit: 12
     t.text "searchable_content"
-    t.index ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id"
     t.index ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type"
     t.index ["registration_number"], name: "index_flood_risk_engine_organisations_on_registration_number"
     t.index ["searchable_content"], name: "index_flood_risk_engine_organisations_on_searchable_content"
@@ -199,8 +201,8 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
 
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "resource_id"
     t.string "resource_type"
+    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -214,6 +216,12 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
     t.datetime "updated_at"
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "transient_registrations", force: :cascade do |t|
+    t.string "token"
+    t.string "workflow_state"
+    t.index ["token"], name: "index_transient_registrations_on_token", unique: true
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -231,8 +239,8 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
-    t.integer "invited_by_id"
     t.string "invited_by_type"
+    t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
