@@ -77,6 +77,10 @@ module FloodRiskEngine
 
           transitions from: :business_type_form,
                       to: :company_name_form
+
+          # Company details
+          transitions from: :company_number_form,
+                      to: :company_name_form
         end
 
         event :back do
@@ -94,6 +98,10 @@ module FloodRiskEngine
           # Business type
           transitions from: :business_type_form,
                       to: :site_grid_reference_form
+
+          # Company details
+          transitions from: :company_number_form,
+                      to: :business_type_form
         end
       end
     end
