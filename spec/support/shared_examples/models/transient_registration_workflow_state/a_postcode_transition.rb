@@ -31,7 +31,7 @@ RSpec.shared_examples "a postcode transition" do |previous_state:, address_type:
     context "when subject.skip_to_manual_address? is true" do
       next_state = "#{address_type}_address_manual_form".to_sym
 
-      before(:each) { subject.address_finder_error = true }
+      before(:each) { allow(subject).to receive(:address_finder_error).and_return(true) }
 
       it "can only transition to either #{previous_state} or #{next_state}" do
         permitted_states = Helpers::WorkflowStates.permitted_states(subject)

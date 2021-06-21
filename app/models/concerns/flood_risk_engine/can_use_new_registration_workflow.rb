@@ -84,6 +84,23 @@ module FloodRiskEngine
 
           transitions from: :company_name_form,
                       to: :company_postcode_form
+
+          transitions from: :company_postcode_form,
+                      to: :company_address_manual_form,
+                      if: :skip_to_manual_address?
+
+          transitions from: :company_postcode_form,
+                      to: :company_address_lookup_form
+
+          transitions from: :company_address_lookup_form,
+                      to: :company_address_manual_form,
+                      if: :skip_to_manual_address?
+
+          transitions from: :company_address_lookup_form,
+                      to: :contact_name_form
+
+          transitions from: :company_address_manual_form,
+                      to: :contact_name_form
         end
 
         event :back do
@@ -112,6 +129,23 @@ module FloodRiskEngine
 
           transitions from: :company_name_form,
                       to: :business_type_form
+
+          transitions from: :company_postcode_form,
+                      to: :company_name_form
+
+          transitions from: :company_address_lookup_form,
+                      to: :company_postcode_form
+
+          transitions from: :company_address_manual_form,
+                      to: :company_postcode_form
+        end
+
+        event :skip_to_manual_address do
+          transitions from: :company_postcode_form,
+                      to: :company_address_manual_form
+
+          transitions from: :company_address_lookup_form,
+                      to: :company_address_manual_form
         end
       end
     end
@@ -124,6 +158,10 @@ module FloodRiskEngine
 
     def should_have_company_number?
       company_no_required?
+    end
+
+    def skip_to_manual_address?
+      address_finder_error
     end
   end
 end

@@ -11,5 +11,9 @@ module FloodRiskEngine
     def partnership?
       false
     end
+
+    def address_finder_error
+      false
+    end
   end
 end
