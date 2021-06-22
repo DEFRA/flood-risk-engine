@@ -93,6 +93,10 @@ RSpec.configure do |config|
 
   require_relative "support/spec_controller_helpers"
   config.include SpecControllerHelpers, type: :controller
+
+  config.before :each, type: :request do
+    config.include FloodRiskEngine::Engine.routes.url_helpers
+  end
 end
 
 Shoulda::Matchers.configure do |config|

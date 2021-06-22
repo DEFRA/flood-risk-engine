@@ -1,4 +1,22 @@
 FloodRiskEngine::Engine.routes.draw do
+  resources :start_forms,
+            only: %i[new create],
+            path: "start",
+            path_names: { new: "" }
+
+  scope "/:token" do
+    # New registration flow
+    resources :exemption_forms,
+              only: %i[new create],
+              path: "exemption",
+              path_names: { new: "" } do
+                get "back",
+                    to: "exemption_forms#go_back",
+                    as: "back",
+                    on: :collection
+              end
+  end
+
   resources :enrollments, only: [:new, :create] do
     resources :steps,      only: [:show, :update],  controller: "enrollments/steps"
     resources :exemptions, only: [:destroy, :show], controller: "enrollments/exemptions"
