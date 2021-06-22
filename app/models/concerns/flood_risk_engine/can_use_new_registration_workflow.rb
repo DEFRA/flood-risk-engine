@@ -36,7 +36,7 @@ module FloodRiskEngine
         state :partner_postcode_form
         state :partner_address_lookup_form
         state :partner_address_manual_form
-        state :manage_partners_form
+        state :partner_overview_form
 
         # Contact details
         state :contact_name_form
@@ -102,6 +102,30 @@ module FloodRiskEngine
           transitions from: :company_address_manual_form,
                       to: :contact_name_form
 
+          # Partner details
+          transitions from: :partner_name_form,
+                      to: :partner_postcode_form
+
+          transitions from: :partner_postcode_form,
+                      to: :partner_address_manual_form,
+                      if: :skip_to_manual_address?
+
+          transitions from: :partner_postcode_form,
+                      to: :partner_address_lookup_form
+
+          transitions from: :partner_address_lookup_form,
+                      to: :partner_address_manual_form,
+                      if: :skip_to_manual_address?
+
+          transitions from: :partner_address_lookup_form,
+                      to: :partner_overview_form
+
+          transitions from: :partner_address_manual_form,
+                      to: :partner_overview_form
+
+          transitions from: :partner_overview_form,
+                      to: :contact_name_form
+
           # Contact details
           transitions from: :contact_name_form,
                       to: :contact_phone_form
@@ -159,6 +183,26 @@ module FloodRiskEngine
           transitions from: :company_address_manual_form,
                       to: :company_postcode_form
 
+          # Partner details
+          transitions from: :partner_name_form,
+                      to: :partner_overview_form,
+                      if: :can_see_partner_overview?
+
+          transitions from: :partner_name_form,
+                      to: :business_type_form
+
+          transitions from: :partner_postcode_form,
+                      to: :partner_name_form
+
+          transitions from: :partner_address_lookup_form,
+                      to: :partner_postcode_form
+
+          transitions from: :partner_address_manual_form,
+                      to: :partner_postcode_form
+
+          transitions from: :partner_overview_form,
+                      to: :business_type_form
+
           # Contact details
           transitions from: :contact_name_form,
                       to: :company_address_manual_form,
@@ -190,6 +234,17 @@ module FloodRiskEngine
 
           transitions from: :company_address_lookup_form,
                       to: :company_address_manual_form
+
+          transitions from: :partner_postcode_form,
+                      to: :partner_address_manual_form
+
+          transitions from: :partner_address_lookup_form,
+                      to: :partner_address_manual_form
+        end
+
+        event :add_new_partner do
+          transitions from: :partner_overview_form,
+                      to: :partner_name_form
         end
       end
     end
@@ -212,6 +267,10 @@ module FloodRiskEngine
       return unless company_address
 
       company_address.manual?
+    end
+
+    def can_see_partner_overview?
+      existing_partners?
     end
   end
 end

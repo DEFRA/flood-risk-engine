@@ -19,5 +19,9 @@ module FloodRiskEngine
     def company_address
       false
     end
+
+    def existing_partners?
+      false
+    end
   end
 end
