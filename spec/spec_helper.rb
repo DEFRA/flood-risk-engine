@@ -21,6 +21,9 @@ SimpleCov.start "rails" do
   add_filter "/db/"
 end
 
+# Include AASM test helper methods
+require "aasm/rspec"
+
 # Set faker so it uses British formats for postcodes, telephone numbers etc.
 # Moved to spec_helper as not always taking effect before factories are built,
 # so moved to earlier in load path.

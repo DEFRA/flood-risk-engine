@@ -60,6 +60,7 @@ Metrics/BlockLength:
     - "**/spec/**/*_spec.rb"
     - "**/spec/**/*_factory.rb"
     - "**/spec/shared_examples/*.rb"
+    - "spec/support/shared_examples/**/*.rb"
 
 # We believe the default of 10 lines for a method length is too restrictive and often quickly hit just because we need
 # to specify the namesspace, class and method before then doing something with it.
