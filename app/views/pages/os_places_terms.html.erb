@@ -1,27 +1,24 @@
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <%= page_title t('.heading_h1') %>
+    </h1>
 
-    <header class="text">
-      <h1 class="form-title heading-large" id="groupLabel">
-        <%= page_title t('.heading_h1') %>
-      </h1>
-    </header>
+    <p class="govuk-body"><%= t(".para1_text_html") %></p>
 
-    <p class="text"><%= t(".para1_text_html") %></p>
+    <p class="govuk-body"><%= t('.para2_text') %></p>
 
-    <p class="text"><%= t('.para2_text') %></p>
+    <h2 class="govuk-heading-m"><%= t('.heading_h2') %></h2>
 
-    <h2 class="heading-medium"><%= t('.heading_h2') %></h2>
-
-    <ol class="list list-number text">
+    <ol class="govuk-list govuk-list--number">
       <li><%= t('.list_item1') %></li>
       <li><%= t('.list_item2') %></li>
       <li><%= t('.list_item3') %></li>
     </ol>
 
-    <div class="panel panel-border-wide">
-      <p class="text"><%= t('.para3_text') %></p>
-      <p class="text"><%= t('.para4_text') %></p>
+    <div class="govuk-inset-text">
+      <p class="govuk-body"><%= t('.para3_text') %></p>
+      <p class="govuk-body"><%= t('.para4_text') %></p>
     </div>
 
   </div>

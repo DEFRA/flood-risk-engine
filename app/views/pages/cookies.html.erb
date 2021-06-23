@@ -1,84 +1,82 @@
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <header class="text">
-      <h1 class="form-title heading-large" id="groupLabel">
-        <%= page_title t('.heading_h1') %>
-      </h1>
-    </header>
-    <p class="lede">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <%= page_title t('.heading_h1') %>
+    </h1>
+    <p class="govuk-body-l">
       <%= t('.intro') %>
     </p>
-    <p><%= t('.para_text') %></p>
-    <ul class="list-bullet">
+    <p class="govuk-body"><%= t('.para_text') %></p>
+    <ul class="govuk-list govuk-list--bullet">
       <li><%= t('.list_item1') %></li>
       <li><%= t('.list_item2') %></li>
     </ul>
-    <p>
+    <p class="govuk-body">
       <%= t('.para_text1') %>
       <%= link_to "how to manage cookies on the Information Commissioner's website",
                   "https://ico.org.uk/for-the-public/online/cookies/",
                   rel: 'external' %>.
     </p>
-    <h2 class="heading-medium">
+    <h2 class="govuk-heading-m">
       <%= t('.heading_h2_1') %>
     </h2>
-    <p><%= t('.para_text6') %></p>
-    <table class="cookies-table" role="presentation">
-      <caption class="visually-hidden"><%= t('.caption1') %></caption>
-      <thead>
-        <tr>
-          <th><%= t('.table_1.th.th_0') %></th>
-          <th><%= t('.table_1.th.th_1') %></th>
-          <th><%= t('.table_1.th.th_2') %></th>
+    <p class="govuk-body"><%= t('.para_text6') %></p>
+    <table class="govuk-table">
+      <caption class="govuk-visually-hidden"><%= t('.caption1') %></caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"><%= t('.table_1.th.th_0') %></th>
+          <th class="govuk-table__header" scope="col"><%= t('.table_1.th.th_1') %></th>
+          <th class="govuk-table__header" scope="col"><%= t('.table_1.th.th_2') %></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><%= t('.table_1.td.td_0') %></td>
-          <td><%= t('.table_1.td.td_1') %></td>
-          <td><%= t('.table_1.td.td_2') %></td>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= t('.table_1.td.td_0') %></td>
+          <td class="govuk-table__cell"><%= t('.table_1.td.td_1') %></td>
+          <td class="govuk-table__cell"><%= t('.table_1.td.td_2') %></td>
         </tr>
       </tbody>
     </table>
-    <h2 class="heading-medium">
+    <h2 class="govuk-heading-m">
       <%= t('.heading_h2_2') %>
     </h2>
-    <p><%= t('.para_text7') %></p>
-    <table class="cookies-table" role="presentation">
-      <caption class="visually-hidden"><%= t('.caption2') %></caption>
-      <thead>
-        <tr>
-          <th><%= t('.table_2.th.th_0') %></th>
-          <th><%= t('.table_2.th.th_1') %></th>
-          <th><%= t('.table_2.th.th_2') %></th>
+    <p class="govuk-body"><%= t('.para_text7') %></p>
+    <table class="govuk-table">
+      <caption class="govuk-visually-hidden"><%= t('.caption2') %></caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"><%= t('.table_2.th.th_0') %></th>
+          <th class="govuk-table__header" scope="col"><%= t('.table_2.th.th_1') %></th>
+          <th class="govuk-table__header" scope="col"><%= t('.table_2.th.th_2') %></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><%= t('.table_2.td.td_0') %></td>
-          <td><%= t('.table_2.td.td_1') %></td>
-          <td><%= t('.table_2.td.td_2') %></td>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= t('.table_2.td.td_0') %></td>
+          <td class="govuk-table__cell"><%= t('.table_2.td.td_1') %></td>
+          <td class="govuk-table__cell"><%= t('.table_2.td.td_2') %></td>
         </tr>
       </tbody>
     </table>
-    <h2 class="heading-medium">
+    <h2 class="govuk-heading-m">
       <%= t('.heading_h2_3') %>
     </h2>
-    <p><%= t('.para_text8') %></p>
-    <table class="cookies-table" role="presentation">
-      <caption class="visually-hidden"><%= t('.caption3') %></caption>
-      <thead>
-        <tr>
-          <th><%= t('.table_3.th.th_0') %></th>
-          <th><%= t('.table_3.th.th_1') %></th>
-          <th><%= t('.table_3.th.th_2') %></th>
+    <p class="govuk-body"><%= t('.para_text8') %></p>
+    <table class="govuk-table">
+      <caption class="govuk-visually-hidden"><%= t('.caption3') %></caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"><%= t('.table_3.th.th_0') %></th>
+          <th class="govuk-table__header" scope="col"><%= t('.table_3.th.th_1') %></th>
+          <th class="govuk-table__header" scope="col"><%= t('.table_3.th.th_2') %></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><%= t('.table_3.td.td_0') %></td>
-          <td><%= t('.table_3.td.td_1') %></td>
-          <td><%= t('.table_3.td.td_2') %></td>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= t('.table_3.td.td_0') %></td>
+          <td class="govuk-table__cell"><%= t('.table_3.td.td_1') %></td>
+          <td class="govuk-table__cell"><%= t('.table_3.td.td_2') %></td>
         </tr>
       </tbody>
     </table>
