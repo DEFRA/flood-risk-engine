@@ -1,22 +1,19 @@
+<% page_title t(".heading.default") %>
+
 <%= render "flood_risk_engine/enrollments/back_link", form: form %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= t(".heading.default") %></h1>
 
-    <%= render(
-          "flood_risk_engine/enrollments/header",
-          title_text: t(".heading.default")
-        )
-    %>
-    <%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
+    <%= form_for form,
+                 as: :address,
+                 url: enrollment_addresses_path(form.enrollment),
+                 method: :post,
+                 builder: GOVUKDesignSystemFormBuilder::FormBuilder,
+                 class: "form" do |f| %>
 
-    <%= form_for(
-          form,
-          as: :address,
-          url: enrollment_addresses_path(form.enrollment),
-          method: :post,
-          class: "form"
-        ) do |f| %>
+      <%= f.govuk_error_summary %>
 
       <%= render "form", f: f %>
 

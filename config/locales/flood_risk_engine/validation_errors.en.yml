@@ -17,7 +17,7 @@ en:
         service_unavailable: Our address finder is not working. Please select the
           'Enter address manually' link and enter the address yourself.
       uprn:
-        blank: Please select an address
+        blank: Select an address
         format: UPRN must be a number
       address:
         premises:

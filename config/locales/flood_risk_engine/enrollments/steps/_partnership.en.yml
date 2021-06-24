@@ -4,9 +4,7 @@ en:
     enrollments:
       steps:
         partnership:
-          heading: Partner names and addresses
-          information:
-            main: We need to know the name and home address of all business partners.
+          heading: What are the names of all the business partners?
           sub_heading:
             one: Add a business partner
             other: Add another business partner

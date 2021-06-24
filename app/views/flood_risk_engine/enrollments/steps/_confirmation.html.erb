@@ -1,45 +1,46 @@
 <div class="grid-row">
   <div class="column-two-thirds">
-
-    <div class="govuk-box-highlight">
-      <h1 class="bold-large"> <%= page_title t('.heading') %>
+    <div class="govuk-panel govuk-panel--confirmation">
+       <h1 class="govuk-panel__title"> <%= page_title t('.heading') %>
         <br />
-        <span class="bold-medium"><%= t('.sub_heading') %></span>
+        <span class="govuk-panel__body"><%= t('.sub_heading') %></span>
       </h1>
-      <p>
+      <div class="govuk-panel__body">
         <%= t('.reference') %><br />
-        <strong class="heading-medium"><%= form.enrollment.reference_number %></strong>
-      </p>
+        <strong>
+          <%= form.enrollment.reference_number %>
+        </strong>
+      </div>
     </div>
 
-    <p class="text"><%= t ".email_sent", email: form.email %></p>
+    <p class="govuk-body"><%= t ".email_sent", email: form.email %></p>
 
-    <p class="text"> <%= link_to t('.another_exemption_text'), root_url %> </p>
+    <p class="govuk-body"> <%= link_to t('.another_exemption_text'), root_url %> </p>
 
-    <h2 class="heading-medium"><%= t('.heading_h2') %></h2>
+    <h2 class="govuk-heading-m"><%= t('.heading_h2') %></h2>
 
-    <p class="text"><%= t('.para_text2') %></p>
+    <p class="govuk-body"><%= t('.para_text2') %></p>
 
     <div class="panel panel-border-wide">
-      <p class="text"><%= t('.para_text3') %></p>
+      <p class="govuk-body"><%= t('.para_text3') %></p>
     </div>
 
-    <h3 class="heading-small"><%= t('.heading_h3') %></h3>
-    <p class="text"><%= t('.para_text4') %></p>
+    <h3 class="govuk-heading-s"><%= t('.heading_h3') %></h3>
+    <p class="govuk-body"><%= t('.para_text4') %></p>
 
-    <h3 class="heading-small"><%= t('.heading_h3_1') %></h3>
+    <h3 class="govuk-heading-s"><%= t('.heading_h3_1') %></h3>
 
-    <p class="text">
+    <p class="govuk-body">
       <%= t('.activities_intro_html', link: link_to(t('.activities_url_text'), t('.activities_url'), target: "_blank")) %>
     </p>
 
-    <h2 class="heading-medium"><%= t('.heading_h2_1') %></h2>
+    <h2 class="govuk-heading-m"><%= t('.heading_h2_1') %></h2>
 
-    <p class="text"><%= t('.para_text7') %></p>
-    <p class="text"><%= t('.para_text8') %></p>
+    <p class="govuk-body"><%= t('.para_text7') %></p>
+    <p class="govuk-body"><%= t('.para_text8') %></p>
 
-    <p class="text">
-      <%= link_to t('.feedback_text'), FloodRiskEngine.feedback_page_url, class: 'link' %>
+    <p class="govuk-body">
+      <%= link_to t('.feedback_text'), FloodRiskEngine.feedback_page_url %>
       <%= t('.feedback_helper') %>
     </p>
 

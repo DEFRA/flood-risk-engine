@@ -1,37 +1,36 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-visually-hidden">
+      <%= t(".legend") %>
+    </span>
+    <%= f.govuk_select :uprn,
+      options_for_select( form.temp_addresses.collect { |a| [ a["address"], a["uprn"] ] }),
+      options: {
+        include_blank: form.t('.num_addresses_found', num:  form.temp_addresses.count)
+      },
+      label: {
+        text: t(
+          "flood_risk_engine.enrollments.steps.#{step}.heading",
+          local_assigns[:heading_opts] || {}),
+        tag: "h1",
+        size: "l"
+      },
+      hint: -> do %>
+        <p class="govuk-body">
+          <%= t(".postcode.prefix") %>
+          <br/>
+          <span class="postcode govuk-!-font-weight-bold">
+            <%= form.postcode %>
+          </span>
+          <%= link_to form.t('.change'),
+                      enrollment_step_path(form.enrollment, form.enrollment.previous_step)
+          %>
+        </p>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <span class="postcode-prefix"><%= t(".postcode.prefix") %></span>
-  <span class="visuallyhidden"><%= t(".postcode.separator") %></span>
-  <span class="postcode"><%= form.postcode %></span>
-  <%= link_to form.t('.change'),
-              enrollment_step_path(form.enrollment, form.enrollment.previous_step),
-              class: 'change-postcode-button'
-  %>
-</p>
-
-<label class="form-label" for="address_match_selection">
-  <%= form.t('.select_from_list_label') %>
-</label>
-
-<fieldset>
-  <legend class="visuallyhidden"><%= t('flood_risk_engine.shared.address.legend') %></legend>
-  <%= form_group_and_validation(form, :uprn) do %>
-    <%= f.select(
-          :uprn,
-          options_for_select( form.temp_addresses.collect { |a| [ a["address"], a["uprn"] ] }),
-          {
-            include_blank: form.t('.num_addresses_found', num:  form.temp_addresses.count)
-          },
-          {
-            class: 'form-control form-control-select form-control-char-auto',
-            id: 'address_match_selection'
-          }
-        )
-    %>
-  <% end %>
-</fieldset>
-
-<p>
+<p class="govuk-body">
   <%=
     link_to(
       form.t('.manual_entry'),
@@ -41,8 +40,7 @@
         postcode: form.postcode,
         address_type: address_type,
         step_back_to_postcode: true
-      ),
-      class: 'change-postcode-button'
+      )
     )
   %>
 </p>

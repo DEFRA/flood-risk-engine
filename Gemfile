@@ -19,6 +19,7 @@ group :test do
   gem "email_spec"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 2.17.0"
+  gem "govuk_design_system_formbuilder"
   gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
   gem "rails-controller-testing"
   gem "rspec-html-matchers"

@@ -5,9 +5,9 @@ en:
       steps:
         correspondence_contact_name:
           heading: Who should we contact about this activity?
-          label: Full name
+          label: Enter a full name
           form_hint_1: For example, John Smith
-          label1: Job title, if applicable (optional)
+          label1: Enter a job title, if applicable (optional)
           form_hint_2: For example, Project Manager
           legend: Who should we contact about this activity?
           para_text: We may need to contact someone to check details of the activities or arrange a site visit.

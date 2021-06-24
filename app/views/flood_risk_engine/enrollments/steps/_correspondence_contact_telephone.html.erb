@@ -1,15 +1,16 @@
-<fieldset>
-  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+<span class="govuk-visually-hidden">
+  <%= t(".legend") %>
+</span>
 
-  <%= form_group_and_validation(form, :telephone_number) do -%>
-    <div class="form-group">
-      <%= f.label(:telephone_number, class: "form-label") do %>
-        <%= t(".form_label") %>
-        <span class="form-hint"><%= t(".form_hint") %></span>
-      <% end %>
-      <%= f.telephone_field :telephone_number, class: "form-control form-control-char-25" %>
-    </div>
-  <% end %>
-
-</fieldset>
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <%= t(".heading") %>
+    </h1>
+    <%= f.govuk_phone_field :telephone_number,
+      width: 10,
+      label: { text: t(".form_label") },
+      hint: { text: t(".form_hint") }
+    %>
+  </div>
+</div>

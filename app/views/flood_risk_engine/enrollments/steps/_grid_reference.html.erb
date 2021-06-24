@@ -1,77 +1,83 @@
-<fieldset>
-  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+<span class="govuk-visually-hidden">
+  <%= t(".legend") %>
+</span>
 
-  <%= form_group_and_validation(form, :grid_reference) do %>
-    <%= f.label :grid_reference, class: "form-label" do %>
-      <%= t(".grid_reference.form_label") %>
-      <span class="form-hint text">
-        <%= t(".grid_reference.example_hint") %>
-      </span>
-      <span class="form-hint text">
-        <%= t(".grid_reference.clarification_hint") %>
-      </span>
-    <% end %>
-    <%=
-      f.text_field(
-          :grid_reference,
-          class: "form-control form-control-char-25",
-          "aria-describedby" => "ngr_help"
-      )
+<h1 class="govuk-heading-l">
+  <%= t(".heading") %>
+</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= f.govuk_text_field :grid_reference,
+      label: {
+        text: t(".grid_reference.form_label"),
+        size: "s"
+      },
+      width: "one-third",
+      hint: {
+        text:
+          [
+            t(".grid_reference.example_hint"),
+            t(".grid_reference.clarification_hint")
+          ].join("<br/>").html_safe
+      }
     %>
-  <% end %>
 
-  <details style="padding-bottom: 18px; clear: both;" id="ngr_help">
-    <summary><span class="summary"><%= t(".details.summary") %></span></summary>
-    <div class="panel panel-border-narrow">
-      <p>
-        <%=
-          t(".details.tool_text", link: link_to( t(".details.tool_link"),
-                                                 "http://gridreferencefinder.com/",
-                                                 rel: "external", target: "_blank")
-          ).html_safe
-        %>
-      </p>
-      <ul class="list list-number">
-        <li>
-          <%= t(".details.bullet1") %>
-        </li>
-        <li>
-          <%= t(".details.bullet2") %>
-        </li>
-        <li>
-          <%= t(".details.bullet3") %>
-        </li>
-      </ul>
-    </div>
-  </details>
-
-
-  <% if form.require_dredging_length? %>
-    <%= form_group_and_validation(form, :dredging_length) do %>
-      <%= f.label :dredging_length, class: "form-label" do %>
-        <%= t(".dredging_length.form_label")  %>
-        <span class="form-hint text">
-          <%= t(".dredging_length.clarification_hint") %>
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          <%= t(".details.summary") %>
         </span>
-        <%= f.number_field(:dredging_length, class: "form-control form-control-char-10") %>
-        <%= t(".dredging_length.units") %>
-      <% end %>
-    <% end %>
-  <% end %>
+      </summary>
+      <div class="govuk-details__text">
+        <p>
+          <%=
+            t(".details.tool_text",
+              link: link_to( t(".details.tool_link"), "http://gridreferencefinder.com/",
+              rel: "external",
+              target: "_blank")
+            ).html_safe
+          %>
+        </p>
+        <ol class="govuk-list govuk-list--number">
+          <li><%= t(".details.bullet1") %></li>
+          <li><%= t(".details.bullet2") %></li>
+          <li><%= t(".details.bullet3") %></li>
+        </ol>
+      </div>
+    </details>
 
-  <%= form_group_and_validation(form, :description) do %>
-    <%= f.label :description, class: "form-label" do %>
-      <%= t(".description.form_label")  %>
-      <span class="form-hint text">
-        <%= t(".description.clarification_hint") %>
-      </span>
+    <% if form.require_dredging_length? %>
+      <%= f.govuk_number_field :dredging_length,
+        label: {
+          text: t(".dredging_length.form_label"),
+          size: "s"
+        },
+        width: 5,
+        suffix_text: t(".dredging_length.units"),
+       hint: {
+          text:
+            [
+              t(".dredging_length.clarification_hint"),
+              t(".dredging_length.units")
+            ].join("<br/>").html_safe
+        }
+      %>
     <% end %>
-    <%=
-      f.text_area(:description, class: "form-control form-control-char-50", rows: 4)
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <%= f.govuk_text_area :description,
+      label: {
+        text: t(".description.form_label"),
+        size: "s"
+      },
+     hint: {
+        text: t(".description.clarification_hint")
+      },
+      max_chars: 500
     %>
-    <p class="text">
-      <%= t(".description.length_hint", max: 500) %>
-    </p>
-  <% end %>
-
-</fieldset>
+  </div>
+</div>

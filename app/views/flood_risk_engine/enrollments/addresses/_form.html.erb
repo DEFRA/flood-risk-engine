@@ -1,14 +1,17 @@
-<p>
-  <span class="postcode-prefix"><%= t(".postcode.prefix") %></span>
-  <span class="visuallyhidden"><%= t(".postcode.separator") %></span>
-  <span class="postcode"><%= form.address.postcode %></span>
+
+<p class="govuk-body">
+  <%= t(".postcode.prefix") %>
+  <br/>
+  <span class="postcode govuk-!-font-weight-bold">
+    <%= form.address.postcode %>
+  </span>
   <%= link_to(
       t(
         ".postcode.change_button.text",
         hidden: content_tag(
           'span',
           t(".postcode.change_button.hidden"),
-          class: "visuallyhidden"
+          class: "govuk-visually-hidden"
         )
       ).html_safe,
       change_postcode_path(
@@ -18,39 +21,36 @@
     )
   %>
 </p>
-
-<!-- Manually entered address -->
-<fieldset>
-  <legend class="visuallyhidden"><%= t(".legend") %></legend>
-
-  <%= form_group_and_validation(form, :premises) do %>
-    <%= f.label :premises, class: "form-label" do %>
-      <%= t(".premises.label") %>
-      <span class="form-hint"><%= t(".premises.hint") %></span>
-    <% end %>
-    <%= f.text_field :premises, class: "form-control form-control-char-50" %>
-  <% end %>
-
-  <%= form_group_and_validation(form, :street_address) do %>
-    <%= f.label :street_address, t(".street_address"), class: "form-label" %>
-    <%= f.text_field :street_address, class: "form-control form-control-char-50" %>
-  <% end %>
-
-  <%= form_group_and_validation(form, :locality) do %>
-    <%= f.label :locality, t(".locality"), class: "form-label" %>
-    <%= f.text_field :locality, class: "form-control form-control-char-50" %>
-  <% end %>
-
-  <%= form_group_and_validation(form, :city) do %>
-    <%= f.label :city, t(".city"), class: "form-label" %>
-    <%= f.text_field :city, class: "form-control form-control-char-35" %>
-  <% end %>
-</fieldset>
-
+<legend class="govuk-visually-hidden">
+  <%= t(".legend") %>
+</legend>
+<%=  f.govuk_text_field :premises,
+      width: "three-quarters",
+      label: {
+        text: t(".premises.label")
+      },
+      hint: {
+        text: t(".premises.hint")
+      }
+%>
+<%=  f.govuk_text_field :street_address,
+      width: "three-quarters",
+      label: {
+        text: t(".street_address")
+      }
+%>
+<%=  f.govuk_text_field :locality,
+      width: "three-quarters",
+      label: {
+        text: t(".locality")
+      }
+%>
+<%=  f.govuk_text_field :city,
+      width: "one-half",
+      label: {
+        text: t(".city")
+      }
+%>
 <%= hidden_field_tag :step_back_to_postcode, params.fetch(:step_back_to_postcode, false) %>
 <%= hidden_field_tag :target_step,  params.fetch(:target_step, nil) %>
-
-<!-- Primary button -->
-<div class="form-group">
-  <%= f.submit t("global.continue"), class: "button"  %>
-</div>
+<%= f.govuk_submit t("global.continue") %>

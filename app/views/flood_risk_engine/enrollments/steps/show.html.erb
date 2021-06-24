@@ -1,29 +1,23 @@
+<% page_title t("flood_risk_engine.enrollments.steps.#{step}.heading") %>
+
 <%= render "flood_risk_engine/enrollments/back_link", form: form %>
 
-<%= render 'flood_risk_engine/enrollments/validation_errors', form: form %>
-
-<% unless form.no_header_in_show %>
-  <%= render(
-          "flood_risk_engine/enrollments/header",
-          title_text: t("flood_risk_engine.enrollments.steps.#{step}.heading")
-      )
-  %>
-<% end %>
-
 <%= form_for form,
-             as: step, # puts form data in params[step] rather than params[flood_risk_engine_steps_step]
+             as: step, # [legacy] puts form data in params[step] rather than params[flood_risk_engine_steps_step]
              url: enrollment_step_path(form.enrollment, step),
              method: :patch,
+             builder: GOVUKDesignSystemFormBuilder::FormBuilder,
              class: "form" do |f| %>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <%= f.govuk_error_summary %>
+    </div>
+  </div>
 
   <% partial = form.partial_to_render? ? form.partial_to_render : step.to_s %>
 
   <%= render partial, form: form, step: step, f: f %>
 
-  <% if form.show_continue_button? %>
-    <div class="form-group">
-      <%= f.submit(step_t(step, ".continue",  default: t("global.continue")), class: "button") %>
-    </div>
-  <% end %>
+  <%= f.govuk_submit step_t(step, ".continue",  default: t("global.continue"))  if form.show_continue_button? %>
 <% end %>
-
