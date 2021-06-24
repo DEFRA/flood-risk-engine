@@ -1,0 +1,13 @@
+<div class="text">
+  <%= form_for(@confirm_exemption_form) do |f| %>
+    <%= render("flood_risk_engine/shared/errors", object: @confirm_exemption_form) %>
+
+    <h1 class="heading-large"><%= t(".heading") %></h1>
+
+    <%= hidden_field_tag :token, @confirm_exemption_form.token %>
+
+    <div class="form-group">
+      <%= f.submit t(".next_button"), class: "button" %>
+    </div>
+  <% end %>
+</div>
