@@ -30,7 +30,6 @@ module FloodRiskEngine
 
     def go_back
       find_or_initialize_transient_registration(params[:token])
-
       @transient_registration.back! if form_matches_state?
       redirect_to_correct_form
     end
@@ -48,7 +47,9 @@ module FloodRiskEngine
     end
 
     def find_or_initialize_transient_registration(token)
-      @transient_registration ||= TransientRegistration.where(token: token).first
+      @transient_registration ||= TransientRegistration.find_by(
+        token: token
+      ) || NewRegistration.new
     end
 
     # Expects a form class name (eg BusinessTypeForm), a snake_case name for the form (eg business_type_form),
@@ -77,10 +78,9 @@ module FloodRiskEngine
       end
     end
 
+    # In future we may need additional checks to take place here, eg permissions
     def setup_checks_pass?
-      return true if state_is_correct?
-
-      redirect_to page_path(result.error_state)
+      state_is_correct?
     end
 
     def set_workflow_state
@@ -88,7 +88,7 @@ module FloodRiskEngine
       return unless state_can_navigate_flexibly?(requested_state)
       return unless @transient_registration.persisted?
 
-      @transient_registration.update_attributes(workflow_state: requested_state)
+      @transient_registration.update(workflow_state: requested_state)
     end
 
     def state_can_navigate_flexibly?(state)
