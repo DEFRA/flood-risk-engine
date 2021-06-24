@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    start_forms:
+      new:
+        heading: "Start"
+        next_button: "Submit"

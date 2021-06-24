@@ -5,9 +5,5 @@
     <h1 class="heading-large"><%= t(".heading") %></h1>
 
     <%= hidden_field_tag :token, @registration_complete_form.token %>
-
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
   <% end %>
 </div>

@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    exemption_forms:
+      new:
+        heading: "Select exemption"
+        next_button: "Submit"

@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    site_grid_reference_forms:
+      new:
+        heading: "Site grid reference"
+        next_button: "Submit"

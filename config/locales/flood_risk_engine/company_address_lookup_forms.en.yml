@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    company_address_lookup_forms:
+      new:
+        heading: "Company address lookup"
+        next_button: "Submit"

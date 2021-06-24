@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    company_name_forms:
+      new:
+        heading: "Company name"
+        next_button: "Submit"

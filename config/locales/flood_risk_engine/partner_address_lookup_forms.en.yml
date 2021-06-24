@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    partner_address_lookup_forms:
+      new:
+        heading: "Partner address lookup"
+        next_button: "Submit"

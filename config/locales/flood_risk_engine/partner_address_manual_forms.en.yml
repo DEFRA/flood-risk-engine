@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    partner_address_manual_forms:
+      new:
+        heading: "Partner address (manual entry)"
+        next_button: "Submit"

@@ -1,0 +1,5 @@
+en:
+  flood_risk_engine:
+    registration_complete_forms:
+      new:
+        heading: "Registration complete"
