@@ -1,3 +1,5 @@
+<%= render("flood_risk_engine/shared/back", back_path: back_partner_name_forms_path(@partner_name_form.token)) %>
+
 <div class="text">
   <%= form_for(@partner_name_form) do |f| %>
     <%= render("flood_risk_engine/shared/errors", object: @partner_name_form) %>
