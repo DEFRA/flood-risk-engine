@@ -221,7 +221,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_113422) do
   create_table "transient_registrations", force: :cascade do |t|
     t.string "token"
     t.string "workflow_state"
-    t.string "type", null: false
+    t.string "type", default: "FloodRiskEngine::NewRegistration", null: false
     t.index ["token"], name: "index_transient_registrations_on_token", unique: true
   end
 
