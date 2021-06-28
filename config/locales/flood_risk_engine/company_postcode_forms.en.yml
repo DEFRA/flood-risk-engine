@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    company_postcode_forms:
+      new:
+        heading: "Company postcode"
+        next_button: "Submit"

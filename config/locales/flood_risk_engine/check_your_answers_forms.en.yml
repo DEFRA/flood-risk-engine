@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    check_your_answers_forms:
+      new:
+        heading: "Check your answers"
+        next_button: "Submit"

@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    partner_name_forms:
+      new:
+        heading: "Partner name"
+        next_button: "Submit"

@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    contact_phone_forms:
+      new:
+        heading: "Contact phone"
+        next_button: "Submit"

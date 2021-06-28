@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    confirm_exemption_forms:
+      new:
+        heading: "Confirm exemption"
+        next_button: "Submit"

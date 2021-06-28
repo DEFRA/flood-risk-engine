@@ -1,0 +1,9 @@
+<div class="text">
+  <%= form_for(@registration_complete_form) do |f| %>
+    <%= render("flood_risk_engine/shared/errors", object: @registration_complete_form) %>
+
+    <h1 class="heading-large"><%= t(".heading") %></h1>
+
+    <%= hidden_field_tag :token, @registration_complete_form.token %>
+  <% end %>
+</div>

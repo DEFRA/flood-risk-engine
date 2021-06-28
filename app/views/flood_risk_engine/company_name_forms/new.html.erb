@@ -1,0 +1,15 @@
+<%= render("flood_risk_engine/shared/back", back_path: back_company_name_forms_path(@company_name_form.token)) %>
+
+<div class="text">
+  <%= form_for(@company_name_form) do |f| %>
+    <%= render("flood_risk_engine/shared/errors", object: @company_name_form) %>
+
+    <h1 class="heading-large"><%= t(".heading") %></h1>
+
+    <%= hidden_field_tag :token, @company_name_form.token %>
+
+    <div class="form-group">
+      <%= f.submit t(".next_button"), class: "button" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    partner_postcode_forms:
+      new:
+        heading: "Partner postcode"
+        next_button: "Submit"

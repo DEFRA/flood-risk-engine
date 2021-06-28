@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    contact_email_forms:
+      new:
+        heading: "Contact email"
+        next_button: "Submit"

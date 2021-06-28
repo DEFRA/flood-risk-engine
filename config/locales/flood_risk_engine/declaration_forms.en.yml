@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    declaration_forms:
+      new:
+        heading: "Declaration"
+        next_button: "Submit"

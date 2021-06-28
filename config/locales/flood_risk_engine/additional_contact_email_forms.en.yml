@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    additional_contact_email_forms:
+      new:
+        heading: "Additional contact email"
+        next_button: "Submit"

@@ -1,0 +1,6 @@
+en:
+  flood_risk_engine:
+    business_type_forms:
+      new:
+        heading: "Business type"
+        next_button: "Submit"
