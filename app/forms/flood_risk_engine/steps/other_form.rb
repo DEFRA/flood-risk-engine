@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class OtherForm < BaseForm
+    class OtherForm < BaseStepsForm
 
       def self.factory(enrollment)
         super enrollment, factory_type: :organisation

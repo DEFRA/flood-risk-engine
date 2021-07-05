@@ -15,11 +15,11 @@ module FloodRiskEngine
     end
 
     it "returns a form Object for a valid step", duff: true do
-      expect(factory.form_object_for(Enrollment.new.current_step.to_sym, enrollment)).to be_a Steps::BaseForm
+      expect(factory.form_object_for(Enrollment.new.current_step.to_sym, enrollment)).to be_a Steps::BaseStepsForm
     end
 
     it "returns a form Object for a valid step" do
-      expect(factory.form_object_for(Enrollment.new.current_step.to_s, enrollment)).to be_a Steps::BaseForm
+      expect(factory.form_object_for(Enrollment.new.current_step.to_s, enrollment)).to be_a Steps::BaseStepsForm
     end
   end
 end

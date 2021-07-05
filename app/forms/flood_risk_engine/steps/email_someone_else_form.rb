@@ -3,7 +3,7 @@ require "active_model/validations/confirmation"
 
 module FloodRiskEngine
   module Steps
-    class EmailSomeoneElseForm < BaseForm
+    class EmailSomeoneElseForm < BaseStepsForm
 
       def self.factory(enrollment)
         enrollment.secondary_contact ||= Contact.new

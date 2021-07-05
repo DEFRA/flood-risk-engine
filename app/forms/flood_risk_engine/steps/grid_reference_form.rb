@@ -1,7 +1,7 @@
 require_relative "../../../validators/flood_risk_engine/grid_reference_validator"
 module FloodRiskEngine
   module Steps
-    class GridReferenceForm < BaseForm
+    class GridReferenceForm < BaseStepsForm
 
       def self.factory(enrollment)
         enrollment.exemption_location ||= Location.new

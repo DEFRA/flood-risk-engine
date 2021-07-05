@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class PartnershipForm < BaseForm
+    class PartnershipForm < BaseStepsForm
       def self.factory(enrollment)
         contact = Contact.new
         new(contact, enrollment)

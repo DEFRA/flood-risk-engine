@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class LimitedCompanyNameForm < FloodRiskEngine::Steps::BaseForm
+    class LimitedCompanyNameForm < FloodRiskEngine::Steps::BaseStepsForm
 
       def self.factory(enrollment)
         super enrollment, factory_type: :organisation

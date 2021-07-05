@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class BaseAddressForm < BaseForm
+    class BaseAddressForm < BaseStepsForm
 
       property :uprn
       property :temp_addresses, virtual: true

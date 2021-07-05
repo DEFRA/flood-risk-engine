@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class CorrespondenceContactTelephoneForm < BaseForm
+    class CorrespondenceContactTelephoneForm < BaseStepsForm
 
       def self.factory(enrollment)
         super enrollment, factory_type: :correspondence_contact

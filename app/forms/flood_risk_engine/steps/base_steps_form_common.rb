@@ -1,7 +1,7 @@
-# Common step form functionality that can be mixed into all Forms via BaseForm.
+# Common step form functionality that can be mixed into all Forms via BaseStepsForm.
 module FloodRiskEngine
   module Steps
-    module BaseFormCommon
+    module BaseStepsFormCommon
 
       # rubocop:disable Style/ExtendSelf
       # rubocop:disable Style/ModuleFunction:

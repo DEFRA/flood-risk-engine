@@ -12,7 +12,7 @@ module FloodRiskEngine
 
       before do
         set_journey_token
-        expect_any_instance_of(Steps::BaseForm).to(
+        expect_any_instance_of(Steps::BaseStepsForm).to(
           receive(:validate).and_return(validation_result)
         )
         put :update, params: { id: step, enrollment_id: enrollment }

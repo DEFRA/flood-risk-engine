@@ -5,7 +5,7 @@
 #
 module FloodRiskEngine
   module Steps
-    class CorrespondenceContactNameForm < FloodRiskEngine::Steps::BaseForm
+    class CorrespondenceContactNameForm < FloodRiskEngine::Steps::BaseStepsForm
 
       def self.factory(enrollment)
         super enrollment, factory_type: :correspondence_contact

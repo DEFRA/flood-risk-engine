@@ -3,7 +3,7 @@ require "active_model/validations/confirmation"
 
 module FloodRiskEngine
   module Steps
-    class CorrespondenceContactEmailForm < BaseForm
+    class CorrespondenceContactEmailForm < BaseStepsForm
 
       def self.factory(enrollment)
         super enrollment, factory_type: :correspondence_contact

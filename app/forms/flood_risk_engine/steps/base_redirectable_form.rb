@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class BaseRedirectableForm < BaseForm
+    class BaseRedirectableForm < BaseStepsForm
 
       attr_accessor :redirection_url
       attr_accessor :redirect

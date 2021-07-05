@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class UnknownForm < BaseForm
+    class UnknownForm < BaseStepsForm
       def self.params_key
         :unknown
       end

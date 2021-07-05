@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class ConfirmationForm < BaseForm
+    class ConfirmationForm < BaseStepsForm
 
       def self.params_key
         :confirmation
