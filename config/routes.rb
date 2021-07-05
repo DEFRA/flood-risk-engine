@@ -234,7 +234,4 @@ FloodRiskEngine::Engine.routes.draw do
 
   # See http://patrickperey.com/railscast-053-handling-exceptions/
   get "(errors)/:id", to: "errors#show", as: "error"
-
-  # Static pages with HighVoltage
-  resources :pages, only: [:show], controller: "pages"
 end
