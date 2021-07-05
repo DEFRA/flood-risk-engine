@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class CheckYourAnswersForm < BaseForm
+    class CheckYourAnswersForm < BaseStepsForm
       delegate :rows, to: :review_presenter
 
       def params_key

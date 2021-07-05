@@ -1,7 +1,7 @@
 # Use this form object for steps with no html form
 module FloodRiskEngine
   module Steps
-    class DeclarationForm < BaseForm
+    class DeclarationForm < BaseStepsForm
       def save
         true
       end

@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class AddExemptionsForm < BaseForm
+    class AddExemptionsForm < BaseStepsForm
       property :exemption_ids
 
       attr_reader :all_exemptions

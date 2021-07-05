@@ -3,14 +3,14 @@ require_dependency "reform"
 # Common step form functionality.
 module FloodRiskEngine
   module Steps
-    class BaseForm < Reform::Form
+    class BaseStepsForm < Reform::Form
       include ActionView::Helpers::TranslationHelper
       include ActiveModel::Validations
 
       feature Reform::Form::ActiveModel::Validations
 
-      include BaseFormCommon
-      extend BaseFormCommon
+      include BaseStepsFormCommon
+      extend BaseStepsFormCommon
       def self.factory(enrollment, factory_type: :default)
         case factory_type
         when :correspondence_contact

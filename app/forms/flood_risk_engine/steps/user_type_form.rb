@@ -1,6 +1,6 @@
 module FloodRiskEngine
   module Steps
-    class UserTypeForm < BaseForm
+    class UserTypeForm < BaseStepsForm
       def self.params_key
         :user_type
       end
