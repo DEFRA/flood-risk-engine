@@ -4,9 +4,21 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "AdditionalContactEmailForms", type: :request do
-    include_examples "GET flexible form", "additional_contact_email_form"
+    describe "GET additional_contact_email_form_path" do
+      include_examples "GET flexible form", "additional_contact_email_form"
+    end
 
-    include_examples "POST without params form", "additional_contact_email_form"
+    describe "POST additional_contact_email_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "additional_contact_email_form")
+      end
+
+      include_examples "POST form",
+                       "additional_contact_email_form",
+                       valid_params: { additional_contact_email: "valid@example.com",
+                                       confirmed_email: "valid@example.com" },
+                       invalid_params: { additional_contact_email: "foo" }
+    end
 
     describe "GET back_additional_contact_email_forms_path" do
       context "when a valid transient registration exists" do
