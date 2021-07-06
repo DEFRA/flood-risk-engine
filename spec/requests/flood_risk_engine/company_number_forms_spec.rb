@@ -4,9 +4,20 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "CompanyNumberForms", type: :request do
-    include_examples "GET flexible form", "company_number_form"
+    describe "GET company_number_form_path" do
+      include_examples "GET flexible form", "company_number_form"
+    end
 
-    include_examples "POST without params form", "company_number_form"
+    describe "POST company_number_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "company_number_form")
+      end
+
+      include_examples "POST form",
+                       "company_number_form",
+                       valid_params: { company_number: "10997904" },
+                       invalid_params: { company_number: "" }
+    end
 
     describe "GET back_company_number_forms_path" do
       context "when a valid transient registration exists" do
