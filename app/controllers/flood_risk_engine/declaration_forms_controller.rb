@@ -9,5 +9,11 @@ module FloodRiskEngine
     def create
       super(DeclarationForm, "declaration_form")
     end
+
+    private
+
+    def transient_registration_attributes
+      params.fetch(:declaration_form, {}).permit(:declaration)
+    end
   end
 end
