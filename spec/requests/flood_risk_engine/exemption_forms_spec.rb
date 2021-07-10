@@ -4,9 +4,20 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "ExemptionForms", type: :request do
-    include_examples "GET flexible form", "exemption_form"
+    describe "GET exemption_form_path" do
+      include_examples "GET flexible form", "exemption_form"
+    end
 
-    include_examples "POST without params form", "exemption_form"
+    describe "POST exemption_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "exemption_form")
+      end
+
+      include_examples "POST form",
+                       "exemption_form",
+                       valid_params: { exemption_ids: [FloodRiskEngine::Exemption.last.id] },
+                       invalid_params: { exemption_ids: [] }
+    end
 
     describe "GET back_exemption_forms_path" do
       context "when a valid transient registration exists" do
