@@ -208,6 +208,8 @@ ActiveRecord::Schema.define(version: 2021_06_29_072138) do
     t.string "addressable_type"
     t.string "uprn"
     t.string "token"
+    t.index ["addressable_id"], name: "index_transient_addresses_on_addressable_id", unique: true
+    t.index ["addressable_type"], name: "index_transient_addresses_on_addressable_type", unique: true
   end
 
   create_table "transient_people", force: :cascade do |t|

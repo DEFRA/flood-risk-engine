@@ -20,6 +20,9 @@ class CreateTransientAddresses < ActiveRecord::Migration[6.0]
       t.string :addressable_type
       t.string :uprn
       t.string :token
+
+      t.index :addressable_id, unique: true
+      t.index :addressable_type, unique: true
     end
   end
 end
