@@ -2,11 +2,8 @@
 
 module FloodRiskEngine
   class ExemptionForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    delegate :exemptions, to: :transient_registration
 
-      super(attributes)
-    end
+    validates :exemptions, "flood_risk_engine/exemptions": true
   end
 end

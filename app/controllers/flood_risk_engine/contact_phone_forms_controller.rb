@@ -9,5 +9,11 @@ module FloodRiskEngine
     def create
       super(ContactPhoneForm, "contact_phone_form")
     end
+
+    private
+
+    def transient_registration_attributes
+      params.fetch(:contact_phone_form, {}).permit(:contact_phone)
+    end
   end
 end

@@ -9,5 +9,11 @@ module FloodRiskEngine
     def create
       super(ExemptionForm, "exemption_form")
     end
+
+    private
+
+    def transient_registration_attributes
+      params.fetch(:exemption_form, {}).permit(exemption_ids: [])
+    end
   end
 end

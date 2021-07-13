@@ -4,9 +4,20 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "ContactNameForms", type: :request do
-    include_examples "GET flexible form", "contact_name_form"
+    describe "GET contact_name_form_path" do
+      include_examples "GET flexible form", "contact_name_form"
+    end
 
-    include_examples "POST without params form", "contact_name_form"
+    describe "POST contact_name_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "contact_name_form")
+      end
+
+      include_examples "POST form",
+                       "contact_name_form",
+                       valid_params: { contact_name: "Contactable Person" },
+                       invalid_params: { contact_name: "" }
+    end
 
     describe "GET back_contact_name_forms_path" do
       context "when a valid transient registration exists" do

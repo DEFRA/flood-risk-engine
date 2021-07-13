@@ -2,11 +2,8 @@
 
 module FloodRiskEngine
   class ContactPhoneForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    delegate :contact_phone, to: :transient_registration
 
-      super(attributes)
-    end
+    validates :contact_phone, "defra_ruby/validators/phone_number": true
   end
 end

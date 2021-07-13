@@ -8,6 +8,7 @@ PATH
       defra_ruby_alert (~> 2.1.1)
       defra_ruby_area (~> 2.0)
       defra_ruby_email (~> 1.1)
+      defra_ruby_validators
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
       finite_machine (~> 0.11.3)
@@ -170,6 +171,12 @@ GEM
       notifications-ruby-client
       rails (~> 6.0.3.1)
       sprockets (~> 3.7.2)
+    defra_ruby_validators (2.4.1)
+      activemodel
+      os_map_ref
+      phonelib
+      rest-client (~> 2.0)
+      validates_email_format_of
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     dibber (0.6.0)

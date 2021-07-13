@@ -9,5 +9,11 @@ module FloodRiskEngine
     def create
       super(BusinessTypeForm, "business_type_form")
     end
+
+    private
+
+    def transient_registration_attributes
+      params.fetch(:business_type_form, {}).permit(:business_type)
+    end
   end
 end

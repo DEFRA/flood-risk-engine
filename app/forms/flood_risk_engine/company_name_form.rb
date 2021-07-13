@@ -2,11 +2,8 @@
 
 module FloodRiskEngine
   class CompanyNameForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    delegate :company_name, to: :transient_registration
 
-      super(attributes)
-    end
+    validates :company_name, "flood_risk_engine/company_name": true
   end
 end

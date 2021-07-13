@@ -4,6 +4,7 @@ module FloodRiskEngine
   class BaseForm
     include ActiveModel::Model
     include CanStripWhitespace
+    include CanSetCustomErrorMessage
 
     extend ActiveModel::Callbacks
 

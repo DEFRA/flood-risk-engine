@@ -6,6 +6,11 @@ module FloodRiskEngine
 
     self.table_name = "transient_registrations"
 
+    has_many :transient_addresses, as: :transient_addressable
+    has_many :transient_people
+    has_many :transient_registration_exemptions, dependent: :destroy
+    has_many :exemptions, through: :transient_registration_exemptions
+
     # HasSecureToken provides an easy way to generate unique random tokens for
     # any model in ruby on rails. We use it to uniquely identify an registration
     # by something other than it's db ID, or its reference number. We can then

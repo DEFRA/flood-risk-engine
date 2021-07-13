@@ -5,7 +5,7 @@ module FloodRiskEngine
 
       validates :postcode, presence: { message: I18n.t("flood_risk_engine.validation_errors.postcode.blank") }
 
-      validates :postcode, 'flood_risk_engine/postcode': true, allow_blank: true
+      validates :postcode, 'flood_risk_engine/legacy_postcode': true, allow_blank: true
 
       def validate(params)
         valid = super(params)

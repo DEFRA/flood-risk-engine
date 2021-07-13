@@ -4,9 +4,20 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "DeclarationForms", type: :request do
-    include_examples "GET locked-in form", "declaration_form"
+    describe "GET declaration_form_path" do
+      include_examples "GET locked-in form", "declaration_form"
+    end
 
-    include_examples "POST without params form", "declaration_form"
+    describe "POST declaration_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "declaration_form")
+      end
+
+      include_examples "POST form",
+                       "declaration_form",
+                       valid_params: { declaration: true },
+                       invalid_params: { declaration: "" }
+    end
 
     describe "GET back_declaration_forms_path" do
       context "when a valid transient registration exists" do

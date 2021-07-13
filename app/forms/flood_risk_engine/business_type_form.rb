@@ -2,11 +2,8 @@
 
 module FloodRiskEngine
   class BusinessTypeForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    delegate :business_type, to: :transient_registration
 
-      super(attributes)
-    end
+    validates :business_type, "defra_ruby/validators/business_type": true
   end
 end

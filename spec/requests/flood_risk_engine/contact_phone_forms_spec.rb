@@ -4,9 +4,20 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "ContactPhoneForms", type: :request do
-    include_examples "GET flexible form", "contact_phone_form"
+    describe "GET contact_phone_form_path" do
+      include_examples "GET flexible form", "contact_phone_form"
+    end
 
-    include_examples "POST without params form", "contact_phone_form"
+    describe "POST contact_phone_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "contact_phone_form")
+      end
+
+      include_examples "POST form",
+                       "contact_phone_form",
+                       valid_params: { contact_phone: "01234 567890" },
+                       invalid_params: { contact_phone: "foo" }
+    end
 
     describe "GET back_contact_phone_forms_path" do
       context "when a valid transient registration exists" do
