@@ -2,5 +2,17 @@ en:
   flood_risk_engine:
     start_forms:
       new:
-        heading: "Start"
-        next_button: "Submit"
+        heading: Register a flood risk activity exemption
+        before_you_register: "Before you register you must:"
+        requirement1: check you can meet the description and conditions for the exemption
+        requirement2: have authority to register for an organisation or as an agent, if you are registering on their behalf
+        we_will: "We will:"
+        responsibility1: check if the location is environmentally sensitive or if it is near a flood defence structure operated by us
+        responsibility2: tell you whether we have registered the exemption within 10 working days
+        you_will_need: "You will need:"
+        need1: the grid reference where the work will happen
+        need2: the name and address of the organisation or person who is responsible for the work
+        need3: for a company, its registration number and registered address
+        need4: for a partnership, the name and address of all partners
+        need5: contact details for the person we should contact about the work
+        next_button: "Continue"
