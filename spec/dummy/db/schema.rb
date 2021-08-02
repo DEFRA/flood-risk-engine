@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_29_072138) do
+ActiveRecord::Schema.define(version: 2021_08_02_151907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -246,6 +246,7 @@ ActiveRecord::Schema.define(version: 2021_06_29_072138) do
     t.string "temp_grid_reference"
     t.text "temp_site_description"
     t.boolean "address_finder_error", default: false
+    t.integer "dredging_length"
     t.index ["token"], name: "index_transient_registrations_on_token", unique: true
   end
 

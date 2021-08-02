@@ -32,7 +32,8 @@ module FloodRiskEngine
 
     config_accessor(:redirection_url_postcode_lookup)
     config_accessor(:layout) { "application" }
-    config_accessor(:minumum_dredging_length_in_metres) { 1 }
+    config_accessor(:minumum_dredging_length_in_metres) { 1 } # TYPO - left in for legacy purposes
+    config_accessor(:minimum_dredging_length_in_metres) { 1 }
     config_accessor(:maximum_dredging_length_in_metres) { 1500 }
     config_accessor(:maximum_company_name_length) { 170 }
     config_accessor(:maximum_individual_name_length) { 170 }
