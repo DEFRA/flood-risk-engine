@@ -1,15 +1,51 @@
 <%= render("flood_risk_engine/shared/back", back_path: back_confirm_exemption_forms_path(@confirm_exemption_form.token)) %>
 
-<div class="text">
-  <%= form_for(@confirm_exemption_form) do |f| %>
-    <%= render("flood_risk_engine/shared/errors", object: @confirm_exemption_form) %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @confirm_exemption_form do |f| %>
+      <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
 
-    <h1 class="heading-large"><%= t(".heading") %></h1>
+      <span class="govuk-visually-hidden"><%= t('.table_summary') %></span>
 
-    <%= hidden_field_tag :token, @confirm_exemption_form.token %>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--l">
+          <%= t(".heading") %>
+        </caption>
+        <tbody class="govuk-table__body">
+          <% @confirm_exemption_form.transient_registration.exemptions.each do |exemption| %>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <p><%= exemption.summary %></p>
+            </th>
+            <th scope="row" class="govuk-table__header">
+              <p><%= exemption.code %></p>
+            </th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <p>
+                <%=
+                  link_to(
+                    t(
+                      ".remove_link.text",
+                      hidden: content_tag(
+                        'span',
+                        t(
+                          ".remove_link.hidden",
+                          code: exemption.code
+                        ),
+                        class: "govuk-visually-hidden"
+                      )
+                    ).html_safe,
+                  back_confirm_exemption_forms_path(@confirm_exemption_form.token)
+                )
+                %>
+              </p>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
-  <% end %>
+      <%= f.govuk_submit t(".next_button") %>
+    <% end %>
+  </div>
 </div>
