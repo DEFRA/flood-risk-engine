@@ -2,5 +2,27 @@ en:
   flood_risk_engine:
     contact_name_forms:
       new:
-        heading: "Contact name"
+        heading: Who should we contact about this activity?
+        label: Enter a full name
+        form_hint_1: For example, John Smith
+        label1: Enter a job title, if applicable (optional)
+        form_hint_2: For example, Project Manager
+        legend: Who should we contact about this activity?
+        para_text: We may need to contact someone to check details of the activities or arrange a site visit.
+          We’ll send a confirmation of your registration to this person.
+          You can add another email address later if someone else needs a copy of the confirmation.
         next_button: "Submit"
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/contact_name_form:
+          attributes:
+            contact_name:
+              blank: Enter a name
+              invalid: "The name must contain only letters, spaces, commas, full stops, hyphens and apostrophes"
+              too_long: "The name must have no more than 70 characters"
+  defra_ruby:
+    validators:
+      PositionValidator:
+        invalid_format: "The position must contain only letters, spaces, commas, full stops, hyphens and apostrophes"
+        too_long: "The position must have no more than 70 characters"
