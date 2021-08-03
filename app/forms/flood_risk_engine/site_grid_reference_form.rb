@@ -2,11 +2,32 @@
 
 module FloodRiskEngine
   class SiteGridReferenceForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    delegate :temp_grid_reference, to: :transient_registration
+    delegate :temp_site_description, to: :transient_registration
+    delegate :dredging_length, to: :transient_registration
 
-      super(attributes)
+    validates :temp_grid_reference, "defra_ruby/validators/grid_reference": true
+    validates :temp_site_description, "flood_risk_engine/site_description": true
+
+    validates :dredging_length,
+              presence: {
+                message: I18n.t(".errors.dredging_length.blank"),
+                if: :require_dredging_length?
+              },
+              numericality: {
+                only_integer: true,
+                greater_than_or_equal_to: FloodRiskEngine.config.minimum_dredging_length_in_metres,
+                less_than_or_equal_to: FloodRiskEngine.config.maximum_dredging_length_in_metres,
+                allow_blank: true,
+                message:
+                  I18n.t(".errors.dredging_length.numeric",
+                         min: FloodRiskEngine.config.minimum_dredging_length_in_metres,
+                         max: FloodRiskEngine.config.maximum_dredging_length_in_metres),
+                if: :require_dredging_length?
+              }
+
+    def require_dredging_length?
+      transient_registration.exemptions.any?(&:long_dredging?)
     end
   end
 end

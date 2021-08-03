@@ -4,9 +4,24 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "SiteGridReferenceForms", type: :request do
-    include_examples "GET flexible form", "site_grid_reference_form"
+    describe "GET site_grid_reference_form_path" do
+      include_examples "GET flexible form", "site_grid_reference_form"
+    end
 
-    include_examples "POST without params form", "site_grid_reference_form"
+    describe "POST site_grid_reference_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "site_grid_reference_form")
+      end
+
+      include_examples "POST form",
+                       "site_grid_reference_form",
+                       valid_params: {
+                         temp_grid_reference: "ST 5813272695",
+                         temp_site_description: "foo",
+                         dredging_length: "99"
+                       },
+                       invalid_params: { temp_grid_reference: nil }
+    end
 
     describe "GET back_site_grid_reference_forms_path" do
       context "when a valid transient registration exists" do

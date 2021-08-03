@@ -2,5 +2,39 @@ en:
   flood_risk_engine:
     site_grid_reference_forms:
       new:
-        heading: "Site grid reference"
+        heading: Where will the activity take place?
+        legend: Where will the activity take place?
+        grid_reference:
+          form_label: National Grid reference
+          example_hint: Enter 2 letters and 10 digits. For example, ST 58132 72695.
+          clarification_hint: |-
+            For activities that take place over a stretch of the watercourse
+            choose the middle or centre point.
+        dredging_length:
+          form_label: Approximate length of dredging in metres
+          clarification_hint: The maximum length you can dredge is 1,500 metres
+          units: metres
+        description:
+          form_label: Site name or description
+          clarification_hint: |-
+            For example, river name, place name, landmarks, or built or natural
+            features
+          length_hint: "%{max} character limit"
+        details:
+          summary: Help finding a grid reference
+          tool_text: Use the free %{link}
+          tool_link: UK Grid Reference Finder (opens new window).
+          bullet1:  Search for the location or postcode on the left of the page.
+          bullet2:  Right-click to display the grid reference.
+          bullet3:  Select the grid reference then copy and paste back on this page.
+        errors:
+          grid_reference:
+            invalid: The grid reference should have 2 letters and 10 digits
+            blank: Enter a National Grid reference
+          description:
+            too_long: The site name or description must be no longer than %{max} characters
+            blank: Enter a site name or description
+          dredging_length:
+            blank: Enter the approximate length of dredging
+            numeric: The length of dredging must be a number between %{min} and %{max}
         next_button: "Submit"
