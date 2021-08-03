@@ -2,5 +2,36 @@ en:
   flood_risk_engine:
     company_name_forms:
       new:
-        heading: "Company name"
+        heading:
+          charity: "What's the name of the organisation?"
+          limited_company: "What's the registered name of the company?"
+          limited_liability_partnership: "What's the registered name of the partnership?"
+          local_authority: "What's the name of the local authority or public body?"
+          sole_trader: "What's the individual’s name?"
+        label:
+          charity: "Name of charity, trust, club or other organisation"
+          limited_company: "Registered name of company"
+          limited_liability_partnership: "Partnership registered name"
+          local_authority: "Local authority or public body name"
+          sole_trader: "Full name"
+        legend:
+          charity: "Name of charity, trust, club or other organisation"
+          limited_company: "Registered company name"
+          limited_liability_partnership: "Registered partnership name"
+          local_authority: "Local authority or public body name"
+          sole_trader: "Individual’s name?"
+        hint:
+          charity: ""
+          limited_company: "Enter the registered name of the company"
+          limited_liability_partnership: "Enter the registered name of the partnership"
+          local_authority: "For example, Bristol City Council"
+          sole_trader: "For example, Jane Smith"
         next_button: "Submit"
+  activemodel:
+      errors:
+        models:
+          flood_risk_engine/company_name_form:
+            attributes:
+              company_name:
+                blank: "Enter a name"
+                too_long: "The name must be under 255 characters"
