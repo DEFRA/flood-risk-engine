@@ -14,11 +14,14 @@ module FloodRiskEngine
     )
 
     def company_no_required?
-      false
+      [
+        BUSINESS_TYPES[:limited_company],
+        BUSINESS_TYPES[:limited_liability_partnership]
+      ].include?(business_type)
     end
 
     def partnership?
-      false
+      business_type == BUSINESS_TYPES[:partnership]
     end
 
     def address_finder_error
