@@ -5,11 +5,13 @@ module FloodRiskEngine
     delegate :additional_contact_email, to: :transient_registration
     attr_accessor :confirmed_email
 
-    validates :additional_contact_email, "defra_ruby/validators/email": true
+    validates :additional_contact_email, "defra_ruby/validators/email": true, if: :emails_are_populated?
     validates :confirmed_email, "defra_ruby/validators/email": {
       messages: custom_error_messages(:confirmed_email, :blank, :invalid_format)
-    }
-    validates :confirmed_email, "flood_risk_engine/matching_email": { compare_to: :additional_contact_email }
+    }, if: :emails_are_populated?
+    validates :confirmed_email, "flood_risk_engine/matching_email": {
+      compare_to: :additional_contact_email
+    }, if: :emails_are_populated?
 
     after_initialize :populate_confirmed_email
 
@@ -24,6 +26,10 @@ module FloodRiskEngine
 
     def populate_confirmed_email
       self.confirmed_email = additional_contact_email
+    end
+
+    def emails_are_populated?
+      additional_contact_email.present? || confirmed_email.present?
     end
   end
 end

@@ -1,15 +1,31 @@
 <%= render("flood_risk_engine/shared/back", back_path: back_additional_contact_email_forms_path(@additional_contact_email_form.token)) %>
 
-<div class="text">
-  <%= form_for(@additional_contact_email_form) do |f| %>
-    <%= render("flood_risk_engine/shared/errors", object: @additional_contact_email_form) %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @additional_contact_email_form do |f| %>
+      <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
 
-    <h1 class="heading-large"><%= t(".heading") %></h1>
+      <span class="govuk-visually-hidden">
+        <%= t(".legend") %>
+      </span>
 
-    <%= hidden_field_tag :token, @additional_contact_email_form.token %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            <%= t(".heading") %>
+          </h1>
+          <%= f.govuk_email_field :additional_contact_email,
+            width: 20,
+            label: { text: t(".email_address.label") }
+          %>
+          <%= f.govuk_email_field :confirmed_email,
+            width: 20,
+            label: { text: t(".email_address_confirmation.label") }
+          %>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
-  <% end %>
+      <%= f.govuk_submit t(".next_button") %>
+    <% end %>
+  </div>
 </div>
