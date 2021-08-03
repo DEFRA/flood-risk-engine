@@ -2,5 +2,29 @@ en:
   flood_risk_engine:
     business_type_forms:
       new:
-        heading: "Business type"
+        heading: Who is responsible for the activity?
+        sub_heading: How to decide who is responsible
+        sub_section_one: The company, body or individual who has control over the activity (work) is responsible.
+          They are called the ‘operator’.
+          If you use contractors, you need to decide if it is you or the contractors who has control.
+        summary_heading: How to decide who has control
+        list_heading: 'Whoever has control will usually:'
+        list_item_1: have day-to-day control of the activity
+        list_item_2: make sure the activity complies with the exemption
+        list_item_3: |-
+          decide who holds important staff positions and stop incompetent
+          staff working, if needed
+        list_item_4: make financial decisions that affect the activity
+        list_item_5: take action to control the activity in an emergency
+        options:
+          sole_trader: "Sole trader"
+          limited_company: "Limited company"
+          partnership: "Partnership"
+          limited_liability_partnership: "Limited liability partnership"
+          local_authority: "Local authority"
+          charity: "Charity"
         next_button: "Submit"
+  defra_ruby:
+    validators:
+      BusinessTypeValidator:
+        inclusion: "You must answer this question"
