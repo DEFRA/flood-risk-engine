@@ -15,8 +15,8 @@ module FloodRiskEngine
 
       include_examples "POST form",
                        "exemption_form",
-                       valid_params: { exemption_ids: [FloodRiskEngine::Exemption.last.id] },
-                       invalid_params: { exemption_ids: [] }
+                       valid_params: { exemption_ids: FloodRiskEngine::Exemption.last.id },
+                       invalid_params: { exemption_ids: nil }
     end
 
     describe "GET back_exemption_forms_path" do
