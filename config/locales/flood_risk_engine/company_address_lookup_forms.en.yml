@@ -2,5 +2,22 @@ en:
   flood_risk_engine:
     company_address_lookup_forms:
       new:
-        heading: "Company address lookup"
-        next_button: "Submit"
+        heading:
+          localAuthority: Select the address of the local authority or public body
+          limitedCompany: Select company address
+          limitedLiabilityPartnership: Select the address of the limited liability partnership
+          partnership: Select the address of the partnership
+          soleTrader: Select the address of the business
+          charity: Select the address of the charity or trust
+        postcode_label: Postcode
+        postcode_change_link: "Change postcode"
+        manual_address_link: "I cannot find the address in the list"
+        error_heading: Something is wrong
+        next_button: Continue
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/company_address_lookup_form:
+          attributes:
+            company_address:
+              blank: "Select an address"

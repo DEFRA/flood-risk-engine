@@ -2,6 +2,8 @@
 
 module FloodRiskEngine
   class CompanyPostcodeFormsController < ::FloodRiskEngine::FormsController
+    include CanSkipToManualAddress
+
     def new
       super(CompanyPostcodeForm, "company_postcode_form")
     end

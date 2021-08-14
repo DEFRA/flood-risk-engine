@@ -24,16 +24,8 @@ module FloodRiskEngine
       business_type == BUSINESS_TYPES[:partnership]
     end
 
-    def address_finder_error
-      false
-    end
-
-    def company_address
-      false
-    end
-
     def existing_partners?
-      false
+      transient_people.any?
     end
   end
 end

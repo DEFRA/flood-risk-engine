@@ -74,6 +74,11 @@ FloodRiskEngine::Engine.routes.draw do
                     to: "company_postcode_forms#go_back",
                     as: "back",
                     on: :collection
+
+                get "skip_to_manual_address",
+                    to: "company_postcode_forms#skip_to_manual_address",
+                    as: "skip_to_manual_address",
+                    on: :collection
               end
 
     resources :company_address_lookup_forms,
@@ -83,6 +88,11 @@ FloodRiskEngine::Engine.routes.draw do
                 get "back",
                     to: "company_address_lookup_forms#go_back",
                     as: "back",
+                    on: :collection
+
+                get "skip_to_manual_address",
+                    to: "company_address_lookup_forms#skip_to_manual_address",
+                    as: "skip_to_manual_address",
                     on: :collection
               end
 

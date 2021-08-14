@@ -1,0 +1,13 @@
+<div class="govuk-form-group <%= "govuk-form-group--error" if form.errors[address].any? %>">
+  <% if form.errors[address].any? %>
+    <span class="govuk-error-message">
+      <span class="govuk-visually-hidden">Error:</span>
+      <%= form.errors[address].join(", ") %>
+  </span>
+  <% end %>
+  <%= f.label :uprn, t(".address_label"), class: "govuk-label" %>
+  <%= f.select(:uprn,
+               options_for_select(form.temp_addresses.map { |a| [a["address"], a["uprn"]] }, form.send(address)&.uprn),
+               { include_blank: t(".address_blank_option", count: form.temp_addresses.length ) },
+               { class: "govuk-select" }) %>
+</div>

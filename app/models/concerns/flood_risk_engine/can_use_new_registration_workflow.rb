@@ -260,11 +260,11 @@ module FloodRiskEngine
     end
 
     def skip_to_manual_address?
-      address_finder_error
+      address_finder_error.present?
     end
 
     def company_address_was_manually_entered?
-      return unless company_address
+      return unless company_address.present?
 
       company_address.manual?
     end

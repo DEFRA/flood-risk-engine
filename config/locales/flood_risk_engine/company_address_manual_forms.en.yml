@@ -2,5 +2,34 @@ en:
   flood_risk_engine:
     company_address_manual_forms:
       new:
-        heading: "Company address (manual entry)"
-        next_button: "Submit"
+        heading:
+          localAuthority: What's the address of the local authority or public body?
+          limitedCompany: What's the company address?
+          limitedLiabilityPartnership: What's the address of the limited liability partnership?
+          partnership: What's the address of the partnership?
+          soleTrader: What's the address of the business?
+          charity: What's the address of the charity or trust?
+        os_places_error_heading: Our address finder is not working
+        os_places_error_text: Please enter the address below.
+        preset_postcode_label: Postcode
+        postcode_change_link: "Change postcode"
+        error_heading: Something is wrong
+        next_button: Continue
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/company_address_manual_form:
+          attributes:
+            premises:
+              blank: "Enter the building name or number"
+              too_long: "The building name or number must be no longer than 200 characters"
+            street_address:
+              blank: "Enter an address line 1"
+              too_long: "The address line 1 must be no longer than 160 characters"
+            locality:
+              too_long: "The address line 2 must be no longer than 70 characters"
+            city:
+              blank: "Enter a town or city"
+              too_long: "The town or city must be no longer than 30 characters"
+            postcode:
+              too_long: "The postcode must be no longer than 30 characters"

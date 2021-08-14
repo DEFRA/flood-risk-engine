@@ -5,6 +5,25 @@ en:
         back_link: Back
       errors:
         heading: A problem to fix
+      manual_address:
+        premises_label: Building name or number
+        premises_hint: For example, a business premises name or house number
+        street_address_label: Address line 1
+        locality_label: Address line 2 (optional)
+        city_label: Town or city
+        postcode_label: Postcode (optional)
+        preset_postcode_label: Postcode
+        postcode_change_link: "Change postcode"
+        country_label: Country
+      os_terms_footer:
+        text: © Crown copyright and database rights 2018 Ordnance Survey 100024198. Use of this addressing data is subject to the
+        link_text: address data terms and conditions (opens new tab)
+      select_address:
+        address_label: Address
+        address_blank_option:
+          zero: No addresses found
+          one: 1 address found
+          other: "%{count} addresses found"
   time:
     formats:
       short: "%d %b %Y"

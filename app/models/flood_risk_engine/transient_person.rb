@@ -5,6 +5,6 @@ module FloodRiskEngine
     self.table_name = "transient_people"
 
     belongs_to :transient_registration
-    has_one :transient_addresses, as: :transient_addressable
+    has_one :transient_address, as: :addressable, dependent: :destroy
   end
 end
