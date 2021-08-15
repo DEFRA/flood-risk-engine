@@ -68,6 +68,10 @@ module FloodRiskEngine
 
           # Business type
           transitions from: :business_type_form,
+                      to: :partner_overview_form,
+                      if: :can_see_partner_overview?
+
+          transitions from: :business_type_form,
                       to: :partner_name_form,
                       if: :should_have_partners?
 
@@ -204,6 +208,10 @@ module FloodRiskEngine
                       to: :business_type_form
 
           # Contact details
+          transitions from: :contact_name_form,
+                      to: :partner_overview_form,
+                      if: :should_have_partners?
+
           transitions from: :contact_name_form,
                       to: :company_address_manual_form,
                       if: :company_address_was_manually_entered?

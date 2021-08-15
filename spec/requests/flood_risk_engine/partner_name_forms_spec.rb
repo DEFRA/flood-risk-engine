@@ -4,9 +4,20 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "PartnerNameForms", type: :request do
-    include_examples "GET flexible form", "partner_name_form"
+    describe "GET partner_name_form_path" do
+      include_examples "GET flexible form", "partner_name_form"
+    end
 
-    include_examples "POST without params form", "partner_name_form"
+    describe "POST partner_name_form_path" do
+      let(:transient_registration) do
+        create(:new_registration, workflow_state: "partner_name_form")
+      end
+
+      include_examples "POST form",
+                       "partner_name_form",
+                       valid_params: { full_name: "Aaron A Aaronson" },
+                       invalid_params: { full_name: "" }
+    end
 
     describe "GET back_partner_name_forms_path" do
       context "when a valid transient registration exists" do
