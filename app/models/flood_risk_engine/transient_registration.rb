@@ -24,5 +24,9 @@ module FloodRiskEngine
     # See https://github.com/robertomiranda/has_secure_token
     has_secure_token
     validates_presence_of :token, on: :save
+
+    def last_partner
+      transient_people.last
+    end
   end
 end

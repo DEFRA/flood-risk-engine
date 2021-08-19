@@ -2,5 +2,18 @@ en:
   flood_risk_engine:
     partner_postcode_forms:
       new:
-        heading: "Partner postcode"
-        next_button: "Submit"
+        heading: Find the address of the partner
+        temp_partner_postcode_label: Enter a UK postcode
+        temp_partner_postcode_hint: For example, BS1 5AH
+        error_heading: A problem to fix
+        next_button: Find address
+        manual_address_link: "Enter address manually"
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/partner_postcode_form:
+          attributes:
+            temp_partner_postcode:
+              blank: "Enter a postcode"
+              wrong_format: "Enter a valid UK postcode"
+              no_results: "We cannot find any addresses for that postcode. Check the postcode or enter the address manually."

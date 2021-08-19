@@ -9,5 +9,15 @@ module FloodRiskEngine
     def create
       super(PartnerAddressManualForm, "partner_address_manual_form")
     end
+
+    private
+
+    def transient_registration_attributes
+      params
+        .fetch(:partner_address_manual_form, {})
+        .permit(
+          transient_address: %i[premises street_address locality city postcode]
+        )
+    end
   end
 end

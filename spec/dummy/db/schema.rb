@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
 
   create_table "transient_people", force: :cascade do |t|
     t.string "full_name"
+    t.string "temp_postcode"
     t.bigint "transient_registration_id"
     t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
   end

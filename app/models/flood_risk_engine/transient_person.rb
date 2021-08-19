@@ -6,5 +6,6 @@ module FloodRiskEngine
 
     belongs_to :transient_registration
     has_one :transient_address, as: :addressable, dependent: :destroy
+    accepts_nested_attributes_for :transient_address
   end
 end
