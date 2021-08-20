@@ -164,6 +164,11 @@ FloodRiskEngine::Engine.routes.draw do
                     to: "partner_overview_forms#go_back",
                     as: "back",
                     on: :collection
+
+                delete "destroy/:partner_id",
+                       to: "partner_overview_forms#destroy",
+                       as: "destroy",
+                       on: :collection
               end
 
     resources :contact_name_forms,

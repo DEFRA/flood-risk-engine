@@ -28,5 +28,9 @@ module FloodRiskEngine
     def last_partner
       transient_people.last
     end
+
+    def completed_partners
+      transient_people.select { |partner| partner.transient_address.present? }
+    end
   end
 end

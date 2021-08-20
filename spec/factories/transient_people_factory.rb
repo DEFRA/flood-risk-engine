@@ -7,5 +7,12 @@ FactoryBot.define do
     trait :has_temp_postcode do
       temp_postcode { "BS1 5AH" }
     end
+
+    trait :completed do
+      named
+      has_temp_postcode
+
+      transient_address { build(:transient_address) }
+    end
   end
 end
