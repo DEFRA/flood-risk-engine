@@ -16,13 +16,9 @@ class CreateTransientAddresses < ActiveRecord::Migration[6.0]
       t.string :blpu_state_code
       t.string :postal_address_code
       t.string :logical_status_code
-      t.integer :addressable_id
-      t.string :addressable_type
+      t.references :addressable, polymorphic: true, index: { name: "index_addressables" }
       t.string :uprn
       t.string :token
-
-      t.index :addressable_id, unique: true
-      t.index :addressable_type, unique: true
     end
   end
 end

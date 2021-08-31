@@ -2,5 +2,16 @@ en:
   flood_risk_engine:
     partner_name_forms:
       new:
-        heading: "Partner name"
-        next_button: "Submit"
+        heading: "What are the names of all the business partners?"
+        description_1: "Add another business partner"
+        full_name: "Full name"
+        form_hint: "For example, Jane Smith"
+        next_button: Continue
+  activemodel:
+    errors:
+      models:
+        waste_carriers_engine/main_people_form:
+          attributes:
+            full_name:
+              blank: "Enter a full name"
+              too_long: "The full name must be no longer than 35 characters"

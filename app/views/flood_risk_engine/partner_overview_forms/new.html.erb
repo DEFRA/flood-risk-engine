@@ -4,12 +4,62 @@
   <%= form_for(@partner_overview_form) do |f| %>
     <%= render("flood_risk_engine/shared/errors", object: @partner_overview_form) %>
 
-    <h1 class="heading-large"><%= t(".heading") %></h1>
+    <h1 class="govuk-heading-l">
+      <% if @partner_overview_form.completed_partners.size <= 1 %>
+        <%= t(".heading_single") %>
+      <% else %>
+        <%= t(".heading") %>
+      <% end %>
+    </h1>
 
-    <%= hidden_field_tag :token, @partner_overview_form.token %>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">
+        <%= t(".sub_heading") %>
+      </caption>
+      <thead>
+        <th scope="col" class="govuk-visually-hidden">
+          Name
+        </th>
+        <th scope="col" class="govuk-visually-hidden">
+          Address
+        </th>
+        <th scope="col" class="govuk-visually-hidden">
+          Remove
+        </th>
+      </thead>
+      <tbody class="govuk-table__body">
+        <% @partner_overview_form.completed_partners.each do |partner| %>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><%= partner.full_name %></td>
+            <td class="govuk-table__cell">
+              <% displayable_address(partner.transient_address).each do |line| %>
+                <%= line %><br />
+              <% end %>
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <%= link_to(
+                    destroy_partner_overview_forms_path(partner_id: partner.id),
+                    class: "link",
+                    method: :delete,
+                    data: {:confirm => t(".confirm_delete", name: partner.full_name)}
+                  ) do %>
+                <%= t(".remove") %>
+              <span class="govuk-visually-hidden"><%= partner.full_name %></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
+    <br/>
+
+    <p class="govuk-body">
+      <%= link_to t(".add_another"), partner_name_forms_path(@partner_overview_form.token) %>
+    </p>
+
+    <% if @partner_overview_form.completed_partners.size > 1 %>
+      <%= f.govuk_submit t(".next_button") %>
+    <% end %>
   <% end %>
 </div>

@@ -2,5 +2,24 @@ en:
   flood_risk_engine:
     company_number_forms:
       new:
-        heading: "company_number"
+        heading:
+          limited_company: What's the registration number of the company?
+          limited_liability_partnership: What's the registration number of the partnership?
+        label:
+          limited_company: Company registration number
+          limited_liability_partnership: Registration number
+        hint:
+          limited_company: An 8 digit number, or 2 letters followed by a 6 digit number
+          limited_liability_partnership: An 8 digit number, or 2 letters followed by a 6 digit number
+        legend:
+          limited_company: Registration number of the company
+          limited_liability_partnership: Registration number of the partnership
         next_button: "Submit"
+  activemodel:
+      errors:
+        models:
+          flood_risk_engine/company_number_form:
+            attributes:
+              company_number:
+                blank: "Enter the company registration number"
+                invalid_format: "Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits. If your number has only 7 digits, enter it with a zero at the start."

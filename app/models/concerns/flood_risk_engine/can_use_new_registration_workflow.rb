@@ -68,6 +68,10 @@ module FloodRiskEngine
 
           # Business type
           transitions from: :business_type_form,
+                      to: :partner_overview_form,
+                      if: :can_see_partner_overview?
+
+          transitions from: :business_type_form,
                       to: :partner_name_form,
                       if: :should_have_partners?
 
@@ -205,6 +209,10 @@ module FloodRiskEngine
 
           # Contact details
           transitions from: :contact_name_form,
+                      to: :partner_overview_form,
+                      if: :should_have_partners?
+
+          transitions from: :contact_name_form,
                       to: :company_address_manual_form,
                       if: :company_address_was_manually_entered?
 
@@ -260,11 +268,11 @@ module FloodRiskEngine
     end
 
     def skip_to_manual_address?
-      address_finder_error
+      address_finder_error.present?
     end
 
     def company_address_was_manually_entered?
-      return unless company_address
+      return unless company_address.present?
 
       company_address.manual?
     end

@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
 module FloodRiskEngine
-  class PartnerPostcodeForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+  class PartnerPostcodeForm < BasePostcodeForm
+    delegate :last_partner, to: :transient_registration
+    delegate :temp_postcode, to: :last_partner
 
-      super(attributes)
+    validates :temp_postcode, "flood_risk_engine/postcode": true
+
+    def submit(params)
+      params[:temp_postcode] = format_postcode(params[:temp_postcode])
+
+      # We persist the postcode regardless of validations.
+      last_partner.update(temp_postcode: params[:temp_postcode])
+
+      super({})
     end
   end
 end

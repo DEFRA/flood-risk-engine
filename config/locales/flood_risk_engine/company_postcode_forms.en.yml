@@ -2,5 +2,24 @@ en:
   flood_risk_engine:
     company_postcode_forms:
       new:
-        heading: "Company postcode"
-        next_button: "Submit"
+        heading:
+          localAuthority: Find the address of the local authority or public body
+          limitedCompany: Find the company address
+          limitedLiabilityPartnership: Find the address of the limited liability partnership
+          partnership: Find the address of the partnership
+          soleTrader: Find the address of the business
+          charity: Find the address of the charity or trust
+        temp_company_postcode_label: Enter a UK postcode
+        temp_company_postcode_hint: For example, BS1 5AH
+        error_heading: A problem to fix
+        next_button: Find address
+        manual_address_link: "Enter address manually"
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/company_postcode_form:
+          attributes:
+            temp_company_postcode:
+              blank: "Enter a postcode"
+              wrong_format: "Enter a valid UK postcode"
+              no_results: "We cannot find any addresses for that postcode. Check the postcode or enter the address manually."

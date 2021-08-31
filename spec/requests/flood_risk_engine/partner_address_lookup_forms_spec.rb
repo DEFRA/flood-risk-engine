@@ -4,14 +4,35 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "PartnerAddressLookupForms", type: :request do
-    include_examples "GET flexible form", "partner_address_lookup_form"
+    describe "GET partner_address_lookup_form_path" do
+      before do
+        transient_registration.transient_people = [build(:transient_person, :named, :has_temp_postcode)]
+      end
 
-    include_examples "POST without params form", "partner_address_lookup_form"
+      include_examples "GET flexible form", "partner_address_lookup_form"
+    end
+
+    describe "POST partner_address_lookup_form_path" do
+      before(:each) { VCR.insert_cassette("address_lookup_valid_postcode", allow_playback_repeats: true) }
+      after(:each) { VCR.eject_cassette }
+
+      let(:transient_registration) do
+        create(:new_registration,
+               :has_named_partner_with_postcode,
+               workflow_state: "partner_address_lookup_form")
+      end
+
+      include_examples "POST form",
+                       "partner_address_lookup_form",
+                       valid_params: { transient_address: { uprn: "340116" } },
+                       invalid_params: { transient_address: {} }
+    end
 
     describe "GET back_partner_address_lookup_forms_path" do
       context "when a valid transient registration exists" do
         let(:transient_registration) do
           create(:new_registration,
+                 :has_named_partner_with_postcode,
                  workflow_state: "partner_address_lookup_form")
         end
 

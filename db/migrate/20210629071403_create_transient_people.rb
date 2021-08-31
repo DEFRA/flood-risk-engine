@@ -3,8 +3,8 @@
 class CreateTransientPeople < ActiveRecord::Migration[6.0]
   def change
     create_table :transient_people do |t|
-      t.string :first_name
-      t.string :last_name
+      t.string :full_name
+      t.string :temp_postcode
       t.belongs_to :transient_registration, index: true, foreign_key: true
     end
   end

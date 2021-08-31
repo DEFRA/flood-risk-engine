@@ -1,0 +1,34 @@
+<div class="govuk-form-group">
+  <%= f.govuk_text_field :premises,
+      label: { text: t(".premises_label") },
+      hint: { text: t(".premises_hint") },
+      width: "one-half",
+      value: form.premises
+  %>
+</div>
+
+<div class="govuk-form-group">
+  <%= f.govuk_text_field :street_address,
+    label: { text: t(".street_address_label") },
+    width: "one-half",
+    value: form.street_address
+  %>
+</div>
+
+<div class="govuk-form-group">
+  <%= f.govuk_text_field :locality,
+    label: { text: t(".locality_label") },
+    width: "one-half",
+    value: form.locality
+  %>
+</div>
+
+<div class="govuk-form-group>
+  <%= f.govuk_text_field :city,
+    label: { text: t(".city_label") },
+    width: "one-half",
+    value: form.city
+  %>
+</div>
+
+<%= f.hidden_field :postcode, value: form.postcode %>

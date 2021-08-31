@@ -72,5 +72,17 @@ module FloodRiskEngine
       args[0] = "flood_risk_engine.enrollments.steps.#{step}#{args.first}"
       t(*args)
     end
+
+    def displayable_address(address)
+      return [] unless address.present?
+
+      # Get all the possible address lines, then remove the blank ones
+      [address.organisation,
+       address.premises,
+       address.street_address,
+       address.locality,
+       address.city,
+       address.postcode].reject(&:blank?)
+    end
   end
 end

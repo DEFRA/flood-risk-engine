@@ -74,6 +74,11 @@ FloodRiskEngine::Engine.routes.draw do
                     to: "company_postcode_forms#go_back",
                     as: "back",
                     on: :collection
+
+                get "skip_to_manual_address",
+                    to: "company_postcode_forms#skip_to_manual_address",
+                    as: "skip_to_manual_address",
+                    on: :collection
               end
 
     resources :company_address_lookup_forms,
@@ -83,6 +88,11 @@ FloodRiskEngine::Engine.routes.draw do
                 get "back",
                     to: "company_address_lookup_forms#go_back",
                     as: "back",
+                    on: :collection
+
+                get "skip_to_manual_address",
+                    to: "company_address_lookup_forms#skip_to_manual_address",
+                    as: "skip_to_manual_address",
                     on: :collection
               end
 
@@ -114,6 +124,11 @@ FloodRiskEngine::Engine.routes.draw do
                     to: "partner_postcode_forms#go_back",
                     as: "back",
                     on: :collection
+
+                get "skip_to_manual_address",
+                    to: "partner_postcode_forms#skip_to_manual_address",
+                    as: "skip_to_manual_address",
+                    on: :collection
               end
 
     resources :partner_address_lookup_forms,
@@ -123,6 +138,11 @@ FloodRiskEngine::Engine.routes.draw do
                 get "back",
                     to: "partner_address_lookup_forms#go_back",
                     as: "back",
+                    on: :collection
+
+                get "skip_to_manual_address",
+                    to: "partner_address_lookup_forms#skip_to_manual_address",
+                    as: "skip_to_manual_address",
                     on: :collection
               end
 
@@ -144,6 +164,11 @@ FloodRiskEngine::Engine.routes.draw do
                     to: "partner_overview_forms#go_back",
                     as: "back",
                     on: :collection
+
+                delete "destroy/:partner_id",
+                       to: "partner_overview_forms#destroy",
+                       as: "destroy",
+                       on: :collection
               end
 
     resources :contact_name_forms,

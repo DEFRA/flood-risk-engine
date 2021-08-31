@@ -1,15 +1,34 @@
 <%= render("flood_risk_engine/shared/back", back_path: back_company_number_forms_path(@company_number_form.token)) %>
 
-<div class="text">
-  <%= form_for(@company_number_form) do |f| %>
-    <%= render("flood_risk_engine/shared/errors", object: @company_number_form) %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @company_number_form do |f| %>
+      <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
 
-    <h1 class="heading-large"><%= t(".heading") %></h1>
+      <span class="govuk-visually-hidden">
+        <%= t(".legend.#{@company_number_form.business_type}") %>
+      </span>
 
-    <%= hidden_field_tag :token, @company_number_form.token %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <%= f.govuk_text_field :company_number,
+            label: {
+              text: t(".heading.#{@company_number_form.business_type}"),
+              tag: "h1",
+              size: "l"
+            },
+            width: 5,
+            hint: -> do %>
+              <span class="govuk-body-m">
+                <%= t(".label.#{@company_number_form.business_type}") %>
+              </span>
+              <br/>
+              <%= t(".hint.#{@company_number_form.business_type}") %>
+          <% end %>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
-  <% end %>
+      <%= f.govuk_submit t(".next_button") %>
+    <% end %>
+  </div>
 </div>

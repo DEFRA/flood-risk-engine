@@ -2,5 +2,16 @@ en:
   flood_risk_engine:
     partner_address_lookup_forms:
       new:
-        heading: "Partner address lookup"
-        next_button: "Submit"
+        heading: Select partner address
+        postcode_label: Postcode
+        postcode_change_link: "Change postcode"
+        manual_address_link: "I cannot find the address in the list"
+        error_heading: Something is wrong
+        next_button: Continue
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/partner_address_lookup_form:
+          attributes:
+            partner_address:
+              blank: "Select an address"

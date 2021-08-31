@@ -204,17 +204,16 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "blpu_state_code"
     t.string "postal_address_code"
     t.string "logical_status_code"
-    t.integer "addressable_id"
     t.string "addressable_type"
+    t.bigint "addressable_id"
     t.string "uprn"
     t.string "token"
-    t.index ["addressable_id"], name: "index_transient_addresses_on_addressable_id", unique: true
-    t.index ["addressable_type"], name: "index_transient_addresses_on_addressable_type", unique: true
+    t.index ["addressable_type", "addressable_id"], name: "index_addressables"
   end
 
   create_table "transient_people", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "full_name"
+    t.string "temp_postcode"
     t.bigint "transient_registration_id"
     t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
   end

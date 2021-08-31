@@ -4,9 +4,25 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "CompanyAddressLookupForms", type: :request do
-    include_examples "GET flexible form", "company_address_lookup_form"
+    describe "GET company_address_lookup_form_path" do
+      include_examples "GET flexible form", "company_address_lookup_form"
+    end
 
-    include_examples "POST without params form", "company_address_lookup_form"
+    describe "POST company_address_lookup_form_path" do
+      before(:each) { VCR.insert_cassette("address_lookup_valid_postcode", allow_playback_repeats: true) }
+      after(:each) { VCR.eject_cassette }
+
+      let(:transient_registration) do
+        create(:new_registration,
+               temp_company_postcode: "BS1 5AH",
+               workflow_state: "company_address_lookup_form")
+      end
+
+      include_examples "POST form",
+                       "company_address_lookup_form",
+                       valid_params: { company_address: { uprn: "340116" } },
+                       invalid_params: { company_address: {} }
+    end
 
     describe "GET back_company_address_lookup_forms_path" do
       context "when a valid transient registration exists" do

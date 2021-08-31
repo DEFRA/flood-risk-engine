@@ -14,6 +14,10 @@ module FloodRiskEngine
       super
     end
 
+    def business_type
+      FloodRiskEngine::TransientRegistration::BUSINESS_TYPES.key(transient_registration.business_type)
+    end
+
     private
 
     def process_company_number(company_number)
