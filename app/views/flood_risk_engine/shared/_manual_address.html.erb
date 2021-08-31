@@ -1,8 +1,4 @@
-<div class="govuk-form-group <%= "govuk-form-group--error" if form.errors[:premises].any? %>">
-  <% if form.errors[:premises].any? %>
-    <span class="govuk-error-message"><%= form.errors[:premises].join(", ") %></span>
-  <% end %>
-
+<div class="govuk-form-group">
   <%= f.govuk_text_field :premises,
       label: { text: t(".premises_label") },
       hint: { text: t(".premises_hint") },
@@ -11,11 +7,7 @@
   %>
 </div>
 
-<div class="govuk-form-group <%= "govuk-form-group--error" if form.errors[:street_address].any? %>">
-  <% if form.errors[:street_address].any? %>
-    <span class="govuk-error-message"><%= form.errors[:street_address].join(", ") %></span>
-  <% end %>
-
+<div class="govuk-form-group">
   <%= f.govuk_text_field :street_address,
     label: { text: t(".street_address_label") },
     width: "one-half",
@@ -31,11 +23,7 @@
   %>
 </div>
 
-<div class="govuk-form-group <%= "govuk-form-group--error" if form.errors[:city].any? %>">
-  <% if form.errors[:city].any? %>
-    <span class="govuk-error-message"><%= form.errors[:city].join(", ") %></span>
-  <% end %>
-
+<div class="govuk-form-group>
   <%= f.govuk_text_field :city,
     label: { text: t(".city_label") },
     width: "one-half",
