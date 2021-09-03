@@ -59,4 +59,9 @@ RSpec.shared_examples "POST without params form" do |form|
       end
     end
   end
+
+  # Should call a method like new_location_form_path("tokengoeshere")
+  def new_path_for(form, transient_registration)
+    send("new_#{form}_path", transient_registration.token)
+  end
 end

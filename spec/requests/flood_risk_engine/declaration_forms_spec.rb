@@ -9,14 +9,7 @@ module FloodRiskEngine
     end
 
     describe "POST declaration_form_path" do
-      let(:transient_registration) do
-        create(:new_registration, workflow_state: "declaration_form")
-      end
-
-      include_examples "POST form",
-                       "declaration_form",
-                       valid_params: { declaration: true },
-                       invalid_params: { declaration: "" }
+      include_examples "POST without params form", "declaration_form"
     end
 
     describe "GET back_declaration_forms_path" do
