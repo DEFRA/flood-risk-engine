@@ -240,7 +240,6 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "contact_name"
     t.string "contact_phone"
     t.string "contact_position"
-    t.boolean "declaration"
     t.string "temp_company_postcode"
     t.string "temp_grid_reference"
     t.text "temp_site_description"
