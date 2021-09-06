@@ -32,5 +32,9 @@ module FloodRiskEngine
     def completed_partners
       transient_people.select { |partner| partner.transient_address.present? }
     end
+
+    def reference_number
+      "TODO"
+    end
   end
 end

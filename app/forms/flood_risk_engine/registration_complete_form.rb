@@ -2,15 +2,21 @@
 
 module FloodRiskEngine
   class RegistrationCompleteForm < ::FloodRiskEngine::BaseForm
+    delegate :reference_number, to: :transient_registration
+
     def self.can_navigate_flexibly?
       false
     end
 
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    # Override BaseForm method as users shouldn't be able to submit this form
+    def submit; end
 
-      super(attributes)
+    def email
+      emails = [
+        transient_registration.contact_email,
+        transient_registration.additional_contact_email
+      ]
+      emails.delete_if(&:blank?).map(&:downcase).uniq.to_sentence
     end
   end
 end
