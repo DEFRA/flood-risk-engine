@@ -2,11 +2,12 @@
 
 module FloodRiskEngine
   class CheckYourAnswersForm < ::FloodRiskEngine::BaseForm
-    def submit(_params)
-      # Assign the params for validation and pass them to the BaseForm method for updating
-      attributes = {}
+    delegate :rows, to: :check_your_answers_presenter
 
-      super(attributes)
+    private
+
+    def check_your_answers_presenter
+      @_check_your_answers_presenter ||= CheckYourAnswersPresenter.new(transient_registration)
     end
   end
 end
