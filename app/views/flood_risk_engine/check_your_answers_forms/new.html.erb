@@ -1,15 +1,37 @@
 <%= render("flood_risk_engine/shared/back", back_path: back_check_your_answers_forms_path(@check_your_answers_form.token)) %>
 
-<div class="text">
-  <%= form_for(@check_your_answers_form) do |f| %>
-    <%= render("flood_risk_engine/shared/errors", object: @check_your_answers_form) %>
+<div class="govuk-grid-row">
+  <%= form_for @check_your_answers_form do |f| %>
+    <h1 class="govuk-heading-l">
+      <%= t(".heading") %>
+    </h1>
+    <h2 class="govuk-heading-m">
+      <%= t(".table_heading") %>
+    </h2>
+    <span class="govuk-visually-hidden"><%= t(".table_summary") %></span>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <% @check_your_answers_form.rows.each do |row| %>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <%= row[:title] %>
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <%= row[:value] %>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <% if row[:change_url].present? %>
+              <%= link_to(row[:change_url]) do %>
+                <%= t(".change_link")%>
+                <span class="govuk-visually-hidden">
+                  <%= row[:change_link_suffix] %>
+                </span>
+              <% end %>
+            <% end %>
+          </dd>
+        </div>
+      <% end %>
+    </dl>
 
-    <h1 class="heading-large"><%= t(".heading") %></h1>
-
-    <%= hidden_field_tag :token, @check_your_answers_form.token %>
-
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
+    <%= f.govuk_submit t(".next_button") %>
   <% end %>
 </div>

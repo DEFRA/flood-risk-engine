@@ -2,5 +2,59 @@ en:
   flood_risk_engine:
     check_your_answers_forms:
       new:
-        heading: "Check your answers"
+        heading: Check your answers before completing this registration
+        subheading: We’ll send a copy of these details in the confirmation email.
+        table_heading: Registration details
+        table_summary: "The information you've given us"
+        change_link: Change
+        rows:
+          organisation_registration_number:
+            title: Company registration number
+            accessible_change_link_suffix: company registration number
+          business_type:
+            title: Customer type
+            value:
+              sole_trader: "Sole trader"
+              limited_company: "Limited company"
+              partnership: "Partnership"
+              limited_liability_partnership: "Limited liability partnership"
+              local_authority: "Local authority"
+              charity: "Charity"
+            accessible_change_link_suffix: customer type
+          grid_reference:
+            title: Grid reference
+            accessible_change_link_suffix: grid reference
+          exemption:
+            title: Exemption %{code}
+            accessible_change_link_suffix: exemption %{code}
+          site_description:
+            title: Site description
+            accessible_change_link_suffix: site description
+          dredging_length:
+            title: Dredging length
+            value:
+              one: "%{dredging_length} metre"
+              other: "%{dredging_length} metres"
+            accessible_change_link_suffix: dredging length
+          company_name:
+            title: Responsible for activity (‘operator’)
+            accessible_change_link_suffix: operator
+          company_address:
+            title: Their address
+            accessible_change_link_suffix: their address
+          contact_name:
+            title: Who we will contact
+            value:
+              position: "%{contact_name} (%{contact_position})"
+              no_position: "%{contact_name}"
+            accessible_change_link_suffix: who we will contact
+          contact_phone:
+            title: Telephone
+            accessible_change_link_suffix: telephone
+          contact_email:
+            title: Email
+            accessible_change_link_suffix: email
+          partner:
+            title: Details of responsible partner
+            accessible_change_link_suffix: responsible partner
         next_button: "Submit"

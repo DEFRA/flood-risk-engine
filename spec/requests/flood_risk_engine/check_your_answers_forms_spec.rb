@@ -4,9 +4,19 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "CheckYourAnswersForms", type: :request do
-    include_examples "GET flexible form", "check_your_answers_form"
 
-    include_examples "POST without params form", "check_your_answers_form"
+    describe "GET check_your_answers_form_path" do
+      before do
+        transient_registration.exemptions = [build(:exemption)]
+        transient_registration.company_address = build(:transient_address, :company)
+      end
+
+      include_examples "GET flexible form", "check_your_answers_form"
+    end
+
+    describe "POST check_your_answers_form_path" do
+      include_examples "POST without params form", "check_your_answers_form"
+    end
 
     describe "GET back_check_your_answers_forms_path" do
       context "when a valid transient registration exists" do
