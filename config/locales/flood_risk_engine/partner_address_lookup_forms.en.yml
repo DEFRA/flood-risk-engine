@@ -2,7 +2,7 @@ en:
   flood_risk_engine:
     partner_address_lookup_forms:
       new:
-        heading: Select partner address
+        heading: Select the address of this partner
         postcode_label: Postcode
         postcode_change_link: "Change postcode"
         manual_address_link: "I cannot find the address in the list"

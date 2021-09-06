@@ -14,7 +14,7 @@ en:
         legend:
           limited_company: Registration number of the company
           limited_liability_partnership: Registration number of the partnership
-        next_button: "Submit"
+        next_button: "Continue"
   activemodel:
       errors:
         models:

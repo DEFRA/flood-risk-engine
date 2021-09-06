@@ -37,4 +37,21 @@ en:
           dredging_length:
             blank: Enter the approximate length of dredging
             numeric: The length of dredging must be a number between %{min} and %{max}
-        next_button: "Submit"
+        next_button: Continue
+  defra_ruby:
+    validators:
+      GridReferenceValidator:
+        blank: Enter a National Grid reference
+        invalid_format: The grid reference should have 2 letters and 10 digits
+        invalid: The grid reference is not a valid coordinate
+  activemodel:
+    errors:
+      models:
+        flood_risk_engine/site_grid_reference_form:
+          attributes:
+            temp_site_description:
+              too_long: The site name or description must be no longer than 500 characters
+              blank: Enter a site name or description
+            dredging_length:
+              blank: Enter the approximate length of dredging
+              numeric: The length of dredging must be a number between 1 and 1500

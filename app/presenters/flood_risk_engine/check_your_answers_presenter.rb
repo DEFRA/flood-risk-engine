@@ -7,13 +7,19 @@ module FloodRiskEngine
       super(transient_registration, nil)
     end
 
-    def rows
+    def registration_rows
       [
         exemption_row,
         location_rows,
-        company_rows,
-        contact_rows
+        company_rows
       ].flatten
+    end
+
+    def contact_rows
+      row_array = [contact_name_row, contact_phone_row, contact_email_row]
+      row_array << additional_contact_email_row if additional_contact_email.present?
+
+      row_array
     end
 
     private
@@ -31,22 +37,19 @@ module FloodRiskEngine
       if partnership?
         transient_people.each { |partner| row_array << partner_row(partner) }
       else
+        row_array << company_number_row if company_no_required?
         row_array += [company_name_row, company_address_row]
       end
 
       row_array
     end
 
-    def contact_rows
-      [contact_name_row, contact_phone_row, contact_email_row]
-    end
-
     def exemption_row
       exemption = exemptions.first
 
       {
-        title: I18n.t("#{i18n_scope}.exemption.title", code: exemption.code),
-        value: exemption.summary
+        title: I18n.t("#{i18n_scope}.exemption.title"),
+        value: "#{exemption.code} #{exemption.summary}"
       }
     end
 
@@ -79,6 +82,13 @@ module FloodRiskEngine
       {
         title: I18n.t("#{i18n_scope}.business_type.title"),
         value: I18n.t("#{i18n_scope}.business_type.value.#{formatted_business_type}")
+      }
+    end
+
+    def company_number_row
+      {
+        title: I18n.t("#{i18n_scope}.company_number.title"),
+        value: company_number
       }
     end
 
@@ -131,6 +141,13 @@ module FloodRiskEngine
       {
         title: I18n.t("#{i18n_scope}.contact_email.title"),
         value: contact_email
+      }
+    end
+
+    def additional_contact_email_row
+      {
+        title: I18n.t("#{i18n_scope}.additional_contact_email.title"),
+        value: additional_contact_email
       }
     end
 

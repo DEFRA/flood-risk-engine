@@ -7,7 +7,7 @@ en:
           text_1: You can only register one exemption at a time.
           text_2: If you need more than one, please make a new registration for each.
           link: Exempt flood risk activities guidance
-        next_button: "Submit"
+        next_button: Continue
   activemodel:
     errors:
       models:

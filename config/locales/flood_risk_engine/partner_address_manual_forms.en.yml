@@ -2,7 +2,7 @@ en:
   flood_risk_engine:
     partner_address_manual_forms:
       new:
-        heading: What's the partner address?
+        heading: Enter the address of this partner
         os_places_error_heading: Our address finder is not working
         os_places_error_text: Please enter the address below.
         preset_postcode_label: Postcode

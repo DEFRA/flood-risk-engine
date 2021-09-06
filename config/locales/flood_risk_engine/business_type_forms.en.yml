@@ -17,14 +17,15 @@ en:
         list_item_4: make financial decisions that affect the activity
         list_item_5: take action to control the activity in an emergency
         options:
-          sole_trader: "Sole trader"
-          limited_company: "Limited company"
+          sole_trader: "Individual (eg a householder)"
+          limited_company: "Limited company (eg a registered company or plc)"
           partnership: "Partnership"
           limited_liability_partnership: "Limited liability partnership"
-          local_authority: "Local authority"
-          charity: "Charity"
-        next_button: "Submit"
+          local_authority: "Local authority or public body"
+          charity: "Other organisation (eg a trust, charity or club)"
+        help: "If you're not sure, please call our helpline on 03708 506 506 to get advice about who might be the organisation or person responsible for your activity."
+        next_button: "Continue"
   defra_ruby:
     validators:
       BusinessTypeValidator:
-        inclusion: "You must answer this question"
+        inclusion: "Select the type of organisation"

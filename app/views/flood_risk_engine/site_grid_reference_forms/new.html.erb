@@ -13,82 +13,73 @@
         <%= t(".heading") %>
       </h1>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <%= f.govuk_text_field :temp_grid_reference,
-            label: {
-              text: t(".grid_reference.form_label"),
-              size: "s"
-            },
-            width: "one-third",
-            hint: {
-              text:
-                [
-                  t(".grid_reference.example_hint"),
-                  t(".grid_reference.clarification_hint")
-                ].join("<br/>").html_safe
-            }
-          %>
+      <%= f.govuk_text_field :temp_grid_reference,
+        label: {
+          text: t(".grid_reference.form_label"),
+          size: "s"
+        },
+        width: "one-third",
+        hint: {
+          text:
+            [
+              t(".grid_reference.example_hint"),
+              t(".grid_reference.clarification_hint")
+            ].join("<br/>").html_safe
+        }
+      %>
 
-          <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                <%= t(".details.summary") %>
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              <p>
-                <%=
-                  t(".details.tool_text",
-                    link: link_to( t(".details.tool_link"), "http://gridreferencefinder.com/",
-                    rel: "external",
-                    target: "_blank")
-                  ).html_safe
-                %>
-              </p>
-              <ol class="govuk-list govuk-list--number">
-                <li><%= t(".details.bullet1") %></li>
-                <li><%= t(".details.bullet2") %></li>
-                <li><%= t(".details.bullet3") %></li>
-              </ol>
-            </div>
-          </details>
-
-          <% if @site_grid_reference_form.require_dredging_length? %>
-            <%= f.govuk_number_field :dredging_length,
-              label: {
-                text: t(".dredging_length.form_label"),
-                size: "s"
-              },
-              width: 5,
-              suffix_text: t(".dredging_length.units"),
-            hint: {
-                text:
-                  [
-                    t(".dredging_length.clarification_hint"),
-                    t(".dredging_length.units")
-                  ].join("<br/>").html_safe
-              }
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            <%= t(".details.summary") %>
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>
+            <%=
+              t(".details.tool_text",
+                link: link_to( t(".details.tool_link"), "http://gridreferencefinder.com/",
+                rel: "external",
+                target: "_blank")
+              ).html_safe
             %>
-          <% end %>
+          </p>
+          <ol class="govuk-list govuk-list--number">
+            <li><%= t(".details.bullet1") %></li>
+            <li><%= t(".details.bullet2") %></li>
+            <li><%= t(".details.bullet3") %></li>
+          </ol>
         </div>
-      </div>
+      </details>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-half">
-          <%= f.govuk_text_area :temp_site_description,
-            label: {
-              text: t(".description.form_label"),
-              size: "s"
-            },
-          hint: {
-              text: t(".description.clarification_hint")
-            },
-            max_chars: 500
-          %>
-        </div>
-      </div>
+      <% if @site_grid_reference_form.require_dredging_length? %>
+        <%= f.govuk_number_field :dredging_length,
+          label: {
+            text: t(".dredging_length.form_label"),
+            size: "s"
+          },
+          width: 5,
+          suffix_text: t(".dredging_length.units"),
+        hint: {
+            text:
+              [
+                t(".dredging_length.clarification_hint"),
+                t(".dredging_length.units")
+              ].join("<br/>").html_safe
+          }
+        %>
+      <% end %>
 
+      <%= f.govuk_text_area :temp_site_description,
+        label: {
+          text: t(".description.form_label"),
+          size: "s"
+        },
+      hint: {
+          text: t(".description.clarification_hint")
+        },
+        max_chars: 500
+      %>
 
       <%= f.govuk_submit t(".next_button") %>
     <% end %>

@@ -5,11 +5,11 @@ module FloodRiskEngine
     extend ActiveSupport::Concern
 
     BUSINESS_TYPES = HashWithIndifferentAccess.new(
-      sole_trader: "soleTrader",
-      limited_company: "limitedCompany",
-      partnership: "partnership",
-      limited_liability_partnership: "limitedLiabilityPartnership",
       local_authority: "localAuthority",
+      limited_company: "limitedCompany",
+      limited_liability_partnership: "limitedLiabilityPartnership",
+      sole_trader: "soleTrader",
+      partnership: "partnership",
       charity: "charity"
     )
 

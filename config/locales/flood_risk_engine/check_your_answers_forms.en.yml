@@ -4,15 +4,17 @@ en:
       new:
         heading: Check your answers before completing this registration
         subheading: We’ll send a copy of these details in the confirmation email.
-        table_heading: Registration details
-        table_summary: "The information you've given us"
+        registration_table_heading: Registration details
+        registration_table_summary: "The information you've given us about the registration"
+        contact_table_heading: Contact details
+        contact_table_summary: "The information you've given us about the contact"
         change_link: Change
         rows:
-          organisation_registration_number:
+          company_number:
             title: Company registration number
             accessible_change_link_suffix: company registration number
           business_type:
-            title: Customer type
+            title: Organisation type
             value:
               sole_trader: "Sole trader"
               limited_company: "Limited company"
@@ -20,13 +22,13 @@ en:
               limited_liability_partnership: "Limited liability partnership"
               local_authority: "Local authority"
               charity: "Charity"
-            accessible_change_link_suffix: customer type
+            accessible_change_link_suffix: organisation type
           grid_reference:
             title: Grid reference
             accessible_change_link_suffix: grid reference
           exemption:
-            title: Exemption %{code}
-            accessible_change_link_suffix: exemption %{code}
+            title: Exemption type
+            accessible_change_link_suffix: exemption
           site_description:
             title: Site description
             accessible_change_link_suffix: site description
@@ -37,24 +39,27 @@ en:
               other: "%{dredging_length} metres"
             accessible_change_link_suffix: dredging length
           company_name:
-            title: Responsible for activity (‘operator’)
-            accessible_change_link_suffix: operator
+            title: Operator name
+            accessible_change_link_suffix: operator name
           company_address:
-            title: Their address
-            accessible_change_link_suffix: their address
+            title: Operator address
+            accessible_change_link_suffix: operator address
           contact_name:
-            title: Who we will contact
+            title: Contact name
             value:
               position: "%{contact_name} (%{contact_position})"
               no_position: "%{contact_name}"
-            accessible_change_link_suffix: who we will contact
+            accessible_change_link_suffix: contact name
           contact_phone:
-            title: Telephone
+            title: Contact telephone
             accessible_change_link_suffix: telephone
           contact_email:
-            title: Email
+            title: Contact email
             accessible_change_link_suffix: email
+          additional_contact_email:
+            title: Additional contact email
+            accessible_change_link_suffix: additional email
           partner:
             title: Details of responsible partner
             accessible_change_link_suffix: responsible partner
-        next_button: "Submit"
+        next_button: "Continue"

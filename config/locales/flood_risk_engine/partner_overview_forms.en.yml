@@ -8,4 +8,4 @@ en:
         remove: Remove
         add_another: Add another partner
         confirm_delete: Are you sure you wish to remove %{name}?
-        next_button: "Next"
+        next_button: "Continue"

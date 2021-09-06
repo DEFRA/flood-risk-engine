@@ -3,14 +3,14 @@ en:
     partner_name_forms:
       new:
         heading: "What are the names of all the business partners?"
-        description_1: "Add another business partner"
+        description_1: "We need to know the name and home address of all business partners."
         full_name: "Full name"
         form_hint: "For example, Jane Smith"
         next_button: Continue
   activemodel:
     errors:
       models:
-        waste_carriers_engine/main_people_form:
+        flood_risk_engine/partner_name_form:
           attributes:
             full_name:
               blank: "Enter a full name"
