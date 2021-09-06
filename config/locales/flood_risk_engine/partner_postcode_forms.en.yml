@@ -2,7 +2,7 @@ en:
   flood_risk_engine:
     partner_postcode_forms:
       new:
-        heading: Find the address of the partner
+        heading: Find the address of this partner
         temp_partner_postcode_label: Enter a UK postcode
         temp_partner_postcode_hint: For example, BS1 5AH
         error_heading: A problem to fix

@@ -15,7 +15,6 @@ FactoryBot.define do
     end
 
     trait :has_required_data do
-      additional_contact_email { Faker::Name.name }
       business_type { "soleTrader" }
       company_name { Faker::Company.name }
       contact_email { generate(:random_email) }

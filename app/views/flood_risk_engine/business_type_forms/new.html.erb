@@ -13,43 +13,42 @@
         <%= t(".heading") %>
       </h1>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-        <%=
-          f.govuk_collection_radio_buttons :business_type,
-          @business_type_form.business_types,
-          :first,
-          :last,
-          legend: { text: "" },
-          hint: -> do %>
-            <span  class="govuk-!-font-weight-bold govuk-body-m">
-              <%= t(".sub_heading") %>
-            </span>
-            <br/>
-            <%= t(".sub_section_one") %>
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  <%= t(".summary_heading") %>
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <p>
-                  <%= t(".list_heading") %>
-                </p>
-                <ul class="govuk-list govuk-list--bullet">
-                  <% (1..5).each do |number| %>
-                    <li>
-                      <%= t(".list_item_#{number}") %>
 
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            </details>
-          <% end %>
-        </div>
-      </div>
+    <%=
+      f.govuk_collection_radio_buttons :business_type,
+      @business_type_form.business_types,
+      :first,
+      :last,
+      legend: { text: "" },
+      hint: -> do %>
+        <span  class="govuk-!-font-weight-bold govuk-body-m">
+          <%= t(".sub_heading") %>
+        </span>
+        <br/>
+        <%= t(".sub_section_one") %>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              <%= t(".summary_heading") %>
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>
+              <%= t(".list_heading") %>
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <% (1..5).each do |number| %>
+                <li>
+                  <%= t(".list_item_#{number}") %>
+
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </details>
+      <% end %>
+
+      <p class="govuk-body"><%= t(".help") %></p>
 
       <%= f.govuk_submit t(".next_button") %>
     <% end %>

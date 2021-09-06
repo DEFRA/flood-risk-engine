@@ -9,19 +9,15 @@
         <%= t(".legend.#{@company_name_form.business_type}") %>
       </span>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <%= f.govuk_text_field :company_name,
-            label: {
-              text: t(".heading.#{@company_name_form.business_type}"),
-              tag: "h1",
-              size: "l"
-            },
-            width: 20,
-            hint: { text: t(".hint.#{@company_name_form.business_type}") }
-          %>
-        </div>
-      </div>
+      <%= f.govuk_text_field :company_name,
+        label: {
+          text: t(".heading.#{@company_name_form.business_type}"),
+          tag: "h1",
+          size: "l"
+        },
+        width: 20,
+        hint: { text: t(".hint.#{@company_name_form.business_type}") }
+      %>
 
       <%= f.govuk_submit t(".next_button") %>
     <% end %>

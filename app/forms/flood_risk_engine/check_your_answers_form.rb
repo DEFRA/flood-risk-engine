@@ -2,7 +2,7 @@
 
 module FloodRiskEngine
   class CheckYourAnswersForm < ::FloodRiskEngine::BaseForm
-    delegate :rows, to: :check_your_answers_presenter
+    delegate :registration_rows, :contact_rows, to: :check_your_answers_presenter
 
     private
 

@@ -8,4 +8,4 @@ en:
           text: Change %{hidden}
           hidden: exemption %{code}
         table_summary: Exemption and link to change it
-        next_button: "Submit"
+        next_button: Save and continue

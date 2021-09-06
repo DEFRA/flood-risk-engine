@@ -26,7 +26,7 @@ en:
           limited_liability_partnership: "Enter the registered name of the partnership"
           local_authority: "For example, Bristol City Council"
           sole_trader: "For example, Jane Smith"
-        next_button: "Submit"
+        next_button: "Continue"
   activemodel:
       errors:
         models:
