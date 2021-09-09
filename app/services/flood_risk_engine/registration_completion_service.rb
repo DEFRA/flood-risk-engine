@@ -20,7 +20,7 @@ module FloodRiskEngine
 
       @registration
     rescue StandardError => e
-      Airbrake.notify(e, reference: @registration&.reference) if defined?(Airbrake)
+      Airbrake.notify(e, reference: @registration&.reference_number) if defined?(Airbrake)
       Rails.logger.error "Completing registration error: #{e}"
 
       raise e
