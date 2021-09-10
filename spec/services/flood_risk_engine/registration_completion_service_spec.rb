@@ -10,10 +10,17 @@ module FloodRiskEngine
              workflow_state: "registration_complete_form")
     end
     let(:subject) { described_class.run(transient_registration: new_registration) }
+    let(:enrollment) { Enrollment.last }
 
     describe "#run" do
       it "creates a new enrollment" do
         expect { subject }.to change { Enrollment.count }.by(1)
+      end
+
+      it "assigns the correct data to the new enrollment" do
+        subject
+
+        expect(enrollment.step).to eq("confirmation")
       end
 
       it "deletes the old transient registration" do
