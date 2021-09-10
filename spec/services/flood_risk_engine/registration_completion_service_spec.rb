@@ -23,6 +23,33 @@ module FloodRiskEngine
         expect(enrollment.step).to eq("confirmation")
       end
 
+      it "assigns the correct correspondance contact to the new enrollment" do
+        correspondence_contact_attributes = {
+          "full_name" => new_registration.contact_name,
+          "email_address" => new_registration.contact_email,
+          "telephone_number" => new_registration.contact_phone,
+          "position" => new_registration.contact_position
+        }
+
+        subject
+
+        expect(enrollment.correspondence_contact.attributes).to include(correspondence_contact_attributes)
+      end
+
+      context "when an additional contact email was given" do
+        before { new_registration.update(additional_contact_email: "test@example.com") }
+
+        it "assigns the correct secondary contact to the new enrollment" do
+          secondary_contact_attributes = {
+            "email_address" => new_registration.additional_contact_email
+          }
+
+          subject
+
+          expect(enrollment.secondary_contact.attributes).to include(secondary_contact_attributes)
+        end
+      end
+
       it "deletes the old transient registration" do
         new_registration.touch # So the object exists to be counted before the service runs
 
@@ -40,6 +67,14 @@ module FloodRiskEngine
           expect { subject }.to raise_error(StandardError)
 
           expect(Enrollment.count).to eq(old_count)
+        end
+
+        it "does not create new related objects" do
+          old_count = Contact.count
+
+          expect { subject }.to raise_error(StandardError)
+
+          expect(Contact.count).to eq(old_count)
         end
 
         it "does not delete the old transient registration" do

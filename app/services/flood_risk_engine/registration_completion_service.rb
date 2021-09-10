@@ -30,7 +30,6 @@ module FloodRiskEngine
     def transfer_data
       add_core_data
 
-      add_applicant_contact
       add_correspondence_contact
       add_secondary_contact
       add_organisation
@@ -43,11 +42,22 @@ module FloodRiskEngine
       @registration.step = "confirmation"
     end
 
-    def add_applicant_contact; end
+    def add_correspondence_contact
+      @registration.correspondence_contact = Contact.new(
+        full_name: @transient_registration.contact_name,
+        email_address: @transient_registration.contact_email,
+        telephone_number: @transient_registration.contact_phone,
+        position: @transient_registration.contact_position
+      )
+    end
 
-    def add_correspondence_contact; end
+    def add_secondary_contact
+      return unless @transient_registration.additional_contact_email.present?
 
-    def add_secondary_contact; end
+      @registration.secondary_contact = Contact.new(
+        email_address: @transient_registration.additional_contact_email
+      )
+    end
 
     def add_organisation; end
 
