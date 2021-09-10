@@ -32,9 +32,16 @@ module FloodRiskEngine
 
       add_correspondence_contact
       add_secondary_contact
-      add_organisation
+
+      if @transient_registration.partnership?
+        add_partnership_organisation
+      else
+        add_organisation
+      end
 
       assign_exemption
+      add_exemption_location
+
       assign_reference_number
     end
 
@@ -59,11 +66,27 @@ module FloodRiskEngine
       )
     end
 
+    def add_partnership_organisation; end
+
     def add_organisation
       @registration.organisation = Organisation.new(
         name: @transient_registration.company_name,
         org_type: org_type
       )
+
+      add_address
+    end
+
+    def add_address
+      address = @transient_registration.company_address
+      transferable_attributes = address.attributes.except("address_type",
+                                                          "token",
+                                                          "addressable_id",
+                                                          "addressable_type",
+                                                          "created_at",
+                                                          "updated_at")
+
+      @registration.organisation.primary_address = Address.new(transferable_attributes)
     end
 
     def assign_exemption
@@ -71,6 +94,8 @@ module FloodRiskEngine
         @registration.exemptions << exemption
       end
     end
+
+    def add_exemption_location; end
 
     def assign_reference_number; end
 

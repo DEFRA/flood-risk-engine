@@ -70,6 +70,21 @@ module FloodRiskEngine
         expect(enrollment.enrollment_exemptions.first.exemption_id).to eq(expected_exemption.id)
       end
 
+      it "assigns the correct address to the new enrollment" do
+        expected_address_data = new_registration.company_address.attributes.except(
+          "address_type",
+          "token",
+          "addressable_id",
+          "addressable_type",
+          "created_at",
+          "updated_at"
+        )
+
+        subject
+
+        expect(enrollment.organisation.primary_address.attributes).to include(expected_address_data)
+      end
+
       it "deletes the old transient registration" do
         new_registration.touch # So the object exists to be counted before the service runs
 
