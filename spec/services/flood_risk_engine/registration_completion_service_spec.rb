@@ -36,6 +36,17 @@ module FloodRiskEngine
         expect(enrollment.correspondence_contact.attributes).to include(correspondence_contact_attributes)
       end
 
+      it "assigns the correct organisation to the new enrollment" do
+        organisation_attributes = {
+          "name" => new_registration.company_name,
+          "org_type" => "limited_company"
+        }
+
+        subject
+
+        expect(enrollment.organisation.attributes).to include(organisation_attributes)
+      end
+
       context "when an additional contact email was given" do
         before { new_registration.update(additional_contact_email: "test@example.com") }
 
@@ -48,6 +59,15 @@ module FloodRiskEngine
 
           expect(enrollment.secondary_contact.attributes).to include(secondary_contact_attributes)
         end
+      end
+
+      it "assigns the correct exemption and enrollment_exemption to the new enrollment" do
+        expected_exemption = new_registration.exemptions.first
+
+        subject
+
+        expect(enrollment.exemptions.first).to eq(expected_exemption)
+        expect(enrollment.enrollment_exemptions.first.exemption_id).to eq(expected_exemption.id)
       end
 
       it "deletes the old transient registration" do

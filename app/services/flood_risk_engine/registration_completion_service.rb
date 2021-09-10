@@ -34,7 +34,7 @@ module FloodRiskEngine
       add_secondary_contact
       add_organisation
 
-      assign_exemptions
+      assign_exemption
       assign_reference_number
     end
 
@@ -59,10 +59,34 @@ module FloodRiskEngine
       )
     end
 
-    def add_organisation; end
+    def add_organisation
+      @registration.organisation = Organisation.new(
+        name: @transient_registration.company_name,
+        org_type: org_type
+      )
+    end
 
-    def assign_exemptions; end
+    def assign_exemption
+      @transient_registration.exemptions.each do |exemption|
+        @registration.exemptions << exemption
+      end
+    end
 
     def assign_reference_number; end
+
+    def org_type
+      enrollment_org_types = {
+        localAuthority: 0,
+        limitedCompany: 1,
+        limitedLiabilityPartnership: 2,
+        soleTrader: 3,
+        partnership: 4,
+        charity: 5
+      }
+
+      transient_type = @transient_registration.business_type.to_sym
+
+      enrollment_org_types[transient_type]
+    end
   end
 end
