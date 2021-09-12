@@ -8,7 +8,6 @@ module FloodRiskEngine
       @registration = nil
 
       @transient_registration.with_lock do
-        # This update is necessary as this will make the `with_lock` prevent race conditions
         @transient_registration.update(workflow_state: :creating_registration)
 
         @registration = Enrollment.new
