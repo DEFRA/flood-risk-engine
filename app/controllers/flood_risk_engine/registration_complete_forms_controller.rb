@@ -6,7 +6,9 @@ module FloodRiskEngine
     include CannotGoBackForm
 
     def new
-      super(RegistrationCompleteForm, "registration_complete_form")
+      return unless super(RegistrationCompleteForm, "registration_complete_form")
+
+      @enrollment = RegistrationCompletionService.run(transient_registration: @transient_registration)
     end
   end
 end
