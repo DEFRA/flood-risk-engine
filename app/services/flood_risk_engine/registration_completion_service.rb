@@ -95,7 +95,13 @@ module FloodRiskEngine
       end
     end
 
-    def add_exemption_location; end
+    def add_exemption_location
+      @registration.exemption_location = Location.new(
+        grid_reference: @transient_registration.temp_grid_reference,
+        description: @transient_registration.temp_site_description,
+        dredging_length: @transient_registration.dredging_length
+      )
+    end
 
     def assign_reference_number; end
 

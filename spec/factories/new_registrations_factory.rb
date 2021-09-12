@@ -21,7 +21,7 @@ FactoryBot.define do
       contact_name { Faker::Name.name }
       contact_phone { Faker::PhoneNumber.phone_number }
       contact_position { Faker::Company.profession }
-      temp_grid_reference { Faker::Number.number(digits: 10) }
+      temp_grid_reference { "ST 58132 72695" }
       temp_site_description { Faker::Lorem.sentence }
 
       exemptions { [build(:exemption)] }

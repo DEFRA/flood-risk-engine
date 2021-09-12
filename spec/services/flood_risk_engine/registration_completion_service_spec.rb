@@ -85,6 +85,18 @@ module FloodRiskEngine
         expect(enrollment.organisation.primary_address.attributes).to include(expected_address_data)
       end
 
+      it "assigns the correct site location to the new enrollment" do
+        location_attributes = {
+          "grid_reference" => new_registration.temp_grid_reference,
+          "description" => new_registration.temp_site_description,
+          "dredging_length" => new_registration.dredging_length
+        }
+
+        subject
+
+        expect(enrollment.exemption_location.attributes).to include(location_attributes)
+      end
+
       it "deletes the old transient registration" do
         new_registration.touch # So the object exists to be counted before the service runs
 
