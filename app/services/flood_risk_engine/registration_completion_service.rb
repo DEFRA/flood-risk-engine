@@ -64,8 +64,6 @@ module FloodRiskEngine
     end
 
     def add_secondary_contact
-      return unless @transient_registration.additional_contact_email.present?
-
       @registration.secondary_contact = Contact.new(
         email_address: @transient_registration.additional_contact_email
       )

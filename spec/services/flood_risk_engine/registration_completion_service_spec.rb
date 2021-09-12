@@ -51,18 +51,14 @@ module FloodRiskEngine
         expect(enrollment.organisation.attributes).to include(organisation_attributes)
       end
 
-      context "when an additional contact email was given" do
-        before { new_registration.update(additional_contact_email: "test@example.com") }
+      it "assigns the correct secondary contact to the new enrollment" do
+        secondary_contact_attributes = {
+          "email_address" => new_registration.additional_contact_email
+        }
 
-        it "assigns the correct secondary contact to the new enrollment" do
-          secondary_contact_attributes = {
-            "email_address" => new_registration.additional_contact_email
-          }
+        subject
 
-          subject
-
-          expect(enrollment.secondary_contact.attributes).to include(secondary_contact_attributes)
-        end
+        expect(enrollment.secondary_contact.attributes).to include(secondary_contact_attributes)
       end
 
       it "assigns the correct exemption and enrollment_exemption to the new enrollment" do
