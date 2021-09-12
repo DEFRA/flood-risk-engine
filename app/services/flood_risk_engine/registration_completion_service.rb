@@ -44,10 +44,12 @@ module FloodRiskEngine
       add_exemption_location
 
       assign_reference_number
+      update_status
     end
 
     def add_core_data
       @registration.step = "confirmation"
+      @registration.submitted_at = Time.zone.now
     end
 
     def add_correspondence_contact
@@ -123,6 +125,12 @@ module FloodRiskEngine
 
     def assign_reference_number
       @registration.reference_number = ReferenceNumber.create
+    end
+
+    def update_status
+      @registration.enrollment_exemptions.each do |ee|
+        ee.status = 1
+      end
     end
 
     def org_type

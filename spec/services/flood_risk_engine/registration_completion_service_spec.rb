@@ -18,9 +18,13 @@ module FloodRiskEngine
       end
 
       it "assigns the correct data to the new enrollment" do
+        stub_time = Time.new(2000, 1, 1)
+        expect(Time.zone).to receive(:now).at_least(:once).and_return(stub_time)
+
         subject
 
         expect(enrollment.step).to eq("confirmation")
+        expect(enrollment.submitted_at).to eq(stub_time)
       end
 
       it "assigns the correct correspondance contact to the new enrollment" do
@@ -102,6 +106,12 @@ module FloodRiskEngine
         subject
 
         expect(enrollment.reference_number).to eq(ReferenceNumber.last.number)
+      end
+
+      it "assigns the status" do
+        subject
+
+        expect(enrollment.enrollment_exemptions.first.status).to eq("pending")
       end
 
       it "deletes the old transient registration" do
