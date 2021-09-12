@@ -109,6 +109,52 @@ module FloodRiskEngine
         expect { subject }.to change { NewRegistration.count }.by(-1)
       end
 
+      context "when the business is a partnership" do
+        let(:new_registration) do
+          create(:new_registration,
+                 :has_required_data_for_partnership,
+                 workflow_state: "registration_complete_form")
+        end
+
+        it "assigns the correct organisation to the new enrollment" do
+          organisation_attributes = {
+            "name" => nil,
+            "org_type" => "partnership"
+          }
+
+          subject
+
+          expect(enrollment.organisation.attributes).to include(organisation_attributes)
+        end
+
+        it "assigns the correct partners to the new enrollment" do
+          excluded_address_attributes = %w[address_type token addressable_id addressable_type created_at updated_at]
+
+          first_partner = new_registration.transient_people.first
+          first_partner_name = first_partner.full_name
+          first_partner_address_attributes = first_partner.transient_address
+                                                          .attributes
+                                                          .except(*excluded_address_attributes)
+
+          second_partner = new_registration.transient_people.last
+          second_partner_name = second_partner.full_name
+          second_partner_address_attributes = second_partner.transient_address
+                                                            .attributes
+                                                            .except(*excluded_address_attributes)
+
+          subject
+
+          enrollment_first_partner = enrollment.organisation.partners.first
+          enrollment_second_partner = enrollment.organisation.partners.last
+
+          expect(enrollment_first_partner.full_name).to eq(first_partner_name)
+          expect(enrollment_first_partner.address.attributes).to include(first_partner_address_attributes)
+
+          expect(enrollment_second_partner.full_name).to eq(second_partner_name)
+          expect(enrollment_second_partner.address.attributes).to include(second_partner_address_attributes)
+        end
+      end
+
       context "when an error occurs" do
         before do
           expect(new_registration).to receive(:destroy).and_raise(StandardError)

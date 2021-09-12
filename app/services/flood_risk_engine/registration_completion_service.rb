@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 module FloodRiskEngine
   class RegistrationCompletionService < BaseService
     def run(transient_registration:)
@@ -66,7 +67,30 @@ module FloodRiskEngine
       )
     end
 
-    def add_partnership_organisation; end
+    def add_partnership_organisation
+      @registration.organisation = Organisation.new(
+        org_type: org_type
+      )
+
+      add_partners
+    end
+
+    def add_partners
+      @transient_registration.transient_people.each do |partner|
+        contact = Contact.new(
+          full_name: partner.full_name,
+          address: build_partner_address(partner)
+        )
+
+        @registration.organisation.partners << Partner.new(contact: contact)
+      end
+    end
+
+    def build_partner_address(partner)
+      attributes = transferable_address_attributes(partner.transient_address)
+
+      Address.new(attributes)
+    end
 
     def add_organisation
       @registration.organisation = Organisation.new(
@@ -78,15 +102,9 @@ module FloodRiskEngine
     end
 
     def add_address
-      address = @transient_registration.company_address
-      transferable_attributes = address.attributes.except("address_type",
-                                                          "token",
-                                                          "addressable_id",
-                                                          "addressable_type",
-                                                          "created_at",
-                                                          "updated_at")
+      attributes = transferable_address_attributes(@transient_registration.company_address)
 
-      @registration.organisation.primary_address = Address.new(transferable_attributes)
+      @registration.organisation.primary_address = Address.new(attributes)
     end
 
     def assign_exemption
@@ -121,5 +139,15 @@ module FloodRiskEngine
 
       enrollment_org_types[transient_type]
     end
+
+    def transferable_address_attributes(address)
+      address.attributes.except("address_type",
+                                "token",
+                                "addressable_id",
+                                "addressable_type",
+                                "created_at",
+                                "updated_at")
+    end
   end
 end
+# rubocop:enable Metrics/ClassLength
