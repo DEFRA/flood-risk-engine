@@ -19,6 +19,7 @@ module FloodRiskEngine
       end
 
       update_water_management_area
+      send_confirmation_email
 
       @registration
     rescue StandardError => e
@@ -135,6 +136,10 @@ module FloodRiskEngine
 
     def update_water_management_area
       UpdateWaterManagementAreaJob.perform_later(@registration.exemption_location)
+    end
+
+    def send_confirmation_email
+      SendEnrollmentSubmittedEmail.new(@registration).call
     end
 
     def org_type

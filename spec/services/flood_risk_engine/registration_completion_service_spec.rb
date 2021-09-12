@@ -112,6 +112,12 @@ module FloodRiskEngine
         expect(enrollment.enrollment_exemptions.first.status).to eq("pending")
       end
 
+      it "sends a confirmation email" do
+        expect(SendEnrollmentSubmittedEmail).to receive(:new).with(an_instance_of(Enrollment)).and_call_original
+
+        subject
+      end
+
       it "deletes the old transient registration" do
         new_registration.touch # So the object exists to be counted before the service runs
 
