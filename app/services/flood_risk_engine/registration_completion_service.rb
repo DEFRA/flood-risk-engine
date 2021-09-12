@@ -18,6 +18,8 @@ module FloodRiskEngine
         @transient_registration.destroy
       end
 
+      update_water_management_area
+
       @registration
     rescue StandardError => e
       Airbrake.notify(e, reference: @registration&.reference_number) if defined?(Airbrake)
@@ -131,6 +133,10 @@ module FloodRiskEngine
       @registration.enrollment_exemptions.each do |ee|
         ee.status = 1
       end
+    end
+
+    def update_water_management_area
+      UpdateWaterManagementAreaJob.perform_later(@registration.exemption_location)
     end
 
     def org_type

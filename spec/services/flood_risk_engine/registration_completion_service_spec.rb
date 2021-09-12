@@ -91,6 +91,8 @@ module FloodRiskEngine
       end
 
       it "assigns the correct site location to the new enrollment" do
+        expect(UpdateWaterManagementAreaJob).to receive(:perform_later).with(an_instance_of(Location))
+
         location_attributes = {
           "grid_reference" => new_registration.temp_grid_reference,
           "description" => new_registration.temp_site_description,
