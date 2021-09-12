@@ -97,6 +97,12 @@ module FloodRiskEngine
         expect(enrollment.exemption_location.attributes).to include(location_attributes)
       end
 
+      it "assigns the correct reference number" do
+        subject
+
+        expect(enrollment.reference_number).to eq(ReferenceNumber.last.number)
+      end
+
       it "deletes the old transient registration" do
         new_registration.touch # So the object exists to be counted before the service runs
 

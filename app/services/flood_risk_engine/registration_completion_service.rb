@@ -103,7 +103,9 @@ module FloodRiskEngine
       )
     end
 
-    def assign_reference_number; end
+    def assign_reference_number
+      @registration.reference_number = ReferenceNumber.create
+    end
 
     def org_type
       enrollment_org_types = {
