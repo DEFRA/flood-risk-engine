@@ -72,6 +72,7 @@ module FloodRiskEngine
 
       it "assigns the correct address to the new enrollment" do
         expected_address_data = new_registration.company_address.attributes.except(
+          "id",
           "address_type",
           "token",
           "addressable_id",
@@ -128,7 +129,7 @@ module FloodRiskEngine
         end
 
         it "assigns the correct partners to the new enrollment" do
-          excluded_address_attributes = %w[address_type token addressable_id addressable_type created_at updated_at]
+          excluded_address_attributes = %w[id address_type token addressable_id addressable_type created_at updated_at]
 
           first_partner = new_registration.transient_people.first
           first_partner_name = first_partner.full_name

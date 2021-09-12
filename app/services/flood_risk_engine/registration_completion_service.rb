@@ -141,7 +141,8 @@ module FloodRiskEngine
     end
 
     def transferable_address_attributes(address)
-      address.attributes.except("address_type",
+      address.attributes.except("id",
+                                "address_type",
                                 "token",
                                 "addressable_id",
                                 "addressable_type",
