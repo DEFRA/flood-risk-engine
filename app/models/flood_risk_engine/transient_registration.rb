@@ -6,7 +6,8 @@ module FloodRiskEngine
 
     self.table_name = "transient_registrations"
 
-    has_many :transient_people
+    has_many :transient_people, dependent: :destroy
+
     has_many :transient_registration_exemptions, dependent: :destroy
     has_many :exemptions, through: :transient_registration_exemptions
 
@@ -31,10 +32,6 @@ module FloodRiskEngine
 
     def completed_partners
       transient_people.select { |partner| partner.transient_address.present? }
-    end
-
-    def reference_number
-      "TODO"
     end
   end
 end

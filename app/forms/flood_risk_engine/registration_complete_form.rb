@@ -2,8 +2,6 @@
 
 module FloodRiskEngine
   class RegistrationCompleteForm < ::FloodRiskEngine::BaseForm
-    delegate :reference_number, to: :transient_registration
-
     def self.can_navigate_flexibly?
       false
     end

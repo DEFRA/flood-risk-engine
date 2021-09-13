@@ -16,6 +16,7 @@ module FloodRiskEngine
       context "when a valid new registration exists" do
         let(:transient_registration) do
           create(:new_registration,
+                 :has_required_data_for_limited_company,
                  workflow_state: "registration_complete_form")
         end
 
