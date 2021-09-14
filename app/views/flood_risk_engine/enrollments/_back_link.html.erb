@@ -1,9 +1,0 @@
-<%
-  content_for :back_link do
-    link_to(
-        t("global.back"),
-        enrollment_step_path(form.enrollment, form.enrollment.previous_step),
-        class: "govuk-back-link"
-      ) if form.enrollment.can?(:go_back)
-  end
-%>

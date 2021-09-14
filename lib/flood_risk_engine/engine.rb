@@ -8,7 +8,6 @@ require "defra_ruby/area"
 require "defra_ruby_email"
 require "defra_ruby/validators"
 require "active_support/dependencies"
-require_dependency "virtus"
 
 module FloodRiskEngine
   class Engine < ::Rails::Engine

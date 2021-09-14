@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email", "~> 1.1"
   s.add_dependency "defra_ruby_validators"
-  s.add_dependency "finite_machine", "~> 0.11.3"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
@@ -46,20 +45,12 @@ Gem::Specification.new do |s|
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
   s.add_dependency "rails", "~> 6.0"
-  # Form object convenience
-  s.add_dependency "reform", "2.6"
-  # Form object convenience (requires reform)
-  s.add_dependency "reform-rails", "0.2.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 2.0.2"
-  # The "sync" gem has been removed from ruby 2.17 https://bugs.ruby-lang.org/issues/16170
-  # Unfortunately, it is used by finite_machine, so we ensure it is here
-  s.add_dependency "sync"
   # Postcode format validation
   s.add_dependency "uk_postcode", "~> 2.1"
   # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "validates_email_format_of", "~> 1.6"
-  s.add_dependency "virtus", "~> 1.0"
 
   # Pretty prints objects in console. Usage `$ ap some_object`
   s.add_development_dependency "awesome_print"
