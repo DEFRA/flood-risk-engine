@@ -1,8 +1,0 @@
----
-en:
-  flood_risk_engine:
-    enrollments:
-      steps:
-        limited_liability_partnership_postcode:
-          heading: Find the registered address of the partnership
-

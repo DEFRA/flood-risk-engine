@@ -1,9 +1,0 @@
----
-en:
-  flood_risk_engine:
-    enrollments:
-      partners:
-        show:
-          confirm_removal_of_partner: Please confirm that you wish to remove %{name}.
-          delete: Delete
-          cancel: Cancel

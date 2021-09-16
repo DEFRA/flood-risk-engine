@@ -13,7 +13,7 @@ module FloodRiskEngine
     end
 
     it { is_expected.to respond_to(:layout) }
-    it { is_expected.to respond_to(:minumum_dredging_length_in_metres) }
+    it { is_expected.to respond_to(:minimum_dredging_length_in_metres) }
     it { is_expected.to respond_to(:maximum_dredging_length_in_metres) }
   end
 end

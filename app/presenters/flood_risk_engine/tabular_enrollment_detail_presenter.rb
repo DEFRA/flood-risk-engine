@@ -1,6 +1,6 @@
 #
 # Aggregates and exposes tabular summarized enrollment data for use in a view, for example
-# the 'check your answers' page or the confirmation email.
+# the confirmation email.
 #
 module FloodRiskEngine
   class TabularEnrollmentDetailPresenter

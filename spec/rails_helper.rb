@@ -11,7 +11,6 @@ require "capybara/rails"
 require "shoulda/matchers"
 require "email_spec"
 require "email_spec/rspec"
-require_relative "support/flood_risk_engine/state_machines/test_state_machine"
 require_relative "support/vcr"
 
 # Add additional requires below this line. Rails is not loaded until this point!

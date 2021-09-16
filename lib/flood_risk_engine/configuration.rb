@@ -30,15 +30,9 @@ module FloodRiskEngine
   class Configuration
     include ActiveSupport::Configurable
 
-    config_accessor(:redirection_url_postcode_lookup)
     config_accessor(:layout) { "application" }
-    config_accessor(:minumum_dredging_length_in_metres) { 1 } # TYPO - left in for legacy purposes
     config_accessor(:minimum_dredging_length_in_metres) { 1 }
     config_accessor(:maximum_dredging_length_in_metres) { 1500 }
-    config_accessor(:maximum_company_name_length) { 170 }
-    config_accessor(:maximum_individual_name_length) { 170 }
-    config_accessor(:maximum_llp_name_length) { 170 }
-    config_accessor(:require_journey_completed_in_same_browser) { true }
     config_accessor(:git_repository_url) # Optionally used in pages/version
     config_accessor(:application_name) # Optionally used in pages/version
 
