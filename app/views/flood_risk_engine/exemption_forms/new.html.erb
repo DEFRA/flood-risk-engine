@@ -5,10 +5,6 @@
     <%= form_for @exemption_form do |f| %>
       <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
 
-      <legend class="govuk-visually-hidden">
-        <%= t(".heading") %>
-      </legend>
-
       <h1 class="govuk-heading-l">
         <%= t(".heading") %>
       </h1>
@@ -18,7 +14,7 @@
         @exemption_form.all_exemptions,
         :id, :radio_button_label,
         small: true,
-        legend: { text: "" },
+        legend: { text: t(".heading"), class: "govuk-visually-hidden" },
         hint: {
           text:
             [
