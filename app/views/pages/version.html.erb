@@ -1,15 +1,15 @@
 <% presenter = FloodRiskEngine::ApplicationVersionPagePresenter.new %>
 
 <header>
-  <h1 class="heading-large"><%= presenter.application_name %></h1>
+  <h1 class="govuk-heading-l"><%= presenter.application_name %></h1>
 </header>
 
 <section>
-  <p>
+  <p class="govuk-body">
     <label><%= t ('.app_version') %></label>
     <strong><%= presenter.application_version %></strong>
   </p>
-  <p>
+  <p class="govuk-body">
     <label><%= t('.commit') %></label>
     <strong>
       <%= link_to(presenter.git_commit,
@@ -18,11 +18,11 @@
                   class: "btn-link") %>
     </strong>
   </p>
-  <p>
+  <p class="govuk-body">
     <label><%= t ('.flood_risk_engine_version') %></label>
     <strong><%= FloodRiskEngine::VERSION %></strong>
   </p>
-  <p>
+  <p class="govuk-body">
     <label><%= t('.render_time') %></label>
     <strong><%= l Time.zone.now %></strong>
   </p>

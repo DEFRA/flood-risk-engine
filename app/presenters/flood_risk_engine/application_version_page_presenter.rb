@@ -20,7 +20,7 @@ module FloodRiskEngine
 
     def git_repository_url
       FloodRiskEngine.config.git_repository_url ||
-        "https://github.com/EnvironmentAgency/#{application_name.underscore.dasherize}"
+        "https://github.com/defra/#{application_name.underscore.dasherize}"
     end
   end
 end
