@@ -19,6 +19,12 @@
             text: t(".temp_company_postcode_hint")
           } %>
       <%= f.govuk_submit t(".next_button") %>
+
+      <% if @company_postcode_form.errors.added?(:temp_company_postcode, :no_results) %>
+        <div class="govuk-body">
+          <%= link_to(t(".manual_address_link"), skip_to_manual_address_company_postcode_forms_path(@company_postcode_form.token)) %>
+        </div>
+      <% end %>
     <% end %>
     <%= render("flood_risk_engine/shared/os_terms_footer") %>
   </div>

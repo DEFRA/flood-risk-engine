@@ -4,6 +4,7 @@
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @company_address_manual_form do |f| %>
       <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
+
       <% if @company_address_manual_form.address_finder_error %>
         <div class="govuk-error-summary">
           <h2 class="govuk-heading-m"><%= t(".address_finder_error_heading") %></h2>
@@ -20,15 +21,17 @@
 
       <p class="govuk-body">
         <%= t(".preset_postcode_label") %>
-      <br/>
-      <span class="postcode govuk-!-font-weight-bold">
-        <%= @company_address_manual_form.postcode %>
-      </span>
-      <%= link_to(t(".postcode_change_link"), back_company_address_manual_forms_path(@company_address_manual_form.token)) %>
+        <br/>
+        <span class="postcode govuk-!-font-weight-bold">
+          <%= @company_address_manual_form.postcode %>
+        </span>
+        <%= link_to(t(".postcode_change_link"), back_company_address_manual_forms_path(@company_address_manual_form.token)) %>
       </p>
+
       <%= f.fields_for :company_address do |f| %>
         <%= render("flood_risk_engine/shared/manual_address", form: @company_address_manual_form, f: f) %>
       <% end %>
+
       <%= f.govuk_submit t(".next_button") %>
     <% end %>
   </div>
