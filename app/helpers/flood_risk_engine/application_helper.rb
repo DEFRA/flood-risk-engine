@@ -12,48 +12,6 @@ module FloodRiskEngine
       main_app.respond_to?(method) ? main_app.send(method, *args) : super
     end
 
-    # This helper  adds a form-group DIV around form elements,
-    # and takes the actual form fields as a content block.
-    #
-    # Some coupling with app/views/flood_risk_engine/enrollments/_validation_errors.html.erb which displays
-    # the actual validation errors and links between error display and the
-    # associated form-group defined here
-    #
-    # Example Usage :
-    # <%= form_group_and_validation(@enrollment, :base) do %>
-    #   <%= form.radio_button "blah", "new", checked: false, class: "radio" %>
-    #   <%= form.radio_button "blah", "renew", checked: false, class: "radio" %>
-    # <% end %>
-    #
-    def form_group_and_validation(form, attribute, &block)
-      content = block_given? ? capture(&block) : ""
-      classes = ["form-group"]
-      options = {
-        id: error_link_id(attribute),
-        role: "group"
-      }
-
-      # Have to disable because rubocop then complains if we change it to
-      # if form&.errors[attribute].any? with Lint/SafeNavigationChain and we can
-      # find no example that deals with an array like here
-      # rubocop:disable Style/SafeNavigation
-      if form && form.errors[attribute].any?
-        classes << "error"
-        content = content_tag(:span,
-                              form.errors[attribute].first,
-                              class: "error-message") + content
-      end
-      # rubocop:enable Style/SafeNavigation
-      content_tag(:div, content, options.merge(class: classes.join(" ")))
-    end
-
-    def error_link_id(attribute)
-      # with nested attributes can get full path e.g applicant_contact.full_name
-      # we only want the last field
-      field = attribute.to_s.split(/\./).last
-      "form_group_#{field}"
-    end
-
     def page_title(title)
       return unless title.present?
 
@@ -66,11 +24,6 @@ module FloodRiskEngine
       end
 
       title
-    end
-
-    def step_t(step, *args)
-      args[0] = "flood_risk_engine.enrollments.steps.#{step}#{args.first}"
-      t(*args)
     end
 
     def displayable_address(address)
