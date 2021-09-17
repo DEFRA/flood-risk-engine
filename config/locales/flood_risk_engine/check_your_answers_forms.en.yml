@@ -16,7 +16,7 @@ en:
           business_type:
             title: Organisation type
             value:
-              sole_trader: "Sole trader"
+              sole_trader: "Individual"
               limited_company: "Limited company"
               partnership: "Partnership"
               limited_liability_partnership: "Limited liability partnership"
