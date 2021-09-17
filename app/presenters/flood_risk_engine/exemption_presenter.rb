@@ -5,7 +5,7 @@ module FloodRiskEngine
     end
 
     def radio_button_label
-      "#{code} #{summary} <span class='govuk-visually-hidden'>#{code}</span>".html_safe
+      "<strong>#{code}</strong> &ndash; #{summary} <span class='govuk-visually-hidden'>#{code}</span>".html_safe
     end
   end
 end

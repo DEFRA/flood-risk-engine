@@ -5,16 +5,21 @@
 
   <span class="govuk-visually-hidden"><%= t('.table_summary') %></span>
 
-  <table class="govuk-table">
-    <caption class="govuk-table__caption govuk-table__caption--l">
+  <h1 class="govuk-heading-l" id="heading">
+    <%= t(".heading") %>
+  </h1>
+
+  <table class="govuk-table" aria-describedby="heading">
+    <caption class="govuk-visually-hidden">
       <%= t(".heading") %>
     </caption>
+
     <tbody class="govuk-table__body">
       <% @confirm_exemption_form.transient_registration.exemptions.each do |exemption| %>
       <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header">
+        <td class="govuk-table__cell">
           <p><%= exemption.summary %></p>
-        </th>
+        </td>
         <th scope="row" class="govuk-table__header">
           <p><%= exemption.code %></p>
         </th>
