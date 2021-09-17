@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     company_name_forms:
       new:
+        title: Enter the name
         heading:
           charity: "What's the name of the organisation?"
           limited_company: "What's the registered name of the company?"

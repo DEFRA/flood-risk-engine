@@ -2,7 +2,7 @@ en:
   flood_risk_engine:
     confirm_exemption_forms:
       new:
-        continue: Save and continue
+        title: Confirm your exemption
         heading: Confirm your exemption
         remove_link:
           text: Change %{hidden}

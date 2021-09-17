@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     company_number_forms:
       new:
+        title: Companies House number
         heading:
           limited_company: What's the registration number of the company?
           limited_liability_partnership: What's the registration number of the partnership?

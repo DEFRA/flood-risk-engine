@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     company_address_lookup_forms:
       new:
+        title: Select the address
         heading:
           localAuthority: Select the address of the local authority or public body
           limitedCompany: Select company address

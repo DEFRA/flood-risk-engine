@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     contact_name_forms:
       new:
+        title: Contact name
         heading: Who should we contact about this activity?
         label: Enter a full name
         form_hint_1: For example, John Smith

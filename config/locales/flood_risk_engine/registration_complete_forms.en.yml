@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     registration_complete_forms:
       new:
+        title: Registration submitted
         heading: Registration submitted
         sub_heading: Please wait for us to confirm it
         heading_h2: What happens next
