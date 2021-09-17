@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     contact_email_forms:
       new:
+        title: Contact email
         form_hint: "We’ll send a confirmation to this address"
         heading: "What’s the email address of the person we should contact?"
         label:  Email address

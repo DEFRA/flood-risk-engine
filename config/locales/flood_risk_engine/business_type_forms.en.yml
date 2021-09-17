@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     business_type_forms:
       new:
+        title: Who is responsible for the activity?
         heading: Who is responsible for the activity?
         sub_heading: How to decide who is responsible
         sub_section_one: The company, body or individual who has control over the activity (work) is responsible.

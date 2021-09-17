@@ -5,7 +5,8 @@
     <div class="grid-row">
       <div class="column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
-          <h1 class="govuk-panel__title"> <%= page_title t(".heading") %>
+          <h1 class="govuk-panel__title">
+            <%= t(".heading") %>
             <br />
             <span class="govuk-panel__body"><%= t(".sub_heading") %></span>
           </h1>
@@ -19,7 +20,7 @@
 
         <p class="govuk-body"><%= t ".email_sent", email: @registration_complete_form.email %></p>
 
-        <p class="govuk-body"> <%= link_to t(".another_exemption_text"), root_url %> </p>
+        <p class="govuk-body"> <%= link_to t(".another_exemption_text"), main_app.root_url %> </p>
 
         <h2 class="govuk-heading-m"><%= t(".heading_h2") %></h2>
 

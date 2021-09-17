@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     partner_name_forms:
       new:
+        title: Partner name
         heading: "What are the names of all the business partners?"
         description_1: "We need to know the name and home address of all business partners."
         full_name: "Full name"

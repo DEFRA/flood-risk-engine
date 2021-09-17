@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     check_your_answers_forms:
       new:
+        title: Check your answers
         heading: Check your answers before completing this registration
         subheading: We’ll send a copy of these details in the confirmation email.
         registration_table_heading: Registration details

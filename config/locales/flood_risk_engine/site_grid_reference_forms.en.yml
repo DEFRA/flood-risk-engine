@@ -2,6 +2,7 @@ en:
   flood_risk_engine:
     site_grid_reference_forms:
       new:
+        title: Where will the activity take place?
         heading: Where will the activity take place?
         legend: Where will the activity take place?
         grid_reference:
