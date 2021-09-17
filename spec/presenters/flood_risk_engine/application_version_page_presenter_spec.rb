@@ -50,7 +50,7 @@ module FloodRiskEngine
         expect(subject.git_repository_url).to eq("http://example.com")
       end
       it "defaults to a deduced github repo url" do
-        expect(subject.git_repository_url).to eq("https://github.com/EnvironmentAgency/dummy")
+        expect(subject.git_repository_url).to eq("https://github.com/defra/dummy")
       end
     end
 
