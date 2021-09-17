@@ -105,6 +105,7 @@ module FloodRiskEngine
 
     def add_address
       attributes = transferable_address_attributes(@transient_registration.company_address)
+      attributes["organisation"] ||= ""
 
       @registration.organisation.primary_address = Address.new(attributes)
     end
