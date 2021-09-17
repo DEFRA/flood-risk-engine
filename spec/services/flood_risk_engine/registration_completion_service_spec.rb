@@ -86,6 +86,16 @@ module FloodRiskEngine
         expect(enrollment.organisation.primary_address.attributes).to include(expected_address_data)
       end
 
+      context "when the address doesn't have an organisation field" do
+        before { new_registration.company_address.update(organisation: nil) }
+
+        it "assigns the correct address to the new enrollment" do
+          subject
+
+          expect(enrollment.organisation.primary_address[:organisation]).to eq("")
+        end
+      end
+
       it "assigns the correct site location to the new enrollment" do
         expect(UpdateWaterManagementAreaJob).to receive(:perform_later).with(an_instance_of(Location))
 
