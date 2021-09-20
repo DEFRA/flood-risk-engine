@@ -4,10 +4,12 @@ en:
       new:
         title: Contact name
         heading: Who should we contact about this activity?
-        label: Enter a full name
-        form_hint_1: For example, John Smith
-        label1: Enter a job title, if applicable (optional)
-        form_hint_2: For example, Project Manager
+        contact_name:
+          label: Enter a full name
+          hint: For example, John Smith
+        contact_position:
+          label: Enter a job title, if applicable (optional)
+          hint: For example, Project Manager
         legend: Who should we contact about this activity?
         para_text: We may need to contact someone to check details of the activities or arrange a site visit.
           We’ll send a confirmation of your registration to this person.
