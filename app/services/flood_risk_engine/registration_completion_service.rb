@@ -90,6 +90,7 @@ module FloodRiskEngine
 
     def build_partner_address(partner)
       attributes = transferable_address_attributes(partner.transient_address)
+      attributes["organisation"] ||= ""
 
       Address.new(attributes)
     end

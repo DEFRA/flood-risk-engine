@@ -178,6 +178,18 @@ module FloodRiskEngine
           expect(enrollment_second_partner.full_name).to eq(second_partner_name)
           expect(enrollment_second_partner.address.attributes).to include(second_partner_address_attributes)
         end
+
+        context "when the partner address doesn't have an organisation field" do
+          before { new_registration.transient_people.first.transient_address.update(organisation: nil) }
+
+          it "assigns the correct address to the new partner" do
+            subject
+
+            enrollment_first_partner = enrollment.organisation.partners.first
+
+            expect(enrollment_first_partner.address[:organisation]).to eq("")
+          end
+        end
       end
 
       context "when an error occurs" do
