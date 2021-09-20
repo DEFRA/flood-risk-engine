@@ -11,7 +11,9 @@ module FloodRiskEngine
 
     validates :dredging_length,
               presence: {
-                message: I18n.t(".errors.dredging_length.blank"),
+                message: I18n.t(".activemodel.errors.models"\
+                                ".flood_risk_engine/site_grid_reference_form"\
+                                ".attributes.dredging_length.blank"),
                 if: :require_dredging_length?
               },
               numericality: {
@@ -19,10 +21,9 @@ module FloodRiskEngine
                 greater_than_or_equal_to: FloodRiskEngine.config.minimum_dredging_length_in_metres,
                 less_than_or_equal_to: FloodRiskEngine.config.maximum_dredging_length_in_metres,
                 allow_blank: true,
-                message:
-                  I18n.t(".errors.dredging_length.numeric",
-                         min: FloodRiskEngine.config.minimum_dredging_length_in_metres,
-                         max: FloodRiskEngine.config.maximum_dredging_length_in_metres),
+                message: I18n.t(".activemodel.errors.models"\
+                                ".flood_risk_engine/site_grid_reference_form"\
+                                ".attributes.dredging_length.numeric"),
                 if: :require_dredging_length?
               }
 
