@@ -6,10 +6,6 @@
 
 <section>
   <p class="govuk-body">
-    <label><%= t ('.app_version') %></label>
-    <strong><%= presenter.application_version %></strong>
-  </p>
-  <p class="govuk-body">
     <label><%= t('.commit') %></label>
     <strong>
       <%= link_to(presenter.git_commit,
@@ -17,10 +13,6 @@
                   target: "_blank",
                   class: "btn-link") %>
     </strong>
-  </p>
-  <p class="govuk-body">
-    <label><%= t ('.flood_risk_engine_version') %></label>
-    <strong><%= FloodRiskEngine::VERSION %></strong>
   </p>
   <p class="govuk-body">
     <label><%= t('.render_time') %></label>

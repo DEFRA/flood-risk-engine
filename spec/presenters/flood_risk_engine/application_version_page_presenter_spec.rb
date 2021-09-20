@@ -23,17 +23,6 @@ module FloodRiskEngine
       end
     end
 
-    describe "#application_version" do
-      it "defaults to Undefined if an Application::VERSION is not defined" do
-        hide_const("::Application::VERSION")
-        expect(subject.application_version).to eq("Undefined")
-      end
-      it "uses the Application::VERSION if defined" do
-        stub_const("::Application::VERSION", "9.9.9")
-        expect(subject.application_version).to eq("9.9.9")
-      end
-    end
-
     describe "#git_commit" do
       it "returns nil when run in the test environment" do
         expect(subject.git_commit).to eq(nil)

@@ -6,10 +6,6 @@ module FloodRiskEngine
       FloodRiskEngine.config.application_name || Rails.application.class.module_parent_name
     end
 
-    def application_version
-      defined?(::Application::VERSION) ? Application::VERSION : "Undefined"
-    end
-
     def git_commit
       @_git_commit ||= begin
         sha =
