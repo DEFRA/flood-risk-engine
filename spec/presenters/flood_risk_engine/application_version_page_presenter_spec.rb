@@ -35,9 +35,8 @@ module FloodRiskEngine
     end
 
     describe "#git_commit" do
-      it "uses GitCommitSha to derive a git hash" do
-        expect(GitCommitSha).to receive(:current).and_return("123")
-        expect(subject.git_commit).to eq("123")
+      it "returns nil when run in the test environment" do
+        expect(subject.git_commit).to eq(nil)
       end
     end
 
