@@ -1,44 +1,14 @@
 # frozen_string_literal: true
 
-# Tests for fields using the CompanyNumberValidator
 RSpec.shared_examples "validate company_number" do |form_factory|
-  context "when a valid transient registration exists" do
-    let(:form) { build(form_factory, :has_required_data) }
+  before do
+    allow_any_instance_of(DefraRuby::Validators::CompaniesHouseService).to receive(:status).and_return(:active)
+  end
 
-    context "when a company_number meets the requirements" do
-      it "is valid" do
-        expect(form).to be_valid
-      end
-    end
-
-    context "when a company_number is blank" do
-      before do
-        form.transient_registration.company_number = ""
-      end
-
-      it "is not valid" do
-        expect(form).to_not be_valid
-      end
-    end
-
-    context "when a company number is too long" do
-      before do
-        form.transient_registration.company_number = "ak67inm5ijij85w3a7gck"
-      end
-
-      it "is not valid" do
-        expect(form).to_not be_valid
-      end
-    end
-
-    context "when a company number is the wrong format" do
-      before do
-        form.transient_registration.company_number = "incorrect"
-      end
-
-      it "is not valid" do
-        expect(form).to_not be_valid
-      end
-    end
+  it "validates the company_number using the CompaniesHouseNumberValidator class" do
+    validators = build(form_factory, :has_required_data)._validators
+    expect(validators.keys).to include(:company_number)
+    expect(validators[:company_number].first.class)
+      .to eq(DefraRuby::Validators::CompaniesHouseNumberValidator)
   end
 end

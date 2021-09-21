@@ -9,13 +9,16 @@ module FloodRiskEngine
     end
 
     describe "POST company_number_form_path" do
+      before(:each) { VCR.insert_cassette("companies_house_lookup_valid", allow_playback_repeats: true) }
+      after(:each) { VCR.eject_cassette }
+
       let(:transient_registration) do
         create(:new_registration, workflow_state: "company_number_form")
       end
 
       include_examples "POST form",
                        "company_number_form",
-                       valid_params: { company_number: "10997904" },
+                       valid_params: { company_number: "09360070" },
                        invalid_params: { company_number: "" }
     end
 

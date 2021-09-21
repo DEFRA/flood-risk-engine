@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.companieshouse.gov.uk/company/09360070
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.7.1p83
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.companieshouse.gov.uk
+      Authorization:
+      - Basic <API_KEY>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Sep 2021 16:04:02 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1406'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - X-RateLimit-Query, origin, content-type, content-length, user-agent, host,
+        accept, authorization
+      Access-Control-Expose-Headers:
+      - Location,www-authenticate,cache-control,pragma,content-type,expires,last-modified
+      - X-RateLimit-Window, X-RateLimit-Limit, X-RateLimit-Remain, X-RateLimit-Reset,
+        Location, www-authenticate, cache-control, pragma, content-type, expires,
+        last-modified
+      Access-Control-Max-Age:
+      - '3600'
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Ratelimit-Limit:
+      - '600'
+      X-Ratelimit-Remain:
+      - '599'
+      X-Ratelimit-Reset:
+      - '1632240542'
+      X-Ratelimit-Window:
+      - 5m
+      Server:
+      - CompaniesHouse
+    body:
+      encoding: UTF-8
+      string: '{"type":"ltd","company_name":"0800 WASTE LTD.","has_insolvency_history":false,"accounts":{"accounting_reference_date":{"month":"12","day":"31"},"overdue":false,"next_accounts":{"period_start_on":"2020-01-01","period_end_on":"2020-12-31","overdue":false,"due_on":"2021-09-30"},"next_due":"2021-09-30","last_accounts":{"made_up_to":"2019-12-31","period_start_on":"2019-01-01","type":"total-exemption-full","period_end_on":"2019-12-31"},"next_made_up_to":"2020-12-31"},"undeliverable_registered_office_address":false,"etag":"09ade011dfcac56d28e2c4f0016a5b3bf8adc9bd","company_number":"09360070","registered_office_address":{"locality":"Chessington","address_line_1":"Suite
+        26 Chessington Business Centre","address_line_2":"Cox Lane","postal_code":"KT9
+        1SD","country":"United Kingdom","region":"Surrey"},"jurisdiction":"england-wales","date_of_creation":"2014-12-18","company_status":"active","has_charges":false,"sic_codes":["38110"],"last_full_members_list_date":"2015-12-18","confirmation_statement":{"overdue":false,"next_due":"2022-02-03","last_made_up_to":"2021-01-20","next_made_up_to":"2022-01-20"},"links":{"self":"/company/09360070","filing_history":"/company/09360070/filing-history","officers":"/company/09360070/officers","persons_with_significant_control":"/company/09360070/persons-with-significant-control"},"registered_office_is_in_dispute":false,"has_super_secure_pscs":false,"can_file":true}'
+  recorded_at: Tue, 21 Sep 2021 16:04:01 GMT
+recorded_with: VCR 6.0.0

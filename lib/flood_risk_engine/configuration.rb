@@ -36,6 +36,8 @@ module FloodRiskEngine
     config_accessor(:git_repository_url) # Optionally used in pages/version
     config_accessor(:application_name) # Optionally used in pages/version
 
+    config_accessor(:companies_house_api_key)
+
     config_accessor(:govuk_guidance_url) do
       "https://www.gov.uk/government/publications/"\
       "environmental-permitting-regulations-exempt-flood-risk-activities"
@@ -66,6 +68,13 @@ module FloodRiskEngine
     def airbrake_blocklist=(value)
       DefraRuby::Alert.configure do |configuration|
         configuration.blocklist = value
+      end
+    end
+
+    # Companies House validation
+    def companies_house_api_key=(value)
+      DefraRuby::Validators.configure do |configuration|
+        configuration.companies_house_api_key = value
       end
     end
 
