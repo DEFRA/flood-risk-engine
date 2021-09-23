@@ -16,7 +16,6 @@ require "sprockets/railtie"
 
 # Need to require these gems in order for the dummy app to resolve
 # the js and css in e.g. assets/stylesheets/application.scss
-require "jquery-rails"
 require "bootstrap-sass"
 
 Bundler.require(*Rails.groups)
