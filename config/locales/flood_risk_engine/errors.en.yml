@@ -15,25 +15,15 @@ en:
         # As per https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
         # We do not wish to make this information available to the client, therefore using messaging for 404-not-found instead.
         heading: Page not found
-        sorry: Sorry, the page you’re looking for cannot be found.
-        clarification: Please check the web address you entered is correct.
-        link: Start again
+        if_you_typed: If you typed the web address, check it is correct.
+        if_you_pasted: If you pasted the web address, check you copied the entire address.
+        call_our_helpline: If the web address is correct or you selected a link or button, call our helpline on 03708 506 506,
       error_404:
         heading: Page not found
-        sorry: Sorry, we can't find that page.
-        clarification: Please check the web address you entered was correct.
-        link: Start again
+        if_you_typed: If you typed the web address, check it is correct.
+        if_you_pasted: If you pasted the web address, check you copied the entire address.
+        call_our_helpline: If the web address is correct or you selected a link or button, call our helpline on 03708 506 506,
       error_422:
         heading: There was a problem
         sorry: Sorry, the system wasn't able to complete that step.
         clarification: You could go back and try it again.
-      error_step_not_valid:
-        heading: Registration step problem
-        sorry: Sorry, you can't go to that section of the registration.
-        clarification: Follow the link below to go back.
-        go_to_current_step: Go back to the last saved step
-        restart: Start registration again
-
-
-
-

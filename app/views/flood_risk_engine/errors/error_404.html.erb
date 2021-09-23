@@ -1,10 +1,11 @@
-<header class="text">
-  <h1 class="form-title heading-large" id="groupLabel">
-    <%= t(".heading") %>
-  </h1>
-</header>
+<h1 class="govuk-heading-l">
+  <%= t(".heading") %>
+</h1>
 
-<p><%= t(".sorry") %></p>
-<p><%= t(".clarification") %></p>
-
-<%= link_to t(".link"), new_enrollment_path, class: "btn btn-primary" %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body"><%= t(".if_you_typed") %></p>
+    <p class="govuk-body"><%= t(".if_you_pasted") %></p>
+    <p class="govuk-body"><%= t(".call_our_helpline") %></p>
+  </div>
+</div>
