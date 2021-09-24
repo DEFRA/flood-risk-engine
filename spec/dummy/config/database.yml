@@ -15,12 +15,12 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV["PG_DEV_DATABASE"] || "flood_risk_dummy_dev" %>
+  database: <%= ENV["PG_DUMMY_DEV_DATABASE"] || "flood_risk_dummy_dev" %>
 
 test:
   <<: *default
-  database: <%= ENV["PG_TEST_DATABASE"] || "flood_risk_dummy_test" %>
+  database: <%= ENV["PG_DUMMY_TEST_DATABASE"] || "flood_risk_dummy_test" %>
 
 local_production:
   <<: *default
-  database: <%= ENV["PG_PROD_DATABASE"] || "flood_risk_dummy_prod" %>
+  database: <%= ENV["PG_DUMMY_PROD_DATABASE"] || "flood_risk_dummy_prod" %>
