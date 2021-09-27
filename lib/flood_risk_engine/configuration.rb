@@ -31,6 +31,7 @@ module FloodRiskEngine
     include ActiveSupport::Configurable
 
     config_accessor(:layout) { "application" }
+    config_accessor(:default_assistance_mode)
     config_accessor(:minimum_dredging_length_in_metres) { 1 }
     config_accessor(:maximum_dredging_length_in_metres) { 1500 }
     config_accessor(:git_repository_url) # Optionally used in pages/version

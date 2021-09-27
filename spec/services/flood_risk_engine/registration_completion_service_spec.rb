@@ -122,6 +122,12 @@ module FloodRiskEngine
         expect(enrollment.enrollment_exemptions.first.status).to eq("pending")
       end
 
+      it "assigns the assistance mode" do
+        subject
+
+        expect(enrollment.enrollment_exemptions.first.assistance_mode).to eq("unassisted")
+      end
+
       it "sends a confirmation email" do
         expect(SendEnrollmentSubmittedEmail).to receive(:new).with(an_instance_of(Enrollment)).and_call_original
 
