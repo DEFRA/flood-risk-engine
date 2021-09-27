@@ -1,5 +1,3 @@
-require_dependency "has_secure_token"
-
 module FloodRiskEngine
   class Enrollment < ApplicationRecord
     has_secure_token

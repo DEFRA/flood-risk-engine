@@ -35,8 +35,6 @@ Gem::Specification.new do |s|
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email", "~> 1.1"
   s.add_dependency "defra_ruby_validators"
-  # Enables url obfuscation with 24bit base58 token
-  s.add_dependency "has_secure_token", "~> 1.0.0"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3.0"
   s.add_dependency "nokogiri", ">= 1.11"
