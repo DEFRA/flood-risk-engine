@@ -46,7 +46,7 @@ module FloodRiskEngine
       add_exemption_location
 
       assign_reference_number
-      update_status
+      update_status_and_assistance_mode
     end
 
     def add_core_data
@@ -129,9 +129,10 @@ module FloodRiskEngine
       @registration.reference_number = ReferenceNumber.create
     end
 
-    def update_status
+    def update_status_and_assistance_mode
       @registration.enrollment_exemptions.each do |ee|
         ee.status = 1
+        ee.assistance_mode = FloodRiskEngine.config.default_assistance_mode
       end
     end
 
