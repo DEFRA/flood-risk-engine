@@ -22,7 +22,7 @@ module FloodRiskEngine
     # use token instead of ID to identify an registration during the journey. The
     # format makes it sufficiently hard for another user to attempt to 'guess'
     # the token of another registration in order to see its details.
-    # See https://github.com/robertomiranda/has_secure_token
+    # See https://api.rubyonrails.org/classes/ActiveRecord/SecureToken/ClassMethods.html#method-i-has_secure_token
     has_secure_token
     validates_presence_of :token, on: :save
 

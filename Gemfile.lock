@@ -11,7 +11,6 @@ PATH
       defra_ruby_validators
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
-      has_secure_token (~> 1.0.0)
       high_voltage (~> 3.0)
       nokogiri (>= 1.11)
       os_map_ref (= 0.4.2)
@@ -221,8 +220,6 @@ GEM
       activemodel (>= 6.0)
       activesupport (>= 6.0)
       deep_merge (~> 1.2.1)
-    has_secure_token (1.0.0)
-      activerecord (>= 3.0)
     hashdiff (1.0.1)
     high_voltage (3.1.2)
     htmlentities (4.3.4)
