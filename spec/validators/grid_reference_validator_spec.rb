@@ -41,7 +41,7 @@ module FloodRiskEngine
       end
 
       it "should raise errors on all" do
-        expect(foo.errors.keys.sort).to eq(all_tested)
+        expect(foo.errors.attribute_names.sort).to eq(all_tested)
       end
 
       it "should have error from exception" do
@@ -61,7 +61,7 @@ module FloodRiskEngine
       end
 
       it "should raise errors on all except with_allow_blank" do
-        expect(foo.errors.keys.sort).to eq(all_tested - [:with_allow_blank])
+        expect(foo.errors.attribute_names.sort).to eq(all_tested - [:with_allow_blank])
       end
     end
 

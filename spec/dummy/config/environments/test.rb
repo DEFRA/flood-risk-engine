@@ -31,12 +31,11 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  config.action_mailer.delivery_job = "ActionMailer::MailDeliveryJob"
+
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
-
-  # Don't raise errors for missing translations
-  config.action_view.raise_on_missing_translations = false
 end
