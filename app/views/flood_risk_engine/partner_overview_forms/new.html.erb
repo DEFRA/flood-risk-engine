@@ -40,7 +40,6 @@
               <%= link_to(
                     destroy_partner_overview_forms_path(partner_id: partner.id),
                     class: "link",
-                    method: :delete,
                     data: {:confirm => t(".confirm_delete", name: partner.full_name)}
                   ) do %>
                 <%= t(".remove") %>
