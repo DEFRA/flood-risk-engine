@@ -8,6 +8,8 @@ class CreateTransientRegistrationExemptions < ActiveRecord::Migration[6.0]
       t.date :expires_on
       t.belongs_to :transient_registration, index: { name: "transient_registration_id" }
       t.belongs_to :flood_risk_engine_exemption, index: { name: "exemption_id" }
+
+      t.timestamps null: false
     end
   end
 end

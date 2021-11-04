@@ -19,6 +19,8 @@ class CreateTransientAddresses < ActiveRecord::Migration[6.0]
       t.references :addressable, polymorphic: true, index: { name: "index_addressables" }
       t.string :uprn
       t.string :token
+
+      t.timestamps null: false
     end
   end
 end

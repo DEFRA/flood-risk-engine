@@ -7,6 +7,8 @@ class CreateTransientRegistrations < ActiveRecord::Migration[6.0]
       t.string :workflow_state
 
       t.index :token, unique: true
+
+      t.timestamps null: false
     end
   end
 end

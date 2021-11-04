@@ -6,6 +6,8 @@ class CreateTransientPeople < ActiveRecord::Migration[6.0]
       t.string :full_name
       t.string :temp_postcode
       t.belongs_to :transient_registration, index: true, foreign_key: true
+
+      t.timestamps null: false
     end
   end
 end
