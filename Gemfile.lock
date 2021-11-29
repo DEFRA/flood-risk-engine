@@ -396,7 +396,7 @@ GEM
     timers (4.3.3)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    uk_postcode (2.1.6)
+    uk_postcode (2.1.7)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
