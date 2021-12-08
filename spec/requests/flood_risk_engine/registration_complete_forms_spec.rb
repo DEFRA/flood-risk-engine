@@ -4,6 +4,9 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "RegistrationCompleteForms", type: :request do
+    before(:each) { VCR.insert_cassette("notify_registration_complete_forms") }
+    after(:each) { VCR.eject_cassette }
+
     describe "GET new_registration_complete_form_path" do
       context "when no new registration exists" do
         it "redirects to the start page" do
