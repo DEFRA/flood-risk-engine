@@ -14,6 +14,7 @@ PATH
       high_voltage (~> 3.0)
       jquery-rails (~> 4.4)
       nokogiri (>= 1.12)
+      notifications-ruby-client
       os_map_ref (= 0.4.2)
       phonelib (~> 0.6)
       rails (~> 6.1)
@@ -417,6 +418,7 @@ GEM
     zeitwerk (2.5.1)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
