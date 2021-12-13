@@ -39,6 +39,8 @@ Gem::Specification.new do |s|
   s.add_dependency "high_voltage", "~> 3.0"
   s.add_dependency "jquery-rails", "~> 4.4"
   s.add_dependency "nokogiri", ">= 1.12"
+  # Use Notify to send emails and letters
+  s.add_dependency "notifications-ruby-client"
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"

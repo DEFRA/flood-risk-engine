@@ -9,8 +9,11 @@ module FloodRiskEngine
     def call
       validate_enrollment
       distinct_recipients.each do |recipient|
-        EnrollmentMailer.submitted(enrollment_id: enrollment.id,
-                                   recipient_address: recipient).deliver_later
+
+        Notify::EnrollmentSubmittedEmailService.run(
+          enrollment: enrollment,
+          recipient_address: recipient
+        )
       end
     end
 

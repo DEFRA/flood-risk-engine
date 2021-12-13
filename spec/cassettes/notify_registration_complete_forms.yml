@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notifications.service.gov.uk/v2/notifications/email
+    body:
+      encoding: UTF-8
+      string: '{"email_address":"deangelo@example.org","template_id":"6e444a8c-c656-45aa-97d8-e95181ff3a75","personalisation":{"registration_number":"EXFRA001100","exemption_description":"Heavy
+        Duty Cotton Knife FRA_RSPEC_36."}}'
+    headers:
+      User-Agent:
+      - NOTIFY-API-RUBY-CLIENT/5.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type,Authorization
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Dec 2021 16:20:21 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-B3-Spanid:
+      - dc81e1761627257a
+      X-B3-Traceid:
+      - dc81e1761627257a
+      X-Vcap-Request-Id:
+      - 062a9150-ff6b-4237-5a2a-11e42336b219
+      Content-Length:
+      - '1475'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"content":{"body":"#Registration submitted: \r\n#please wait for us
+        to confirm it\r\n---\r\n#Your reference is EXFRA001100\r\n---\r\n#Exemption
+        submitted\r\nHeavy Duty Cotton Knife FRA_RSPEC_36.\r\n---\r\nWhat happens
+        next\r\nWe''ll email you within 10 working days to tell you if your registration
+        is valid.\r\n\r\nYou must not start work until we confirm your registration.\r\n\r\n#What
+        we''ll check\r\nWe''ll check if there are reasons why you can''t register
+        an exemption at the location you gave. For example, a location that is environmentally
+        sensitive or too close to a flood defence structure operated by us.\r\n\r\n#What
+        you must check\r\nYou are responsible for checking that you can meet the description
+        and conditions in the exempt flood risk activities guidance.\r\n----\r\n#Contact
+        the Environment Agency\r\nfloodriskactivity@environment-agency.gov.uk\r\nTelephone:
+        03708 506 506\r\nMinicom: 03702 422 549\r\nMonday to Friday, 8am to 6pm","from_email":"flood.risk.activity.exemption@notifications.service.gov.uk","subject":"Flood
+        risk activity exemption submitted"},"id":"5bf28e5b-6a4e-42cb-8584-33e2df0c03f6","reference":null,"scheduled_for":null,"template":{"id":"6e444a8c-c656-45aa-97d8-e95181ff3a75","uri":"https://api.notifications.service.gov.uk/services/3c49a0a8-ac02-4b40-88de-bcba588c0e6c/templates/6e444a8c-c656-45aa-97d8-e95181ff3a75","version":8},"uri":"https://api.notifications.service.gov.uk/v2/notifications/5bf28e5b-6a4e-42cb-8584-33e2df0c03f6"}
+
+'
+  recorded_at: Wed, 08 Dec 2021 16:20:18 GMT
+recorded_with: VCR 6.0.0

@@ -1,6 +1,6 @@
 class CreateFloodRiskEngineAddresses < ActiveRecord::Migration[4.2]
   def change
-    create_table :flood_risk_engine_addresses do |t|
+    create_table :flood_risk_engine_addresses, force: true do |t|
       t.string :premises, limit: 200
       t.string :street_address,     limit: 160
       t.string :locality,           limit: 70

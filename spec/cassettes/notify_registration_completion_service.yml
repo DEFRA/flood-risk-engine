@@ -1,0 +1,139 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://environment.data.gov.uk/spatialdata/administrative-boundaries-water-management-areas/wfs?Filter=(%3CFilter%3E%3CIntersects%3E%3CPropertyName%3ESHAPE%3C/PropertyName%3E%3Cgml:Point%3E%3Cgml:coordinates%3E358132,172695%3C/gml:coordinates%3E%3C/gml:Point%3E%3C/Intersects%3E%3C/Filter%3E)&REQUEST=GetFeature&SERVICE=WFS&SRSName=EPSG:27700&VERSION=1.0.0&propertyName=area_id,area_name,code,long_name,short_name&typeName=ms:Administrative_Boundaries_Water_Management_Areas
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.7.1p83
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - environment.data.gov.uk
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 08 Dec 2021 16:19:11 GMT
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '1513'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referer:
+      - 568e8143-6e5d-46f5-9cca-687bfcb7005d
+      Referrer:
+      - 568e8143-6e5d-46f5-9cca-687bfcb7005d
+      Response-Content-Type:
+      - application/xml
+      Response-Character-Encoding:
+      - UTF-8
+      Response-Buffer-Size:
+      - '8192'
+      User-Agent:
+      - Java/11.0.6
+      Host:
+      - z2dspprdeags02.mspx.app:6443
+      Accept:
+      - text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8" ?><wfs:FeatureCollection xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:wfs="http://www.opengis.net/wfs" xmlns:gml="http://www.opengis.net/gml"
+        xmlns:ms="https://environment.data.gov.uk/spatialdata/administrative-boundaries-water-management-areas/wfs"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.0.0/WFS-basic.xsd
+        http://www.opengis.net/gml http://schemas.opengis.net/gml/2.1.2/feature.xsd
+        https://environment.data.gov.uk/spatialdata/administrative-boundaries-water-management-areas/wfs
+        https://environment.data.gov.uk/spatialdata/administrative-boundaries-water-management-areas/wfs?service=wfs%26version=1.0.0%26request=DescribeFeatureType"><gml:boundedBy><gml:Box
+        srsName="EPSG:27700"><gml:coordinates>0.00000000,0.00000000 0.00000000,0.00000000</gml:coordinates>  </gml:Box></gml:boundedBy><gml:featureMember><ms:Administrative_Boundaries_Water_Management_Areas
+        fid="Administrative_Boundaries_Water_Management_Areas.3"><ms:OBJECTID>3</ms:OBJECTID><ms:long_name>Wessex</ms:long_name><ms:short_name>Wessex</ms:short_name><ms:code>WESSEX</ms:code><ms:area_id>28.00000000</ms:area_id><ms:area_name>Wessex</ms:area_name><ms:st_area_shape_>9901828776.37015152</ms:st_area_shape_><ms:st_perimeter_shape_>1185179.13119278</ms:st_perimeter_shape_></ms:Administrative_Boundaries_Water_Management_Areas></gml:featureMember></wfs:FeatureCollection>
+  recorded_at: Wed, 08 Dec 2021 16:19:08 GMT
+- request:
+    method: post
+    uri: https://api.notifications.service.gov.uk/v2/notifications/email
+    body:
+      encoding: UTF-8
+      string: '{"email_address":"marceline.kessler@example.com","template_id":"6e444a8c-c656-45aa-97d8-e95181ff3a75","personalisation":{"registration_number":"EXFRA001073","exemption_description":"Rustic
+        Copper Shirt FRA_RSPEC_1."}}'
+    headers:
+      User-Agent:
+      - NOTIFY-API-RUBY-CLIENT/5.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type,Authorization
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 08 Dec 2021 16:19:11 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-B3-Spanid:
+      - efca6c85700b8e32
+      X-B3-Traceid:
+      - efca6c85700b8e32
+      X-Vcap-Request-Id:
+      - ef2205dd-a59f-479d-6ca5-2293ca03949d
+      Content-Length:
+      - '1470'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"content":{"body":"#Registration submitted: \r\n#please wait for us
+        to confirm it\r\n---\r\n#Your reference is EXFRA001073\r\n---\r\n#Exemption
+        submitted\r\nRustic Copper Shirt FRA_RSPEC_1.\r\n---\r\nWhat happens next\r\nWe''ll
+        email you within 10 working days to tell you if your registration is valid.\r\n\r\nYou
+        must not start work until we confirm your registration.\r\n\r\n#What we''ll
+        check\r\nWe''ll check if there are reasons why you can''t register an exemption
+        at the location you gave. For example, a location that is environmentally
+        sensitive or too close to a flood defence structure operated by us.\r\n\r\n#What
+        you must check\r\nYou are responsible for checking that you can meet the description
+        and conditions in the exempt flood risk activities guidance.\r\n----\r\n#Contact
+        the Environment Agency\r\nfloodriskactivity@environment-agency.gov.uk\r\nTelephone:
+        03708 506 506\r\nMinicom: 03702 422 549\r\nMonday to Friday, 8am to 6pm","from_email":"flood.risk.activity.exemption@notifications.service.gov.uk","subject":"Flood
+        risk activity exemption submitted"},"id":"e2b94f5b-0168-46a7-a7f1-767e29d50a12","reference":null,"scheduled_for":null,"template":{"id":"6e444a8c-c656-45aa-97d8-e95181ff3a75","uri":"https://api.notifications.service.gov.uk/services/3c49a0a8-ac02-4b40-88de-bcba588c0e6c/templates/6e444a8c-c656-45aa-97d8-e95181ff3a75","version":8},"uri":"https://api.notifications.service.gov.uk/v2/notifications/e2b94f5b-0168-46a7-a7f1-767e29d50a12"}
+
+'
+  recorded_at: Wed, 08 Dec 2021 16:19:09 GMT
+recorded_with: VCR 6.0.0

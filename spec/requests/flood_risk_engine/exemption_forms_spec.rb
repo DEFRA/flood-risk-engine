@@ -8,17 +8,6 @@ module FloodRiskEngine
       include_examples "GET flexible form", "exemption_form"
     end
 
-    describe "POST exemption_form_path" do
-      let(:transient_registration) do
-        create(:new_registration, workflow_state: "exemption_form")
-      end
-
-      include_examples "POST form",
-                       "exemption_form",
-                       valid_params: { exemption_ids: FloodRiskEngine::Exemption.last.id },
-                       invalid_params: { exemption_ids: nil }
-    end
-
     describe "GET back_exemption_forms_path" do
       context "when a valid transient registration exists" do
         let(:transient_registration) do

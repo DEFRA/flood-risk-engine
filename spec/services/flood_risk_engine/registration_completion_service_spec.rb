@@ -4,6 +4,9 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe RegistrationCompletionService do
+    before(:each) { VCR.insert_cassette("notify_registration_completion_service") }
+    after(:each) { VCR.eject_cassette }
+
     let(:new_registration) do
       create(:new_registration,
              :has_required_data_for_limited_company,

@@ -9,5 +9,7 @@ FloodRiskEngine.configure do |config|
   config.default_assistance_mode = 0
 
   config.companies_house_api_key = ENV["COMPANIES_HOUSE_API_KEY"]
+
+  config.notify_api_key = ENV["NOTIFY_API_KEY"]
 end
 FloodRiskEngine.start_airbrake
