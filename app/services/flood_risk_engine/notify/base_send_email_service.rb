@@ -19,7 +19,7 @@ module FloodRiskEngine
       end
 
       def enrollment_description
-        "#{exemption.summary} #{exemption.code}."
+        "#{exemption.summary} #{exemption.code}"
       end
     end
   end

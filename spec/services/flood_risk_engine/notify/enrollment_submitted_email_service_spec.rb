@@ -15,7 +15,7 @@ module FloodRiskEngine
 
         let(:exemption_description) do
           exemption = enrollment.exemptions.first
-          "#{exemption.summary} #{exemption.code}."
+          "#{exemption.summary} #{exemption.code}"
         end
 
         let(:expected_notify_options) do
