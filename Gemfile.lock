@@ -149,7 +149,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    deep_merge (1.2.1)
+    deep_merge (1.2.2)
     defra_ruby_address (0.1.0)
       rest-client (~> 2.0)
     defra_ruby_alert (2.1.1)
@@ -213,10 +213,10 @@ GEM
       rake (>= 10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    govuk_design_system_formbuilder (2.8.0)
-      actionview (>= 6.0)
-      activemodel (>= 6.0)
-      activesupport (>= 6.0)
+    govuk_design_system_formbuilder (3.0.0)
+      actionview (>= 6.1)
+      activemodel (>= 6.1)
+      activesupport (>= 6.1)
       deep_merge (~> 1.2.1)
     hashdiff (1.0.1)
     high_voltage (3.1.2)
@@ -412,7 +412,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   ruby
