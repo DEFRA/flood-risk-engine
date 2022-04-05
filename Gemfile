@@ -5,6 +5,8 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem "rails", "6.1.5"
+
 group :development, :test do
   # ActiveRecord N+1 detection
   gem "bullet"
