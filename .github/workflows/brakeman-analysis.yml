@@ -24,13 +24,11 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Customize the ruby version depending on your needs
     - name: Setup Ruby
-      uses: ruby/setup-ruby@f20f1eae726df008313d2e0d78c5e602562a1bcf
-      with:
-        ruby-version: '2.7'
+      uses: ruby/setup-ruby@v1
 
     - name: Setup Brakeman
       env:

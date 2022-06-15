@@ -18,43 +18,46 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   # Use AASM to manage states and transitions
-  s.add_dependency "aasm", "~> 4.12"
-  s.add_dependency "activerecord-session_store", "~> 2.0"
+  s.add_dependency "aasm", "~> 4"
+  s.add_dependency "activerecord-session_store", "~> 2"
   # Airbrake catches exceptions and sends them to our instances of Errbit
   # defra_ruby_alert is a gem we created to manage airbrake across projects
-  s.add_dependency "defra_ruby_alert", "~> 2.1.1"
+  s.add_dependency "defra_ruby_alert", "~> 2.1"
   # Manages data seeding
   s.add_dependency "dibber", "~> 0.5"
   # Env Vars drive some config. This loads environment variables from .env
-  s.add_dependency "dotenv-rails", "~> 2.1"
+  s.add_dependency "dotenv-rails", "~> 2"
   # Used for address lookups on OS Places
   s.add_dependency "defra_ruby_address"
   # Used to determine the EA area for a registered exemption
-  s.add_dependency "defra_ruby_area", "~> 2.0"
+  s.add_dependency "defra_ruby_area", "~> 2"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
-  s.add_dependency "defra_ruby_email", "~> 1.1"
+  s.add_dependency "defra_ruby_email", "~> 1"
   s.add_dependency "defra_ruby_validators"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
-  s.add_dependency "high_voltage", "~> 3.0"
-  s.add_dependency "jquery-rails", "~> 4.4"
-  s.add_dependency "nokogiri", ">= 1.12"
+  s.add_dependency "high_voltage", "~> 3"
+  s.add_dependency "jquery-rails", "~> 4"
+  s.add_dependency "nokogiri", ">= 1"
   # Use Notify to send emails and letters
   s.add_dependency "notifications-ruby-client"
-  s.add_dependency "os_map_ref", "0.4.2"
+  s.add_dependency "os_map_ref", "0.5"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 6.1"
+  s.add_dependency "rails", "~> 6"
   # ActiveJob background processing using another thread
-  s.add_dependency "sucker_punch", "~> 2.0.2"
+  s.add_dependency "sucker_punch", "~> 2"
   # Postcode format validation
-  s.add_dependency "uk_postcode", "~> 2.1"
+  s.add_dependency "uk_postcode", "~> 2"
   # Validate e-mail addresses against RFC 2822 and RFC 3696
-  s.add_dependency "validates_email_format_of", "~> 1.6"
+  s.add_dependency "validates_email_format_of", "~> 1"
+
+  s.add_dependency "net-smtp", "~> 0.3"
+  s.add_dependency "matrix", "~> 0.4" 
 
   # Pretty prints objects in console. Usage `$ ap some_object`
   s.add_development_dependency "awesome_print"
-  s.add_development_dependency "bootstrap-sass", "~> 3.3"
+  s.add_development_dependency "bootstrap-sass", "~> 3"
   # Allows us to automatically generate the change log from the tags, issues,
   # labels and pull requests on GitHub. Added as a dependency so all dev's have
   # access to it to generate a log, and so they are using the same version.
@@ -62,8 +65,8 @@ Gem::Specification.new do |s|
   # ~/.bash_profile (or equivalent)
   # https://github.com/skywinder/github-changelog-generator#github-token
   s.add_development_dependency "github_changelog_generator"
-  s.add_development_dependency "pg", "~> 1.2"
+  s.add_development_dependency "pg", "~> 1"
   # Used to ensure the code base matches our agreed styles and conventions
-  s.add_development_dependency "rubocop", "0.52"
-  s.add_development_dependency "sass-rails", "~> 5.0.4"
+  s.add_development_dependency "rubocop", "~> 1"
+  s.add_development_dependency "sass-rails", "~> 5"
 end

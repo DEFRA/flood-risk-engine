@@ -26,6 +26,7 @@ module FloodRiskEngine
         }
       )
     end
+
     let(:grid_reference) { "ST 12345 67890" }
     let(:foo) { Foo.new grid_reference }
     let(:all_tested) { %i[grid_reference with_allow_blank with_message] }
