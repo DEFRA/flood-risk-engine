@@ -1,21 +1,21 @@
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
 require "flood_risk_engine/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "flood_risk_engine"
-  s.version     = FloodRiskEngine::VERSION
-  s.authors     = ["Digital Services Team, EnvironmentAgency"]
-  s.email       = ["dst@environment-agency.gov.uk"]
-  s.homepage    = "https://github.com/defra/flood-risk-engine"
-  s.summary     = "FloodRiskEngine package containing core elements and functionality"
-  s.description = "FloodRiskEngine package containing core elements and functionality"
-  s.license     = "The Open Government Licence (OGL) Version 3"
+  s.name                  = "flood_risk_engine"
+  s.version               = FloodRiskEngine::VERSION
+  s.authors               = ["Digital Services Team, EnvironmentAgency"]
+  s.email                 = ["dst@environment-agency.gov.uk"]
+  s.homepage              = "https://github.com/defra/flood-risk-engine"
+  s.summary               = "FloodRiskEngine package containing core elements and functionality"
+  s.description           = "FloodRiskEngine package containing core elements and functionality"
+  s.license               = "The Open Government Licence (OGL) Version 3"
+  s.required_ruby_version = '>= 3.1'
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["spec/**/*"]
 
   # Use AASM to manage states and transitions
   s.add_dependency "aasm", "~> 4"
@@ -52,8 +52,8 @@ Gem::Specification.new do |s|
   # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "validates_email_format_of", "~> 1"
 
+  s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-smtp", "~> 0.3"
-  s.add_dependency "matrix", "~> 0.4" 
 
   # Pretty prints objects in console. Usage `$ ap some_object`
   s.add_development_dependency "awesome_print"

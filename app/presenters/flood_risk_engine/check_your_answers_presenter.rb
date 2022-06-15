@@ -71,7 +71,7 @@ module FloodRiskEngine
       {
         title: I18n.t("#{i18n_scope}.dredging_length.title"),
         value: I18n.t("#{i18n_scope}.dredging_length.value",
-                      dredging_length: dredging_length,
+                      dredging_length:,
                       count: dredging_length)
       }
     end
@@ -111,22 +111,22 @@ module FloodRiskEngine
 
       {
         title: I18n.t("#{i18n_scope}.partner.title"),
-        value: value
+        value:
       }
     end
 
     def contact_name_row
       value = if contact_position.present?
                 I18n.t("#{i18n_scope}.contact_name.value.position",
-                       contact_name: contact_name,
-                       contact_position: contact_position)
+                       contact_name:,
+                       contact_position:)
               else
                 I18n.t("#{i18n_scope}.contact_name.value.no_position",
-                       contact_name: contact_name)
+                       contact_name:)
               end
       {
         title: I18n.t("#{i18n_scope}.contact_name.title"),
-        value: value
+        value:
       }
     end
 

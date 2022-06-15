@@ -19,7 +19,7 @@ FactoryBot.define do
     trait :with_exemption do
       after(:build) do |object|
         exemption = FloodRiskEngine::Exemption.limit(1).order("RANDOM()").first || create(:exemption)
-        object.enrollment_exemptions.build(exemption: exemption)
+        object.enrollment_exemptions.build(exemption:)
       end
     end
 
@@ -27,7 +27,7 @@ FactoryBot.define do
       after(:build) do |object|
         dredging_code = FloodRiskEngine::Exemption::LONG_DREDGING_CODES.sample
         exemption = create(:exemption, code: dredging_code)
-        object.enrollment_exemptions.build(exemption: exemption)
+        object.enrollment_exemptions.build(exemption:)
       end
     end
 

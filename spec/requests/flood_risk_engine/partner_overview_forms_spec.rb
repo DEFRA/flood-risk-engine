@@ -46,7 +46,7 @@ module FloodRiskEngine
       context "when a valid transient registration exists" do
         let!(:transient_registration) do
           create(:new_registration,
-                 transient_people: transient_people,
+                 transient_people:,
                  workflow_state: "partner_overview_form")
         end
 

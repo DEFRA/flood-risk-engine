@@ -25,6 +25,7 @@ module FloodRiskEngine
 
     def organisation_type
       return unless org_type
+
       I18n.t("organisation_types.#{org_type}")
     end
 
@@ -34,6 +35,7 @@ module FloodRiskEngine
 
     def correspondence_contact_name
       return unless correspondence_contact
+
       title = correspondence_contact.full_name
       title << " (#{correspondence_contact.position})" unless correspondence_contact.position.blank?
       title
@@ -41,6 +43,7 @@ module FloodRiskEngine
 
     def organisation_registration_number
       return unless enrollment&.organisation&.registration_number.present?
+
       enrollment.organisation.registration_number
     end
 

@@ -1,6 +1,7 @@
 module FloodRiskEngine
   class PartnerPresenter
     attr_reader :partner
+
     delegate :full_name, :address, to: :partner
 
     def initialize(partner)

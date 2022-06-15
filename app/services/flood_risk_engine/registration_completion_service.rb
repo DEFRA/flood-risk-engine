@@ -71,7 +71,7 @@ module FloodRiskEngine
 
     def add_partnership_organisation
       @registration.organisation = Organisation.new(
-        org_type: org_type
+        org_type:
       )
 
       add_partners
@@ -84,7 +84,7 @@ module FloodRiskEngine
           address: build_partner_address(partner)
         )
 
-        @registration.organisation.partners << Partner.new(contact: contact)
+        @registration.organisation.partners << Partner.new(contact:)
       end
     end
 
@@ -98,7 +98,7 @@ module FloodRiskEngine
     def add_organisation
       @registration.organisation = Organisation.new(
         name: @transient_registration.company_name,
-        org_type: org_type
+        org_type:
       )
 
       add_address

@@ -9,6 +9,7 @@ module FloodRiskEngine
     # Flat 1A, 121 Acacia Avenue, Broadbean, Kent, TU4 8AA
     def to_single_line
       return unless address
+
       address.parts.join(", ")
     end
 

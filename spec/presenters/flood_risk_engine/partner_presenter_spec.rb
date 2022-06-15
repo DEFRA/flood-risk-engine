@@ -12,10 +12,10 @@ module FloodRiskEngine
         postcode: "e"
       )
     end
-    let(:contact) { FactoryBot.create(:contact, address: address) }
+    let(:contact) { FactoryBot.create(:contact, address:) }
     let(:organisation) { FactoryBot.create(:organisation, :as_partnership) }
     let(:partner) do
-      FactoryBot.create(:partner, contact: contact, organisation: organisation)
+      FactoryBot.create(:partner, contact:, organisation:)
     end
     subject { PartnerPresenter.new(partner) }
 

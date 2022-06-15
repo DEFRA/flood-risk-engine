@@ -44,7 +44,7 @@ module FloodRiskEngine
       initializer "flood_risk_engine.factories", after: "factory_bot.set_factory_paths" do
         require "factory_bot"
 
-        path = File.expand_path("../../../spec/factories", __FILE__)
+        path = File.expand_path("../../spec/factories", __dir__)
         FactoryBot.definition_file_paths << path
       end
     end

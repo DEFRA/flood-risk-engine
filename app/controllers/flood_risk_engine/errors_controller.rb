@@ -6,7 +6,7 @@ module FloodRiskEngine
     def show
       render(
         template: file_for(template),
-        locals: { message: exception.try(:message), enrollment: enrollment }
+        locals: { message: exception.try(:message), enrollment: }
       )
     end
 
@@ -36,11 +36,12 @@ module FloodRiskEngine
     end
 
     def exception
-      ENV["action_dispatch.exception"]
+      ENV.fetch("action_dispatch.exception", nil)
     end
 
     def enrollment
       return unless journey_token
+
       Enrollment.find_by(token: journey_token)
     end
 

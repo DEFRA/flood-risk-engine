@@ -5,6 +5,7 @@ module FloodRiskEngine
     class Foo
       include ActiveModel::Validations
       attr_accessor :grid_reference, :with_message, :with_allow_blank
+
       def initialize(input)
         @grid_reference = @with_message = @with_allow_blank = input
       end

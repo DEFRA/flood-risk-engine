@@ -13,7 +13,7 @@ module FloodRiskEngine
       company_address_params = params.fetch(:company_address, {})
       company_address_attributes = get_address_data(company_address_params[:uprn], :operator)
 
-      super(company_address_attributes: company_address_attributes)
+      super(company_address_attributes:)
     end
   end
 end
