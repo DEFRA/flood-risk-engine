@@ -69,4 +69,5 @@ Gem::Specification.new do |s|
   # Used to ensure the code base matches our agreed styles and conventions
   s.add_development_dependency "rubocop", "~> 1"
   s.add_development_dependency "sass-rails", "~> 5"
+  s.metadata['rubygems_mfa_required'] = 'true'
 end
