@@ -26,7 +26,7 @@ group :test do
   gem "rspec-html-matchers"
   gem "rspec-rails", "~> 5"
   gem "shoulda-matchers", "~> 4.5", require: false
-  gem "simplecov", "~> 0.21", require: false
+  gem "simplecov", "~> 0.16.0", require: false
   gem "vcr", "~> 6"
   gem "webmock", "~> 3"
 end
