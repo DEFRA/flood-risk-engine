@@ -448,7 +448,7 @@ DEPENDENCIES
   rubocop (~> 1)
   sass-rails (~> 5)
   shoulda-matchers (~> 4.5)
-  simplecov (~> 0.17)
+  simplecov (~> 0.21)
   vcr (~> 6)
   webmock (~> 3)
 
