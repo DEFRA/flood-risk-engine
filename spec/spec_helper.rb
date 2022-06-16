@@ -14,6 +14,7 @@
 
 require "simplecov"
 SimpleCov.start "rails" do
+  formatter SimpleCov::Formatter::SimpleFormatter
   # any custom configs like groups and filters can be here at a central place
   # Standard filters
   add_filter "lib/flood_risk_engine/version"
