@@ -122,11 +122,6 @@ Style/MethodCalledOnDoEndBlock:
   Exclude:
     - "**/spec/**/*_spec.rb"
 
-# Rubocop 0.42 introduced this cop - disabling for now until we have time to resolve
-# the issues it raises.
-# Style/MethodMissing:
-#   Enabled: false
-
 # There are no relative performance improvements using '' over "", therefore we believe there is more
 # value in using "" for all strings irrespective of whether string interpolation is used
 Style/StringLiterals:

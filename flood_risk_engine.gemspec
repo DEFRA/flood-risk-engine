@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.1'
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
-
   # Use AASM to manage states and transitions
   s.add_dependency "aasm", "~> 4"
   s.add_dependency "activerecord-session_store", "~> 2"
