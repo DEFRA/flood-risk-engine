@@ -16,7 +16,7 @@ module FloodRiskEngine
     # Registrations also don't have tokens, so don't try to validate them.
     validates :token, presence: true, if: lambda {
       transient_registration&.persisted? &&
-        transient_registration&.is_a?(TransientRegistration)
+        transient_registration.is_a?(TransientRegistration)
     }
 
     validate :transient_registration_valid?

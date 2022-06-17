@@ -1,11 +1,14 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 3.1.2
   # Cop names are not displayed in offense messages by default. We find it useful to include this information so we can
   # use it to investigate what the fix may be.
   DisplayCopNames: true
   # Style guide URLs are not displayed in offense messages by default. Again we find it useful to go straight to the
   # documentation for a rule when investigating what the fix may be.
   DisplayStyleGuide: true
+  NewCops: enable
   Include:
     - "**/*.gemspec"
     - "**/*.rake"
@@ -73,7 +76,7 @@ Metrics/ModuleLength:
 
 # We believe the default 80 characters is too restrictive and that lines can still be readable and maintainable
 # when no more than 120 characters. This also allows us to maximise our scree space.
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   Exclude:
     - "**spec/factories/**/*.rb"
@@ -118,11 +121,6 @@ Style/FrozenStringLiteralComment:
 Style/MethodCalledOnDoEndBlock:
   Exclude:
     - "**/spec/**/*_spec.rb"
-
-# Rubocop 0.42 introduced this cop - disabling for now until we have time to resolve
-# the issues it raises.
-Style/MethodMissing:
-  Enabled: false
 
 # There are no relative performance improvements using '' over "", therefore we believe there is more
 # value in using "" for all strings irrespective of whether string interpolation is used

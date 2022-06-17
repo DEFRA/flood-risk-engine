@@ -4,6 +4,7 @@ module FloodRiskEngine
     require "os_map_ref"
 
     attr_reader :message, :allow_blank, :value
+
     def initialize(options)
       @message = options[:message]
       @allow_blank = options[:allow_blank]
@@ -14,6 +15,7 @@ module FloodRiskEngine
       @value = value
       return true if allow_blank && value.blank?
       return true unless os_map_ref_detects_error? || invalid_pattern?
+
       record.errors.add attribute, message
     end
 

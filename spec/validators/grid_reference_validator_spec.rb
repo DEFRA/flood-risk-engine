@@ -5,6 +5,7 @@ module FloodRiskEngine
     class Foo
       include ActiveModel::Validations
       attr_accessor :grid_reference, :with_message, :with_allow_blank
+
       def initialize(input)
         @grid_reference = @with_message = @with_allow_blank = input
       end
@@ -26,6 +27,7 @@ module FloodRiskEngine
         }
       )
     end
+
     let(:grid_reference) { "ST 12345 67890" }
     let(:foo) { Foo.new grid_reference }
     let(:all_tested) { %i[grid_reference with_allow_blank with_message] }

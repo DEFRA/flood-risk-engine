@@ -45,11 +45,11 @@ module FloodRiskEngine
 
           expect(email_service).to receive(:run)
             .exactly(:once)
-            .with(enrollment: enrollment, recipient_address: primary_contact_email)
+            .with(enrollment:, recipient_address: primary_contact_email)
 
           expect(email_service).to receive(:run)
             .exactly(:once)
-            .with(enrollment: enrollment, recipient_address: secondary_contact_email)
+            .with(enrollment:, recipient_address: secondary_contact_email)
 
           described_class.new(enrollment).call
         end
@@ -67,7 +67,7 @@ module FloodRiskEngine
 
           expect(email_service).to receive(:run)
             .exactly(:once)
-            .with(enrollment: enrollment, recipient_address: primary_contact_email)
+            .with(enrollment:, recipient_address: primary_contact_email)
 
           described_class.new(enrollment).call
         end
@@ -87,7 +87,7 @@ module FloodRiskEngine
 
           expect(email_service).to receive(:run)
             .exactly(:once)
-            .with(enrollment: enrollment, recipient_address: primary_contact_email)
+            .with(enrollment:, recipient_address: primary_contact_email)
 
           described_class.new(enrollment).call
         end

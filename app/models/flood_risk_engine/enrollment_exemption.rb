@@ -41,17 +41,20 @@ module FloodRiskEngine
 
     def decision_at_and_user
       return [nil, nil] if comments.empty?
+
       latest = latest_decision
       [latest.first, User.find(latest.last).try(:email)]
     end
 
     def decision_at
       return if comments.empty?
+
       latest_decision.first
     end
 
     def decision_user_id
       return if comments.empty?
+
       latest_decision.last
     end
 

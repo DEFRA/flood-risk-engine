@@ -4,7 +4,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe TransientAddress, type: :model do
-    subject(:transient_address) { described_class.new(addressable: addressable, address_type: 1) }
+    subject(:transient_address) { described_class.new(addressable:, address_type: 1) }
 
     context "when addressable is a TransientRegistration" do
       let(:addressable) { TransientRegistration.new }

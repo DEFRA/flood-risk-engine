@@ -17,7 +17,7 @@ module FloodRiskEngine
     end
 
     def find_or_initialize_transient_registration(token)
-      @transient_registration = NewRegistration.where(token: token).first ||
+      @transient_registration = NewRegistration.where(token:).first ||
                                 NewRegistration.new
     end
 

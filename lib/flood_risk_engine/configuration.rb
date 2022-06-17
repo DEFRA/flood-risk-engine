@@ -43,7 +43,7 @@ module FloodRiskEngine
 
     config_accessor(:govuk_guidance_url) do
       "https://www.gov.uk/government/publications/"\
-      "environmental-permitting-regulations-exempt-flood-risk-activities"
+        "environmental-permitting-regulations-exempt-flood-risk-activities"
     end
 
     def initialize

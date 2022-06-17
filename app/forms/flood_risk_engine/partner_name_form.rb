@@ -20,7 +20,7 @@ module FloodRiskEngine
     private
 
     def set_up_new_person
-      transient_people.build(full_name: full_name)
+      transient_people.build(full_name:)
     end
   end
 end

@@ -7,7 +7,7 @@ FactoryBot.define do
 
     created_at do
       from = 1.year.ago.to_f
-      Time.zone.at(from + rand * (Time.zone.now.to_f - from))
+      Time.zone.at(from + (rand * (Time.zone.now.to_f - from)))
     end
 
     trait :with_user_id do
