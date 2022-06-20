@@ -52,6 +52,8 @@ Gem::Specification.new do |s|
   s.add_dependency "validates_email_format_of", "~> 1"
 
   s.add_dependency "matrix", "~> 0.4"
+  s.add_dependency "net-imap", "~> 0.2"
+  s.add_dependency "net-pop", "~> 0.1"
   s.add_dependency "net-smtp", "~> 0.3"
 
   # Pretty prints objects in console. Usage `$ ap some_object`
