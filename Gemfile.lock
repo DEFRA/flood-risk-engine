@@ -166,6 +166,8 @@ GEM
       notifications-ruby-client
       rails (~> 6.0)
       sprockets (~> 3.7.2)
+    defra_ruby_style (0.1.2)
+      rubocop
     defra_ruby_validators (2.5.0)
       activemodel
       os_map_ref
@@ -445,6 +447,7 @@ DEPENDENCIES
   byebug (~> 11)
   capybara (~> 3)
   database_cleaner (~> 2)
+  defra_ruby_style
   factory_bot_rails (~> 6)
   faker (~> 2)
   flood_risk_engine!
