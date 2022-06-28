@@ -446,7 +446,6 @@ DEPENDENCIES
   byebug (~> 11)
   capybara (~> 3)
   database_cleaner (~> 2)
-  defra_ruby_style
   factory_bot_rails (~> 6)
   faker (~> 2)
   flood_risk_engine!
