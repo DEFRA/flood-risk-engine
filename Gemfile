@@ -7,6 +7,10 @@ gemspec
 
 gem "rails", "6.1.5"
 
+group :development do
+  gem "defra_ruby_style"
+end
+
 group :development, :test do
   # ActiveRecord N+1 detection
   gem "bullet"
