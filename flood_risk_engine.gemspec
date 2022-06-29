@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary               = "FloodRiskEngine package containing core elements and functionality"
   s.description           = "FloodRiskEngine package containing core elements and functionality"
   s.license               = "The Open Government Licence (OGL) Version 3"
-  s.required_ruby_version = '>= 3.1'
+  s.required_ruby_version = ">= 3.1"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
   # Use AASM to manage states and transitions
@@ -70,5 +70,5 @@ Gem::Specification.new do |s|
   # Used to ensure the code base matches our agreed styles and conventions
   s.add_development_dependency "rubocop", "~> 1"
   s.add_development_dependency "sass-rails", "~> 5"
-  s.metadata['rubygems_mfa_required'] = 'true'
+  s.metadata["rubygems_mfa_required"] = "true"
 end
