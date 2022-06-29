@@ -7,11 +7,8 @@ gemspec
 
 gem "rails", "6.1.5"
 
-group :development do
-  gem "defra_ruby_style"
-end
-
 group :development, :test do
+  gem "defra_ruby_style"
   # ActiveRecord N+1 detection
   gem "bullet"
   # Call "byebug" anywhere in the code to stop execution and get a debugger
