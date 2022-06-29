@@ -22,7 +22,7 @@ PATH
       os_map_ref (= 0.5)
       phonelib (~> 0.6)
       rails (~> 6)
-      sucker_punch (~> 2)
+      sucker_punch (~> 3)
       uk_postcode (~> 2)
       validates_email_format_of (~> 1)
 
@@ -166,8 +166,8 @@ GEM
       notifications-ruby-client
       rails (~> 6.0)
       sprockets (~> 3.7.2)
-    defra_ruby_style (0.1.2)
-      rubocop
+    defra_ruby_style (0.3.0)
+      rubocop (>= 1.0, < 2.0)
     defra_ruby_validators (2.5.0)
       activemodel
       os_map_ref
@@ -407,7 +407,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     strscan (3.0.3)
-    sucker_punch (2.1.2)
+    sucker_punch (3.0.1)
       concurrent-ruby (~> 1.0)
     thor (1.2.1)
     tilt (2.0.10)

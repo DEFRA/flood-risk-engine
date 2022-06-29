@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency "phonelib", "~> 0.6"
   s.add_dependency "rails", "~> 6"
   # ActiveJob background processing using another thread
-  s.add_dependency "sucker_punch", "~> 2"
+  s.add_dependency "sucker_punch", "~> 3"
   # Postcode format validation
   s.add_dependency "uk_postcode", "~> 2"
   # Validate e-mail addresses against RFC 2822 and RFC 3696

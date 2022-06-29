@@ -130,6 +130,3 @@ Style/MethodCalledOnDoEndBlock:
 # value in using "" for all strings irrespective of whether string interpolation is used
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
-Style/HashSyntax:
-  Enabled: false
