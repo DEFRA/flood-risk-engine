@@ -407,6 +407,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     strscan (3.0.3)
+    sucker_punch (3.0.1)
       concurrent-ruby (~> 1.0)
     thor (1.2.1)
     tilt (2.0.10)
@@ -446,6 +447,7 @@ DEPENDENCIES
   byebug (~> 11)
   capybara (~> 3)
   database_cleaner (~> 2)
+  defra_ruby_style
   factory_bot_rails (~> 6)
   faker (~> 2)
   flood_risk_engine!
