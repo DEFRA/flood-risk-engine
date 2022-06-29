@@ -1,5 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
+inherit_gem:
+  defra_ruby_style:
+    - default.yml
+
 AllCops:
   TargetRubyVersion: 3.1.2
   # Cop names are not displayed in offense messages by default. We find it useful to include this information so we can
@@ -126,3 +130,6 @@ Style/MethodCalledOnDoEndBlock:
 # value in using "" for all strings irrespective of whether string interpolation is used
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/HashSyntax:
+  Enabled: false
