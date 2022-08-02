@@ -42,7 +42,7 @@ module FloodRiskEngine
     config_accessor(:notify_api_key)
 
     config_accessor(:govuk_guidance_url) do
-      "https://www.gov.uk/government/publications/"\
+      "https://www.gov.uk/government/publications/" \
         "environmental-permitting-regulations-exempt-flood-risk-activities"
     end
 

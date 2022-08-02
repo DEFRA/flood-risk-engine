@@ -22,11 +22,11 @@ RSpec.shared_examples "validate contact name" do |form_factory, field|
     end
 
     context "when a name is too long" do
-      # rubocop:disable Metrics/LineLength
+      # rubocop:disable Layout/LineLength
       before do
         form.transient_registration.send("#{field}=", "0fJQLDxvB77dz3SbcMDSH60kM82VUUMOlpZBkIUnh1IIUE0zF4r3NbHotPIzlbeQdCWB1qa")
       end
-      # rubocop:enable Metrics/LineLength
+      # rubocop:enable Layout/LineLength
 
       it "is not valid" do
         expect(form).to_not be_valid
