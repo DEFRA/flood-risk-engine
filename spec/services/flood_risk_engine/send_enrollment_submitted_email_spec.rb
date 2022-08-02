@@ -33,7 +33,7 @@ module FloodRiskEngine
         end
       end
 
-      context "when correspondence contact and 'other email recipient' (aka "\
+      context "when correspondence contact and 'other email recipient' (aka " \
               "secondary contact) have different email addresses" do
         it "sends an email to each address" do
           primary_contact_email   = enrollment.correspondence_contact.email_address
@@ -73,10 +73,10 @@ module FloodRiskEngine
         end
       end
 
-      context "when correspondence contact is present but seconday contact has a '' email "\
+      context "when correspondence contact is present but seconday contact has a '' email " \
               "address, which it does by default if nothing entered the 'email other' form" do
-        it "sends one email to the correspondence contact and does not try "\
-           " to sent the empty ('') secondary email" do
+        it "sends one email to the correspondence contact and does not try " \
+           "to send the empty ('') secondary email" do
           enrollment.secondary_contact.email_address = "" # should result in it not being sent
 
           primary_contact_email   = enrollment.correspondence_contact.email_address

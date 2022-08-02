@@ -9,8 +9,8 @@ module FloodRiskEngine
         messages = {}
 
         errors.each do |error|
-          messages[error] = I18n.t("activemodel.errors.models."\
-                                   "flood_risk_engine/#{form_name}"\
+          messages[error] = I18n.t("activemodel.errors.models." \
+                                   "flood_risk_engine/#{form_name}" \
                                    ".attributes.#{attribute}.#{error}")
         end
 
