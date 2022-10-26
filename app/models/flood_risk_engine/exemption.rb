@@ -10,8 +10,7 @@ module FloodRiskEngine
              through: :enrollment_exemptions,
              dependent: :restrict_with_exception
 
-    enum category: {
-    }
+    enum category: {}
 
     before_save :update_code_number
 
