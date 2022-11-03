@@ -174,7 +174,7 @@ GEM
       phonelib
       rest-client (~> 2.0)
       validates_email_format_of
-    dibber (0.6.0)
+    dibber (0.7.0)
     diff-lcs (1.5.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
