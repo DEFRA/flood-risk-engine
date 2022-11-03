@@ -2,7 +2,7 @@ en:
   flood_risk_engine:
     contact_name_forms:
       new:
-        title: Contact name
+        title: Who should we contact about this activity?
         heading: Who should we contact about this activity?
         contact_name:
           label: Enter a full name
@@ -12,9 +12,9 @@ en:
           hint: For example, Project Manager
         legend: Who should we contact about this activity?
         para_text: We may need to contact someone to check details of the activities or arrange a site visit.
-          We’ll send a confirmation of your registration to this person.
+          We'll send a confirmation of your registration to this person.
           You can add another email address later if someone else needs a copy of the confirmation.
-        next_button: "Continue"
+        next_button: Continue
   activemodel:
     errors:
       models:
@@ -22,10 +22,10 @@ en:
           attributes:
             contact_name:
               blank: Enter a name
-              invalid: "The name must contain only letters, spaces, commas, full stops, hyphens and apostrophes"
-              too_long: "The name must have no more than 70 characters"
+              invalid: The name must contain only letters, spaces, commas, full stops, hyphens and apostrophes
+              too_long: The name must have no more than 70 characters
   defra_ruby:
     validators:
       PositionValidator:
-        invalid_format: "The position must contain only letters, spaces, commas, full stops, hyphens and apostrophes"
-        too_long: "The position must have no more than 70 characters"
+        invalid_format: The position must contain only letters, spaces, commas, full stops, hyphens and apostrophes
+        too_long: The position must have no more than 70 characters
