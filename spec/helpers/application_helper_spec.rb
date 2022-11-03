@@ -8,7 +8,8 @@ module FloodRiskEngine
       context "when a specific title is provided" do
         before do
           allow(helper).to receive(:content_for?).and_return(true)
-          allow(helper).to receive(:content_for).and_return("Foo")
+          allow(helper).to receive(:content_for).with(:error_title).and_return(nil)
+          allow(helper).to receive(:content_for).with(:title).and_return("Foo")
         end
 
         it "returns the correct full title" do
