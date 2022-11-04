@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Validate that a grid reference can be processed.
 module FloodRiskEngine
   class GridReferenceValidator < ActiveModel::EachValidator

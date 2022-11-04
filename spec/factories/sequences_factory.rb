@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   sequence(:grid_reference) do |n|
-    random_grid_reference + ("%05d" % n) + ("%05d" % n)
+    random_grid_reference + format("%05d", n) + format("%05d", n)
   end
 
   def random_grid_reference

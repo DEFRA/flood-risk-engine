@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe AddressPresenter, type: :presenter do
-    let(:subject) { AddressPresenter.new(address) }
+    subject(:presenter) { described_class.new(address) }
 
     describe "to_single_line" do
       context "when all address parts are present" do
@@ -13,8 +15,9 @@ module FloodRiskEngine
                       city: "d",
                       postcode: "e")
         end
+
         it "returns the address as a comma delimited string" do
-          expect(subject.to_single_line).to eq("a, b, c, d, e")
+          expect(presenter.to_single_line).to eq("a, b, c, d, e")
         end
       end
     end

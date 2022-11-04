@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :company_name_form, class: FloodRiskEngine::CompanyNameForm do
+  factory :company_name_form, class: "FloodRiskEngine::CompanyNameForm" do
     trait :has_required_data do
       initialize_with do
         new(

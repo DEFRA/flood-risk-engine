@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class Enrollment < ApplicationRecord
     has_secure_token
@@ -9,7 +11,6 @@ module FloodRiskEngine
     delegate :org_type, :partners, to: :organisation, allow_nil: true
 
     has_many :enrollment_exemptions,
-             foreign_key: :enrollment_id,
              dependent: :restrict_with_exception
     has_many :exemptions,
              through: :enrollment_exemptions,

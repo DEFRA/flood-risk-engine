@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
 FloodRiskEngine::Engine.routes.draw do
   resources :start_forms,
             only: %i[new create],
@@ -166,9 +169,9 @@ FloodRiskEngine::Engine.routes.draw do
                     on: :collection
 
                 get "destroy/:partner_id",
-                       to: "partner_overview_forms#destroy",
-                       as: "destroy",
-                       on: :collection
+                    to: "partner_overview_forms#destroy",
+                    as: "destroy",
+                    on: :collection
               end
 
     resources :contact_name_forms,
@@ -242,3 +245,4 @@ FloodRiskEngine::Engine.routes.draw do
   # See http://patrickperey.com/railscast-053-handling-exceptions/
   get "(errors)/:id", to: "errors#show", as: "error"
 end
+# rubocop:enable Metrics/BlockLength

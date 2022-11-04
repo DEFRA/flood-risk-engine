@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Factory fails unless class has be initiated, hence using :name method (\o/)
 FactoryBot.define do
   factory :enrollment, class: FloodRiskEngine::Enrollment.name do
@@ -47,6 +49,7 @@ FactoryBot.define do
       after(:stub) do |object|
         object.correspondence_contact = build_stubbed :contact
       end
+
       after(:build) do |object|
         object.correspondence_contact = build :contact
       end
@@ -56,6 +59,7 @@ FactoryBot.define do
       after(:stub) do |object|
         object.secondary_contact = build_stubbed :contact
       end
+
       after(:build) do |object|
         object.secondary_contact = build :contact
       end
@@ -65,6 +69,7 @@ FactoryBot.define do
       after(:stub) do |object|
         object.address_search = build_stubbed :address_search
       end
+
       after(:build) do |object|
         object.address_search = build :address_search
       end

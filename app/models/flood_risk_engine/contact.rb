@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "validates_email_format_of"
 
 module FloodRiskEngine
@@ -16,10 +18,9 @@ module FloodRiskEngine
     }
 
     # Derived from RCDP customer data model
-    enum title: %w[
-      na Mr Mrs Miss Ms Dr Rev Sir Lady Lord
-      Captain Major Professor Dame Colonel
-    ]
+    enum title: { "na" => 0, "Mr" => 1, "Mrs" => 2, "Miss" => 3, "Ms" => 4, "Dr" => 5, "Rev" => 6, "Sir" => 7,
+                  "Lady" => 8, "Lord" => 9, "Captain" => 10, "Major" => 11, "Professor" => 12, "Dame" => 13,
+                  "Colonel" => 14 }
 
     after_save do
       organisation.try(:update_searchable_content)

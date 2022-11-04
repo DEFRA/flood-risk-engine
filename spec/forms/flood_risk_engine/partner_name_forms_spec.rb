@@ -16,8 +16,8 @@ module FloodRiskEngine
         end
         let(:transient_registration) { partner_name_form.transient_registration }
 
-        it "should submit" do
-          expect(partner_name_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(partner_name_form.submit(valid_params)).to be(true)
         end
 
         it "saves a new partner" do
@@ -34,8 +34,8 @@ module FloodRiskEngine
         let(:partner_name_form) { build(:partner_name_form, :has_required_data) }
         let(:invalid_params) { { token: "foo" } }
 
-        it "should not submit" do
-          expect(partner_name_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(partner_name_form.submit(invalid_params)).to be(false)
         end
       end
     end

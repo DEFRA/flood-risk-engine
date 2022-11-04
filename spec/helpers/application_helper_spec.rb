@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe FloodRiskEngine::ApplicationHelper, type: :helper do
+  RSpec.describe FloodRiskEngine::ApplicationHelper do
     describe "title" do
       context "when a specific title is provided" do
         before do

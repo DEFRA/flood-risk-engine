@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module Test
@@ -15,7 +17,7 @@ end
 # This job level spec is more of an integration spec so we let VCR
 # handle the outgoing request.
 module FloodRiskEngine
-  describe UpdateWaterManagementAreaJob, type: :job do
+  describe UpdateWaterManagementAreaJob do
     let(:location) { FactoryBot.create(:location) }
 
     it { is_expected.to respond_to :perform }

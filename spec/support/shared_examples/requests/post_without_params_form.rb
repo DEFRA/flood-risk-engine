@@ -30,8 +30,8 @@ RSpec.shared_examples "POST without params form" do |form|
           state_before_request = transient_registration[:workflow_state]
           post_form_with_params(form, transient_registration.token)
 
-          expect(transient_registration.reload[:workflow_state]).to_not eq(state_before_request)
-          expect(response).to have_http_status(302)
+          expect(transient_registration.reload[:workflow_state]).not_to eq(state_before_request)
+          expect(response).to have_http_status(:found)
         end
       end
     end

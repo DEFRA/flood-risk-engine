@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :comment, class: "FloodRiskEngine::Comment" do
     user_id     { nil }

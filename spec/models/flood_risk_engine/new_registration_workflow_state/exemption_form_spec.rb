@@ -7,7 +7,7 @@ module FloodRiskEngine
     subject { build(:new_registration, workflow_state: "exemption_form") }
 
     describe "#workflow_state" do
-      context ":exemption_form state transitions" do
+      context "with :exemption_form state transitions" do
         context "on next" do
           include_examples "has next transition", next_state: "confirm_exemption_form"
         end

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "PartnerAddressManualForms", type: :request do
+  RSpec.describe "PartnerAddressManualForms" do
     describe "GET partner_address_manual_form_path" do
       before do
         transient_registration.transient_people = [build(:transient_person, :named, :has_temp_postcode)]
@@ -13,8 +13,8 @@ module FloodRiskEngine
     end
 
     describe "POST partner_address_manual_form_path" do
-      before(:each) { VCR.insert_cassette("address_lookup_valid_postcode", allow_playback_repeats: true) }
-      after(:each) { VCR.eject_cassette }
+      before { VCR.insert_cassette("address_lookup_valid_postcode", allow_playback_repeats: true) }
+      after { VCR.eject_cassette }
 
       let(:transient_registration) do
         create(:new_registration,
@@ -47,7 +47,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the partner_postcode form" do
             get back_partner_address_manual_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_partner_postcode_form_path(transient_registration[:token]))
           end
         end
@@ -63,7 +63,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the correct form for the state" do
             get back_partner_address_manual_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_declaration_form_path(transient_registration[:token]))
           end
         end

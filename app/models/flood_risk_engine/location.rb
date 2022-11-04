@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "os_map_ref"
 
 module FloodRiskEngine
@@ -19,7 +21,7 @@ module FloodRiskEngine
     # with it) whilst we decide what to do about this issue.
     scope :from_site_address, -> do
       joins("JOIN flood_risk_engine_addresses as addresses ON addresses.id = flood_risk_engine_locations.locatable_id")
-        .where("addresses.address_type = ?", 2)
+        .where(addresses: { address_type: 2 })
         .where(locatable_type: "FloodRiskEngine::Address")
     end
     # rubocop:enable Style/Lambda

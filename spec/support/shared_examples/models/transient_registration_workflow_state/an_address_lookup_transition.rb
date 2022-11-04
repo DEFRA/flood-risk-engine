@@ -4,49 +4,49 @@ RSpec.shared_examples "an address lookup transition" do |next_state_if_not_skipp
   describe "#workflow_state" do
     previous_state = "#{address_type}_postcode_form".to_sym
     current_state = "#{address_type}_address_lookup_form".to_sym
-    subject(:subject) { create(factory, workflow_state: current_state) }
+    subject(:form) { create(factory, workflow_state: current_state) }
 
-    context "when subject.skip_to_manual_address? is false" do
+    context "when form.skip_to_manual_address? is false" do
       next_state = next_state_if_not_skipping_to_manual
       alt_state = "#{address_type}_address_manual_form".to_sym
 
       it "can only transition to either #{previous_state}, #{next_state}, or #{alt_state}" do
-        permitted_states = Helpers::WorkflowStates.permitted_states(subject)
+        permitted_states = Helpers::WorkflowStates.permitted_states(form)
         expect(permitted_states).to match_array([previous_state, next_state, alt_state])
       end
 
       it "changes to #{next_state} after the 'next' event" do
-        expect(subject.send(:skip_to_manual_address?)).to eq(false)
-        expect(subject).to transition_from(current_state).to(next_state).on_event(:next)
+        expect(form.send(:skip_to_manual_address?)).to be(false)
+        expect(form).to transition_from(current_state).to(next_state).on_event(:next)
       end
 
       it "changes to #{alt_state} after the 'skip_to_manual_address' event" do
-        expect(subject.send(:skip_to_manual_address?)).to eq(false)
-        expect(subject)
+        expect(form.send(:skip_to_manual_address?)).to be(false)
+        expect(form)
           .to transition_from(current_state)
           .to(alt_state)
           .on_event(:skip_to_manual_address)
       end
     end
 
-    context "when subject.skip_to_manual_address? is true" do
+    context "when form.skip_to_manual_address? is true" do
       next_state = "#{address_type}_address_manual_form".to_sym
 
-      before(:each) { allow(subject).to receive(:address_finder_error).and_return(true) }
+      before { allow(form).to receive(:address_finder_error).and_return(true) }
 
       it "can only transition to either #{previous_state} or #{next_state}" do
-        permitted_states = Helpers::WorkflowStates.permitted_states(subject)
+        permitted_states = Helpers::WorkflowStates.permitted_states(form)
         expect(permitted_states).to match_array([previous_state, next_state])
       end
 
       it "changes to #{next_state} after the 'next' event" do
-        expect(subject.send(:skip_to_manual_address?)).to eq(true)
-        expect(subject).to transition_from(current_state).to(next_state).on_event(:next)
+        expect(form.send(:skip_to_manual_address?)).to be(true)
+        expect(form).to transition_from(current_state).to(next_state).on_event(:next)
       end
 
       it "changes to #{next_state} after the 'skip_to_manual_address' event" do
-        expect(subject.send(:skip_to_manual_address?)).to eq(true)
-        expect(subject)
+        expect(form.send(:skip_to_manual_address?)).to be(true)
+        expect(form)
           .to transition_from(current_state)
           .to(next_state)
           .on_event(:skip_to_manual_address)
@@ -54,7 +54,7 @@ RSpec.shared_examples "an address lookup transition" do |next_state_if_not_skipp
     end
 
     it "changes to #{previous_state} after the 'back' event" do
-      expect(subject).to transition_from(current_state).to(previous_state).on_event(:back)
+      expect(form).to transition_from(current_state).to(previous_state).on_event(:back)
     end
   end
 end

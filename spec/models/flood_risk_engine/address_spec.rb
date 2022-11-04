@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe Address, type: :model do
+  RSpec.describe Address do
+    let(:address) { FactoryBot.create(:address) }
+
     it { is_expected.to belong_to(:addressable) }
     it { is_expected.to have_one(:location).dependent(:restrict_with_exception) }
-
-    let(:address) { FactoryBot.create(:address) }
 
     describe "#parts" do
       let(:fields) { %i[premises street_address locality city postcode] }
       let(:address_parts) { fields.collect { |f| address.send(f) } }
-      it "should return a list of the address parts" do
+
+      it "returns a list of the address parts" do
         expect(address.parts).to eq(address_parts)
       end
 
@@ -20,7 +23,7 @@ module FloodRiskEngine
           fields.delete :locality
         end
 
-        it "should return a list with just the address parts present" do
+        it "returns a list with just the address parts present" do
           expect(address.parts).to eq(address_parts)
         end
       end
@@ -28,7 +31,7 @@ module FloodRiskEngine
 
     describe "#clean_up_duplicate_addresses" do
       let(:enrollment) { build(:enrollment, :with_individual) }
-      let(:org_addresses) { FloodRiskEngine::Address.where(addressable: enrollment.organisation) }
+      let(:org_addresses) { described_class.where(addressable: enrollment.organisation) }
       let(:address) do
         build(:address,
               postcode: "BS1 1AA",
@@ -68,7 +71,7 @@ module FloodRiskEngine
         context "when the pre-existing address is not a primary address" do
           let!(:enrollment) { create(:enrollment, :with_individual, :with_correspondence_contact) }
           let(:existing_address) { create(:address, addressable: enrollment.correspondence_contact) }
-          let(:contact_addresses) { FloodRiskEngine::Address.where(addressable: enrollment.correspondence_contact) }
+          let(:contact_addresses) { described_class.where(addressable: enrollment.correspondence_contact) }
 
           it "saves the new address and does not remove any other addresses" do
             expect(org_addresses).to eq([])

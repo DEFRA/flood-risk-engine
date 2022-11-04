@@ -14,8 +14,8 @@ module FloodRiskEngine
           }
         end
 
-        it "should submit" do
-          expect(contact_name_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(contact_name_form.submit(valid_params)).to be(true)
         end
       end
 
@@ -29,8 +29,8 @@ module FloodRiskEngine
           }
         end
 
-        it "should not submit" do
-          expect(contact_name_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(contact_name_form.submit(invalid_params)).to be(false)
         end
       end
     end

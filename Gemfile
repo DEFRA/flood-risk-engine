@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Declare your gem's dependencies in flood_risk_engine.gemspec.
@@ -14,6 +16,8 @@ group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", "~> 11" # 11.1 only supports Ruby 2.4 and up
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
 end
 
 group :test do

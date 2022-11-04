@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # A generalised presenter which adds helpers to simplify accessing enrollment data
 # from a view.
@@ -37,12 +39,12 @@ module FloodRiskEngine
       return unless correspondence_contact
 
       title = correspondence_contact.full_name
-      title << " (#{correspondence_contact.position})" unless correspondence_contact.position.blank?
+      title << " (#{correspondence_contact.position})" if correspondence_contact.position.present?
       title
     end
 
     def organisation_registration_number
-      return unless enrollment&.organisation&.registration_number.present?
+      return if enrollment&.organisation&.registration_number.blank?
 
       enrollment.organisation.registration_number
     end

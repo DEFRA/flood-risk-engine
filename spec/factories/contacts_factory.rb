@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :contact, class: "FloodRiskEngine::Contact" do
     title            { 1 }

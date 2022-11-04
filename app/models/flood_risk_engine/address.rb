@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class Address < ApplicationRecord
 
@@ -27,7 +29,7 @@ module FloodRiskEngine
     end
 
     def parts
-      address_methods.collect { |m| send(m) }.reject(&:blank?)
+      address_methods.collect { |m| send(m) }.compact_blank
     end
 
     def address_methods

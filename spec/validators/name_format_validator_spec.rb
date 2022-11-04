@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
@@ -38,7 +40,7 @@ module FloodRiskEngine
         expect(validatable.errors[:name].size).to eq(1)
       end
 
-      it " without 2 or more words  is invalid", duff: true do
+      it "without 2 or more words is invalid", duff: true do
         validatable.name = "    "
         expect(validatable.valid?).to be_falsey
         expect(validatable.errors[:name].size).to eq(1)

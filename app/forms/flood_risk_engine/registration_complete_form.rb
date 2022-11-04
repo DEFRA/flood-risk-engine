@@ -14,7 +14,7 @@ module FloodRiskEngine
         transient_registration.contact_email,
         transient_registration.additional_contact_email
       ]
-      emails.delete_if(&:blank?).map(&:downcase).uniq.to_sentence
+      emails.compact_blank.map(&:downcase).uniq.to_sentence
     end
   end
 end

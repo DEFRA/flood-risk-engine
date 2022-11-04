@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "aasm"
 require "flood_risk_engine/configuration"
 require "flood_risk_engine/exceptions"

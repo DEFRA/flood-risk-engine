@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
@@ -25,7 +27,7 @@ module FloodRiskEngine
     end
 
     describe "#call" do
-      context "argument validation" do
+      context "when validating arguments" do
         it "raises an error if there is no correspondence contact email address" do
           enrollment.correspondence_contact.email_address = ""
           error_class = MissingEmailAddressError
@@ -41,7 +43,7 @@ module FloodRiskEngine
 
           expect(primary_contact_email).to be_present
           expect(secondary_contact_email).to be_present
-          expect(primary_contact_email).to_not eq(secondary_contact_email)
+          expect(primary_contact_email).not_to eq(secondary_contact_email)
 
           expect(email_service).to receive(:run)
             .exactly(:once)
@@ -62,7 +64,7 @@ module FloodRiskEngine
           primary_contact_email   = enrollment.correspondence_contact.email_address
           secondary_contact_email = enrollment.secondary_contact.email_address
 
-          expect(primary_contact_email).to_not be_blank
+          expect(primary_contact_email).not_to be_blank
           expect(primary_contact_email).to eq(secondary_contact_email)
 
           expect(email_service).to receive(:run)
@@ -82,7 +84,7 @@ module FloodRiskEngine
           primary_contact_email   = enrollment.correspondence_contact.email_address
           secondary_contact_email = enrollment.secondary_contact.email_address
 
-          expect(primary_contact_email).to_not be_blank
+          expect(primary_contact_email).not_to be_blank
           expect(secondary_contact_email).to eq("")
 
           expect(email_service).to receive(:run)

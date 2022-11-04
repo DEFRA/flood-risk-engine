@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
@@ -32,21 +34,22 @@ module FloodRiskEngine
     let(:foo) { Foo.new grid_reference }
     let(:all_tested) { %i[grid_reference with_allow_blank with_message] }
 
-    it "should be valid" do
+    it "is valid" do
       expect(foo.valid?).to be true
     end
 
-    context "invalid grid_reference" do
+    context "with an invalid grid_reference" do
       let(:grid_reference) { "invalid" }
+
       before do
         foo.valid?
       end
 
-      it "should raise errors on all" do
+      it "raises errors on all" do
         expect(foo.errors.attribute_names.sort).to eq(all_tested)
       end
 
-      it "should have error from exception" do
+      it "has error from exception" do
         expect(foo.errors[:grid_reference]).not_to eq(["Custom"])
         expect(foo.errors[:grid_reference].first).to be_a(String)
       end
@@ -56,21 +59,22 @@ module FloodRiskEngine
       end
     end
 
-    context "blank grid_reference" do
+    context "with a blank grid_reference" do
       let(:grid_reference) { "" }
+
       before do
         foo.valid?
       end
 
-      it "should raise errors on all except with_allow_blank" do
+      it "raises errors on all except with_allow_blank" do
         expect(foo.errors.attribute_names.sort).to eq(all_tested - [:with_allow_blank])
       end
     end
 
-    context "lower case grid_reference" do
+    context "with a lower case grid_reference" do
       let(:grid_reference) { "st 12345 67890" }
 
-      it "should be valid" do
+      it "is valid" do
         expect(foo.valid?).to be true
       end
     end

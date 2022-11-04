@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
@@ -9,6 +11,7 @@ module FloodRiskEngine
       end
     end
 
+    subject(:presenter) { described_class.new }
     it { is_expected.to respond_to(:git_commit_url) }
 
     describe "#application_name" do
@@ -16,16 +19,17 @@ module FloodRiskEngine
         FloodRiskEngine.configure do |config|
           config.application_name = "Yay"
         end
-        expect(subject.application_name).to eq(FloodRiskEngine.config.application_name)
+        expect(presenter.application_name).to eq(FloodRiskEngine.config.application_name)
       end
-      it "it defaults to Rails.application.class.module_parent_name" do
-        expect(subject.application_name).to eq("Dummy")
+
+      it "defaults to Rails.application.class.module_parent_name" do
+        expect(presenter.application_name).to eq("Dummy")
       end
     end
 
     describe "#git_commit" do
       it "returns nil when run in the test environment" do
-        expect(subject.git_commit).to eq(nil)
+        expect(presenter.git_commit).to be_nil
       end
     end
 
@@ -35,10 +39,11 @@ module FloodRiskEngine
         FloodRiskEngine.configure do |config|
           config.git_repository_url = dummy_url
         end
-        expect(subject.git_repository_url).to eq("http://example.com")
+        expect(presenter.git_repository_url).to eq("http://example.com")
       end
+
       it "defaults to a deduced github repo url" do
-        expect(subject.git_repository_url).to eq("https://github.com/defra/dummy")
+        expect(presenter.git_repository_url).to eq("https://github.com/defra/dummy")
       end
     end
 
@@ -46,10 +51,10 @@ module FloodRiskEngine
       it "returns the git url for the current commit sha" do
         dummy_repo_url = "http://123"
         dummy_commit_sha = "xyz"
-        expect(subject).to receive(:git_repository_url).and_return(dummy_repo_url)
-        expect(subject).to receive(:git_commit).and_return(dummy_commit_sha)
+        expect(presenter).to receive(:git_repository_url).and_return(dummy_repo_url)
+        expect(presenter).to receive(:git_commit).and_return(dummy_commit_sha)
         expected_git_commit_url = File.join(dummy_repo_url, "commit", dummy_commit_sha)
-        expect(subject.git_commit_url).to eq(expected_git_commit_url)
+        expect(presenter.git_commit_url).to eq(expected_git_commit_url)
       end
     end
   end

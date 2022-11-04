@@ -4,8 +4,8 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe PartnerAddressLookupForm, type: :model do
-    before(:each) { VCR.insert_cassette("address_lookup_valid_postcode") }
-    after(:each) { VCR.eject_cassette }
+    before { VCR.insert_cassette("address_lookup_valid_postcode") }
+    after { VCR.eject_cassette }
 
     describe "#submit" do
       context "when the form is valid" do
@@ -20,8 +20,8 @@ module FloodRiskEngine
         end
         let(:transient_registration) { partner_address_lookup_form.transient_registration }
 
-        it "should submit" do
-          expect(partner_address_lookup_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(partner_address_lookup_form.submit(valid_params)).to be(true)
         end
 
         it "saves the partner address" do
@@ -37,8 +37,8 @@ module FloodRiskEngine
         let(:partner_address_lookup_form) { build(:partner_address_lookup_form, :has_required_data) }
         let(:invalid_params) { { token: "foo" } }
 
-        it "should not submit" do
-          expect(partner_address_lookup_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(partner_address_lookup_form.submit(invalid_params)).to be(false)
         end
       end
     end

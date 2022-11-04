@@ -12,8 +12,8 @@ module FloodRiskEngine
           { token: exemption_form.token, exemption_ids: [exemption.id] }
         end
 
-        it "should submit" do
-          expect(exemption_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(exemption_form.submit(valid_params)).to be(true)
         end
 
         it "updates the transient registration with the selected exemption" do
@@ -30,8 +30,8 @@ module FloodRiskEngine
         let(:exemption_form) { build(:exemption_form, :has_required_data) }
         let(:invalid_params) { { exemption_ids: [] } }
 
-        it "should not submit" do
-          expect(exemption_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(exemption_form.submit(invalid_params)).to be(false)
         end
       end
     end

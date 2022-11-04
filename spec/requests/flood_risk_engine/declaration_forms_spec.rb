@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "DeclarationForms", type: :request do
+  RSpec.describe "DeclarationForms" do
     describe "GET declaration_form_path" do
       include_examples "GET locked-in form", "declaration_form"
     end
@@ -23,7 +23,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the check_your_answers form" do
             get back_declaration_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_check_your_answers_form_path(transient_registration[:token]))
           end
         end
@@ -39,7 +39,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the correct form for the state" do
             get back_declaration_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_company_name_form_path(transient_registration[:token]))
           end
         end

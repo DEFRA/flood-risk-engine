@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class Organisation < ApplicationRecord
     belongs_to :contact

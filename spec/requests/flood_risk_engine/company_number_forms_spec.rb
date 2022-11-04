@@ -3,14 +3,14 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "CompanyNumberForms", type: :request do
+  RSpec.describe "CompanyNumberForms" do
     describe "GET company_number_form_path" do
       include_examples "GET flexible form", "company_number_form"
     end
 
     describe "POST company_number_form_path" do
-      before(:each) { VCR.insert_cassette("companies_house_lookup_valid", allow_playback_repeats: true) }
-      after(:each) { VCR.eject_cassette }
+      before { VCR.insert_cassette("companies_house_lookup_valid", allow_playback_repeats: true) }
+      after { VCR.eject_cassette }
 
       let(:transient_registration) do
         create(:new_registration, workflow_state: "company_number_form")
@@ -33,7 +33,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the business_type form" do
             get back_company_number_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_business_type_form_path(transient_registration[:token]))
           end
         end
@@ -49,7 +49,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the correct form for the state" do
             get back_company_number_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_declaration_form_path(transient_registration[:token]))
           end
         end

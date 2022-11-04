@@ -24,7 +24,7 @@ module FloodRiskEngine
     # the token of another registration in order to see its details.
     # See https://api.rubyonrails.org/classes/ActiveRecord/SecureToken/ClassMethods.html#method-i-has_secure_token
     has_secure_token
-    validates_presence_of :token, on: :save
+    validates :token, presence: { on: :save }
 
     def last_partner
       transient_people.last

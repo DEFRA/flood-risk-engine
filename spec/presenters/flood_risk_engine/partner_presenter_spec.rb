@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
@@ -17,11 +19,12 @@ module FloodRiskEngine
     let(:partner) do
       FactoryBot.create(:partner, contact:, organisation:)
     end
-    subject { PartnerPresenter.new(partner) }
+
+    subject(:presenter) { described_class.new(partner) }
 
     describe "#to_single_line" do
-      it "should return name and address in single comma delimited line" do
-        expect(subject.to_single_line).to eq("#{contact.full_name}, a, b, c, d, e")
+      it "returns name and address in single comma delimited line" do
+        expect(presenter.to_single_line).to eq("#{contact.full_name}, a, b, c, d, e")
       end
     end
   end

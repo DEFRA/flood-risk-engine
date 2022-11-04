@@ -15,20 +15,20 @@ module FloodRiskEngine
           { company_number: company_number_form.company_number }
         end
 
-        it "should submit" do
-          expect(company_number_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(company_number_form.submit(valid_params)).to be(true)
         end
 
         context "when the token is less than 8 characters" do
-          before(:each) { valid_params[:company_number] = "946107" }
+          before { valid_params[:company_number] = "946107" }
 
-          it "should increase the length" do
+          it "increases the length" do
             company_number_form.submit(valid_params)
             expect(company_number_form.company_number).to eq("00946107")
           end
 
-          it "should submit" do
-            expect(company_number_form.submit(valid_params)).to eq(true)
+          it "submits" do
+            expect(company_number_form.submit(valid_params)).to be(true)
           end
         end
       end
@@ -37,8 +37,8 @@ module FloodRiskEngine
         let(:company_number_form) { build(:company_number_form, :has_required_data) }
         let(:invalid_params) { { company_number: "" } }
 
-        it "should not submit" do
-          expect(company_number_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(company_number_form.submit(invalid_params)).to be(false)
         end
       end
     end

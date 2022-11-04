@@ -7,7 +7,7 @@ module FloodRiskEngine
     subject { build(:new_registration, workflow_state: "declaration_form") }
 
     describe "#workflow_state" do
-      context ":declaration_form state transitions" do
+      context "with :declaration_form state transitions" do
         context "on next" do
           include_examples "has next transition", next_state: "registration_complete_form"
         end
