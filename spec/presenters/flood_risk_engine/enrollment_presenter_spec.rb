@@ -25,6 +25,12 @@ module FloodRiskEngine
       end
     end
 
+    describe "#organisation_registration_number" do
+      it do
+        expect(presenter.organisation_registration_number.to_i).not_to be_nil
+      end
+    end
+
     describe "#organisation_type" do
       it do
         expect(presenter.organisation_type).to eq(I18n.t("organisation_types.local_authority"))
