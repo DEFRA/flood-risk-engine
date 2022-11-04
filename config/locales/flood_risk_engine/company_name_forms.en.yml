@@ -27,7 +27,7 @@ en:
           local_authority: Local authority or public body name
           sole_trader: Individual’s name?
         hint:
-          charity: 
+          charity: ""
           limited_company: Enter the registered name of the company
           limited_liability_partnership: Enter the registered name of the partnership
           local_authority: For example, Bristol City Council
