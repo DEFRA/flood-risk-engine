@@ -2,8 +2,8 @@ en:
   flood_risk_engine:
     declaration_forms:
       new:
-        title: Declaration
-        heading: Declaration
+        heading: &heading Declaration
+        title: *heading
         warning:
           heading: Warning
           text: You can be prosecuted and fined if you give false or misleading information.

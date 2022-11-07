@@ -2,13 +2,13 @@ en:
   flood_risk_engine:
     check_your_answers_forms:
       new:
-        title: Check your answers
-        heading: Check your answers before completing this registration
+        heading: &heading Check your answers before completing this registration
+        title: *heading
         subheading: We’ll send a copy of these details in the confirmation email.
         registration_table_heading: Registration details
-        registration_table_summary: "The information you've given us about the registration"
+        registration_table_summary: The information you've given us about the registration
         contact_table_heading: Contact details
-        contact_table_summary: "The information you've given us about the contact"
+        contact_table_summary: The information you've given us about the contact
         change_link: Change
         rows:
           company_number:
@@ -17,12 +17,12 @@ en:
           business_type:
             title: Organisation type
             value:
-              sole_trader: "Individual"
-              limited_company: "Limited company"
-              partnership: "Partnership"
-              limited_liability_partnership: "Limited liability partnership"
-              local_authority: "Local authority"
-              charity: "Charity"
+              sole_trader: Individual
+              limited_company: Limited company
+              partnership: Partnership
+              limited_liability_partnership: Limited liability partnership
+              local_authority: Local authority
+              charity: Charity
             accessible_change_link_suffix: organisation type
           grid_reference:
             title: Grid reference
@@ -63,4 +63,4 @@ en:
           partner:
             title: Details of responsible partner
             accessible_change_link_suffix: responsible partner
-        next_button: "Continue"
+        next_button: Continue

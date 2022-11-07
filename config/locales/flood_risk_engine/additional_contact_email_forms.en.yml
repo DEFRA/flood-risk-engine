@@ -2,8 +2,8 @@ en:
   flood_risk_engine:
     additional_contact_email_forms:
       new:
-        title: Additional contact email
-        heading: Would you also like a copy of the confirmation email sent to someone else?
+        heading: &heading Would you also like a copy of the confirmation email sent to someone else?
+        title: *heading
         legend: Would you also like a copy of the confirmation email sent to someone else?
         clarification: We’ll send a confirmation to the main contact.
           We will also send a copy to another address if you want.
@@ -11,18 +11,18 @@ en:
           label: Email address for confirmation copy (optional)
         email_address_confirmation:
           label: Confirm email address if entered above
-        next_button: "Submit"
+        next_button: Submit
   activemodel:
       errors:
         models:
           flood_risk_engine/additional_contact_email_form:
             attributes:
               confirmed_email:
-                blank: "Enter the email address again to confirm it"
-                invalid_format: "Enter a valid confirmed email address - there’s a mistake in that one"
-                does_not_match: "The email addresses you’ve entered don’t match"
+                blank: Enter the email address again to confirm it
+                invalid_format: Enter a valid confirmed email address - there’s a mistake in that one
+                does_not_match: The email addresses you’ve entered don’t match
   defra_ruby:
     validators:
       EmailValidator:
-        blank: "Enter an email address"
-        invalid_format: "Enter a valid email address - there’s a mistake in that one"
+        blank: Enter an email address
+        invalid_format: Enter a valid email address - there’s a mistake in that one

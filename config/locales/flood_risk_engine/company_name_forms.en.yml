@@ -2,18 +2,13 @@ en:
   flood_risk_engine:
     company_name_forms:
       new:
-        title:
+        heading: &heading
           charity: What’s the name of the organisation?
           limited_company: What’s the registered name of the company?
           limited_liability_partnership: What’s the registered name of the partnership?
           local_authority: What’s the name of the local authority or public body?
           sole_trader: What’s the individual’s name?
-        heading:
-          charity: What’s the name of the organisation?
-          limited_company: What’s the registered name of the company?
-          limited_liability_partnership: What’s the registered name of the partnership?
-          local_authority: What’s the name of the local authority or public body?
-          sole_trader: What’s the individual’s name?
+        title: *heading
         label:
           charity: Name of charity, trust, club or other organisation
           limited_company: Registered name of company
