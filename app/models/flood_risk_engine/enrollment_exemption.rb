@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class EnrollmentExemption < ApplicationRecord
     self.table_name = "flood_risk_engine_enrollments_exemptions"
 
-    belongs_to :enrollment, foreign_key: :enrollment_id
+    belongs_to :enrollment
     belongs_to :exemption
     has_many :comments, as: :commentable
 

@@ -4,7 +4,7 @@ module FloodRiskEngine
   module CanHaveRegistrationAttributes
     extend ActiveSupport::Concern
 
-    BUSINESS_TYPES = HashWithIndifferentAccess.new(
+    BUSINESS_TYPES = ActiveSupport::HashWithIndifferentAccess.new(
       local_authority: "localAuthority",
       limited_company: "limitedCompany",
       limited_liability_partnership: "limitedLiabilityPartnership",

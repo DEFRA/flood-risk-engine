@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class GitCommitSha
     def self.current

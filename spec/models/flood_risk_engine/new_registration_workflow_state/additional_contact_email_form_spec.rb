@@ -7,7 +7,7 @@ module FloodRiskEngine
     subject { build(:new_registration, workflow_state: "additional_contact_email_form") }
 
     describe "#workflow_state" do
-      context ":additional_contact_email_form state transitions" do
+      context "with :additional_contact_email_form state transitions" do
         context "on next" do
           include_examples "has next transition", next_state: "check_your_answers_form"
         end

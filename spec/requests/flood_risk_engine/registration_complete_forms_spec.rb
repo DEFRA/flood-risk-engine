@@ -3,9 +3,9 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "RegistrationCompleteForms", type: :request do
-    before(:each) { VCR.insert_cassette("notify_registration_complete_forms") }
-    after(:each) { VCR.eject_cassette }
+  RSpec.describe "RegistrationCompleteForms" do
+    before { VCR.insert_cassette("notify_registration_complete_forms") }
+    after { VCR.eject_cassette }
 
     describe "GET new_registration_complete_form_path" do
       context "when no new registration exists" do
@@ -27,7 +27,7 @@ module FloodRiskEngine
           it "returns a 200 status and renders the :new template" do
             get new_registration_complete_form_path(transient_registration[:token])
 
-            expect(response).to have_http_status(200)
+            expect(response).to have_http_status(:ok)
             expect(response).to render_template(:new)
           end
         end

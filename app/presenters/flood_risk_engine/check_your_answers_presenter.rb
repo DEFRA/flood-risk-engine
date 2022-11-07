@@ -153,7 +153,7 @@ module FloodRiskEngine
 
     def displayable_address(address)
       [address.organisation, address.premises, address.street_address,
-       address.locality, address.city, address.postcode].reject(&:blank?).join(", ")
+       address.locality, address.city, address.postcode].compact_blank.join(", ")
     end
 
     def i18n_scope

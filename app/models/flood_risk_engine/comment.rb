@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class Comment < ApplicationRecord
     belongs_to :commentable, polymorphic: true

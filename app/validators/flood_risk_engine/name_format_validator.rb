@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Validates the Format of a Name to match the criteria :
 #   If not two words in name
 #

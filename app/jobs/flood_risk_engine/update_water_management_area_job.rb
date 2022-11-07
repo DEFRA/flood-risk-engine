@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class UpdateWaterManagementAreaJob < ActiveJob::Base
     def perform(location)

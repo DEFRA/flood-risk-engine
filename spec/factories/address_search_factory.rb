@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :address_search, class: "FloodRiskEngine::AddressSearch" do
     postcode { "BS1 5AH" }

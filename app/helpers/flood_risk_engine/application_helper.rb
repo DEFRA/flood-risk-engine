@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   module ApplicationHelper
     def title
@@ -8,7 +10,7 @@ module FloodRiskEngine
     end
 
     def displayable_address(address)
-      return [] unless address.present?
+      return [] if address.blank?
 
       # Get all the possible address lines, then remove the blank ones
       [address.organisation,

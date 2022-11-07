@@ -4,8 +4,8 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe PartnerAddressManualForm, type: :model do
-    before(:each) { VCR.insert_cassette("address_manual_valid_postcode") }
-    after(:each) { VCR.eject_cassette }
+    before { VCR.insert_cassette("address_manual_valid_postcode") }
+    after { VCR.eject_cassette }
 
     # Make sure the transient registration gets updated when submitted.
     describe "#submit" do
@@ -83,8 +83,8 @@ module FloodRiskEngine
           }
         end
 
-        it "should not submit" do
-          expect(partner_address_manual_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(partner_address_manual_form.submit(invalid_params)).to be(false)
         end
       end
     end

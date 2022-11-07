@@ -11,8 +11,8 @@ module FloodRiskEngine
           { token: business_type_form.token, business_type: business_type_form.business_type }
         end
 
-        it "should submit" do
-          expect(business_type_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(business_type_form.submit(valid_params)).to be(true)
         end
       end
 
@@ -20,8 +20,8 @@ module FloodRiskEngine
         let(:business_type_form) { build(:business_type_form, :has_required_data) }
         let(:invalid_params) { { business_type: "" } }
 
-        it "should not submit" do
-          expect(business_type_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(business_type_form.submit(invalid_params)).to be(false)
         end
       end
     end

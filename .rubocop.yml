@@ -3,130 +3,15 @@ inherit_from: .rubocop_todo.yml
 inherit_gem:
   defra_ruby_style:
     - default.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
-AllCops:
-  TargetRubyVersion: 3.1.2
-  # Cop names are not displayed in offense messages by default. We find it useful to include this information so we can
-  # use it to investigate what the fix may be.
-  DisplayCopNames: true
-  # Style guide URLs are not displayed in offense messages by default. Again we find it useful to go straight to the
-  # documentation for a rule when investigating what the fix may be.
-  DisplayStyleGuide: true
-  NewCops: enable
-  Include:
-    - "**/*.gemspec"
-    - "**/*.rake"
-    - "**/*.rb"
-    - "**/Gemfile"
-    - "**/Rakefile"
-    - "**/config.ru"
-    - "**/*.thor"
-  Exclude:
-    - "Guardfile"
-    - "**/bin/*"
-    - "**/config/**/*"
-    - "**/script/**/*"
-    - "**/db/schema.rb"
-    - "**/db/migrate/*"
-    - "**/vendor/**/*"
-
-# Rubymine disagrees and not sure how to fix Rubymine indentation right now
-Layout/CaseIndentation:
-  Enabled: false
-
-# We believe it looks cluttered not having the ability to have empty lines after
-# the module, class, and block declarations
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
-Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-
-# TODO: Understand what the issue is and whether this needs to be more formally disabled (i.e. the dev team agree)
-# We don't understand this for now - seems to prevent perfectly reasonable meta-programming
-Lint/NestedMethodDefinition:
-  Enabled: false
-
-# We felt as a team that the default size of 15 was too low, and blocked what to us are sound methods which would not
-# add any value if broken up, for exampler composer type methods. Therefore we agreed to up the score to 20 to allow
-# for these types of methods
-Metrics/AbcSize:
-  Max: 40
-
-# We don't feel we can help having a large gemspec, hence we exclude it.
-# We don't feel it makes sense to split specs and factories over multiple files,
-# or when in a context be forced to try and come up with slightly different ones
-# in order to reduce the block length. Hence we exclude specs and factories from
-# this rule.
-# Shared examples are the same as specs, but don't have the _spec.rb extension
-# hence they are listed separately
-Metrics/BlockLength:
-  Exclude:
-    - "**/*.gemspec"
-    - "**/spec/**/*_spec.rb"
-    - "**/spec/**/*_factory.rb"
-    - "**/spec/shared_examples/*.rb"
-    - "spec/support/shared_examples/**/*.rb"
-
-# We believe the default of 10 lines for a method length is too restrictive and often quickly hit just because we need
-# to specify the namesspace, class and method before then doing something with it.
-Metrics/MethodLength:
-  Max: 30
-Metrics/ModuleLength:
-  Max: 400
-  Exclude:
-    - "**/spec/**/*_spec.rb"
-
-# We believe the default 80 characters is too restrictive and that lines can still be readable and maintainable
-# when no more than 120 characters. This also allows us to maximise our scree space.
-Layout/LineLength:
-  Max: 120
-  Exclude:
-    - "**spec/factories/**/*.rb"
-    - "**spec/features/**/*_spec.rb"
-    - "**spec/models/**/*_spec.rb"
-    - "**spec/policies/**/*_spec.rb"
-    - "**spec/routing/**/*_spec.rb"
-
-# Turn these off as can totally mess with the expect{...}.to syntax
-# Also reports on model validations using Proc.new { style blocks but trying to use do .. end raises invalid syntax
-Style/BlockDelimiters:
-  Exclude:
-    - "**/spec/**/*_spec.rb"
-
-# As a web app, as long as the team commit to using well named classes for
-# controllers, models etc it should not be necessary to add top-level class
-# documentation.
-Style/Documentation:
-  Enabled: false
-
-# We've found the sprintf style for formatting strings can be useful when storing a formatted string as a template,
-# and passing in strings that can vary with context. Therefore we chose to disable this rule.
-Style/FormatString:
-  Enabled: false
-
-# This rule was added in version 0.49.0. We have nothing against the rule
-# however the code we have it doesn't like is anything that uses strftime().
-# We feel the way we are using that is as expected, so have taken the decision
-# to turn off this cop. https://github.com/bbatsov/rubocop/issues/3438
-Style/FormatStringToken:
-  Enabled: false
-
-# When using Ruby >= 2.3, Rubocop wants to add a comment to the top of *.rb
-# to aid migration to frozen literals in Ruby 3.0. We are not interested in
-# modifying every file at this point, so this cop is disabled for now.
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-# In specs we like to use the pattern of updating within an expect do block and
-# then asserting a given attribute has changed as a result. This requires
-# chaining hence we exclude specs from this rule
-Style/MethodCalledOnDoEndBlock:
-  Exclude:
-    - "**/spec/**/*_spec.rb"
-
-# There are no relative performance improvements using '' over "", therefore we believe there is more
-# value in using "" for all strings irrespective of whether string interpolation is used
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
+# Allow contexts to start with on for workflow event specs
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - "on"
+    - for

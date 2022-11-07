@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "BusinessTypeForms", type: :request do
+  RSpec.describe "BusinessTypeForms" do
     describe "GET business_type_form_path" do
       include_examples "GET flexible form", "business_type_form"
     end
@@ -30,7 +30,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the site_grid_reference form" do
             get back_business_type_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_site_grid_reference_form_path(transient_registration[:token]))
           end
         end
@@ -46,7 +46,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the correct form for the state" do
             get back_business_type_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_declaration_form_path(transient_registration[:token]))
           end
         end

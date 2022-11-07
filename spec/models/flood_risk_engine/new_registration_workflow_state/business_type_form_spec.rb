@@ -4,19 +4,19 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe NewRegistration do
-    subject { build(:new_registration, workflow_state: "business_type_form") }
+    subject(:new_registration) { build(:new_registration, workflow_state: "business_type_form") }
 
     describe "#workflow_state" do
-      context ":business_type_form state transitions" do
+      context "with :business_type_form state transitions" do
         context "on next" do
           context "when the registration should have partners" do
-            before { expect(subject).to receive(:partnership?).and_return(true) }
+            before { allow(new_registration).to receive(:partnership?).and_return(true) }
 
             include_examples "has next transition", next_state: "partner_name_form"
           end
 
           context "when the registration should have a company number" do
-            before { expect(subject).to receive(:company_no_required?).and_return(true) }
+            before { allow(new_registration).to receive(:company_no_required?).and_return(true) }
 
             include_examples "has next transition", next_state: "company_number_form"
           end

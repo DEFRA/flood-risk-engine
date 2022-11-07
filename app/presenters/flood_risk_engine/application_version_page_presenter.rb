@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A 'view model' behind the high_voltage static page @ /pages/version
 module FloodRiskEngine
   class ApplicationVersionPagePresenter

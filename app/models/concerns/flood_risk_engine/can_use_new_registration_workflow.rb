@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 # rubocop:disable Metrics/BlockLength
 module FloodRiskEngine
   module CanUseNewRegistrationWorkflow
@@ -272,7 +273,7 @@ module FloodRiskEngine
     end
 
     def company_address_was_manually_entered?
-      return unless company_address.present?
+      return if company_address.blank?
 
       company_address.manual?
     end
@@ -283,3 +284,4 @@ module FloodRiskEngine
   end
 end
 # rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/ModuleLength

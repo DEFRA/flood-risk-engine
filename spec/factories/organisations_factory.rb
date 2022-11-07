@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :organisation, class: "FloodRiskEngine::Organisation" do
     org_type            { 0 }

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe Exemption, type: :model do
+  RSpec.describe Exemption do
     it { is_expected.to be_valid }
     it { is_expected.to have_many(:enrollment_exemptions).dependent(:restrict_with_exception) }
     it { is_expected.to have_many(:enrollments).through(:enrollment_exemptions) }
@@ -9,7 +11,7 @@ module FloodRiskEngine
     describe ".code_number" do
       let(:number) { 44 }
 
-      it "should be updated on save" do
+      it "is updated on save" do
         exemption = described_class.create(code: "foo#{number}", summary: "foo")
         expect(exemption.code_number).to eq(number)
       end
@@ -19,7 +21,7 @@ module FloodRiskEngine
       context "with a long dredging exemption" do
         let(:exemption) { FactoryBot.create(:exemption, code: "FRA23") }
 
-        it "should be true" do
+        it "is true" do
           expect(exemption.long_dredging?).to be_truthy
         end
       end
@@ -27,7 +29,7 @@ module FloodRiskEngine
       context "with a standard exemption" do
         let(:exemption) { FactoryBot.create(:exemption) }
 
-        it "should be false" do
+        it "is false" do
           expect(exemption.long_dredging?).to be_falsey
         end
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :transient_person, class: "FloodRiskEngine::Transient_Person" do
     trait :named do

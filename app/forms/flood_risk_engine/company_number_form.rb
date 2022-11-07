@@ -21,7 +21,7 @@ module FloodRiskEngine
     private
 
     def process_company_number(company_number)
-      return unless company_number.present?
+      return if company_number.blank?
 
       number = company_number.to_s
       # Should be 8 characters, so if it's not, add 0s to the start

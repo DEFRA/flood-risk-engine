@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "PartnerOverviewForms", type: :request do
+  RSpec.describe "PartnerOverviewForms" do
     include_examples "GET flexible form", "partner_overview_form"
 
     include_examples "POST without params form", "partner_overview_form"
@@ -19,7 +19,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the business_type form" do
             get back_partner_overview_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_business_type_form_path(transient_registration[:token]))
           end
         end
@@ -35,7 +35,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the correct form for the state" do
             get back_partner_overview_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_declaration_form_path(transient_registration[:token]))
           end
         end
@@ -60,7 +60,7 @@ module FloodRiskEngine
                                                       partner_id: destroyable_partner_id)
 
               expect { TransientPerson.find(destroyable_partner_id) }.to raise_error(ActiveRecord::RecordNotFound)
-              expect(response).to have_http_status(302)
+              expect(response).to have_http_status(:found)
               expect(response).to redirect_to(new_partner_name_form_path(transient_registration[:token]))
             end
           end
@@ -74,7 +74,7 @@ module FloodRiskEngine
                                                       partner_id: destroyable_partner_id)
 
               expect { TransientPerson.find(destroyable_partner_id) }.to raise_error(ActiveRecord::RecordNotFound)
-              expect(response).to have_http_status(302)
+              expect(response).to have_http_status(:found)
               expect(response).to redirect_to(new_partner_overview_form_path(transient_registration[:token]))
             end
           end

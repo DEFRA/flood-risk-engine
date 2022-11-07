@@ -15,8 +15,8 @@ module FloodRiskEngine
           }
         end
 
-        it "should submit" do
-          expect(additional_contact_email_form.submit(ActionController::Parameters.new(valid_params))).to eq(true)
+        it "submits" do
+          expect(additional_contact_email_form.submit(ActionController::Parameters.new(valid_params))).to be(true)
         end
       end
 
@@ -29,8 +29,8 @@ module FloodRiskEngine
           }
         end
 
-        it "should not submit" do
-          expect(additional_contact_email_form.submit(ActionController::Parameters.new(invalid_params))).to eq(false)
+        it "does not submit" do
+          expect(additional_contact_email_form.submit(ActionController::Parameters.new(invalid_params))).to be(false)
         end
       end
     end
@@ -48,10 +48,10 @@ module FloodRiskEngine
         end
 
         context "when a confirmed_email does not match the additional_contact_email" do
-          before(:each) { additional_contact_email_form.confirmed_email = "no_matchy@example.com" }
+          before { additional_contact_email_form.confirmed_email = "no_matchy@example.com" }
 
           it "is not valid" do
-            expect(additional_contact_email_form).to_not be_valid
+            expect(additional_contact_email_form).not_to be_valid
           end
         end
       end

@@ -11,8 +11,8 @@ module FloodRiskEngine
           { token: company_postcode_form.token, temp_company_postcode: company_postcode_form.temp_company_postcode }
         end
 
-        it "should submit" do
-          expect(company_postcode_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(company_postcode_form.submit(valid_params)).to be(true)
         end
       end
 
@@ -20,8 +20,8 @@ module FloodRiskEngine
         let(:company_postcode_form) { build(:company_postcode_form, :has_required_data) }
         let(:invalid_params) { { temp_company_postcode: "" } }
 
-        it "should not submit" do
-          expect(company_postcode_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(company_postcode_form.submit(invalid_params)).to be(false)
         end
       end
     end

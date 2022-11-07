@@ -22,7 +22,7 @@ RSpec.shared_examples "GET locked-in form" do |form|
 
         get new_path_for(form, transient_registration)
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
         expect(transient_registration.reload[:workflow_state]).to eq(state_before_request)
       end
     end

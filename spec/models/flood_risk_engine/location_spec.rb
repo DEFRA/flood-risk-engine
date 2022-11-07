@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe Location, type: :model do
+  RSpec.describe Location do
     it { is_expected.to belong_to(:locatable) }
     it { is_expected.to respond_to(:water_management_area) }
 
-    context "scopes" do
+    context "with scopes" do
       describe ".missing_area" do
         it "only returns records with a missing area" do
           missing_area_record = create(:location, water_management_area: nil)
@@ -66,16 +68,16 @@ module FloodRiskEngine
       end
       let(:location) { create(:location, grid_reference: palace.grid_reference.delete(" ")) }
 
-      it "should tidy format of grid reference" do
+      it "tidies format of grid reference" do
         expect(location.grid_reference).to eq(palace.grid_reference)
       end
 
-      it "should save coresponding easting and northing" do
+      it "saves corresponding easting and northing" do
         expect(location.easting.to_i).to eq(palace.easting.to_i)
         expect(location.northing.to_i).to eq(palace.northing.to_i)
       end
 
-      it "should allow grid reference to be changed" do
+      it "allows grid reference to be changed" do
         location.update_attribute :grid_reference, mountain.grid_reference
         expect(location.grid_reference).to eq(mountain.grid_reference)
         expect(location.easting.to_i).to eq(mountain.easting.to_i)

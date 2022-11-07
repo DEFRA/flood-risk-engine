@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "dibber"
 # https://github.com/reggieb/Dibber
 Seeder = Dibber::Seeder

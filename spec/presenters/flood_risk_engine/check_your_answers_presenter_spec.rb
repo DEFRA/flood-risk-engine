@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
@@ -7,7 +9,7 @@ module FloodRiskEngine
             :has_required_data_for_limited_company)
     end
 
-    subject do
+    subject(:presenter) do
       described_class.new(new_registration)
     end
 
@@ -53,7 +55,7 @@ module FloodRiskEngine
       end
 
       it "returns the properly-formatted data" do
-        expect(subject.registration_rows).to eq(expected_data)
+        expect(presenter.registration_rows).to eq(expected_data)
       end
 
       context "when the registration is a partnership" do
@@ -96,7 +98,7 @@ module FloodRiskEngine
         end
 
         it "returns the properly-formatted data" do
-          expect(subject.registration_rows).to eq(expected_data)
+          expect(presenter.registration_rows).to eq(expected_data)
         end
       end
 
@@ -109,7 +111,7 @@ module FloodRiskEngine
         end
 
         it "returns the properly-formatted data" do
-          expect(subject.registration_rows).to eq(expected_data)
+          expect(presenter.registration_rows).to eq(expected_data)
         end
       end
     end
@@ -133,7 +135,7 @@ module FloodRiskEngine
       end
 
       it "returns the properly-formatted data" do
-        expect(subject.contact_rows).to eq(expected_data)
+        expect(presenter.contact_rows).to eq(expected_data)
       end
 
       context "when the registration has no contact position" do
@@ -143,7 +145,7 @@ module FloodRiskEngine
         end
 
         it "returns the properly-formatted data" do
-          expect(subject.contact_rows).to eq(expected_data)
+          expect(presenter.contact_rows).to eq(expected_data)
         end
       end
 
@@ -154,7 +156,7 @@ module FloodRiskEngine
         end
 
         it "returns the properly-formatted data" do
-          expect(subject.contact_rows).to eq(expected_data)
+          expect(presenter.contact_rows).to eq(expected_data)
         end
       end
     end

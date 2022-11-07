@@ -17,19 +17,17 @@ RSpec.shared_examples "validate contact name" do |form_factory, field|
       end
 
       it "is not valid" do
-        expect(form).to_not be_valid
+        expect(form).not_to be_valid
       end
     end
 
     context "when a name is too long" do
-      # rubocop:disable Layout/LineLength
       before do
         form.transient_registration.send("#{field}=", "0fJQLDxvB77dz3SbcMDSH60kM82VUUMOlpZBkIUnh1IIUE0zF4r3NbHotPIzlbeQdCWB1qa")
       end
-      # rubocop:enable Layout/LineLength
 
       it "is not valid" do
-        expect(form).to_not be_valid
+        expect(form).not_to be_valid
       end
     end
 
@@ -39,7 +37,7 @@ RSpec.shared_examples "validate contact name" do |form_factory, field|
       end
 
       it "is not valid" do
-        expect(form).to_not be_valid
+        expect(form).not_to be_valid
       end
     end
   end

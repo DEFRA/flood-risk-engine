@@ -4,8 +4,8 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe CompanyAddressLookupForm, type: :model do
-    before(:each) { VCR.insert_cassette("address_lookup_valid_postcode") }
-    after(:each) { VCR.eject_cassette }
+    before { VCR.insert_cassette("address_lookup_valid_postcode") }
+    after { VCR.eject_cassette }
 
     describe "#submit" do
       context "when the form is valid" do
@@ -20,8 +20,8 @@ module FloodRiskEngine
         end
         let(:transient_registration) { company_address_lookup_form.transient_registration }
 
-        it "should submit" do
-          expect(company_address_lookup_form.submit(valid_params)).to eq(true)
+        it "submits" do
+          expect(company_address_lookup_form.submit(valid_params)).to be(true)
         end
 
         it "saves the company address" do
@@ -36,8 +36,8 @@ module FloodRiskEngine
         let(:company_address_lookup_form) { build(:company_address_lookup_form, :has_required_data) }
         let(:invalid_params) { { token: "foo" } }
 
-        it "should not submit" do
-          expect(company_address_lookup_form.submit(invalid_params)).to eq(false)
+        it "does not submit" do
+          expect(company_address_lookup_form.submit(invalid_params)).to be(false)
         end
       end
     end
@@ -49,7 +49,7 @@ module FloodRiskEngine
               workflow_state: "company_address_lookup_form")
       end
       # Don't use FactoryBot for this as we need to make sure it initializes with a specific object
-      let(:company_address_lookup_form) { CompanyAddressLookupForm.new(transient_registration) }
+      let(:company_address_lookup_form) { described_class.new(transient_registration) }
 
       describe "#temp_address" do
         it "pre-selects the address" do

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class ReferenceNumber < ApplicationRecord
-    PREFIX = "EXFRA".freeze
-    PADDING = "0".freeze
+    PREFIX = "EXFRA"
+    PADDING = "0"
     OFFSET = 1_000
     MINIMUM_LENGTH = 11
 

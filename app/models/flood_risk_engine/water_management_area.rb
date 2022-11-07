@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class WaterManagementArea < ApplicationRecord
     has_many :locations, dependent: :restrict_with_exception

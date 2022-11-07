@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 $LOAD_PATH.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
@@ -68,7 +70,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "github_changelog_generator"
   s.add_development_dependency "pg", "~> 1"
   # Used to ensure the code base matches our agreed styles and conventions
-  s.add_development_dependency "rubocop", "~> 1"
+  s.add_development_dependency "rubocop"
   s.add_development_dependency "sass-rails", "~> 5"
   s.metadata["rubygems_mfa_required"] = "true"
 end

@@ -10,7 +10,7 @@ RSpec.shared_examples "validate postcode" do |form_factory, field|
         example_json = { postcode: "BS1 5AH" }
         response = double(:response, results: [example_json], successful?: true)
 
-        expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(response)
+        allow(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(response)
       end
 
       it "is valid" do
@@ -24,7 +24,7 @@ RSpec.shared_examples "validate postcode" do |form_factory, field|
       end
 
       it "is not valid" do
-        expect(form).to_not be_valid
+        expect(form).not_to be_valid
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.shared_examples "validate postcode" do |form_factory, field|
       end
 
       it "is not valid" do
-        expect(form).to_not be_valid
+        expect(form).not_to be_valid
       end
     end
 
@@ -42,11 +42,11 @@ RSpec.shared_examples "validate postcode" do |form_factory, field|
       before do
         response = double(:response, successful?: false, error: DefraRuby::Address::NoMatchError.new)
 
-        expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(response)
+        allow(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(response)
       end
 
       it "is not valid" do
-        expect(form).to_not be_valid
+        expect(form).not_to be_valid
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.shared_examples "validate postcode" do |form_factory, field|
       before do
         response = double(:response, successful?: false, error: "foo")
 
-        expect(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(response)
+        allow(FloodRiskEngine::AddressLookupService).to receive(:run).and_return(response)
       end
 
       it "is valid" do

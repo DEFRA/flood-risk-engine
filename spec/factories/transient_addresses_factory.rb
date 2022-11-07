@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :transient_address, class: "FloodRiskEngine::Transient_Address" do
     uprn                { Faker::Lorem.characters(number: 6) }

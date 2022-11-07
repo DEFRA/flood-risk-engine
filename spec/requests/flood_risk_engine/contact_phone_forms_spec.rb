@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "ContactPhoneForms", type: :request do
+  RSpec.describe "ContactPhoneForms" do
     describe "GET contact_phone_form_path" do
       include_examples "GET flexible form", "contact_phone_form"
     end
@@ -30,7 +30,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the contact_name form" do
             get back_contact_phone_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_contact_name_form_path(transient_registration[:token]))
           end
         end
@@ -46,7 +46,7 @@ module FloodRiskEngine
           it "returns a 302 response and redirects to the correct form for the state" do
             get back_contact_phone_forms_path(transient_registration[:token])
 
-            expect(response).to have_http_status(302)
+            expect(response).to have_http_status(:found)
             expect(response).to redirect_to(new_declaration_form_path(transient_registration[:token]))
           end
         end

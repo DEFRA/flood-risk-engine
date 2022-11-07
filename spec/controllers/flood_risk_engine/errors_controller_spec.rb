@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe ErrorsController, type: :controller do
+  RSpec.describe ErrorsController do
     routes { Engine.routes }
     render_views
     describe "#show" do

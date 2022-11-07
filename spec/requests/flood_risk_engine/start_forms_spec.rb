@@ -3,13 +3,13 @@
 require "rails_helper"
 
 module FloodRiskEngine
-  RSpec.describe "StartForms", type: :request do
+  RSpec.describe "StartForms" do
     describe "GET new_start_form_path" do
       it "returns a 200 response and render the new template" do
         get new_start_form_path
 
         expect(response).to render_template(:new)
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -28,7 +28,7 @@ module FloodRiskEngine
 
           expect(new_registration).to be_present
           expect(response).to redirect_to(new_exemption_form_path(new_registration.token))
-          expect(response).to have_http_status(302)
+          expect(response).to have_http_status(:found)
           expect(new_registration.workflow_state).to eq("exemption_form")
         end
       end
@@ -42,7 +42,7 @@ module FloodRiskEngine
           new_registration.reload
 
           expect(response).to redirect_to(new_exemption_form_path(new_registration.token))
-          expect(response).to have_http_status(302)
+          expect(response).to have_http_status(:found)
           expect(new_registration.workflow_state).to eq("exemption_form")
         end
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_dependency "flood_risk_engine/application_controller"
 
 module FloodRiskEngine
