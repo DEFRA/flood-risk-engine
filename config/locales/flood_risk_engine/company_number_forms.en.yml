@@ -2,10 +2,10 @@ en:
   flood_risk_engine:
     company_number_forms:
       new:
-        heading: &heading
+        heading: &heading_text
           limited_company: What’s the registration number of the company?
           limited_liability_partnership: What’s the registration number of the partnership?
-        title: *heading
+        title: *heading_text
         label:
           limited_company: Company registration number
           limited_liability_partnership: Registration number
