@@ -16,3 +16,5 @@ en:
           attributes:
             partner_address:
               blank: "Select an address"
+            transient_address:
+              blank: "Select an address"
