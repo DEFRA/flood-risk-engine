@@ -2,12 +2,12 @@ en:
   flood_risk_engine:
     partner_address_manual_forms:
       new:
-        title: Enter the partner address
-        heading: Enter the address of this partner
+        heading: &heading Enter the address of this partner
+        title: *heading
         os_places_error_heading: Our address finder is not working
         os_places_error_text: Please enter the address below.
         preset_postcode_label: Postcode
-        postcode_change_link: "Change postcode"
+        postcode_change_link: Change postcode
         error_heading: Something is wrong
         next_button: Continue
   activemodel:
@@ -16,15 +16,15 @@ en:
         flood_risk_engine/partner_address_manual_form:
           attributes:
             premises:
-              blank: "Enter the building name or number"
-              too_long: "The building name or number must be no longer than 200 characters"
+              blank: Enter the building name or number
+              too_long: The building name or number must be no longer than 200 characters
             street_address:
-              blank: "Enter an address line 1"
-              too_long: "The address line 1 must be no longer than 160 characters"
+              blank: Enter an address line 1
+              too_long: The address line 1 must be no longer than 160 characters
             locality:
-              too_long: "The address line 2 must be no longer than 70 characters"
+              too_long: The address line 2 must be no longer than 70 characters
             city:
-              blank: "Enter a town or city"
-              too_long: "The town or city must be no longer than 30 characters"
+              blank: Enter a town or city
+              too_long: The town or city must be no longer than 30 characters
             postcode:
-              too_long: "The postcode must be no longer than 30 characters"
+              too_long: The postcode must be no longer than 30 characters

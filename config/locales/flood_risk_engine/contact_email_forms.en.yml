@@ -2,32 +2,32 @@ en:
   flood_risk_engine:
     contact_email_forms:
       new:
-        title: Contact email
-        form_hint: "We’ll send a confirmation to this address"
-        heading: "What’s the email address of the person we should contact?"
+        form_hint: We’ll send a confirmation to this address
+        heading: &heading What’s the email address of the person we should contact?
+        title: *heading
         label:  Email address
-        hint:  "We’ll send the registration confirmation to this address"
+        hint:  We’ll send the registration confirmation to this address
         label1: Confirm email address
         legend: What’s the email address of the person we should contact?
         errors:
           email_address:
             blank: Enter an email address
-            format: "Enter a valid email address - there’s a mistake in that one"
+            format: Enter a valid email address - there’s a mistake in that one
           email_address_confirmation:
             blank: Enter your email address again to confirm it
-            format: "The email addresses you’ve entered don’t match"
-        next_button: "Continue"
+            format: The email addresses you’ve entered don’t match
+        next_button: Continue
   activemodel:
       errors:
         models:
           flood_risk_engine/contact_email_form:
             attributes:
               confirmed_email:
-                blank: "Enter the email address again to confirm it"
-                invalid_format: "Enter a valid confirmed email address - there’s a mistake in that one"
-                does_not_match: "The email addresses you’ve entered don’t match"
+                blank: Enter the email address again to confirm it
+                invalid_format: Enter a valid confirmed email address - there’s a mistake in that one
+                does_not_match: The email addresses you’ve entered don’t match
   defra_ruby:
     validators:
       EmailValidator:
-        blank: "Enter an email address"
-        invalid_format: "Enter a valid email address - there’s a mistake in that one"
+        blank: Enter an email address
+        invalid_format: Enter a valid email address - there’s a mistake in that one

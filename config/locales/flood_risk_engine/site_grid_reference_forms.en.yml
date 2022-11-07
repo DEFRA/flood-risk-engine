@@ -2,8 +2,8 @@ en:
   flood_risk_engine:
     site_grid_reference_forms:
       new:
-        title: Where will the activity take place?
-        heading: Where will the activity take place?
+        heading: &heading Where will the activity take place?
+        title: *heading
         legend: Where will the activity take place?
         grid_reference:
           form_label: National Grid reference

@@ -2,11 +2,11 @@ en:
   flood_risk_engine:
     partner_name_forms:
       new:
-        title: Partner name
-        heading: "What are the names of all the business partners?"
-        description_1: "We need to know the name and home address of all business partners."
-        full_name: "Full name"
-        form_hint: "For example, Jane Smith"
+        heading: &heading What are the names of all the business partners?
+        title: *heading
+        description_1: We need to know the name and home address of all business partners.
+        full_name: Full name
+        form_hint: For example, Jane Smith
         next_button: Continue
   activemodel:
     errors:
@@ -14,5 +14,5 @@ en:
         flood_risk_engine/partner_name_form:
           attributes:
             full_name:
-              blank: "Enter a full name"
-              too_long: "The full name must be no longer than 35 characters"
+              blank: Enter a full name
+              too_long: The full name must be no longer than 35 characters

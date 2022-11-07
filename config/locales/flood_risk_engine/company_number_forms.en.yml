@@ -2,10 +2,10 @@ en:
   flood_risk_engine:
     company_number_forms:
       new:
-        title: Companies House number
-        heading:
-          limited_company: What's the registration number of the company?
-          limited_liability_partnership: What's the registration number of the partnership?
+        heading: &heading
+          limited_company: What’s the registration number of the company?
+          limited_liability_partnership: What’s the registration number of the partnership?
+        title: *heading
         label:
           limited_company: Company registration number
           limited_liability_partnership: Registration number
@@ -15,12 +15,12 @@ en:
         legend:
           limited_company: Registration number of the company
           limited_liability_partnership: Registration number of the partnership
-        next_button: "Continue"
+        next_button: Continue
   defra_ruby:
     validators:
       CompaniesHouseNumberValidator:
         blank: Enter a company registration number
-        invalid_format: "Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits, or 2 letters followed by 5 digits and another letter. If your number has only 7 digits, enter it with a zero at the start."
+        invalid_format: Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits, or 2 letters followed by 5 digits and another letter. If your number has only 7 digits, enter it with a zero at the start.
         not_found: Companies House couldn't find a company with this number
         inactive: Your company must be registered as an active company
         error: There was an error connecting with Companies House. Hopefully this is a one off and will work if you try again.

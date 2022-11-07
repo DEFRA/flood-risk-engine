@@ -2,8 +2,8 @@ en:
   flood_risk_engine:
     confirm_exemption_forms:
       new:
-        title: Confirm your exemption
-        heading: Confirm your exemption
+        heading: &heading Confirm your exemption
+        title: *heading
         remove_link:
           text: Change %{hidden}
           hidden: exemption %{code}
