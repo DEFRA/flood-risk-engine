@@ -1,3 +1,5 @@
+<% content_for :title, t(".title.#{@company_address_manual_form.business_type}") %>
+
 <%= render("flood_risk_engine/shared/back", back_path: back_company_address_manual_forms_path(@company_address_manual_form.token)) %>
 
 <div class="govuk-grid-row">
