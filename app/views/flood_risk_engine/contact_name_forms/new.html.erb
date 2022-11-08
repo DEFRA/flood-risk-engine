@@ -18,12 +18,14 @@
       <%= f.govuk_text_field :contact_name,
         width: 20,
         label: { text: t(".contact_name.label") },
-        hint: { text: t(".contact_name.hint") }
+        hint: { text: t(".contact_name.hint") },
+        autocomplete: "name"
       %>
       <%= f.govuk_text_field :contact_position,
         width: 20,
         label: { text: t(".contact_position.label") },
-        hint: { text: t(".contact_position.hint") }
+        hint: { text: t(".contact_position.hint") },
+        autocomplete: "organization-title"
       %>
 
       <%= f.govuk_submit t(".next_button") %>

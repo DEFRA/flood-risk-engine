@@ -11,7 +11,8 @@
   <%= f.govuk_text_field :street_address,
     label: { text: t(".street_address_label") },
     width: "one-half",
-    value: form.street_address
+    value: form.street_address,
+    autocomplete: "address-line1"
   %>
 </div>
 
@@ -19,7 +20,8 @@
   <%= f.govuk_text_field :locality,
     label: { text: t(".locality_label") },
     width: "one-half",
-    value: form.locality
+    value: form.localitys,
+    autocomplete: "address-line2"
   %>
 </div>
 
@@ -27,7 +29,8 @@
   <%= f.govuk_text_field :city,
     label: { text: t(".city_label") },
     width: "one-half",
-    value: form.city
+    value: form.citys,
+    autocomplete: "address-line3"
   %>
 </div>
 
