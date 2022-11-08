@@ -17,11 +17,13 @@
 
       <%= f.govuk_email_field :additional_contact_email,
         width: 20,
-        label: { text: t(".email_address.label") }
+        label: { text: t(".email_address.label") },
+        autocomplete: "email"
       %>
       <%= f.govuk_email_field :confirmed_email,
         width: 20,
-        label: { text: t(".email_address_confirmation.label") }
+        label: { text: t(".email_address_confirmation.label") },
+        autocomplete: "email"
       %>
 
       <%= f.govuk_submit t(".next_button") %>

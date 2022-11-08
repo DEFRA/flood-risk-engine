@@ -17,11 +17,13 @@
         label: {
           text: t(".label")
         },
-        hint: { text: t(".form_hint") }
+        hint: { text: t(".form_hint") },
+        autocomplete: "email"
       %>
       <%= f.govuk_email_field :confirmed_email,
         width: 20,
-        label: {  text: t(".label1") }
+        label: {  text: t(".label1") },
+        autocomplete: "email"
       %>
 
       <%= f.govuk_submit t(".next_button") %>

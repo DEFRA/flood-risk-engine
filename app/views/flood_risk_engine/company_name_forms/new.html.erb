@@ -15,10 +15,11 @@
         label: {
           text: t(".heading.#{@company_name_form.business_type}"),
           tag: "h1",
-          size: "l"
+          size: "l",
         },
         width: 20,
-        hint: { text: t(".hint.#{@company_name_form.business_type}") }
+        hint: { text: t(".hint.#{@company_name_form.business_type}") },
+        autocomplete: "organization"
       %>
 
       <%= f.govuk_submit t(".next_button") %>
