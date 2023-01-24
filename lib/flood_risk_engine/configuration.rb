@@ -100,7 +100,7 @@ module FloodRiskEngine
       DefraRuby::Alert.configure do |configuration|
         configuration.root_directory = Rails.root
         configuration.logger = Rails.logger
-        configuration.environment = Rails.env
+        configuration.environment = ENV.fetch("AIRBRAKE_ENV_NAME", Rails.env)
       end
     end
   end
