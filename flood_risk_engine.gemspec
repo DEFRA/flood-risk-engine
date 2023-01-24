@@ -58,19 +58,8 @@ Gem::Specification.new do |s|
   s.add_dependency "net-pop", "~> 0.1"
   s.add_dependency "net-smtp", "~> 0.3"
 
-  # Pretty prints objects in console. Usage `$ ap some_object`
-  s.add_development_dependency "awesome_print"
   s.add_development_dependency "bootstrap-sass", "~> 3"
-  # Allows us to automatically generate the change log from the tags, issues,
-  # labels and pull requests on GitHub. Added as a dependency so all dev's have
-  # access to it to generate a log, and so they are using the same version.
-  # New dev's should first create GitHub personal app token and add it to their
-  # ~/.bash_profile (or equivalent)
-  # https://github.com/skywinder/github-changelog-generator#github-token
-  s.add_development_dependency "github_changelog_generator"
   s.add_development_dependency "pg", "~> 1"
-  # Used to ensure the code base matches our agreed styles and conventions
-  s.add_development_dependency "rubocop"
   s.add_development_dependency "sass-rails", "~> 5"
   s.metadata["rubygems_mfa_required"] = "true"
 end

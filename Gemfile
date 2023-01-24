@@ -10,12 +10,23 @@ gemspec
 gem "rails", "6.1.5"
 
 group :development, :test do
-  gem "defra_ruby_style"
+  # Pretty prints objects in console. Usage `$ ap some_object`
+  gem "awesome_print"
   # ActiveRecord N+1 detection
   gem "bullet"
   # Call "byebug" anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", "~> 11" # 11.1 only supports Ruby 2.4 and up
+  gem "defra_ruby_style"
+  # Allows us to automatically generate the change log from the tags, issues,
+  # labels and pull requests on GitHub. Added as a dependency so all dev's have
+  # access to it to generate a log, and so they are using the same version.
+  # New dev's should first create GitHub personal app token and add it to their
+  # ~/.bash_profile (or equivalent)
+  # https://github.com/skywinder/github-changelog-generator#github-token
+  gem "github_changelog_generator"
+  # Used to ensure the code base matches our agreed styles and conventions
+  gem "rubocop"
   gem "rubocop-rails"
   gem "rubocop-rspec"
 end
