@@ -13,7 +13,7 @@ module FloodRiskEngine
           missing_area_record = create(:location, water_management_area: nil)
           create(:location, water_management_area: create(:water_management_area))
 
-          expect(described_class.missing_area).to match_array([missing_area_record])
+          expect(described_class.missing_area).to contain_exactly(missing_area_record)
         end
       end
 
@@ -28,7 +28,7 @@ module FloodRiskEngine
           create(:location).update(easting: "", northing: "123.45")
           create(:location).update(easting: nil, northing: nil)
 
-          expect(described_class.with_easting_and_northing).to match_array([with_easting_and_northing])
+          expect(described_class.with_easting_and_northing).to contain_exactly(with_easting_and_northing)
         end
       end
 
@@ -39,7 +39,7 @@ module FloodRiskEngine
           create(:location)
           create(:location, locatable: create(:address, :primary))
 
-          expect(described_class.from_site_address).to match_array([from_site_address])
+          expect(described_class.from_site_address).to contain_exactly(from_site_address)
         end
       end
     end

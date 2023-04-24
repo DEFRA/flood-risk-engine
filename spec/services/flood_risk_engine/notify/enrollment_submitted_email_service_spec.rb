@@ -7,7 +7,7 @@ module FloodRiskEngine
     RSpec.describe EnrollmentSubmittedEmailService do
       describe ".run" do
         let!(:template_id) { "6e444a8c-c656-45aa-97d8-e95181ff3a75" }
-        let(:recipient_address) { Faker::Internet.safe_email }
+        let(:recipient_address) { Faker::Internet.email }
 
         let!(:enrollment) do
           create(:enrollment, :with_exemption, reference_number: ReferenceNumber.create)

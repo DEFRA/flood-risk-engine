@@ -11,7 +11,7 @@ RSpec.shared_examples "a postcode transition" do |previous_state:, address_type:
 
       it "can only transition to either #{previous_state}, #{next_state}, or #{alt_state}" do
         permitted_states = Helpers::WorkflowStates.permitted_states(form)
-        expect(permitted_states).to match_array([previous_state, next_state, alt_state])
+        expect(permitted_states).to contain_exactly(previous_state, next_state, alt_state)
       end
 
       it "changes to #{next_state} after the 'next' event" do
@@ -35,7 +35,7 @@ RSpec.shared_examples "a postcode transition" do |previous_state:, address_type:
 
       it "can only transition to either #{previous_state} or #{next_state}" do
         permitted_states = Helpers::WorkflowStates.permitted_states(form)
-        expect(permitted_states).to match_array([previous_state, next_state])
+        expect(permitted_states).to contain_exactly(previous_state, next_state)
       end
 
       it "changes to #{next_state} after the 'next' event" do

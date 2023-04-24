@@ -11,5 +11,5 @@ FactoryBot.define do
     [first, last].join
   end
 
-  sequence(:random_email) { Faker::Internet.safe_email }
+  sequence(:random_email) { Faker::Internet.email }
 end
