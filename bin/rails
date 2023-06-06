@@ -5,12 +5,13 @@
 # installed from the root of your application.
 
 ENGINE_ROOT = File.expand_path("..", __dir__)
-ENGINE_PATH = File.expand_path("../lib/flood/risk/engine/engine", __dir__)
-APP_PATH = File.expand_path("../test/dummy/config/application", __dir__)
+ENGINE_PATH = File.expand_path("../lib/flood_risk_engine/engine", __dir__)
+APP_PATH = File.expand_path("../spec/dummy/config/application", __dir__)
 
 # Set up gems listed in the Gemfile.
 ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 require "bundler/setup" if File.exist?(ENV["BUNDLE_GEMFILE"])
+require File.expand_path("../app/helpers/flood_risk_engine/application_helper.rb", __dir__)
 
 require "rails/all"
 require "rails/engine/commands"

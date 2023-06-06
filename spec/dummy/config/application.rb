@@ -26,7 +26,6 @@ Bundler.require(*Rails.groups)
 # `dotenv-rails` needs to be defined here to load `.env` in the test environment.
 require "dotenv-rails"
 
-require File.expand_path("../../../app/helpers/flood_risk_engine/application_helper.rb", __dir__)
 require "flood_risk_engine"
 
 Dotenv::Railtie.load
