@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FloodRiskEngine
   class EnrollmentMailerPreview < ActionMailer::Preview
     def submitted

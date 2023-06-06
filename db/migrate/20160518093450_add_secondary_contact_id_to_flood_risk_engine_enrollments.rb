@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSecondaryContactIdToFloodRiskEngineEnrollments < ActiveRecord::Migration[4.2]
   def change
     add_column :flood_risk_engine_enrollments, :secondary_contact_id, :integer

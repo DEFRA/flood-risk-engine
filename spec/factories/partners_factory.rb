@@ -25,6 +25,6 @@ FactoryBot.define do
   end
 
   factory :partner_with_contact, class: "FloodRiskEngine::Partner" do
-    association :contact, factory: :partner_contact
+    contact factory: :partner_contact
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFloodRiskEnginePartners < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_partners do |t|

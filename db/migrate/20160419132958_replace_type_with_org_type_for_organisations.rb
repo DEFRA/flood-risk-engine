@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReplaceTypeWithOrgTypeForOrganisations < ActiveRecord::Migration[4.2]
   def up
     remove_index :flood_risk_engine_organisations, :type

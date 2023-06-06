@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Load environment variables from the project root to save having to add a .env file
 # to dummy in order to run it with rails console.
 # The order of precedence for .env* files in #load is left to right - i.e. the first file
@@ -5,7 +7,7 @@
 # require "dotenv"
 # Dotenv.load("../../.env.local", "../../.env.test", "../../.env")
 
-require File.expand_path("../boot", __FILE__)
+require File.expand_path("boot", __dir__)
 
 # Pick the frameworks you want:
 require "active_record/railtie"
@@ -24,12 +26,14 @@ Bundler.require(*Rails.groups)
 # `dotenv-rails` needs to be defined here to load `.env` in the test environment.
 require "dotenv-rails"
 
+require File.expand_path("../../../app/helpers/flood_risk_engine/application_helper.rb", __dir__)
 require "flood_risk_engine"
 
 Dotenv::Railtie.load
 
 module Dummy
   class Application < Rails::Application
+    config.autoloader = :zeitwerk
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -41,5 +45,8 @@ module Dummy
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # For Rails 7: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+    config.active_record.legacy_connection_handling = false
   end
 end

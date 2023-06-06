@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CreateFloodRiskEngineEnrollments < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_enrollments do |t|
       # These columns are test only
-      t.boolean :dummy_boolean
+      t.boolean :dummy_boolean, default: false, null: false
       t.string :dummy_string1
       t.string :dummy_string2
 

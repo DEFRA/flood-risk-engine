@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeDeregisterReasonsToEnum < ActiveRecord::Migration[4.2]
   def up
     remove_column :flood_risk_engine_enrollments_exemptions, :deregister_reason
