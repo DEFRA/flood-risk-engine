@@ -7,11 +7,12 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "rails", "6.1.5"
+gem "rails", "~> 7.0"
 
 group :development, :test do
   # Pretty prints objects in console. Usage `$ ap some_object`
   gem "awesome_print"
+  gem "bootstrap-sass", "~> 3"
   # ActiveRecord N+1 detection
   gem "bullet"
   # Call "byebug" anywhere in the code to stop execution and get a debugger
@@ -29,6 +30,7 @@ group :development, :test do
   gem "rubocop"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem "sass-rails", "~> 5"
 end
 
 group :test do
@@ -42,7 +44,7 @@ group :test do
   gem "rspec-html-matchers"
   gem "rspec-rails", "~> 5"
   gem "shoulda-matchers", "~> 4.5", require: false
-  gem "simplecov", "~> 0.16.0", require: false
+  gem "simplecov", "~> 0.17.1", require: false
   gem "vcr", "~> 6"
   gem "webmock", "~> 3"
 end

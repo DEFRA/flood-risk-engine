@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class ChangeContactToFullName < ActiveRecord::Migration[4.2]
 
   def up
     remove_column :flood_risk_engine_contacts, :first_name
     remove_column :flood_risk_engine_contacts, :last_name
 
-    add_column :flood_risk_engine_contacts, :full_name, :string, limit: 255, null: false, default: ''
+    add_column :flood_risk_engine_contacts, :full_name, :string, limit: 255, null: false, default: ""
     add_index :flood_risk_engine_contacts, :full_name
 
     change_column :flood_risk_engine_contacts, :position, :string, limit: 255
@@ -13,7 +15,7 @@ class ChangeContactToFullName < ActiveRecord::Migration[4.2]
 
     add_index :flood_risk_engine_enrollments,
               :correspondence_contact_id,
-              name: 'fre_enrollments_correspondence_contact_id'
+              name: "fre_enrollments_correspondence_contact_id"
   end
 
   def down
@@ -27,7 +29,7 @@ class ChangeContactToFullName < ActiveRecord::Migration[4.2]
 
     remove_column :flood_risk_engine_enrollments, :correspondence_contact_id
 
-    remove_index :flood_risk_engine_enrollments,  name: 'fre_enrollments_correspondence_contact_id'
+    remove_index :flood_risk_engine_enrollments,  name: "fre_enrollments_correspondence_contact_id"
   end
 
 end

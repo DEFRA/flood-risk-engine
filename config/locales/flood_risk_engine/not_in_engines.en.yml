@@ -1,0 +1,7 @@
+---
+en:
+  shared:
+    successfully_created: "Not in engine was successfully created."
+    successfully_updated: "Not in engine was successfully updated."
+    successfully_destroyed: "Not in engine was successfully destroyed."
+       

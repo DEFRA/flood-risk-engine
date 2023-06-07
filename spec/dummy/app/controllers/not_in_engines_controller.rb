@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # NotInEngine provides an object within the dummy app, that should not be
 # affected by any code in the engine itself.
 class NotInEnginesController < ApplicationController
@@ -24,7 +26,7 @@ class NotInEnginesController < ApplicationController
     @not_in_engine = NotInEngine.new(not_in_engine_params)
 
     if @not_in_engine.save
-      redirect_to @not_in_engine, notice: "Not in engine was successfully created."
+      redirect_to @not_in_engine, notice: t("shared.successfully_created")
     else
       render :new
     end
@@ -33,7 +35,7 @@ class NotInEnginesController < ApplicationController
   # PATCH/PUT /not_in_engines/1
   def update
     if @not_in_engine.update(not_in_engine_params)
-      redirect_to @not_in_engine, notice: "Not in engine was successfully updated."
+      redirect_to @not_in_engine, notice: t("shared.successfully_updated")
     else
       render :edit
     end
@@ -42,7 +44,7 @@ class NotInEnginesController < ApplicationController
   # DELETE /not_in_engines/1
   def destroy
     @not_in_engine.destroy
-    redirect_to not_in_engines_url, notice: "Not in engine was successfully destroyed."
+    redirect_to not_in_engines_url, notice: t("shared.successfully_destroyed")
   end
 
   private

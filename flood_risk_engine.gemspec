@@ -15,11 +15,11 @@ Gem::Specification.new do |s|
   s.summary               = "FloodRiskEngine package containing core elements and functionality"
   s.description           = "FloodRiskEngine package containing core elements and functionality"
   s.license               = "The Open Government Licence (OGL) Version 3"
-  s.required_ruby_version = ">= 3.1"
+  s.required_ruby_version = ">= 3.2"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
   # Use AASM to manage states and transitions
-  s.add_dependency "aasm", "~> 4"
+  s.add_dependency "aasm", "~> 5.5"
   s.add_dependency "activerecord-session_store", "~> 2"
   # Airbrake catches exceptions and sends them to our instances of Errbit
   # defra_ruby_alert is a gem we created to manage airbrake across projects
@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.5"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 6"
+  s.add_dependency "rails", "~> 7.0"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 3"
   # Postcode format validation
@@ -57,9 +57,7 @@ Gem::Specification.new do |s|
   s.add_dependency "net-imap", "~> 0.2"
   s.add_dependency "net-pop", "~> 0.1"
   s.add_dependency "net-smtp", "~> 0.3"
+  s.add_dependency "pg", "~> 1"
 
-  s.add_development_dependency "bootstrap-sass", "~> 3"
-  s.add_development_dependency "pg", "~> 1"
-  s.add_development_dependency "sass-rails", "~> 5"
   s.metadata["rubygems_mfa_required"] = "true"
 end

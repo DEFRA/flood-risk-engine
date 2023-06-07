@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateExemptions < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_exemptions do |t|
@@ -8,6 +10,7 @@ class CreateExemptions < ActiveRecord::Migration[4.2]
       t.timestamps null: false
     end
 
+    # rubocop:disable Rails/CreateTableWithTimestamps
     create_table :flood_risk_engine_enrollments_exemptions do |t|
       t.references  :enrollment,      null: false
       t.references  :exemption,       null: false
@@ -15,6 +18,7 @@ class CreateExemptions < ActiveRecord::Migration[4.2]
       t.datetime :expires_at
       t.datetime :valid_from
     end
+    # rubocop:enable Rails/CreateTableWithTimestamps
 
     add_foreign_key :flood_risk_engine_enrollments_exemptions,
                     :flood_risk_engine_enrollments, column: :enrollment_id
@@ -23,8 +27,8 @@ class CreateExemptions < ActiveRecord::Migration[4.2]
                     :flood_risk_engine_exemptions, column: :exemption_id
 
     add_index :flood_risk_engine_enrollments_exemptions,
-              [:enrollment_id, :exemption_id],
+              %i[enrollment_id exemption_id],
               unique: true,
-              name: 'fre_enrollments_exemptions_enrollment_id_exemption_id'
+              name: "fre_enrollments_exemptions_enrollment_id_exemption_id"
   end
 end

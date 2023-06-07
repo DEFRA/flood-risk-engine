@@ -9,6 +9,9 @@ require "defra_ruby/area"
 require "defra_ruby_email"
 require "defra_ruby/validators"
 require "active_support/dependencies"
+# these classses are required on boot, so have to be loaded explicitly (since Rails 7 - zeitwerk autoloader)
+require File.expand_path("../../app/helpers/flood_risk_engine/application_helper", __dir__)
+require File.expand_path("../../app/controllers/flood_risk_engine/application_controller", __dir__)
 
 module FloodRiskEngine
   class Engine < ::Rails::Engine

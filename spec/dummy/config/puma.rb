@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Puma configuration file.
 # See https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
 workers Integer(ENV["WEB_CONCURRENCY"] || 2)

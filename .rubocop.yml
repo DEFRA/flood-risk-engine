@@ -7,6 +7,14 @@ require:
   - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-factory_bot
+
+AllCops:
+  TargetRubyVersion: 3.2
+  Exclude:
+    # Avoid pulling in gems for GitHub setup-ruby@v1 action:
+    - vendor/bundle/**/*
+    - spec/dummy/db/schema.rb
 
 # Allow contexts to start with on for workflow event specs
 RSpec/ContextWording:
@@ -16,3 +24,8 @@ RSpec/ContextWording:
     - without
     - "on"
     - for
+
+# We believe the default of 10 lines for a method length is too restrictive and often quickly hit just because we need
+# to specify the namesspace, class and method before then doing something with it.
+Metrics/MethodLength:
+  Max: 30

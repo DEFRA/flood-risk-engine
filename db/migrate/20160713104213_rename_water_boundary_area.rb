@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameWaterBoundaryArea < ActiveRecord::Migration[4.2]
   def change
     rename_table :flood_risk_engine_water_boundary_areas,

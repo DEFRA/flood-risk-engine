@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFloodRiskEngineAddresses < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_addresses, force: true do |t|
@@ -9,7 +11,7 @@ class CreateFloodRiskEngineAddresses < ActiveRecord::Migration[4.2]
       t.integer :county_province_id
       t.string :country_iso,        limit: 3
       t.integer :address_type,      default: 0, null: false
-      t.string :organisation,       limit: 255, null: false, default: ''
+      t.string :organisation,       limit: 255, null: false, default: ""
       t.references :contact
       t.date :state_date
       t.string :blpu_state_code

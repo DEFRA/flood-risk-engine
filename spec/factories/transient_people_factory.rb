@@ -14,7 +14,7 @@ FactoryBot.define do
       named
       has_temp_postcode
 
-      transient_address { build(:transient_address) }
+      transient_address factory: :transient_address
     end
   end
 end

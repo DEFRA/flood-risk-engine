@@ -14,7 +14,7 @@ class AddFieldsToTransientRegistration < ActiveRecord::Migration[6.0]
       t.string :temp_company_postcode
       t.string :temp_grid_reference
       t.text :temp_site_description
-      t.boolean :address_finder_error, default: false
+      t.boolean :address_finder_error, default: false, null: false
     end
   end
 end
