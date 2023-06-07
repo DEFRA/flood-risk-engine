@@ -17,6 +17,10 @@ module FloodRiskEngine
     # Add a load path for this specific Engine
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
+    # For some reason, these are not being auto-loaded with new zeitwerk loader 
+    load "#{config.root}/app/helpers/flood_risk_engine/application_helper.rb"
+    load "#{config.root}/app/controllers/flood_risk_engine/application_controller.rb"
+
     config.generators do |g|
       g.test_framework :rspec
       g.fixture_replacement :factory_bot, dir: "spec/factories"
