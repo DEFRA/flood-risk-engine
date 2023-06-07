@@ -9,6 +9,8 @@ require "defra_ruby/area"
 require "defra_ruby_email"
 require "defra_ruby/validators"
 require "active_support/dependencies"
+require File.expand_path("../../app/helpers/flood_risk_engine/application_helper", __dir__)
+require File.expand_path("../../app/controllers/flood_risk_engine/application_controller", __dir__)
 
 module FloodRiskEngine
   class Engine < ::Rails::Engine
@@ -16,10 +18,6 @@ module FloodRiskEngine
 
     # Add a load path for this specific Engine
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-
-    # For some reason, these are not being auto-loaded with new zeitwerk loader 
-    load "#{config.root}/app/helpers/flood_risk_engine/application_helper.rb"
-    load "#{config.root}/app/controllers/flood_risk_engine/application_controller.rb"
 
     config.generators do |g|
       g.test_framework :rspec
