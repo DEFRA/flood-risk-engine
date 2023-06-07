@@ -57,6 +57,7 @@ Gem::Specification.new do |s|
   s.add_dependency "net-imap", "~> 0.2"
   s.add_dependency "net-pop", "~> 0.1"
   s.add_dependency "net-smtp", "~> 0.3"
+  s.add_dependency "pg", "~> 1"
 
   s.metadata["rubygems_mfa_required"] = "true"
 end

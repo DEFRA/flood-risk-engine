@@ -26,7 +26,6 @@ group :development, :test do
   # ~/.bash_profile (or equivalent)
   # https://github.com/skywinder/github-changelog-generator#github-token
   gem "github_changelog_generator"
-  gem "pg", "~> 1"
   # Used to ensure the code base matches our agreed styles and conventions
   gem "rubocop"
   gem "rubocop-rails"

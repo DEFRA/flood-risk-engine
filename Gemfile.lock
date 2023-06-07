@@ -20,6 +20,7 @@ PATH
       nokogiri (>= 1)
       notifications-ruby-client
       os_map_ref (= 0.5)
+      pg (~> 1)
       phonelib (~> 0.6)
       rails (~> 7.0)
       sucker_punch (~> 3)
@@ -474,7 +475,6 @@ DEPENDENCIES
   flood_risk_engine!
   github_changelog_generator
   govuk_design_system_formbuilder
-  pg (~> 1)
   poltergeist (~> 1)
   rails (~> 7.0)
   rails-controller-testing
