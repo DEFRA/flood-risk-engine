@@ -446,7 +446,7 @@ GEM
     uniform_notifier (1.16.0)
     validates_email_format_of (1.7.2)
       i18n
-    vcr (6.1.0)
+    vcr (6.2.0)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
