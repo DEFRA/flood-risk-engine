@@ -262,7 +262,7 @@ GEM
     mini_portile2 (2.8.2)
     minitest (5.18.0)
     multi_json (1.15.0)
-    net-imap (0.3.4)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -433,7 +433,7 @@ GEM
       concurrent-ruby (~> 1.0)
     thor (1.2.2)
     tilt (2.2.0)
-    timeout (0.3.2)
+    timeout (0.4.0)
     timers (4.3.5)
     traces (0.9.1)
     tzinfo (2.0.6)
