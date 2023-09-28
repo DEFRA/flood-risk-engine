@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- RUBY-2480: moving dependency loading from engine to an app [\#642](https://github.com/DEFRA/flood-risk-engine/pull/642) ([brujeo](https://github.com/brujeo))
 - Add autocomplete attributes [\#565](https://github.com/DEFRA/flood-risk-engine/pull/565) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Error page titles [\#558](https://github.com/DEFRA/flood-risk-engine/pull/558) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Align page titles with H1s [\#557](https://github.com/DEFRA/flood-risk-engine/pull/557) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
@@ -88,6 +89,9 @@
 
 **Merged pull requests:**
 
+- Bump rails from 7.0.5 to 7.0.7 [\#667](https://github.com/DEFRA/flood-risk-engine/pull/667) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Feature/ruby 2480 frae tech upgrade to rails 7 [\#641](https://github.com/DEFRA/flood-risk-engine/pull/641) ([brujeo](https://github.com/brujeo))
+- Update CHANGELOG [\#634](https://github.com/DEFRA/flood-risk-engine/pull/634) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Bump nokogiri from 1.14.3 to 1.15.0 [\#633](https://github.com/DEFRA/flood-risk-engine/pull/633) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump capybara from 3.39.0 to 3.39.1 [\#631](https://github.com/DEFRA/flood-risk-engine/pull/631) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump pg from 1.5.0 to 1.5.3 [\#628](https://github.com/DEFRA/flood-risk-engine/pull/628) ([dependabot[bot]](https://github.com/apps/dependabot))
