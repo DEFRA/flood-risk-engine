@@ -177,7 +177,7 @@ GEM
       sprockets-rails
     defra_ruby_style (0.3.0)
       rubocop (>= 1.0, < 2.0)
-    defra_ruby_validators (2.5.1)
+    defra_ruby_validators (2.5.2)
       activemodel
       i18n
       matrix
