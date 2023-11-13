@@ -165,7 +165,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    date (3.3.3)
+    date (3.3.4)
     defra_ruby_address (0.1.0)
       rest-client (~> 2.0)
     defra_ruby_alert (2.2.1)
@@ -264,12 +264,12 @@ GEM
     mini_portile2 (2.8.4)
     minitest (5.20.0)
     multi_json (1.15.0)
-    net-imap (0.3.7)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
@@ -436,7 +436,7 @@ GEM
       concurrent-ruby (~> 1.0)
     thor (1.2.2)
     tilt (2.2.0)
-    timeout (0.4.0)
+    timeout (0.4.1)
     timers (4.3.5)
     traces (0.9.1)
     tzinfo (2.0.6)
