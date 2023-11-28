@@ -45,7 +45,7 @@ module FloodRiskEngine
     end
 
     def validate_token
-      return redirect_to(page_path("invalid")) unless find_or_initialize_transient_registration(params[:token])
+      redirect_to(page_path("invalid")) unless find_or_initialize_transient_registration(params[:token])
     end
 
     # rubocop:disable Naming/MemoizedInstanceVariableName

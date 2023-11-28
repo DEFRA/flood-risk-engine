@@ -273,7 +273,7 @@ module FloodRiskEngine
     end
 
     def company_address_was_manually_entered?
-      return if company_address.blank?
+      return false if company_address.blank?
 
       company_address.manual?
     end

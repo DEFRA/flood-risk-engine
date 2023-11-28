@@ -6,6 +6,6 @@ class AddCodeNumberToFloodRiskEngineExemptions < ActiveRecord::Migration[4.2]
 
     add_index :flood_risk_engine_exemptions, :code_number, unique: true
 
-    FloodRiskEngine::Exemption.all.each(&:save)
+    FloodRiskEngine::Exemption.find_each(&:save)
   end
 end
