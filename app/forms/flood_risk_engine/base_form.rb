@@ -54,7 +54,7 @@ module FloodRiskEngine
     private
 
     def transient_registration_valid?
-      return if transient_registration.valid?
+      return true if transient_registration.valid?
 
       transient_registration.errors.each_value do |message|
         errors[:base] << message
