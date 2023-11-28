@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   # Used for address lookups on OS Places
   s.add_dependency "defra_ruby_address"
   # Used to determine the EA area for a registered exemption
-  s.add_dependency "defra_ruby_area", "~> 2"
+  s.add_dependency "defra_ruby_area", "~> 2.1"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email", "~> 1"
