@@ -179,13 +179,14 @@ GEM
       sprockets-rails
     defra_ruby_style (0.3.0)
       rubocop (>= 1.0, < 2.0)
-    defra_ruby_validators (2.5.2)
+    defra_ruby_validators (2.6.0)
       activemodel
       i18n
       matrix
       os_map_ref
       phonelib
       rest-client (~> 2.0)
+      uk_postcode
       validates_email_format_of
     dibber (0.7.0)
     diff-lcs (1.5.0)
@@ -259,7 +260,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1003)
+    mime-types-data (3.2023.1205)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
     minitest (5.20.0)
@@ -291,7 +292,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
-    phonelib (0.8.5)
+    phonelib (0.8.6)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
