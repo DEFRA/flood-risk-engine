@@ -24,7 +24,6 @@ PATH
       phonelib (~> 0.6)
       rails (~> 7.1)
       sucker_punch (~> 3)
-      uk_postcode (~> 2)
       validates_email_format_of (~> 1)
 
 GEM

@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
-require "uk_postcode"
-
 module FloodRiskEngine
-  class PostcodeValidator < ActiveModel::EachValidator
+  class AddressLookupValidator < ActiveModel::EachValidator
     include CanAddValidationErrors
 
     def validate_each(record, attribute, value)
       return unless value_is_present?(record, attribute, value)
-      return unless value_uses_correct_format?(record, attribute, value)
 
       postcode_returns_results?(record, attribute, value)
     end
@@ -19,13 +16,6 @@ module FloodRiskEngine
       return true if value.present?
 
       add_validation_error(record, attribute, :blank)
-      false
-    end
-
-    def value_uses_correct_format?(record, attribute, value)
-      return true if UKPostcode.parse(value).full_valid?
-
-      add_validation_error(record, attribute, :wrong_format)
       false
     end
 
