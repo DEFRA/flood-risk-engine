@@ -2,10 +2,6 @@
 
 # Load environment variables from the project root to save having to add a .env file
 # to dummy in order to run it with rails console.
-# The order of precedence for .env* files in #load is left to right - i.e. the first file
-# will always override the others; the last file has the least precendence.
-# require "dotenv"
-# Dotenv.load("../../.env.local", "../../.env.test", "../../.env")
 
 require File.expand_path("boot", __dir__)
 
@@ -45,7 +41,6 @@ module Dummy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # For Rails 7: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
-    config.active_record.legacy_connection_handling = false
+    config.active_support.cache_format_version = 7.1
   end
 end

@@ -15,26 +15,6 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  # Default URL config
-  host = ENV["DEFAULT_URL_HOST"] || "localhost"
-  port = ENV["SSL_PORT"].to_i || ENV["PORT"].to_i || 3000
-  protocol = ENV["SSL_PORT"].present? ? "https" : "http"
-
-  config.action_mailer.default_url_options = { host: host, port: port, protocol: protocol }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch("EMAIL_USERNAME"),
-    password: ENV.fetch("EMAIL_PASSWORD"),
-    domain: ENV.fetch("EMAIL_APP_DOMAIN"),
-    address: ENV.fetch("EMAIL_HOST"),
-    port: ENV.fetch("EMAIL_PORT"),
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -54,6 +34,4 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
-  config.action_mailer.preview_path = Rails.root.join("lib/mailer_previews")
 end

@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email", "~> 1"
   s.add_dependency "defra_ruby_validators"
+  s.add_dependency "faraday-retry"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3"
   s.add_dependency "jquery-rails", "~> 4"
@@ -45,7 +46,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.5"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 7.0"
+  s.add_dependency "rails", "~> 7.1"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 3"
   # Postcode format validation
@@ -56,7 +57,6 @@ Gem::Specification.new do |s|
   s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-imap", "~> 0.2"
   s.add_dependency "net-pop", "~> 0.1"
-  s.add_dependency "net-smtp", "~> 0.3"
   s.add_dependency "pg", "~> 1"
 
   s.metadata["rubygems_mfa_required"] = "true"
