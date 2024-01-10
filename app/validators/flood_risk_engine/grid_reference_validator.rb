@@ -10,7 +10,7 @@ module FloodRiskEngine
     def initialize(options)
       @message = options[:message]
       @allow_blank = options[:allow_blank]
-      super options
+      super(options)
     end
 
     def validate_each(record, attribute, value)
