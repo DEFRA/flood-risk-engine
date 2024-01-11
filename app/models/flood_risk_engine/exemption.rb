@@ -12,8 +12,6 @@ module FloodRiskEngine
              through: :enrollment_exemptions,
              dependent: :restrict_with_exception
 
-    enum category: {}
-
     before_save :update_code_number
 
     # An exemption's friendly name, used for example when listing exemptions in an email.

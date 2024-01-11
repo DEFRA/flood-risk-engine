@@ -15,6 +15,7 @@ Dir[File.join(File.dirname(__FILE__), "lib/tasks/**/*.rake")].each { |f| load f 
 require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 
+desc "test task"
 task test: :spec
 
 task default: [:test]

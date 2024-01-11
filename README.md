@@ -56,27 +56,6 @@ bundle exec ./spec/dummy/bin/rails s
 
 Open [http://localhost:3000](http:localhost:3000) in a browser.
 
-## Email
-
-### Intercepting mail
-
-You can use [Mailcatcher](https://mailcatcher.me/) to intercept emails sent out during development.
-
-In `./spec/dummy/.env` ensure you have `EMAIL_HOST=localhost` and `EMAIL_PORT=1025`
-
-Install **Mailcatcher** (if necessary) and run it
-
-```bash
-gem install mailcatcher
-mailcatcher
-```
-Navigate to [http://localhost:1080](http://localhost:1080) to see intercepted email.
-
-### Previewing emails
-
-You can also view an [ActionMailer::Preview](http://api.rubyonrails.org/v4.1.0/classes/ActionMailer/Base.html#class-ActionMailer::Base-label-Previewing+emails) of an email by starting the dummy app and navigating to [http://localhost:3000/rails/mailers](http://localhost:3000/rails/mailers).
-
-If you want to test against an enrollment other than the last created one, you will need to alter the preview class in `spec/dummy/lib/mailer_previews`.
 
 ## Tests
 

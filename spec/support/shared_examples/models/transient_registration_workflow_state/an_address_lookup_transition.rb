@@ -2,13 +2,13 @@
 
 RSpec.shared_examples "an address lookup transition" do |next_state_if_not_skipping_to_manual:, address_type:, factory:|
   describe "#workflow_state" do
-    previous_state = "#{address_type}_postcode_form".to_sym
-    current_state = "#{address_type}_address_lookup_form".to_sym
+    previous_state = :"#{address_type}_postcode_form"
+    current_state = :"#{address_type}_address_lookup_form"
     subject(:form) { create(factory, workflow_state: current_state) }
 
     context "when form.skip_to_manual_address? is false" do
       next_state = next_state_if_not_skipping_to_manual
-      alt_state = "#{address_type}_address_manual_form".to_sym
+      alt_state = :"#{address_type}_address_manual_form"
 
       it "can only transition to either #{previous_state}, #{next_state}, or #{alt_state}" do
         permitted_states = Helpers::WorkflowStates.permitted_states(form)
@@ -30,7 +30,7 @@ RSpec.shared_examples "an address lookup transition" do |next_state_if_not_skipp
     end
 
     context "when form.skip_to_manual_address? is true" do
-      next_state = "#{address_type}_address_manual_form".to_sym
+      next_state = :"#{address_type}_address_manual_form"
 
       before { allow(form).to receive(:address_finder_error).and_return(true) }
 

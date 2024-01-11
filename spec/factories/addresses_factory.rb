@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "uk_postcode"
-
 FactoryBot.define do
   factory :address, class: "FloodRiskEngine::Address" do
     premises            { Faker::Address.building_number }
