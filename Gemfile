@@ -17,6 +17,7 @@ group :development, :test do
   # console
   gem "byebug"
   gem "defra_ruby_style"
+  gem "faraday-retry"
   # Allows us to automatically generate the change log from the tags, issues,
   # labels and pull requests on GitHub. Added as a dependency so all dev's have
   # access to it to generate a log, and so they are using the same version.

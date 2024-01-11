@@ -11,7 +11,6 @@ PATH
       defra_ruby_validators
       dibber (~> 0.5)
       dotenv-rails (~> 2)
-      faraday-retry
       high_voltage (~> 3)
       jquery-rails (~> 4)
       matrix (~> 0.4)
@@ -507,6 +506,7 @@ DEPENDENCIES
   defra_ruby_style
   factory_bot_rails (~> 6)
   faker (~> 2)
+  faraday-retry
   flood_risk_engine!
   github_changelog_generator
   govuk_design_system_formbuilder
