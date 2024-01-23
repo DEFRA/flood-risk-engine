@@ -45,18 +45,15 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.5"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 7.0"
+  s.add_dependency "rails", "~> 7.1"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 3"
-  # Postcode format validation
-  s.add_dependency "uk_postcode", "~> 2"
   # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "validates_email_format_of", "~> 1"
 
   s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-imap", "~> 0.2"
   s.add_dependency "net-pop", "~> 0.1"
-  s.add_dependency "net-smtp", "~> 0.3"
   s.add_dependency "pg", "~> 1"
 
   s.metadata["rubygems_mfa_required"] = "true"

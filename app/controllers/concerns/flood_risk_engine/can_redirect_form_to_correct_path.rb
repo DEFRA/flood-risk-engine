@@ -12,7 +12,7 @@ module FloodRiskEngine
       # Get the path based on the workflow state, with token as params, ie:
       # new_state_name_path/:token or start_state_name_path?token=:token
       def form_path
-        send("new_#{@transient_registration.workflow_state}_path".to_sym, token: @transient_registration.token)
+        send(:"new_#{@transient_registration.workflow_state}_path", token: @transient_registration.token)
       end
     end
   end
