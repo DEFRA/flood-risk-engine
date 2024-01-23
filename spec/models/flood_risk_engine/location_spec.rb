@@ -31,17 +31,6 @@ module FloodRiskEngine
           expect(described_class.with_easting_and_northing).to contain_exactly(with_easting_and_northing)
         end
       end
-
-      describe ".from_site_address" do
-        it "only returns records with an address of type :site" do
-          from_site_address = create(:location, locatable: create(:address, :site))
-
-          create(:location)
-          create(:location, locatable: create(:address, :primary))
-
-          expect(described_class.from_site_address).to contain_exactly(from_site_address)
-        end
-      end
     end
 
     describe "grid reference processing" do

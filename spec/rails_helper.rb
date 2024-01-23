@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel, type: :form)
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join("/spec/fixtures")
+  # config.fixture_path = Rails.root.join("/spec/fixtures")
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -94,6 +94,8 @@ RSpec.configure do |config|
     config.include FloodRiskEngine::Engine.routes.url_helpers
   end
 end
+
+ActiveJob::Base.queue_adapter = :test
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
