@@ -10,8 +10,8 @@ en:
           soleTrader: What’s the address of the business?
           charity: What’s the address of the charity or trust?
         title: *heading
-        os_places_error_heading: Our address finder is not working
-        os_places_error_text: Please enter the address below.
+        address_finder_error_heading: Our address finder is not working
+        address_finder_error_text: Please enter the address below.
         preset_postcode_label: Postcode
         postcode_change_link: Change postcode
         error_heading: Something is wrong

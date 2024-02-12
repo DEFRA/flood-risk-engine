@@ -166,7 +166,8 @@ GEM
     console (1.17.0)
       fiber-annotation
       fiber-local
-    crack (0.4.5)
+    crack (1.0.0)
+      bigdecimal
       rexml
     crass (1.0.6)
     date (3.3.4)
@@ -241,7 +242,7 @@ GEM
       activemodel (>= 6.1)
       activesupport (>= 6.1)
       html-attributes-utils (~> 1)
-    hashdiff (1.0.1)
+    hashdiff (1.1.0)
     high_voltage (3.1.2)
     html-attributes-utils (1.0.2)
       activesupport (>= 6.1.4.4)
@@ -280,7 +281,7 @@ GEM
     minitest (5.21.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -291,10 +292,10 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.16.0)
+    nokogiri (1.16.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.16.0-x86_64-linux)
+    nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     notifications-ruby-client (6.0.0)
       jwt (>= 1.5, < 3)
@@ -481,7 +482,7 @@ GEM
     validates_email_format_of (1.7.2)
       i18n
     vcr (6.2.0)
-    webmock (3.19.1)
+    webmock (3.20.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
