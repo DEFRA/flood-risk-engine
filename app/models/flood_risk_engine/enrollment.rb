@@ -4,9 +4,6 @@ module FloodRiskEngine
   class Enrollment < ApplicationRecord
     has_secure_token
 
-    # We don't define the inverse relationship of applicant_contact as, in WEX at least,
-    # we query never from contact to its enrollment
-    belongs_to :applicant_contact, class_name: "Contact"
     belongs_to :organisation
     delegate :org_type, :partners, to: :organisation, allow_nil: true
 
@@ -22,8 +19,8 @@ module FloodRiskEngine
     belongs_to :secondary_contact, class_name: "Contact"
 
     belongs_to :reference_number
-    def reference_number
-      super.try(:number)
+    def ref_number
+      reference_number.number
     end
 
     has_one(

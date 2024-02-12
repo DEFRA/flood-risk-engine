@@ -31,7 +31,7 @@ module FloodRiskEngine
         expect(enrollment.submitted_at).to eq(stub_time)
       end
 
-      it "assigns the correct correspondance contact to the new enrollment" do
+      it "assigns the correct correspondence contact to the new enrollment" do
         correspondence_contact_attributes = {
           "full_name" => new_registration.contact_name,
           "email_address" => new_registration.contact_email,
@@ -117,7 +117,7 @@ module FloodRiskEngine
       it "assigns the correct reference number" do
         run_service
 
-        expect(enrollment.reference_number).to eq(ReferenceNumber.last.number)
+        expect(enrollment.ref_number).to eq(ReferenceNumber.last.number)
       end
 
       it "assigns the status" do
