@@ -2,8 +2,8 @@
 
 module FloodRiskEngine
   class Partner < ApplicationRecord
-    belongs_to :organisation
-    belongs_to :contact
+    belongs_to :organisation, optional: true
+    belongs_to :contact, optional: true
 
     delegate :full_name, :address, to: :contact
 

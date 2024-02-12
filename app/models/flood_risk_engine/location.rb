@@ -4,8 +4,8 @@ require "os_map_ref"
 
 module FloodRiskEngine
   class Location < ApplicationRecord
-    belongs_to :locatable, polymorphic: true
-    belongs_to :water_management_area
+    belongs_to :locatable, polymorphic: true, optional: true
+    belongs_to :water_management_area, optional: true
 
     before_save :process_grid_reference
 

@@ -4,8 +4,8 @@ require "validates_email_format_of"
 
 module FloodRiskEngine
   class Contact < ApplicationRecord
-    has_one :organisation, dependent: :restrict_with_exception
-    has_one :address, as: :addressable, dependent: :restrict_with_exception
+    has_one :organisation, dependent: :restrict_with_exception, required: false
+    has_one :address, as: :addressable, dependent: :restrict_with_exception, required: false
 
     enum contact_type: {
       individual: 0,
