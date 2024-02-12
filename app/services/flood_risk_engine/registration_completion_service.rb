@@ -8,8 +8,6 @@ module FloodRiskEngine
       @registration = nil
 
       @transient_registration.with_lock do
-        @transient_registration.update(workflow_state: :creating_registration)
-
         @registration = Enrollment.new
         transfer_data
         @registration.save!
@@ -22,8 +20,8 @@ module FloodRiskEngine
 
       @registration
     rescue StandardError => e
-      Airbrake.notify(e, reference: @registration&.reference_number) if defined?(Airbrake)
-      Rails.logger.error "Completing registration error: #{e}"
+      Airbrake.notify(e, reference: @registration&.ref_number) if defined?(Airbrake)
+      Rails.logger.error "Completing registration error: #{e}\n#{@registration.errors.inspect}\n#{e.backtrace}"
 
       raise e
     end
@@ -39,7 +37,7 @@ module FloodRiskEngine
       if @transient_registration.partnership?
         add_partnership_organisation
       else
-        add_organisation
+        add_organisation(@registration.correspondence_contact)
       end
 
       assign_exemption
@@ -55,7 +53,7 @@ module FloodRiskEngine
     end
 
     def add_correspondence_contact
-      @registration.correspondence_contact = Contact.new(
+      @registration.correspondence_contact = Contact.create!(
         full_name: @transient_registration.contact_name,
         email_address: @transient_registration.contact_email,
         telephone_number: @transient_registration.contact_phone,
@@ -64,13 +62,13 @@ module FloodRiskEngine
     end
 
     def add_secondary_contact
-      @registration.secondary_contact = Contact.new(
+      @registration.secondary_contact = Contact.create!(
         email_address: @transient_registration.additional_contact_email
       )
     end
 
     def add_partnership_organisation
-      @registration.organisation = Organisation.new(
+      @registration.organisation = Organisation.create!(
         org_type:
       )
 
@@ -79,12 +77,12 @@ module FloodRiskEngine
 
     def add_partners
       @transient_registration.transient_people.each do |partner|
-        contact = Contact.new(
+        contact = Contact.create!(
           full_name: partner.full_name,
           address: build_partner_address(partner)
         )
 
-        @registration.organisation.partners << Partner.new(contact:)
+        @registration.organisation.partners << Partner.create!(contact:)
       end
     end
 
@@ -92,13 +90,14 @@ module FloodRiskEngine
       attributes = transferable_address_attributes(partner.transient_address)
       attributes["organisation"] ||= ""
 
-      Address.new(attributes)
+      Address.create!(attributes)
     end
 
-    def add_organisation
-      @registration.organisation = Organisation.new(
+    def add_organisation(contact)
+      @registration.organisation = Organisation.create!(
         name: @transient_registration.company_name,
-        org_type:
+        org_type:,
+        contact:
       )
 
       add_address
@@ -108,7 +107,7 @@ module FloodRiskEngine
       attributes = transferable_address_attributes(@transient_registration.company_address)
       attributes["organisation"] ||= ""
 
-      @registration.organisation.primary_address = Address.new(attributes)
+      @registration.organisation.primary_address = Address.create!(attributes)
     end
 
     def assign_exemption
@@ -118,7 +117,7 @@ module FloodRiskEngine
     end
 
     def add_exemption_location
-      @registration.exemption_location = Location.new(
+      @registration.exemption_location = Location.create!(
         grid_reference: @transient_registration.temp_grid_reference,
         description: @transient_registration.temp_site_description,
         dredging_length: @transient_registration.dredging_length
