@@ -2,7 +2,7 @@
 
 module FloodRiskEngine
   class Organisation < ApplicationRecord
-    belongs_to :contact, optional: true
+    belongs_to :contact
     has_one :enrollment, dependent: :restrict_with_exception
     has_many :partners # Only needed for Partnerships
     has_one :primary_address, -> { where(address_type: Address.address_types["primary"]) },

@@ -5,7 +5,7 @@ module FloodRiskEngine
 
     has_secure_token
 
-    belongs_to :addressable, polymorphic: true, optional: true
+    belongs_to :addressable, polymorphic: true
     has_one :location, as: :locatable, dependent: :restrict_with_exception
 
     after_create :clean_up_duplicate_addresses
