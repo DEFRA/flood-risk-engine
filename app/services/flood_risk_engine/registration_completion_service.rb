@@ -69,7 +69,7 @@ module FloodRiskEngine
     end
 
     def add_partnership_organisation
-      @registration.organisation = Organisation.new(
+      @registration.organisation = Organisation.create!(
         org_type:
       )
 
