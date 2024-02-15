@@ -11,6 +11,7 @@ module FloodRiskEngine
         @registration = Enrollment.new
         transfer_data
         @registration.save!
+        @registration.organisation.save!
 
         @transient_registration.destroy
       end
@@ -68,7 +69,7 @@ module FloodRiskEngine
     end
 
     def add_partnership_organisation
-      @registration.organisation = Organisation.create!(
+      @registration.organisation = Organisation.new(
         org_type:
       )
 
