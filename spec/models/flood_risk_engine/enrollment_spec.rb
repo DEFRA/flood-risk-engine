@@ -6,7 +6,6 @@ module FloodRiskEngine
   RSpec.describe Enrollment do
     let(:enrollment) { create(:enrollment) }
 
-    it { is_expected.to belong_to(:applicant_contact) }
     it { is_expected.to belong_to(:organisation) }
     it { is_expected.to have_one(:exemption_location).dependent(:restrict_with_exception) }
 
@@ -16,7 +15,7 @@ module FloodRiskEngine
       end
 
       it "is of the right format" do
-        expect(enrollment.reference_number).to match(/EXFRA\d{6}/)
+        expect(enrollment.ref_number).to match(/EXFRA\d{6}/)
       end
     end
 

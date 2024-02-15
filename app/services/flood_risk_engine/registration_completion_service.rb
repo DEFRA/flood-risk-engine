@@ -8,8 +8,6 @@ module FloodRiskEngine
       @registration = nil
 
       @transient_registration.with_lock do
-        @transient_registration.update(workflow_state: :creating_registration)
-
         @registration = Enrollment.new
         transfer_data
         @registration.save!
@@ -22,8 +20,8 @@ module FloodRiskEngine
 
       @registration
     rescue StandardError => e
-      Airbrake.notify(e, reference: @registration&.reference_number) if defined?(Airbrake)
-      Rails.logger.error "Completing registration error: #{e}"
+      Airbrake.notify(e, reference: @registration&.ref_number) if defined?(Airbrake)
+      Rails.logger.error "Completing registration error: #{e}\n#{@registration.errors.inspect}"
 
       raise e
     end
@@ -70,7 +68,7 @@ module FloodRiskEngine
     end
 
     def add_partnership_organisation
-      @registration.organisation = Organisation.new(
+      @registration.organisation = Organisation.create!(
         org_type:
       )
 
@@ -137,6 +135,9 @@ module FloodRiskEngine
     end
 
     def update_water_management_area
+      # location.id must be present for ActiveJob serialization:
+      @registration.exemption_location.save!
+
       UpdateWaterManagementAreaJob.perform_later(@registration.exemption_location)
     end
 
