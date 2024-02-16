@@ -20,7 +20,7 @@ module FloodRiskEngine
 
     belongs_to :reference_number
     def ref_number
-      reference_number.number
+      reference_number&.number
     end
 
     has_one(

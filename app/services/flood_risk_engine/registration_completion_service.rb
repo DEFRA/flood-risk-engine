@@ -11,6 +11,7 @@ module FloodRiskEngine
         @registration = Enrollment.new
         transfer_data
         @registration.save!
+        @registration.organisation.save!
 
         @transient_registration.destroy
       end
