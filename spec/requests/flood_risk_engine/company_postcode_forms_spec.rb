@@ -17,6 +17,14 @@ module FloodRiskEngine
                        "company_postcode_form",
                        valid_params: { temp_company_postcode: "BS1 5AH" },
                        invalid_params: { temp_company_postcode: "" }
+
+      context "with an invalid postcode" do
+        let(:invalid_params) { { temp_company_postcode: "BSA 51H" } }
+
+        before { post_form_with_params("company_postcode_form", transient_registration.token, invalid_params) }
+
+        it { expect(response.body).to include "Enter a valid postcode" }
+      end
     end
 
     describe "GET back_company_postcode_forms_path" do

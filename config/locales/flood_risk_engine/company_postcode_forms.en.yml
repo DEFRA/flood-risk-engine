@@ -15,12 +15,3 @@ en:
         error_heading: A problem to fix
         next_button: Find address
         manual_address_link: "Enter address manually"
-  activemodel:
-    errors:
-      models:
-        flood_risk_engine/company_postcode_form:
-          attributes:
-            temp_company_postcode:
-              blank: Enter a postcode
-              wrong_format: Enter a valid UK postcode
-              no_results: We cannot find any addresses for that postcode. Check the postcode or enter the address manually.
