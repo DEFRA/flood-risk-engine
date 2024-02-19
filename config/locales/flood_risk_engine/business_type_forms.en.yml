@@ -26,7 +26,3 @@ en:
           charity: Other organisation (eg a trust, charity or club)
         help: If you're not sure, please call our helpline on 03708 506 506 to get advice about who might be the organisation or person responsible for your activity.
         next_button: Continue
-  defra_ruby:
-    validators:
-      BusinessTypeValidator:
-        inclusion: Select the type of organisation

@@ -12,9 +12,3 @@ en:
             invalid: Enter a valid telephone number
             blank: Enter a telephone number
         next_button: "Continue"
-  defra_ruby:
-    validators:
-      PhoneNumberValidator:
-        blank: "Enter a telephone number"
-        invalid_format: "Enter a valid telephone number"
-        too_long: "Check the number you entered - it should have no more than than 15 characters"

@@ -24,8 +24,11 @@ module FloodRiskEngine
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
-    initializer :add_i18n_load_paths do |app|
-      app.config.i18n.load_path += Dir[config.root.join("config/locales/**/**/", "*.{rb,yml}").to_s]
+    # Load I18n translation files from engine before loading ones from the host app
+    # This means values in the host app can override those in the engine
+    config.before_initialize do
+      engine_locales = Dir["#{config.root}/config/locales/**/*.yml"]
+      config.i18n.load_path = engine_locales + config.i18n.load_path
     end
 
     # Automatically add our migrations into the main apps migrations
