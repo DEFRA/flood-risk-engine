@@ -7,6 +7,11 @@ source "https://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
+# As of Rails 7.1, adding the gemm as a dependency in the gemspec does not add
+# the gem to the DEPENDENCIES section of Gemfile.lock, and this prevents the
+# gem's locale definitions from loading in the app. Adding it here resolves that.
+gem "defra_ruby_validators"
+
 group :development, :test do
   # Pretty prints objects in console. Usage `$ ap some_object`
   gem "awesome_print"
