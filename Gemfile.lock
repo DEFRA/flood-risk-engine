@@ -482,7 +482,7 @@ GEM
     validates_email_format_of (1.7.2)
       i18n
     vcr (6.2.0)
-    webmock (3.20.0)
+    webmock (3.23.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
