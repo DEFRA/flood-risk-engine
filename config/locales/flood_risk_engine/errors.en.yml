@@ -17,12 +17,12 @@ en:
         heading: Page not found
         if_you_typed: If you typed the web address, check it is correct.
         if_you_pasted: If you pasted the web address, check you copied the entire address.
-        call_our_helpline: If the web address is correct or you selected a link or button, call our helpline on 03708 506 506,
+        call_our_helpline: If the web address is correct or you selected a link or button, call our helpline on 03708 506 506.
       error_404:
         heading: Page not found
         if_you_typed: If you typed the web address, check it is correct.
         if_you_pasted: If you pasted the web address, check you copied the entire address.
-        call_our_helpline: If the web address is correct or you selected a link or button, call our helpline on 03708 506 506,
+        call_our_helpline: If the web address is correct or you selected a link or button, call our helpline on 03708 506 506.
       error_422:
         heading: There was a problem
         sorry: Sorry, the system wasn't able to complete that step.

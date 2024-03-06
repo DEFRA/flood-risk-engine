@@ -242,7 +242,7 @@ FloodRiskEngine::Engine.routes.draw do
 
   mount DefraRubyEmail::Engine => "/email"
 
-  # See http://patrickperey.com/railscast-053-handling-exceptions/
+  # See http://railscasts.com/episodes/53-handling-exceptions-revised
   get "(errors)/:id", to: "errors#show", as: "error"
 end
 # rubocop:enable Metrics/BlockLength
