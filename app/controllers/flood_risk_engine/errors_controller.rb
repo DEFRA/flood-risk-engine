@@ -5,14 +5,26 @@ require_dependency "flood_risk_engine/application_controller"
 module FloodRiskEngine
   class ErrorsController < ApplicationController
 
+    before_action :set_html_response_format
+
     def show
       render(
         template: file_for(template),
-        locals: { message: exception.try(:message), enrollment: }
+        locals: { message: exception.try(:message), enrollment: },
+        status: response_status
       )
     end
 
     protected
+
+    # Changes the request format to HTML to always display the error pages
+    def set_html_response_format
+      request.format = :html
+    end
+
+    def response_status
+      template.to_i.positive? ? template : :internal_server_error
+    end
 
     def error_code
       @error_code ||= params[:id]
@@ -30,7 +42,11 @@ module FloodRiskEngine
     end
 
     def template
-      @template ||= template_exists(error_code) ? error_code : "generic"
+      @template ||= if template_exists(error_code)
+                      error_code
+                    else
+                      (error_code.to_i.positive? ? "generic" : "404")
+                    end
     end
 
     def file_for(name)

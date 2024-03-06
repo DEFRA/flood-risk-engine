@@ -6,6 +6,12 @@ module FloodRiskEngine
 
     layout ->(_) { FloodRiskEngine.config.layout }
 
+    rescue_from StandardError do |e|
+      Airbrake.notify e
+      Rails.logger.error "Unhandled exception: #{e}\n#{e.backtrace}"
+      redirect_to error_path("500")
+    end
+
     protected
 
     # http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
