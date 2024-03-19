@@ -47,6 +47,10 @@
 
 **Fixed bugs:**
 
+- Fix/ruby 2834 template 404 [\#754](https://github.com/DEFRA/flood-risk-engine/pull/754) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Load defra\_ruby\_validators locales and remove local duplicates [\#740](https://github.com/DEFRA/flood-risk-engine/pull/740) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Chore/ruby 2805 active record [\#738](https://github.com/DEFRA/flood-risk-engine/pull/738) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Chore/ruby 2805 active record [\#737](https://github.com/DEFRA/flood-risk-engine/pull/737) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Business-type-specific page titles [\#563](https://github.com/DEFRA/flood-risk-engine/pull/563) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Align all page titles with h1 text [\#562](https://github.com/DEFRA/flood-risk-engine/pull/562) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Fix locale issue for blank partner address [\#561](https://github.com/DEFRA/flood-risk-engine/pull/561) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
@@ -89,6 +93,22 @@
 
 **Merged pull requests:**
 
+- Bump pg from 1.5.4 to 1.5.5 [\#739](https://github.com/DEFRA/flood-risk-engine/pull/739) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump capybara from 3.39.2 to 3.40.0 [\#733](https://github.com/DEFRA/flood-risk-engine/pull/733) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rspec-rails from 6.1.0 to 6.1.1 [\#732](https://github.com/DEFRA/flood-risk-engine/pull/732) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop from 1.60.1 to 1.60.2 [\#731](https://github.com/DEFRA/flood-risk-engine/pull/731) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump shoulda-matchers from 6.0.0 to 6.1.0 [\#730](https://github.com/DEFRA/flood-risk-engine/pull/730) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump phonelib from 0.8.6 to 0.8.7 [\#729](https://github.com/DEFRA/flood-risk-engine/pull/729) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop from 1.59.0 to 1.60.1 [\#728](https://github.com/DEFRA/flood-risk-engine/pull/728) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 7.1.5 to 7.1.6 [\#727](https://github.com/DEFRA/flood-risk-engine/pull/727) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rails from 7.1.2 to 7.1.3 [\#726](https://github.com/DEFRA/flood-risk-engine/pull/726) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 7.1.4 to 7.1.5 [\#724](https://github.com/DEFRA/flood-risk-engine/pull/724) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump notifications-ruby-client from 5.4.0 to 6.0.0 [\#723](https://github.com/DEFRA/flood-risk-engine/pull/723) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump factory\_bot\_rails from 6.4.2 to 6.4.3 [\#722](https://github.com/DEFRA/flood-risk-engine/pull/722) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Fix/ruby 2805 postcode validation [\#721](https://github.com/DEFRA/flood-risk-engine/pull/721) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Update CHANGELOG [\#714](https://github.com/DEFRA/flood-risk-engine/pull/714) ([brujeo](https://github.com/brujeo))
+- Bump govuk\_design\_system\_formbuilder from 4.1.1 to 5.0.0 [\#709](https://github.com/DEFRA/flood-risk-engine/pull/709) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump sucker\_punch from 3.1.0 to 3.2.0 [\#708](https://github.com/DEFRA/flood-risk-engine/pull/708) ([dependabot[bot]](https://github.com/apps/dependabot))
 - updating defra\_ruby\_area dependency [\#706](https://github.com/DEFRA/flood-risk-engine/pull/706) ([brujeo](https://github.com/brujeo))
 - updating rubocop and fixing code style issues [\#704](https://github.com/DEFRA/flood-risk-engine/pull/704) ([brujeo](https://github.com/brujeo))
 - update defra\_ruby\_area [\#703](https://github.com/DEFRA/flood-risk-engine/pull/703) ([brujeo](https://github.com/brujeo))
