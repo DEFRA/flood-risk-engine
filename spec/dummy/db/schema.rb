@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_151907) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_144401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
+
+  create_table "enrollment_exports", id: :serial, force: :cascade do |t|
+    t.date "from_date", null: false
+    t.date "to_date", null: false
+    t.string "created_by", null: false
+    t.string "file_name", null: false
+    t.integer "state", default: 0, null: false
+    t.text "failure_text"
+    t.integer "record_count"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "date_field_scope", default: 0
+    t.index ["created_at"], name: "index_enrollment_exports_on_created_at"
+    t.index ["file_name"], name: "index_enrollment_exports_on_file_name", unique: true
+  end
 
   create_table "flood_risk_engine_address_searches", id: :serial, force: :cascade do |t|
     t.integer "enrollment_id", null: false
@@ -107,6 +122,9 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.boolean "salmonid_river_found", default: false
     t.integer "deregister_reason"
     t.integer "assistance_mode", default: 0
+    t.integer "accept_reject_decision_user_id"
+    t.datetime "accept_reject_decision_at", precision: nil
+    t.index ["accept_reject_decision_user_id"], name: "by_change_user"
     t.index ["deregister_reason"], name: "by_deregister_reason"
     t.index ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
   end
@@ -172,6 +190,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "area_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.geometry "area", limit: {:srid=>0, :type=>"geometry"}
+    t.index ["area"], name: "index_flood_risk_engine_water_management_areas_on_area", using: :gist
     t.index ["code"], name: "fre_water_boundary_areas_code", unique: true
   end
 
@@ -179,6 +199,16 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
   end
 
   create_table "sessions", id: :serial, force: :cascade do |t|
@@ -208,8 +238,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.bigint "addressable_id"
     t.string "uprn"
     t.string "token"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addressables"
   end
 
@@ -217,8 +247,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "full_name"
     t.string "temp_postcode"
     t.bigint "transient_registration_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
   end
 
@@ -228,8 +258,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.date "expires_on"
     t.bigint "transient_registration_id"
     t.bigint "flood_risk_engine_exemption_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["flood_risk_engine_exemption_id"], name: "exemption_id"
     t.index ["transient_registration_id"], name: "transient_registration_id"
   end
@@ -237,8 +267,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
   create_table "transient_registrations", force: :cascade do |t|
     t.string "token"
     t.string "workflow_state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "type", default: "FloodRiskEngine::NewRegistration", null: false
     t.string "additional_contact_email"
     t.string "business_type"
@@ -256,6 +286,71 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.index ["token"], name: "index_transient_registrations_on_token", unique: true
   end
 
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", limit: 255, default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "invitation_token"
+    t.datetime "invitation_created_at", precision: nil
+    t.datetime "invitation_sent_at", precision: nil
+    t.datetime "invitation_accepted_at", precision: nil
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.integer "invited_by_id"
+    t.integer "invitations_count", default: 0
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.text "disabled_comment"
+    t.datetime "disabled_at", precision: nil
+    t.datetime "locked_at", precision: nil
+    t.string "role_names"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "unique_session_id", limit: 20
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["invitations_count"], name: "index_users_on_invitations_count"
+    t.index ["invited_by_id", "invited_by_type"], name: "index_users_on_invited_by_id_and_invited_by_type"
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+  end
+
+  create_table "version_associations", id: :serial, force: :cascade do |t|
+    t.integer "version_id"
+    t.string "foreign_key_name", null: false
+    t.integer "foreign_key_id"
+    t.index ["foreign_key_name", "foreign_key_id"], name: "index_version_associations_on_foreign_key"
+    t.index ["version_id"], name: "index_version_associations_on_version_id"
+  end
+
+  create_table "versions", id: :serial, force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at", precision: nil
+    t.string "status"
+    t.string "whodunnit_email"
+    t.string "ip"
+    t.string "user_agent"
+    t.integer "transaction_id"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+    t.index ["transaction_id"], name: "index_versions_on_transaction_id"
+  end
+
   add_foreign_key "flood_risk_engine_address_searches", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_contacts", "flood_risk_engine_organisations", column: "partnership_organisation_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "applicant_contact_id"
@@ -267,4 +362,6 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
   add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_contacts", column: "contact_id"
   add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_organisations", column: "organisation_id"
   add_foreign_key "transient_people", "transient_registrations"
+  add_foreign_key "users_roles", "roles"
+  add_foreign_key "users_roles", "users"
 end
