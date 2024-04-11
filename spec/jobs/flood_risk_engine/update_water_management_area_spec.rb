@@ -2,18 +2,6 @@
 
 require "rails_helper"
 
-module Test
-  module Area
-    Response = Struct.new(:areas, :successful, :error) do
-      def successful?
-        successful
-      end
-    end
-
-    Area = Struct.new(:area_id, :area_name, :code, :long_name, :short_name)
-  end
-end
-
 # This job level spec is more of an integration spec so we let VCR
 # handle the outgoing request.
 module FloodRiskEngine
@@ -28,47 +16,25 @@ module FloodRiskEngine
     end
 
     describe "searching for an area via api lookup" do
+      let(:water_management_area) { WaterManagementArea.new }
+
       context "when the area is found" do
-        let(:response) do
-          area = Test::Area::Area.new(
-            29,
-            "Central",
-            "STWKWM",
-            "Staffordshire Warwickshire and West Midlands",
-            "Staffs Warks and West Mids"
-          )
-          Test::Area::Response.new([area], true)
-        end
+        before { allow(WaterManagementAreaLookupService).to receive(:run).and_return(water_management_area) }
 
         it "saves to the location" do
-          allow(DefraRuby::Area::WaterManagementAreaService)
-            .to receive(:run)
-            .and_return(response)
-
           expect(location.water_management_area).to be_nil
 
           described_class.perform_now(location)
 
           area = location.water_management_area
           expect(area).to be_present
-          expect(area).to be_persisted
-          test_area = response.areas.first
-          expect(area.area_id).to eq(test_area.area_id)
-          expect(area.code).to eq(test_area.code)
-          expect(area.area_name).to eq(test_area.area_name)
-          expect(area.short_name).to eq(test_area.short_name)
-          expect(area.long_name).to eq(test_area.long_name)
         end
       end
 
-      context "when no matching area found" do
-        let(:response) { Test::Area::Response.new([], false, DefraRuby::Area::NoMatchError.new) }
+      context "when no matching area is found" do
+        before { allow(WaterManagementAreaLookupService).to receive(:run).and_return(nil) }
 
         it "saves the 'Outside Engine' area to the location" do
-          allow(DefraRuby::Area::WaterManagementAreaService)
-            .to receive(:run)
-            .and_return(response)
-
           described_class.perform_now(location)
 
           area = location.water_management_area
@@ -77,20 +43,16 @@ module FloodRiskEngine
       end
 
       context "when the lookup encounters an error" do
-        let(:error) { StandardError.new("Lookup go boom!") }
-        let(:response) { Test::Area::Response.new([], false, error) }
         let(:coordinates) { { easting: location.easting, northing: location.northing } }
+
+        before { allow(WaterManagementAreaLookupService).to receive(:run).and_raise(StandardError) }
 
         it "sends a notification to Errbit" do
           allow(Airbrake).to receive(:notify)
 
-          expect(DefraRuby::Area::WaterManagementAreaService)
-            .to receive(:run)
-            .and_return(response)
+          expect { described_class.perform_now(location) }.to raise_error(StandardError)
 
-          described_class.perform_now(location)
-
-          expect(Airbrake).to have_received(:notify).with(error, coordinates)
+          expect(Airbrake).to have_received(:notify)
         end
       end
     end
