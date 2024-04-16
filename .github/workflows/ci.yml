@@ -54,22 +54,22 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Install dependencies
-        run: sudo apt-get install -qq postgis
+        run: |
+          sudo apt-get install -qq postgis
 
       - name: Database migrations
         run: |
           sudo mkdir -p /usr/local/share/postgresql/extension
           sudo cp ./postgis.control /usr/local/share/postgresql/extension/postgis.control
-        # sudo chmod ugo+rwx /usr/local/share/postgresql/extension/postgis.control
-        #  echo "1: ls -l /usr/local/share/postgresql/extension/postgis.control =>"
-        #  ls -l /usr/local/share/postgresql/extension/postgis.control
           echo "2: ls -l /usr/local/share/postgresql/extension/postgis.control =>"
           ls -l /usr/local/share/postgresql/extension/postgis.control
           RAILS_ENV=test bundle exec rails db:reset --trace --trace
+
       # Run linting first. No point running the tests if there is a linting issue
       - name: Run lint check
         run: |
           bundle exec rubocop --format progress --format json --out rubocop-result.json
+
       # This includes an extra run step. The sonarcloud analysis will be run in a docker container with the current
       # folder mounted as `/github/workspace`. The problem is when the .resultset.json file is generated it will
       # reference the code in the current folder. So to enable sonarcloud to matchup code coverage with the files we use
