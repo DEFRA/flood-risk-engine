@@ -58,7 +58,7 @@ jobs:
           sudo apt-get install -qq postgis postgresql-12-postgis
           echo "restarting postgres"
           sudo systemctl restart postgresql.service
-          sudo pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          sleep 30s
 
       - name: Database migrations
         run: |
