@@ -61,6 +61,7 @@ jobs:
           echo "ls -l /usr/local/share/postgresql/extension/postgis.control =>"
           ls -l /usr/local/share/postgresql/extension/postgis.control
           sudo apt-get install -qq postgis
+          sudo systemctl restart postgresql.service
 
       - name: Database migrations
         run: |
