@@ -56,15 +56,16 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install -qq postgis
-          sudo mkdir -p /usr/local/share/postgresql/extension
-          sudo cp ./postgis.control /usr/local/share/postgresql/extension/postgis.control
-          sudo chmod ugo+rwx /usr/local/share/postgresql/extension/postgis.control
-          echo "1: ls -l /usr/local/share/postgresql/extension/postgis.control =>"
-          ls -l /usr/local/share/postgresql/extension/postgis.control
 
       - name: Database migrations
         run: |
+          sudo mkdir -p /usr/local/share/postgresql/extension
+          sudo cp ./postgis.control /usr/local/share/postgresql/extension/postgis.control
+        # sudo chmod ugo+rwx /usr/local/share/postgresql/extension/postgis.control
+        #  echo "1: ls -l /usr/local/share/postgresql/extension/postgis.control =>"
+        #  ls -l /usr/local/share/postgresql/extension/postgis.control
           echo "2: ls -l /usr/local/share/postgresql/extension/postgis.control =>"
+          ls -l /usr/local/share/postgresql/extension/postgis.control
           RAILS_ENV=test bundle exec rails db:reset --trace --trace
       # Run linting first. No point running the tests if there is a linting issue
       - name: Run lint check
