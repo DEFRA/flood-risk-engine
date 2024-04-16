@@ -25,7 +25,7 @@ jobs:
       # Label used to access the service container
       postgres:
         # Docker Hub image
-        image: postgis
+        image: postgres:16.2-alpine
         # Provide the password for postgres
         env:
           POSTGRES_USER: postgres
@@ -44,6 +44,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of sonarcloud analysis
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -qq postgis postgresql-postgis
+          sudo cp postgis.control /usr/local/share/postgresql/extension/postgis.control
 
       # We don't have to specify the ruby version, or grab it from .ruby-verion. This action supports reading the
       # version from .ruby-version itself
