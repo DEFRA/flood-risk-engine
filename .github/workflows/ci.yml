@@ -51,6 +51,7 @@ jobs:
           sudo apt-get install -qq postgis
           sudo mkdir -p /usr/local/share/postgresql/extension
           sudo cp ./postgis.control /usr/local/share/postgresql/extension/postgis.control
+          ls -l /usr/local/share/postgresql/extension
 
       # We don't have to specify the ruby version, or grab it from .ruby-verion. This action supports reading the
       # version from .ruby-version itself
