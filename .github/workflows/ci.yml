@@ -51,6 +51,7 @@ jobs:
           sudo apt-get install -qq postgis
           sudo mkdir -p /usr/local/share/postgresql/extension
           sudo cp ./postgis.control /usr/local/share/postgresql/extension/postgis.control
+          sudo chmod ugo +rwx /usr/local/share/postgresql/extension/postgis.control
           echo "ls -l /usr/local/share/postgresql/extension/postgis.control =>"
           ls -l /usr/local/share/postgresql/extension/postgis.control
 
