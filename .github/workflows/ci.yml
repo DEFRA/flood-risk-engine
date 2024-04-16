@@ -64,6 +64,7 @@ jobs:
 
       - name: Database migrations
         run: |
+          ls -l /usr/local/share/postgresql/extension/postgis.control
           RAILS_ENV=test bundle exec rails db:reset --trace
 
       # Run linting first. No point running the tests if there is a linting issue
