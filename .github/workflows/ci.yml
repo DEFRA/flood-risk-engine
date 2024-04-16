@@ -46,6 +46,13 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of sonarcloud analysis
 
+      # We don't have to specify the ruby version, or grab it from .ruby-version. This action supports reading the
+      # version from .ruby-version itself.
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
       - name: Install dependencies
         run: |
           sudo apt-get install -qq postgis
@@ -54,13 +61,6 @@ jobs:
           sudo chmod ugo+rwx /usr/local/share/postgresql/extension/postgis.control
           echo "1: ls -l /usr/local/share/postgresql/extension/postgis.control =>"
           ls -l /usr/local/share/postgresql/extension/postgis.control
-
-      # We don't have to specify the ruby version, or grab it from .ruby-version. This action supports reading the
-      # version from .ruby-version itself.
-      - name: Install Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Database migrations
         run: |
