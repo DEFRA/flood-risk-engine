@@ -49,7 +49,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install -qq postgis postgresql-postgis
-          sudo ln -s /usr/local/share/postgresql/extension/postgis.control /usr/share/postgresql/12/extension/postgis.control
+          sudo ln -s /usr/share/postgresql/12/extension/postgis.control /usr/local/share/postgresql/extension/postgis.control
 
       # We don't have to specify the ruby version, or grab it from .ruby-verion. This action supports reading the
       # version from .ruby-version itself
