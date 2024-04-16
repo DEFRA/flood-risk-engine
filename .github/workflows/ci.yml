@@ -29,6 +29,7 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_USER: postgres
+          PGUSER: postgres
           POSTGRES_PASSWORD: pinafore
           POSTGRES_DB: flood_risk_dummy_test
         # Maps tcp port 5432 on service container to the host
