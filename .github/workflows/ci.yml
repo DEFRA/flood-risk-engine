@@ -55,10 +55,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -qq postgis postgresql-12-postgis
+          sudo apt-get install -qq postgis
           echo "restarting postgres"
           sudo systemctl restart postgresql.service
-          sleep 30s
+          sleep 10s
 
       - name: Database migrations
         run: |
