@@ -44,6 +44,7 @@ group :test do
   gem "govuk_design_system_formbuilder"
   gem "poltergeist", "~> 1" # Needed for headless testing with Javascript or pages that ref external sites
   gem "rails-controller-testing"
+  gem "rgeo-geojson"
   gem "rspec-html-matchers"
   gem "rspec-rails", "~> 6"
   gem "shoulda-matchers", "~> 6", require: false

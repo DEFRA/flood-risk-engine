@@ -5,7 +5,7 @@
 #   gem "sqlite3"
 #
 default: &default
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
   pool: 5
   host: <%= ENV["PG_HOST"] || "localhost" %>

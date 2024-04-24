@@ -51,6 +51,11 @@ Gem::Specification.new do |s|
   # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "validates_email_format_of", "~> 1"
 
+  # for handling Water Managment Areas spatial data
+  s.add_dependency "activerecord-postgis-adapter"
+  s.add_dependency "rgeo"
+  s.add_dependency "rgeo-activerecord"
+
   s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-imap", "~> 0.2"
   s.add_dependency "net-pop", "~> 0.1"
