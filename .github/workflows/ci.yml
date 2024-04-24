@@ -5,7 +5,7 @@ on: push
 jobs:
   build:
     # You must use a Linux environment when using service containers or container jobs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ADDRESS_FACADE_CLIENT_ID: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_ID }}
       ADDRESS_FACADE_CLIENT_KEY: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_KEY }}
@@ -25,10 +25,11 @@ jobs:
       # Label used to access the service container
       postgres:
         # Docker Hub image
-        image: postgres:12.5-alpine
+        image: postgis/postgis:10-2.5
         # Provide the password for postgres
         env:
           POSTGRES_USER: postgres
+          PGUSER: postgres
           POSTGRES_PASSWORD: pinafore
           POSTGRES_DB: flood_risk_dummy_test
         # Maps tcp port 5432 on service container to the host
@@ -41,12 +42,12 @@ jobs:
     steps:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of sonarcloud analysis
 
-      # We don't have to specify the ruby version, or grab it from .ruby-verion. This action supports reading the
-      # version from .ruby-version itself
+      # We don't have to specify the ruby version, or grab it from .ruby-version. This action supports reading the
+      # version from .ruby-version itself.
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -54,11 +55,13 @@ jobs:
 
       - name: Database migrations
         run: |
-          RAILS_ENV=test bundle exec rails db:reset --trace --trace
+          RAILS_ENV=test bundle exec rails db:reset --trace
+
       # Run linting first. No point running the tests if there is a linting issue
       - name: Run lint check
         run: |
           bundle exec rubocop --format progress --format json --out rubocop-result.json
+
       # This includes an extra run step. The sonarcloud analysis will be run in a docker container with the current
       # folder mounted as `/github/workspace`. The problem is when the .resultset.json file is generated it will
       # reference the code in the current folder. So to enable sonarcloud to matchup code coverage with the files we use
