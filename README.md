@@ -40,10 +40,24 @@ Rename `spec/dummy/.env.example` to `spec/dummy/.env`, and update the values whe
 
 ### Database
 
-To create, schema:load and seed the database
+The engine uses [PostgreSQL](https://www.postgresql.org/). To create, schema:load and seed the database
 
 ```bash
 bundle exec rake db:setup
+```
+
+### Geospatial Queries
+
+The engine uses [PostGIS](https://postgis.net/) and [rgeo](https://rubygems.org/gems/rgeo) for geospatial queries. The [activerecord-postgis-adapter](https://github.com/rgeo/activerecord-postgis-adapter) gem adds geospatial datatypes to PotgreSQL and supports geospatial queries. The adapter is enabled by defining the database adapter as `postgis` instead of `postgresql` in `database.yml`:
+
+```
+adapter: postgis
+```
+
+Note that postgis is also required when running automated unit tests within GitHub CI. To support this, `ci.yml` specifies the use of a docker image which runs `PostgreSQL` with the `postgis` adapter:
+
+```
+image: postgis/postgis:10-2.5
 ```
 
 ## Running the app
