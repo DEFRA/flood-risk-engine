@@ -4,7 +4,7 @@ module FloodRiskEngine
   class WaterManagementAreaLookupService < BaseService
     def run(easting:, northing:)
       unless easting&.to_i&.positive? && northing&.to_i&.positive?
-        raise ArgumentError, "Invalid easting/northing values, integers required"
+        raise ArgumentError, "Invalid easting/northing values (#{easting}/#{northing}), integers required"
       end
 
       administrative_areas = FloodRiskEngine::WaterManagementArea.arel_table
