@@ -19,9 +19,16 @@ module FloodRiskEngine
       end
       after(:all) { FloodRiskEngine::WaterManagementArea.destroy_all } # rubocop:disable RSpec/BeforeAfterAll
 
-      context "with invalid easting/northing" do
+      context "with nil easting/northing values" do
         let(:easting) { nil }
         let(:northing) { nil }
+
+        it { expect { run_service }.to raise_error(ArgumentError) }
+      end
+
+      context "with invalid easting/northing values" do
+        let(:easting) { "foo" }
+        let(:northing) { " " }
 
         it { expect { run_service }.to raise_error(ArgumentError) }
       end
@@ -35,6 +42,13 @@ module FloodRiskEngine
       end
 
       context "with valid easting/northing" do
+        context "with a negative easting value" do
+          let(:easting) { -1_000 }
+          let(:northing) { 339_188 }
+
+          it { expect { run_service }.not_to raise_error }
+        end
+
         context "with a location in Staffordshire" do
           let(:easting) { 397_563 }
           let(:northing) { 339_188 }
