@@ -35,46 +35,53 @@ module FloodRiskEngine
 
       context "with easting/northing outside England" do
         # Llandudno
-        let(:easting) { 278_180 }
-        let(:northing) { 382_349 }
+        let(:easting) { "278180" }
+        let(:northing) { "382349" }
 
         it { expect(area_result).to be_nil }
       end
 
       context "with valid easting/northing" do
         context "with a negative easting value" do
-          let(:easting) { -1_000 }
-          let(:northing) { 339_188 }
+          let(:easting) { "-1000" }
+          let(:northing) { "339188" }
+
+          it { expect { run_service }.not_to raise_error }
+        end
+
+        context "with a northing value with a leading zero" do
+          let(:easting) { "397563" }
+          let(:northing) { "039188" }
 
           it { expect { run_service }.not_to raise_error }
         end
 
         context "with a location in Staffordshire" do
-          let(:easting) { 397_563 }
-          let(:northing) { 339_188 }
+          let(:easting) { "397563" }
+          let(:northing) { "339188" }
 
           it { expect(area_result.area_name).to eq "Staffordshire Warwickshire and West Midlands" }
         end
 
         context "with a location in South Downs" do
-          let(:easting) { 430_043 }
-          let(:northing) { 144_612 }
+          let(:easting) { "430043" }
+          let(:northing) { "144612" }
 
           it { expect(area_result.area_name).to eq "Solent and South Downs" }
         end
 
         context "with a location in a polygonal area" do
           # Nottingham
-          let(:easting) { 457_119 }
-          let(:northing) { 340_206 }
+          let(:easting) { "457119" }
+          let(:northing) { "340206" }
 
           it { expect(area_result.area_name).to eq "Derbyshire Nottinghamshire and Leicestershire" }
         end
 
         context "with a location in a multi-polygonal area" do
           # Cornwall
-          let(:easting) { 204_729 }
-          let(:northing) { 61_038 }
+          let(:easting) { "204729" }
+          let(:northing) { "61038" }
 
           it { expect(area_result.area_name).to eq "Devon and Cornwall" }
         end
