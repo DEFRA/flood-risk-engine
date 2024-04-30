@@ -282,6 +282,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.0206)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.6)
     minitest (5.22.3)
     multi_json (1.15.0)
     mutex_m (0.2.0)
@@ -298,9 +299,8 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.16.4-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-linux)
+    nokogiri (1.16.4)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     notifications-ruby-client (6.0.0)
       jwt (>= 1.5, < 3)
@@ -515,8 +515,7 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
-  x86_64-darwin-21
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   awesome_print
