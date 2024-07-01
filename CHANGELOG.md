@@ -47,6 +47,9 @@
 
 **Fixed bugs:**
 
+- Fix/easting northing validation [\#782](https://github.com/DEFRA/flood-risk-engine/pull/782) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Fix/easting northing validation [\#779](https://github.com/DEFRA/flood-risk-engine/pull/779) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Fix/ruby 3027 area lookup [\#772](https://github.com/DEFRA/flood-risk-engine/pull/772) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Fix/ruby 2834 template 404 [\#754](https://github.com/DEFRA/flood-risk-engine/pull/754) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Load defra\_ruby\_validators locales and remove local duplicates [\#740](https://github.com/DEFRA/flood-risk-engine/pull/740) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Chore/ruby 2805 active record [\#738](https://github.com/DEFRA/flood-risk-engine/pull/738) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
@@ -93,6 +96,13 @@
 
 **Merged pull requests:**
 
+- Cleanup [\#781](https://github.com/DEFRA/flood-risk-engine/pull/781) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Bump faraday-retry from 2.2.0 to 2.2.1 [\#777](https://github.com/DEFRA/flood-risk-engine/pull/777) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump govuk\_design\_system\_formbuilder from 5.2.0 to 5.3.3 [\#776](https://github.com/DEFRA/flood-risk-engine/pull/776) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump validates\_email\_format\_of from 1.7.2 to 1.8.2 [\#771](https://github.com/DEFRA/flood-risk-engine/pull/771) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump nokogiri from 1.16.2 to 1.16.4 [\#769](https://github.com/DEFRA/flood-risk-engine/pull/769) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update CHANGELOG [\#761](https://github.com/DEFRA/flood-risk-engine/pull/761) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Bump rspec-rails from 6.1.1 to 6.1.2 [\#760](https://github.com/DEFRA/flood-risk-engine/pull/760) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump pg from 1.5.4 to 1.5.5 [\#739](https://github.com/DEFRA/flood-risk-engine/pull/739) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump capybara from 3.39.2 to 3.40.0 [\#733](https://github.com/DEFRA/flood-risk-engine/pull/733) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump rspec-rails from 6.1.0 to 6.1.1 [\#732](https://github.com/DEFRA/flood-risk-engine/pull/732) ([dependabot[bot]](https://github.com/apps/dependabot))
