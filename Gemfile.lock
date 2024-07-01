@@ -117,8 +117,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    addressable (2.8.6)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     airbrake (13.0.3)
       airbrake-ruby (~> 6.0)
     airbrake-ruby (6.2.1)
@@ -328,7 +328,7 @@ GEM
       protocol-http (~> 0.18)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.4)
+    public_suffix (6.0.0)
     racc (1.8.0)
     rack (2.2.9)
     rack-session (1.0.2)
@@ -505,7 +505,7 @@ GEM
       i18n (>= 0.8.0)
       simpleidn
     vcr (6.2.0)
-    webmock (3.23.0)
+    webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
