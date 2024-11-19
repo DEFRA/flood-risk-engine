@@ -315,7 +315,7 @@ GEM
     parser (3.3.5.1)
       ast (~> 2.4.1)
       racc
-    pg (1.5.7)
+    pg (1.5.9)
     phonelib (0.9.3)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
