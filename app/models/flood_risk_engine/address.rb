@@ -12,7 +12,7 @@ module FloodRiskEngine
 
     # Covers the RCDP Types
     #
-    enum address_type: {
+    enum :address_type, {
       primary: 0,
       secondary: 1,
       site: 2,

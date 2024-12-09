@@ -10,7 +10,7 @@ module FloodRiskEngine
             as: :addressable,
             dependent: :restrict_with_exception
 
-    enum org_type: {
+    enum :org_type, {
       local_authority: 0,
       limited_company: 1,
       limited_liability_partnership: 2,

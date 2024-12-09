@@ -29,7 +29,7 @@ module FloodRiskEngine
 
     def distinct_recipients
       [primary_contact_email, secondary_contact_email]
-        .select(&:present?)
+        .compact_blank
         .map(&:strip)
         .map(&:downcase)
         .uniq
