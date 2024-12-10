@@ -32,8 +32,10 @@ group :development, :test do
   gem "github_changelog_generator"
   # Used to ensure the code base matches our agreed styles and conventions
   gem "rubocop"
+  gem "rubocop-capybara"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem "rubocop-rspec_rails"
   gem "sass-rails", "~> 5"
 end
 

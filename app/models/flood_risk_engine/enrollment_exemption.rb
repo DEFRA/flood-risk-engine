@@ -8,7 +8,7 @@ module FloodRiskEngine
     belongs_to :exemption
     has_many :comments, as: :commentable
 
-    enum status: {
+    enum :status, {
       building: 0,        # FO: anywhere before the confirmation step
       pending: 1,         # FO: enrollment submitted and awaiting BO processing
       being_processed: 2, # BO: prevents another admin user from processing it
@@ -19,12 +19,12 @@ module FloodRiskEngine
       deregistered: 7     # BO: approved only
     }
 
-    enum deregister_reason: {
+    enum :deregister_reason, {
       registered_in_error: 0,
       operator_failings: 1
     }
 
-    enum assistance_mode: {
+    enum :assistance_mode, {
       unassisted: 0,
       fully_assisted: 1,
       partial: 2,
