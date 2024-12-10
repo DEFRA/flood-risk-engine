@@ -52,9 +52,9 @@ Gem::Specification.new do |s|
   s.add_dependency "validates_email_format_of", "~> 1"
 
   # for handling Water Managment Areas spatial data
-  s.add_dependency "activerecord-postgis-adapter"
+  s.add_dependency "activerecord-postgis-adapter", "~> 9"
   s.add_dependency "rgeo"
-  s.add_dependency "rgeo-activerecord"
+  s.add_dependency "rgeo-activerecord", "~> 7"
 
   s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-imap", "~> 0.2"
