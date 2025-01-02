@@ -190,6 +190,9 @@ GEM
     defra_ruby_area (2.2.0)
       nokogiri (>= 1.13.2)
       rest-client (~> 2.0)
+    defra_ruby_companies_house (1.0.3)
+      i18n
+      rest-client (~> 2.0)
     defra_ruby_email (1.3.0)
       notifications-ruby-client
       rails
@@ -199,8 +202,9 @@ GEM
       rubocop-factory_bot
       rubocop-rake
       rubocop-rspec
-    defra_ruby_validators (2.7.2)
+    defra_ruby_validators (3.0.0)
       activemodel
+      defra_ruby_companies_house
       i18n
       matrix
       os_map_ref
