@@ -36,6 +36,6 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate exemptions", :exemption_form
+    it_behaves_like "validate exemptions", :exemption_form
   end
 end

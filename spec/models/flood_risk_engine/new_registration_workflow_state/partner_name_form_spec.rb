@@ -9,17 +9,17 @@ module FloodRiskEngine
     describe "#workflow_state" do
       context "with :partner_name_form state transitions" do
         context "with on next" do
-          include_examples "has next transition", next_state: "partner_postcode_form"
+          it_behaves_like "has next transition", next_state: "partner_postcode_form"
         end
 
         context "with on back" do
           context "when the registration has existing partners" do
             before { allow(new_registration).to receive(:existing_partners?).and_return(true) }
 
-            include_examples "has back transition", previous_state: "partner_overview_form"
+            it_behaves_like "has back transition", previous_state: "partner_overview_form"
           end
 
-          include_examples "has back transition", previous_state: "business_type_form"
+          it_behaves_like "has back transition", previous_state: "business_type_form"
         end
       end
     end

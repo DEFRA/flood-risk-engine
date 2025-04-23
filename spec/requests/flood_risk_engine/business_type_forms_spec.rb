@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "BusinessTypeForms" do
     describe "GET business_type_form_path" do
-      include_examples "GET flexible form", "business_type_form"
+      it_behaves_like "GET flexible form", "business_type_form"
     end
 
     describe "POST business_type_form_path" do
@@ -13,10 +13,10 @@ module FloodRiskEngine
         create(:new_registration, workflow_state: "business_type_form")
       end
 
-      include_examples "POST form",
-                       "business_type_form",
-                       valid_params: { business_type: "limitedCompany" },
-                       invalid_params: { business_type: "" }
+      it_behaves_like "POST form",
+                      "business_type_form",
+                      valid_params: { business_type: "limitedCompany" },
+                      invalid_params: { business_type: "" }
     end
 
     describe "GET back_business_type_forms_path" do

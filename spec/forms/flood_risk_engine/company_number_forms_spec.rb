@@ -43,6 +43,6 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate company_number", :company_number_form
+    it_behaves_like "validate company_number", :company_number_form
   end
 end

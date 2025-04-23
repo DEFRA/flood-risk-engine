@@ -9,17 +9,17 @@ module FloodRiskEngine
     describe "#workflow_state" do
       context "with :company_name_form state transitions" do
         context "on next" do
-          include_examples "has next transition", next_state: "company_postcode_form"
+          it_behaves_like "has next transition", next_state: "company_postcode_form"
         end
 
         context "on back" do
           context "when the registration should have a company number" do
             before { allow(new_registration).to receive(:company_no_required?).and_return(true) }
 
-            include_examples "has back transition", previous_state: "company_number_form"
+            it_behaves_like "has back transition", previous_state: "company_number_form"
           end
 
-          include_examples "has back transition", previous_state: "business_type_form"
+          it_behaves_like "has back transition", previous_state: "business_type_form"
         end
       end
     end
