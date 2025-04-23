@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "PartnerNameForms" do
     describe "GET partner_name_form_path" do
-      include_examples "GET flexible form", "partner_name_form"
+      it_behaves_like "GET flexible form", "partner_name_form"
     end
 
     describe "POST partner_name_form_path" do
@@ -13,10 +13,10 @@ module FloodRiskEngine
         create(:new_registration, workflow_state: "partner_name_form")
       end
 
-      include_examples "POST form",
-                       "partner_name_form",
-                       valid_params: { full_name: "Aaron A Aaronson" },
-                       invalid_params: { full_name: "" }
+      it_behaves_like "POST form",
+                      "partner_name_form",
+                      valid_params: { full_name: "Aaron A Aaronson" },
+                      invalid_params: { full_name: "" }
     end
 
     describe "GET back_partner_name_forms_path" do

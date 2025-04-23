@@ -5,11 +5,11 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "DeclarationForms" do
     describe "GET declaration_form_path" do
-      include_examples "GET locked-in form", "declaration_form"
+      it_behaves_like "GET locked-in form", "declaration_form"
     end
 
     describe "POST declaration_form_path" do
-      include_examples "POST without params form", "declaration_form"
+      it_behaves_like "POST without params form", "declaration_form"
     end
 
     describe "GET back_declaration_forms_path" do

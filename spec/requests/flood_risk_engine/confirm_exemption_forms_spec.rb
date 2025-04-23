@@ -4,9 +4,9 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe "ConfirmExemptionForms" do
-    include_examples "GET flexible form", "confirm_exemption_form"
+    it_behaves_like "GET flexible form", "confirm_exemption_form"
 
-    include_examples "POST without params form", "confirm_exemption_form"
+    it_behaves_like "POST without params form", "confirm_exemption_form"
 
     describe "GET back_confirm_exemption_forms_path" do
       context "when a valid transient registration exists" do

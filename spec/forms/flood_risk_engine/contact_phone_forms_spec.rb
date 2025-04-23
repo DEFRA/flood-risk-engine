@@ -34,6 +34,6 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate contact_phone", :contact_phone_form
+    it_behaves_like "validate contact_phone", :contact_phone_form
   end
 end

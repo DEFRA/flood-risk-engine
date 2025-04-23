@@ -5,7 +5,7 @@ on: push
 jobs:
   build:
     # You must use a Linux environment when using service containers or container jobs
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       ADDRESS_FACADE_CLIENT_ID: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_ID }}
       ADDRESS_FACADE_CLIENT_KEY: ${{ secrets.ACTIONS_ADDRESS_FACADE_CLIENT_KEY }}

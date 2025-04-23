@@ -9,11 +9,11 @@ module FloodRiskEngine
     describe "#workflow_state" do
       context "with :exemption_form state transitions" do
         context "on next" do
-          include_examples "has next transition", next_state: "confirm_exemption_form"
+          it_behaves_like "has next transition", next_state: "confirm_exemption_form"
         end
 
         context "on back" do
-          include_examples "has back transition", previous_state: "start_form"
+          it_behaves_like "has back transition", previous_state: "start_form"
         end
       end
     end

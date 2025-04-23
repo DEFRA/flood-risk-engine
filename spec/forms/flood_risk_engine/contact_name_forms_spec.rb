@@ -35,6 +35,6 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate contact name", :contact_name_form, :contact_name
+    it_behaves_like "validate contact name", :contact_name_form, :contact_name
   end
 end

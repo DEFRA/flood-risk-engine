@@ -3,7 +3,8 @@ inherit_from: .rubocop_todo.yml
 inherit_gem:
   defra_ruby_style:
     - default.yml
-require:
+
+plugins:
   - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec

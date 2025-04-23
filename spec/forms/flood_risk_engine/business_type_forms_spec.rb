@@ -26,6 +26,6 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate business_type", :business_type_form
+    it_behaves_like "validate business_type", :business_type_form
   end
 end

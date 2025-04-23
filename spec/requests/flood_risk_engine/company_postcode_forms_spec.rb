@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "CompanyPostcodeForms" do
     describe "GET company_postcode_form_path" do
-      include_examples "GET flexible form", "company_postcode_form"
+      it_behaves_like "GET flexible form", "company_postcode_form"
     end
 
     describe "POST company_postcode_form_path" do
@@ -13,10 +13,10 @@ module FloodRiskEngine
         create(:new_registration, workflow_state: "company_postcode_form")
       end
 
-      include_examples "POST form",
-                       "company_postcode_form",
-                       valid_params: { temp_company_postcode: "BS1 5AH" },
-                       invalid_params: { temp_company_postcode: "" }
+      it_behaves_like "POST form",
+                      "company_postcode_form",
+                      valid_params: { temp_company_postcode: "BS1 5AH" },
+                      invalid_params: { temp_company_postcode: "" }
 
       context "with an invalid postcode" do
         let(:invalid_params) { { temp_company_postcode: "BSA 51H" } }

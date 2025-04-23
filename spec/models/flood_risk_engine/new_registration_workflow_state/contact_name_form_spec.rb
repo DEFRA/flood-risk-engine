@@ -9,14 +9,14 @@ module FloodRiskEngine
     describe "#workflow_state" do
       context "with :contact_name_form state transitions" do
         context "on next" do
-          include_examples "has next transition", next_state: "contact_phone_form"
+          it_behaves_like "has next transition", next_state: "contact_phone_form"
         end
 
         context "on back" do
           context "when the registration is a partnership" do
             before { allow(new_registration).to receive(:should_have_partners?).and_return(true) }
 
-            include_examples "has back transition", previous_state: "partner_overview_form"
+            it_behaves_like "has back transition", previous_state: "partner_overview_form"
           end
 
           context "when the registration's company address was entered manually" do
@@ -24,10 +24,10 @@ module FloodRiskEngine
 
             before { allow(new_registration).to receive(:company_address).and_return(company_address) }
 
-            include_examples "has back transition", previous_state: "company_address_manual_form"
+            it_behaves_like "has back transition", previous_state: "company_address_manual_form"
           end
 
-          include_examples "has back transition", previous_state: "company_address_lookup_form"
+          it_behaves_like "has back transition", previous_state: "company_address_lookup_form"
         end
       end
     end

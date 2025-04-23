@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "AdditionalContactEmailForms" do
     describe "GET additional_contact_email_form_path" do
-      include_examples "GET flexible form", "additional_contact_email_form"
+      it_behaves_like "GET flexible form", "additional_contact_email_form"
     end
 
     describe "POST additional_contact_email_form_path" do
@@ -13,11 +13,11 @@ module FloodRiskEngine
         create(:new_registration, workflow_state: "additional_contact_email_form")
       end
 
-      include_examples "POST form",
-                       "additional_contact_email_form",
-                       valid_params: { additional_contact_email: "valid@example.com",
-                                       confirmed_email: "valid@example.com" },
-                       invalid_params: { additional_contact_email: "foo" }
+      it_behaves_like "POST form",
+                      "additional_contact_email_form",
+                      valid_params: { additional_contact_email: "valid@example.com",
+                                      confirmed_email: "valid@example.com" },
+                      invalid_params: { additional_contact_email: "foo" }
     end
 
     describe "GET back_additional_contact_email_forms_path" do
