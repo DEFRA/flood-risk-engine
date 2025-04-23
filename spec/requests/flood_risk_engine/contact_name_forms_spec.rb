@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "ContactNameForms" do
     describe "GET contact_name_form_path" do
-      include_examples "GET flexible form", "contact_name_form"
+      it_behaves_like "GET flexible form", "contact_name_form"
     end
 
     describe "POST contact_name_form_path" do
@@ -13,10 +13,10 @@ module FloodRiskEngine
         create(:new_registration, workflow_state: "contact_name_form")
       end
 
-      include_examples "POST form",
-                       "contact_name_form",
-                       valid_params: { contact_name: "Contactable Person" },
-                       invalid_params: { contact_name: "" }
+      it_behaves_like "POST form",
+                      "contact_name_form",
+                      valid_params: { contact_name: "Contactable Person" },
+                      invalid_params: { contact_name: "" }
     end
 
     describe "GET back_contact_name_forms_path" do

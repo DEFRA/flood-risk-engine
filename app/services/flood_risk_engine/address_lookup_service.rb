@@ -2,8 +2,6 @@
 
 module FloodRiskEngine
   class AddressLookupService < BaseService
-    def run(postcode)
-      DefraRuby::Address::EaAddressFacadeV11Service.run(postcode)
-    end
+    delegate :run, to: :"DefraRuby::Address::EaAddressFacadeV11Service"
   end
 end

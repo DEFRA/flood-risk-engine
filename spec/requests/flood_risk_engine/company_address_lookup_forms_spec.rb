@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "CompanyAddressLookupForms" do
     describe "GET company_address_lookup_form_path" do
-      include_examples "GET flexible form", "company_address_lookup_form"
+      it_behaves_like "GET flexible form", "company_address_lookup_form"
     end
 
     describe "POST company_address_lookup_form_path" do
@@ -18,10 +18,10 @@ module FloodRiskEngine
                workflow_state: "company_address_lookup_form")
       end
 
-      include_examples "POST form",
-                       "company_address_lookup_form",
-                       valid_params: { company_address: { uprn: "340116" } },
-                       invalid_params: { company_address: {} }
+      it_behaves_like "POST form",
+                      "company_address_lookup_form",
+                      valid_params: { company_address: { uprn: "340116" } },
+                      invalid_params: { company_address: {} }
     end
 
     describe "GET back_company_address_lookup_forms_path" do

@@ -26,6 +26,6 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate postcode", :company_postcode_form, :temp_company_postcode
+    it_behaves_like "validate postcode", :company_postcode_form, :temp_company_postcode
   end
 end

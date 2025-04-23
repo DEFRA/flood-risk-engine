@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "CompanyNumberForms" do
     describe "GET company_number_form_path" do
-      include_examples "GET flexible form", "company_number_form"
+      it_behaves_like "GET flexible form", "company_number_form"
     end
 
     describe "POST company_number_form_path" do
@@ -16,10 +16,10 @@ module FloodRiskEngine
         create(:new_registration, workflow_state: "company_number_form")
       end
 
-      include_examples "POST form",
-                       "company_number_form",
-                       valid_params: { company_number: "09360070" },
-                       invalid_params: { company_number: "" }
+      it_behaves_like "POST form",
+                      "company_number_form",
+                      valid_params: { company_number: "09360070" },
+                      invalid_params: { company_number: "" }
     end
 
     describe "GET back_company_number_forms_path" do

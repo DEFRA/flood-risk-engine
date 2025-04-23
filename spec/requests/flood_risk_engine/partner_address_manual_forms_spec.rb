@@ -9,7 +9,7 @@ module FloodRiskEngine
         transient_registration.transient_people = [build(:transient_person, :named, :has_temp_postcode)]
       end
 
-      include_examples "GET flexible form", "partner_address_manual_form"
+      it_behaves_like "GET flexible form", "partner_address_manual_form"
     end
 
     describe "POST partner_address_manual_form_path" do
@@ -22,18 +22,18 @@ module FloodRiskEngine
                workflow_state: "partner_address_manual_form")
       end
 
-      include_examples "POST form",
-                       "partner_address_manual_form",
-                       valid_params: {
-                         transient_address: {
-                           premises: "Example House",
-                           street_address: "2 On The Road",
-                           locality: "Near Horizon House",
-                           city: "Bristol",
-                           postcode: "BS1 5AH"
-                         }
-                       },
-                       invalid_params: { transient_address: {} }
+      it_behaves_like "POST form",
+                      "partner_address_manual_form",
+                      valid_params: {
+                        transient_address: {
+                          premises: "Example House",
+                          street_address: "2 On The Road",
+                          locality: "Near Horizon House",
+                          city: "Bristol",
+                          postcode: "BS1 5AH"
+                        }
+                      },
+                      invalid_params: { transient_address: {} }
     end
 
     describe "GET back_partner_address_manual_forms_path" do

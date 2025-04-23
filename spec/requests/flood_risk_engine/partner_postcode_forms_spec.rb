@@ -9,7 +9,7 @@ module FloodRiskEngine
         transient_registration.transient_people = [build(:transient_person, :named)]
       end
 
-      include_examples "GET flexible form", "partner_postcode_form"
+      it_behaves_like "GET flexible form", "partner_postcode_form"
     end
 
     describe "POST partner_postcode_form_path" do
@@ -17,10 +17,10 @@ module FloodRiskEngine
         create(:new_registration, :has_named_partner, workflow_state: "partner_postcode_form")
       end
 
-      include_examples "POST form",
-                       "partner_postcode_form",
-                       valid_params: { temp_postcode: "BS1 5AH" },
-                       invalid_params: { temp_postcode: "" }
+      it_behaves_like "POST form",
+                      "partner_postcode_form",
+                      valid_params: { temp_postcode: "BS1 5AH" },
+                      invalid_params: { temp_postcode: "" }
     end
 
     describe "GET back_partner_postcode_forms_path" do

@@ -11,11 +11,11 @@ module FloodRiskEngine
         transient_registration.company_address = build(:transient_address, :company)
       end
 
-      include_examples "GET flexible form", "check_your_answers_form"
+      it_behaves_like "GET flexible form", "check_your_answers_form"
     end
 
     describe "POST check_your_answers_form_path" do
-      include_examples "POST without params form", "check_your_answers_form"
+      it_behaves_like "POST without params form", "check_your_answers_form"
     end
 
     describe "GET back_check_your_answers_forms_path" do

@@ -9,11 +9,11 @@ module FloodRiskEngine
     describe "#workflow_state" do
       context "with :site_grid_reference_form state transitions" do
         context "with on next" do
-          include_examples "has next transition", next_state: "business_type_form"
+          it_behaves_like "has next transition", next_state: "business_type_form"
         end
 
         context "with on back" do
-          include_examples "has back transition", previous_state: "confirm_exemption_form"
+          it_behaves_like "has back transition", previous_state: "confirm_exemption_form"
         end
       end
     end

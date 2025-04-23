@@ -35,7 +35,7 @@ module FloodRiskEngine
       end
     end
 
-    include_examples "validate email", :additional_contact_email_form, :additional_contact_email
+    it_behaves_like "validate email", :additional_contact_email_form, :additional_contact_email
 
     context "when a valid transient registration exists" do
       let(:additional_contact_email_form) { build(:additional_contact_email_form, :has_required_data) }

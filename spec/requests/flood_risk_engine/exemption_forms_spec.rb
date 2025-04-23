@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe "ExemptionForms" do
     describe "GET exemption_form_path" do
-      include_examples "GET flexible form", "exemption_form"
+      it_behaves_like "GET flexible form", "exemption_form"
     end
 
     describe "GET back_exemption_forms_path" do
