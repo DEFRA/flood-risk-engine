@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "govuk_design_system_formbuilder"
+
 module FloodRiskEngine
   class FormsController < ::FloodRiskEngine::ApplicationController
     include ActionView::Helpers::UrlHelper
@@ -39,7 +41,7 @@ module FloodRiskEngine
     private
 
     def transient_registration_attributes
-      # Default behavuour - permit no params
+      # Default behaviour - permit no params
       # Override in subclasses when needed
       params.permit
     end

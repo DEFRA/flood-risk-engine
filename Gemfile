@@ -43,7 +43,6 @@ group :test do
   gem "capybara", "~> 3"
   gem "factory_bot_rails", "~> 6"
   gem "faker", "~> 2"
-  gem "govuk_design_system_formbuilder"
   gem "poltergeist", "~> 1" # Needed for headless testing with Javascript or pages that ref external sites
   gem "rails-controller-testing"
   gem "rgeo-geojson"

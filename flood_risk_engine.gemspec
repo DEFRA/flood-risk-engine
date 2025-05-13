@@ -38,6 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency "defra_ruby_validators"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3"
+  s.add_dependency "govuk_design_system_formbuilder"
   s.add_dependency "jquery-rails", "~> 4"
   s.add_dependency "nokogiri", ">= 1"
   # Use Notify to send emails and letters
@@ -45,16 +46,16 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.5"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 7.1"
+  s.add_dependency "rails", "~> 7.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 3"
   # Validate e-mail addresses against RFC 2822 and RFC 3696
   s.add_dependency "validates_email_format_of", "~> 1"
 
   # for handling Water Managment Areas spatial data
-  s.add_dependency "activerecord-postgis-adapter", "~> 9"
+  s.add_dependency "activerecord-postgis-adapter", "~> 10"
   s.add_dependency "rgeo"
-  s.add_dependency "rgeo-activerecord", "~> 7"
+  s.add_dependency "rgeo-activerecord", "~> 8"
 
   s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-imap", "~> 0.2"
