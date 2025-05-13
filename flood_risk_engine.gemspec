@@ -36,9 +36,9 @@ Gem::Specification.new do |s|
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email", "~> 1"
   s.add_dependency "defra_ruby_validators"
+  s.add_dependency "govuk_design_system_formbuilder"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3"
-  s.add_dependency "govuk_design_system_formbuilder"
   s.add_dependency "jquery-rails", "~> 4"
   s.add_dependency "nokogiri", ">= 1"
   # Use Notify to send emails and letters

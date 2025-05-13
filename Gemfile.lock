@@ -586,7 +586,6 @@ DEPENDENCIES
   faraday-retry
   flood_risk_engine!
   github_changelog_generator
-  govuk_design_system_formbuilder
   poltergeist (~> 1)
   rails-controller-testing
   rgeo-geojson
