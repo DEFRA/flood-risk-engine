@@ -2,7 +2,6 @@
 
 module FloodRiskEngine
   class CompanyNameForm < ::FloodRiskEngine::BaseForm
-    delegate :business_type, to: :transient_registration
     delegate :company_name, to: :transient_registration
 
     validates :company_name, "flood_risk_engine/company_name": true
