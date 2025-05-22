@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
   s.add_dependency "defra_ruby_email", "~> 1"
-  s.add_dependency "defra_ruby_validators"
+  s.add_dependency "defra_ruby_validators", "~> 2.0"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3"
   s.add_dependency "jquery-rails", "~> 4"
@@ -52,9 +52,9 @@ Gem::Specification.new do |s|
   s.add_dependency "validates_email_format_of", "~> 1"
 
   # for handling Water Managment Areas spatial data
-  s.add_dependency "activerecord-postgis-adapter"
+  s.add_dependency "activerecord-postgis-adapter", "~> 10.0.0"
   s.add_dependency "rgeo"
-  s.add_dependency "rgeo-activerecord", "~> 7"
+  s.add_dependency "rgeo-activerecord"
 
   s.add_dependency "matrix", "~> 0.4"
   s.add_dependency "net-imap", "~> 0.2"

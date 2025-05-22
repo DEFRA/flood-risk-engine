@@ -3,13 +3,13 @@ PATH
   specs:
     flood_risk_engine (1.2)
       aasm (~> 5.5)
-      activerecord-postgis-adapter
+      activerecord-postgis-adapter (~> 10.0.0)
       activerecord-session_store (~> 2)
       defra_ruby_address
       defra_ruby_alert (~> 2.1)
       defra_ruby_area (~> 2.2)
       defra_ruby_email (~> 1)
-      defra_ruby_validators
+      defra_ruby_validators (~> 2.0)
       dibber (~> 0.5)
       dotenv-rails (~> 2)
       high_voltage (~> 3)
@@ -24,7 +24,7 @@ PATH
       phonelib (~> 0.6)
       rails (~> 7.2.2.1)
       rgeo
-      rgeo-activerecord (~> 7)
+      rgeo-activerecord
       sucker_punch (~> 3)
       validates_email_format_of (~> 1)
 
@@ -86,9 +86,9 @@ GEM
       activemodel (= 7.2.2.1)
       activesupport (= 7.2.2.1)
       timeout (>= 0.4.0)
-    activerecord-postgis-adapter (3.1.2)
-      activerecord (>= 4.2.0)
-      rgeo-activerecord (>= 4.0.4)
+    activerecord-postgis-adapter (10.0.1)
+      activerecord (~> 7.2.0)
+      rgeo-activerecord (~> 8.0.0)
     activerecord-session_store (2.2.0)
       actionpack (>= 7.0)
       activerecord (>= 7.0)
@@ -184,9 +184,6 @@ GEM
     defra_ruby_area (2.2.0)
       nokogiri (>= 1.13.2)
       rest-client (~> 2.0)
-    defra_ruby_companies_house (1.0.3)
-      i18n
-      rest-client (~> 2.0)
     defra_ruby_email (1.3.0)
       notifications-ruby-client
       rails
@@ -196,9 +193,8 @@ GEM
       rubocop-factory_bot
       rubocop-rake
       rubocop-rspec
-    defra_ruby_validators (3.0.0)
+    defra_ruby_validators (2.7.2)
       activemodel
-      defra_ruby_companies_house
       i18n
       matrix
       os_map_ref
@@ -429,9 +425,9 @@ GEM
       netrc (~> 0.8)
     rexml (3.4.1)
     rgeo (3.0.1)
-    rgeo-activerecord (7.0.1)
-      activerecord (>= 5.0)
-      rgeo (>= 1.0.0)
+    rgeo-activerecord (8.0.0)
+      activerecord (>= 7.0)
+      rgeo (>= 3.0)
     rgeo-geojson (2.2.0)
       multi_json (~> 1.15)
       rgeo (>= 1.0.0)
@@ -459,7 +455,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.3)
-    rubocop (1.75.6)
+    rubocop (1.75.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
