@@ -18,6 +18,23 @@ AllCops:
     - vendor/bundle/**/*
     - spec/dummy/db/schema.rb
 
+# This cop appears to misfire for cases where an attr_accessor and a delgate instruction use the same attribute name.
+Lint/DuplicateMethods:
+  Exclude:
+    - app/forms/flood_risk_engine/company_address_manual_form.rb
+    - app/forms/flood_risk_engine/company_name_form.rb
+    - app/forms/flood_risk_engine/partner_address_manual_form.rb
+
+# We believe the default of 10 lines for a method length is too restrictive and often quickly hit just because we need
+# to specify the namesspace, class and method before then doing something with it.
+Metrics/MethodLength:
+  Max: 30
+
+# This cop assumes any method which returns a boolean should have a name ending in "?"
+# This is not suitable for many methods, e.g. `validate_each` which is a directive which returns a boolean outcome report.
+Naming/PredicateMethod:
+  Enabled: false
+
 # Allow contexts to start with on for workflow event specs
 RSpec/ContextWording:
   Prefixes:
@@ -26,8 +43,3 @@ RSpec/ContextWording:
     - without
     - "on"
     - for
-
-# We believe the default of 10 lines for a method length is too restrictive and often quickly hit just because we need
-# to specify the namesspace, class and method before then doing something with it.
-Metrics/MethodLength:
-  Max: 30
