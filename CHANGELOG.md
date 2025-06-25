@@ -47,6 +47,9 @@
 
 **Fixed bugs:**
 
+- Fix/ruby 2874 last email [\#902](https://github.com/DEFRA/flood-risk-engine/pull/902) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Fix/ruby 2874 last email [\#901](https://github.com/DEFRA/flood-risk-engine/pull/901) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Fix/ruby 2874 last email [\#900](https://github.com/DEFRA/flood-risk-engine/pull/900) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Fix/easting northing validation [\#782](https://github.com/DEFRA/flood-risk-engine/pull/782) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Fix/easting northing validation [\#779](https://github.com/DEFRA/flood-risk-engine/pull/779) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Fix/ruby 3027 area lookup [\#772](https://github.com/DEFRA/flood-risk-engine/pull/772) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
@@ -96,6 +99,20 @@
 
 **Merged pull requests:**
 
+- Bump govuk\_design\_system\_formbuilder from 5.10.0 to 5.11.0 [\#979](https://github.com/DEFRA/flood-risk-engine/pull/979) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump factory\_bot\_rails from 6.4.4 to 6.5.0 [\#974](https://github.com/DEFRA/flood-risk-engine/pull/974) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aasm from 5.5.0 to 5.5.1 [\#973](https://github.com/DEFRA/flood-risk-engine/pull/973) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 8.0.7 to 8.0.8 [\#969](https://github.com/DEFRA/flood-risk-engine/pull/969) ([dependabot[bot]](https://github.com/apps/dependabot))
+- rails 7.2.2.1 upgrade [\#967](https://github.com/DEFRA/flood-risk-engine/pull/967) ([jjromeo](https://github.com/jjromeo))
+- Bump byebug from 11.1.3 to 12.0.0 [\#953](https://github.com/DEFRA/flood-risk-engine/pull/953) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update dependencies + code styling changes [\#952](https://github.com/DEFRA/flood-risk-engine/pull/952) ([brujeo](https://github.com/brujeo))
+- Bump rack from 2.2.10 to 2.2.13 [\#930](https://github.com/DEFRA/flood-risk-engine/pull/930) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump webmock from 3.24.0 to 3.25.1 [\#929](https://github.com/DEFRA/flood-risk-engine/pull/929) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop-rspec from 3.3.0 to 3.4.0 [\#908](https://github.com/DEFRA/flood-risk-engine/pull/908) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump nokogiri from 1.18.1 to 1.18.2 [\#907](https://github.com/DEFRA/flood-risk-engine/pull/907) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump govuk\_design\_system\_formbuilder from 5.7.1 to 5.8.0 [\#904](https://github.com/DEFRA/flood-risk-engine/pull/904) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump net-imap from 0.5.4 to 0.5.5 [\#903](https://github.com/DEFRA/flood-risk-engine/pull/903) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update CHANGELOG [\#888](https://github.com/DEFRA/flood-risk-engine/pull/888) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump gem versions [\#885](https://github.com/DEFRA/flood-risk-engine/pull/885) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Chore/ruby 3506 dependencies [\#883](https://github.com/DEFRA/flood-risk-engine/pull/883) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump net-imap from 0.5.0 to 0.5.1 [\#876](https://github.com/DEFRA/flood-risk-engine/pull/876) ([dependabot[bot]](https://github.com/apps/dependabot))
