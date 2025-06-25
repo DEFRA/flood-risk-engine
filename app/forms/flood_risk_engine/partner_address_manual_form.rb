@@ -6,9 +6,13 @@ module FloodRiskEngine
 
     delegate :last_partner, to: :transient_registration
     delegate :transient_address, to: :last_partner
-    delegate :premises, :street_address, :locality, :postcode, :city, to: :transient_address, allow_nil: true
+    delegate :premises, :street_address, :locality, :city, to: :transient_address, allow_nil: true
 
-    attr_accessor :postcode
+    attr_writer :form_postcode
+
+    def postcode
+      @form_postcode || transient_address&.postcode
+    end
 
     validates :transient_address, "flood_risk_engine/manual_address": true
 
@@ -28,14 +32,14 @@ module FloodRiskEngine
     private
 
     def setup_postcode
-      self.postcode = last_partner.temp_postcode
+      self.form_postcode = last_partner.temp_postcode
 
       # Prefill the existing address unless the postcode has changed from the existing address's postcode
       last_partner.transient_address = nil unless saved_address_still_valid?
     end
 
     def saved_address_still_valid?
-      postcode == transient_address&.postcode
+      @form_postcode == transient_address&.postcode
     end
 
     def setup_new_address(attributes)
