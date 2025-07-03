@@ -295,7 +295,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    matrix (0.4.2)
+    matrix (0.4.3)
     metrics (0.12.2)
     mime-types (3.7.0)
       logger
