@@ -99,7 +99,14 @@
 
 **Merged pull requests:**
 
+- Chore/gem updates [\#1003](https://github.com/DEFRA/flood-risk-engine/pull/1003) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Bump activestorage from 7.2.2.1 to 7.2.2.2 [\#994](https://github.com/DEFRA/flood-risk-engine/pull/994) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump activerecord from 7.2.2.1 to 7.2.2.2 [\#993](https://github.com/DEFRA/flood-risk-engine/pull/993) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump phonelib from 0.10.9 to 0.10.10 [\#982](https://github.com/DEFRA/flood-risk-engine/pull/982) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update CHANGELOG [\#981](https://github.com/DEFRA/flood-risk-engine/pull/981) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump govuk\_design\_system\_formbuilder from 5.10.0 to 5.11.0 [\#979](https://github.com/DEFRA/flood-risk-engine/pull/979) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump matrix from 0.4.2 to 0.4.3 [\#977](https://github.com/DEFRA/flood-risk-engine/pull/977) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump faraday-retry from 2.3.1 to 2.3.2 [\#976](https://github.com/DEFRA/flood-risk-engine/pull/976) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump factory\_bot\_rails from 6.4.4 to 6.5.0 [\#974](https://github.com/DEFRA/flood-risk-engine/pull/974) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump aasm from 5.5.0 to 5.5.1 [\#973](https://github.com/DEFRA/flood-risk-engine/pull/973) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump bullet from 8.0.7 to 8.0.8 [\#969](https://github.com/DEFRA/flood-risk-engine/pull/969) ([dependabot[bot]](https://github.com/apps/dependabot))
