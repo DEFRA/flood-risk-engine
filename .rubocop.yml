@@ -18,6 +18,10 @@ AllCops:
     - vendor/bundle/**/*
     - spec/dummy/db/schema.rb
 
+# Bad cop: Not all metnods returning a boolean are predicates.
+Naming/PredicateMethod:
+  Enabled: false
+
 # Allow contexts to start with on for workflow event specs
 RSpec/ContextWording:
   Prefixes:

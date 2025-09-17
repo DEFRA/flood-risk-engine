@@ -30,7 +30,7 @@ module FloodRiskEngine
       @error_code ||= params[:id]
     end
 
-    def template_exists(name)
+    def template_exists?(name)
       File.exist? template_path(name)
     end
 
@@ -42,7 +42,7 @@ module FloodRiskEngine
     end
 
     def template
-      @template ||= if template_exists(error_code)
+      @template ||= if template_exists?(error_code)
                       error_code
                     else
                       (error_code.to_i.positive? ? "generic" : "404")
