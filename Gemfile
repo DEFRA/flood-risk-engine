@@ -33,7 +33,9 @@ group :development, :test do
   # Used to ensure the code base matches our agreed styles and conventions
   gem "rubocop"
   gem "rubocop-capybara"
+  gem "rubocop-factory_bot"
   gem "rubocop-rails"
+  gem "rubocop-rake"
   gem "rubocop-rspec"
   gem "rubocop-rspec_rails"
   gem "sass-rails", "~> 5"
