@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3"
   s.add_dependency "jquery-rails", "~> 4"
-  s.add_dependency "nokogiri", ">= 1"
+  s.add_dependency "nokogiri", ">= 1.18.9"
   # Use Notify to send emails and letters
   s.add_dependency "notifications-ruby-client"
   s.add_dependency "os_map_ref", "0.5"

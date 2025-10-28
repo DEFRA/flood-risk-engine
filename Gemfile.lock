@@ -17,7 +17,7 @@ PATH
       matrix (~> 0.4)
       net-imap (~> 0.2)
       net-pop (~> 0.1)
-      nokogiri (>= 1)
+      nokogiri (>= 1.18.9)
       notifications-ruby-client
       os_map_ref (= 0.5)
       pg (~> 1)
