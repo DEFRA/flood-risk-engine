@@ -35,3 +35,9 @@ RSpec/ContextWording:
 # to specify the namesspace, class and method before then doing something with it.
 Metrics/MethodLength:
   Max: 30
+
+RSpec/LeakyLocalVariable:
+  Exclude:
+    # Local variables used for dynamic test description interpolation
+    - spec/support/shared_examples/models/transient_registration_workflow_state/a_postcode_transition.rb
+    - spec/support/shared_examples/models/transient_registration_workflow_state/an_address_lookup_transition.rb
