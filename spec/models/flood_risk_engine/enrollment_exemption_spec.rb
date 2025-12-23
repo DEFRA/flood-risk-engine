@@ -4,7 +4,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe EnrollmentExemption do
-    let(:enrollment_exemption) { FactoryBot.create(:enrollment_exemption) }
+    let(:enrollment_exemption) { create(:enrollment_exemption) }
     let(:status) { enrollment_exemption.status }
 
     it { is_expected.to be_valid }
@@ -21,8 +21,8 @@ module FloodRiskEngine
     context "for scopes" do
       context "with .approved" do
         it "returns all approved enrollment exemptions" do
-          active_exemption = FactoryBot.create(:enrollment_exemption, status: :approved)
-          FactoryBot.create(:enrollment_exemption, status: :building)
+          active_exemption = create(:enrollment_exemption, status: :approved)
+          create(:enrollment_exemption, status: :building)
 
           expect(described_class.approved).to eq([active_exemption])
         end
@@ -30,7 +30,7 @@ module FloodRiskEngine
     end
 
     describe "comments" do
-      let(:ee) { FactoryBot.create(:enrollment_exemption) }
+      let(:ee) { create(:enrollment_exemption) }
 
       it "returns nil when no comments" do
         expect(ee.decision_at_and_user).to eq [nil, nil]
@@ -49,12 +49,12 @@ module FloodRiskEngine
     end
 
     describe ".include_long_dredging?" do
-      before { FactoryBot.create(:enrollment_exemption) }
+      before { create(:enrollment_exemption) }
 
       it "returns true if the collection includes a long dredging exemption" do
         dredging_code = FloodRiskEngine::Exemption::LONG_DREDGING_CODES.sample
         dredging_exemption = create(:exemption, code: dredging_code)
-        FactoryBot.create(:enrollment_exemption, exemption: dredging_exemption)
+        create(:enrollment_exemption, exemption: dredging_exemption)
         expect(described_class.include_long_dredging?).to be_truthy
       end
 

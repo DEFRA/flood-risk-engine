@@ -5,7 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   RSpec.describe PartnerPresenter do
     let(:address) do
-      FactoryBot.create(
+      create(
         :address,
         premises: "a",
         street_address: "b",
@@ -14,10 +14,10 @@ module FloodRiskEngine
         postcode: "e"
       )
     end
-    let(:contact) { FactoryBot.create(:contact, address:) }
-    let(:organisation) { FactoryBot.create(:organisation, :as_partnership) }
+    let(:contact) { create(:contact, address:) }
+    let(:organisation) { create(:organisation, :as_partnership) }
     let(:partner) do
-      FactoryBot.create(:partner, contact:, organisation:)
+      create(:partner, contact:, organisation:)
     end
 
     subject(:presenter) { described_class.new(partner) }

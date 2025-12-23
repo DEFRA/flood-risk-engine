@@ -11,14 +11,14 @@ module FloodRiskEngine
     let(:initial_status) { :pending }
 
     let(:enrollment_exemption) do
-      FactoryBot.create(
+      create(
         :enrollment_exemption,
         status: EnrollmentExemption.statuses[initial_status]
       )
     end
 
     let(:enrollment) do
-      FactoryBot.create(
+      create(
         :enrollment,
         :with_correspondence_contact,
         :with_secondary_contact,

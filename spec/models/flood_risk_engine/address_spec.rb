@@ -4,7 +4,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe Address do
-    let(:address) { FactoryBot.create(:address) }
+    let(:address) { create(:address) }
 
     it { is_expected.to belong_to(:addressable) }
     it { is_expected.to have_one(:location).dependent(:restrict_with_exception) }

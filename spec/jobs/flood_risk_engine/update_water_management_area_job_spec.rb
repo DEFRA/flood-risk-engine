@@ -6,7 +6,7 @@ require "rails_helper"
 # handle the outgoing request.
 module FloodRiskEngine
   describe UpdateWaterManagementAreaJob do
-    let(:location) { FactoryBot.create(:location) }
+    let(:location) { create(:location) }
 
     it { is_expected.to respond_to :perform }
 
