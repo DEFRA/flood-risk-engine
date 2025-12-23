@@ -321,7 +321,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.2)
-    phonelib (0.10.13)
+    phonelib (0.10.15)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
