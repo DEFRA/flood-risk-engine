@@ -99,6 +99,19 @@
 
 **Merged pull requests:**
 
+- Add rubocop-factory\_bot and rubocop-rake to development dependencies;… [\#1024](https://github.com/DEFRA/flood-risk-engine/pull/1024) ([brujeo](https://github.com/brujeo))
+- Updating sonar cloud config and setting minimum nokogiri version to the secure version of 1.18.9 [\#1023](https://github.com/DEFRA/flood-risk-engine/pull/1023) ([brujeo](https://github.com/brujeo))
+- Bump phonelib from 0.10.12 to 0.10.13 [\#1022](https://github.com/DEFRA/flood-risk-engine/pull/1022) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump webmock from 3.25.1 to 3.26.0 [\#1021](https://github.com/DEFRA/flood-risk-engine/pull/1021) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 8.0.8 to 8.1.0 [\#1020](https://github.com/DEFRA/flood-risk-engine/pull/1020) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aasm from 5.5.1 to 5.5.2 [\#1019](https://github.com/DEFRA/flood-risk-engine/pull/1019) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump jquery-rails from 4.6.0 to 4.6.1 [\#1018](https://github.com/DEFRA/flood-risk-engine/pull/1018) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop from 1.80.2 to 1.81.6 [\#1017](https://github.com/DEFRA/flood-risk-engine/pull/1017) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rack from 2.2.17 to 2.2.20 [\#1016](https://github.com/DEFRA/flood-risk-engine/pull/1016) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump net-imap from 0.5.10 to 0.5.12 [\#1014](https://github.com/DEFRA/flood-risk-engine/pull/1014) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop-rails from 2.33.3 to 2.33.4 [\#1012](https://github.com/DEFRA/flood-risk-engine/pull/1012) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump notifications-ruby-client from 6.2.0 to 6.3.0 [\#1010](https://github.com/DEFRA/flood-risk-engine/pull/1010) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update CHANGELOG [\#1006](https://github.com/DEFRA/flood-risk-engine/pull/1006) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Chore/gem updates [\#1003](https://github.com/DEFRA/flood-risk-engine/pull/1003) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump activestorage from 7.2.2.1 to 7.2.2.2 [\#994](https://github.com/DEFRA/flood-risk-engine/pull/994) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump activerecord from 7.2.2.1 to 7.2.2.2 [\#993](https://github.com/DEFRA/flood-risk-engine/pull/993) ([dependabot[bot]](https://github.com/apps/dependabot))

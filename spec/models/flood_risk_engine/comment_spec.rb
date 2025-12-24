@@ -4,7 +4,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe Comment do
-    let(:comment) { FactoryBot.create(:comment) }
+    let(:comment) { create(:comment) }
 
     it "can be associated with enrollment exemptions" do
       expect(comment.commentable.class).to eq(EnrollmentExemption)
