@@ -323,7 +323,7 @@ GEM
     parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.2)
+    pg (1.6.3)
     phonelib (0.10.15)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
