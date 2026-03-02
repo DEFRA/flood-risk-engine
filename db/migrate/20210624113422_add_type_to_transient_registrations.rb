@@ -4,9 +4,9 @@ class AddTypeToTransientRegistrations < ActiveRecord::Migration[6.0]
   def up
     add_column :transient_registrations, :type, :string, default: "FloodRiskEngine::NewRegistration"
     # Set any existing TransientRegistrations to NewRegistrations so everything has a type
-    execute <<-SQL.squish
-       UPDATE transient_registrations
-       SET type = 'FloodRiskEngine::NewRegistration';
+    execute <<~SQL.squish
+      UPDATE transient_registrations
+      SET type = 'FloodRiskEngine::NewRegistration';
     SQL
 
     change_column_null :transient_registrations, :type, false
