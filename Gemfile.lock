@@ -22,7 +22,7 @@ PATH
       os_map_ref (= 0.5)
       pg (~> 1)
       phonelib (~> 0.6)
-      rails (~> 7.2.3.1)
+      rails (~> 7.2)
       rgeo
       rgeo-activerecord
       sucker_punch (~> 3)
