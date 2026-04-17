@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency "os_map_ref", "0.5"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 7.2.2.1"
+  s.add_dependency "rails", "~> 7.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 3"
   # Validate e-mail addresses against RFC 2822 and RFC 3696
