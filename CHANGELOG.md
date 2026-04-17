@@ -99,6 +99,13 @@
 
 **Merged pull requests:**
 
+- Bump multiple gem dependencies and fix minor code style issues [\#1058](https://github.com/DEFRA/flood-risk-engine/pull/1058) ([brujeo](https://github.com/brujeo))
+- Bump pg from 1.6.2 to 1.6.3 [\#1044](https://github.com/DEFRA/flood-risk-engine/pull/1044) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump nokogiri from 1.18.10 to 1.19.0 [\#1043](https://github.com/DEFRA/flood-risk-engine/pull/1043) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump faraday-retry from 2.3.2 to 2.4.0 [\#1042](https://github.com/DEFRA/flood-risk-engine/pull/1042) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump sucker\_punch from 3.2.0 to 3.3.0 [\#1041](https://github.com/DEFRA/flood-risk-engine/pull/1041) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Feature/ruby 4097 update gemfile dependencies [\#1040](https://github.com/DEFRA/flood-risk-engine/pull/1040) ([brujeo](https://github.com/brujeo))
+- Bump rubocop from 1.81.6 to 1.82.0 [\#1036](https://github.com/DEFRA/flood-risk-engine/pull/1036) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add rubocop-factory\_bot and rubocop-rake to development dependencies;… [\#1024](https://github.com/DEFRA/flood-risk-engine/pull/1024) ([brujeo](https://github.com/brujeo))
 - Updating sonar cloud config and setting minimum nokogiri version to the secure version of 1.18.9 [\#1023](https://github.com/DEFRA/flood-risk-engine/pull/1023) ([brujeo](https://github.com/brujeo))
 - Bump phonelib from 0.10.12 to 0.10.13 [\#1022](https://github.com/DEFRA/flood-risk-engine/pull/1022) ([dependabot[bot]](https://github.com/apps/dependabot))
