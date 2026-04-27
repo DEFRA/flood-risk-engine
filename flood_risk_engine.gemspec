@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.summary               = "FloodRiskEngine package containing core elements and functionality"
   s.description           = "FloodRiskEngine package containing core elements and functionality"
   s.license               = "The Open Government Licence (OGL) Version 3"
-  s.required_ruby_version = ">= 3.2"
+  s.required_ruby_version = ">= 3.4.6"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
   # Use AASM to manage states and transitions
