@@ -12,7 +12,7 @@ plugins:
   - rubocop-factory_bot
 
 AllCops:
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.4
   Exclude:
     # Avoid pulling in gems for GitHub setup-ruby@v1 action:
     - vendor/bundle/**/*
