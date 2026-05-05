@@ -196,7 +196,7 @@ GEM
       rails
       sprockets-rails
     defra_ruby_style (0.4.1)
-    defra_ruby_validators (3.0.0)
+    defra_ruby_validators (3.0.1)
       activemodel
       defra_ruby_companies_house
       i18n
