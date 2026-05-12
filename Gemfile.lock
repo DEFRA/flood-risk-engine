@@ -8,6 +8,7 @@ PATH
       defra_ruby_address
       defra_ruby_alert (~> 2.1)
       defra_ruby_area (~> 2.2)
+      defra_ruby_companies_house
       defra_ruby_email (~> 1)
       defra_ruby_validators
       dibber (~> 0.5)

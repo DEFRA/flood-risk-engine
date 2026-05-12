@@ -17,5 +17,15 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:layout) }
     it { is_expected.to respond_to(:minimum_dredging_length_in_metres) }
     it { is_expected.to respond_to(:maximum_dredging_length_in_metres) }
+
+    it "configures Companies House API properties" do
+      engine_config.companies_house_host = "https://example.com"
+      engine_config.companies_house_api_key = "api-key"
+
+      expect(engine_config.companies_house_host).to eq("https://example.com")
+      expect(engine_config.companies_house_api_key).to eq("api-key")
+      expect(DefraRuby::CompaniesHouse.configuration.companies_house_host).to eq("https://example.com")
+      expect(DefraRuby::CompaniesHouse.configuration.companies_house_api_key).to eq("api-key")
+    end
   end
 end
