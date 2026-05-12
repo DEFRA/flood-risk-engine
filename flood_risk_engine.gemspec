@@ -34,8 +34,8 @@ Gem::Specification.new do |s|
   s.add_dependency "defra_ruby_area", "~> 2.2"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
-  s.add_dependency "defra_ruby_email", "~> 1"
   s.add_dependency "defra_ruby_companies_house"
+  s.add_dependency "defra_ruby_email", "~> 1"
   s.add_dependency "defra_ruby_validators"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3"
