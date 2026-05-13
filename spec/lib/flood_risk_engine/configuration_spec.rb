@@ -5,6 +5,7 @@ require "rails_helper"
 module FloodRiskEngine
   describe Configuration do
     subject(:engine_config) { FloodRiskEngine.config }
+
     it "adds #config to the engine module" do
       expect(FloodRiskEngine).to respond_to(:config)
     end
@@ -19,13 +20,20 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:maximum_dredging_length_in_metres) }
 
     it "configures Companies House API properties" do
-      engine_config.companies_house_host = "https://example.com"
-      engine_config.companies_house_api_key = "api-key"
+      companies_house_configuration = spy("Companies House configuration")
 
-      expect(engine_config.companies_house_host).to eq("https://example.com")
-      expect(engine_config.companies_house_api_key).to eq("api-key")
-      expect(DefraRuby::CompaniesHouse.configuration.companies_house_host).to eq("https://example.com")
-      expect(DefraRuby::CompaniesHouse.configuration.companies_house_api_key).to eq("api-key")
+      allow(DefraRuby::CompaniesHouse).to receive(:configure) do |&block|
+        block.call(companies_house_configuration)
+      end
+
+      config = described_class.new
+      config.companies_house_host = "https://example.com"
+      config.companies_house_api_key = "api-key"
+
+      expect(config.companies_house_host).to eq("https://example.com")
+      expect(config.companies_house_api_key).to eq("api-key")
+      expect(companies_house_configuration).to have_received(:companies_house_host=).with("https://example.com")
+      expect(companies_house_configuration).to have_received(:companies_house_api_key=).with("api-key")
     end
   end
 end
