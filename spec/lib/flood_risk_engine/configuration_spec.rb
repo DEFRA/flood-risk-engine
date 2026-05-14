@@ -20,7 +20,17 @@ module FloodRiskEngine
     it { is_expected.to respond_to(:maximum_dredging_length_in_metres) }
 
     it "configures Companies House API properties" do
-      companies_house_configuration = spy("Companies House configuration")
+      companies_house_configuration = double("Companies House configuration")
+
+      expect(companies_house_configuration)
+        .to receive(:companies_house_host=)
+        .with("https://api.companieshouse.gov.uk")
+      expect(companies_house_configuration)
+        .to receive(:companies_house_host=)
+        .with("https://example.com")
+      expect(companies_house_configuration)
+        .to receive(:companies_house_api_key=)
+        .with("api-key")
 
       allow(DefraRuby::CompaniesHouse).to receive(:configure) do |&block|
         block.call(companies_house_configuration)
@@ -32,8 +42,6 @@ module FloodRiskEngine
 
       expect(config.companies_house_host).to eq("https://example.com")
       expect(config.companies_house_api_key).to eq("api-key")
-      expect(companies_house_configuration).to have_received(:companies_house_host=).with("https://example.com")
-      expect(companies_house_configuration).to have_received(:companies_house_api_key=).with("api-key")
     end
   end
 end
