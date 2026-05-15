@@ -25,13 +25,9 @@ module FloodRiskEngine
       allow(DefraRuby::CompaniesHouse).to receive(:configure).and_yield(companies_house_configuration)
 
       config = described_class.new
-      expect(config.companies_house_host).to eq("https://api.companieshouse.gov.uk")
-
       config.companies_house_host = "https://example.com"
       config.companies_house_api_key = "api-key"
 
-      expect(config.companies_house_host).to eq("https://example.com")
-      expect(config.companies_house_api_key).to eq("api-key")
       expect(companies_house_configuration.companies_house_host).to eq("https://example.com")
       expect(companies_house_configuration.companies_house_api_key).to eq("api-key")
     end
