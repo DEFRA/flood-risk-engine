@@ -77,7 +77,7 @@ module FloodRiskEngine
       end
     end
 
-    # Companies House validation
+    # Companies House configuration
     def companies_house_host=(value)
       config.companies_house_host = value
 
