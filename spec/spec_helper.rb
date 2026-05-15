@@ -14,14 +14,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
-require "simplecov"
-SimpleCov.start "rails" do
-  # any custom configs like groups and filters can be here at a central place
-  # Standard filters
-  add_filter "lib/flood_risk_engine/version"
-  add_filter "/spec/"
-  add_filter "/db/"
-end
+require "./spec/support/simplecov"
 
 # Include AASM test helper methods
 require "aasm/rspec"

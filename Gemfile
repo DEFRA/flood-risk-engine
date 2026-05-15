@@ -53,7 +53,7 @@ group :test do
   gem "rspec-html-matchers"
   gem "rspec-rails", "~> 6"
   gem "shoulda-matchers", "~> 6", require: false
-  gem "simplecov", "~> 0.17.1", require: false
+  gem "simplecov", "~> 0.22.0", require: false
   gem "vcr", "~> 6"
   gem "webmock", "~> 3"
 end
