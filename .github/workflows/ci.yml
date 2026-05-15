@@ -62,15 +62,10 @@ jobs:
         run: |
           bundle exec rubocop --format progress --format json --out rubocop-result.json
 
-      # This includes an extra run step. The sonarcloud analysis will be run in a docker container with the current
-      # folder mounted as `/github/workspace`. The problem is when the coverage.json file is generated it will
-      # reference the code in the current folder. So to enable sonarcloud to matchup code coverage with the files we use
-      # sed to update the references in coverage.json
-      # https://community.sonarsource.com/t/code-coverage-doesnt-work-with-github-action/16747/6
       - name: Run unit tests
         run: |
           bundle exec rspec spec
-          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace@g' ./coverage/coverage.json
+
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarqube-scan-action@master
         env:
