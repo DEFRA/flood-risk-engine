@@ -8,6 +8,7 @@ FloodRiskEngine.configure do |config|
 
   config.default_assistance_mode = 0
 
+  config.companies_house_host = ENV["COMPANIES_HOUSE_URL"] || "https://api.companieshouse.gov.uk"
   config.companies_house_api_key = ENV.fetch("COMPANIES_HOUSE_API_KEY")
 
   config.notify_api_key = ENV.fetch("NOTIFY_API_KEY")

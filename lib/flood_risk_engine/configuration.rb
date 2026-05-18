@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "defra_ruby/alert"
+require "defra_ruby/companies_house"
 
 # Class for setting configuration options in this engine. See e.g.
 # http://stackoverflow.com/questions/24104246/how-to-use-activesupportconfigurable-with-rails-engine
@@ -38,6 +39,7 @@ module FloodRiskEngine
     config_accessor(:application_name) # Optionally used in pages/version
 
     config_accessor(:companies_house_api_key)
+    config_accessor(:companies_house_host)
 
     config_accessor(:notify_api_key)
 
@@ -48,6 +50,7 @@ module FloodRiskEngine
 
     def initialize
       configure_airbrake_rails_properties
+      self.companies_house_host = "https://api.companieshouse.gov.uk"
     end
 
     def airbrake_enabled=(value)
@@ -74,9 +77,19 @@ module FloodRiskEngine
       end
     end
 
-    # Companies House validation
+    # Companies House configuration
+    def companies_house_host=(value)
+      config.companies_house_host = value
+
+      DefraRuby::CompaniesHouse.configure do |configuration|
+        configuration.companies_house_host = value
+      end
+    end
+
     def companies_house_api_key=(value)
-      DefraRuby::Validators.configure do |configuration|
+      config.companies_house_api_key = value
+
+      DefraRuby::CompaniesHouse.configure do |configuration|
         configuration.companies_house_api_key = value
       end
     end
