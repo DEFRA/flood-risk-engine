@@ -10,7 +10,7 @@ PATH
       defra_ruby_area (~> 2.2)
       defra_ruby_companies_house
       defra_ruby_email (~> 1)
-      defra_ruby_validators
+      defra_ruby_validators (>= 3.0.1)
       dibber (~> 0.5)
       dotenv-rails (~> 2)
       high_voltage (~> 3)
