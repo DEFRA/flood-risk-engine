@@ -23,7 +23,7 @@ module FloodRiskEngine
       end
 
       it "includes expected error text" do
-        expect(response.body).to match(/If you typed the web address/)
+        expect(response.body).to include("If you typed the web address")
       end
     end
 
