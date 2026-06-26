@@ -16,9 +16,9 @@ PATH
       high_voltage (~> 3)
       jquery-rails (~> 4)
       matrix (~> 0.4)
-      net-imap (~> 0.2)
+      net-imap (>= 0.6)
       net-pop (~> 0.1)
-      nokogiri (>= 1.19.1)
+      nokogiri (>= 1.19)
       notifications-ruby-client
       os_map_ref (= 0.5)
       pg (~> 1)
