@@ -99,6 +99,14 @@
 
 **Merged pull requests:**
 
+- Update gem dependencies for nokogiri and net-imap [\#1104](https://github.com/DEFRA/flood-risk-engine/pull/1104) ([brujeo](https://github.com/brujeo))
+- Feature/ruby 4336 frae security enable bundler cooldown give new gems a few days to be vetted [\#1103](https://github.com/DEFRA/flood-risk-engine/pull/1103) ([brujeo](https://github.com/brujeo))
+- Update bundle dependencies [\#1084](https://github.com/DEFRA/flood-risk-engine/pull/1084) ([jjromeo](https://github.com/jjromeo))
+- RUBY-4266 Update defra\_ruby\_validators [\#1078](https://github.com/DEFRA/flood-risk-engine/pull/1078) ([jjromeo](https://github.com/jjromeo))
+- Update Ruby to 3.4.6 [\#1075](https://github.com/DEFRA/flood-risk-engine/pull/1075) ([jjromeo](https://github.com/jjromeo))
+- Feature/ruby 4262 frae update ubuntu postgresql and postgis versions in frae vagrant [\#1074](https://github.com/DEFRA/flood-risk-engine/pull/1074) ([brujeo](https://github.com/brujeo))
+- Chore/bump gems 17/04/2026 [\#1070](https://github.com/DEFRA/flood-risk-engine/pull/1070) ([brujeo](https://github.com/brujeo))
+- Chore/changelog 17/04/2026 [\#1069](https://github.com/DEFRA/flood-risk-engine/pull/1069) ([brujeo](https://github.com/brujeo))
 - Bump multiple gem dependencies and fix minor code style issues [\#1058](https://github.com/DEFRA/flood-risk-engine/pull/1058) ([brujeo](https://github.com/brujeo))
 - Bump pg from 1.6.2 to 1.6.3 [\#1044](https://github.com/DEFRA/flood-risk-engine/pull/1044) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump nokogiri from 1.18.10 to 1.19.0 [\#1043](https://github.com/DEFRA/flood-risk-engine/pull/1043) ([dependabot[bot]](https://github.com/apps/dependabot))
