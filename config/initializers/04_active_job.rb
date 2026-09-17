@@ -3,9 +3,9 @@
 Rails.application.configure do
   # http://guides.rubyonrails.org/active_job_basics.html#backends
   config.active_job.queue_adapter =
-    if !Rails.env.test? && defined?(SuckerPunch)
-      :sucker_punch
-    else
+    if Rails.env.test?
       :inline # no asynchronous background job processing
+    else
+      :async
     end
 end
