@@ -22,6 +22,11 @@ AllCops:
 Naming/PredicateMethod:
   Enabled: false
 
+# TODO: Adopt params.expect as part of the post-Rails-8.1 modernisation sweep.
+# This cop activated itself when the lockfile moved to Rails 8.1
+Rails/StrongParametersExpect:
+  Enabled: false
+
 # Allow contexts to start with on for workflow event specs
 RSpec/ContextWording:
   Prefixes:
