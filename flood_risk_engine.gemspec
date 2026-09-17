@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency "defra_ruby_email", "~> 1"
   s.add_dependency "defra_ruby_validators"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
-  s.add_dependency "high_voltage", "~> 3"
+  s.add_dependency "high_voltage", "~> 5.0"
   s.add_dependency "jquery-rails", "~> 4"
   s.add_dependency "nokogiri", ">= 1.19"
   # Use Notify to send emails and letters
