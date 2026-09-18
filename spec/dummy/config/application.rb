@@ -28,7 +28,11 @@ Dotenv::Railtie.load
 
 module Dummy
   class Application < Rails::Application
-    config.autoloader = :zeitwerk
+    config.load_defaults 8.1
+
+    # Keep has_secure_token generating on create (the pre-7.1 default). The
+    # engine relies on unsaved registrations having no token yet.
+    config.active_record.generate_secure_token_on = :create
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -41,6 +45,5 @@ module Dummy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.active_support.cache_format_version = 7.1
   end
 end
