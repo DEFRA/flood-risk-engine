@@ -99,6 +99,10 @@
 
 **Merged pull requests:**
 
+- Upgrade Rails and dependencies for compatibility with Rails 8.1 [\#1129](https://github.com/DEFRA/flood-risk-engine/pull/1129) ([brujeo](https://github.com/brujeo))
+- FRAE: Update defra-ruby-template to version 6.4.0 [\#1128](https://github.com/DEFRA/flood-risk-engine/pull/1128) ([jjromeo](https://github.com/jjromeo))
+- Bump activestorage from 7.2.3.1 to 7.2.3.2 [\#1117](https://github.com/DEFRA/flood-risk-engine/pull/1117) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update CHANGELOG [\#1105](https://github.com/DEFRA/flood-risk-engine/pull/1105) ([jjromeo](https://github.com/jjromeo))
 - Update gem dependencies for nokogiri and net-imap [\#1104](https://github.com/DEFRA/flood-risk-engine/pull/1104) ([brujeo](https://github.com/brujeo))
 - Feature/ruby 4336 frae security enable bundler cooldown give new gems a few days to be vetted [\#1103](https://github.com/DEFRA/flood-risk-engine/pull/1103) ([brujeo](https://github.com/brujeo))
 - Update bundle dependencies [\#1084](https://github.com/DEFRA/flood-risk-engine/pull/1084) ([jjromeo](https://github.com/jjromeo))
