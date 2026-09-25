@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable-next Metrics/ClassLength
+# rubocop:disable Metrics/ClassLength
 module FloodRiskEngine
   class CheckYourAnswersPresenter < BasePresenter
     def initialize(transient_registration)
@@ -161,3 +161,4 @@ module FloodRiskEngine
     end
   end
 end
+# rubocop:enable Metrics/ClassLength

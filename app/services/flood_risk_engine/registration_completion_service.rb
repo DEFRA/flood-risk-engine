@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable-next Metrics/ClassLength
+# rubocop:disable Metrics/ClassLength
 module FloodRiskEngine
   class RegistrationCompletionService < BaseService
     def run(transient_registration:)
@@ -172,3 +172,4 @@ module FloodRiskEngine
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
