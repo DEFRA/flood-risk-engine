@@ -10,7 +10,7 @@ class CreateExemptions < ActiveRecord::Migration[4.2]
       t.timestamps null: false
     end
 
-    # rubocop:disable Rails/CreateTableWithTimestamps
+    # rubocop:disable-next Rails/CreateTableWithTimestamps
     create_table :flood_risk_engine_enrollments_exemptions do |t|
       t.references  :enrollment,      null: false
       t.references  :exemption,       null: false
@@ -18,7 +18,6 @@ class CreateExemptions < ActiveRecord::Migration[4.2]
       t.datetime :expires_at
       t.datetime :valid_from
     end
-    # rubocop:enable Rails/CreateTableWithTimestamps
 
     add_foreign_key :flood_risk_engine_enrollments_exemptions,
                     :flood_risk_engine_enrollments, column: :enrollment_id

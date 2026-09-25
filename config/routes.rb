@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable-next Metrics/BlockLength
 FloodRiskEngine::Engine.routes.draw do
   resources :start_forms,
             only: %i[new create],
@@ -245,4 +245,3 @@ FloodRiskEngine::Engine.routes.draw do
   # See http://railscasts.com/episodes/53-handling-exceptions-revised
   get "(errors)/:id", to: "errors#show", as: "error"
 end
-# rubocop:enable Metrics/BlockLength

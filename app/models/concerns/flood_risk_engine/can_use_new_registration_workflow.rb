@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/ModuleLength
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable-next Metrics/BlockLength
 module FloodRiskEngine
   module CanUseNewRegistrationWorkflow
     extend ActiveSupport::Concern
@@ -283,5 +283,4 @@ module FloodRiskEngine
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
 # rubocop:enable Metrics/ModuleLength
