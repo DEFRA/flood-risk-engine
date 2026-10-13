@@ -60,5 +60,8 @@ Gem::Specification.new do |s|
   s.add_dependency "net-pop", "~> 0.1"
   s.add_dependency "pg", "~> 1"
 
+  # Used by lib/tasks/changelog.rake, pinned as that patches the gem's internals
+  s.add_dependency "github_changelog_generator", "~> 1.18.0"
+
   s.metadata["rubygems_mfa_required"] = "true"
 end
