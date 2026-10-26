@@ -13,6 +13,7 @@ PATH
       defra_ruby_validators
       dibber (~> 0.5)
       dotenv-rails (~> 2)
+      github_changelog_generator (~> 1.18.0)
       high_voltage (~> 5.0)
       jquery-rails (~> 4)
       matrix (~> 0.4)
@@ -565,7 +566,6 @@ DEPENDENCIES
   faker (~> 2)
   faraday-retry
   flood_risk_engine!
-  github_changelog_generator
   govuk_design_system_formbuilder (~> 6.4.0)
   poltergeist (~> 1)
   rails-controller-testing
