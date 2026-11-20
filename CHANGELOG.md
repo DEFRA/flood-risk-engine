@@ -99,6 +99,10 @@
 
 **Merged pull requests:**
 
+- Update ruby version [\#1144](https://github.com/DEFRA/flood-risk-engine/pull/1144) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- \[RUBY-4494\] Fix changelog rate limiting [\#1139](https://github.com/DEFRA/flood-risk-engine/pull/1139) ([jjromeo](https://github.com/jjromeo))
+- Bump rails from 8.1.3.1 to 8.1.4 [\#1135](https://github.com/DEFRA/flood-risk-engine/pull/1135) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Chore/changelog 25092026 [\#1133](https://github.com/DEFRA/flood-risk-engine/pull/1133) ([brujeo](https://github.com/brujeo))
 - Upgrade Rails and dependencies for compatibility with Rails 8.1 [\#1129](https://github.com/DEFRA/flood-risk-engine/pull/1129) ([brujeo](https://github.com/brujeo))
 - FRAE: Update defra-ruby-template to version 6.4.0 [\#1128](https://github.com/DEFRA/flood-risk-engine/pull/1128) ([jjromeo](https://github.com/jjromeo))
 - Bump activestorage from 7.2.3.1 to 7.2.3.2 [\#1117](https://github.com/DEFRA/flood-risk-engine/pull/1117) ([dependabot[bot]](https://github.com/apps/dependabot))
