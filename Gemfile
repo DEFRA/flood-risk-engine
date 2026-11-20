@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org", cooldown: 7
-ruby "3.4.6"
+ruby "3.4.13"
 
 # Declare your gem's dependencies in flood_risk_engine.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
